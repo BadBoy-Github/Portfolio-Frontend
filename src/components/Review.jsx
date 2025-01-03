@@ -16,7 +16,7 @@ import ReviewCard from './ReviewCard';
 const reviews = [
     {
         content: 'A good learner who learns from mistakes and excels in problem-solving. Their ability to adapt and overcome challenges is impressive.',
-        name: 'Aishwarya',
+        name: 'Yakshana',
         imgSrc: '/images/people-5.jpg',
         company: 'Socialist'
     },
@@ -41,7 +41,7 @@ const reviews = [
     },
     {
         content: 'Groundbreaking work on the anticancer project using Iron oxide nanoparticles! Their innovative approach led to significant advancements and promising results. Highly commendable.',
-        name: 'Yakshana',
+        name: 'Rithanya',
         imgSrc: '/images/people-1.jpg',
         company: 'Medical Coder'
     },
