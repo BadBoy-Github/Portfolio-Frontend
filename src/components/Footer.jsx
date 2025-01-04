@@ -62,7 +62,7 @@ const Footer = () => {
                         </h2>
 
                         <ButtonPrimary
-                            href="mailto:elayabarathiedison@gmail.com"
+                            href="https://www.linkedin.com/in/elayabarathi/"
                             label="Start Collab"
                             icon="chevron_right"
                             classes="reveal-up"
