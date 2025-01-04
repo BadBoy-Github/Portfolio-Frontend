@@ -66,6 +66,7 @@ const Footer = () => {
                             label="Start Collab"
                             icon="chevron_right"
                             classes="reveal-up"
+                            target="_blank"
                         />
                     </div>
 
