@@ -6,15 +6,27 @@ import ProjectCard from './ProjectCard';
 const works = [
 
     {
+        imgSrc: '/images/project-8.jpg',
+        title: 'Stellar AI Chatbot',
+        tags: ['AI Model', 'Chat'],
+        projectLink: 'https://stellar-steel-tau.vercel.app/'
+    },
+    {
+        imgSrc: '/images/project-7.jpg',
+        title: 'AI 3D Portfolio',
+        tags: ['AI', '3D Model'],
+        projectLink: 'https://elayabarathi-ai.netlify.app/'
+    },
+    {
         imgSrc: '/images/project-1.jpg',
         title: 'Spotify Clone',
-        tags: ['Clone', 'Clerk', 'Deploy'],
+        tags: ['Music', 'Clerk', 'Clone'],
         projectLink: 'https://spotify-clone-6rda.onrender.com/'
     },
     {
         imgSrc: '/images/project-2.jpg',
         title: 'eCommerce website',
-        tags: ['eCommerce', 'Stripe', 'Deploy'],
+        tags: ['eCommerce', 'Stripe'],
         projectLink: 'https://full-stack-ecommerce-h47u.vercel.app/'
     },
     {
@@ -26,7 +38,7 @@ const works = [
     {
         imgSrc: '/images/project-4.jpg',
         title: 'Frontend Shopping List',
-        tags: ['html', 'CSS', 'JS', 'Deploy'],
+        tags: ['html', 'CSS', 'JS',],
         projectLink: 'https://frontend-shopping-list-app.vercel.app/'
     },
     {
@@ -40,7 +52,8 @@ const works = [
         title: 'Silver vs Bacteria',
         tags: ['AgNPs', 'Antimicrobial'],
         projectLink: 'https://journals.innovareacademics.in/index.php/ijap/article/view/51711'
-    }
+    },
+    
 
 ];
 
