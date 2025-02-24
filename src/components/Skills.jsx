@@ -88,7 +88,7 @@ const skillItem = [
   {
     imgSrc: "/images/python.svg",
     label: "Python",
-    desc: "High-Level Programming",
+    desc: "High Level Programming",
   },
   {
     imgSrc: "/images/canva.svg",
