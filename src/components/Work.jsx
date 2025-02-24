@@ -12,12 +12,6 @@ const works = [
         projectLink: 'https://stellar-steel-tau.vercel.app/'
     },
     {
-        imgSrc: '/images/project-7.jpg',
-        title: 'AI 3D Portfolio',
-        tags: ['AI', '3D Model'],
-        projectLink: 'https://elayabarathi-ai.netlify.app/'
-    },
-    {
         imgSrc: '/images/project-1.jpg',
         title: 'Spotify Clone',
         tags: ['Music', 'Clerk', 'Clone'],
@@ -30,22 +24,10 @@ const works = [
         projectLink: 'https://full-stack-ecommerce-h47u.vercel.app/'
     },
     {
-        imgSrc: '/images/project-3.jpg',
-        title: 'Full stack CRUD app',
-        tags: ['Web-design', 'ejs'],
-        projectLink: 'https://github.com/BadBoy-Github/CRUD-App.git'
-    },
-    {
-        imgSrc: '/images/project-4.jpg',
-        title: 'Frontend Shopping List',
-        tags: ['html', 'CSS', 'JS',],
-        projectLink: 'https://frontend-shopping-list-app.vercel.app/'
-    },
-    {
         imgSrc: '/images/project-5.jpg',
         title: 'Iron vs Cancer',
         tags: ['FeNPs', 'Encapsule', 'Cancer'],
-        projectLink: '#'
+        projectLink: '/error'
     },
     {
         imgSrc: '/images/project-6.jpg',
