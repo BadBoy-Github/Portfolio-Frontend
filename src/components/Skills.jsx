@@ -83,7 +83,7 @@ const skillItem = [
   {
     imgSrc: "/images/cplusplus.svg",
     label: "C++",
-    desc: "Object-Oriented Program",
+    desc: "Object Oriented Program",
   },
   {
     imgSrc: "/images/python.svg",
