@@ -78,7 +78,7 @@ const Review = () => {
             <div className="container">
 
                 <h2 className="headline-2 mb-8 reveal-up">
-                    What our friends say
+                    What my colleagues say
                 </h2>
 
                 <div className="scrub-slide flex items-stretch gap-3 w-fit">
