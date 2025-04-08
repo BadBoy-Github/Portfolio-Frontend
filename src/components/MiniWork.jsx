@@ -23,6 +23,18 @@ const miniworks = [
     projectLink: "https://frontend-shopping-list-app.vercel.app/",
   },
   {
+    imgSrc: "/images/miniproject-6.jpg",
+    title: "Profile Card",
+    tags: ["html", "CSS"],
+    projectLink: "https://profile-card-001.netlify.app/",
+  },
+  {
+    imgSrc: "/images/miniproject-5.jpg",
+    title: "Task Sheduler",
+    tags: ["html", "CSS", "JS"],
+    projectLink: "https://task-sheduler-simple.onrender.com/",
+  },
+  {
     imgSrc: "/images/miniproject-1.jpg",
     title: "LinkedIn Form",
     tags: ["html", "CSS"],
