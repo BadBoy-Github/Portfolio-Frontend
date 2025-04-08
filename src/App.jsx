@@ -26,7 +26,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Work from './components/Work';
-import MiniWork from './components/MiniWord';
+import MiniWork from './components/MiniWork';
 import Review from './components/Review';
 import Contact from './components/Contact';
 import Footer from './components/Footer';

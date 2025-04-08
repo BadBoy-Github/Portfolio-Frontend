@@ -4,25 +4,30 @@
 import ProjectCard from './ProjectCard';
 
 const miniworks = [
-
-    {
-        imgSrc: '/images/project-7.jpg',
-        title: 'AI 3D Portfolio',
-        tags: ['AI', '3D Model'],
-        projectLink: 'https://elayabarathi-ai.netlify.app/'
-    },
-    {
-        imgSrc: '/images/project-3.jpg',
-        title: 'Full stack CRUD app',
-        tags: ['Web-design', 'ejs'],
-        projectLink: 'https://github.com/BadBoy-Github/CRUD-App.git'
-    },
-    {
-        imgSrc: '/images/project-4.jpg',
-        title: 'Frontend Shopping List',
-        tags: ['html', 'CSS', 'JS',],
-        projectLink: 'https://frontend-shopping-list-app.vercel.app/'
-    },
+  {
+    imgSrc: "/images/miniproject-4.jpg",
+    title: "AI 3D Portfolio",
+    tags: ["AI", "3D Model"],
+    projectLink: "https://elayabarathi-ai.netlify.app/",
+  },
+  {
+    imgSrc: "/images/miniproject-3.jpg",
+    title: "Full stack CRUD app",
+    tags: ["Web-design", "ejs"],
+    projectLink: "https://github.com/BadBoy-Github/CRUD-App.git",
+  },
+  {
+    imgSrc: "/images/miniproject-2.jpg",
+    title: "Frontend Shopping List",
+    tags: ["html", "CSS", "JS"],
+    projectLink: "https://frontend-shopping-list-app.vercel.app/",
+  },
+  {
+    imgSrc: "/images/miniproject-1.jpg",
+    title: "LinkedIn Form",
+    tags: ["html", "CSS"],
+    projectLink: "https://linkedin-form-1.onrender.com/",
+  },
 ];
 
 const MiniWork = () => {

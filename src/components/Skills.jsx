@@ -16,6 +16,11 @@ const skillItem = [
     desc: "User Interface",
   },
   {
+    imgSrc: "/images/javascript.svg",
+    label: "JavaScript",
+    desc: "Interaction",
+  },
+  {
     imgSrc: "/images/html.svg",
     label: "HTML",
     desc: "Markup Language",
@@ -30,26 +35,21 @@ const skillItem = [
     label: "Bootstrap",
     desc: "CSS Framework",
   },
-  {
-    imgSrc: "/images/javascript.svg",
-    label: "JavaScript",
-    desc: "Interaction",
-  },
-  {
-    imgSrc: "/images/typescript.svg",
-    label: "TypeScript",
-    desc: "Typed JavaScript",
-  },
-  {
-    imgSrc: "/images/nodejs.svg",
-    label: "NodeJS",
-    desc: "Web Server",
-  },
-  {
-    imgSrc: "/images/expressjs.svg",
-    label: "ExpressJS",
-    desc: "Node Framework",
-  },
+  // {
+  //   imgSrc: "/images/typescript.svg",
+  //   label: "TypeScript",
+  //   desc: "Typed JavaScript",
+  // },
+  // {
+  //   imgSrc: "/images/nodejs.svg",
+  //   label: "NodeJS",
+  //   desc: "Web Server",
+  // },
+  // {
+  //   imgSrc: "/images/expressjs.svg",
+  //   label: "ExpressJS",
+  //   desc: "Node Framework",
+  // },
   {
     imgSrc: "/images/mongodb.svg",
     label: "MongoDB",
@@ -60,19 +60,14 @@ const skillItem = [
     label: "Github",
     desc: "Version Control",
   },
-  {
-    imgSrc: "/images/gitlab.svg",
-    label: "GitLab",
-    desc: "Version Control",
-  },
+  // {
+  //   imgSrc: "/images/gitlab.svg",
+  //   label: "GitLab",
+  //   desc: "Version Control",
+  // },
   {
     imgSrc: "/images/vercel.svg",
     label: "Vercel",
-    desc: "Deployment",
-  },
-  {
-    imgSrc: "/images/render.svg",
-    label: "Render",
     desc: "Deployment",
   },
   {
@@ -81,10 +76,15 @@ const skillItem = [
     desc: "Deployment",
   },
   {
-    imgSrc: "/images/cplusplus.svg",
-    label: "C++",
-    desc: "Object Oriented Program",
+    imgSrc: "/images/render.svg",
+    label: "Render",
+    desc: "Deployment",
   },
+  // {
+  //   imgSrc: "/images/cplusplus.svg",
+  //   label: "C++",
+  //   desc: "Object Oriented Program",
+  // },
   {
     imgSrc: "/images/python.svg",
     label: "Python",
@@ -100,11 +100,11 @@ const skillItem = [
     label: "AutoCAD",
     desc: "CAD Software",
   },
-  {
-    imgSrc: "/images/powerbi.svg",
-    label: "Power BI",
-    desc: "Data Visualization",
-  },
+  // {
+  //   imgSrc: "/images/powerbi.svg",
+  //   label: "Power BI",
+  //   desc: "Data Visualization",
+  // },
   {
     imgSrc: "/images/msoffice.svg",
     label: "MS Office",
@@ -115,16 +115,16 @@ const skillItem = [
     label: "PowerDirector",
     desc: "Video Editing",
   },
-  {
-    imgSrc: "/images/photoshop.svg",
-    label: "Photoshop",
-    desc: "Pro Photo Editing",
-  },
-  {
-    imgSrc: "/images/premierepro.svg",
-    label: "Adobe Premiere Pro",
-    desc: "Pro Video Editing",
-  },
+  // {
+  //   imgSrc: "/images/photoshop.svg",
+  //   label: "Photoshop",
+  //   desc: "Pro Photo Editing",
+  // },
+  // {
+  //   imgSrc: "/images/premierepro.svg",
+  //   label: "Adobe Premiere Pro",
+  //   desc: "Pro Video Editing",
+  // },
 ];
 
 const Skills = () => {

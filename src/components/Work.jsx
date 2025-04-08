@@ -6,31 +6,31 @@ import ProjectCard from './ProjectCard';
 const works = [
 
     {
-        imgSrc: '/images/project-8.jpg',
+        imgSrc: '/images/project-5.jpg',
         title: 'Stellar AI Chatbot',
         tags: ['AI Model', 'Chat'],
         projectLink: 'https://stellar-steel-tau.vercel.app/'
     },
     {
-        imgSrc: '/images/project-1.jpg',
+        imgSrc: '/images/project-4.jpg',
         title: 'Spotify Clone',
         tags: ['Music', 'Clerk', 'Clone'],
         projectLink: 'https://spotify-clone-6rda.onrender.com/'
     },
     {
-        imgSrc: '/images/project-2.jpg',
+        imgSrc: '/images/project-3.jpg',
         title: 'eCommerce website',
         tags: ['eCommerce', 'Stripe'],
         projectLink: 'https://full-stack-ecommerce-h47u.vercel.app/'
     },
     {
-        imgSrc: '/images/project-5.jpg',
+        imgSrc: '/images/project-2.jpg',
         title: 'Iron vs Cancer',
         tags: ['FeNPs', 'Encapsule', 'Cancer'],
         projectLink: '/error'
     },
     {
-        imgSrc: '/images/project-6.jpg',
+        imgSrc: '/images/project-1.jpg',
         title: 'Silver vs Bacteria',
         tags: ['AgNPs', 'Antimicrobial'],
         projectLink: 'https://journals.innovareacademics.in/index.php/ijap/article/view/51711'
