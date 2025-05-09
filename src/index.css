@@ -30,7 +30,7 @@ body {
 }
 
 .headline-1 {
-    @apply text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
+    @apply text-4xl sm:text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
 }
 
 .headline-2 {
@@ -42,7 +42,14 @@ body {
 }
 
 .headline-transition {
-    @apply text-sky-400 text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15] max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch]
+
+
+    @apply text-sky-400 font-semibold text-4xl leading-tight max-w-[17ch]
+        /* Base for small screens, fits "Biotechnologist" (16ch) */
+        sm:text-5xl sm:max-w-[17ch]
+        /* sm screens */
+        lg:text-[55px] lg:leading-[1.15] lg:max-w-[17ch];
+        /* lg screens */
     
 }
 
