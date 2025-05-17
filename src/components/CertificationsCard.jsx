@@ -11,19 +11,18 @@ ratings.fill({
 })
 
 
-const CertificationsCard = ({ imgSrc, title, company }) => {
-
-  const [selectedImage, setSelectedImage] = useState(null)
+const CertificationsCard = ({ imgSrc, title, company, logo }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const openImage = (imgUrl) => {
-    setSelectedImage(imgUrl)
-    document.body.classList.add('overflow-hidden')
-  }
+    setSelectedImage(imgUrl);
+    document.body.classList.add("overflow-hidden");
+  };
 
   const closeImage = () => {
-    setSelectedImage(null)
-    document.body.classList.remove('overflow-hidden')
-  }
+    setSelectedImage(null);
+    document.body.classList.remove("overflow-hidden");
+  };
 
   return (
     <div
@@ -55,11 +54,18 @@ const CertificationsCard = ({ imgSrc, title, company }) => {
           </div>
         </div>
       )}
-      <div className="flex items-center gap-2 mt-auto">
+      <div className="flex items-center justify-between gap-2 mt-auto">
         <div>
           <p>{title}</p>
 
           <p className="text-xs text-zinc-400 tracking-wider">{company}</p>
+        </div>
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-700">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-6 h-6 rounded-full object-cover"
+          />
         </div>
       </div>
       <figure className="rounded-lg bg-zinc-700 mt-4 hover:scale-105 transition-transform duration-300">
