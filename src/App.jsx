@@ -30,6 +30,7 @@ import MiniWork from './components/MiniWork';
 import Review from './components/Review';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Certifications from './components/Certifications';
 
 
 const App = () => {
@@ -54,20 +55,21 @@ const App = () => {
     })
 
     return (
-        <ReactLenis root>
-            <Header />
-            <main>
-                <Hero />
-                <About />
-                <Skills />
-                <Work />
-                <MiniWork />
-                <Review />
-                <Contact />
-            </main>
-            <Footer />
-        </ReactLenis>
-    )
+      <ReactLenis root>
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Work />
+          <MiniWork />
+          <Certifications />
+          <Review />
+          <Contact />
+        </main>
+        <Footer />
+      </ReactLenis>
+    );
 
 }
 

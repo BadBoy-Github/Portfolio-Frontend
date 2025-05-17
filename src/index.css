@@ -67,13 +67,6 @@ body {
     @apply px-4 mx-auto lg:px-8 xl:max-w-6xl
 }
 
-.img-box {
-    @apply bg-zinc-700 overflow-hidden
-}
-
-.img-cover {
-    @apply w-full h-full object-cover bg-zinc-400/20
-}
 
 .section {
     @apply pt-20 lg:pt-32
@@ -234,3 +227,14 @@ body {
 .text-field::placeholder {
     @apply text-zinc-400
 }
+
+.hide-scrollbar {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */ }
