@@ -86,6 +86,7 @@ CertificationsCard.propTypes = {
   imgSrc: PropTypes.string,
   title: PropTypes.string,
   company: PropTypes.string,
+  logo: PropTypes.string,
 };
 
 export default CertificationsCard;
