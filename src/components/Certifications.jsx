@@ -49,11 +49,6 @@ const reviews = [
     company: "Mimo",
   },
   {
-    title: "Python AI Developer",
-    imgSrc: "/images/certificates/Python AI Developer.jpg",
-    company: "Mimo",
-  },
-  {
     title: "Generative AI",
     imgSrc: "/images/certificates/Generative AI.jpg",
     company: "Guvi",
@@ -77,6 +72,11 @@ const reviews = [
     title: "Excel",
     imgSrc: "/images/certificates/Excel.jpg",
     company: "LetsUpgrade",
+  },
+  {
+    title: "Excel Data Analysis",
+    imgSrc: "/images/certificates/Excel Data Analysis.jpg",
+    company: "Coursera",
   },
   {
     title: "Campus Ambassador",
@@ -138,9 +138,9 @@ const Certifications = () => {
   }
 
   return (
-    <section id="reviews" className="section relative">
+    <section id="certificates" className="section relative">
       <div className="px-4 mx-auto lg:px-8 xl:max-w-6xl">
-        <h2 className="headline-2 mb-8">My professional qualifications</h2>
+        <h2 className="headline-2 mb-8">Licenses & Certifications</h2>
 
         {/* Arrows */}
         <button
