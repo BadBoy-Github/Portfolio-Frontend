@@ -159,33 +159,37 @@ const Certifications = () => {
   return (
     <section id="certificates" className="section relative">
       <div className="px-4 mx-auto lg:px-8 xl:max-w-6xl container">
-        <h2 className="headline-2 mb-8 reveal-up">Licenses & Certifications</h2>
+        <h2 className="headline-2 mb-8 reveal-up">
+          Certifications & Credentials
+        </h2>
 
         {/* Arrows */}
-        <button
-          onClick={() => scroll("left")}
-          className="absolute left-40 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center reveal-up"
-        >
-          <FaChevronLeft />
-        </button>
-        <button
-          onClick={scrollToStart}
-          className="absolute left-28 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center opacity-50 reveal-up"
-        >
-          <FaAnglesLeft />
-        </button>
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-40 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center reveal-up"
-        >
-          <FaChevronRight />
-        </button>
-        <button
-          onClick={scrollToEnd}
-          className="absolute right-28 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center opacity-50 reveal-up"
-        >
-          <FaAnglesRight />
-        </button>
+        <div className="hidden lg:flex justify-between items-center">
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-40 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center reveal-up"
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            onClick={scrollToStart}
+            className="absolute left-28 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center opacity-50 reveal-up"
+          >
+            <FaAnglesLeft />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-40 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center reveal-up"
+          >
+            <FaChevronRight />
+          </button>
+          <button
+            onClick={scrollToEnd}
+            className="absolute right-28 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center opacity-50 reveal-up"
+          >
+            <FaAnglesRight />
+          </button>
+        </div>
 
         {/* Scrollable container */}
         <div
