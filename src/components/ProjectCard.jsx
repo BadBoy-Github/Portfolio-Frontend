@@ -19,7 +19,7 @@ const ProjectCard = ({
                     src={imgSrc}
                     alt={title}
                     loading="lazy"
-                    className="img-cover"
+                    className="img-cover rounded-xl"
                 />
             </figure>
 

@@ -4,26 +4,30 @@
 import { ButtonPrimary } from "./Button";
 
 const sitemap = [
-    {
-        label: 'Home',
-        href: '#home'
-    },
-    {
-        label: 'About',
-        href: '#about'
-    },
-    {
-        label: 'Work',
-        href: '#work'
-    },
-    {
-        label: 'Reviews',
-        href: '#reviews'
-    },
-    {
-        label: 'Contact me',
-        href: '#contact'
-    }
+  {
+    label: "Home",
+    href: "#home",
+  },
+  {
+    label: "About",
+    href: "#about",
+  },
+  {
+    label: "Work",
+    href: "#work",
+  },
+  {
+    label: "Certifications",
+    href: "#certificates",
+  },
+  {
+    label: "Reviews",
+    href: "#reviews",
+  },
+  {
+    label: "Contact me",
+    href: "#contact",
+  },
 ];
 
 const socials = [
@@ -68,8 +72,8 @@ const Footer = () => {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 lg:pl-20">
-              <div>
+            <div className="grid grid-cols-2 gap-4 lg:pl-20 ">
+              <div className="">
                 <p className="mb-2 reveal-up">Sitemap</p>
 
                 <ul>
