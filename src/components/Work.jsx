@@ -5,6 +5,12 @@ import ProjectCard from './ProjectCard';
 
 const works = [
   {
+    imgSrc: "/images/project-7.jpg",
+    title: "LinkedIn Clone",
+    tags: ["Morphisire", "Clone"],
+    projectLink: "https://linkedin-profile-clone.vercel.app/",
+  },
+  {
     imgSrc: "/images/project-5.jpg",
     title: "Stellar AI Chatbot",
     tags: ["AI Model", "Chat"],
