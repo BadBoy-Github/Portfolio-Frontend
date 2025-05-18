@@ -200,7 +200,6 @@ const Certifications = () => {
               imgSrc={imgSrc}
               company={company}
               logo={logo}
-              classes="reveal-up"
             />
           ))}
         </div>
