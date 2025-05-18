@@ -70,6 +70,7 @@ ProjectCard.propTypes = {
     title: PropTypes.string.isRequired,
     tags: PropTypes.array.isRequired,
     projectLink: PropTypes.string.isRequired,
+    classes: PropTypes.string
 }
 
 export default ProjectCard
