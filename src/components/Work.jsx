@@ -87,12 +87,6 @@ const ShowMoreCard = ({ count, onClick, delay = 0 }) => {
   );
 };
 
-ShowMoreCard.prototypes = {
-  count: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  delay: PropTypes.number,
-};
-
 const Work = () => {
 
   const [expanded, setExpanded] = useState(false);
