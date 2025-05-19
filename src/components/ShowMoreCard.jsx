@@ -20,7 +20,7 @@ const ShowMoreCard = ({ count, onClick, delay = 0 }) => {
       <div className="flex items-center justify-between gap-4">
         <div>
           <h3 className="text-xl font-semibold mb-3">Show More Projects</h3>
-          <div className="text-sm text-zinc-400">
+          <div className=" h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg w-fit">
             View {count} more {count === 1 ? "project" : "projects"}
           </div>
         </div>
