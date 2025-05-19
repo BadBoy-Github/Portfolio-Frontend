@@ -238,3 +238,15 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
     /* Chrome, Safari, Opera */ }
+
+/* Animation for card reveal */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    } }
