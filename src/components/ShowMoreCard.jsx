@@ -1,4 +1,5 @@
 
+import PropTypes from "prop-types";
 
 const ShowMoreCard = ({ count, onClick, delay = 0 }) => {
   return (
@@ -33,6 +34,12 @@ const ShowMoreCard = ({ count, onClick, delay = 0 }) => {
       </div>
     </div>
   );
+};
+
+ShowMoreCard.propTypes = {
+  count: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
+  delay: PropTypes.number,
 };
 
 export default ShowMoreCard;
