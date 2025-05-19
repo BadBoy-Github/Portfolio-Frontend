@@ -49,6 +49,7 @@ const works = [
   },
 ];
 
+
 const Work = () => {
     return (
       <section id="work" className="section">
