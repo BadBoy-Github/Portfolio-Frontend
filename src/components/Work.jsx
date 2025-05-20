@@ -9,7 +9,7 @@ const works = [
   {
     imgSrc: "/images/project-7.jpg",
     title: "LinkedIn Clone",
-    tags: ["Morphisire", "Clone"],
+    tags: ["LinkedIn", "Morphisire"],
     projectLink: "https://linkedin-profile-clone.vercel.app/",
   },
   {
