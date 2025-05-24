@@ -96,6 +96,11 @@ const skillItem = [
     desc: "Graphic Design",
   },
   {
+    imgSrc: "/images/adobeexpress.svg",
+    label: "Adobe Express",
+    desc: "Graphic Design",
+  },
+  {
     imgSrc: "/images/autocad.svg",
     label: "AutoCAD",
     desc: "CAD Software",
