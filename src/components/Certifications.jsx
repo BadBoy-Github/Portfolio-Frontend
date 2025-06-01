@@ -165,6 +165,7 @@ const Certifications = () => {
     }
   };
 
+
   return (
     <section id="certificates" className="section relative ">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container ">
