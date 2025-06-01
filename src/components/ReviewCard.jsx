@@ -20,7 +20,7 @@ const ReviewCard = ({
           {ratings.map(({ icon, style }, key) => (
             <span
               key={key}
-              className="material-symbols-rounded text-yellow-400 text-[18px]"
+              className="material-symbols-rounded text-yellow-400 hover:text-yellow-300 text-[18px] hover:animate-[bounce_1s_ease-in-out_infinite] cursor-pointer"
               style={style}
             >
               {icon}
@@ -38,7 +38,7 @@ const ReviewCard = ({
               height={44}
               alt={name}
               loading="lazy"
-              className="img-cover"
+              className="img-cover rounded-xl"
             />
           </figure>
 
