@@ -94,7 +94,7 @@ const Work = () => {
         <div className="container">
           <h2 className="headline-2 mb-8 reveal-up">My portfolio highlights</h2>
 
-          <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
+          <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] reveal-up">
             {projectsToShow.map((project, index) => (
               <ProjectCard
                 key={index}
@@ -104,7 +104,7 @@ const Work = () => {
                 tags={project.tags}
                 projectLink={project.projectLink}
                 delay={index * 0.1}
-                classes="reveal-up"
+                classes=""
               />
             ))}
             {shouldShowToggle && !expanded && (

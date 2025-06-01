@@ -1,15 +1,4 @@
 
-
-
-// Node modules
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from '@gsap/react';
-
-
-// Register gsap plugin
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
 // Components
 import ReviewCard from './ReviewCard';
 
@@ -55,20 +44,6 @@ const reviews = [
 
 const Review = () => {
 
-    useGSAP(() => {
-        gsap.to('.scrub-slide', {
-            scrollTrigger: {
-                trigger: '.scrub-slide',
-                start: '-200 80%',
-                end: '400% 80%',
-                scrub: true
-            },
-            x: '-1000',
-            duration: 1,
-            ease: 'power2.out'
-        })
-    })
-
     return (
         <section
             id="reviews"
@@ -81,7 +56,7 @@ const Review = () => {
                     What my colleagues say
                 </h2>
 
-                <div className="scrub-slide flex items-stretch gap-3 w-fit">
+                <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 reveal-up">
                     {reviews.map(({ content, name, imgSrc, company }, key) => (
                         <ReviewCard
                             key={key}
