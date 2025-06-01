@@ -1,11 +1,12 @@
 // Components
 import CertificationsCard from "./CertificationsCard";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaAnglesRight } from "react-icons/fa6";
 import { FaAnglesLeft } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
 const certificates = [
   {
@@ -31,6 +32,12 @@ const certificates = [
     imgSrc: "/images/certificates/CSS.jpg",
     company: "Mimo",
     logo: "/images/certificates/css.png",
+  },
+  {
+    title: "JavaScript",
+    imgSrc: "/images/certificates/js.jpg",
+    company: "LetsUpgrade",
+    logo: "/images/certificates/javascript.png",
   },
   {
     title: "MERN Stack",
@@ -125,6 +132,8 @@ const certificates = [
 ];
 
 const Certifications = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -137,7 +146,7 @@ const Certifications = () => {
       });
     }
   };
-  
+
   const scrollToStart = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
@@ -145,7 +154,7 @@ const Certifications = () => {
         behavior: "smooth",
       });
     }
-  }
+  };
 
   const scrollToEnd = () => {
     if (scrollRef.current) {
@@ -154,11 +163,11 @@ const Certifications = () => {
         behavior: "smooth",
       });
     }
-  }
+  };
 
   return (
-    <section id="certificates" className="section relative">
-      <div className="px-4 mx-auto lg:px-8 xl:max-w-6xl container">
+    <section id="certificates" className="section relative ">
+      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container ">
         <h2 className="headline-2 mb-8 reveal-up">
           Certifications & Credentials
         </h2>
@@ -204,8 +213,35 @@ const Certifications = () => {
               imgSrc={imgSrc}
               company={company}
               logo={logo}
+              setSelectedImage={setSelectedImage}
             />
           ))}
+          {/* Modal for certifications selecting */}
+          {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center p-4 animate-fadeIn"
+              onClick={() => setSelectedImage(null)}
+            >
+              <div
+                className="relative w-fit"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="bg-[#18181b] flex items-center justify-center p-4 rounded-lg border border-[#373a3d] mt-10 relative">
+                  <img
+                    src={selectedImage}
+                    alt="Selected Certification Image"
+                    className="max-h-[80vh] max-w-[160vh] rounded-md"
+                  />
+                  <div
+                    className="absolute text-black bg-red-700 hover:bg-red-600 hover:scale-105 top-0 right-0 cursor-pointer m-3 p-1 rounded-full"
+                    onClick={() => setSelectedImage(null)}
+                  >
+                    <IoClose className="size-[1.2rem]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

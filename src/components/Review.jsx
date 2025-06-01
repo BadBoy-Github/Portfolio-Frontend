@@ -72,10 +72,10 @@ const Review = () => {
     return (
         <section
             id="reviews"
-            className="section overflow-hidden"
+            className="section overflow-hidden "
         >
 
-            <div className="container">
+            <div className="container ">
 
                 <h2 className="headline-2 mb-8 reveal-up">
                     What my colleagues say
