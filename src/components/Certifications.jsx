@@ -40,10 +40,22 @@ const certificates = [
     logo: "/images/certificates/javascript.png",
   },
   {
+    title: "Wordpress",
+    imgSrc: "/images/certificates/Wordpress.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/wordpress.png",
+  },
+  {
     title: "MERN Stack",
     imgSrc: "/images/certificates/MERN Stack.jpg",
-    company: "SimpleLearn",
+    company: "SimpliLearn",
     logo: "/images/certificates/mern.png",
+  },
+  {
+    title: "SEO with Squarespace",
+    imgSrc: "/images/certificates/SEO1.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/seo.png",
   },
   {
     title: "SEO",
@@ -52,10 +64,22 @@ const certificates = [
     logo: "/images/certificates/seo.png",
   },
   {
+    title: "Generative AI",
+    imgSrc: "/images/certificates/Generative AI.jpg",
+    company: "Guvi",
+    logo: "/images/certificates/ai.png",
+  },
+  {
     title: "Git & GitHub",
     imgSrc: "/images/certificates/Git & GitHub.jpg",
     company: "LetsUpgrade",
     logo: "/images/certificates/github.png",
+  },
+  {
+    title: "Git",
+    imgSrc: "/images/certificates/Git.jpg",
+    company: "Programming Hub",
+    logo: "/images/certificates/git.png",
   },
   {
     title: "Python",
@@ -64,16 +88,34 @@ const certificates = [
     logo: "/images/certificates/python.png",
   },
   {
-    title: "Generative AI",
-    imgSrc: "/images/certificates/Generative AI.jpg",
+    title: "Python Dev",
+    imgSrc: "/images/certificates/Python Dev.jpg",
+    company: "Mimo",
+    logo: "/images/certificates/python.png",
+  },
+  {
+    title: "ChatGPT for Everyone",
+    imgSrc: "/images/certificates/ChatGPT.jpg",
     company: "Guvi",
-    logo: "/images/certificates/ai.png",
+    logo: "/images/certificates/chatgpt.png",
+  },
+  {
+    title: "Tech Career Kickstart",
+    imgSrc: "/images/certificates/techcareer.jpg",
+    company: "SimpliLearn",
+    logo: "/images/certificates/techcareer.png",
   },
   {
     title: "Canva",
     imgSrc: "/images/certificates/Canva.jpg",
     company: "LetsUpgrade",
     logo: "/images/certificates/canva.png",
+  },
+  {
+    title: "Social Media Management",
+    imgSrc: "/images/certificates/Social Media Management.jpg",
+    company: "Great Learning",
+    logo: "/images/certificates/socialmedia.png",
   },
   {
     title: "Digital Marketing Fundamentals",
@@ -88,6 +130,18 @@ const certificates = [
     logo: "/images/certificates/analysis.png",
   },
   {
+    title: "Investment Risk Management",
+    imgSrc: "/images/certificates/IRM.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/irm.png",
+  },
+  {
+    title: "Power BI",
+    imgSrc: "/images/certificates/Power BI.jpg",
+    company: "Great Learning",
+    logo: "/images/certificates/powerbi.png",
+  },
+  {
     title: "Excel",
     imgSrc: "/images/certificates/Excel.jpg",
     company: "LetsUpgrade",
@@ -100,10 +154,28 @@ const certificates = [
     logo: "/images/certificates/data analysis.png",
   },
   {
+    title: "Introduction to Microsoft Excel",
+    imgSrc: "/images/certificates/Excel1.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/excel.png",
+  },
+  {
     title: "Campus Ambassador",
     imgSrc: "/images/certificates/Campus Ambassador.jpg",
     company: "E-CELL IIT Guwahati",
     logo: "/images/certificates/ambassador.png",
+  },
+  {
+    title: "Google Ads for Beginners",
+    imgSrc: "/images/certificates/Google Ads.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/googleads.png",
+  },
+  {
+    title: "Video Editing",
+    imgSrc: "/images/certificates/Video Editing.jpg",
+    company: "Great Learning",
+    logo: "/images/certificates/videoediting.png",
   },
   {
     title: "Short Film Making",
