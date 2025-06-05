@@ -16,10 +16,10 @@ const certificates = [
     logo: "/images/certificates/react.png",
   },
   {
-    title: "JavaScript",
-    imgSrc: "/images/certificates/JavaScript.jpg",
-    company: "Learnz Development Hub",
-    logo: "/images/certificates/javascript.png",
+    title: "Tailwind CSS",
+    imgSrc: "/images/certificates/Tailwind CSS.jpg",
+    company: "LetsUpgrade",
+    logo: "/images/certificates/tailwind.png",
   },
   {
     title: "HTML",
@@ -32,6 +32,12 @@ const certificates = [
     imgSrc: "/images/certificates/CSS.jpg",
     company: "Mimo",
     logo: "/images/certificates/css.png",
+  },
+  {
+    title: "JavaScript",
+    imgSrc: "/images/certificates/JavaScript.jpg",
+    company: "Learnz Development Hub",
+    logo: "/images/certificates/javascript.png",
   },
   {
     title: "JavaScript",
@@ -52,7 +58,7 @@ const certificates = [
     logo: "/images/certificates/mern.png",
   },
   {
-    title: "SEO with Squarespace",
+    title: "SEO",
     imgSrc: "/images/certificates/SEO1.jpg",
     company: "Coursera",
     logo: "/images/certificates/seo.png",
@@ -236,7 +242,6 @@ const Certifications = () => {
       });
     }
   };
-
 
   return (
     <section id="certificates" className="section relative ">
