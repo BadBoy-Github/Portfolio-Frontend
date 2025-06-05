@@ -2,11 +2,11 @@
 const aboutItems = [
     {
       label: 'Project done',
-      number: 8
+      number: 12
     },
     {
       label: 'Technologies Known',
-      number: 10
+      number: 16
     }
   ];
 
