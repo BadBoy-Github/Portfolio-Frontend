@@ -1,9 +1,8 @@
-
-import { useState } from 'react';
+import { useState } from "react";
 
 // Components
-import ProjectCard from './ProjectCard';
-import ShowMoreCard from './ShowMoreCard';
+import ProjectCard from "./ProjectCard";
+import ShowMoreCard from "./ShowMoreCard";
 
 const works = [
   {
@@ -32,9 +31,9 @@ const works = [
   },
   {
     imgSrc: "/images/project-6.jpg",
-    title: "ToDo App",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    title: "Tailwind CSS Website",
+    tags: ["Theme", "Responsive"],
+    projectLink: "https://tailwindcss-website-sample.netlify.app/",
   },
   {
     imgSrc: "/images/project-2.jpg",
@@ -51,10 +50,9 @@ const works = [
   },
 ];
 
-<ShowMoreCard />
+<ShowMoreCard />;
 
 const Work = () => {
-
   const [expanded, setExpanded] = useState(false);
 
   // Determine if we need to show the Show More/Less buttons
@@ -89,49 +87,49 @@ const Work = () => {
     }
   };
 
-    return (
-      <section id="work" className="section">
-        <div className="container">
-          <h2 className="headline-2 mb-8 reveal-up">My portfolio highlights</h2>
+  return (
+    <section id="work" className="section">
+      <div className="container">
+        <h2 className="headline-2 mb-8 reveal-up">My portfolio highlights</h2>
 
-          <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] reveal-up">
-            {projectsToShow.map((project, index) => (
-              <ProjectCard
-                key={index}
-                id={`project-${index}`}
-                imgSrc={project.imgSrc}
-                title={project.title}
-                tags={project.tags}
-                projectLink={project.projectLink}
-                delay={index * 0.1}
-                classes="reveal-up"
-              />
-            ))}
-            {shouldShowToggle && !expanded && (
-              <ShowMoreCard
-                count={works.length - 5}
-                onClick={handleToggle}
-                delay={0.5}
-              />
-            )}
-          </div>
-          {shouldShowToggle && expanded && (
-            <div
-              className="mt-8 flex justify-center transition-all duration-500 transform translate-y-0 opacity-100"
-              style={{ transitionDelay: "0.5s" }}
-            >
-              <button
-                onClick={handleToggle}
-                className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-xl flex items-center gap-2 transition-all"
-              >
-                <span>Show Less</span>
-                <span className="material-symbols-rounded">expand_less</span>
-              </button>
-            </div>
+        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] reveal-up">
+          {projectsToShow.map((project, index) => (
+            <ProjectCard
+              key={index}
+              id={`project-${index}`}
+              imgSrc={project.imgSrc}
+              title={project.title}
+              tags={project.tags}
+              projectLink={project.projectLink}
+              delay={index * 0.1}
+              classes="reveal-up"
+            />
+          ))}
+          {shouldShowToggle && !expanded && (
+            <ShowMoreCard
+              count={works.length - 5}
+              onClick={handleToggle}
+              delay={0.5}
+            />
           )}
         </div>
-      </section>
-    );
-}
+        {shouldShowToggle && expanded && (
+          <div
+            className="mt-8 flex justify-center transition-all duration-500 transform translate-y-0 opacity-100"
+            style={{ transitionDelay: "0.5s" }}
+          >
+            <button
+              onClick={handleToggle}
+              className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-xl flex items-center gap-2 transition-all"
+            >
+              <span>Show Less</span>
+              <span className="material-symbols-rounded">expand_less</span>
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
 
-export default Work
+export default Work;
