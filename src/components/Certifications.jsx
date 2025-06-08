@@ -88,6 +88,12 @@ const certificates = [
     logo: "/images/certificates/git.png",
   },
   {
+    title: "Frontend Development",
+    imgSrc: "/images/certificates/Frontend.jpg",
+    company: "SimpliLearn",
+    logo: "/images/certificates/frontend.png",
+  },
+  {
     title: "Python",
     imgSrc: "/images/certificates/Python.jpg",
     company: "Mimo",
