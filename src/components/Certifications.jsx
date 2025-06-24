@@ -124,6 +124,12 @@ const certificates = [
     logo: "/images/certificates/canva.png",
   },
   {
+    title: "Video Editing with Canva",
+    imgSrc: "/images/certificates/Canva Video.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/videoediting.png",
+  },
+  {
     title: "Social Media Management",
     imgSrc: "/images/certificates/Social Media Management.jpg",
     company: "Great Learning",
@@ -154,6 +160,12 @@ const certificates = [
     logo: "/images/certificates/powerbi.png",
   },
   {
+    title: "Introduction to Microsoft Excel",
+    imgSrc: "/images/certificates/Excel1.jpg",
+    company: "Coursera",
+    logo: "/images/certificates/excel.png",
+  },
+  {
     title: "Excel",
     imgSrc: "/images/certificates/Excel.jpg",
     company: "LetsUpgrade",
@@ -166,18 +178,6 @@ const certificates = [
     logo: "/images/certificates/data analysis.png",
   },
   {
-    title: "Introduction to Microsoft Excel",
-    imgSrc: "/images/certificates/Excel1.jpg",
-    company: "Coursera",
-    logo: "/images/certificates/excel.png",
-  },
-  {
-    title: "Campus Ambassador",
-    imgSrc: "/images/certificates/Campus Ambassador.jpg",
-    company: "E-CELL IIT Guwahati",
-    logo: "/images/certificates/ambassador.png",
-  },
-  {
     title: "Google Ads for Beginners",
     imgSrc: "/images/certificates/Google Ads.jpg",
     company: "Coursera",
@@ -188,30 +188,6 @@ const certificates = [
     imgSrc: "/images/certificates/Video Editing.jpg",
     company: "Great Learning",
     logo: "/images/certificates/videoediting.png",
-  },
-  {
-    title: "Short Film Making",
-    imgSrc: "/images/certificates/Short Film Making.jpg",
-    company: "K S Rangasamy College of Technology",
-    logo: "/images/certificates/film.png",
-  },
-  {
-    title: "Short Video Making",
-    imgSrc: "/images/certificates/Short Video Making.jpg",
-    company: "K S Rangasamy College of Technology",
-    logo: "/images/certificates/video.png",
-  },
-  {
-    title: "Logo Design",
-    imgSrc: "/images/certificates/Logo Design.jpg",
-    company: "K S Rangasamy College of Technology",
-    logo: "/images/certificates/logo.png",
-  },
-  {
-    title: "Paper Presentation",
-    imgSrc: "/images/certificates/Paper Presentation.jpg",
-    company: "Velalar College of Engineering and Technology",
-    logo: "/images/certificates/paper presentation.png",
   },
 ];
 

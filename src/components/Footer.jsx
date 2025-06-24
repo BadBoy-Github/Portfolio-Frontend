@@ -117,7 +117,20 @@ const Footer = () => {
 
             <p className="text-zinc-500 text-sm reveal-up">
               &copy; 2025{" "}
-              <span className="text-zinc-200">· Elayabarathi M V</span>
+              <span className="text-zinc-200">
+                ·{" "}
+                <span className="text-white hover:text-sky-500 transition-colors">
+                  <a href="https://elayabarathimv-portfolio.vercel.app/">
+                    Elayabarathi M V
+                  </a>
+                </span>{" "}
+                |{" "}
+                <span className="text-sky-500 hover:text-white transition-colors">
+                  <a href="https://panda-productions.vercel.app/">
+                    Panda Productions
+                  </a>
+                </span>
+              </span>
             </p>
           </div>
         </div>

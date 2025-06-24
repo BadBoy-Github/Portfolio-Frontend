@@ -5,12 +5,11 @@ import ReviewCard from './ReviewCard';
 const reviews = [
   {
     content:
-      "A good learner who learns from mistakes and excels in problem-solving. Their ability to adapt and overcome challenges is impressive.",
-    name: "Asothama Chakravarthi",
-    imgSrc: "/images/people-1.jpg",
-    company: "Textile Business",
+      "Groundbreaking work on the anticancer project using Iron oxide nanoparticles! Their innovative approach led to significant advancements and promising results. Highly commendable.",
+    name: "Rithanya",
+    imgSrc: "/images/people-5.jpg",
+    company: "Senior Medical Coder",
   },
-
   {
     content:
       "Skilled coder with impressive projects like CRUD app, eCommerce website, and Spotify clone. Their technical prowess and creativity shine through.",
@@ -34,17 +33,17 @@ const reviews = [
   },
   {
     content:
-      "Groundbreaking work on the anticancer project using Iron oxide nanoparticles! Their innovative approach led to significant advancements and promising results. Highly commendable.",
-    name: "Rithanya",
-    imgSrc: "/images/people-5.jpg",
-    company: "Senior Medical Coder",
-  },
-  {
-    content:
       "Exceptional biotechnologist who completed their B.Tech in Biotechnology with flying colors. Their expertise and dedication are truly commendable.",
     name: "Kishore",
     imgSrc: "/images/people-6.jpg",
     company: "Freelancer",
+  },
+  {
+    content:
+      "A good learner who learns from mistakes and excels in problem-solving. Their ability to adapt and overcome challenges is impressive.",
+    name: "Asothama Chakravarthi",
+    imgSrc: "/images/people-1.jpg",
+    company: "Textile Business",
   },
 ];
 
