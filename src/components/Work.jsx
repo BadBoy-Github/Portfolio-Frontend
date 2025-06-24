@@ -6,7 +6,7 @@ import ShowMoreCard from "./ShowMoreCard";
 
 const works = [
   {
-    imgSrc: "/images/project-7.jpg",
+    imgSrc: "/images/project-6.jpg",
     title: "LinkedIn Clone",
     tags: ["LinkedIn", "Morphisire"],
     projectLink: "https://linkedin-profile-clone.vercel.app/",
@@ -28,12 +28,6 @@ const works = [
     title: "eCommerce website",
     tags: ["eCommerce", "Stripe"],
     projectLink: "https://full-stack-ecommerce-h47u.vercel.app/",
-  },
-  {
-    imgSrc: "/images/project-6.jpg",
-    title: "Tailwind CSS Website",
-    tags: ["Theme", "Responsive"],
-    projectLink: "https://tailwindcss-website-sample.netlify.app/",
   },
   {
     imgSrc: "/images/project-2.jpg",

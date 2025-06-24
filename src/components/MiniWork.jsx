@@ -6,46 +6,40 @@ import ShowMoreCard from "./ShowMoreCard";
 
 const miniworks = [
   {
-    imgSrc: "/images/miniproject-4.jpg",
-    title: "AI 3D Portfolio",
-    tags: ["AI", "3D Model"],
-    projectLink: "https://elayabarathi-ai.netlify.app/",
-  },
-  {
-    imgSrc: "/images/miniproject-3.jpg",
-    title: "Full stack CRUD app",
-    tags: ["Web-design", "ejs"],
-    projectLink: "https://github.com/BadBoy-Github/CRUD-App.git",
-  },
-  {
-    imgSrc: "/images/miniproject-2.jpg",
-    title: "Frontend Shopping List",
-    tags: ["html", "CSS", "JS"],
-    projectLink: "https://frontend-shopping-list-app.vercel.app/",
+    imgSrc: "/images/miniproject-6.jpg",
+    title: "Bamboo Blogs",
+    tags: ["Python", "Flask"],
+    projectLink: "https://bamboo-blogs-sample.onrender.com/",
   },
   {
     imgSrc: "/images/miniproject-5.jpg",
-    title: "Guess the Number",
-    tags: ["html", "CSS", "JS"],
-    projectLink: "https://guessthenumber-games.netlify.app/",
+    title: "Tailwind CSS Website",
+    tags: ["Tailwind CSS", "Responsive"],
+    projectLink: "https://tailwindcss-website-sample.netlify.app/",
   },
   {
-    imgSrc: "/images/miniproject-6.jpg",
+    imgSrc: "/images/miniproject-4.jpg",
     title: "Profile Card",
     tags: ["html", "CSS"],
     projectLink: "https://profile-card-001.netlify.app/",
   },
   {
-    imgSrc: "/images/miniproject-7.jpg",
+    imgSrc: "/images/miniproject-3.jpg",
+    title: "Shopping List",
+    tags: ["html", "CSS", "JS"],
+    projectLink: "https://frontend-shopping-list-app.vercel.app/",
+  },
+  {
+    imgSrc: "/images/miniproject-2.jpg",
     title: "ToDo App",
     tags: ["Todo", "CRUD"],
     projectLink: "https://to-do-app-se8u.onrender.com/",
   },
   {
     imgSrc: "/images/miniproject-1.jpg",
-    title: "LinkedIn Form",
-    tags: ["html", "CSS"],
-    projectLink: "https://linkedin-form-1.onrender.com/",
+    title: "Guess the Number",
+    tags: ["html", "CSS", "JS"],
+    projectLink: "https://guessthenumber-games.netlify.app/",
   },
 ];
 
