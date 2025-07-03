@@ -5,12 +5,12 @@ import ProjectCard from "./ProjectCard";
 import ShowMoreCard from "./ShowMoreCard";
 
 const miniworks = [
-  {
-    imgSrc: "/images/miniproject-6.jpg",
-    title: "Bamboo Blogs",
-    tags: ["Python", "Flask"],
-    projectLink: "https://bamboo-blogs-sample.onrender.com/",
-  },
+  // {
+  //   imgSrc: "/images/miniproject-6.jpg",
+  //   title: "Bamboo Blogs",
+  //   tags: ["Python", "Flask"],
+  //   projectLink: "#",
+  // },
   {
     imgSrc: "/images/miniproject-5.jpg",
     title: "Tailwind CSS Website",
