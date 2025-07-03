@@ -81,7 +81,7 @@ const MiniWork = () => {
   };
 
   return (
-    <section id="miniworks" className="section">
+    <section id="miniproject" className="section">
       <div className="container">
         <h2 className="headline-2 mb-8 reveal-up">Some mini projects</h2>
 
