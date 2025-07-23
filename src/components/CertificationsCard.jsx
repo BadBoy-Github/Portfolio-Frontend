@@ -49,7 +49,7 @@ CertificationsCard.propTypes = {
   title: PropTypes.string,
   company: PropTypes.string,
   logo: PropTypes.string,
-  setSelectedImage: PropTypes.func, // ← Add this
+  setSelectedImage: PropTypes.func,
 };
 
 export default CertificationsCard;

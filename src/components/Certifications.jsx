@@ -229,7 +229,7 @@ const Certifications = () => {
     <section id="certificates" className="section relative ">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container ">
         <h2 className="headline-2 mb-8 reveal-up">
-          Certifications & Credentials
+          My Certification Milestones
         </h2>
 
         {/* Arrows */}
@@ -263,7 +263,7 @@ const Certifications = () => {
         {/* Scrollable container */}
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto gap-3 w-full scroll-smooth hide-scrollbar rounded-xl"
+          className="flex flex-row overflow-x-auto gap-4 w-full scroll-smooth hide-scrollbar rounded-xl"
           style={{ scrollBehavior: "smooth" }}
         >
           {certificates.map(({ title, imgSrc, company, logo }, key) => (

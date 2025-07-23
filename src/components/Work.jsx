@@ -6,6 +6,12 @@ import ShowMoreCard from "./ShowMoreCard";
 
 const works = [
   {
+    imgSrc: "/images/miniproject-6.jpg",  //TODO:update this picture
+    title: "Bamboo Blogs",
+    tags: ["Python", "Flask", "SQLite"],
+    projectLink: "#",  //TODO:insert the link
+  },
+  {
     imgSrc: "/images/project-6.jpg",
     title: "LinkedIn Clone",
     tags: ["LinkedIn", "Morphisire"],
@@ -30,6 +36,24 @@ const works = [
     projectLink: "https://full-stack-ecommerce-h47u.vercel.app/",
   },
   {
+    imgSrc: "/images/miniproject-4.jpg",
+    title: "Profile Card",
+    tags: ["html", "CSS"],
+    projectLink: "https://profile-card-001.netlify.app/",
+  },
+  {
+    imgSrc: "/images/miniproject-3.jpg",
+    title: "Shopping List",
+    tags: ["html", "CSS", "JS"],
+    projectLink: "https://frontend-shopping-list-app.vercel.app/",
+  },
+  {
+    imgSrc: "/images/miniproject-2.jpg",
+    title: "ToDo App",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+  },
+  {
     imgSrc: "/images/project-2.jpg",
     title: "Iron vs Cancer",
     tags: ["FeNPs", "Encapsule", "Cancer"],
@@ -50,19 +74,19 @@ const Work = () => {
   const [expanded, setExpanded] = useState(false);
 
   // Determine if we need to show the Show More/Less buttons
-  const shouldShowToggle = works.length > 6;
+  const shouldShowToggle = works.length > 9;
 
   // Determine which projects to show based on expanded state
   const projectsToShow =
     shouldShowToggle && !expanded
-      ? works.slice(0, 5) // If not expanded and more than 6 projects, show first 5
+      ? works.slice(0, 8) // If not expanded and more than 6 projects, show first 9
       : works; // Otherwise show all projects
 
   const handleToggle = () => {
     setExpanded(!expanded);
 
     // Scroll to appropriate position when toggling
-    if (!expanded && works.length > 6) {
+    if (!expanded && works.length > 9) {
       // When expanding, scroll to the start of the new projects
       setTimeout(() => {
         const element = document.getElementById("project-5");
@@ -81,10 +105,15 @@ const Work = () => {
     }
   };
 
+  const handleToggleStart = () => {
+    handleToggle();
+    window.location.href = "/#project";
+  };
+
   return (
     <section id="project" className="section">
       <div className="container">
-        <h2 className="headline-2 mb-8 reveal-up">My portfolio highlights</h2>
+        <h2 className="headline-2 mb-8 reveal-up">My project highlights</h2>
 
         <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] reveal-up">
           {projectsToShow.map((project, index) => (
@@ -101,7 +130,7 @@ const Work = () => {
           ))}
           {shouldShowToggle && !expanded && (
             <ShowMoreCard
-              count={works.length - 5}
+              count={works.length - 8}
               onClick={handleToggle}
               delay={0.5}
             />
@@ -113,7 +142,7 @@ const Work = () => {
             style={{ transitionDelay: "0.5s" }}
           >
             <button
-              onClick={handleToggle}
+              onClick={handleToggleStart}
               className="px-6 py-3 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-xl flex items-center gap-2 transition-all"
             >
               <span>Show Less</span>
