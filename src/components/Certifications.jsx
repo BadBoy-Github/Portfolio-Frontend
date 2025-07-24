@@ -192,7 +192,6 @@ const certificates = [
 ];
 
 const Certifications = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
 
   const scrollRef = useRef(null);
 
@@ -290,7 +289,6 @@ const Certifications = () => {
                         imgSrc={topCert.imgSrc}
                         company={topCert.company}
                         logo={topCert.logo}
-                        setSelectedImage={setSelectedImage}
                         certNumber={certificates.length - topIdx}
                       />
                     )}
@@ -301,7 +299,6 @@ const Certifications = () => {
                         imgSrc={bottomCert.imgSrc}
                         company={bottomCert.company}
                         logo={bottomCert.logo}
-                        setSelectedImage={setSelectedImage}
                         certNumber={certificates.length - bottomIdx}
                       />
                     )}
@@ -310,32 +307,6 @@ const Certifications = () => {
               }
             )}
           </div>
-          {/* Modal for certifications selecting */}
-          {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black/80 z-50 flex items-start justify-center p-4 animate-fadeIn"
-              onClick={() => setSelectedImage(null)}
-            >
-              <div
-                className="relative w-fit"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="bg-[#18181b] flex items-center justify-center p-4 rounded-lg border border-[#373a3d] mt-10 relative">
-                  <img
-                    src={selectedImage}
-                    alt="Selected Certification Image"
-                    className="max-h-[60vh] max-w-[120vh] rounded-md"
-                  />
-                  <div
-                    className="absolute text-black bg-red-700 hover:bg-red-600 hover:scale-105 top-0 right-0 cursor-pointer m-3 p-1 rounded-full"
-                    onClick={() => setSelectedImage(null)}
-                  >
-                    <IoClose className="size-[1.2rem]" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>

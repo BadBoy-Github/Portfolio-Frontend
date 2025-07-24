@@ -7,17 +7,15 @@ const CertificationsCard = ({
   title,
   company,
   logo,
-  setSelectedImage,
   certNumber,
 }) => {
   const openImage = () => {
-    setSelectedImage(imgSrc);
-    document.body.classList.add("overflow-hidden");
+     window.open(imgSrc, "_blank");
   };
 
   return (
     <div
-      className="bg-zinc-800 p-5 rounded-xl min-w-[320px] flex flex-col lg:min-w-[420px] reveal-up cursor-pointer"
+      className="bg-zinc-800 p-5 rounded-xl min-w-[320px] flex flex-col lg:min-w-[420px] reveal-up cursor-pointer group"
       onClick={openImage}
     >
       <div className="flex items-center justify-between gap-2 mt-auto">
@@ -32,7 +30,7 @@ const CertificationsCard = ({
           <img src={logo} alt="Logo" className="w-6 h-6 object-cover p-0.5" />
         </div>
       </div>
-      <figure className="rounded-lg bg-zinc-700 mt-4 hover:scale-105 transition-transform duration-300">
+      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-105 transition-transform duration-300">
         <img
           src={imgSrc}
           width={44}
@@ -51,7 +49,6 @@ CertificationsCard.propTypes = {
   title: PropTypes.string,
   company: PropTypes.string,
   logo: PropTypes.string,
-  setSelectedImage: PropTypes.func,
   certNumber: PropTypes.number,
 };
 
