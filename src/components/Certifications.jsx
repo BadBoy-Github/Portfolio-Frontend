@@ -199,7 +199,7 @@ const Certifications = () => {
   const scroll = (direction) => {
     const { current } = scrollRef;
     if (current) {
-      const scrollAmount = 432;
+      const scrollAmount = 436;
       current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -228,8 +228,8 @@ const Certifications = () => {
 
 
   return (
-    <section id="certificates" className="section relative ">
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container ">
+    <section id="certificates" className="section ">
+      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
         <h2 className="headline-2 mb-8 reveal-up">
           My Certification Milestones
         </h2>
@@ -238,25 +238,25 @@ const Certifications = () => {
         <div className="hidden lg:flex justify-between items-center">
           <button
             onClick={() => scroll("left")}
-            className="absolute left-40 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center reveal-up"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center reveal-up left-0 top-[52%]"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={scrollToStart}
-            className="absolute left-28 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center opacity-50 reveal-up"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 reveal-up -left-14 top-[52%]"
           >
             <FaAnglesLeft />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute right-40 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center reveal-up"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center reveal-up right-0 top-[52%]"
           >
             <FaChevronRight />
           </button>
           <button
             onClick={scrollToEnd}
-            className="absolute right-28 top-2/3 z-10 p-2 bg-black rounded-full flex items-center justify-center opacity-50 reveal-up"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 reveal-up -right-14 top-[52%]"
           >
             <FaAnglesRight />
           </button>
