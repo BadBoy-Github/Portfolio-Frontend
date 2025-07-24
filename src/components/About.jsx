@@ -38,8 +38,8 @@ const About = () => {
                     }
 
                     <img 
-                    src="/images/logo.svg" 
-                    alt="logo" 
+                    src="/images/Panda.ico" 
+                    alt="Elayabarathi M V" 
                     width={30}
                     height={30}
                     className="ml-auto md:w-[40px] md:h-[40px]"

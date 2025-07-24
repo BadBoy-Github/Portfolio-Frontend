@@ -12,7 +12,7 @@ const Hero = () => {
             <div className="flex items-center gap-3">
               <figure className="img-box size-10 rounded-lg">
                 <img
-                  src="/images/avatar-1.jpeg"
+                  src="/images/icon.png"
                   width={40}
                   height={40}
                   alt="Elayabarathi M V Portrait"

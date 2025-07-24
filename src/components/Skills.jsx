@@ -8,32 +8,32 @@ const skillItem = [
   {
     imgSrc: "/images/react.svg",
     label: "React",
-    desc: "Framework",
+    desc: "Framework for UI",
   },
   {
     imgSrc: "/images/tailwindcss.svg",
     label: "TailwindCSS",
-    desc: "User Interface",
+    desc: "Framework for CSS",
   },
   {
     imgSrc: "/images/javascript.svg",
     label: "JavaScript",
-    desc: "Interaction",
+    desc: "Dynamic Interaction",
   },
   {
     imgSrc: "/images/html.svg",
     label: "HTML",
-    desc: "Markup Language",
+    desc: "Web Page Structure",
   },
   {
     imgSrc: "/images/css3.svg",
-    label: "CSS",
+    label: "Web Page Styling",
     desc: "User Interface",
   },
   {
     imgSrc: "/images/bootstrap.svg",
     label: "Bootstrap",
-    desc: "CSS Framework",
+    desc: "Framework for CSS",
   },
   // {
   //   imgSrc: "/images/typescript.svg",
@@ -53,7 +53,12 @@ const skillItem = [
   {
     imgSrc: "/images/mongodb.svg",
     label: "MongoDB",
-    desc: "Database",
+    desc: "NoSQL Database",
+  },
+  {
+    imgSrc: "/images/python.svg",
+    label: "Python",
+    desc: "High Level Programming",
   },
   {
     imgSrc: "/images/github.svg",
@@ -68,28 +73,23 @@ const skillItem = [
   {
     imgSrc: "/images/vercel.svg",
     label: "Vercel",
-    desc: "Deployment",
+    desc: "Deployment & Hosting",
   },
   {
     imgSrc: "/images/netlify.svg",
     label: "Netlify",
-    desc: "Deployment",
+    desc: "Deployment & Hosting",
   },
   {
     imgSrc: "/images/render.svg",
     label: "Render",
-    desc: "Deployment",
+    desc: "Deployment & Hosting",
   },
   // {
   //   imgSrc: "/images/cplusplus.svg",
   //   label: "C++",
   //   desc: "Object Oriented Program",
   // },
-  {
-    imgSrc: "/images/python.svg",
-    label: "Python",
-    desc: "High Level Programming",
-  },
   {
     imgSrc: "/images/canva.svg",
     label: "Canva",
@@ -103,7 +103,7 @@ const skillItem = [
   {
     imgSrc: "/images/autocad.svg",
     label: "AutoCAD",
-    desc: "CAD Software",
+    desc: "CAD & Drafting",
   },
   // {
   //   imgSrc: "/images/powerbi.svg",
