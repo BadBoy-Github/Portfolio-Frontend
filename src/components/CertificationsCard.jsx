@@ -8,6 +8,7 @@ const CertificationsCard = ({
   company,
   logo,
   setSelectedImage,
+  certNumber,
 }) => {
   const openImage = () => {
     setSelectedImage(imgSrc);
@@ -19,11 +20,12 @@ const CertificationsCard = ({
       className="bg-zinc-800 p-5 rounded-xl min-w-[320px] flex flex-col lg:min-w-[420px] reveal-up cursor-pointer"
       onClick={openImage}
     >
-      
       <div className="flex items-center justify-between gap-2 mt-auto">
         <div>
-          <p>{title}</p>
-
+          <p className="flex items-center gap-2">
+            {title}
+            <span className="text-xs text-zinc-400">#{certNumber}</span>
+          </p>
           <p className="text-xs text-zinc-400 tracking-wider">{company}</p>
         </div>
         <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-zinc-700">
@@ -50,6 +52,7 @@ CertificationsCard.propTypes = {
   company: PropTypes.string,
   logo: PropTypes.string,
   setSelectedImage: PropTypes.func,
+  certNumber: PropTypes.number,
 };
 
 export default CertificationsCard;

@@ -272,32 +272,37 @@ const Certifications = () => {
             {/** Split into columns, each column contains 2 rows */}
             {Array.from({ length: Math.ceil(certificates.length / 2) }).map(
               (_, colIdx) => {
-                const first = certificates[colIdx];
-                const second =
-                  certificates[colIdx + Math.ceil(certificates.length / 2)];
+                const topIdx = colIdx * 2;
+                const bottomIdx = colIdx * 2 + 1;
+
+                const topCert = certificates[topIdx];
+                const bottomCert = certificates[bottomIdx];
+
                 return (
                   <div
                     key={colIdx}
                     className="flex flex-col gap-4 min-w-[320px] lg:min-w-[420px]"
                   >
-                    {first && (
+                    {topCert && (
                       <CertificationsCard
-                        key={`${colIdx}-1`}
-                        title={first.title}
-                        imgSrc={first.imgSrc}
-                        company={first.company}
-                        logo={first.logo}
+                        key={`cert-top-${colIdx}`}
+                        title={topCert.title}
+                        imgSrc={topCert.imgSrc}
+                        company={topCert.company}
+                        logo={topCert.logo}
                         setSelectedImage={setSelectedImage}
+                        certNumber={certificates.length - topIdx}
                       />
                     )}
-                    {second && (
+                    {bottomCert && (
                       <CertificationsCard
-                        key={`${colIdx}-2`}
-                        title={second.title}
-                        imgSrc={second.imgSrc}
-                        company={second.company}
-                        logo={second.logo}
+                        key={`cert-bottom-${colIdx}`}
+                        title={bottomCert.title}
+                        imgSrc={bottomCert.imgSrc}
+                        company={bottomCert.company}
+                        logo={bottomCert.logo}
                         setSelectedImage={setSelectedImage}
+                        certNumber={certificates.length - bottomIdx}
                       />
                     )}
                   </div>
