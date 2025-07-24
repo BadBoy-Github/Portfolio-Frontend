@@ -225,6 +225,8 @@ const Certifications = () => {
     }
   };
 
+
+
   return (
     <section id="certificates" className="section relative ">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container ">
@@ -263,19 +265,46 @@ const Certifications = () => {
         {/* Scrollable container */}
         <div
           ref={scrollRef}
-          className="flex flex-row overflow-x-auto gap-4 w-full scroll-smooth hide-scrollbar rounded-xl"
+          className="overflow-x-auto hide-scrollbar scroll-smooth rounded-xl"
           style={{ scrollBehavior: "smooth" }}
         >
-          {certificates.map(({ title, imgSrc, company, logo }, key) => (
-            <CertificationsCard
-              key={key}
-              title={title}
-              imgSrc={imgSrc}
-              company={company}
-              logo={logo}
-              setSelectedImage={setSelectedImage}
-            />
-          ))}
+          <div className="flex flex-row gap-4 w-fit min-w-full">
+            {/** Split into columns, each column contains 2 rows */}
+            {Array.from({ length: Math.ceil(certificates.length / 2) }).map(
+              (_, colIdx) => {
+                const first = certificates[colIdx];
+                const second =
+                  certificates[colIdx + Math.ceil(certificates.length / 2)];
+                return (
+                  <div
+                    key={colIdx}
+                    className="flex flex-col gap-4 min-w-[320px] lg:min-w-[420px]"
+                  >
+                    {first && (
+                      <CertificationsCard
+                        key={`${colIdx}-1`}
+                        title={first.title}
+                        imgSrc={first.imgSrc}
+                        company={first.company}
+                        logo={first.logo}
+                        setSelectedImage={setSelectedImage}
+                      />
+                    )}
+                    {second && (
+                      <CertificationsCard
+                        key={`${colIdx}-2`}
+                        title={second.title}
+                        imgSrc={second.imgSrc}
+                        company={second.company}
+                        logo={second.logo}
+                        setSelectedImage={setSelectedImage}
+                      />
+                    )}
+                  </div>
+                );
+              }
+            )}
+          </div>
           {/* Modal for certifications selecting */}
           {selectedImage && (
             <div
@@ -290,7 +319,7 @@ const Certifications = () => {
                   <img
                     src={selectedImage}
                     alt="Selected Certification Image"
-                    className="max-h-[80vh] max-w-[160vh] rounded-md"
+                    className="max-h-[60vh] max-w-[120vh] rounded-md"
                   />
                   <div
                     className="absolute text-black bg-red-700 hover:bg-red-600 hover:scale-105 top-0 right-0 cursor-pointer m-3 p-1 rounded-full"
