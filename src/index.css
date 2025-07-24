@@ -92,7 +92,7 @@ body {
 }
 
 .animated-text span::before{
-    content: "Biotechnologist";
+    content: "Biotechnologist.";
     color: #38bdf8;
     animation: words 20s infinite;
 }
@@ -116,19 +116,19 @@ body {
 
 @keyframes words {
     0%,20%{
-        content: "Biotechnologist";
+        content: "Biotechnologist.";
     }
     21%,40%{
-        content: "Web Developer";
+        content: "Web Developer.";
     }
     41%,60%{
-        content: "Video Editor";
+        content: "Video Editor.";
     }
     61%,80%{
-        content: "Logo Designer";
+        content: "Logo Designer.";
     }
     81%,100%{
-        content: "CAD Designer";
+        content: "CAD Designer.";
     }
 }
 

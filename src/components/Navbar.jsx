@@ -41,12 +41,12 @@ const Navbar = ({ navOpen }) => {
     },
     {
       label: "Work",
-      link: "#project",
+      link: "#work",
       className: "nav-link",
     },
     {
       label: "Certification",
-      link: "#certificates",
+      link: "#certification",
       className: "nav-link",
     },
     {
@@ -56,7 +56,7 @@ const Navbar = ({ navOpen }) => {
     },
     {
       label: "Contact",
-      link: "#contact",
+      link: "#contactme",
       className: "nav-link md:hidden",
     },
   ];

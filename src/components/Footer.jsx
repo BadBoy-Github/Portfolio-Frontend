@@ -18,7 +18,7 @@ const sitemap = [
   },
   {
     label: "Certifications",
-    href: "#certificates",
+    href: "#certification",
   },
   {
     label: "Reviews",
@@ -26,7 +26,7 @@ const sitemap = [
   },
   {
     label: "Contact me",
-    href: "#contact",
+    href: "#contactme",
   },
 ];
 
