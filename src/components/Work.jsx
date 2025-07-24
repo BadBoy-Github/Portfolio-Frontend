@@ -6,49 +6,49 @@ import ShowMoreCard from "./ShowMoreCard";
 
 const works = [
   {
-    imgSrc: "/images/miniproject-6.jpg",  //TODO:update this picture
+    imgSrc: "/images/project-10.jpg",
     title: "Bamboo Blogs",
     tags: ["Python", "Flask", "SQLite"],
-    projectLink: "#",  //TODO:insert the link
+    projectLink: "https://bamboo-blogs-sample.onrender.com/",
   },
   {
-    imgSrc: "/images/project-6.jpg",
+    imgSrc: "/images/project-9.jpg",
     title: "LinkedIn Clone",
     tags: ["LinkedIn", "Morphisire"],
     projectLink: "https://linkedin-profile-clone.vercel.app/",
   },
   {
-    imgSrc: "/images/project-5.jpg",
+    imgSrc: "/images/project-8.jpg",
     title: "Stellar AI Chatbot",
     tags: ["AI Model", "Chat"],
     projectLink: "https://stellar-steel-tau.vercel.app/",
   },
   {
-    imgSrc: "/images/project-4.jpg",
+    imgSrc: "/images/project-7.jpg",
     title: "Spotify Clone",
     tags: ["Music", "Clerk", "Clone"],
     projectLink: "https://spotify-clone-6rda.onrender.com/",
   },
   {
-    imgSrc: "/images/project-3.jpg",
+    imgSrc: "/images/project-6.jpg",
     title: "eCommerce website",
     tags: ["eCommerce", "Stripe"],
     projectLink: "https://full-stack-ecommerce-h47u.vercel.app/",
   },
   {
-    imgSrc: "/images/miniproject-4.jpg",
+    imgSrc: "/images/project-5.jpg",
     title: "Profile Card",
     tags: ["html", "CSS"],
     projectLink: "https://profile-card-001.netlify.app/",
   },
   {
-    imgSrc: "/images/miniproject-3.jpg",
+    imgSrc: "/images/project-4.jpg",
     title: "Shopping List",
     tags: ["html", "CSS", "JS"],
     projectLink: "https://frontend-shopping-list-app.vercel.app/",
   },
   {
-    imgSrc: "/images/miniproject-2.jpg",
+    imgSrc: "/images/project-3.jpg",
     title: "ToDo App",
     tags: ["Todo", "CRUD"],
     projectLink: "https://to-do-app-se8u.onrender.com/",
