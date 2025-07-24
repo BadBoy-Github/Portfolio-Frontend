@@ -7,12 +7,12 @@ import SkillCard from "./SkillCard";
 const skillItem = [
   {
     imgSrc: "/images/react.svg",
-    label: "React JS",
+    label: "ReactJS",
     desc: "Framework for UI",
   },
   {
     imgSrc: "/images/tailwindcss.svg",
-    label: "Tailwind CSS",
+    label: "TailwindCSS",
     desc: "Framework for CSS",
   },
   {
