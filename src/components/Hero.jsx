@@ -29,9 +29,6 @@ const Hero = () => {
             </div>
 
             <div className="animated-text mt-6">
-              <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-1 mb-2">
-                Hi, I&apos;m a
-              </h2>
               <span className="headline-transition"></span>
 
               <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-1 mb-4 lg:mb-10">

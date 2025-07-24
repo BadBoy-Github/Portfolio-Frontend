@@ -2,25 +2,36 @@
 // Node modules
 import PropTypes from "prop-types"
 
-
-
+import { FaGithub } from "react-icons/fa";
 
 const ProjectCard = ({
     imgSrc,
     title,
     tags,
     projectLink,
-    classes
+    classes,
+    code,
+    gitUrl
 }) => {
 
     return (
       <div
         className={
-          "relative p-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] reveal-up" +
+          "relative cursor-pointer p-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] reveal-up" +
           classes
         }
       >
-        <figure className="img-box aspect-square rounded-lg mb-4">
+        <figure className="img-box aspect-square rounded-lg mb-4 relative">
+          {code == "True" && (
+            <a
+              href={gitUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute z-20 right-2 top-2 rounded-full bg-gray-700 p-1"
+            >
+              <FaGithub className="size-5" />
+            </a>
+          )}
           <img
             src={imgSrc}
             alt={title}
@@ -45,7 +56,10 @@ const ProjectCard = ({
           </div>
 
           <div className="w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0">
-            <span className="material-symbols-rounded" aria-hidden="true">
+            <span
+              className="material-symbols-rounded"
+              aria-hidden="true"
+            >
               arrow_outward
             </span>
           </div>
@@ -61,6 +75,8 @@ ProjectCard.propTypes = {
     tags: PropTypes.array.isRequired,
     projectLink: PropTypes.string.isRequired,
     classes: PropTypes.string,
+    code: PropTypes.string,
+    gitUrl: PropTypes.string
 
 }
 
