@@ -30,6 +30,7 @@ import Review from './components/Review';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Certifications from './components/Certifications';
+import Education from './components/Education';
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
           <About />
           <Skills />
           <Work />
+          <Education />
           <Certifications />
           <Review />
           <Contact />
