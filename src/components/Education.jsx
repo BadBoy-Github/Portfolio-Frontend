@@ -38,9 +38,7 @@ const Education = () => {
                   </p>
                   <div className=" mt-2 w-[90%]">
                     <p className=" text-sm font-normal text-zinc-300">
-                      During my time at K.S. Rangasamy College of Technology, I
-                      earned a B.Tech in Biotechnology, gaining a strong
-                      foundation in core principles and practical lab skills.
+                      Gaining a strong foundation in core principles and practical lab skills.
                       Beyond academics, active participation in extracurricular
                       and cultural events helped me develop leadership and
                       interpersonal abilities. This experience nurtured my
@@ -51,7 +49,7 @@ const Education = () => {
                       <TbBulb className="size-5 group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all" />
                       <span className="group-hover:text-zinc-300 transition-colors duration-300">
                         Microbiology, Genetic Engineering, Nanobiotechnology,
-                        Plant Tissue Culture, Bioinformatics
+                        Plant Tissue Culture, Bioinformatics.
                       </span>
                     </div>
                   </div>
