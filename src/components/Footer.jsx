@@ -17,6 +17,10 @@ const sitemap = [
     href: "#work",
   },
   {
+    label: "Education",
+    href: "#education",
+  },
+  {
     label: "Certifications",
     href: "#certification",
   },
@@ -81,7 +85,7 @@ const Footer = () => {
                     <li key={key}>
                       <a
                         href={href}
-                        className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 reveal-up"
+                        className="block gap-4 text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 reveal-up"
                       >
                         {label}
                       </a>
