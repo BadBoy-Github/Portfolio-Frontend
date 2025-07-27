@@ -60,9 +60,9 @@ const App = () => {
         <main>
           <Hero />
           <About />
+          <Education />
           <Skills />
           <Work />
-          <Education />
           <Certifications />
           <Review />
           <Contact />

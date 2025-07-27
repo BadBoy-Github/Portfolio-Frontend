@@ -17,10 +17,6 @@ const sitemap = [
     href: "#work",
   },
   {
-    label: "Education",
-    href: "#education",
-  },
-  {
     label: "Certifications",
     href: "#certification",
   },
