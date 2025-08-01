@@ -32,25 +32,25 @@ const Education = () => {
         </p>
 
         <div className="">
-          <ol className="relative border-s-2 border-zinc-50/10 ml-6">
+          <ol className="relative border-l-2 border-zinc-50/10 ml-6 border-separate">
             {EduContent.map((edu, index) => (
-              <EducationCard 
-              key={index} 
-              year={edu.year}
-              name={edu.name}
-              perc={edu.perc}
-              instName={edu.instName}
-              instLogo={edu.instLogo}
-              desc={edu.desc}
-              skills={edu.skills}
+              <EducationCard
+                key={index}
+                year={edu.year}
+                name={edu.name}
+                perc={edu.perc}
+                instName={edu.instName}
+                instLogo={edu.instLogo}
+                desc={edu.desc}
+                skills={edu.skills}
               />
             ))}
+            <li className="absolute bottom-0 -left-[9px] w-4 h-4 rounded-full bg-zinc-200 shadow-md shadow-zinc-400/30"></li>
           </ol>
         </div>
       </div>
     </section>
   );
-}
+};
 
-export default Education
-
+export default Education;
