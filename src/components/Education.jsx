@@ -1,3 +1,5 @@
+import { BsBookmarkStarFill } from "react-icons/bs";
+
 import EducationCard from "./EducationCard";
 
 const EduContent = [
@@ -45,7 +47,6 @@ const Education = () => {
                 skills={edu.skills}
               />
             ))}
-            <li className="absolute bottom-0 -left-[9px] w-4 h-4 rounded-full bg-zinc-200 shadow-md shadow-zinc-400/30"></li>
           </ol>
         </div>
       </div>
