@@ -1,12 +1,11 @@
 // Components
 import CertificationsCard from "./CertificationsCard";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaAnglesRight } from "react-icons/fa6";
 import { FaAnglesLeft } from "react-icons/fa6";
-import { IoClose } from "react-icons/io5";
 
 const certificates = [
   {
@@ -229,8 +228,8 @@ const Certifications = () => {
   return (
     <section id="certification" className="section ">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
-        <h2 className="headline-2 reveal-up">My Certification Milestones</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] reveal-up">
+        <h2 className="headline-2">My Certification Milestones</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
           A journey through certifications that validate my skills and growth
         </p>
 
@@ -238,25 +237,25 @@ const Certifications = () => {
         <div className="hidden lg:flex justify-between items-center">
           <button
             onClick={() => scroll("left")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center reveal-up left-0 top-[52%]"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center left-0 top-[52%]"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={scrollToStart}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 reveal-up -left-14 top-[52%]"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[52%]"
           >
             <FaAnglesLeft />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center reveal-up right-0 top-[52%]"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center right-0 top-[52%]"
           >
             <FaChevronRight />
           </button>
           <button
             onClick={scrollToEnd}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 reveal-up -right-14 top-[52%]"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[52%]"
           >
             <FaAnglesRight />
           </button>

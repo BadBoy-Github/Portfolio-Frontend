@@ -133,12 +133,12 @@ const Work = () => {
   return (
     <section id="work" className="section">
       <div className="container">
-        <h2 className="headline-2 reveal-up">My project highlights</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] reveal-up">
+        <h2 className="headline-2 ">My project highlights</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
           Explore the innovative projects I&apos;ve built
         </p>
 
-        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] reveal-up">
+        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] ">
           {projectsToShow.map((project, index) => (
             <ProjectCard
               key={index}
@@ -148,7 +148,7 @@ const Work = () => {
               tags={project.tags}
               projectLink={project.projectLink}
               delay={index * 0.1}
-              classes="reveal-up"
+              classes=""
               code={project.code}
               gitUrl={project.gitUrl}
             />

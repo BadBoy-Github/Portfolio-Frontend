@@ -51,8 +51,8 @@ const Experience = () => {
   return (
     <section id="experience" className="section">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
-        <h2 className="headline-2 reveal-up">My Professional Experience</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] reveal-up">
+        <h2 className="headline-2 ">My Professional Experience</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
           A timeline of my internships, roles, and real-world contributions.
         </p>
 
@@ -69,7 +69,7 @@ const Experience = () => {
                       alt={edu.instName}
                     />
                   </span>
-                  <div className="ml-4 p-6 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all hover:scale-[101%] reveal-up flex flex-col gap-4">
+                  <div className="ml-4 p-6 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all hover:scale-[101%]  flex flex-col gap-4">
                     <div className="flex items-center justify-between">
                       <p className="font-semibold text-zinc-200">
                         {edu.instName}

@@ -18,7 +18,7 @@ const About = () => {
     >
         <div className="container">
 
-            <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 reveal-up">
+            <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12">
                 <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
                 Welcome! I&apos;m Elayabarathi, a professional biotechnologist with expertise in microbiology, genetics, and bioinformatics. Innovated cancer treatments via nanobiotechnology. Accomplished frontend web developer. Passionate about integrating biology and technology for innovation. Strong collaborator and problem-solver, dedicated to continuous learning and interdisciplinary success.
                 </p>
