@@ -31,28 +31,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Certifications from './components/Certifications';
 import Education from './components/Education';
+import Experience from './components/Experience';
 
 
 const App = () => {
-
-    useGSAP(() => {
-        const elements = gsap.utils.toArray('.reveal-up')
-
-        elements.forEach((element) => {
-            gsap.to(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: '-200 bottom',
-                    end: 'bottom 80%',
-                    scrub: true
-                },
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: 'power2.out'
-            })
-        })
-    })
 
     return (
       <ReactLenis root>
@@ -61,6 +43,7 @@ const App = () => {
           <Hero />
           <About />
           <Education />
+          <Experience />
           <Skills />
           <Work />
           <Certifications />

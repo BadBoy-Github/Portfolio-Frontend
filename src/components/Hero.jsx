@@ -40,7 +40,7 @@ const Hero = () => {
               <ButtonPrimary
                 label="Download CV"
                 icon="download"
-                href="/Elayabarathi Resume.pdf"
+                href="/resume.pdf"
                 target="_blank"
               />
 

@@ -1,10 +1,10 @@
 import { TbBulb } from "react-icons/tb";
 import PropTypes from "prop-types";
 
-const EducationCard = ({
+const ExperienceCard = ({
   year,
   name,
-  perc,
+  role,
   instName,
   instLogo,
   desc,
@@ -31,7 +31,7 @@ const EducationCard = ({
                 {"  "}
               </p>
               <span className="bg-zinc-600 text-zinc-300 text-xs font-normal ml-1 me-2 px-2.5 py-0.5 rounded-md group-hover:text-white transition-all duration-300">
-                {perc}
+                {role}
               </span>
             </div>
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
@@ -54,14 +54,14 @@ const EducationCard = ({
   );
 };
 
-EducationCard.propTypes = {
+ExperienceCard.propTypes = {
   year: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  perc: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
   instName: PropTypes.string.isRequired,
   instLogo: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   skills: PropTypes.string.isRequired,
 };
 
-export default EducationCard;
+export default ExperienceCard;
