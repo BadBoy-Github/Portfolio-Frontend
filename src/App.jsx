@@ -31,6 +31,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Certifications from './components/Certifications';
 import Education from './components/Education';
+import Experience from './components/Experience';
 
 
 const App = () => {
@@ -61,6 +62,7 @@ const App = () => {
           <Hero />
           <About />
           <Education />
+          <Experience />
           <Skills />
           <Work />
           <Certifications />

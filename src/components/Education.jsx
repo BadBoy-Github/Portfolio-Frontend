@@ -1,4 +1,4 @@
-import { BsBookmarkStarFill } from "react-icons/bs";
+
 
 import EducationCard from "./EducationCard";
 
