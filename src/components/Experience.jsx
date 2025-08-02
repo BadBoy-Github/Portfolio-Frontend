@@ -2,8 +2,9 @@ import ExperienceCard from "./ExperienceCard";
 import ExperienceCompoundCard from "./ExperienceCompoundCard";
 
 const ExpContent = [
+  //TODO: Update skills section
   {
-    instName: "Corizo Edutech",
+    instName: "Corizo Edutech Pvt Ltd",
     instLogo: "/images/corizo logo.jpg",
     period: "Oct - Dec 2024",
     compound: true,
@@ -12,25 +13,35 @@ const ExpContent = [
         year: "Nov - Dec 2024",
         name: "Full Stack Developer",
         role: "Intern",
-        desc: "Developing and maintaining web applications using modern frameworks and technologies.",
+        desc: "Mastering both front-end and back-end development while building real-world projects like a CRUD user management app and an eCommerce site. Gained hands-on experience in coding best practices, debugging, and problem-solving.",
         skills: "JavaScript, React, Node.js, Express, MongoDB",
       },
       {
         year: "Oct - Nov 2024",
         name: "Full Stack Developer",
         role: "Trainee",
-        desc: "Developing and maintaining web applications using modern frameworks and technologies.",
+        desc: "Gained hands-on experience with HTML, CSS, JavaScript, MongoDB, Express.js, Node.js, APIs, and more. Built multiple real-world projects including a shopping list app and a user management system, refining both technical and analytical skills.",
         skills: "JavaScript, React, Node.js, Express, MongoDB",
       },
     ],
   },
   {
-    year: "Oct - Nov 2024",
-    name: "HSC - Bio Math",
+    year: "Jul - Aug 2022",
+    name: "Applied Microbiology and Agricultural Biotechnology",
     role: "Intern",
-    instName: "U R C Palaniammal Matriculation Higher Secondary School",
-    instLogo: "/images/urc logo.jpg",
-    desc: "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
+    instName: "Elies Biotech Pvt Ltd",
+    instLogo: "/images/elies logo.jpg",
+    desc: "gaining practical skills in microbial characterization, biofertilizer production, mushroom tissue culture, and Black Soldier Fly Larvae rearing. Built a strong foundation in applied microbiology and agricultural biotechnology.",
+    skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
+    compound: false,
+  },
+  {
+    year: "Jun - Jul 2022",
+    name: "Millets Processing and Production",
+    role: "Intern",
+    instName: "Biorith Techno Products Pvt Ltd",
+    instLogo: "/images/sample logo.jpg",
+    desc: "operating advanced machinery and contributing to eco-friendly packaging solutions. Gained valuable experience in sustainable agriculture and food processing, bridging theoretical knowledge with real-world application.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
     compound: false,
   },
@@ -63,7 +74,9 @@ const Experience = () => {
                       <p className="font-semibold text-zinc-200">
                         {edu.instName}
                       </p>
-                      <p className="text-xs font-normal text-zinc-400">{edu.period}</p>
+                      <p className="text-xs font-normal text-zinc-400">
+                        {edu.period}
+                      </p>
                     </div>
 
                     {edu.content.map((content, contentIndex) => (

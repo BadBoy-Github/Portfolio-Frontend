@@ -12,11 +12,11 @@ const ExperienceCompoundCard = ({
   return (
     <>
       <li className="">
-        <div className="items-center cursor-pointer justify-between p-6 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-600 transition-all group hover:scale-[101%] reveal-up bg-zinc-900/5">
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center ">
+        <div className="items-center cursor-pointer justify-between p-6 rounded-2xl sm:flex transition-all group hover:scale-[101%] reveal-up bg-zinc-900/50">
+          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center">
             {year}
           </time>
-          <div className="text-sm font-medium text-zinc-300 ">
+          <div className="text-sm font-medium text-zinc-300 w-[90%]">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
                 {name}
@@ -31,7 +31,7 @@ const ExperienceCompoundCard = ({
               <div className="flex gap-2 items-center justify-center mt-4 text-zinc-400">
                 <TbBulb
                   size={20}
-                  className="min-w-[15%] max-w-[15%] group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                  className="min-w-[10%] max-w-[10%] group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
                 />
                 <span className="min-w-[100%] max-w-[100%] lg:-ml-6 group-hover:text-zinc-300 transition-colors duration-300">
                   <em>{skills}</em>

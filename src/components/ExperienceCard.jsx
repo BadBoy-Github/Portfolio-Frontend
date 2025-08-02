@@ -21,10 +21,10 @@ const ExperienceCard = ({
           />
         </span>
         <div className="items-center cursor-pointer justify-between p-6 ml-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] reveal-up">
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center ">
+          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
             {year}
           </time>
-          <div className="text-sm font-medium text-zinc-300 ">
+          <div className="text-sm font-medium text-zinc-300 w-[90%]">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
                 {name}
