@@ -42,9 +42,9 @@ const App = () => {
         <main>
           <Hero />
           <About />
+          <Skills />
           <Education />
           <Experience />
-          <Skills />
           <Work />
           <Certifications />
           <Review />
