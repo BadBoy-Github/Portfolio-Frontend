@@ -12,7 +12,7 @@ const ExperienceCompoundCard = ({
   return (
     <>
       <li className="">
-        <div className="items-center cursor-pointer justify-between p-6 rounded-2xl sm:flex transition-all group hover:scale-[101%]  bg-zinc-900/50">
+        <div className="items-center cursor-pointer justify-between p-6 rounded-2xl sm:flex transition-all group hover:scale-[101%]  bg-zinc-900/50 shadow-xl">
           <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center">
             {year}
           </time>

@@ -15,22 +15,23 @@ const ButtonPrimary = ({
 
     if (href) {
         return (
-            <a
-                href={href}
-                target={target}
-                className={"btn btn-primary " + classes}
-            >
-                {label}
+          <a
+            href={href}
+            target={target}
+            className={"btn btn-primary " + classes}
+          >
+            {label}
 
-                {icon ?
-                    <span className="material-symbols-rounded"
-                        aria-hidden="true">
-                        {icon}
-                    </span>
-                    : undefined
-                }
-            </a>
-        )
+            {icon ? (
+              <span
+                className="material-symbols-rounded"
+                aria-hidden="true"
+              >
+                {icon}
+              </span>
+            ) : undefined}
+          </a>
+        );
     } else {
         return (
             <button className={"btn btn-primary " + classes}>

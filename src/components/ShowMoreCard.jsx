@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ShowMoreCard = ({ count, onClick, delay = 0 }) => {
   return (
     <div
-      className="relative p-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] cursor-pointer opacity-0 translate-y-5"
+      className="relative p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] cursor-pointer opacity-0 translate-y-5"
       onClick={onClick}
       style={{
         animationFillMode: "forwards",
