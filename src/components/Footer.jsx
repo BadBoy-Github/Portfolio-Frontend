@@ -81,7 +81,7 @@ const Footer = () => {
                     <li key={key}>
                       <a
                         href={href}
-                        className="block gap-4 text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 "
+                        className="block gap-4 text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
                       </a>
@@ -99,7 +99,7 @@ const Footer = () => {
                       <a
                         href={href}
                         target="_blank"
-                        className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 "
+                        className="block text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
                       </a>
@@ -124,13 +124,13 @@ const Footer = () => {
               &copy; 2025{" "}
               <span className="text-zinc-200">
                 ·{" "}
-                <span className="text-white hover:text-sky-500 transition-colors">
+                <span className="text-white hover:text-sky-500 transition-colors duration-300">
                   <a href="https://elayabarathimv-portfolio.vercel.app/">
                     Elayabarathi M V
                   </a>
                 </span>{" "}
                 |{" "}
-                <span className="text-sky-500 hover:text-white transition-colors">
+                <span className="text-sky-500 hover:text-white transition-colors duration-300">
                   <a href="https://panda-productions.vercel.app/">
                     Panda Productions
                   </a>

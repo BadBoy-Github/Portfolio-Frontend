@@ -17,7 +17,7 @@ const ProjectCard = ({
     return (
       <div
         className={
-          "relative cursor-pointer p-4 rounded-2xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] " +
+          "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] " +
           classes
         }
       >
@@ -56,10 +56,7 @@ const ProjectCard = ({
           </div>
 
           <div className="w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0">
-            <span
-              className="material-symbols-rounded"
-              aria-hidden="true"
-            >
+            <span className="material-symbols-rounded" aria-hidden="true">
               arrow_outward
             </span>
           </div>

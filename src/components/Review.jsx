@@ -57,7 +57,7 @@ const Review = () => {
             Hear directly from those who’ve collaborated with me
           </p>
 
-          <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 ">
+          <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 pb-10">
             {reviews.map(({ content, name, imgSrc, company }, key) => (
               <ReviewCard
                 key={key}

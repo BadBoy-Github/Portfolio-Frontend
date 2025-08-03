@@ -15,12 +15,12 @@ const ReviewCard = ({
     company
 }) => {
     return (
-      <div className="bg-zinc-800 p-5 rounded-xl min-w-[320px] flex flex-col lg:min-w-[420px] ">
+      <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group hover:scale-105 transition-all duration-300">
         <div className="flex items-center gap-1 mb-3">
           {ratings.map(({ icon, style }, key) => (
             <span
               key={key}
-              className="material-symbols-rounded text-yellow-400 hover:text-yellow-300 text-[18px] hover:animate-[bounce_1s_ease-in-out_infinite] cursor-pointer"
+              className="material-symbols-rounded text-yellow-400 hover:text-yellow-600 text-[18px] cursor-pointer group-hover:scale-110 transition-all duration-300"
               style={style}
             >
               {icon}
@@ -28,7 +28,7 @@ const ReviewCard = ({
           ))}
         </div>
 
-        <p className="text-zinc-400 mb-8">{content}</p>
+        <p className="text-zinc-400 mb-8 group-hover:text-zinc-200 transition-all duration-300">{content}</p>
 
         <div className="flex items-center gap-2 mt-auto">
           <figure className="img-box rounded-lg">
