@@ -7,76 +7,66 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaAnglesRight } from "react-icons/fa6";
 import { FaAnglesLeft } from "react-icons/fa6";
 
-const certificates = [
+const achievements = [
   {
-    title: "Student Induction Program 2023",
-    tags: ["Leadership", "Communication", "Teamwork"],
+    title: "Student Induction Program [2023] Organizer",
+    tags: ["Leadership", "Public Speaking", "Collaborative"],
     imgSrc: "/images/achievements/sip.jpg",
-    logo: "/images/certificates/react.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    desc: "Led and facilitated key activities during the Student Induction Program 2023, focusing on onboarding new students, promoting campus culture, and encouraging leadership and communication skills among freshers.",
   },
   {
-    title: "Madurai Stall",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/Tailwind CSS.jpg",
-    logo: "/images/certificates/tailwind.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Regional Cultural Expo - Madurai",
+    tags: ["Promotion", "Collaboration", "Public Engagement"],
+    imgSrc: "/images/achievements/madurai.jpg",
+    desc: "Represented KSRCT at the Madurai Regional Cultural Stall, overseeing presentation setup and engaging with the public to showcase local heritage and institutional innovation through interactive displays.",
   },
   {
-    title: "Dakshaa T23",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/HTML.jpg",
-    logo: "/images/certificates/html.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Dakshaa T23 - Core Event Organizer",
+    tags: ["Event Management", "Leadership", "Planning"],
+    imgSrc: "/images/achievements/dakshaa.jpg",
+    desc: "Served as a core organizer for Dakshaa T23, a major intercollegiate event. Managed logistics, supervised multiple teams, and ensured seamless execution of the event&apos;s technical and cultural activities.",
   },
   {
-    title: "Logo Creation 2nd prize",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Intercollegiate Logo Design – 2nd Place Winner",
+    tags: ["Graphic Design", "Creative Thinking", "Illustration"],
+    imgSrc: "/images/achievements/logo.jpg",
+    desc: "Secured 2nd place in a competitive logo creation contest hosted by KSRCT Culturals Club. Designed a concept-driven logo that reflected the theme effectively and demonstrated advanced design skills.",
   },
   {
-    title: "Short Video 2nd prize",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Short Video Contest – 2nd Prize Winner",
+    tags: ["Video Production", "Storytelling", "Digital Creativity"],
+    imgSrc: "/images/achievements/video.jpg",
+    desc: "Won 2nd prize in a short video contest, contributing as both director and editor. Focused on conveying a powerful narrative within a concise timeframe using visual storytelling and editing techniques.",
   },
   {
-    title: "Paper presentation 1st prize",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Paper Presentation – 1st Place Awardee",
+    tags: ["Research", "Technical Communication", "Innovation"],
+    imgSrc: "/images/achievements/paper.jpg",
+    desc: "Achieved 1st place in a paper presentation competition for a project focused on innovative solutions in technology. Demonstrated strong research methodology, data analysis, and public presentation skills.",
   },
   {
-    title: "Joint Secretary PMC and PAC",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Joint Secretary – PMC & PAC Club, KSRCT",
+    tags: ["Leadership Role", "Club Management", "Strategic Coordination"],
+    imgSrc: "/images/achievements/js.jpg",
+    desc: "Appointed Joint Secretary of the PMC & PAC Club at KSRCT. Played a pivotal role in organizing club initiatives, coordinating meetings, and leading student engagement and outreach programs.",
   },
   {
-    title: "Short Film 1st prize",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Campus Short Film – 1st Prize Director",
+    tags: ["Film Direction", "Scriptwriting", "Team Collaboration"],
+    imgSrc: "/images/achievements/film.jpg",
+    desc: "Directed a short film that won 1st prize at a campus-level competition. Oversaw all stages of production including script development, casting, filming, and post-production editing.",
   },
   {
-    title: "Certified Public Speaker",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Certified Effective Public Speaker",
+    tags: ["Communication", "Public Speaking", "Confidence Building"],
+    imgSrc: "/images/achievements/eps.jpg",
+    desc: "Earned a public speaking certification for delivering structured, confident speeches in front of live audiences. Trained in persuasive communication, body language, and audience engagement.",
   },
   {
-    title: "Type writter",
-    tags: ["Leadership", "Communication", "Teamwork"],
-    imgSrc: "/images/certificates/CSS.jpg",
-    logo: "/images/certificates/css.png",
-    desc: "A comprehensive program designed to enhance student skills in leadership, communication, and teamwork.",
+    title: "Certified Typewriting – Lower Grade, English",
+    tags: ["Typing Proficiency", "Clerical Skills", "Accuracy"],
+    imgSrc: "/images/achievements/type.jpg",
+    desc: "Completed a certified course in typewriting (Lower Grade, English) with distinction. Acquired strong proficiency in typing speed and accuracy, useful for clerical and documentation tasks.",
   },
 ];
 
@@ -148,14 +138,14 @@ const Achievements = () => {
           </button>
         </div>
 
-        {/* Scrollable container with 1 row of horizontally scrolling certificates */}
+        {/* Scrollable container with 1 row of horizontally scrolling achievements */}
         <div
           ref={scrollRef}
           className="overflow-x-auto hide-scrollbar scroll-smooth rounded-xl"
           style={{ scrollBehavior: "smooth" }}
         >
           <div className="flex flex-row gap-4 w-fit min-w-full">
-            {certificates.map((cert, index) => (
+            {achievements.map((cert, index) => (
               <div key={index} className="min-w-[320px] lg:min-w-[420px]">
                 <AchievementsCard
                   title={cert.title}
@@ -163,7 +153,7 @@ const Achievements = () => {
                   desc={cert.desc}
                   tags={cert.tags}
                   logo={cert.logo}
-                  certNumber={certificates.length - index}
+                  certNumber={achievements.length - index}
                 />
               </div>
             ))}
