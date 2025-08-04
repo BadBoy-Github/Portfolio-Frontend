@@ -1,0 +1,54 @@
+import PropTypes from "prop-types";
+
+const AchievementsCard = ({ imgSrc, title, tags, certNumber, desc }) => {
+  const openImage = () => {
+    window.open(imgSrc, "_blank");
+  };
+
+  return (
+    <div
+      className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] cursor-pointer group"
+      onClick={openImage}
+    >
+      <div className="flex items-center justify-between gap-2 mt-auto">
+        <div>
+          <p className="flex items-center gap-2">
+            {title}
+            <span className="text-xs text-zinc-400">#{certNumber}</span>
+          </p>
+        </div>
+      </div>
+      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-105 transition-transform duration-300">
+        <img
+          src={imgSrc}
+          width={44}
+          height={44}
+          alt={title}
+          loading="lazy"
+          className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg"
+        />
+      </figure>
+      <p className="text-sm text-zinc-400 mt-3 tracking-wider">{desc}</p>
+      <div className="flex flex-wrap items-center gap-2 mt-3">
+        {tags.map((label, key) => (
+          <span
+            key={key}
+            className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg"
+          >
+            {label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+AchievementsCard.propTypes = {
+  imgSrc: PropTypes.string,
+  title: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  desc: PropTypes.string,
+  certNumber: PropTypes.number,
+};
+
+export default AchievementsCard;

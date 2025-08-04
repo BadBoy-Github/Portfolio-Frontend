@@ -37,8 +37,8 @@ const ShowMoreCard = ({ count, onClick, delay = 0 }) => {
 };
 
 ShowMoreCard.propTypes = {
-  count: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
+  count: PropTypes.number,
+  onClick: PropTypes.func,
   delay: PropTypes.number,
 };
 
