@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const AchievementsCard = ({ imgSrc, title, tags, certNumber, desc }) => {
+const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
   const openImage = () => {
     window.open(imgSrc, "_blank");
   };
@@ -11,14 +11,14 @@ const AchievementsCard = ({ imgSrc, title, tags, certNumber, desc }) => {
       onClick={openImage}
     >
       <div className="flex items-center justify-between gap-2 mt-auto">
-        <div>
-          <p className="flex items-center gap-2">
-            {title}
-            <span className="text-xs text-zinc-400">#{certNumber}</span>
-          </p>
+        <div className="w-full">
+          <div className="flex items-center gap-2 h-6 justify-between flex-row lg:flex-row-reverse">
+            <p className="text-zinc-400 text-xs">{date}</p>
+            <p className="w-[80%] ">{title}</p>
+          </div>
         </div>
       </div>
-      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-105 transition-transform duration-300">
+      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-[102%] transition-transform duration-300">
         <img
           src={imgSrc}
           width={44}
@@ -28,12 +28,14 @@ const AchievementsCard = ({ imgSrc, title, tags, certNumber, desc }) => {
           className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg"
         />
       </figure>
-      <p className="text-sm text-zinc-400 mt-3 tracking-wider">{desc}</p>
-      <div className="flex flex-wrap items-center gap-2 mt-3">
+      <p className="text-sm text-zinc-400 mt-3 tracking-wider h-64 lg:h-48">
+        {desc}
+      </p>
+      <div className="mt-3 h-32">
         {tags.map((label, key) => (
           <span
             key={key}
-            className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg"
+            className="text-sm text-zinc-400 flex pb-1"
           >
             {label}
           </span>
@@ -46,9 +48,9 @@ const AchievementsCard = ({ imgSrc, title, tags, certNumber, desc }) => {
 AchievementsCard.propTypes = {
   imgSrc: PropTypes.string,
   title: PropTypes.string,
+  date: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   desc: PropTypes.string,
-  certNumber: PropTypes.number,
 };
 
 export default AchievementsCard;

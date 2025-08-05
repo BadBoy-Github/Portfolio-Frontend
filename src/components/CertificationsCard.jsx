@@ -30,7 +30,7 @@ const CertificationsCard = ({
           <img src={logo} alt="Logo" className="w-6 h-6 object-cover p-0.5" />
         </div>
       </div>
-      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-105 transition-transform duration-300">
+      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-[102%] transition-transform duration-300">
         <img
           src={imgSrc}
           width={44}
