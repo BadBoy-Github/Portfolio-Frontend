@@ -15,7 +15,7 @@ const CertificationsCard = ({
   };
 
   return (
-    <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] cursor-pointer group">
+    <div className="bg-zinc-800 hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] cursor-pointer group">
       <div className="flex items-center justify-between gap-2 mt-auto">
         <div>
           <p className="flex items-center gap-2">
