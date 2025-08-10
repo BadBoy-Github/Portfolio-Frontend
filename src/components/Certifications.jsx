@@ -237,25 +237,25 @@ const Certifications = () => {
         <div className="hidden lg:flex justify-between items-center">
           <button
             onClick={() => scroll("left")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center left-0 top-[52%]"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center left-0 top-[53%]"
           >
             <FaChevronLeft />
           </button>
           <button
             onClick={scrollToStart}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[52%]"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[53%]"
           >
             <FaAnglesLeft />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center right-0 top-[52%]"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center right-0 top-[53%]"
           >
             <FaChevronRight />
           </button>
           <button
             onClick={scrollToEnd}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[52%]"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[53%]"
           >
             <FaAnglesRight />
           </button>

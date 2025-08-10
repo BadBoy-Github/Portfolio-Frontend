@@ -32,6 +32,7 @@ import Footer from './components/Footer';
 import Certifications from './components/Certifications';
 import Education from './components/Education';
 import Experience from './components/Experience';
+import Achievements from './components/Achievements';
 
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
           <Experience />
           <Work />
           <Certifications />
+          <Achievements />
           <Review />
           <Contact />
         </main>
