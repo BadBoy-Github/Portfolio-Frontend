@@ -6,130 +6,85 @@ import SkillCard from "./SkillCard";
 
 const skillItem = [
   {
-    imgSrc: "/images/react.svg",
+    imgSrc: "/img/skills/react.svg",
     label: "ReactJS",
     desc: "Framework for UI",
   },
   {
-    imgSrc: "/images/tailwindcss.svg",
+    imgSrc: "/img/skills/tailwindcss.svg",
     label: "TailwindCSS",
     desc: "Framework for CSS",
   },
   {
-    imgSrc: "/images/javascript.svg",
+    imgSrc: "/img/skills/javascript.svg",
     label: "JavaScript",
     desc: "Dynamic Interaction",
   },
   {
-    imgSrc: "/images/html.svg",
+    imgSrc: "/img/skills/html.svg",
     label: "HTML5",
     desc: "Web Page Structure",
   },
   {
-    imgSrc: "/images/css3.svg",
+    imgSrc: "/img/skills/css3.svg",
     label: "CSS3",
     desc: "Web Page Styling",
   },
   {
-    imgSrc: "/images/bootstrap.svg",
+    imgSrc: "/img/skills/bootstrap.svg",
     label: "Bootstrap",
     desc: "Framework for CSS",
   },
-  // {
-  //   imgSrc: "/images/typescript.svg",
-  //   label: "TypeScript",
-  //   desc: "Typed JavaScript",
-  // },
-  // {
-  //   imgSrc: "/images/nodejs.svg",
-  //   label: "NodeJS",
-  //   desc: "Web Server",
-  // },
-  // {
-  //   imgSrc: "/images/expressjs.svg",
-  //   label: "ExpressJS",
-  //   desc: "Node Framework",
-  // },
   {
-    imgSrc: "/images/mongodb.svg",
-    label: "MongoDB",
-    desc: "NoSQL Database",
-  },
-  {
-    imgSrc: "/images/python.svg",
+    imgSrc: "/img/skills/python.svg",
     label: "Python",
     desc: "High Level Programming",
   },
   {
-    imgSrc: "/images/github.svg",
+    imgSrc: "/img/skills/github.svg",
     label: "Github",
     desc: "Version Control",
   },
-  // {
-  //   imgSrc: "/images/gitlab.svg",
-  //   label: "GitLab",
-  //   desc: "Version Control",
-  // },
   {
-    imgSrc: "/images/vercel.svg",
+    imgSrc: "/img/skills/vercel.svg",
     label: "Vercel",
     desc: "Deployment & Hosting",
   },
   {
-    imgSrc: "/images/netlify.svg",
+    imgSrc: "/img/skills/netlify.svg",
     label: "Netlify",
     desc: "Deployment & Hosting",
   },
   {
-    imgSrc: "/images/render.svg",
+    imgSrc: "/img/skills/render.svg",
     label: "Render",
     desc: "Deployment & Hosting",
   },
-  // {
-  //   imgSrc: "/images/cplusplus.svg",
-  //   label: "C++",
-  //   desc: "Object Oriented Program",
-  // },
   {
-    imgSrc: "/images/canva.svg",
+    imgSrc: "/img/skills/canva.svg",
     label: "Canva",
     desc: "Graphic Design",
   },
   {
-    imgSrc: "/images/adobeexpress.svg",
+    imgSrc: "/img/skills/adobeexpress.svg",
     label: "Adobe Express",
     desc: "Graphic Design",
   },
   {
-    imgSrc: "/images/autocad.svg",
+    imgSrc: "/img/skills/autocad.svg",
     label: "AutoCAD",
     desc: "CAD & Drafting",
   },
-  // {
-  //   imgSrc: "/images/powerbi.svg",
-  //   label: "Power BI",
-  //   desc: "Data Visualization",
-  // },
   {
-    imgSrc: "/images/msoffice.svg",
+    imgSrc: "/img/skills/msoffice.svg",
     label: "MS Office",
     desc: "Productivity Suite",
   },
   {
-    imgSrc: "/images/powerdirector.svg",
+    imgSrc: "/img/skills/powerdirector.svg",
     label: "PowerDirector",
     desc: "Video Editing",
   },
-  // {
-  //   imgSrc: "/images/photoshop.svg",
-  //   label: "Photoshop",
-  //   desc: "Pro Photo Editing",
-  // },
-  // {
-  //   imgSrc: "/images/premierepro.svg",
-  //   label: "Adobe Premiere Pro",
-  //   desc: "Pro Video Editing",
-  // },
 ];
 
 const Skills = () => {

@@ -41,7 +41,7 @@ const About = () => {
             ))}
 
             <img
-              src="/images/Panda.ico"
+              src="/img/icons/Panda.ico"
               alt="Elayabarathi M V"
               width={30}
               height={30}

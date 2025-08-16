@@ -6,7 +6,7 @@ import ShowMoreCard from "./ShowMoreCard";
 
 const works = [
   {
-    imgSrc: "/images/project-10.png",
+    imgSrc: "/img/projects/project-10.png",
     title: "Bamboo Blogs",
     tags: ["Python", "Flask", "SQLite"],
     projectLink: "https://bamboo-blogs-sample.onrender.com/",
@@ -14,7 +14,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/Bamboo-Blogs-Sample",
   },
   {
-    imgSrc: "/images/project-9.png",
+    imgSrc: "/img/projects/project-9.png",
     title: "LinkedIn Clone",
     tags: ["LinkedIn", "Morphisire"],
     projectLink: "https://linkedin-profile-clone.vercel.app/",
@@ -22,7 +22,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/Linkedin-Profile-Clone",
   },
   {
-    imgSrc: "/images/project-8.png",
+    imgSrc: "/img/projects/project-8.png",
     title: "Stellar AI Chatbot",
     tags: ["AI Model", "Chat"],
     projectLink: "https://stellar-steel-tau.vercel.app/",
@@ -30,7 +30,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/stellar",
   },
   {
-    imgSrc: "/images/project-7.png",
+    imgSrc: "/img/projects/project-7.png",
     title: "Spotify Clone",
     tags: ["Music", "Clerk", "Clone"],
     projectLink: "https://spotify-clone-6rda.onrender.com/",
@@ -38,7 +38,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/spotify-clone",
   },
   {
-    imgSrc: "/images/project-6.png",
+    imgSrc: "/img/projects/project-6.png",
     title: "eCommerce website",
     tags: ["eCommerce", "Stripe"],
     projectLink: "https://full-stack-ecommerce-h47u.vercel.app/",
@@ -46,7 +46,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/Full-Stack-Ecommerce",
   },
   {
-    imgSrc: "/images/project-5.png",
+    imgSrc: "/img/projects/project-5.png",
     title: "Profile Card",
     tags: ["html", "CSS"],
     projectLink: "https://profile-card-001.netlify.app/",
@@ -54,7 +54,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/Profile-Card-1",
   },
   {
-    imgSrc: "/images/project-4.png",
+    imgSrc: "/img/projects/project-4.png",
     title: "Shopping List",
     tags: ["html", "CSS", "JS"],
     projectLink: "https://frontend-shopping-list-app.vercel.app/",
@@ -62,7 +62,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/Frontend-Shopping-List-App",
   },
   {
-    imgSrc: "/images/project-3.png",
+    imgSrc: "/img/projects/project-3.png",
     title: "ToDo App",
     tags: ["Todo", "CRUD"],
     projectLink: "https://to-do-app-se8u.onrender.com/",
@@ -70,7 +70,7 @@ const works = [
     gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
   },
   {
-    imgSrc: "/images/project-2.png",
+    imgSrc: "/img/projects/project-2.png",
     title: "Iron vs Cancer",
     tags: ["FeNPs", "Encapsule", "Cancer"],
     projectLink: "",
@@ -78,7 +78,7 @@ const works = [
     gitUrl: "",
   },
   {
-    imgSrc: "/images/project-1.png",
+    imgSrc: "/img/projects/project-1.png",
     title: "Silver vs Bacteria",
     tags: ["AgNPs", "Antimicrobial"],
     projectLink:
