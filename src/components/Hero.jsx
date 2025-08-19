@@ -12,7 +12,7 @@ const Hero = () => {
             <div className="flex items-center gap-3">
               <figure className="img-box size-10 rounded-lg">
                 <img
-                  src="/images/icon.png"
+                  src="/img/icons/icon.webp"
                   width={40}
                   height={40}
                   alt="Elayabarathi M V Portrait"
@@ -40,7 +40,7 @@ const Hero = () => {
               <ButtonPrimary
                 label="Download CV"
                 icon="download"
-                href="/resume.pdf"
+                href="/docs/resume.pdf"
                 target="_blank"
               />
 
@@ -58,7 +58,7 @@ const Hero = () => {
                     rounded-[60px] overflow-hidden"
             >
               <img
-                src="/images/hero-banner.png"
+                src="/img/icons/hero-banner.webp"
                 width={656}
                 height={800}
                 alt="Elayabarathi M V"

@@ -117,7 +117,7 @@ const Footer = () => {
           <div className="flex items-center justify-between pt-10 mb-8">
             <a href="/" className="logo ">
               <img
-                src="/images/Panda.ico"
+                src="/img/icons/Panda.ico"
                 width={40}
                 height={40}
                 alt="Elayabarathi M V"

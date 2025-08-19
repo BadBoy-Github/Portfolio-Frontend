@@ -18,10 +18,10 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
         </div>
       </div>
       <figure
-        className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-[102%] transition-all duration-300 group/group1 relative"
+        className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-[102%] transition-all duration-300 relative"
         onClick={openImage}
       >
-        <div className="hidden bg-zinc-950/60 font-bold group-hover/group1:flex absolute top-0 bottom-0 left-0 right-0 rounded-lg transition-all duration-300">
+        <div className="hidden bg-zinc-950/60 font-bold group-hover:flex absolute top-0 bottom-0 left-0 right-0 rounded-lg transition-all duration-300">
           <div className="flex items-center justify-center rounded-lg h-full w-full transition-all duration-300">
             <AiOutlineFullscreen className="w-10 h-10"/>
           </div>

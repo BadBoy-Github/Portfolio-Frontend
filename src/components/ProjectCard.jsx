@@ -36,7 +36,7 @@ const ProjectCard = ({
             src={imgSrc}
             alt={title}
             loading="lazy"
-            className="img-cover rounded-xl"
+            className="img-cover rounded-xl w-full h-full"
           />
         </figure>
         <div className="flex items-center justify-between gap-4">

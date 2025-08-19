@@ -10,183 +10,183 @@ import { FaAnglesLeft } from "react-icons/fa6";
 const certificates = [
   {
     title: "React JS",
-    imgSrc: "/images/certificates/React JS.jpg",
+    imgSrc: "/img/certificates/React JS.webp",
     company: "LetsUpgrade",
-    logo: "/images/certificates/react.png",
+    logo: "/img/certificates/icons/react.webp",
   },
   {
     title: "Tailwind CSS",
-    imgSrc: "/images/certificates/Tailwind CSS.jpg",
+    imgSrc: "/img/certificates/Tailwind CSS.webp",
     company: "LetsUpgrade",
-    logo: "/images/certificates/tailwind.png",
+    logo: "/img/certificates/icons/tailwind.webp",
   },
   {
     title: "HTML",
-    imgSrc: "/images/certificates/HTML.jpg",
+    imgSrc: "/img/certificates/HTML1.webp",
     company: "Mimo",
-    logo: "/images/certificates/html.png",
+    logo: "/img/certificates/icons/html.webp",
   },
   {
     title: "CSS",
-    imgSrc: "/images/certificates/CSS.jpg",
+    imgSrc: "/img/certificates/CSS1.webp",
     company: "Mimo",
-    logo: "/images/certificates/css.png",
+    logo: "/img/certificates/icons/css.webp",
   },
   {
     title: "JavaScript",
-    imgSrc: "/images/certificates/JavaScript.jpg",
+    imgSrc: "/img/certificates/JavaScript1.webp",
     company: "Learnz Development Hub",
-    logo: "/images/certificates/javascript.png",
+    logo: "/img/certificates/icons/javascript.webp",
   },
   {
     title: "JavaScript",
-    imgSrc: "/images/certificates/js.jpg",
+    imgSrc: "/img/certificates/js.webp",
     company: "LetsUpgrade",
-    logo: "/images/certificates/javascript.png",
+    logo: "/img/certificates/icons/javascript.webp",
   },
   {
     title: "Wordpress",
-    imgSrc: "/images/certificates/Wordpress.jpg",
+    imgSrc: "/img/certificates/Wordpress1.webp",
     company: "Coursera",
-    logo: "/images/certificates/wordpress.png",
+    logo: "/img/certificates/icons/wordpress.webp",
   },
   {
     title: "MERN Stack",
-    imgSrc: "/images/certificates/MERN Stack.jpg",
+    imgSrc: "/img/certificates/MERN Stack.webp",
     company: "SimpliLearn",
-    logo: "/images/certificates/mern.png",
+    logo: "/img/certificates/icons/mern.webp",
   },
   {
     title: "SEO",
-    imgSrc: "/images/certificates/SEO1.jpg",
+    imgSrc: "/img/certificates/SEO2.webp",
     company: "Coursera",
-    logo: "/images/certificates/seo.png",
+    logo: "/img/certificates/icons/seo.webp",
   },
   {
     title: "SEO",
-    imgSrc: "/images/certificates/SEO.jpg",
+    imgSrc: "/img/certificates/SEO1.webp",
     company: "Programming Hub",
-    logo: "/images/certificates/seo.png",
+    logo: "/img/certificates/icons/seo.webp",
   },
   {
     title: "Generative AI",
-    imgSrc: "/images/certificates/Generative AI.jpg",
+    imgSrc: "/img/certificates/Generative AI.webp",
     company: "Guvi",
-    logo: "/images/certificates/ai.png",
+    logo: "/img/certificates/icons/ai.webp",
   },
   {
     title: "Git & GitHub",
-    imgSrc: "/images/certificates/Git & GitHub.jpg",
+    imgSrc: "/img/certificates/Git & GitHub.webp",
     company: "LetsUpgrade",
-    logo: "/images/certificates/github.png",
+    logo: "/img/certificates/icons/github.webp",
   },
   {
     title: "Git",
-    imgSrc: "/images/certificates/Git.jpg",
+    imgSrc: "/img/certificates/Git1.webp",
     company: "Programming Hub",
-    logo: "/images/certificates/git.png",
+    logo: "/img/certificates/icons/git.webp",
   },
   {
     title: "Frontend Development",
-    imgSrc: "/images/certificates/Frontend.jpg",
+    imgSrc: "/img/certificates/Frontend1.webp",
     company: "SimpliLearn",
-    logo: "/images/certificates/frontend.png",
+    logo: "/img/certificates/icons/frontend.webp",
   },
   {
     title: "Python",
-    imgSrc: "/images/certificates/Python.jpg",
+    imgSrc: "/img/certificates/Python1.webp",
     company: "Mimo",
-    logo: "/images/certificates/python.png",
+    logo: "/img/certificates/icons/python.webp",
   },
   {
     title: "Python Dev",
-    imgSrc: "/images/certificates/Python Dev.jpg",
+    imgSrc: "/img/certificates/Python Dev.webp",
     company: "Mimo",
-    logo: "/images/certificates/python.png",
+    logo: "/img/certificates/icons/python.webp",
   },
   {
     title: "ChatGPT for Everyone",
-    imgSrc: "/images/certificates/ChatGPT.jpg",
+    imgSrc: "/img/certificates/ChatGPT1.webp",
     company: "Guvi",
-    logo: "/images/certificates/chatgpt.png",
+    logo: "/img/certificates/icons/chatgpt.webp",
   },
   {
     title: "Tech Career Kickstart",
-    imgSrc: "/images/certificates/techcareer.jpg",
+    imgSrc: "/img/certificates/techcareer1.webp",
     company: "SimpliLearn",
-    logo: "/images/certificates/techcareer.png",
+    logo: "/img/certificates/icons/techcareer.webp",
   },
   {
     title: "Canva",
-    imgSrc: "/images/certificates/Canva.jpg",
+    imgSrc: "/img/certificates/Canva1.webp",
     company: "LetsUpgrade",
-    logo: "/images/certificates/canva.png",
+    logo: "/img/certificates/icons/canva.webp",
   },
   {
     title: "Video Editing with Canva",
-    imgSrc: "/images/certificates/Canva Video.jpg",
+    imgSrc: "/img/certificates/Canva Video.webp",
     company: "Coursera",
-    logo: "/images/certificates/videoediting.png",
+    logo: "/img/certificates/icons/videoediting.webp",
   },
   {
     title: "Social Media Management",
-    imgSrc: "/images/certificates/Social Media Management.jpg",
+    imgSrc: "/img/certificates/Social Media Management.webp",
     company: "Great Learning",
-    logo: "/images/certificates/socialmedia.png",
+    logo: "/img/certificates/icons/socialmedia.webp",
   },
   {
     title: "Digital Marketing Fundamentals",
-    imgSrc: "/images/certificates/Digital Marketing Fundamentals.jpg",
+    imgSrc: "/img/certificates/Digital Marketing Fundamentals.webp",
     company: "IIDE The Digital School",
-    logo: "/images/certificates/marketing.png",
+    logo: "/img/certificates/icons/marketing.webp",
   },
   {
     title: "Business Analysis",
-    imgSrc: "/images/certificates/Business Analysis.jpg",
+    imgSrc: "/img/certificates/Business Analysis.webp",
     company: "Coursera",
-    logo: "/images/certificates/analysis.png",
+    logo: "/img/certificates/icons/analysis.webp",
   },
   {
     title: "Investment Risk Management",
-    imgSrc: "/images/certificates/IRM.jpg",
+    imgSrc: "/img/certificates/IRM1.webp",
     company: "Coursera",
-    logo: "/images/certificates/irm.png",
+    logo: "/img/certificates/icons/irm.webp",
   },
   {
     title: "Power BI",
-    imgSrc: "/images/certificates/Power BI.jpg",
+    imgSrc: "/img/certificates/Power BI.webp",
     company: "Great Learning",
-    logo: "/images/certificates/powerbi.png",
+    logo: "/img/certificates/icons/powerbi.webp",
   },
   {
     title: "Introduction to Microsoft Excel",
-    imgSrc: "/images/certificates/Excel1.jpg",
+    imgSrc: "/img/certificates/Excel2.webp",
     company: "Coursera",
-    logo: "/images/certificates/excel.png",
+    logo: "/img/certificates/icons/excel.webp",
   },
   {
     title: "Excel",
-    imgSrc: "/images/certificates/Excel.jpg",
+    imgSrc: "/img/certificates/Excel1.webp",
     company: "LetsUpgrade",
-    logo: "/images/certificates/excel.png",
+    logo: "/img/certificates/icons/excel.webp",
   },
   {
     title: "Excel Data Analysis",
-    imgSrc: "/images/certificates/Excel Data Analysis.jpg",
+    imgSrc: "/img/certificates/Excel Data Analysis.webp",
     company: "Coursera",
-    logo: "/images/certificates/data analysis.png",
+    logo: "/img/certificates/icons/data analysis.webp",
   },
   {
     title: "Google Ads for Beginners",
-    imgSrc: "/images/certificates/Google Ads.jpg",
+    imgSrc: "/img/certificates/Google Ads.webp",
     company: "Coursera",
-    logo: "/images/certificates/googleads.png",
+    logo: "/img/certificates/icons/googleads.webp",
   },
   {
     title: "Video Editing",
-    imgSrc: "/images/certificates/Video Editing.jpg",
+    imgSrc: "/img/certificates/Video Editing.webp",
     company: "Great Learning",
-    logo: "/images/certificates/videoediting.png",
+    logo: "/img/certificates/icons/videoediting.webp",
   },
 ];
 
@@ -237,27 +237,27 @@ const Certifications = () => {
         <div className="hidden lg:flex justify-between items-center">
           <button
             onClick={() => scroll("left")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center left-0 top-[53%]"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center opacity-75 left-0 top-[53%] group hover:opacity-100 hover:scale-110 transition-all duration-300"
           >
-            <FaChevronLeft />
+            <FaChevronLeft className="group-hover:scale-150 transition-all duration-300" />
           </button>
           <button
             onClick={scrollToStart}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[53%]"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[53%] group hover:opacity-75 hover:scale-110 transition-all duration-300"
           >
-            <FaAnglesLeft />
+            <FaAnglesLeft className="group-hover:scale-150 transition-all duration-300" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center right-0 top-[53%]"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center opacity-75 right-0 top-[53%] group hover:opacity-100 hover:scale-110 transition-all duration-300"
           >
-            <FaChevronRight />
+            <FaChevronRight className="group-hover:scale-150 transition-all duration-300" />
           </button>
           <button
             onClick={scrollToEnd}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[53%]"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[53%] group hover:opacity-75 hover:scale-110 transition-all duration-300"
           >
-            <FaAnglesRight />
+            <FaAnglesRight className="group-hover:scale-150 transition-all duration-300" />
           </button>
         </div>
 
