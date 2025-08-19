@@ -27,7 +27,7 @@ const ProjectCard = ({
               href={gitUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute z-20 right-2 top-2 rounded-full bg-gray-700 p-1"
+              className="absolute z-20 right-2 top-2 rounded-full bg-gray-700 p-1 group-hover:flex hidden transition-all duration-300"
             >
               <FaGithub className="size-5" />
             </a>
