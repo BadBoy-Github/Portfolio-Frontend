@@ -4,7 +4,7 @@ import ExperienceCompoundCard from "./ExperienceCompoundCard";
 const ExpContent = [
   {
     instName: "Corizo Edutech Pvt Ltd",
-    instLogo: "/img/experience/corizo logo.jpg",
+    instLogo: "/img/experience/corizo logo.webp",
     period: "Oct - Dec 2024",
     compound: true,
     content: [
@@ -29,7 +29,7 @@ const ExpContent = [
     name: "Applied Microbiology and Agricultural Biotechnology",
     role: "Intern",
     instName: "Elies Biotech Pvt Ltd",
-    instLogo: "/img/experience/elies logo.jpg",
+    instLogo: "/img/experience/elies logo.webp",
     desc: "gaining practical skills in microbial characterization, biofertilizer production, mushroom tissue culture, and Black Soldier Fly Larvae rearing. Built a strong foundation in applied microbiology and agricultural biotechnology.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
     compound: false,
@@ -39,7 +39,7 @@ const ExpContent = [
     name: "Millets Processing and Production",
     role: "Intern",
     instName: "Biorith Techno Products Pvt Ltd",
-    instLogo: "/img/experience/sample logo.jpg",
+    instLogo: "/img/experience/sample logo.webp",
     desc: "operating advanced machinery and contributing to eco-friendly packaging solutions. Gained valuable experience in sustainable agriculture and food processing, bridging theoretical knowledge with real-world application.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
     compound: false,

@@ -7,42 +7,42 @@ const reviews = [
     content:
       "Groundbreaking work on the anticancer project using Iron oxide nanoparticles! Their innovative approach led to significant advancements and promising results. Highly commendable.",
     name: "Rithanya",
-    imgSrc: "/img/reviews/people-5.jpg",
+    imgSrc: "/img/reviews/people-5.webp",
     company: "Senior Medical Coder",
   },
   {
     content:
       "Skilled coder with impressive projects like CRUD app, eCommerce website, and Spotify clone. Their technical prowess and creativity shine through.",
     name: "Sanjay",
-    imgSrc: "/img/reviews/people-2.jpg",
+    imgSrc: "/img/reviews/people-2.webp",
     company: "Junior Software Developer",
   },
   {
     content:
       "Outstanding individual with diverse extracurricular activities, always eager to explore and learn. Their enthusiasm and versatility are remarkable.",
     name: "Subaash Sivan",
-    imgSrc: "/img/reviews/people-3.jpg",
+    imgSrc: "/img/reviews/people-3.webp",
     company: "Associate Bank Manager",
   },
   {
     content:
       "Talented beginner web developer who created a basic eCommerce website. Their commitment to learning and improving their skills is evident.",
     name: "Dhil Rohith",
-    imgSrc: "/img/reviews/people-4.jpg",
+    imgSrc: "/img/reviews/people-4.webp",
     company: "Senior Backend Developer",
   },
   {
     content:
       "Exceptional biotechnologist who completed their B.Tech in Biotechnology with flying colors. Their expertise and dedication are truly commendable.",
     name: "Kishore",
-    imgSrc: "/img/reviews/people-6.jpg",
+    imgSrc: "/img/reviews/people-6.webp",
     company: "Freelancer",
   },
   {
     content:
       "A good learner who learns from mistakes and excels in problem-solving. Their ability to adapt and overcome challenges is impressive.",
     name: "Asothama Chakravarthi",
-    imgSrc: "/img/reviews/people-1.jpg",
+    imgSrc: "/img/reviews/people-1.webp",
     company: "Textile Business",
   },
 ];
