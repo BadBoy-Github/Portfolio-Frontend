@@ -1,14 +1,21 @@
 
 import { TbBulb } from "react-icons/tb";
 import PropTypes from "prop-types";
+import { TbCertificate } from "react-icons/tb";
 
 const ExperienceCompoundCard = ({
   year,
   name,
   role,
   desc,
+  imgSrc,
   skills,
 }) => {
+
+  const openImage = () => {
+    window.open(imgSrc, "_blank");
+  };
+
   return (
     <>
       <li className="">
@@ -30,8 +37,9 @@ const ExperienceCompoundCard = ({
             <div className=" mt-2 w-[90%] ">
               <p className=" text-sm font-normal text-zinc-300">{desc}</p>
               <div className="flex items-center mt-4 gap-4">
-                <a href="#" className="text-red-600 bg-white w-10 h-10 flex items-center justify-center rounded-lg">
-                </a>
+                <div onClick={openImage} className="text-sky-600 bg-white size-8 flex items-center justify-center rounded-lg cursor-pointer">
+                  <TbCertificate className="size-4"/>
+                </div>
                 <div className="flex items-center justify-start text-zinc-400 w-full gap-3">
                   <TbBulb
                     size={20}
@@ -55,6 +63,7 @@ ExperienceCompoundCard.propTypes = {
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
   skills: PropTypes.string.isRequired,
 };
 

@@ -1,5 +1,6 @@
 import { TbBulb } from "react-icons/tb";
 import PropTypes from "prop-types";
+import { TbCertificate } from "react-icons/tb";
 
 const ExperienceCard = ({
   year,
@@ -9,8 +10,14 @@ const ExperienceCard = ({
   instLogo,
   instLink,
   desc,
+  imgSrc,
   skills,
 }) => {
+
+   const openImage = () => {
+     window.open(imgSrc, "_blank");
+   };
+
   return (
     <>
       <li className="mb-10 ml-12">
@@ -43,14 +50,19 @@ const ExperienceCard = ({
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
             <div className=" mt-2 w-[90%]">
               <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex gap-2 lg:-ml-8 items-center mt-4 text-zinc-400">
-                <TbBulb
-                  size={20}
-                  className="min-w-[10%] max-w-[10%] group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
-                />
-                <span className="min-w-[100%] max-w-[100%] lg:-ml-6 group-hover:text-zinc-300 transition-colors duration-300">
-                  <em>{skills}</em>
-                </span>
+              <div className="flex items-center mt-4 gap-4">
+                <div onClick={openImage} className="text-sky-600 bg-white size-8 flex items-center justify-center rounded-lg cursor-pointer">
+                                  <TbCertificate className="size-4"/>
+                                </div>
+                <div className="flex items-center justify-start text-zinc-400 w-full gap-3">
+                  <TbBulb
+                    size={20}
+                    className="flex items-center justify-center group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                  />
+                  <span className="w-full group-hover:text-zinc-300 transition-colors duration-300">
+                    <em>{skills}</em>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -68,6 +80,7 @@ ExperienceCard.propTypes = {
   instLogo: PropTypes.string.isRequired,
   instLink: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
   skills: PropTypes.string.isRequired,
 };
 
