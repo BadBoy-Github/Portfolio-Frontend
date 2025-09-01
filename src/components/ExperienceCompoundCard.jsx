@@ -26,16 +26,21 @@ const ExperienceCompoundCard = ({
                 {role}
               </span>
             </div>
+
             <div className=" mt-2 w-[90%] ">
               <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex gap-2 items-center justify-center mt-4 text-zinc-400">
-                <TbBulb
-                  size={20}
-                  className="min-w-[10%] max-w-[10%] group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
-                />
-                <span className="min-w-[100%] max-w-[100%] lg:-ml-6 group-hover:text-zinc-300 transition-colors duration-300">
-                  <em>{skills}</em>
-                </span>
+              <div className="flex items-center mt-4 gap-4">
+                <a href="#" className="text-red-600 bg-white w-10 h-10 flex items-center justify-center rounded-lg">
+                </a>
+                <div className="flex items-center justify-start text-zinc-400 w-full gap-3">
+                  <TbBulb
+                    size={20}
+                    className="flex items-center justify-center group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                  />
+                  <span className="w-full group-hover:text-zinc-300 transition-colors duration-300">
+                    <em>{skills}</em>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

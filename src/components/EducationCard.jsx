@@ -7,19 +7,25 @@ const EducationCard = ({
   perc,
   instName,
   instLogo,
+  instLink,
   desc,
   skills,
 }) => {
   return (
     <>
       <li className="mb-10 ml-12">
-        <span className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer">
+        <a
+          href={instLink}
+          target="_blank"
+          title={instName}
+          className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
+        >
           <img
-            className="rounded-full shadow-lg"
+            className="rounded-full shadow-lg bg-red-500/0"
             src={instLogo}
             alt={instName}
           />
-        </span>
+        </a>
         <div className="items-center justify-between p-6 ml-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
           <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
             {year}
@@ -60,6 +66,7 @@ EducationCard.propTypes = {
   perc: PropTypes.string.isRequired,
   instName: PropTypes.string.isRequired,
   instLogo: PropTypes.string.isRequired,
+  instLink: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   skills: PropTypes.string.isRequired,
 };

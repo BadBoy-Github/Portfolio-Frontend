@@ -5,6 +5,7 @@ const ExpContent = [
   {
     instName: "Corizo Edutech Pvt Ltd",
     instLogo: "/img/experience/corizo logo.webp",
+    instLink: "https://corizo.in/",
     period: "Oct - Dec 2024",
     compound: true,
     content: [
@@ -30,6 +31,7 @@ const ExpContent = [
     role: "Intern",
     instName: "Elies Biotech Pvt Ltd",
     instLogo: "/img/experience/elies logo.webp",
+    instLink: "https://eliesbiotech.co.in/",
     desc: "gaining practical skills in microbial characterization, biofertilizer production, mushroom tissue culture, and Black Soldier Fly Larvae rearing. Built a strong foundation in applied microbiology and agricultural biotechnology.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
     compound: false,
@@ -39,7 +41,8 @@ const ExpContent = [
     name: "Millets Processing and Production",
     role: "Intern",
     instName: "Biorith Techno Products Pvt Ltd",
-    instLogo: "/img/experience/sample logo.webp",
+    instLogo: "/img/experience/biorith logo.webp",
+    instLink: "https://biorith.in/",
     desc: "operating advanced machinery and contributing to eco-friendly packaging solutions. Gained valuable experience in sustainable agriculture and food processing, bridging theoretical knowledge with real-world application.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
     compound: false,
@@ -61,18 +64,18 @@ const Experience = () => {
               // check if the item is a compound item
               edu.compound ? (
                 <div className="mb-10 ml-12 " key={index}>
-                  <span className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer">
+                  <a href={edu.instLink} target="_blank" title={edu.instName} className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer">
                     <img
                       className="rounded-full shadow-lg"
                       src={edu.instLogo}
                       alt={edu.instName}
                     />
-                  </span>
+                  </a>
                   <div className="ml-4 p-6 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all hover:scale-[101%]  flex flex-col gap-4">
                     <div className="flex items-center justify-between">
-                      <p className="font-semibold text-zinc-200">
+                      <div target="_blank" className="font-semibold text-zinc-200">
                         {edu.instName}
-                      </p>
+                      </div>
                       <p className="text-xs font-normal text-zinc-400">
                         {edu.period}
                       </p>
@@ -97,6 +100,7 @@ const Experience = () => {
                   name={edu.name}
                   role={edu.role}
                   instName={edu.instName}
+                  instLink={edu.instLink}
                   instLogo={edu.instLogo}
                   desc={edu.desc}
                   skills={edu.skills}
