@@ -13,7 +13,7 @@ const Navbar = ({ navOpen }) => {
     { label: "Work", link: "#work" },
     { label: "Certification", link: "#certification" },
     { label: "Reviews", link: "#reviews" },
-    { label: "Contact", link: "#contactme", className: "md:hidden" },
+    { label: "Contact", link: "#contactme", className: "lg:hidden" },
   ];
 
   // Scroll spy effect

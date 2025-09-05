@@ -68,11 +68,10 @@ const Footer = () => {
               </h2>
 
               <ButtonPrimary
-                href="https://www.linkedin.com/in/elayabarathi/"
+                href="#contactme"
                 label="Start Collab"
                 icon="chevron_right"
                 classes=""
-                target="_blank"
               />
             </div>
 
@@ -117,7 +116,7 @@ const Footer = () => {
           <div className="flex items-center justify-between pt-10 mb-8">
             <a href="/" className="logo ">
               <img
-                src="/img/icons/Panda.ico"
+                src="/img/icons/Panda.webp"
                 width={40}
                 height={40}
                 alt="Elayabarathi M V"
