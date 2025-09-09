@@ -24,6 +24,16 @@ const EduContent = [
     desc: "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
   },
+  {
+    year: "2017 - 2018",
+    name: "SSLC",
+    perc: "90.2%",
+    instName: "U R C Palaniammal Matriculation Higher Secondary School",
+    instLogo: "/img/education/urc logo.webp",
+    instLink: "https://urcpmhss.edu.in/",
+    desc: "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
+    skills: "Science, Social Science, Mathematics, English.",
+  }
 ];
 
 const Education = () => {

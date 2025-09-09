@@ -1,0 +1,4 @@
+
+TODO: 
+1. Work & ProjectCard - filter and search function
+2. Adding project to work - BudgetMap, ai 3d portfolio, guess the number, task sheduler, linkedin form, 
