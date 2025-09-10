@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // React Icons
 import { IoClose } from "react-icons/io5";
-import { TiThSmallOutline } from "react-icons/ti";
+import { HiOutlineMenu } from "react-icons/hi";
 
 // Components
 import ProjectCard from "./ProjectCard";
@@ -12,17 +12,18 @@ const works = [
   {
     imgSrc: "/img/projects/project-10.webp",
     title: "Bamboo Blogs",
-    tags: ["Python", "Flask", "SQLite"],
+    tags: ["Python", "Flask", "PostgreSQL"],
     projectLink: "https://bamboo-blogs-sample.onrender.com/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Bamboo-Blogs-Sample",
     sTags: [
       "python",
       "flask",
+      "postgresql",
+      "sql",
       "sqlite",
       "html",
       "css",
-      "javascript",
       "blog",
       "crud",
       "web app",
@@ -31,7 +32,7 @@ const works = [
   {
     imgSrc: "/img/projects/project-9.webp",
     title: "LinkedIn Clone",
-    tags: ["LinkedIn", "Morphisire"],
+    tags: ["LinkedIn", "Clone"],
     projectLink: "https://linkedin-profile-clone.vercel.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Linkedin-Profile-Clone",
@@ -43,26 +44,24 @@ const works = [
       "javascript",
       "clone",
       "linkedin",
-      "morphisire",
       "web app",
     ],
   },
   {
     imgSrc: "/img/projects/project-8.webp",
-    title: "Stellar AI Chatbot",
+    title: "Budget Map",
     tags: ["AI Model", "Chat"],
     projectLink: "https://stellar-steel-tau.vercel.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/stellar",
     sTags: [
+      "ai made",
+      "next js",
       "react",
       "tailwind css",
       "html",
       "css",
       "javascript",
-      "ai",
-      "chatbot",
-      "gemini",
       "web app",
     ],
   },
@@ -93,34 +92,35 @@ const works = [
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Full-Stack-Ecommerce",
     sTags: [
-      "react",
+      "javascript",
       "tailwind css",
       "html",
       "css",
-      "javascript",
       "ecommerce",
+      "shopping",
       "crud",
       "stripe",
       "web app",
     ],
   },
   {
-    imgSrc: "/img/projects/project-5.webp",
-    title: "Profile Card",
-    tags: ["html", "CSS"],
-    projectLink: "https://profile-card-001.netlify.app/",
+    imgSrc: "/img/projects/project-8.webp",
+    title: "Stellar AI Chatbot",
+    tags: ["AI Model", "Chat"],
+    projectLink: "https://stellar-steel-tau.vercel.app/",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/Profile-Card-1",
-    sTags: ["html", "css", "javascript", "profile card", "web app"],
-  },
-  {
-    imgSrc: "/img/projects/project-4.webp",
-    title: "Shopping List",
-    tags: ["html", "CSS", "JS"],
-    projectLink: "https://frontend-shopping-list-app.vercel.app/",
-    code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/Frontend-Shopping-List-App",
-    sTags: ["html", "css", "javascript", "shopping list", "web app"],
+    gitUrl: "https://github.com/BadBoy-Github/stellar",
+    sTags: [
+      "react",
+      "tailwind css",
+      "html",
+      "css",
+      "javascript",
+      "ai",
+      "chatbot",
+      "gemini",
+      "web app",
+    ],
   },
   {
     imgSrc: "/img/projects/project-3.webp",
@@ -141,6 +141,132 @@ const works = [
     ],
   },
   {
+    imgSrc: "/img/projects/project-4.webp",
+    title: "Shopping List",
+    tags: ["html", "CSS", "JS"],
+    projectLink: "https://frontend-shopping-list-app.vercel.app/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/Frontend-Shopping-List-App",
+    sTags: ["html", "css", "javascript", "shopping", "list", "web app"],
+  },
+  {
+    imgSrc: "/img/projects/project-5.webp",
+    title: "Profile Card",
+    tags: ["html", "CSS"],
+    projectLink: "https://profile-card-001.netlify.app/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/Profile-Card-1",
+    sTags: ["html", "css", "profile", "card", "web app"],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "Network - Twitter Complaint Bot",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "python",
+      "selenium",
+      "automation",
+      "twitter",
+      "complaint",
+      "bot",
+    ],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "Musical Time Machine",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "python",
+      "beautifylsoup",
+      "musical",
+      "time",
+      "machine",
+      "spotify",
+    ],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "Restful API Cafe",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "python",
+      "flask",
+      "restful",
+      "api",
+      "cafe",
+    ],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "Snake Game",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "python",
+      "turtle",
+      "snake",
+      "game",
+    ],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "Pong Game",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "python",
+      "turtle",
+      "pong",
+      "game",
+    ],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "CRUD App",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "javascript",
+      "html",
+      "css",
+      "crud",
+      "web app",
+    ],
+  },
+  {
+    imgSrc: "/img/projects/project-3.webp",
+    title: "AI Portfolio",
+    tags: ["Todo", "CRUD"],
+    projectLink: "https://to-do-app-se8u.onrender.com/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    sTags: [
+      "ai made",
+      "react",
+      "tailwind css",
+      "html",
+      "css",
+      "javascript",
+      "portfolio",
+      "web app",
+    ],
+  },
+  {
     imgSrc: "/img/projects/project-2.webp",
     title: "Iron vs Cancer",
     tags: ["FeNPs", "Encapsule", "Cancer"],
@@ -150,6 +276,7 @@ const works = [
     sTags: [
       "feNps",
       "iron",
+      "ironoxide",
       "nanoparticle",
       "encapsule",
       "cancer",
@@ -166,11 +293,20 @@ const works = [
       "https://journals.innovareacademics.in/index.php/ijap/article/view/51711",
     code: "False",
     gitUrl: "",
-    sTags: ["agNps", "silver", "antimicrobial", "biotech", "research"],
+    sTags: [
+      "agNps",
+      "silver",
+      "nanoparticle",
+      "bacteria",
+      "microbes",
+      "antimicrobial",
+      "biotech",
+      "research",
+    ],
   },
 ];
 
-const sTags = ["React", "HTML", "Python", "AI"];
+const sTags = ["React", "JavaScript", "HTML", "Python", "AI Made", "Biotech"];
 
 const Work = () => {
   const [expanded, setExpanded] = useState(false);
@@ -272,7 +408,7 @@ const Work = () => {
               } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
               onClick={() => handleTagSelect("all")}
             >
-              <TiThSmallOutline className="size-5" />
+              <HiOutlineMenu className="size-5" />
             </button>
 
             <div className="flex items-center gap-2">
