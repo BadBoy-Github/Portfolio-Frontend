@@ -31,9 +31,9 @@ const EduContent = [
     instName: "U R C Palaniammal Matriculation Higher Secondary School",
     instLogo: "/img/education/urc logo.webp",
     instLink: "https://urcpmhss.edu.in/",
-    desc: "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
+    desc: "Throughout my school years, I built a strong foundation in my studies. With the help of my teachers, I learned to study with discipline and think carefully.",
     skills: "Science, Social Science, Mathematics, English.",
-  }
+  },
 ];
 
 const Education = () => {
