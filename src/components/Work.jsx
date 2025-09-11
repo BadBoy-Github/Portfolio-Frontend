@@ -10,9 +10,10 @@ import ShowMoreCard from "./ShowMoreCard";
 
 const works = [
   {
-    imgSrc: "/img/projects/project-10.webp",
+    imgSrc: "/img/projects/project-18.webp",
     title: "Bamboo Blogs",
-    tags: ["Python", "Flask", "PostgreSQL"],
+    tags: ["Blog", "Flask", "DB"],
+    live: "True",
     projectLink: "https://bamboo-blogs-sample.onrender.com/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Bamboo-Blogs-Sample",
@@ -30,9 +31,10 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-9.webp",
+    imgSrc: "/img/projects/project-17.webp",
     title: "LinkedIn Clone",
-    tags: ["LinkedIn", "Clone"],
+    tags: ["Social", "Network", "Profile"],
+    live: "True",
     projectLink: "https://linkedin-profile-clone.vercel.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Linkedin-Profile-Clone",
@@ -48,12 +50,13 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-8.webp",
+    imgSrc: "/img/projects/project-16.webp",
     title: "Budget Map",
-    tags: ["AI Model", "Chat"],
-    projectLink: "https://stellar-steel-tau.vercel.app/",
+    tags: ["AI", "Finance", "Map"],
+    live: "True",
+    projectLink: "https://budget-map-website.vercel.app/",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/stellar",
+    gitUrl: "https://github.com/BadBoy-Github/Budget-Map",
     sTags: [
       "ai made",
       "next js",
@@ -66,9 +69,10 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-7.webp",
+    imgSrc: "/img/projects/project-15.webp",
     title: "Spotify Clone",
-    tags: ["Music", "Clerk", "Clone"],
+    tags: ["Music", "Clone", "Stream"],
+    live: "True",
     projectLink: "https://spotify-clone-6rda.onrender.com/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/spotify-clone",
@@ -85,9 +89,10 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-6.webp",
+    imgSrc: "/img/projects/project-14.webp",
     title: "eCommerce website",
-    tags: ["eCommerce", "Stripe"],
+    tags: ["Shop", "Stripe", "Store"],
+    live: "True",
     projectLink: "https://full-stack-ecommerce-h47u.vercel.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Full-Stack-Ecommerce",
@@ -104,9 +109,10 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-8.webp",
+    imgSrc: "/img/projects/project-13.webp",
     title: "Stellar AI Chatbot",
-    tags: ["AI Model", "Chat"],
+    tags: ["AI", "Bot", "Chat"],
+    live: "True",
     projectLink: "https://stellar-steel-tau.vercel.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/stellar",
@@ -123,9 +129,10 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
+    imgSrc: "/img/projects/project-12.webp",
     title: "ToDo App",
-    tags: ["Todo", "CRUD"],
+    tags: ["Task", "List", "CRUD"],
+    live: "True",
     projectLink: "https://to-do-app-se8u.onrender.com/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
@@ -141,120 +148,94 @@ const works = [
     ],
   },
   {
-    imgSrc: "/img/projects/project-4.webp",
+    imgSrc: "/img/projects/project-11.webp",
     title: "Shopping List",
-    tags: ["html", "CSS", "JS"],
+    tags: ["Cart", "Items", "List"],
+    live: "True",
     projectLink: "https://frontend-shopping-list-app.vercel.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Frontend-Shopping-List-App",
     sTags: ["html", "css", "javascript", "shopping", "list", "web app"],
   },
   {
-    imgSrc: "/img/projects/project-5.webp",
+    imgSrc: "/img/projects/project-10.webp",
     title: "Profile Card",
-    tags: ["html", "CSS"],
+    tags: ["Profile", "Card", "UI"],
+    live: "True",
     projectLink: "https://profile-card-001.netlify.app/",
     code: "True",
     gitUrl: "https://github.com/BadBoy-Github/Profile-Card-1",
     sTags: ["html", "css", "profile", "card", "web app"],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
-    title: "Network - Twitter Complaint Bot",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    imgSrc: "/img/projects/project-9.webp",
+    title: "Speed Snitch Bot",
+    tags: ["Bot", "Net", "Tweet"],
+    live: "False",
+    projectLink: "#",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-    sTags: [
-      "python",
-      "selenium",
-      "automation",
-      "twitter",
-      "complaint",
-      "bot",
-    ],
+    gitUrl: "https://github.com/BadBoy-Github/Twitter-Complaint-Automation",
+    sTags: ["python", "selenium", "automation", "twitter", "complaint", "bot"],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
-    title: "Musical Time Machine",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    imgSrc: "/img/projects/project-8.webp",
+    title: "Tune Back",
+    tags: ["Music", "Retro", "Spotify"],
+    live: "False",
+    projectLink: "#",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-    sTags: [
-      "python",
-      "beautifylsoup",
-      "musical",
-      "time",
-      "machine",
-      "spotify",
-    ],
+    gitUrl: "https://github.com/BadBoy-Github/Musically-Time-Machine",
+    sTags: ["python", "beautifylsoup", "musical", "time", "machine", "spotify"],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
-    title: "Restful API Cafe",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    imgSrc: "/img/projects/project-7.webp",
+    title: "Brey Bytes API",
+    tags: ["API", "Cafe", "Data"],
+    live: "False",
+    projectLink: "#",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-    sTags: [
-      "python",
-      "flask",
-      "restful",
-      "api",
-      "cafe",
-    ],
+    gitUrl:
+      "https://github.com/BadBoy-Github/Restful-API--Flask-SQLite-Postman-Cafe-Wifi-",
+    sTags: ["python", "flask", "restful", "api", "cafe"],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
+    imgSrc: "/img/projects/project-6.webp",
     title: "Snake Game",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    tags: ["Snake", "Arcade", "Retro"],
+    live: "False",
+    projectLink: "#",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-    sTags: [
-      "python",
-      "turtle",
-      "snake",
-      "game",
-    ],
+    gitUrl: "https://github.com/BadBoy-Github/Snake-game",
+    sTags: ["python", "turtle", "snake", "game"],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
+    imgSrc: "/img/projects/project-5.webp",
     title: "Pong Game",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    tags: ["Pong", "Arcade", "Retro"],
+    live: "False",
+    projectLink: "#",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-    sTags: [
-      "python",
-      "turtle",
-      "pong",
-      "game",
-    ],
+    gitUrl: "https://github.com/BadBoy-Github/Pong-game",
+    sTags: ["python", "turtle", "pong", "game"],
   },
   {
-    imgSrc: "/img/projects/project-3.webp",
+    imgSrc: "/img/projects/project-4.webp",
     title: "CRUD App",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    tags: ["CRUD", "Data"],
+    live: "False",
+    projectLink: "#",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-    sTags: [
-      "javascript",
-      "html",
-      "css",
-      "crud",
-      "web app",
-    ],
+    gitUrl: "https://github.com/BadBoy-Github/CRUD-App",
+    sTags: ["javascript", "html", "css", "crud", "web app"],
   },
   {
     imgSrc: "/img/projects/project-3.webp",
     title: "AI Portfolio",
-    tags: ["Todo", "CRUD"],
-    projectLink: "https://to-do-app-se8u.onrender.com/",
+    tags: ["AI", "Portfolio", "3D"],
+    live: "True",
+    projectLink: "https://elayabarathi-ai.netlify.app/",
     code: "True",
-    gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
+    gitUrl: "https://github.com/BadBoy-Github/AI-3D-Portfolio",
     sTags: [
       "ai made",
       "react",
@@ -269,7 +250,8 @@ const works = [
   {
     imgSrc: "/img/projects/project-2.webp",
     title: "Iron vs Cancer",
-    tags: ["FeNPs", "Encapsule", "Cancer"],
+    tags: ["Iron", "Cancer", "Nano"],
+    live: "False",
     projectLink: "",
     code: "False",
     gitUrl: "",
@@ -288,11 +270,12 @@ const works = [
   {
     imgSrc: "/img/projects/project-1.webp",
     title: "Silver vs Bacteria",
-    tags: ["AgNPs", "Antimicrobial"],
+    tags: ["Silver", "Bacteria", "Nano"],
+    live: "True",
     projectLink:
       "https://journals.innovareacademics.in/index.php/ijap/article/view/51711",
     code: "False",
-    gitUrl: "",
+    gitUrl: "#",
     sTags: [
       "agNps",
       "silver",
@@ -413,17 +396,25 @@ const Work = () => {
 
             <div className="flex items-center gap-2">
               {sTags.map((tag, index) => (
-                <button
-                  className={`px-3 py-2 rounded-lg text-sm ${
-                    selectedTag === tag.toLowerCase()
-                      ? "bg-sky-600 text-zinc-800"
-                      : "text-zinc-400 bg-zinc-50/5"
-                  } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-                  key={index}
-                  onClick={() => handleTagSelect(tag.toLowerCase())}
-                >
-                  {tag}
-                </button>
+                <div className="group relative" key={index}>
+                  <button
+                    className={`group relative px-3 py-2 rounded-lg text-sm ${
+                      selectedTag === tag.toLowerCase()
+                        ? "bg-sky-600 text-zinc-800"
+                        : "text-zinc-400 bg-zinc-50/5"
+                    } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
+                    onClick={() => handleTagSelect(tag.toLowerCase())}
+                  >
+                    {tag}
+                  </button>
+                  {tag === "AI Made" && (
+                    <span
+                      className="absolute w-[100px] -top-14 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100"
+                    >
+                      Idea is Mine!
+                    </span>
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -431,7 +422,7 @@ const Work = () => {
           <div className="flex items-center gap-2">
             <div className="text-xs text-zinc-400 mr-3">
               #{filteredWorks.length}
-            </div>
+            </div>fit
 
             <input
               type="text"
@@ -465,12 +456,17 @@ const Work = () => {
               delay={index * 0.1}
               classes=""
               code={project.code}
+              live={project.live}
               gitUrl={project.gitUrl}
             />
           ))}
 
           {filteredWorks.length === 0 && (
-            <div className="col-span-full text-center py-10">
+            <div className="col-span-full text-center py-10 flex flex-col justify-center items-center">
+              <div className="loader mb-4">
+                <span></span>
+              </div>
+
               <h3 className="text-xl font-semibold text-zinc-300">
                 No projects found
               </h3>
