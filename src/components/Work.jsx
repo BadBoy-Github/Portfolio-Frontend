@@ -409,7 +409,7 @@ const Work = () => {
                   </button>
                   {tag === "AI Made" && (
                     <span
-                      className="absolute w-[100px] -top-14 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100"
+                      className="absolute w-[100px] -top-12 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100"
                     >
                       Idea is Mine!
                     </span>
@@ -422,7 +422,7 @@ const Work = () => {
           <div className="flex items-center gap-2">
             <div className="text-xs text-zinc-400 mr-3">
               #{filteredWorks.length}
-            </div>fit
+            </div>
 
             <input
               type="text"

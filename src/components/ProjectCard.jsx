@@ -30,7 +30,7 @@ const ProjectCard = ({
           >
             <div className="group/hovtex relative flex items-center text-zinc-300">
               <FaGithub className="size-6" />
-              <span className="absolute w-[70px] z-50 -top-16 left-[50%] -translate-x-[50%] origin-bottom scale-0 px-2 rounded-lg bg-zinc-800 text-zinc-300 ring-1 ring-inset ring-gray-50/5 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover/hovtex:scale-100">
+              <span className="absolute w-[70px] z-50 -top-[66px] left-[50%] -translate-x-[50%] origin-bottom scale-0 px-2 rounded-lg bg-zinc-800 text-zinc-300 ring-1 ring-inset ring-gray-50/5 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover/hovtex:scale-100">
                 View on GitHub
               </span>
             </div>
