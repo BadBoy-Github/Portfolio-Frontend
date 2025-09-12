@@ -237,27 +237,27 @@ const Certifications = () => {
         <div className="hidden lg:flex justify-between items-center">
           <button
             onClick={() => scroll("left")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center opacity-75 left-0 top-[53%] group hover:opacity-100 hover:scale-110 transition-all duration-300"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center opacity-75 left-0 top-[53%] group hover:opacity-100 hover:scale-105 transition-all duration-300"
           >
-            <FaChevronLeft className="group-hover:scale-150 transition-all duration-300" />
+            <FaChevronLeft className="group-hover:scale-125 transition-all duration-300" />
           </button>
           <button
             onClick={scrollToStart}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[53%] group hover:opacity-75 hover:scale-110 transition-all duration-300"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -left-14 top-[53%] group hover:opacity-75 hover:scale-105 transition-all duration-300"
           >
-            <FaAnglesLeft className="group-hover:scale-150 transition-all duration-300" />
+            <FaAnglesLeft className="group-hover:scale-125 transition-all duration-300" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center opacity-75 right-0 top-[53%] group hover:opacity-100 hover:scale-110 transition-all duration-300"
+            className="absolute z-10 p-4 bg-black rounded-full flex items-center justify-center opacity-75 right-0 top-[53%] group hover:opacity-100 hover:scale-105 transition-all duration-300"
           >
-            <FaChevronRight className="group-hover:scale-150 transition-all duration-300" />
+            <FaChevronRight className="group-hover:scale-125 transition-all duration-300" />
           </button>
           <button
             onClick={scrollToEnd}
-            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[53%] group hover:opacity-75 hover:scale-110 transition-all duration-300"
+            className="absolute z-10 p-4 bg-black/40 rounded-full flex items-center justify-center opacity-50 -right-14 top-[53%] group hover:opacity-75 hover:scale-105 transition-all duration-300"
           >
-            <FaAnglesRight className="group-hover:scale-150 transition-all duration-300" />
+            <FaAnglesRight className="group-hover:scale-125 transition-all duration-300" />
           </button>
         </div>
 
