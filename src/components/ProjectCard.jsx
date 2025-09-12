@@ -21,13 +21,13 @@ const ProjectCard = ({
         classes
       }
     >
-      <figure className="img-box aspect-square rounded-lg mb-4 relative">
+      <figure className={`img-box aspect-square rounded-xl mb-4 relative `}>
         {code == "True" && (
           <a
             href={gitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 transform ease-in-out bg-zinc-700 p-1 flex  transition-all duration-700 opacity-50 hover:opacity-75 hover:w-[102px]  group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
+            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 transform ease-in-out bg-zinc-700 p-1 flex  transition-all duration-700 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
           >
             <div className="flex items-center justify-end">
               <FaGithub className="size-6 absolute p-1 rounded-full right-1 transform transition-transform duration-700 ease-in-out group-hover/githov:translate-x-[-70px] z-30 bg-zinc-800" />
@@ -45,7 +45,11 @@ const ProjectCard = ({
           src={imgSrc}
           alt={title}
           loading="lazy"
-          className="img-cover rounded-xl w-full h-full"
+          className={`img-cover rounded-xl w-full h-full ${
+            live !== "True"
+              ? "group-hover:grayscale transition-all duration-300"
+              : ""
+          }`}
         />
       </figure>
       <div className="flex items-center justify-between gap-4">
@@ -64,7 +68,13 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0">
+        <div
+          className={`w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 ${
+            live !== "True"
+              ? " group-hover:grayscale transition-all duration-300"
+              : ""
+          }`}
+        >
           <span className="material-symbols-rounded" aria-hidden="true">
             arrow_outward
           </span>

@@ -408,9 +408,7 @@ const Work = () => {
                     {tag}
                   </button>
                   {tag === "AI Made" && (
-                    <span
-                      className="absolute w-[100px] -top-12 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100"
-                    >
+                    <span className="absolute w-[100px] -top-12 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
                       Idea is Mine!
                     </span>
                   )}
@@ -435,10 +433,10 @@ const Work = () => {
 
             {searchQuery && (
               <div
-                className="text-zinc-800 mr-1 bg-sky-600 rounded-lg p-2 ml-2 cursor-pointer hover:bg-red-600 active:bg-red-800 transition-all duration-500"
+                className="text-zinc-800 mr-1 bg-sky-600 rounded-lg p-2 ml-2 cursor-pointer hover:bg-red-600 transition-all duration-500 group/close"
                 onClick={clearSearch}
               >
-                <IoClose />
+                <IoClose className="size-5 group-hover/close:rotate-90 transition-all duration-500" />
               </div>
             )}
           </div>
