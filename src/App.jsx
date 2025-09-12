@@ -33,6 +33,7 @@ import Certifications from './components/Certifications';
 import Education from './components/Education';
 import Experience from './components/Experience';
 import Achievements from './components/Achievements';
+import Chat from './components/Chat';
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
           <Hero />
           <About />
           <Skills />
+          <Chat />
           <Education />
           <Experience />
           <Work />
