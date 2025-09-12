@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 
 import { FaGithub } from "react-icons/fa";
+import { IoArrowForwardOutline } from "react-icons/io5";
 
 const ProjectCard = ({
   imgSrc,
@@ -26,13 +27,17 @@ const ProjectCard = ({
             href={gitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-2 z-20 top-2 rounded-full bg-gray-800 p-1 group-hover:flex hidden transition-all duration-300 opacity-75 hover:opacity-100 hover:scale-110 ease-in-out"
+            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 transform ease-in-out bg-zinc-700 p-1 flex  transition-all duration-700 opacity-50 hover:opacity-75 hover:w-[102px]  group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
           >
-            <div className="group/hovtex relative flex items-center text-zinc-300">
-              <FaGithub className="size-6" />
-              <span className="absolute w-[70px] z-50 -top-[66px] left-[50%] -translate-x-[50%] origin-bottom scale-0 px-2 rounded-lg bg-zinc-800 text-zinc-300 ring-1 ring-inset ring-gray-50/5 py-2 text-sm shadow-md transition-all duration-300 ease-in-out group-hover/hovtex:scale-100">
-                View on GitHub
-              </span>
+            <div className="flex items-center justify-end">
+              <FaGithub className="size-6 absolute p-1 rounded-full right-1 transform transition-transform duration-700 ease-in-out group-hover/githov:translate-x-[-70px] z-30 bg-zinc-800" />
+              <div
+                className="absolute right-2 text-sm text-zinc-200 opacity-0 translate-x-2 group-hover/githov:opacity-100 
+                group-hover/githov:translate-x-0 transition-all delay-200 flex items-center justify-center"
+              >
+                <p>GitHub</p>
+                <IoArrowForwardOutline className="size-4 text-zinc-300 group-hover/githov:-rotate-45 opacity-75 transition-all duration-500 delay-150" />
+              </div>
             </div>
           </a>
         )}
