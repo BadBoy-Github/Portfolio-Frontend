@@ -24,7 +24,6 @@ const ExperienceCard = ({
         <a
           href={instLink}
           target="_blank"
-          title={instName}
           className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer"
         >
           <img
@@ -50,14 +49,17 @@ const ExperienceCard = ({
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
             <div className=" mt-2 w-[90%]">
               <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex items-center mt-4 gap-4">
+              <div className="flex items-center mt-4 gap-4 ">
                 <div
                   onClick={openImage}
-                  title="Click to view certificate"
-                  className="hidden text-sky-600 bg-zinc-700 size-8 lg:flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 transition-all"
+                  className="hidden text-sky-600 bg-zinc-700 size-8 lg:flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 transition-all relative group/certhov"
                 >
-                  <TbCertificate className="size-4" />
+                  <TbCertificate className="size-4 " />
+                  <span className="absolute w-[110px] -top-12 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-xs shadow-md transition-all duration-300 ease-in-out group-hover/certhov:scale-90">
+                    View Certificate
+                  </span>
                 </div>
+
                 <div className="flex items-center justify-start text-zinc-400 w-full gap-3">
                   <TbBulb
                     size={20}

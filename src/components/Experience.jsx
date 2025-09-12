@@ -71,7 +71,6 @@ const Experience = () => {
                   <a
                     href={edu.instLink}
                     target="_blank"
-                    title={edu.instName}
                     className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer"
                   >
                     <img

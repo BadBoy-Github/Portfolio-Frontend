@@ -17,7 +17,6 @@ const EducationCard = ({
         <a
           href={instLink}
           target="_blank"
-          title={instName}
           className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
         >
           <img
