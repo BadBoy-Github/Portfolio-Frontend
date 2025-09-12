@@ -15,7 +15,7 @@ const ReviewCard = ({
     company
 }) => {
     return (
-      <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group hover:scale-105 transition-all duration-300">
+      <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group hover:scale-[102%] transition-all duration-300">
         <div className="flex items-center gap-1 mb-3">
           {ratings.map(({ icon, style }, key) => (
             <span

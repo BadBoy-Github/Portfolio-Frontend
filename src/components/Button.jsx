@@ -10,7 +10,6 @@ const ButtonPrimary = ({
     target = '_self',
     label,
     icon,
-    title,
     classes
 }) => {
 
@@ -20,7 +19,6 @@ const ButtonPrimary = ({
             href={href}
             target={target}
             className={"btn btn-primary " + classes}
-            title={title}
           >
             {label}
 
@@ -57,7 +55,6 @@ ButtonPrimary.propTypes = {
     href: PropTypes.string,
     target: PropTypes.string,
     icon: PropTypes.string,
-    title: PropTypes.string,
     classes: PropTypes.string
 }
 
@@ -69,7 +66,6 @@ const ButtonOutline = ({
     target = '_self',
     label,
     icon,
-    title,
     classes
 }) => {
 
@@ -79,7 +75,6 @@ const ButtonOutline = ({
                 href={href}
                 target={target}
                 className={"btn btn-outline " + classes}
-                title={title}
             >
                 {label}
 
@@ -115,7 +110,6 @@ ButtonOutline.propTypes = {
     href: PropTypes.string,
     target: PropTypes.string,
     icon: PropTypes.string,
-    title: PropTypes.string,
     classes: PropTypes.string
 }
 

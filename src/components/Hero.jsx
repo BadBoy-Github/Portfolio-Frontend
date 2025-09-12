@@ -40,16 +40,14 @@ const Hero = () => {
               <ButtonPrimary
                 label="Download CV"
                 icon="download"
-                title="Download my latest resume"
                 href="/docs/resume.pdf"
                 target="_blank"
               />
 
               <ButtonOutline
                 href="#about"
-                label="Scroll down"
+                label="Learn More"
                 icon="arrow_downward"
-                title="Scroll down to learn more about me"
               />
             </div>
           </div>

@@ -24,11 +24,21 @@ const EduContent = [
     desc: "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
     skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
   },
+  {
+    year: "2017 - 2018",
+    name: "SSLC",
+    perc: "90.2%",
+    instName: "U R C Palaniammal Matriculation Higher Secondary School",
+    instLogo: "/img/education/urc logo.webp",
+    instLink: "https://urcpmhss.edu.in/",
+    desc: "Throughout my school years, I built a strong foundation in my studies. With the help of my teachers, I learned to study with discipline and think carefully.",
+    skills: "Science, Social Science, Mathematics, English.",
+  },
 ];
 
 const Education = () => {
   return (
-    <section id="education" className="section">
+    <section id="journey" className="section">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
         <h2 className="headline-2 ">My Academic Journey</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
