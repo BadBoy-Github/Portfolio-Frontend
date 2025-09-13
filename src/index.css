@@ -251,7 +251,6 @@ body {
 }
 
 /* Project Empty Loader */
-/* From Uiverse.io by mrhyddenn */
 .loader {
     position: relative;
     width: 150px;
@@ -322,4 +321,6 @@ body {
         transform: rotate(360deg);
     }
 }
+
+
 
