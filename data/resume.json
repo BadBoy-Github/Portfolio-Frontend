@@ -1,0 +1,114 @@
+
+
+{
+  "name": "Elayabarathi M V",
+  "headline": "Frontend Web Developer",
+  "about": "Welcome! I'm Elayabarathi, a professional biotechnologist with expertise in microbiology, genetics, and bioinformatics. Innovated cancer treatments via nanobiotechnology. Accomplished frontend web developer. Passionate about integrating biology and technology for innovation. Strong collaborator and problem-solver, dedicated to continuous learning and interdisciplinary success.",
+  "oneline": "Enthusiast in Scientific & Technological Innovations",
+  "contact": {
+    "email": "elayabarathiedison@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/elayabarathi/",
+    "github": "https://github.com/BadBoy-Github",
+    "portfolio": "https://elayabarathimv-portfolio.vercel.app/"
+  },
+  "skills": [
+    {
+        "fullstack web developer": {
+            "frontend": ["HTML", "CSS", "JavaScript", "SEO", "React JS", "Tailwind CSS", "Bootstrap", "REST API", "Responsive Design" ],
+            "backend": ["Node JS", "SQL", "MongoDB"],
+            "middleware": ["Java", "Python"],
+            "deployments": ["Vercel", "Render", "Netlify"],
+            "platforms": ["Windows", "GitHub"],
+            "softwares": ["Visual Studio Code", "Postman", "PyCharm", "Jupyter Notebook"]
+        },
+        "biotechnologist": {
+            "wetlab": ["Bacterial/Fungal Culturing", "Maintaining Culture", "Primary & Secondary Metabolites Extraction", "Pre and Post Culturing Methods (Media Preparation, Centrifugation, Lyophilization)" ],
+            "drylab": ["Documentation", "Graph Plotting", "Statistical Analysis"],
+            "analysis": ["Antioxidant (DPPH, H2O2, FRAP, PM)", "Antibacterial", "Antifungal"]
+        },
+        "other skills": {
+            "graphic design": ["Canva", "Adobe Express", "Adobe Photoshop"],
+            "CAD Design": ["AutoCAD"],
+            "Video Editing": ["Adobe Premiere Pro", "CapCut", "CyberLink PowerDirector"]
+        }
+    }
+  ],
+  "projects": [
+    {
+      "name": "Portfolio Website",
+      "description": "Personal portfolio built with React and Tailwind. Shows projects, blog, and interactive CV.",
+      "technologies": ["React", "TailwindCSS", "Vercel"],
+      "link": "https://your-portfolio.vercel.app"
+    }
+  ],
+  "experience": [
+    {
+      "position": "Java Fullstack Developer Trainee",
+      "company": "QSpider - Software Testing Training Institute",
+      "duration": "August 2025 - Present",
+      "details": "Plan the direction and future for IT in accordance to the business continuity plan.",
+      "skills": []
+    },
+    {
+      "position": "Fullstack Web Developer Intern",
+      "company": "Corizo Edutech",
+      "duration": "November 2024 - December 2024",
+      "details": "Built real-world projects like a CRUD user management app and an eCommerce site while learning both front-end and back-end development. Gained practical experience in coding best practices, debugging, and problem-solving.",
+      "skills": ["JavaScript", "React JS", "Node JS", "Express JS", "Mongo DB", "HTML", "CSS"]
+    },
+    {
+      "position": "Fullstack Web Developer Trainee",
+      "company": "Corizo Edutech",
+      "duration": "October 2024 - November 2024",
+      "details": "Gained hands-on experience with HTML, CSS, JavaScript, MongoDB, Express.js, Node.js, APIs, and more. Built real-world projects like a shopping list app and user management system, strengthening technical and analytical skills.",
+      "skills": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "position": "Applied Microbiology abd Agricultural Biotechnology Intern",
+      "company": "Elies Biotech",
+      "duration": "July 2022 - August 2022",
+      "details": "Gained practical skills in microbial characterization, biofertilizer production, mushroom tissue culture, and Black Soldier Fly Larvae rearing. Built a strong foundation in applied microbiology and agricultural biotechnology.",
+      "skills": []
+    },
+    {
+      "position": "Biorith Millet Products Intern",
+      "company": "Biorith Techno Products",
+      "duration": "June 2022 - July 2022",
+      "details": "Operated advanced machinery and contributed to eco-friendly packaging solutions. Gained valuable experience in sustainable agriculture and food processing, applying theory to real-world practice",
+      "skills": []
+    }
+  ],
+  "education": [
+    {
+        "education": "Degree - Bachelor of Technology - Biotechnology",
+        "institution": "K. S. Rangasamy College of Technology (Autonomous)",
+        "year": "2020-2024",
+        "percentage": "88.10%",
+        "description": "Gaining a strong foundation in core principles and practical lab skills. Beyond academics, active participation in extracurricular and cultural events helped me develop leadership and interpersonal abilities. This experience nurtured my passion for continuous learning and innovation in biotechnology.",
+        "skills": ["Microbiology", "Genetic Engineering", "Nanobiotechnology", "Plant Tissue Culture", "Bioinformatics"]
+    },
+    {
+        "education": "Higher Secondary Certificate (HSC) - Biology-Mathematics - State Board",
+        "institution": "U. R. Palaniammal Matric Higher Secondary School",
+        "year": "2019-2020",
+        "percentage": "76.33%",
+        "description": "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
+        "skills": ["Human Anatomy", "Plant Biology", "Mathematics", "Quantitative Aptitude Mathematics"]
+    },
+    {
+        "education": "Secondary School Leaving Certificate (SSLC) - State Board",
+        "institution": "U. R. Palaniammal Matric Higher Secondary School",
+        "year": "2017-2018",
+        "percentage": "90.20%",
+        "description": "Throughout my school years, I built a strong foundation in my studies. With the help of my teachers, I learned to study with discipline and think carefully.",
+        "skills": ["Science", "Social Science", "Mathematics", "English"]
+    }
+  ],
+"more contact info": [
+    {
+        "Twitter": "https://x.com/_Elayabarathi_",
+        "Instagram": "https://www.instagram.com/_elayabarathi_/",
+        "whatsapp": "https://wa.me/919842852121"
+    }
+]
+}

@@ -8,7 +8,7 @@ import { IoSend } from "react-icons/io5";
 const Chat = () => {
   return (
     <>
-      <section id="chat" className="section ">
+      <section id="chatbot" className="section ">
         <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
           <h2 className="headline-2">Talk With My Portfolio</h2>
           <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
@@ -32,7 +32,8 @@ const Chat = () => {
                 you&apos;re looking for. Think of it as a friendly assistant
                 built right into my portfolio.
               </p>
-              <button className="bg-sky-600 hover:bg-sky-400 text-zinc-800 px-3 py-2 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 mt-4">
+              <a href="/docs/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <button className="bg-sky-600 hover:bg-sky-400 text-zinc-800 px-3 py-2 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 mt-4">
                 Download Resume
                 <span
                   className="material-symbols-rounded size-3 "
@@ -41,6 +42,7 @@ const Chat = () => {
                   download
                 </span>
               </button>
+              </a>
             </div>
             <div className="bg-zinc-800/70 w-full h-[400px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-700/30 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset">
               <div className=" h-full rounded-2xl p-4">
@@ -62,20 +64,12 @@ const Chat = () => {
                       What&apos;s the latest project you have done recently?
                     </p>
                   </div>
-                  <div className="flex items-center gap-3 mt-2">
-                    <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full">
-                      <RiRobot2Fill className="size-5" />
-                    </div>
-                    <p className="bg-sky-600/20 ring-1 ring-sky-700/40 px-2 py-1 rounded-lg text-zinc-200">
-                      ···
-                    </p>
-                  </div>
                 </div>
               </div>
-              <div className=" px-4 pt-1 pb-4 gap-3 rounded-2xl grid grid-cols-[92%_6%]">
+              <div className=" px-4 pt-1 pb-4 gap-3 rounded-2xl flex">
                 <input
                   type="text"
-                  className="bg-zinc-800 text-sky-100 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 rounded-lg px-3 py-2 transition-all duration-500 placeholder:text-sm text-sm"
+                  className="bg-zinc-800 text-sky-100 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 rounded-lg px-3 py-2 transition-all duration-500 placeholder:text-sm text-sm flex-1"
                   placeholder="Hey there, what skills are you best at?"
                   size={40}
                   tabIndex={0}
