@@ -1,8 +1,10 @@
 
+import CountUp from "./CountUp";
+
 const aboutItems = [
     {
       label: 'Project done',
-      number: 12
+      number: 20
     },
     {
       label: 'Technologies Known',
@@ -29,7 +31,14 @@ const About = () => {
               <div key={key}>
                 <div className="flex items-center md:mb-2">
                   <span className="text-2xl font-semibold md:text-4xl">
-                    {number}
+                    <CountUp
+                      from={0}
+                      to={number}
+                      separator=","
+                      direction="up"
+                      duration={1}
+                      className="count-up-text"
+                    />
                   </span>
                   <span className="text-sky-400 font-semibold md:text-3xl">
                     +

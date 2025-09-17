@@ -8,6 +8,8 @@ import { HiOutlineMenu } from "react-icons/hi";
 import ProjectCard from "./ProjectCard";
 import ShowMoreCard from "./ShowMoreCard";
 
+import CountUp from "./CountUp";
+
 const works = [
   {
     imgSrc: "/img/projects/project-19.webp",
@@ -439,7 +441,14 @@ const Work = () => {
 
           <div className="flex items-center gap-2">
             <div className="text-xs text-zinc-400 mr-3">
-              #{filteredWorks.length}
+              #<CountUp
+                from={0}
+                to={filteredWorks.length}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text"
+              />
             </div>
 
             <input
