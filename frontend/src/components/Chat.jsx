@@ -74,6 +74,7 @@ const Chat = () => {
     }
   };
 
+
   return (
     <section id="chatbot" className="section">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
@@ -93,10 +94,20 @@ const Chat = () => {
             <p className="mt-3 text-zinc-300 leading-relaxed">
               This chatbot is designed to make exploring my portfolio more
               interactive. You can ask questions about my{" "}
-              <span className="text-sky-400">skills</span>,
-              <span className="text-sky-400"> projects</span>, or even my
-              <span className="text-sky-400"> resume</span>, and it will guide
-              you to the right information.
+              <a href="#skills" className="text-sky-400">
+                skills
+              </a>
+              ,
+              <a href="#project" className="text-sky-400">
+                {" "}
+                projects
+              </a>
+              , or even my
+              <a href="/docs/resume.pdf" target="_blank" className="text-sky-400">
+                {" "}
+                resume
+              </a>
+              , and it will guide you to the right information.
             </p>
             <a
               href="/docs/resume.pdf"
@@ -124,10 +135,7 @@ const Chat = () => {
               >
                 {messages.map((msg, i) =>
                   msg.sender === "bot" ? (
-                    <div
-                      className="flex items-center gap-3"
-                      key={i}
-                    >
+                    <div className="flex items-center gap-3" key={i}>
                       <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full">
                         <RiRobot2Fill className="size-5" />
                       </div>

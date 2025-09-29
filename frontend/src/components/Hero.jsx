@@ -47,7 +47,7 @@ const Hero = () => {
               <ButtonOutline
                 href="#chatbot"
                 label="Chat with AI"
-                icon="robot_2"
+                icon="adb"
               />
             </div>
           </div>

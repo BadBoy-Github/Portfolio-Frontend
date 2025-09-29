@@ -96,7 +96,7 @@ const skillItem = [
 
 const Skills = () => {
   return (
-    <section className="section">
+    <section className="section" id="skills">
       <div className="container">
         <h2 className="headline-2 ">Essential Tools I use</h2>
 

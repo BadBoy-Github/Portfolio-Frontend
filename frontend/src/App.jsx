@@ -45,9 +45,9 @@ const App = () => {
           <Hero />
           <About />
           <Skills />
-          <Chat />
           <Education />
           <Experience />
+          <Chat />
           <Work />
           <Certifications />
           <Achievements />
