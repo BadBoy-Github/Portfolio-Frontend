@@ -24,7 +24,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Skills from './components/Skills';
+import Skills from './components/Skill';
 import Work from './components/Project';
 import Review from './components/Review';
 import Contact from './components/Contact';
