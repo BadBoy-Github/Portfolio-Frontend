@@ -8,7 +8,29 @@ import { HiOutlineMenu } from "react-icons/hi";
 import ProjectCard from "./ProjectCard";
 import ShowMoreCard from "./ShowMoreCard";
 
+import CountUp from "./CountUp";
+
 const works = [
+  {
+    imgSrc: "/img/projects/project-19.webp",
+    title: "Portfolio Website",
+    tags: ["Portfolio", "Showcase", "Profile"],
+    live: "True",
+    projectLink: "https://elayabarathimv-portfolio.vercel.app/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/Portfolio",
+    sTags: [
+      "react",
+      "tailwind css",
+      "html",
+      "css",
+      "javascript",
+      "portfolio",
+      "personal website",
+      "responsive",
+      "web app",
+    ],
+  },
   {
     imgSrc: "/img/projects/project-18.webp",
     title: "Bamboo Blogs",
@@ -374,7 +396,7 @@ const Work = () => {
   };
 
   return (
-    <section id="work" className="pt-20">
+    <section id="project" className="pt-20">
       <div className="container">
         <h2 className="headline-2 ">My project highlights</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
@@ -419,7 +441,14 @@ const Work = () => {
 
           <div className="flex items-center gap-2">
             <div className="text-xs text-zinc-400 mr-3">
-              #{filteredWorks.length}
+              #<CountUp
+                from={0}
+                to={filteredWorks.length}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text"
+              />
             </div>
 
             <input

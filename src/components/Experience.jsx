@@ -3,6 +3,18 @@ import ExperienceCompoundCard from "./ExperienceCompoundCard";
 
 const ExpContent = [
   {
+    year: "Aug 2025 - Current",
+    name: "Java Full Stack Developer Trainee",
+    role: "Trainee",
+    instName: "QSpiders Software Testing & Development Institute",
+    instLogo: "/img/experience/qspider logo.webp",
+    instLink: "https://qspiders.com/",
+    desc: "Comprehensive training in full-stack Java development covering front-end technologies, back-end, and middleware using Java and Advanced Java. Enhancing technical proficiency while strengthening problem-solving abilities through dedicated aptitude training.",
+    imgSrc: "/img/experience/qspider.webp",
+    skills: ["SQL", "Aptitude", "HTML", "CSS", "JavaScript"],
+    compound: false,
+  },
+  {
     instName: "Corizo Edutech Pvt Ltd",
     instLogo: "/img/experience/corizo logo.webp",
     instLink: "https://corizo.in/",
@@ -15,7 +27,15 @@ const ExpContent = [
         role: "Intern",
         desc: "Mastering both front-end and back-end development while building real-world projects like a CRUD user management app and an eCommerce site. Gained hands-on experience in coding best practices, debugging, and problem-solving.",
         imgSrc: "/img/experience/corizo2.webp",
-        skills: "JavaScript, React, Node.js, Express, MongoDB",
+        skills: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React JS",
+          "Node JS",
+          "Express",
+          "MongoDB",
+        ],
       },
       {
         year: "Oct - Nov 2024",
@@ -23,7 +43,7 @@ const ExpContent = [
         role: "Trainee",
         desc: "Gained hands-on experience with HTML, CSS, JavaScript, MongoDB, Express.js, Node.js, APIs, and more. Built multiple real-world projects including a shopping list app and a user management system, refining both technical and analytical skills.",
         imgSrc: "/img/experience/corizo1.webp",
-        skills: "HTML, CSS, JavaScript",
+        skills: ["HTML", "CSS", "JavaScript"],
       },
     ],
   },
@@ -34,9 +54,9 @@ const ExpContent = [
     instName: "Elies Biotech Pvt Ltd",
     instLogo: "/img/experience/elies logo.webp",
     instLink: "https://eliesbiotech.co.in/",
-    desc: "gaining practical skills in microbial characterization, biofertilizer production, mushroom tissue culture, and Black Soldier Fly Larvae rearing. Built a strong foundation in applied microbiology and agricultural biotechnology.",
+    desc: "Gained practical skills in microbial characterization, biofertilizer production, mushroom tissue culture, and Black Soldier Fly Larvae rearing. Built a strong foundation in applied microbiology and agricultural biotechnology.",
     imgSrc: "/img/experience/elies.webp",
-    skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
+    skills: ["Microbiology", "Mushroom Cultivation", "BSFL Rearing"],
     compound: false,
   },
   {
@@ -46,9 +66,9 @@ const ExpContent = [
     instName: "Biorith Techno Products Pvt Ltd",
     instLogo: "/img/experience/biorith logo.webp",
     instLink: "https://biorith.in/",
-    desc: "operating advanced machinery and contributing to eco-friendly packaging solutions. Gained valuable experience in sustainable agriculture and food processing, bridging theoretical knowledge with real-world application.",
+    desc: "Operated advanced machinery and contributing to eco-friendly packaging solutions. Gained valuable experience in sustainable agriculture and food processing, bridging theoretical knowledge with real-world application.",
     imgSrc: "/img/experience/biorith.webp",
-    skills: "Human Anatomy, Plant Biology, Quantitative Aptitude Math.",
+    skills: ["Food Science", "Food Processing", "Quality Checking"],
     compound: false,
   },
 ];

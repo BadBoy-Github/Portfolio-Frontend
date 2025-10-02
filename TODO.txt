@@ -1,0 +1,8 @@
+
+order (19)
+portfolio website, bamboo blogs , linkedin clone , budget map , spotify clone , ecommerse , stellar , todo , shopping list , profile card , twitter complaint automation , musical time machine , restgul api cafe , snake game , pong game , crud , ai portfolio , iron , silver
+
+#TODO: AI backend to be done. 
+#TODO: Integrate chats with backend
+#TODO: Make everything works fine on CHATBOT Component
+

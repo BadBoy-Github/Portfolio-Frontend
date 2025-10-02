@@ -69,7 +69,7 @@ body {
 
 
 .section {
-    @apply pt-20 lg:pt-32
+    @apply pt-20 lg:pt-28
 }
 
 
@@ -251,7 +251,6 @@ body {
 }
 
 /* Project Empty Loader */
-/* From Uiverse.io by mrhyddenn */
 .loader {
     position: relative;
     width: 150px;
@@ -321,5 +320,29 @@ body {
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* Smooth transitions for read more */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Custom scrollbar for chat */
+.scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 

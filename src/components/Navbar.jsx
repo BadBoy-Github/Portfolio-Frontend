@@ -9,8 +9,7 @@ const Navbar = ({ navOpen }) => {
   const navItems = [
     { label: "Home", link: "#home" },
     { label: "About", link: "#about" },
-    { label: "Journey", link: "#journey" },
-    { label: "Work", link: "#work" },
+    { label: "Project", link: "#project" },
     { label: "Certification", link: "#certification" },
     { label: "Reviews", link: "#reviews" },
     { label: "Contact", link: "#contactme", className: "lg:hidden" },

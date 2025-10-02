@@ -45,9 +45,9 @@ const Hero = () => {
               />
 
               <ButtonOutline
-                href="#about"
-                label="Learn More"
-                icon="arrow_downward"
+                href="#chatbot"
+                label="Chat with AI"
+                icon="adb"
               />
             </div>
           </div>

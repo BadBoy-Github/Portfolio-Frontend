@@ -42,14 +42,21 @@ const EducationCard = ({
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
             <div className=" mt-2 w-[90%]">
               <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex gap-2 lg:-ml-8 items-center mt-4 text-zinc-400">
+              <div className="flex items-center justify-start text-zinc-400 w-full gap-2 mt-4">
                 <TbBulb
                   size={20}
-                  className="min-w-[10%] max-w-[10%] group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                  className="hidden md:flex items-center justify-center group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
                 />
-                <span className="min-w-[100%] max-w-[100%] lg:-ml-6 group-hover:text-zinc-300 transition-colors duration-300">
-                  <em>{skills}</em>
-                </span>
+                <div className="flex items-center flex-wrap gap-2">
+                  {skills.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -67,7 +74,7 @@ EducationCard.propTypes = {
   instLogo: PropTypes.string.isRequired,
   instLink: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  skills: PropTypes.string.isRequired,
+  skills: PropTypes.array.isRequired,
 };
 
 export default EducationCard;
