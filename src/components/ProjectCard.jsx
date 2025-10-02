@@ -1,6 +1,7 @@
 // Node modules
 import PropTypes from "prop-types";
 
+// Icons
 import { FaGithub } from "react-icons/fa";
 import { IoArrowForwardOutline } from "react-icons/io5";
 
@@ -27,10 +28,10 @@ const ProjectCard = ({
             href={gitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 transform ease-in-out bg-zinc-700 p-1 flex  transition-all duration-700 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
+            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 transform ease-in-out bg-zinc-700 p-1 flex  transition-all duration-300 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
           >
             <div className="flex items-center justify-end">
-              <FaGithub className="size-6 absolute p-1 rounded-full right-1 transform transition-transform duration-700 ease-in-out group-hover/githov:translate-x-[-70px] z-30 bg-zinc-800" />
+              <FaGithub className="size-6 absolute p-1 rounded-full right-1 transform transition-transform duration-[380ms] ease-in-out group-hover/githov:translate-x-[-70px] z-30 bg-zinc-800" />
               <div
                 className="absolute right-2 text-sm text-zinc-200 opacity-0 translate-x-2 group-hover/githov:opacity-100 
                 group-hover/githov:translate-x-0 transition-all delay-200 flex items-center justify-center"

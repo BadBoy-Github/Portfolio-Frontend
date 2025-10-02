@@ -1,4 +1,4 @@
-// React & icons
+// React
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
@@ -8,9 +8,11 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { LuMessagesSquare } from "react-icons/lu";
 import { FaUser } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
+import { PiExclamationMarkBold } from "react-icons/pi";
+import { IoClose } from "react-icons/io5";
 
-// backend url
 const BACKEND_URL = "http://localhost:5000";
+
 
 // Read More Component
 const ReadMoreText = ({ text, maxLines = 5 }) => {
@@ -33,8 +35,6 @@ const ReadMoreText = ({ text, maxLines = 5 }) => {
     setIsExpanded(!isExpanded);
   };
 
-
-  
   return (
     <div>
       <div
@@ -156,13 +156,16 @@ const Chat = () => {
       case "error":
         return (
           <div className="text-xs text-red-400/70 mt-1 flex items-center gap-1">
-            ⚠️ API Error - Fallback Response
+            ⚠️ API Error
           </div>
         );
       default:
         return null;
     }
   };
+
+  // Response system
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section id="chatbot" className="section">
@@ -194,19 +197,41 @@ const Chat = () => {
               inquiries and collaborations.
             </p>
 
-            <p className="mt-3 text-zinc-300 leading-relaxed text-[10px] absolute right-2 bottom-0 px-3 py-2 bg-zinc-800/70 rounded-xl hover:ring-1 hover:ring-zinc-300/10 hover:ring-inset transition-all duration-500">
-              <span className="text-sky-400 font-semibold block mb-1">
-                Response System
-              </span>
-              <span className="text-sky-400">🤖 AI Powered</span> - Advanced
-              responses from AI model
-              <br />
-              <span className="text-amber-400">⚡ Local Response</span> - Fast
-              fallback responses
-              <br />
-              <span className="text-red-400">⚠️ API Error</span> - Using backup
-              system
-            </p>
+            <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1">
+              {/* Toggle Button */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-8"
+              >
+                {isOpen ? (
+                  <IoClose className="bg-red-500 size-6 p-1 rounded-full transition-all duration-300" />
+                ) : (
+                  <PiExclamationMarkBold className="bg-sky-500 size-6 p-1 rounded-full transition-all duration-300" />
+                )}
+              </button>
+
+              {/* Info Panel */}
+              <div
+                className={` text-zinc-300 leading-relaxed text-[10px] px-3 py-2 bg-zinc-800/70 rounded-xl ring-1 ring-zinc-300/10 ring-inset transition-all duration-500 ${
+                  isOpen
+                    ? "opacity-100 scale-100 translate-x-0 block"
+                    : "opacity-0 scale-95 translate-x-4 hidden"
+                }`}
+              >
+                <span className="text-sky-400 font-semibold block mb-1">
+                  Response System
+                </span>
+                <span className="text-sky-400">🤖 AI Powered</span> - Advanced
+                responses from AI model
+                <br />
+                <span className="text-amber-400">⚡ Local Response</span> - Fast
+                fallback responses
+                <br />
+                <span className="text-red-400">⚠️ API Error</span> - Using
+                backup system
+              </div>
+            </div>
+
             <div className=" flex items-end justify-start gap-4 mt-4">
               <a
                 href="/docs/resume.pdf"
