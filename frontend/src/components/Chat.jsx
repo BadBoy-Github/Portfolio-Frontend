@@ -1,5 +1,8 @@
 // React & icons
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+
+// Icons
 import { RiRobot2Fill } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { LuMessagesSquare } from "react-icons/lu";
@@ -61,6 +64,7 @@ const Chat = () => {
     {
       sender: "bot",
       text: "Hi, I'm a friendly Chatbot that lets you interact with the portfolio and CV. How can I help you?",
+      source: "local", // Added source for initial message
     },
   ]);
   const [input, setInput] = useState("");
@@ -113,6 +117,7 @@ const Chat = () => {
         {
           sender: "bot",
           text: "I'm having trouble connecting right now. Please try again later!",
+          source: "error",
           error: true,
         },
       ]);
@@ -128,6 +133,32 @@ const Chat = () => {
     }
   };
 
+  // Function to render source indicator
+  const renderSourceIndicator = (source) => {
+    switch (source) {
+      case "ai":
+        return (
+          <div className="text-xs text-sky-400/70 mt-1 flex items-center gap-1">
+            🤖 AI Powered
+          </div>
+        );
+      case "local":
+        return (
+          <div className="text-xs text-amber-400/70 mt-1 flex items-center gap-1">
+            ⚡ Local Response
+          </div>
+        );
+      case "error":
+        return (
+          <div className="text-xs text-red-400/70 mt-1 flex items-center gap-1">
+            ⚠️ API Error - Fallback Response
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <section id="chatbot" className="section">
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
@@ -140,7 +171,7 @@ const Chat = () => {
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
           {/* Left side */}
-          <div className="">
+          <div className="relative">
             <h1 className="text-xl font-semibold text-sky-400">
               About the Chatbot
             </h1>
@@ -153,8 +184,23 @@ const Chat = () => {
               you to the right information.
             </p>
             <p className="mt-3 text-zinc-300 leading-relaxed">
-              Feel free to view/download me resume and for more info / collab,
-              contact me
+              Access my <span className="text-sky-400">resume</span> or{" "}
+              <span className="text-sky-400">contact me</span> for professional
+              inquiries and collaborations.
+            </p>
+
+            <p className="mt-3 text-zinc-300 leading-relaxed text-[10px] absolute right-2 bottom-0 px-3 py-2 bg-zinc-800/70 rounded-xl hover:ring-1 hover:ring-zinc-300/10 hover:ring-inset transition-all duration-500">
+              <span className="text-sky-400 font-semibold block mb-1">
+                Response System
+              </span>
+              <span className="text-sky-400">🤖 AI Powered</span> - Advanced
+              responses from AI model
+              <br />
+              <span className="text-amber-400">⚡ Local Response</span> - Fast
+              fallback responses
+              <br />
+              <span className="text-red-400">⚠️ API Error</span> - Using backup
+              system
             </p>
             <div className=" flex items-end justify-start gap-4 mt-4">
               <a
@@ -173,11 +219,11 @@ const Chat = () => {
           </div>
 
           {/* Chat window */}
-          <div className="bg-zinc-800/70 w-full h-[400px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-700/30 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset">
+          <div className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-700/30 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset">
             <div className="h-full rounded-2xl p-4">
               <div
                 ref={chatContainerRef}
-                className="h-[300px] overflow-y-scroll scrollbar-thin flex flex-col gap-4 px-2"
+                className="h-[350px] overflow-y-scroll scrollbar-thin flex flex-col gap-4 px-2"
               >
                 {messages.map((msg, i) =>
                   msg.sender === "bot" ? (
@@ -187,11 +233,7 @@ const Chat = () => {
                       </div>
                       <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200 flex-1">
                         <ReadMoreText text={msg.text} maxLines={5} />
-                        {msg.source === "ai" && (
-                          <div className="text-xs text-sky-400/70 mt-1">
-                            🤖 AI Powered
-                          </div>
-                        )}
+                        {renderSourceIndicator(msg.source)}
                       </div>
                     </div>
                   ) : (
@@ -216,18 +258,22 @@ const Chat = () => {
                     </div>
                     <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200">
                       <div className="flex items-center gap-2">
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-sky-400 rounded-full animate-bounce"></div>
-                          <div
-                            className="w-2 h-2 bg-sky-400 rounded-full animate-bounce"
-                            style={{ animationDelay: "0.1s" }}
-                          ></div>
-                          <div
-                            className="w-2 h-2 bg-sky-400 rounded-full animate-bounce"
-                            style={{ animationDelay: "0.2s" }}
-                          ></div>
+                        <div className="">
+                          <span className="text-white/80 font-light text-sm inline-block mb-2">
+                            Thinking
+                          </span>
+                          <div className="flex space-x-1 mb-2">
+                            <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
+                            <div
+                              className="w-1 h-1 bg-white rounded-full animate-bounce"
+                              style={{ animationDelay: "0.1s" }}
+                            ></div>
+                            <div
+                              className="w-1 h-1 bg-white rounded-full animate-bounce"
+                              style={{ animationDelay: "0.2s" }}
+                            ></div>
+                          </div>
                         </div>
-                        <span>Thinking...</span>
                       </div>
                     </div>
                   </div>
@@ -258,6 +304,15 @@ const Chat = () => {
       </div>
     </section>
   );
+};
+
+ReadMoreText.propTypes = {
+  text: PropTypes.string.isRequired,
+  maxLines: PropTypes.number,
+};
+
+ReadMoreText.defaultProps = {
+  maxLines: 5,
 };
 
 export default Chat;
