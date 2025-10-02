@@ -33,6 +33,8 @@ const ReadMoreText = ({ text, maxLines = 5 }) => {
     setIsExpanded(!isExpanded);
   };
 
+
+  
   return (
     <div>
       <div
