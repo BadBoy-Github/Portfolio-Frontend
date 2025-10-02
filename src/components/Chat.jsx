@@ -9,6 +9,9 @@ import { LuMessagesSquare } from "react-icons/lu";
 import { FaUser } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 
+// backend url
+const BACKEND_URL = "http://localhost:5000";
+
 // Read More Component
 const ReadMoreText = ({ text, maxLines = 5 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -90,7 +93,7 @@ const Chat = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/chat", {
+      const res = await fetch(`${BACKEND_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: input }),
