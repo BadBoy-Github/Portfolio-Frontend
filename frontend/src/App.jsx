@@ -44,10 +44,10 @@ const App = () => {
         <main>
           <Hero />
           <About />
+          <Chat />
           <Skills />
           <Education />
           <Experience />
-          <Chat />
           <Work />
           <Certifications />
           <Achievements />

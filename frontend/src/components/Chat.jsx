@@ -1,8 +1,60 @@
 // React & icons
 import { useState, useEffect, useRef } from "react";
 import { RiRobot2Fill } from "react-icons/ri";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { LuMessagesSquare } from "react-icons/lu";
 import { FaUser } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
+
+// Read More Component
+const ReadMoreText = ({ text, maxLines = 5 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [needsExpansion, setNeedsExpansion] = useState(false);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    // Check if text needs expansion by counting lines
+    const lineHeight = 20; // Approximate line height in pixels
+    const maxHeight = maxLines * lineHeight;
+
+    if (textRef.current) {
+      const actualHeight = textRef.current.scrollHeight;
+      setNeedsExpansion(actualHeight > maxHeight);
+    }
+  }, [text, maxLines]);
+
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <div>
+      <div
+        ref={textRef}
+        className={`overflow-hidden transition-all duration-300 ${
+          !isExpanded ? `max-h-[${maxLines * 20}px]` : "max-h-none"
+        }`}
+        style={{
+          maxHeight: !isExpanded ? `${maxLines * 20}px` : "none",
+          lineHeight: "1.5",
+        }}
+      >
+        <div
+          dangerouslySetInnerHTML={{ __html: text }}
+          className="whitespace-pre-wrap"
+        />
+      </div>
+      {needsExpansion && (
+        <button
+          onClick={toggleExpanded}
+          className="text-sky-400 hover:text-sky-300 text-sm mt-1 font-medium transition-colors duration-200"
+        >
+          {isExpanded ? "Read Less" : "Read More"}
+        </button>
+      )}
+    </div>
+  );
+};
 
 const Chat = () => {
   const [messages, setMessages] = useState([
@@ -25,12 +77,12 @@ const Chat = () => {
   }, [messages, loading]);
 
   // Send message to API
-  // Add this to your handleSend function in Chat.jsx
   const handleSend = async () => {
     if (!input.trim()) return;
 
     const newUserMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, newUserMessage]);
+    setInput("");
     setLoading(true);
 
     try {
@@ -50,6 +102,7 @@ const Chat = () => {
         text:
           data.answer ||
           "I'm not sure how to answer that. Try asking about my skills, projects, or experience!",
+        source: data.source,
       };
 
       setMessages((prev) => [...prev, botMessage]);
@@ -59,21 +112,21 @@ const Chat = () => {
         ...prev,
         {
           sender: "bot",
-          text: `I'm having trouble connecting right now. Please try again later! \n Error: ${err.message}`,
+          text: "I'm having trouble connecting right now. Please try again later!",
+          error: true,
         },
       ]);
     }
 
     setLoading(false);
-    setInput("");
   };
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       handleSend();
     }
   };
-
 
   return (
     <section id="chatbot" className="section">
@@ -87,43 +140,36 @@ const Chat = () => {
       <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
           {/* Left side */}
-          <div>
+          <div className="">
             <h1 className="text-xl font-semibold text-sky-400">
               About the Chatbot
             </h1>
             <p className="mt-3 text-zinc-300 leading-relaxed">
               This chatbot is designed to make exploring my portfolio more
               interactive. You can ask questions about my{" "}
-              <a href="#skills" className="text-sky-400">
-                skills
-              </a>
-              ,
-              <a href="#project" className="text-sky-400">
-                {" "}
-                projects
-              </a>
-              , or even my
-              <a href="/docs/resume.pdf" target="_blank" className="text-sky-400">
-                {" "}
-                resume
-              </a>
-              , and it will guide you to the right information.
+              <span className="text-sky-400">skills</span>,
+              <span className="text-sky-400"> projects</span>, or even my
+              <span className="text-sky-400"> resume</span>, and it will guide
+              you to the right information.
             </p>
-            <a
-              href="/docs/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="bg-sky-600 hover:bg-sky-400 text-zinc-800 px-3 py-2 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 mt-4">
-                Download Resume
-                <span
-                  className="material-symbols-rounded size-3"
-                  aria-hidden="true"
-                >
-                  download
-                </span>
-              </button>
-            </a>
+            <p className="mt-3 text-zinc-300 leading-relaxed">
+              Feel free to view/download me resume and for more info / collab,
+              contact me
+            </p>
+            <div className=" flex items-end justify-start gap-4 mt-4">
+              <a
+                href="/docs/resume.pdf"
+                target="_blank"
+                className="btn btn-primary"
+              >
+                <button className="">Download Resume</button>
+                <MdOutlineFileDownload className="size-[20px]" />
+              </a>
+              <a href="#contactme" className="btn btn-outline">
+                <button className="">Contact Me</button>
+                <LuMessagesSquare className="size-[20px]" />
+              </a>
+            </div>
           </div>
 
           {/* Chat window */}
@@ -135,25 +181,30 @@ const Chat = () => {
               >
                 {messages.map((msg, i) =>
                   msg.sender === "bot" ? (
-                    <div className="flex items-center gap-3" key={i}>
-                      <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full">
+                    <div className="flex items-start gap-3" key={i}>
+                      <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full mt-1">
                         <RiRobot2Fill className="size-5" />
                       </div>
-                      <p className="bg-sky-600/20 ring-1 ring-sky-700/40 px-2 py-1 rounded-lg text-zinc-200">
-                        {msg.text}
-                      </p>
+                      <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200 flex-1">
+                        <ReadMoreText text={msg.text} maxLines={5} />
+                        {msg.source === "ai" && (
+                          <div className="text-xs text-sky-400/70 mt-1">
+                            🤖 AI Powered
+                          </div>
+                        )}
+                      </div>
                     </div>
                   ) : (
                     <div
-                      className="flex flex-row-reverse items-center gap-3"
+                      className="flex flex-row-reverse items-start gap-3"
                       key={i}
                     >
-                      <div className="flex items-center justify-center bg-emerald-700 p-2 rounded-full">
+                      <div className="flex items-center justify-center bg-emerald-700 p-2 rounded-full mt-1">
                         <FaUser className="size-5" />
                       </div>
-                      <p className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-2 py-1 rounded-lg text-zinc-200">
+                      <div className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-3 py-2 rounded-lg text-zinc-200">
                         {msg.text}
-                      </p>
+                      </div>
                     </div>
                   )
                 )}
@@ -163,9 +214,22 @@ const Chat = () => {
                     <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full">
                       <RiRobot2Fill className="size-5" />
                     </div>
-                    <p className="bg-sky-600/20 ring-1 ring-sky-700/40 px-2 py-1 rounded-lg text-zinc-200 animate-pulse">
-                      Typing...
-                    </p>
+                    <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200">
+                      <div className="flex items-center gap-2">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-sky-400 rounded-full animate-bounce"></div>
+                          <div
+                            className="w-2 h-2 bg-sky-400 rounded-full animate-bounce"
+                            style={{ animationDelay: "0.1s" }}
+                          ></div>
+                          <div
+                            className="w-2 h-2 bg-sky-400 rounded-full animate-bounce"
+                            style={{ animationDelay: "0.2s" }}
+                          ></div>
+                        </div>
+                        <span>Thinking...</span>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -184,7 +248,7 @@ const Chat = () => {
               <button
                 onClick={handleSend}
                 disabled={loading}
-                className="bg-zinc-800 text-zinc-200 hover:text-zinc-800 hover:bg-sky-600 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center"
+                className="bg-zinc-800 text-zinc-200 hover:text-zinc-800 hover:bg-sky-600 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <IoSend className="size-4" />
               </button>
