@@ -11,8 +11,7 @@ import { IoSend } from "react-icons/io5";
 import { PiExclamationMarkBold } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
 
-const BACKEND_URL = "https://elayabarathimv-portfolio-backend.vercel.app";
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Read More Component
 const ReadMoreText = ({ text, maxLines = 5 }) => {
@@ -199,10 +198,7 @@ const Chat = () => {
 
             <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1">
               {/* Toggle Button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-8"
-              >
+              <button onClick={() => setIsOpen(!isOpen)} className="w-8">
                 {isOpen ? (
                   <IoClose className="bg-red-500 size-6 p-1 rounded-full transition-all duration-300" />
                 ) : (
@@ -236,9 +232,9 @@ const Chat = () => {
               <a
                 href="/docs/resume.pdf"
                 target="_blank"
-                className="btn btn-primary"
+                className="btn btn-primary "
               >
-                <button className="">Download Resume</button>
+                <button className="text-xs lg:text-sm">Download Resume</button>
                 <MdOutlineFileDownload className="size-[20px]" />
               </a>
               <a href="#contactme" className="btn btn-outline">
