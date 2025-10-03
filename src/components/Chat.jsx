@@ -11,7 +11,7 @@ import { IoSend } from "react-icons/io5";
 import { PiExclamationMarkBold } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://elayabarathimv-portfolio-backend.vercel.app";
 
 
 // Read More Component
