@@ -184,7 +184,7 @@ body {
 
 /* Button */
 .btn {
-    @apply max-w-max h-9 flex items-center gap-2 px-4 rounded-xl font-medium text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color]
+    @apply max-w-max h-9 flex justify-center items-center gap-2 px-4 rounded-xl font-medium text-xs md:text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color]
 }
 
 .btn-secondary {
@@ -192,7 +192,7 @@ body {
 }
 
 .btn .material-symbols-rounded {
-    @apply text-[18px]
+    @apply hidden md:block text-[18px]
 }
 
 .btn:has( .material-symbols-rounded) {

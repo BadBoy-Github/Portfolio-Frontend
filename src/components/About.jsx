@@ -36,7 +36,7 @@ const About = () => {
                       to={number}
                       separator=","
                       direction="up"
-                      duration={1}
+                      duration={0.1}
                       className="count-up-text"
                     />
                   </span>

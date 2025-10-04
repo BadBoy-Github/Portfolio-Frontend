@@ -1,6 +1,5 @@
 // React
 import { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 // Icons
 import { RiRobot2Fill } from "react-icons/ri";
@@ -67,7 +66,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "Hi, I'm a friendly Chatbot that lets you interact with the portfolio and CV. How can I help you?",
+      text: "Hi, I am Portfolio-GPT, a friendly Chatbot that lets you interact with Elayabarathi M V's portfolio and CV. How can I help you?",
       source: "local", // Added source for initial message
     },
   ]);
@@ -196,13 +195,16 @@ const Chat = () => {
               inquiries and collaborations.
             </p>
 
-            <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1">
+            <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1 transition-all duration-300">
               {/* Toggle Button */}
-              <button onClick={() => setIsOpen(!isOpen)} className="w-8">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-8 transition-all duration-300"
+              >
                 {isOpen ? (
-                  <IoClose className="bg-red-500 size-6 p-1 rounded-full transition-all duration-300" />
+                  <IoClose className="bg-red-600 hover:bg-red-800 active:bg-red-500 size-6 p-1 rounded-full transition-all duration-300" />
                 ) : (
-                  <PiExclamationMarkBold className="bg-sky-500 size-6 p-1 rounded-full transition-all duration-300" />
+                  <PiExclamationMarkBold className="bg-sky-600 hover:bg-sky-800 active:bg-sky-500 size-6 p-1 rounded-full transition-all duration-300" />
                 )}
               </button>
 
@@ -232,45 +234,48 @@ const Chat = () => {
               <a
                 href="/docs/resume.pdf"
                 target="_blank"
-                className="btn btn-primary "
+                className="btn btn-primary"
               >
-                <button className="text-xs lg:text-sm">Download Resume</button>
-                <MdOutlineFileDownload className="size-[20px]" />
+                <button className="text-xs md:text-sm">Download Resume</button>
+                <MdOutlineFileDownload className="hidden md:block size-[20px]" />
               </a>
               <a href="#contactme" className="btn btn-outline">
-                <button className="">Contact Me</button>
-                <LuMessagesSquare className="size-[20px]" />
+                <button className="text-xs md:text-sm">Contact Me</button>
+                <LuMessagesSquare className="hidden md:block size-[20px]" />
               </a>
             </div>
           </div>
 
           {/* Chat window */}
-          <div className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-700/30 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset">
-            <div className="h-full rounded-2xl p-4">
+          <div className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-800/40 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset">
+            <div className="h-full rounded-2xl p-4 w-full  text-sm md:text-base">
               <div
                 ref={chatContainerRef}
-                className="h-[350px] overflow-y-scroll scrollbar-thin flex flex-col gap-4 px-2"
+                className="h-[350px] overflow-y-scroll scrollbar-thin flex flex-col px-2 w-full"
               >
                 {messages.map((msg, i) =>
                   msg.sender === "bot" ? (
-                    <div className="flex items-start gap-3" key={i}>
-                      <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full mt-1">
+                    <div
+                      className="flex items-start gap-3 mr-0 md:mr-24 my-2"
+                      key={i}
+                    >
+                      <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full mt-1 flex-shrink-0">
                         <RiRobot2Fill className="size-5" />
                       </div>
-                      <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200 flex-1">
+                      <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200 break-words flex-1 min-w-0">
                         <ReadMoreText text={msg.text} maxLines={5} />
                         {renderSourceIndicator(msg.source)}
                       </div>
                     </div>
                   ) : (
                     <div
-                      className="flex flex-row-reverse items-start gap-3"
+                      className="flex flex-row-reverse items-start gap-3 ml-0 md:ml-24 my-2"
                       key={i}
                     >
-                      <div className="flex items-center justify-center bg-emerald-700 p-2 rounded-full mt-1">
+                      <div className="flex items-center justify-center bg-emerald-700 p-2 rounded-full mt-1 flex-shrink-0">
                         <FaUser className="size-5" />
                       </div>
-                      <div className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-3 py-2 rounded-lg text-zinc-200">
+                      <div className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-3 py-2 rounded-lg text-zinc-200 break-words min-w-0 w-fit">
                         {msg.text}
                       </div>
                     </div>
@@ -288,7 +293,7 @@ const Chat = () => {
                           <span className="text-white/80 font-light text-sm inline-block mb-2">
                             Thinking
                           </span>
-                          <div className="flex space-x-1 mb-2">
+                          <div className="flex space-x-1 mb-2 ml-1">
                             <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
                             <div
                               className="w-1 h-1 bg-white rounded-full animate-bounce"
@@ -332,13 +337,5 @@ const Chat = () => {
   );
 };
 
-ReadMoreText.propTypes = {
-  text: PropTypes.string.isRequired,
-  maxLines: PropTypes.number,
-};
-
-ReadMoreText.defaultProps = {
-  maxLines: 5,
-};
 
 export default Chat;
