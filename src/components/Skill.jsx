@@ -35,12 +35,12 @@ const skillItem = [
   {
     imgSrc: "/img/skills/sql.svg",
     label: "SQL",
-    desc: "sample",
+    desc: "Relational DBMS",
   },
   {
     imgSrc: "/img/skills/mongodb.svg",
     label: "MongoDB",
-    desc: "sample",
+    desc: "DBMS",
   },
   {
     imgSrc: "/img/skills/python.svg",

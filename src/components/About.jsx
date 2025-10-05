@@ -36,7 +36,7 @@ const About = () => {
                       to={number}
                       separator=","
                       direction="up"
-                      duration={1}
+                      duration={0.1}
                       className="count-up-text"
                     />
                   </span>
@@ -50,7 +50,7 @@ const About = () => {
             ))}
 
             <img
-              src="/img/icons/Panda.webp"
+              src="/img/icons/favicon.svg"
               alt="Elayabarathi M V"
               width={30}
               height={30}
