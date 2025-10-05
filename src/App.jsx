@@ -1,6 +1,7 @@
 
 /**
- * @copyright 2025 Coding with Panda
+ * @copyright 2025 Panda Productions
+ * @author Elayabarathi M V <elayabarathiedison@gmail.com>
  * @license Apache-2.0
  */
 
