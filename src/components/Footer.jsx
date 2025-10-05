@@ -123,13 +123,11 @@ const Footer = () => {
               &copy; 2025{" "}
               <span className="text-zinc-200">
                 ·{" "}
-                <span className="text-white hover:text-sky-500 transition-colors duration-300">
-                  <a href="https://elayabarathimv-portfolio.vercel.app/">
+                <span className="text-white">
                     Elayabarathi M V
-                  </a>
                 </span>{" "}
                 |{" "}
-                <span className="text-sky-500 hover:text-white transition-colors duration-300">
+                <span className="text-sky-500 hover:animate-pulse transition-colors duration-300">
                   <a href="https://panda-productions.vercel.app/">
                     Panda Productions
                   </a>

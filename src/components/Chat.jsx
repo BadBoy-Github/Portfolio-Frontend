@@ -313,9 +313,10 @@ const Chat = () => {
             </div>
 
             {/* Input box */}
-            <div className="px-4 pt-1 pb-4 gap-3 rounded-2xl flex">
+            <form className="px-4 pt-1 pb-4 gap-3 rounded-2xl flex">
               <input
                 type="text"
+                required
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -323,13 +324,14 @@ const Chat = () => {
                 placeholder="Hey there, what skills are you best at?"
               />
               <button
+                type="submit"
                 onClick={handleSend}
                 disabled={loading}
-                className="bg-zinc-800 text-zinc-200 hover:text-zinc-800 hover:bg-sky-600 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-zinc-800 text-zinc-200 hover:text-zinc-800 hover:bg-sky-600 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed "
               >
                 <IoSend className="size-4" />
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
