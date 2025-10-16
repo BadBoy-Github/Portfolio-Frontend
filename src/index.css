@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+/* Selection Pseudo Element Class */
+body::selection {
+    @apply text-zinc-800 bg-sky-600;
+}
 
 
 
