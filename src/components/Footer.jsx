@@ -13,6 +13,10 @@ const sitemap = [
     href: "#about",
   },
   {
+    label: "Journey",
+    href: "#journey",
+  },
+  {
     label: "Project",
     href: "#project",
   },

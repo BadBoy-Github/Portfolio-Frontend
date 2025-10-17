@@ -125,19 +125,19 @@ const achievements = [
     imgSrc: "/img/achievements/film.webp",
     desc: "Co-directed the short film “Suzhal Kathal Sugam,” which won 1st prize in a campus-wide competition organized by the Department of Biotechnology at KSRCT. Led scriptwriting, direction, and video editing, contributing to a thought-provoking narrative on the environmental impact of COVID-19. The project highlighted strong storytelling, teamwork, and post-production skills.",
   },
-  {
-    title: "Certified Typewriting - English",
-    tags: [
-      "#Typing Speed",
-      "#Accuracy",
-      "#Documentation Handling",
-      "#Clerical Efficiency",
-      "#Keyboard Proficiency",
-    ],
-    date: "2014",
-    imgSrc: "/img/achievements/type.webp",
-    desc: "Completed a certified course in typewriting (Lower Grade, English) conducted by The Erode District Commerce Institutes' Association, earning 2nd class honors. Gained foundational proficiency in typing speed and accuracy, contributing to efficient clerical and documentation skills.",
-  },
+  // {
+  //   title: "Certified Typewriting - English",
+  //   tags: [
+  //     "#Typing Speed",
+  //     "#Accuracy",
+  //     "#Documentation Handling",
+  //     "#Clerical Efficiency",
+  //     "#Keyboard Proficiency",
+  //   ],
+  //   date: "2014",
+  //   imgSrc: "/img/achievements/type.webp",
+  //   desc: "Completed a certified course in typewriting (Lower Grade, English) conducted by The Erode District Commerce Institutes' Association, earning 2nd class honors. Gained foundational proficiency in typing speed and accuracy, contributing to efficient clerical and documentation skills.",
+  // },
 ];
 
 const Achievements = () => {
