@@ -23,18 +23,17 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 // Components
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skill';
-import Work from './components/Project';
+import Home from "./components/home";
+import About from "./components/About";
+import Journey from "./components/Journey";
+import Project from './components/Project';
+import Certification from "./components/Certification";
 import Review from './components/Review';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Certifications from './components/Certifications';
-import Education from './components/Education';
-import Experience from './components/Experience';
-import Achievements from './components/Achievements';
-import Chat from './components/Chat';
+
+
+
 
 
 const App = () => {
@@ -43,15 +42,11 @@ const App = () => {
       <ReactLenis root>
         <Header />
         <main>
-          <Hero />
+          <Home />
           <About />
-          <Skills />
-          <Chat />
-          <Education />
-          <Experience />
-          <Work />
-          <Certifications />
-          <Achievements />
+          <Journey />
+          <Project />
+          <Certification />
           <Review />
           <Contact />
         </main>

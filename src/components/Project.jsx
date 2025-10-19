@@ -10,7 +10,7 @@ import ShowMoreCard from "./ShowMoreCard";
 
 import CountUp from "./CountUp";
 
-const works = [
+const proj = [
   {
     imgSrc: "/img/projects/project-19.webp",
     title: "Portfolio Website",
@@ -313,13 +313,13 @@ const works = [
 
 const sTags = ["React", "JavaScript", "HTML", "Python", "AI Made", "Biotech"];
 
-const Work = () => {
+const Project = () => {
   const [expanded, setExpanded] = useState(false);
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filter projects based on selected tag and search query
-  const filteredWorks = works.filter((project) => {
+  const filteredWorks = proj.filter((project) => {
     // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
@@ -441,7 +441,8 @@ const Work = () => {
 
           <div className="flex items-center gap-2">
             <div className="text-xs text-zinc-400 mr-3">
-              #<CountUp
+              #
+              <CountUp
                 from={0}
                 to={filteredWorks.length}
                 separator=","
@@ -531,4 +532,4 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default Project;
