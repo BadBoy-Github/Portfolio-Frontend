@@ -3,6 +3,8 @@
 // Components
 import { ButtonPrimary } from "./Button";
 
+import RotatingText from "./RotatingText";
+
 const sitemap = [
   {
     label: "Home",
@@ -63,8 +65,21 @@ const Footer = () => {
         <div className="container">
           <div className="lg:grid lg:grid-cols-2">
             <div className="mb-10">
-              <h2 className="headline-1 mb-8 lg:max-w-[12ch] ">
-                Let&apos;s Collab today!
+              <h2 className="flex mb-8 lg:max-w-[12ch] text-4xl sm:text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]">
+                Let&apos;s
+                <RotatingText
+                  texts={["Collab", "Build", "Create", "Break"]}
+                  mainClassName=" w-fit px-4"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2000}
+                />
+                today!
               </h2>
 
               <ButtonPrimary
@@ -126,11 +141,7 @@ const Footer = () => {
             <p className="text-zinc-500 text-sm ">
               &copy; 2025{" "}
               <span className="text-zinc-200">
-                ·{" "}
-                <span className="text-white">
-                    Elayabarathi M V
-                </span>{" "}
-                |{" "}
+                · <span className="text-white">Elayabarathi M V</span> |{" "}
                 <span className="text-sky-500 hover:animate-pulse transition-colors duration-300">
                   <a href="https://panda-productions.vercel.app/">
                     Panda Productions
