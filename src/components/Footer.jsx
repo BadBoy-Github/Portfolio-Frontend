@@ -65,11 +65,10 @@ const Footer = () => {
         <div className="container">
           <div className="lg:grid lg:grid-cols-2">
             <div className="mb-10">
-              <h2 className="flex mb-8 lg:max-w-[12ch] text-4xl sm:text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]">
-                Let&apos;s
+                <h2 className="flex lg:max-w-[12ch] headline-1">Let&apos;s</h2>
                 <RotatingText
                   texts={["Collab", "Build", "Create", "Break"]}
-                  mainClassName=" w-fit px-4"
+                  mainClassName=" w-fit h-fit text-4xl sm:text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15] py-2"
                   staggerFrom={"last"}
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
@@ -79,15 +78,8 @@ const Footer = () => {
                   transition={{ type: "spring", damping: 30, stiffness: 400 }}
                   rotationInterval={2000}
                 />
-                today!
-              </h2>
+                <h2 className="flex mb-8 lg:max-w-[12ch] headline-1">today!</h2>
 
-              <ButtonPrimary
-                href="#contactme"
-                label="Start Collab"
-                icon="chevron_right"
-                classes=""
-              />
             </div>
 
             <div className="grid grid-cols-2 gap-4 lg:pl-20 ">
@@ -143,7 +135,7 @@ const Footer = () => {
               <span className="text-zinc-200">
                 · <span className="text-white">Elayabarathi M V</span> |{" "}
                 <span className="text-sky-500 hover:animate-pulse transition-colors duration-300">
-                  <a href="https://panda-productions.vercel.app/">
+                  <a href="https://panda-productions.vercel.app/" target="_blank">
                     Panda Productions
                   </a>
                 </span>
