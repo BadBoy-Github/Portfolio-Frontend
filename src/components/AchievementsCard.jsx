@@ -35,12 +35,12 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
           className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg"
         />
       </figure>
-      <ul className="list-disc text-sm text-zinc-400 mt-3 tracking-wider pl-5 space-y-1 h-64 lg:h-48 overflow-y-auto">
+      <ul className="list-disc text-sm text-zinc-400 mt-3 tracking-wider pl-5 space-y-1 h-64 lg:h-48 overflow-y-auto achi-ul">
         {desc
           .split(". ")
           .filter((sentence) => sentence.trim() !== "")
           .map((sentence, index) => (
-            <li key={index}>{sentence.trim().replace(/\.$/, "")}</li>
+            <li key={index} className="achi-li">{sentence.trim().replace(/\.$/, "")}</li>
           ))}
       </ul>
 
