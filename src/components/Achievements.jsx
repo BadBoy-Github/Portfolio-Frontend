@@ -1,4 +1,3 @@
-
 import AchievementsCard from "./AchievementsCard";
 import { useRef } from "react";
 
@@ -18,7 +17,7 @@ const achievements = [
     ],
     date: "2023",
     imgSrc: "/img/achievements/sip.webp",
-    desc: "Served as one of the two overall coordinators for the Biotechnology department during the 2023 Student Induction Program at K.S. Rangasamy College of Technology (Autonomous), leading event planning, volunteer team formation, and execution. Successfully introduced incoming students to the department's vision, opportunities, and academic culture, resulting in increased registration and improved student engagement.",
+    desc: "Led Student Induction Program for Biotechnology Dept. Guided new students to adapt and engage effectively.",
   },
   {
     title: "Expo Stall Organizer",
@@ -30,7 +29,7 @@ const achievements = [
     ],
     date: "2023",
     imgSrc: "/img/achievements/madurai.webp",
-    desc: "Represented KSRCT at the 3rd Edition of Vibrant Tamil Nadu - International Agro Food Products Expo in Madurai, where I organized and managed a millet-focused stall. Showcased nutritious millet-based innovations, facilitated trade and networking through the MSME Business Incubator, and engaged with diverse stakeholders to promote sustainable food practices and institutional entrepreneurship.",
+    desc: "Represented KSRCT at Vibrant Tamil Nadu Expo. Promoted millet-based innovations and networking.",
   },
   {
     title: "Dakshaa T23 Coordinator",
@@ -42,7 +41,7 @@ const achievements = [
     ],
     date: "2023",
     imgSrc: "/img/achievements/dakshaa.webp",
-    desc: "Served as the Biotechnology Department Student Coordinator for DAKSHAA T23, a two-day national-level techno fest hosted by K.S. Rangasamy College of Technology. Led the coordination of technical workshops, paper presentations, and creative competitions, while facilitating team collaboration and ensuring smooth execution of both academic and interactive segments.",
+    desc: "Coordinated national-level techno fest DAKSHAA T23. Managed workshops and team activities smoothly.",
   },
   {
     title: "Certified Public Speaker",
@@ -54,7 +53,7 @@ const achievements = [
     ],
     date: "2023",
     imgSrc: "/img/achievements/eps.webp",
-    desc: "Earned certification in public speaking after completing a 30-hour “Effective Public Speaking 2.0” workshop conducted by JCI Erode Galaxy. Trained in persuasive communication, body language, and audience engagement. Recognized as the Best Outstanding Person for the final speech, demonstrating strong confidence, clarity, and stage presence.",
+    desc: "Completed 30-hour Effective Public Speaking 2.0. Awarded Best Outstanding Person for final speech.",
   },
   {
     title: "Logo Design - 2nd Place",
@@ -66,7 +65,7 @@ const achievements = [
     ],
     date: "2023",
     imgSrc: "/img/achievements/logo.webp",
-    desc: "Won 2nd prize in the Logo Creation competition conducted by the KSRCT Cultural Club. The design process emphasized brand identity, visual balance, and symbolic storytelling. This achievement showcased my passion for design, attention to detail, and ability to communicate ideas effectively through visual elements.",
+    desc: "Won 2nd prize in Logo Creation contest. Showcased creativity and visual storytelling skills.",
   },
   {
     title: "Short Video - 2nd Place",
@@ -78,7 +77,7 @@ const achievements = [
     ],
     date: "2023",
     imgSrc: "/img/achievements/video.webp",
-    desc: "Won 2nd prize in the “Glimpse of KSR” short video competition organized by the KSRCT Cultural Club. Contributed as both director and editor, crafting a compelling visual narrative that highlighted the academic excellence and vibrant culture of KSRCT. This project showcased strengths in storytelling, cinematography, and post-production, all within a concise and impactful format.",
+    desc: "Secured 2nd place in Glimpse of KSR video contest. Highlighted campus life with creative visuals.",
   },
   {
     title: "Joint Secretary - PMC & PAC",
@@ -90,7 +89,7 @@ const achievements = [
     ],
     date: "2022-2023",
     imgSrc: "/img/achievements/js.webp",
-    desc: "Appointed Joint Secretary of the Press and Media Club (PMC) and Public Awareness Club (PAC) under the Department of Biotechnology at KSRCT. Played a key role in coordinating student-led initiatives, organizing awareness campaigns and workshops, and fostering active engagement through collaborative and impactful events.",
+    desc: "Served as Joint Secretary for PMC & PAC clubs. Led awareness campaigns and student initiatives.",
   },
   {
     title: "Paper Presentation - 1st Place",
@@ -102,7 +101,7 @@ const achievements = [
     ],
     date: "2022",
     imgSrc: "/img/achievements/paper.webp",
-    desc: "Won 1st place in a national-level paper presentation at ECLECTIC 2K22, organized by the Department of ECE, Velalar College of Engineering and Technology. Presented a research project titled “Growth of Turmeric using 5G Nano Zinc,” which explored the role of nano-technology in enhancing sustainable agricultural practices. Demonstrated strong skills in scientific research, data analysis, and public communication.",
+    desc: "Won 1st prize for nanotech-based agriculture paper. Demonstrated research and presentation excellence.",
   },
   {
     title: "Short Film - 1st Place",
@@ -114,8 +113,8 @@ const achievements = [
     ],
     date: "2022",
     imgSrc: "/img/achievements/film.webp",
-    desc: "Co-directed the short film “Suzhal Kathal Sugam,” which won 1st prize in a campus-wide competition organized by the Department of Biotechnology at KSRCT. Led scriptwriting, direction, and video editing, contributing to a thought-provoking narrative on the environmental impact of COVID-19. The project highlighted strong storytelling, teamwork, and post-production skills.",
-  }
+    desc: "Directed and edited award-winning short film. Highlighted COVID-19’s environmental impact.",
+  },
 ];
 
 const Achievements = () => {
@@ -186,7 +185,7 @@ const Achievements = () => {
           </button>
         </div>
 
-        {/* Scrollable container with 1 row of horizontally scrolling achievements */}
+        {/* Scrollable container */}
         <div
           ref={scrollRef}
           className="overflow-x-auto hide-scrollbar scroll-smooth rounded-xl"

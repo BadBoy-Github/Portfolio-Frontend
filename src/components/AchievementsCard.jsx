@@ -8,8 +8,8 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
   };
 
   return (
-    <div className="bg-zinc-800 hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group">
-      <div className="flex items-center justify-between gap-2 mt-auto">
+    <div className="bg-zinc-800 lg:h-[520px] h-[600px] hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group relative">
+      <div className="flex items-center justify-between gap-2">
         <div className="w-full">
           <div className="flex items-center gap-2 h-6 justify-between flex-row lg:flex-row-reverse">
             <p className="text-zinc-400 text-xs">{date}</p>
@@ -35,14 +35,20 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
           className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg"
         />
       </figure>
-      <p className="text-sm text-zinc-400 mt-3 tracking-wider h-64 lg:h-48">
-        {desc}
-      </p>
-      <div className="mt-3 h-32">
+      <ul className="list-disc text-sm text-zinc-400 mt-3 tracking-wider pl-5 space-y-1 h-64 lg:h-48 overflow-y-auto">
+        {desc
+          .split(". ")
+          .filter((sentence) => sentence.trim() !== "")
+          .map((sentence, index) => (
+            <li key={index}>{sentence.trim().replace(/\.$/, "")}</li>
+          ))}
+      </ul>
+
+      <div className=" absolute bottom-0 left-0 right-0 grid grid-cols-1 lg:grid-cols-2 pl-6 pb-6 ">
         {tags.map((label, key) => (
           <span
             key={key}
-            className="text-sm text-sky-600 group-hover:text-sky-400 transition-all duration-300 flex pb-1 w-fit"
+            className="text-sm text-sky-600 group-hover:text-sky-400 transition-all duration-300 flex w-fit mt-3 bg-zinc-700/40 px-2 py-1 rounded-lg"
           >
             {label}
           </span>
