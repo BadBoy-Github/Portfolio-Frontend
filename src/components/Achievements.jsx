@@ -49,7 +49,7 @@ const achievements = [
       "#Public Speaking",
       "#Audience Engagement",
       "#Body Language Control",
-      "#Persuasive Communication",
+      "#Communication",
     ],
     date: "2023",
     imgSrc: "/img/achievements/eps.webp",

@@ -472,7 +472,7 @@ const Project = () => {
           </div>
         </div>
 
-        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))] ">
+        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
           {projectsToShow.map((project, index) => (
             <ProjectCard
               key={index}

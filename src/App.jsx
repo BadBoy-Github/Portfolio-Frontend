@@ -23,7 +23,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 // Components
 import Header from './components/Header';
-import Home from "./components/home";
+import Home from "./components/Home";
 import About from "./components/About";
 import Journey from "./components/Journey";
 import Project from './components/Project';
