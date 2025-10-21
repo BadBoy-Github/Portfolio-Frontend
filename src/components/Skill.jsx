@@ -43,6 +43,11 @@ const skillItem = [
     desc: "DBMS",
   },
   {
+    imgSrc: "/img/skills/java.svg",
+    label: "JAVA",
+    desc: "High Level Programming",
+  },
+  {
     imgSrc: "/img/skills/python.svg",
     label: "Python",
     desc: "High Level Programming",

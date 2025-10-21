@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+/* Selection Pseudo Element Class */
+body::selection {
+    @apply text-zinc-800 bg-sky-600;
+}
 
 
 
@@ -171,11 +175,11 @@ body {
 }
 
 .nav-link.active {
-    @apply text-zinc-900 duration-500 font-medium
+    @apply text-zinc-900 font-medium
 }
 
 .navbar .active-box {
-    @apply absolute bg-zinc-50 rounded-lg -z-10 transition-[top,left] duration-500
+    @apply absolute bg-zinc-50 rounded-lg -z-10 transition-[top,left]
 }
 
 
@@ -346,3 +350,9 @@ body {
     background: rgba(255, 255, 255, 0.5);
 }
 
+
+/* Achievements list  */
+
+.achi-ul>.achi-li::marker{
+    @apply text-sky-600 text-xl;
+}

@@ -3,6 +3,8 @@
 // Components
 import { ButtonPrimary } from "./Button";
 
+import RotatingText from "./RotatingText";
+
 const sitemap = [
   {
     label: "Home",
@@ -11,6 +13,10 @@ const sitemap = [
   {
     label: "About",
     href: "#about",
+  },
+  {
+    label: "Journey",
+    href: "#journey",
   },
   {
     label: "Project",
@@ -59,16 +65,20 @@ const Footer = () => {
         <div className="container">
           <div className="lg:grid lg:grid-cols-2">
             <div className="mb-10">
-              <h2 className="headline-1 mb-8 lg:max-w-[12ch] ">
-                Let&apos;s Collab today!
-              </h2>
-
-              <ButtonPrimary
-                href="#contactme"
-                label="Start Collab"
-                icon="chevron_right"
-                classes=""
+              <h2 className="flex lg:max-w-[12ch] headline-1">Let&apos;s</h2>
+              <RotatingText
+                texts={["Collab", "Build", "Create", "Break"]}
+                mainClassName=" w-fit h-fit text-4xl sm:text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15] py-2"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
               />
+              <h2 className="flex mb-8 lg:max-w-[12ch] headline-1">today!</h2>
             </div>
 
             <div className="grid grid-cols-2 gap-4 lg:pl-20 ">
@@ -122,13 +132,12 @@ const Footer = () => {
             <p className="text-zinc-500 text-sm ">
               &copy; 2025{" "}
               <span className="text-zinc-200">
-                ·{" "}
-                <span className="text-white">
-                    Elayabarathi M V
-                </span>{" "}
-                |{" "}
+                · <span className="text-white">Elayabarathi M V</span> |{" "}
                 <span className="text-sky-500 hover:animate-pulse transition-colors duration-300">
-                  <a href="https://panda-productions.vercel.app/">
+                  <a
+                    href="https://panda-productions.vercel.app/"
+                    target="_blank"
+                  >
                     Panda Productions
                   </a>
                 </span>

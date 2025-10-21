@@ -4,7 +4,7 @@
 import { ButtonPrimary, ButtonOutline } from './Button'
 
 
-const Hero = () => {
+const Home = () => {
     return (
       <section className="pt-28 lg:pt-36" id="home">
         <div className="container lg:grid lg:grid-cols-2 items-center lg:gap-10">
@@ -44,7 +44,11 @@ const Hero = () => {
                 target="_blank"
               />
 
-              <ButtonOutline href="#chatbot" label="Chat with AI" icon="robot_2" />
+              <ButtonOutline
+                href="#chatbot"
+                label="Chat with AI"
+                icon="robot_2"
+              />
             </div>
           </div>
 
@@ -67,4 +71,4 @@ const Hero = () => {
     );
 }
 
-export default Hero
+export default Home;
