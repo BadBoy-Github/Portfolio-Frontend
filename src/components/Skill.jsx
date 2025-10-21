@@ -88,14 +88,14 @@ const skillItem = [
     desc: "CAD & Drafting",
   },
   {
-    imgSrc: "/img/skills/msoffice.svg",
-    label: "MS Office",
-    desc: "Productivity Suite",
-  },
-  {
     imgSrc: "/img/skills/powerdirector.svg",
     label: "PowerDirector",
     desc: "Video Editing",
+  },
+  {
+    imgSrc: "/img/skills/msoffice.svg",
+    label: "MS Office",
+    desc: "Productivity Suite",
   },
 ];
 
