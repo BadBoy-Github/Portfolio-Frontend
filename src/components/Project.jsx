@@ -12,6 +12,27 @@ import CountUp from "./CountUp";
 
 const proj = [
   {
+    imgSrc: "/img/projects/project-20.webp",
+    title: "Calculator App",
+    tags: ["Math", "Utility", "Logic"],
+    live: "True",
+    projectLink: "https://calculator-nextjs.netlify.app/",
+    code: "True",
+    gitUrl: "https://github.com/BadBoy-Github/Calculator",
+    sTags: [
+      "next js",
+      "react",
+      "tailwind css",
+      "html",
+      "css",
+      "javascript",
+      "calculator",
+      "responsive",
+      "math",
+      "web app",
+    ],
+  },
+  {
     imgSrc: "/img/projects/project-19.webp",
     title: "Portfolio Website",
     tags: ["Portfolio", "Showcase", "Profile"],
