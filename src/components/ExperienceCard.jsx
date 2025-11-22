@@ -11,6 +11,7 @@ const ExperienceCard = ({
   instLink,
   desc,
   imgSrc,
+  certifi,
   skills,
 }) => {
 
@@ -51,7 +52,7 @@ const ExperienceCard = ({
               <p className=" text-sm font-normal text-zinc-300">{desc}</p>
               <div className="flex items-center mt-4 gap-4 ">
                 <div
-                  onClick={openImage}
+                  onClick={openImage()}
                   className="hidden text-sky-600 bg-zinc-700 size-8 lg:flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 transition-all relative group/certhov"
                 >
                   <TbCertificate className="size-4 " />
@@ -94,6 +95,7 @@ ExperienceCard.propTypes = {
   instLink: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
+  certifi: PropTypes.bool.isRequired,
   skills: PropTypes.array.isRequired,
 };
 
