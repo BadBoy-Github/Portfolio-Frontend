@@ -1,38 +1,18 @@
 
 
-import { VscGithub } from "react-icons/vsc";
-import { TbBrandLinkedin } from "react-icons/tb";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
+import { TbBrandGithubFilled } from "react-icons/tb";
+import { FaLinkedinIn } from "react-icons/fa6";
 
 const socialLinks = [
   {
     href: "https://github.com/BadBoy-Github",
-    icon: (
-      <VscGithub />
-    ),
+    icon: <TbBrandGithubFilled />,
     alt: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/elayabarathi/",
-    icon: <TbBrandLinkedin />,
+    icon: <FaLinkedinIn />,
     alt: "LinkedIn",
-  },
-  {
-    href: "https://x.com/_Elayabarathi_",
-    icon: <FaXTwitter />,
-    alt: "Twitter X",
-  },
-  {
-    href: "https://www.instagram.com/_elayabarathi_/",
-    icon: <FaInstagram />,
-    alt: "Instagram",
-  },
-  {
-    href: "https://wa.me/919842852121",
-    icon: <FaWhatsapp />,
-    alt: "Whatsapp",
   },
 ];
 
@@ -57,7 +37,7 @@ const Contact = () => {
                   href={href}
                   target="_blank"
                   className="w-12 h-12 grid place-items-center ring-inset ring-2 ring-zinc-50/5 rounded-lg transition-[background-color,color]
-                                hover:bg-zinc-50 hover:text-zinc-950 active:bg-zinc-50/80 duration-300 text-xl"
+                                hover:bg-zinc-50 hover:text-zinc-950 active:bg-zinc-50/80 duration-500 text-2xl"
                 >
                   {icon}
                 </a>

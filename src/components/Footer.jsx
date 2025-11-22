@@ -1,8 +1,6 @@
 
 
 // Components
-import { ButtonPrimary } from "./Button";
-
 import RotatingText from "./RotatingText";
 
 const sitemap = [
@@ -46,12 +44,16 @@ const socials = [
         href: 'https://www.linkedin.com/in/elayabarathi/'
     },
     {
-        label: 'Twitter X',
+        label: 'TwitterX',
         href: 'https://x.com/_Elayabarathi_'
     },
     {
         label: 'Instagram',
-        href: 'https://www.instagram.com/_elayabarathi_/'
+        href: 'https://www.instagram.com/elayabarathimv/'
+    },
+    {
+        label: 'Facebook',
+        href: 'https://www.facebook.com/profile.php?id=100077583614057'
     },
     {
         label: 'Whatsapp',
@@ -132,15 +134,7 @@ const Footer = () => {
             <p className="text-zinc-500 text-sm ">
               &copy; 2025{" "}
               <span className="text-zinc-200">
-                · <span className="text-white">Elayabarathi M V</span> |{" "}
-                <span className="text-sky-500 hover:animate-pulse transition-colors duration-300">
-                  <a
-                    href="https://panda-productions.vercel.app/"
-                    target="_blank"
-                  >
-                    Panda Productions
-                  </a>
-                </span>
+                · All Rights Reserved | <span className="text-sky-600 font-semibold">Elayabarathi M V</span>
               </span>
             </p>
           </div>
