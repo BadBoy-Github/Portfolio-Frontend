@@ -18,9 +18,13 @@ const Welcome = () => {
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
           <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
             {/* TODO:replace about section */}
-            Welcome! I&apos;m Elayabarathi M V, a professional frontend web
-            developer. Strong collaborator and problem-solver, dedicated to
-            continuous learning and interdisciplinary success.
+            Welcome! I’m Elayabarathi, a passionate frontend web developer. Skilled in building responsive,
+            user-friendly websites using modern web technologies. Experienced in
+            translating ideas into clean, functional interfaces with a strong
+            focus on usability and performance. A strong collaborator and
+            problem-solver, committed to continuous learning and staying updated
+            with evolving web standards. Driven to create impactful digital
+            solutions through creativity, logic, and technology.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 md:gap-7">
