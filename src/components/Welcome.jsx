@@ -1,16 +1,15 @@
-
 import CountUp from "./CountUp";
 
 const aboutItems = [
-    {
-      label: 'Project done',
-      number: 20
-    },
-    {
-      label: 'Technologies Known',
-      number: 16
-    }
-  ];
+  {
+    label: "Project done",
+    number: 21,
+  },
+  {
+    label: "Technologies Known",
+    number: 16,
+  },
+];
 
 const Welcome = () => {
   return (
@@ -18,11 +17,9 @@ const Welcome = () => {
       <div className="container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
           <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
-            Welcome! I&apos;m Elayabarathi, a professional biotechnologist with
-            expertise in microbiology, genetics, and bioinformatics. Innovated
-            cancer treatments via nanobiotechnology. Accomplished frontend web
-            developer. Passionate about integrating biology and technology for
-            innovation. Strong collaborator and problem-solver, dedicated to
+            {/* TODO:replace about section */}
+            Welcome! I&apos;m Elayabarathi M V, a professional frontend web
+            developer. Strong collaborator and problem-solver, dedicated to
             continuous learning and interdisciplinary success.
           </p>
 
@@ -61,6 +58,6 @@ const Welcome = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Welcome;
