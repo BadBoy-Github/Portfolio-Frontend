@@ -29,7 +29,7 @@ const Home = () => {
             <span className="headline-transition"></span>
 
             <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-1 mb-4 lg:mb-10">
-              Enthusiast in Modern Web Technologies and Digital Innovation
+              Modern Web Developer and Digital Innovator
             </h2>
           </div>
 

@@ -2,12 +2,16 @@ import CountUp from "./CountUp";
 
 const aboutItems = [
   {
-    label: "Project done",
-    number: 21,
+    label: "Technologies",
+    number: 16,
   },
   {
-    label: "Technologies Known",
-    number: 16,
+    label: "Live Project",
+    number: 24,
+  },
+  {
+    label: "Repositories",
+    number: 75,
   },
 ];
 
@@ -18,16 +22,15 @@ const Welcome = () => {
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
           <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
             {/* TODO:replace about section */}
-            Welcome! I&apos;m Elayabarathi, a passionate frontend web developer. Skilled in building responsive,
-            user-friendly websites using modern web technologies. Experienced in
-            translating ideas into clean, functional interfaces with a strong
-            focus on usability and performance. A strong collaborator and
-            problem-solver, committed to continuous learning and staying updated
-            with evolving web standards. Driven to create impactful digital
-            solutions through creativity, logic, and technology.
+            Welcome! I&apos;m Elayabarathi, a passionate frontend developer
+            dedicated to building responsive, user-friendly websites. I
+            specialize in translating ideas into clean, high-performance
+            interfaces. A collaborative problem-solver and continuous learner, I
+            combine creativity and logic to deliver impactful digital solutions
+            that meet modern web standards and prioritize the user experience.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 md:gap-7">
+          <div className="flex flex-wrap items-center gap-5 md:gap-8">
             {aboutItems.map(({ label, number }, key) => (
               <div key={key}>
                 <div className="flex items-center md:mb-2">
