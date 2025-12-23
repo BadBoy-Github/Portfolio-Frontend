@@ -10,7 +10,7 @@ const ExpContent = [
     instLogo: "/img/experience/qspider logo.webp",
     instLink: "https://qspiders.com/",
     desc: "Comprehensive training in full-stack Java development covering front-end technologies, back-end, and middleware using Java and Advanced Java. Enhancing technical proficiency while strengthening problem-solving abilities through dedicated aptitude training.",
-    imgSrc: "/img/experience/qspider.webp", //# TODO:link certificate image
+    imgSrc: "",
     certifi: false,
     skills: ["SQL", "Aptitude", "HTML", "CSS", "JavaScript", "Java"],
     compound: false,
@@ -23,8 +23,8 @@ const ExpContent = [
     instLogo: "/img/experience/cognifyz logo.webp",
     instLink: "https://cognifyz.com/",
     desc: "Engaged in various Java programming tasks to enhance learning and problem-solving skills. Continuously acquiring new knowledge and practical experience in Java development through hands-on projects and challenges.",
-    imgSrc: "/img/experience/cognifyz.webp", //# TODO:link certificate image
-    certifi: false,
+    imgSrc: "/img/experience/cognifyz.webp",
+    certifi: true,
     skills: ["Java", "Problem Solving"],
     compound: false,
   },
@@ -138,7 +138,7 @@ const Experience = () => {
                         role={content.role}
                         desc={content.desc}
                         imgSrc={content.imgSrc}
-                        certifi={edu.certifi}
+                        certifi={content.certifi}
                         skills={content.skills}
                       />
                     ))}
