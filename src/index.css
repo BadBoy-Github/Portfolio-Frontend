@@ -46,8 +46,6 @@ body {
 }
 
 .headline-transition {
-
-
     @apply text-sky-400 font-semibold text-4xl leading-tight max-w-[17ch]
         /* Base for small screens, fits "Biotechnologist" (16ch) */
         sm:text-5xl sm:max-w-[17ch]
