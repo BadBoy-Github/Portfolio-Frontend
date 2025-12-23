@@ -21,7 +21,6 @@ const Welcome = () => {
       <div className="container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
           <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
-            {/* TODO:replace about section */}
             Welcome! I&apos;m Elayabarathi, a passionate frontend developer
             dedicated to building responsive, user-friendly websites. I
             specialize in translating ideas into clean, high-performance

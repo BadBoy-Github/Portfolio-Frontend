@@ -3,19 +3,6 @@ import ExperienceCompoundCard from "./ExperienceCompoundCard";
 
 const ExpContent = [
   {
-    year: "Nov 2025 - Current",
-    name: "Software Developer Intern",
-    role: "Intern",
-    instName: "Cognifyz Technologies Pvt Ltd",
-    instLogo: "/img/experience/cognifyz logo.webp",
-    instLink: "https://cognifyz.com/",
-    desc: "Engaged in various Java programming tasks to enhance learning and problem-solving skills. Continuously acquiring new knowledge and practical experience in Java development through hands-on projects and challenges.",
-    imgSrc: "/img/experience/cognifyz.webp", //# TODO:link certificate image
-    certifi: false,
-    skills: ["Java", "Problem Solving"],
-    compound: false,
-  },
-  {
     year: "Aug 2025 - Current",
     name: "Java Full Stack Developer Trainee",
     role: "Trainee",
@@ -26,6 +13,19 @@ const ExpContent = [
     imgSrc: "/img/experience/qspider.webp", //# TODO:link certificate image
     certifi: false,
     skills: ["SQL", "Aptitude", "HTML", "CSS", "JavaScript", "Java"],
+    compound: false,
+  },
+  {
+    year: "Nov - Dec 2025",
+    name: "Software Developer Intern",
+    role: "Intern",
+    instName: "Cognifyz Technologies Pvt Ltd",
+    instLogo: "/img/experience/cognifyz logo.webp",
+    instLink: "https://cognifyz.com/",
+    desc: "Engaged in various Java programming tasks to enhance learning and problem-solving skills. Continuously acquiring new knowledge and practical experience in Java development through hands-on projects and challenges.",
+    imgSrc: "/img/experience/cognifyz.webp", //# TODO:link certificate image
+    certifi: false,
+    skills: ["Java", "Problem Solving"],
     compound: false,
   },
   {
