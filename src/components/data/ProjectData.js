@@ -30,6 +30,7 @@ const proj = [
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Full-Stack-Ecommerce",
         sTags: [
+            "react",
             "javascript",
             "tailwind css",
             "html",
@@ -228,7 +229,7 @@ const proj = [
         projectLink: "https://crud-application-json.onrender.com/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/CRUD-Application-JSON",
-        sTags: ["javascript", "html", "css", "crud", "web app"],
+        sTags: ["javascript", "html", "css", "crud", "json", "web app"],
     },
     {
         imgSrc: "/img/projects/internet-reporter.webp",

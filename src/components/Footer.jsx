@@ -43,22 +43,6 @@ const socials = [
         label: 'LinkedIn',
         href: 'https://www.linkedin.com/in/elayabarathi/'
     },
-    {
-        label: 'TwitterX',
-        href: 'https://x.com/_Elayabarathi_'
-    },
-    {
-        label: 'Instagram',
-        href: 'https://www.instagram.com/elayabarathimv/'
-    },
-    {
-        label: 'Facebook',
-        href: 'https://www.facebook.com/profile.php?id=100077583614057'
-    },
-    {
-        label: 'Whatsapp',
-        href: 'https://wa.me/919842852121'
-    }
 ];
 
 const Footer = () => {
@@ -84,23 +68,6 @@ const Footer = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4 lg:pl-20 ">
-              <div className="">
-                <p className="mb-2 ">Sitemap</p>
-
-                <ul>
-                  {sitemap.map(({ label, href }, key) => (
-                    <li key={key}>
-                      <a
-                        href={href}
-                        className="block gap-4 text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               <div>
                 <p className="mb-2 ">Socials</p>
 
@@ -111,6 +78,22 @@ const Footer = () => {
                         href={href}
                         target="_blank"
                         className="block text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="">
+                <p className="mb-2 ">Sitemap</p>
+
+                <ul>
+                  {sitemap.map(({ label, href }, key) => (
+                    <li key={key}>
+                      <a
+                        href={href}
+                        className="block gap-4 text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
                       </a>
@@ -134,7 +117,10 @@ const Footer = () => {
             <p className="text-zinc-500 text-sm ">
               &copy; 2025{" "}
               <span className="text-zinc-200">
-                · All Rights Reserved | <span className="text-sky-600 font-semibold">Elayabarathi M V</span>
+                · All Rights Reserved |{" "}
+                <span className="text-sky-600 font-semibold">
+                  Elayabarathi M V
+                </span>
               </span>
             </p>
           </div>
