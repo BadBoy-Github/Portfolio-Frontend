@@ -46,8 +46,6 @@ body {
 }
 
 .headline-transition {
-
-
     @apply text-sky-400 font-semibold text-4xl leading-tight max-w-[17ch]
         /* Base for small screens, fits "Biotechnologist" (16ch) */
         sm:text-5xl sm:max-w-[17ch]
@@ -96,7 +94,7 @@ body {
 .animated-text span::before{
     content: "Web Developer";
     color: #38bdf8;
-    animation: words 20s infinite;
+    animation: words 8s infinite;
 }
 
 .animated-text span::after{
@@ -107,7 +105,7 @@ body {
     background-color: #18181b;
     border-left: 4px solid #38bdf8;
     right: -10px;
-    animation: cursor .6s infinite, typing 20s steps(20) infinite;
+    animation: cursor .5s infinite, typing 4s steps(30) infinite;
 }
 
 @keyframes cursor {
@@ -116,32 +114,30 @@ body {
     }
 }
 
+
 @keyframes words {
-    0%,20%{
+
+    0%,50% {
         content: "Web Developer";
     }
-    21%,40%{
-        content: "Biotechnologist";
-    }
-    41%,60%{
-        content: "Video Editor";
-    }
-    61%,80%{
-        content: "Logo Designer";
-    }
-    81%,100%{
-        content: "CAD Designer";
+
+    51%,100% {
+        content: "Web Designer";
     }
 }
 
 @keyframes typing {
-    10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+
+    40%, 45% {
         width: 0;
     }
-    5%,20%,25%,40%,45%,60%,65%,80%,85%{
+
+    90%, 95%{
         width: calc(100% + 10px);
     }
 }
+
+
 
 
 

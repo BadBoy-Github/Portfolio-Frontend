@@ -1,0 +1,187 @@
+
+
+const certificates = [
+    {
+        title: "React JS",
+        imgSrc: "/img/certificates/React JS.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/react.webp",
+    },
+    {
+        title: "Tailwind CSS",
+        imgSrc: "/img/certificates/Tailwind CSS.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/tailwind.webp",
+    },
+    {
+        title: "HTML",
+        imgSrc: "/img/certificates/HTML1.webp",
+        company: "Mimo",
+        logo: "/img/certificates/icons/html.webp",
+    },
+    {
+        title: "CSS",
+        imgSrc: "/img/certificates/CSS1.webp",
+        company: "Mimo",
+        logo: "/img/certificates/icons/css.webp",
+    },
+    {
+        title: "JavaScript",
+        imgSrc: "/img/certificates/JavaScript1.webp",
+        company: "Learnz Development Hub",
+        logo: "/img/certificates/icons/javascript.webp",
+    },
+    {
+        title: "JavaScript",
+        imgSrc: "/img/certificates/js.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/javascript.webp",
+    },
+    {
+        title: "Wordpress",
+        imgSrc: "/img/certificates/Wordpress1.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/wordpress.webp",
+    },
+    {
+        title: "MERN Stack",
+        imgSrc: "/img/certificates/MERN Stack.webp",
+        company: "SimpliLearn",
+        logo: "/img/certificates/icons/mern.webp",
+    },
+    {
+        title: "SEO",
+        imgSrc: "/img/certificates/SEO2.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/seo.webp",
+    },
+    {
+        title: "SEO",
+        imgSrc: "/img/certificates/SEO1.webp",
+        company: "Programming Hub",
+        logo: "/img/certificates/icons/seo.webp",
+    },
+    {
+        title: "Generative AI",
+        imgSrc: "/img/certificates/Generative AI.webp",
+        company: "Guvi",
+        logo: "/img/certificates/icons/ai.webp",
+    },
+    {
+        title: "Git & GitHub",
+        imgSrc: "/img/certificates/Git & GitHub.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/github.webp",
+    },
+    {
+        title: "Git",
+        imgSrc: "/img/certificates/Git1.webp",
+        company: "Programming Hub",
+        logo: "/img/certificates/icons/git.webp",
+    },
+    {
+        title: "Frontend Development",
+        imgSrc: "/img/certificates/Frontend1.webp",
+        company: "SimpliLearn",
+        logo: "/img/certificates/icons/frontend.webp",
+    },
+    {
+        title: "Python",
+        imgSrc: "/img/certificates/Python1.webp",
+        company: "Mimo",
+        logo: "/img/certificates/icons/python.webp",
+    },
+    {
+        title: "Python Dev",
+        imgSrc: "/img/certificates/Python Dev.webp",
+        company: "Mimo",
+        logo: "/img/certificates/icons/python.webp",
+    },
+    {
+        title: "ChatGPT for Everyone",
+        imgSrc: "/img/certificates/ChatGPT1.webp",
+        company: "Guvi",
+        logo: "/img/certificates/icons/chatgpt.webp",
+    },
+    {
+        title: "Tech Career Kickstart",
+        imgSrc: "/img/certificates/techcareer1.webp",
+        company: "SimpliLearn",
+        logo: "/img/certificates/icons/techcareer.webp",
+    },
+    {
+        title: "Canva",
+        imgSrc: "/img/certificates/Canva1.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/canva.webp",
+    },
+    {
+        title: "Video Editing with Canva",
+        imgSrc: "/img/certificates/Canva Video.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/videoediting.webp",
+    },
+    {
+        title: "Social Media Management",
+        imgSrc: "/img/certificates/Social Media Management.webp",
+        company: "Great Learning",
+        logo: "/img/certificates/icons/socialmedia.webp",
+    },
+    {
+        title: "Digital Marketing Fundamentals",
+        imgSrc: "/img/certificates/Digital Marketing Fundamentals.webp",
+        company: "IIDE The Digital School",
+        logo: "/img/certificates/icons/marketing.webp",
+    },
+    {
+        title: "Business Analysis",
+        imgSrc: "/img/certificates/Business Analysis.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/analysis.webp",
+    },
+    {
+        title: "Investment Risk Management",
+        imgSrc: "/img/certificates/IRM1.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/irm.webp",
+    },
+    {
+        title: "Power BI",
+        imgSrc: "/img/certificates/Power BI.webp",
+        company: "Great Learning",
+        logo: "/img/certificates/icons/powerbi.webp",
+    },
+    {
+        title: "Introduction to Microsoft Excel",
+        imgSrc: "/img/certificates/Excel2.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/excel.webp",
+    },
+    {
+        title: "Excel",
+        imgSrc: "/img/certificates/Excel1.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/excel.webp",
+    },
+    {
+        title: "Excel Data Analysis",
+        imgSrc: "/img/certificates/Excel Data Analysis.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/data analysis.webp",
+    },
+    {
+        title: "Google Ads for Beginners",
+        imgSrc: "/img/certificates/Google Ads.webp",
+        company: "Coursera",
+        logo: "/img/certificates/icons/googleads.webp",
+    },
+    {
+        title: "Video Editing",
+        imgSrc: "/img/certificates/Video Editing.webp",
+        company: "Great Learning",
+        logo: "/img/certificates/icons/videoediting.webp",
+    },
+];
+
+
+export { certificates };

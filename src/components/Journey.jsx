@@ -5,8 +5,8 @@ import Experience from "./Experience";
 const Journey = () => {
   return (
     <section id="journey">
-      <Education />
       <Experience />
+      <Education />
     </section>
   );
 }
