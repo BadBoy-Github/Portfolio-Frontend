@@ -1,3 +1,4 @@
+import { code } from "framer-motion/client";
 
 
 const proj = [
@@ -91,6 +92,16 @@ const proj = [
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Swiggy-Clone",
         sTags: ["html", "css", "swiggy", "food delivery", "clone", "web app"],
+    },
+    {
+        imgSrc: "/img/projects/weather-app.webp",
+        title: "Weather App",
+        tags: ["Weather", "API", "Rain"],
+        live:"True",
+        projectLink: "https://weather-application-002.netlify.app/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Weather-App",
+        sTags: ["html", "css", "weather", "api", "climate", "monitor", "rain", "snow", "wind", "humidity", "web app"]
     },
     {
         imgSrc: "/img/projects/microsoft-clone.webp",
