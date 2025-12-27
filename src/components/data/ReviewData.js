@@ -3,13 +3,6 @@
 const reviews = [
     {
         content:
-            "Groundbreaking work on the anticancer project using Iron oxide nanoparticles! His innovative approach led to significant advancements and promising results. Highly commendable.",
-        name: "Yakshana T",
-        imgSrc: "/img/reviews/people-5.webp",
-        company: "Senior Medical Coder",
-    },
-    {
-        content:
             "Skilled coder with impressive projects like CRUD app, eCommerce website, and Spotify clone. His technical prowess and creativity shine through.",
         name: "Sanjay S",
         imgSrc: "/img/reviews/people-2.webp",
