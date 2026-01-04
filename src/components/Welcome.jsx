@@ -83,19 +83,15 @@ const Welcome = () => {
       <div className="container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
           <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
-            Welcome! I&apos;m Elayabarathi, a passionate frontend developer
-            dedicated to building responsive, user-friendly websites. I
-            specialize in translating ideas into clean, high-performance
+            Welcome! I&apos;m Elayabarathi M V, a passionate frontend
+            developer dedicated to building responsive, user-friendly websites.
+            I specialize in translating ideas into clean, high-performance
             interfaces. A collaborative problem-solver and continuous learner, I
             combine creativity and logic to deliver impactful digital solutions
             that meet modern web standards and prioritize the user experience.
           </p>
 
-          {error && (
-            <div className="mb-4 text-sky-700 text-sm">
-              {error}
-            </div>
-          )}
+          {error && <div className="mb-4 text-sky-700 text-sm">{error}</div>}
 
           <div className="flex flex-wrap items-center gap-5 md:gap-8">
             {aboutItems.map(({ label, number }, key) => (
