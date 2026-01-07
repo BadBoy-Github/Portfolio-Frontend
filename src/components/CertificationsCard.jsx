@@ -24,8 +24,12 @@ const CertificationsCard = ({
           </p>
           <p className="text-xs text-zinc-400 tracking-wider">{company}</p>
         </div>
-        <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-zinc-700">
-          <img src={logo} alt="Logo" className="w-6 h-6 object-cover p-0.5 group-hover:rotate-[360deg] transition-all duration-700" />
+        <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-zinc-700 group-hover:scale-125 group-hover:rotate-[45deg] transition-all duration-700">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-6 h-6 object-cover p-0.5 transition-all duration-700 group-hover:rotate-[-45deg]"
+          />
         </div>
       </div>
       <figure
