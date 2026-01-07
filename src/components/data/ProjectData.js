@@ -1,5 +1,3 @@
-import { code } from "framer-motion/client";
-
 
 const proj = [
     {

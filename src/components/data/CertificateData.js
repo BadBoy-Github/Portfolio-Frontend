@@ -2,6 +2,18 @@
 
 const certificates = [
     {
+        title: "Java",
+        imgSrc: "/img/certificates/Java.webp",
+        company: "SimpliLearn",
+        logo: "/img/certificates/icons/java.webp",
+    },
+    {
+        title: "Bootstrap",
+        imgSrc: "/img/certificates/Bootstrap.webp",
+        company: "LetsUpgrade",
+        logo: "/img/certificates/icons/bootstrap.webp",
+    },
+    {
         title: "React JS",
         imgSrc: "/img/certificates/React JS.webp",
         company: "LetsUpgrade",
