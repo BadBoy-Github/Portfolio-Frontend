@@ -124,6 +124,16 @@ const proj = [
         sTags: ["html", "css", "swiggy", "food delivery", "clone", "web app"],
     },
     {
+        imgSrc: "/img/projects/qr-generator.webp",
+        title: "QR Generator",
+        tags: ["QR", "Scan", "Share"],
+        live: "True",
+        projectLink: "https://qr-code-generator-0nline.netlify.app/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/QR-Generator",
+        sTags: ["react", "tailwind css", "html", "css", "javascript", "qr", "scan", "share", "web app"],
+    },
+    {
         imgSrc: "/img/projects/microsoft-clone.webp",
         title: "Microsoft Clone",
         tags: ["Microsoft", "Clone", "Profile"],
