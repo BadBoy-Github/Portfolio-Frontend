@@ -50,7 +50,7 @@ const Welcome = () => {
         setStats({
           repositories: allRepos.length,
           liveProjects: liveProjectsCount,
-          technologies: skillItem.length - 1,
+          technologies: skillItem.length,
         });
       } catch (err) {
         console.error("Failed to fetch GitHub data:", err);
