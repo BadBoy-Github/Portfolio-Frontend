@@ -82,6 +82,32 @@ const proj = [
         ],
     },
     {
+        imgSrc: "/img/projects/timer.webp",
+        title: "Focus Timer",
+        tags: ["Time", "Productive"],
+        live: "True",
+        projectLink: "https://timer-watchh.netlify.app/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Stop-Watch",
+        sTags: [
+            "react",
+            "tailwind css",
+            "html",
+            "css",
+            "javascript",
+            "timer",
+            "stopwatch",
+            "countdown",
+            "time management",
+            "productivity",
+            "focus timer",
+            "digital clock",
+            "responsive",
+            "web app",
+        ]
+
+    },
+    {
         imgSrc: "/img/projects/rider.webp",
         title: "Rider",
         tags: ["car", "Transport", "Service"],
