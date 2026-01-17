@@ -50,6 +50,12 @@ const certificates = [
         logo: "/img/certificates/icons/javascript.webp",
     },
     {
+        title: "JavaScript",
+        imgSrc: "/img/certificates/js1.webp",
+        company: "SimpliLearn",
+        logo: "/img/certificates/icons/javascript.webp",
+    },
+    {
         title: "Wordpress",
         imgSrc: "/img/certificates/Wordpress1.webp",
         company: "Coursera",
@@ -58,6 +64,12 @@ const certificates = [
     {
         title: "MERN Stack",
         imgSrc: "/img/certificates/MERN Stack.webp",
+        company: "SimpliLearn",
+        logo: "/img/certificates/icons/mern.webp",
+    },
+    {
+        title: "Full Stack",
+        imgSrc: "/img/certificates/Full Stack.webp",
         company: "SimpliLearn",
         logo: "/img/certificates/icons/mern.webp",
     },
