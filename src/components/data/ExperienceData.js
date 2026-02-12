@@ -1,6 +1,43 @@
-
-
 const ExpContent = [
+    {
+        year: "Jan 2026 - Current",
+        name: "React JS Developer Intern",
+        role: "Intern",
+        instName: "The Skybrisk",
+        instLogo: "/img/experience/skybrisk logo.webp",
+        instLink: "https://www.theskybrisk.com/",
+        desc: "Specializing in developing scalable web applications using React.js and modern state management tools. Architect reusable components, optimize application performance for faster load times, and integrate RESTful APIs to deliver seamless user experiences across various platforms.",
+        imgSrc: "",
+        certifi: false,
+        skills: ["React JS", "State Management", "API Integration", "Performance Optimization", "UI/UX Implementation"],
+        compound: false,
+    },
+    {
+        year: "Jan 2026 - Current",
+        name: "React JS Developer Intern",
+        role: "Intern",
+        instName: "The Coding Samurai",
+        instLogo: "/img/experience/csamurai logo.webp",
+        instLink: "https://codingsamurai.vercel.app/",
+        desc: "Focused on crafting high-quality user interfaces and implementing interactive features within the React ecosystem. Engaging in agile workflows to translate design wireframes into high-quality code, conducting thorough debugging, and ensuring cross-browser compatibility and mobile responsiveness for diverse web projects.",
+        imgSrc: "",
+        certifi: false,
+        skills: ["React JS", "Tailwind CSS"],
+        compound: false,
+    },
+    {
+        year: "Jan 2026 - Current",
+        name: "Web Developer Intern",
+        role: "Intern",
+        instName: "Hex Softwares",
+        instLogo: "/img/experience/hex logo.webp",
+        instLink: "https://hexsoftwares.com/",
+        desc: "Gaining hands-on experience in full-cycle web development using HTML5, CSS3, and JavaScript. Assisting in the maintenance of client websites, creating visually appealing landing pages, and utilizing modern CSS frameworks like Tailwind to build modular, maintainable, and highly responsive front-end layouts.",
+        imgSrc: "",
+        certifi: false,
+        skills: ["HTML", "CSS", "JS"],
+        compound: false,
+    },
     {
         year: "Aug 2025 - Current",
         name: "Java Full Stack Developer Trainee",
@@ -89,6 +126,5 @@ const ExpContent = [
         compound: false,
     },
 ];
-
 
 export { ExpContent };
