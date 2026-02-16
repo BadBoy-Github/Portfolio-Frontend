@@ -21,6 +21,16 @@ const proj = [
         ],
     },
     {
+        imgSrc: "/img/projects/.webp",
+        title: "Buzz",
+        tags: [],
+        live: "True",
+        projectLink: "",
+        code: "True",
+        gitUrl: "",
+        sTags: [],
+    },
+    {
         imgSrc: "/img/projects/ecommerce.webp",
         title: "eCommerce website",
         tags: ["Shop", "Stripe", "Store"],
@@ -60,6 +70,16 @@ const proj = [
             "clone",
             "web app",
         ],
+    },
+    {
+        imgSrc: "/img/projects/.webp",
+        title: "Garage Manager",
+        tags: [],
+        live: "True",
+        projectLink: "",
+        code: "True",
+        gitUrl: "",
+        sTags: [],
     },
     {
         imgSrc: "/img/projects/stellar-ai.webp",
@@ -149,6 +169,16 @@ const proj = [
 
     },
     {
+        imgSrc: "/img/projects/.webp",
+        title: "Tic Tac Toe",
+        tags: [],
+        live: "True",
+        projectLink: "",
+        code: "True",
+        gitUrl: "",
+        sTags: [],
+    },
+    {
         imgSrc: "/img/projects/rider.webp",
         title: "Rider",
         tags: ["Car", "Transport", "Service"],
@@ -223,6 +253,16 @@ const proj = [
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/QR-Generator",
         sTags: ["react", "tailwind css", "html", "css", "javascript", "qr", "scan", "share", "web app"],
+    },
+    {
+        imgSrc: "/img/projects/.webp",
+        title: "Drive to Image",
+        tags: [],
+        live: "True",
+        projectLink: "",
+        code: "True",
+        gitUrl: "",
+        sTags: [],
     },
     {
         imgSrc: "/img/projects/microsoft-clone.webp",
