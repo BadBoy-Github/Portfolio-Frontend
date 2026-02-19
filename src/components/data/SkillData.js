@@ -60,16 +60,21 @@ const skillItem = [
         label: "Vercel",
         desc: "Deployment & Hosting",
     },
-    {
-        imgSrc: "/img/skills/netlify.svg",
-        label: "Netlify",
-        desc: "Deployment & Hosting",
-    },
-    {
-        imgSrc: "/img/skills/render.svg",
-        label: "Render",
-        desc: "Deployment & Hosting",
-    },
+    // {
+    //     imgSrc: "/img/skills/",
+    //     label: "React Native",
+    //     desc: "App Development",
+    // },
+    // {
+    //     imgSrc: "/img/skills/",
+    //     label: "Figma",
+    //     desc: "UI/UX Design",
+    // },
+    // {
+    //     imgSrc: "/img/skills/",
+    //     label: "Adobe Photoshop",
+    //     desc: "UI/UX Design",
+    // },
     {
         imgSrc: "/img/skills/canva.svg",
         label: "Canva",
