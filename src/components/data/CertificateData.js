@@ -2,6 +2,12 @@
 
 const certificates = [
     {
+        title: "AI Tools",
+        imgSrc: "/img/certificates/Be10X.webp",
+        company: "be10X",
+        logo: "/img/certificates/icons/ai.webp",
+    },
+    {
         title: "Java",
         imgSrc: "/img/certificates/Java.webp",
         company: "SimpliLearn",
