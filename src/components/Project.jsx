@@ -12,7 +12,7 @@ import CountUp from "./CountUp";
 
 import { proj } from "./data/ProjectData";
 
-const sTags = ["React", "JavaScript", "HTML", "Python", "AI Made", "Biotech"];
+const sTags = ["React", "JavaScript", "HTML", "Java", "Python", "AI Made", "Biotech"];
 
 const Project = () => {
   const [expanded, setExpanded] = useState(false);
