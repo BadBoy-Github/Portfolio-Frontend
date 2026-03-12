@@ -29,11 +29,11 @@ const Home = () => {
             <span className="headline-transition"></span>
 
             <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[14ch] mt-1 mb-4 lg:mb-10">
-              Web Developer and Software Developer
+              Creating Modern User Focused Interfaces
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <ButtonPrimary
               label="Download Resume"
               icon="download"
@@ -51,8 +51,7 @@ const Home = () => {
 
         <div className="hidden lg:block">
           <figure
-            className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% 
-                    rounded-[60px] overflow-hidden"
+            className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden"
           >
             <img
               src="/img/icons/hero-banner.webp"

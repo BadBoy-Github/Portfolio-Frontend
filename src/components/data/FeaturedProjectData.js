@@ -1,46 +1,30 @@
 
-const proj = [
+const featureproj = [
     {
-        imgSrc: "/img/projects/portfolio.webp",
+        imgSrc: "/img/projects/featured/portfolio.webp",
         title: "Portfolio Website",
-        tags: ["Portfolio", "Showcase", "Profile"],
+        tags: ["Portfolio", "Personal Website", "Developer"],
         live: "True",
         projectLink: "https://elayabarathimv-portfolio.vercel.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Portfolio",
         sTags: [
-            "react",
-            "tailwind css",
-            "html",
-            "css",
-            "javascript",
-            "portfolio",
-            "personal website",
-            "responsive",
-            "web app",
+            "Portfolio Website"
         ],
     },
     {
-        imgSrc: "/img/projects/portfolio.webp",
+        imgSrc: "/img/projects/featured/card_vault.webp",
         title: "Card Vault",
-        tags: ["Portfolio", "Showcase", "Profile"],
+        tags: ["eCommerce", "Gift Cards", "Deals"],
         live: "True",
-        projectLink: "https://elayabarathimv-portfolio.vercel.app/",
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Portfolio",
+        projectLink: "https://card-vaults.vercel.app/",
+        code: "false",
+        gitUrl: "",
         sTags: [
-            "react",
-            "tailwind css",
-            "html",
-            "css",
-            "javascript",
-            "portfolio",
-            "personal website",
-            "responsive",
-            "web app",
+            "Card Vault"
         ],
-    },
+    }
 ];
 
 
-export { proj };
+export { featureproj };

@@ -11,6 +11,8 @@ import ShowMoreCard from "./ShowMoreCard";
 import CountUp from "./CountUp";
 
 import { proj } from "./data/ProjectData";
+import { featureproj } from "./data/FeaturedProjectData"
+import ProjectFeaturedCard from "./ProjectFeaturedCard";
 
 const sTags = ["React", "JavaScript", "HTML", "Java", "Python", "AI Made", "Biotech"];
 
@@ -104,7 +106,25 @@ const Project = () => {
           Explore the innovative projects I&apos;ve built
         </p>
 
-        <div className="bg-red-500 w-full h-20 mb-8"></div>
+        <div className="w-full mb-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {featureproj.map((project, index) => (
+            <ProjectFeaturedCard
+              key={index}
+              id={`project-${index}`}
+              imgSrc={project.imgSrc}
+              title={project.title}
+              tags={project.tags}
+              projectLink={project.projectLink}
+              delay={index * 0.1}
+              classes=""
+              code={project.code}
+              live={project.live}
+              gitUrl={project.gitUrl}
+            />
+          ))}
+        </div>
+
+        <div className="bg-zinc-500 w-full h-0.5 mb-8 rounded-lg flex lg:hidden"></div>
 
         <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl hidden lg:flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">

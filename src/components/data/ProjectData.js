@@ -3,7 +3,7 @@ const proj = [
     {
         imgSrc: "/img/projects/buzz.webp",
         title: "Buzz",
-        tags: ["Chat", "Realtime", "Messaging"],
+        tags: ["Chat", "Messaging"],
         live: "True",
         projectLink: "https://buzz-chatime.vercel.app/",
         code: "True",
@@ -64,7 +64,7 @@ const proj = [
     {
         imgSrc: "/img/projects/garage.webp",
         title: "Garage Manager",
-        tags: ["Garage", "Management", "Dashboard"],
+        tags: ["Garage", "Dashboard"],
         live: "True",
         projectLink: "https://garage-manager-frontend.vercel.app/",
         code: "True",
@@ -188,7 +188,7 @@ const proj = [
     {
         imgSrc: "/img/projects/rider.webp",
         title: "Rider",
-        tags: ["Car", "Transport", "Service"],
+        tags: ["Car", "Transport"],
         live: "True",
         projectLink: "https://rider-booking.netlify.app/",
         code: "True",
@@ -264,7 +264,7 @@ const proj = [
     {
         imgSrc: "/img/projects/google-drive.webp",
         title: "Drive to Image",
-        tags: ["Drive", "Converter", "Utility"],
+        tags: ["Converter", "Utility"],
         live: "True",
         projectLink: "https://google-image-to-link.netlify.app/",
         code: "True",
@@ -285,7 +285,7 @@ const proj = [
     {
         imgSrc: "/img/projects/microsoft-clone.webp",
         title: "Microsoft Clone",
-        tags: ["Microsoft", "Clone", "Profile"],
+        tags: ["Clone", "Profile"],
         live: "True",
         projectLink: "https://ms-clone1.netlify.app/",
         code: "True",
@@ -295,7 +295,7 @@ const proj = [
     {
         imgSrc: "/img/projects/linkedin-profile-clone.webp",
         title: "LinkedIn Clone",
-        tags: ["Social", "Network", "Profile"],
+        tags: ["Social", "Network"],
         live: "True",
         projectLink: "https://linkedin-profile-clone.vercel.app/",
         code: "True",
@@ -333,7 +333,7 @@ const proj = [
     {
         imgSrc: "/img/projects/horoscope-checker.webp",
         title: "Horoscope Checker",
-        tags: ["Astrology", "Zodiac", "Daily"],
+        tags: ["Astrology", "Zodiac"],
         live: "True",
         projectLink: "https://daily-horoscope-check.netlify.app/",
         code: "True",
