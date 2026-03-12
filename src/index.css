@@ -92,7 +92,7 @@ body {
 }
 
 .animated-text span::before{
-    content: "Web Developer";
+    content: "Website Dev";
     color: #38bdf8;
     animation: words 8s infinite;
 }
@@ -118,11 +118,11 @@ body {
 @keyframes words {
 
     0%,50% {
-        content: "Web Developer";
+        content: "Website Dev";
     }
 
     51%,100% {
-        content: "Web Designer";
+        content: "Software Dev";
     }
 }
 
@@ -192,7 +192,7 @@ body {
 }
 
 .btn .material-symbols-rounded {
-    @apply hidden md:block text-[18px]
+    @apply text-[18px]
 }
 
 .btn:has( .material-symbols-rounded) {

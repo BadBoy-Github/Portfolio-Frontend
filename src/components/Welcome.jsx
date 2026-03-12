@@ -83,12 +83,15 @@ const Welcome = () => {
       <div className="container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
           <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
-            Welcome! I&apos;m Elayabarathi M V, a passionate frontend
-            developer dedicated to building responsive, user-friendly websites.
-            I specialize in translating ideas into clean, high-performance
-            interfaces. A collaborative problem-solver and continuous learner, I
-            combine creativity and logic to deliver impactful digital solutions
-            that meet modern web standards and prioritize the user experience.
+            Welcome! I&apos;m Elayabarathi M V, a passionate frontend and
+            software developer dedicated to building responsive, scalable, and
+            user-focused digital solutions. I specialize in transforming ideas
+            into clean, high-performance applications using modern web
+            technologies and strong programming fundamentals. A collaborative
+            problem-solver and continuous learner, I combine creativity, logic,
+            and technical expertise to develop efficient software and intuitive
+            interfaces that follow modern development standards and deliver
+            meaningful user experiences.
           </p>
 
           {error && <div className="mb-4 text-sky-700 text-sm">{error}</div>}
@@ -120,13 +123,20 @@ const Welcome = () => {
               </div>
             ))}
 
-            <img
-              src="/img/icons/favicon.svg"
-              alt="Elayabarathi M V"
-              width={30}
-              height={30}
-              className="ml-auto md:w-[40px] md:h-[40px]"
-            />
+            <a
+              href="https://github.com/BadBoy-Github"
+              className="ml-auto flex flex-col items-center group"
+              target="_blank"
+            >
+              <img
+                src="/img/icons/favicon.svg"
+                alt="Elayabarathi M V"
+                width={30}
+                height={30}
+                className="w-[30px] md:w-[40px] md:h-[40px]"
+              />
+              <p className="text-sm md:mt-1 group-hover:text-sky-200 duration-500 transition-all">GitHub</p>
+            </a>
           </div>
         </div>
       </div>
