@@ -104,6 +104,8 @@ const Project = () => {
           Explore the innovative projects I&apos;ve built
         </p>
 
+        <div className="bg-red-500 w-full h-20 mb-8"></div>
+
         <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl hidden lg:flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <button

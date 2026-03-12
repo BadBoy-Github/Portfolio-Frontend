@@ -28,8 +28,8 @@ const Home = () => {
           <div className="animated-text mt-6">
             <span className="headline-transition"></span>
 
-            <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-1 mb-4 lg:mb-10">
-              Modern Web Developer and Digital Innovator
+            <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[14ch] mt-1 mb-4 lg:mb-10">
+              Web Developer and Software Developer
             </h2>
           </div>
 
