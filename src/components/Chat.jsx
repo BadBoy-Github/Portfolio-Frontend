@@ -74,6 +74,7 @@ const Chat = () => {
   const [loading, setLoading] = useState(false);
 
   const chatContainerRef = useRef(null);
+  const [isChatHovered, setIsChatHovered] = useState(false);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -82,6 +83,47 @@ const Chat = () => {
         chatContainerRef.current.scrollHeight;
     }
   }, [messages, loading]);
+
+  // Handle mouse wheel scroll on chat container
+  const handleWheel = (e) => {
+    if (!isChatHovered) return;
+
+    if (chatContainerRef.current) {
+      const container = chatContainerRef.current;
+      const isAtTop = container.scrollTop <= 0;
+      const isAtBottom =
+        container.scrollTop + container.clientHeight >=
+        container.scrollHeight - 1;
+      const scrollingUp = e.deltaY < 0;
+      const scrollingDown = e.deltaY > 0;
+
+      // If at top and scrolling up, or at bottom and scrolling down, let page scroll
+      if ((isAtTop && scrollingUp) || (isAtBottom && scrollingDown)) {
+        // Allow page to scroll - do nothing
+        return;
+      }
+
+      // Otherwise, scroll only the chat and prevent page scroll
+      e.preventDefault();
+      e.stopPropagation();
+      container.scrollTop += e.deltaY;
+    }
+  };
+
+  useEffect(() => {
+    const container = chatContainerRef.current;
+    if (!container) return;
+
+    // Add wheel listener with capture to intercept early
+    container.addEventListener("wheel", handleWheel, {
+      passive: false,
+      capture: true,
+    });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel, { capture: true });
+    };
+  }, [isChatHovered]);
 
   // Send message to API
   const handleSend = async () => {
@@ -247,7 +289,11 @@ const Chat = () => {
           </div>
 
           {/* Chat window */}
-          <div className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-800/40 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset">
+          <div
+            className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-800/40 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset"
+            onMouseEnter={() => setIsChatHovered(true)}
+            onMouseLeave={() => setIsChatHovered(false)}
+          >
             <div className="h-full rounded-2xl p-4 w-full  text-sm md:text-base">
               <div
                 ref={chatContainerRef}
@@ -279,7 +325,7 @@ const Chat = () => {
                         {msg.text}
                       </div>
                     </div>
-                  )
+                  ),
                 )}
 
                 {loading && (
@@ -338,6 +384,5 @@ const Chat = () => {
     </section>
   );
 };
-
 
 export default Chat;
