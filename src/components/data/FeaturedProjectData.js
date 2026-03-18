@@ -5,7 +5,7 @@ const featureproj = [
         title: "Portfolio Website",
         tags: ["Portfolio", "Personal Website", "Developer"],
         live: "True",
-        projectLink: "https://elayabarathimv-portfolio.vercel.app/",
+        projectLink: "https://elayabarathimv.vercel.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Portfolio",
         sTags: [
