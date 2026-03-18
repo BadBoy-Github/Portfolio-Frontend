@@ -71,7 +71,7 @@ const BlogDetail = () => {
 
           {/* Content */}
           <div
-            className="prose prose-invert prose-lg max-w-none"
+            className="prose prose-invert prose-lg max-w-none blog-content"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
         </article>
