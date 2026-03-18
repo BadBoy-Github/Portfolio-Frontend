@@ -91,31 +91,26 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div
-          className={`w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 ${
-            live !== "True"
-              ? " group-hover:grayscale transition-all duration-300"
-              : ""
-          }`}
-        >
-          <span className="material-symbols-rounded" aria-hidden="true">
-            arrow_outward
-          </span>
-        </div>
+        {live == "True" ? (
+          <a
+            href={projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="live-link w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 hover:scale-110 transition-transform"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="material-symbols-rounded" aria-hidden="true">
+              arrow_outward
+            </span>
+          </a>
+        ) : (
+          <div className="w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 group-hover:grayscale transition-all duration-300">
+            <span className="material-symbols-rounded" aria-hidden="true">
+              arrow_outward
+            </span>
+          </div>
+        )}
       </div>
-      {live == "True" && (
-        <a
-          href={projectLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="live-link absolute bottom-4 right-4 w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 hover:scale-110 transition-transform"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <span className="material-symbols-rounded" aria-hidden="true">
-            arrow_outward
-          </span>
-        </a>
-      )}
     </div>
   );
 };
