@@ -12,22 +12,53 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 /**
  * Register gsap plugin
  */
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+// Scroll to top component
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 // Components
 import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import Journey from "./components/Journey";
-import Project from "./components/Project";
-import Certification from "./components/Certification";
 import Review from "./components/Review";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+
+// New Page Components
+import ProjectDetail from "./components/ProjectDetail";
+import CertificateDetail from "./components/CertificateDetail";
+import AchievementDetail from "./components/AchievementDetail";
+import BlogDetail from "./components/BlogDetail";
+import ProjectsLibrary from "./components/ProjectsLibrary";
+import CertificatesLibrary from "./components/CertificatesLibrary";
+import AchievementsLibrary from "./components/AchievementsLibrary";
+import BlogsLibrary from "./components/BlogsLibrary";
+
+// Homepage Section Components
+import HomepageProjects from "./components/HomepageProjects";
+import HomepageCertificates from "./components/HomepageCertificates";
+import HomepageAchievements from "./components/HomepageAchievements";
+import HomepageBlogs from "./components/HomepageBlogs";
 
 const App = () => {
   useEffect(() => {
@@ -188,17 +219,44 @@ const App = () => {
 
   return (
     <ReactLenis root>
-      <Header />
-      <main>
-        <Home />
-        <About />
-        <Journey />
-        <Project />
-        <Certification />
-        <Review />
-        <Contact />
-      </main>
-      <Footer />
+      <Router>
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Routes>
+            {/* Homepage */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <Home />
+                  <About />
+                  <Journey />
+                  <HomepageProjects />
+                  <HomepageCertificates />
+                  <HomepageAchievements />
+                  <HomepageBlogs />
+                  <Review />
+                  <Contact />
+                </>
+              }
+            />
+
+            {/* Individual Pages */}
+            <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="/certificate/:id" element={<CertificateDetail />} />
+            <Route path="/achievement/:id" element={<AchievementDetail />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+
+            {/* Library Pages */}
+            <Route path="/projects" element={<ProjectsLibrary />} />
+            <Route path="/certificates" element={<CertificatesLibrary />} />
+            <Route path="/achievements" element={<AchievementsLibrary />} />
+            <Route path="/blogs" element={<BlogsLibrary />} />
+          </Routes>
+        </main>
+        <Footer />
+      </Router>
     </ReactLenis>
   );
 };

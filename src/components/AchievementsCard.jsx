@@ -1,14 +1,28 @@
 import PropTypes from "prop-types";
-
+import { useNavigate } from "react-router-dom";
 import { AiOutlineFullscreen } from "react-icons/ai";
 
-const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
-  const openImage = () => {
-    window.open(imgSrc, "_blank");
+const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (achiId) {
+      navigate(`/achievement/${achiId}`);
+    }
+  };
+
+  const handleImageClick = (e) => {
+    e.stopPropagation();
+    if (achiId) {
+      navigate(`/achievement/${achiId}`);
+    }
   };
 
   return (
-    <div className="bg-zinc-800 lg:h-[520px] h-[600px] hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group relative">
+    <div 
+      className="bg-zinc-800 lg:h-[520px] h-[600px] hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group relative cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="flex items-center justify-between gap-2">
         <div className="w-full">
           <div className="flex items-center gap-2 h-6 justify-between flex-row lg:flex-row-reverse">
@@ -19,7 +33,7 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc }) => {
       </div>
       <figure
         className="rounded-lg bg-zinc-700 mt-4 hover:scale-[101%] group/achi transition-all duration-300 relative cursor-pointer"
-        onClick={openImage}
+        onClick={handleImageClick}
       >
         <div className="hidden bg-zinc-950/60 font-bold group-hover/achi:flex absolute top-0 bottom-0 left-0 right-0 rounded-lg transition-all duration-300 ">
           <div className="flex items-center justify-center rounded-lg h-full w-full transition-all duration-300">
@@ -64,6 +78,7 @@ AchievementsCard.propTypes = {
   date: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   desc: PropTypes.string,
+  achiId: PropTypes.string,
 };
 
 export default AchievementsCard;

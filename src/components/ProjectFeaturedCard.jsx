@@ -1,5 +1,6 @@
 // Node modules
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 // Icons
 import { FaGithub } from "react-icons/fa";
@@ -14,15 +15,41 @@ const ProjectFeaturedCard = ({
   code,
   live,
   gitUrl,
+  projectId,
 }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking on GitHub or Live link
+    const target = e.target;
+    const isGithubLink = target.closest("a")?.href?.includes("github");
+    const isLiveLink = target.closest(".live-link");
+
+    if (isGithubLink || isLiveLink) {
+      return;
+    }
+
+    // Navigate to detail page if projectId provided
+    if (projectId) {
+      e.preventDefault();
+      navigate(`/project/${projectId}`);
+    }
+  };
+
+  const handleLiveClick = (e) => {
+    // If live link is clicked, don't trigger card click
+    e.stopPropagation();
+  };
+
   return (
     <div
       className={
-        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%]" +
+        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] " +
         classes
       }
+      onClick={handleCardClick}
     >
-      <figure className={`aspect-[16/7] rounded-xl mb-4 relative`}>
+      <figure className="aspect-[16/7] rounded-xl mb-4 relative">
         {code == "True" && (
           <a
             href={gitUrl}
@@ -82,7 +109,17 @@ const ProjectFeaturedCard = ({
         </div>
       </div>
       {live == "True" && (
-        <a href={projectLink} target="_blank" className="absolute inset-0"></a>
+        <div
+          className="live-link absolute inset-0 cursor-pointer"
+          onClick={handleLiveClick}
+        >
+          <a
+            href={projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0"
+          ></a>
+        </div>
       )}
     </div>
   );
@@ -97,6 +134,7 @@ ProjectFeaturedCard.propTypes = {
   code: PropTypes.string,
   live: PropTypes.string,
   gitUrl: PropTypes.string,
+  projectId: PropTypes.string,
 };
 
 export default ProjectFeaturedCard;
