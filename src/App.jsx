@@ -39,7 +39,7 @@ const ScrollToTop = () => {
 import Header from "./components/Header";
 import Home from "./sections/Home";
 import About from "./sections/About";
-import Journey from "./components/Journey";
+import Journey from "./sections/Journey";
 import Review from "./components/Review";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
@@ -55,10 +55,8 @@ import AchievementsLibrary from "./components/AchievementsLibrary";
 import BlogsLibrary from "./components/BlogsLibrary";
 
 // Homepage Section Components
-import HomepageProjects from "./components/HomepageProjects";
-import HomepageCertificates from "./components/HomepageCertificates";
-import HomepageAchievements from "./components/HomepageAchievements";
-import HomepageBlogs from "./components/HomepageBlogs";
+import Project from "./sections/Project";
+import Work from "./sections/Work";
 
 const App = () => {
   useEffect(() => {
@@ -232,10 +230,8 @@ const App = () => {
                   <Home />
                   <About />
                   <Journey />
-                  <HomepageProjects />
-                  <HomepageCertificates />
-                  <HomepageAchievements />
-                  <HomepageBlogs />
+                  <Project />
+                  <Work />
                   <Review />
                   <Contact />
                 </>

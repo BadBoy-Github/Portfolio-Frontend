@@ -11,7 +11,7 @@ const HomepageAchievements = () => {
   };
 
   return (
-    <section id="achievements" className="section">
+    <section className="section">
       <div className="container mx-auto relative">
         <h2 className="headline-2">My Achievements</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
