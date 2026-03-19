@@ -42,24 +42,14 @@ const Home = () => {
             />
 
             <ButtonOutline
-              href="/about#chatbot"
+              href="/about?scroll=chatbot"
               label="Chat with AI"
               icon="robot_2"
             />
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <figure className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden">
-            <img
-              src="/img/icons/hero-banner.webp"
-              width={656}
-              height={800}
-              alt="Elayabarathi M V"
-              className="w-full"
-            />
-          </figure>
-        </div>
+        <div className="hidden lg:block bg-black h-[480px]"></div>
       </div>
     </section>
   );

@@ -30,6 +30,19 @@ const Navbar = ({ navOpen }) => {
         if (contactSection) {
           contactSection.scrollIntoView({ behavior: "smooth" });
         }
+      }, 100)
+    } else if (searchParams.get("scroll") === "chatbot") {
+      // Clear the query param
+      const url = new URL(window.location.href);
+      url.search = "";
+      window.history.replaceState({}, "", url.toString());
+
+      // Scroll to contact section
+      setTimeout(() => {
+        const contactSection = document.getElementById("chatbot");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: "smooth" });
+        }
       }, 100);
     }
   }, [location]);

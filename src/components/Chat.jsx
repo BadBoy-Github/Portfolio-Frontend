@@ -9,6 +9,7 @@ import { FaUser } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 import { PiExclamationMarkBold } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -281,10 +282,10 @@ const Chat = () => {
                 <button className="text-xs md:text-sm">Download Resume</button>
                 <MdOutlineFileDownload className="hidden md:block size-[20px]" />
               </a>
-              <a href="#contactme" className="btn btn-outline">
+              <Link to="/?scroll=contact" className="btn btn-outline">
                 <button className="text-xs md:text-sm">Contact Me</button>
                 <LuMessagesSquare className="hidden md:block size-[20px]" />
-              </a>
+              </Link>
             </div>
           </div>
 
