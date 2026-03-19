@@ -26,7 +26,7 @@ const EducationCard = ({
           />
         </a>
         <div className="items-center justify-between p-6 mr-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
-          <div className="text-sm font-medium text-zinc-300 w-[90%]">
+          <div className="text-sm font-medium text-zinc-300 w-[90%] bg-red-500">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
                 {name}
