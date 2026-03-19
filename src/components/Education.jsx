@@ -12,7 +12,7 @@ const Education = () => {
         </p>
 
         <div className="">
-          <ol className="relative border-r-2 border-zinc-50/10 mr-6 border-separate flex flex-col items-end">
+          <ol className="relative border-r-2 border-zinc-50/10 mr-6 border-separate flex flex-col items-start">
             {EduContent.map((edu, index) => (
               <EducationCard
                 key={index}

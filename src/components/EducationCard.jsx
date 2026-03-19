@@ -13,7 +13,7 @@ const EducationCard = ({
 }) => {
   return (
     <>
-      <li className="mb-10 mr-12 bg-red-500 left-0">
+      <li className="mb-10 mr-12">
         <a
           href={instLink}
           target="_blank"
