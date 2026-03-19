@@ -13,11 +13,11 @@ const EducationCard = ({
 }) => {
   return (
     <>
-      <li className="mb-10 ml-12">
+      <li className="mb-10 mr-12">
         <a
           href={instLink}
           target="_blank"
-          className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
+          className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -end-5 ring-8 ring-zinc-50/10 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
         >
           <img
             className="rounded-full shadow-lg bg-red-500/0"
@@ -25,11 +25,11 @@ const EducationCard = ({
             alt={instName}
           />
         </a>
-        <div className="items-center justify-between p-6 ml-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
+        <div className="items-center justify-between p-6 mr-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
+          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-first sm:mb-0 sm:w-fit sm:text-center w-full">
             {year}
           </time>
-          <div className="text-sm font-medium text-zinc-300 w-[90%]">
+          <div className="text-sm font-medium text-zinc-300 w-[90%] flex flex-col items-end">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
                 {name}
@@ -41,8 +41,8 @@ const EducationCard = ({
             </div>
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
             <div className=" mt-2 w-[90%]">
-              <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex items-center justify-start text-zinc-400 w-full gap-2 mt-4">
+              <p className=" text-sm font-normal text-zinc-300 text-justify">{desc}</p>
+              <div className="flex flex-row-reverse items-center justify-start text-zinc-400 w-full gap-2 mt-4">
                 <TbBulb
                   size={20}
                   className="hidden md:flex items-center justify-center group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"

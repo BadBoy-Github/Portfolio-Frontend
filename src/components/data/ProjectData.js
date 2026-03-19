@@ -1,6 +1,57 @@
 const proj = [
     {
+        id: "portfolio",
+        type: "featured",
+        imgSrc: "/img/projects/featured/portfolio.webp",
+        title: "Portfolio Website",
+        subheading: "Personal Portfolio with Modern Design",
+        tags: ["Portfolio", "Personal Website", "Developer"],
+        live: "True",
+        projectLink: "https://elayabarathimv.vercel.app/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Portfolio",
+        sTags: ["React", "Tailwind CSS", "Portfolio"],
+        techUsed: ["React", "Tailwind CSS", "Vercel"],
+        description: "A modern, responsive portfolio website showcasing my skills, projects, and achievements. Built with React and Tailwind CSS, featuring smooth animations and a dark theme design.",
+        uses: "This portfolio demonstrates modern web development practices including responsive design, smooth scrolling, and interactive UI elements. It serves as a central hub for showcasing my work.",
+        improvements: "Features include custom cursor, smooth scroll animations, and a fully responsive design. Could be enhanced with a blog section, dark/light mode toggle, and multi-language support.",
+        gallery: [
+            "/img/projects/featured/portfolio.webp",
+            "/img/projects/featured/portfolio.webp",
+            "/img/projects/featured/portfolio.webp",
+            "/img/projects/featured/portfolio.webp",
+            "/img/projects/featured/portfolio.webp",
+            "/img/projects/featured/portfolio.webp"
+        ]
+    },
+    {
+        id: "card-vault",
+        type: "featured",
+        imgSrc: "/img/projects/featured/card_vault.webp",
+        title: "Card Vault",
+        subheading: "Gift Card Management Platform",
+        tags: ["eCommerce", "Gift Cards", "Deals"],
+        live: "True",
+        projectLink: "https://card-vaults.vercel.app/",
+        code: "false",
+        gitUrl: "",
+        sTags: ["React", "Gift Cards", "Deals"],
+        techUsed: ["React", "Tailwind CSS", "Vercel"],
+        description: "A gift card management platform that helps users track and manage their gift cards, deals, and vouchers in one place.",
+        uses: "This application demonstrates e-commerce related features including card management, deal tracking, and user-friendly interfaces.",
+        improvements: "Could be enhanced with barcode scanning, push notifications for expiring cards, and integration with payment platforms.",
+        gallery: [
+            "/img/projects/featured/card_vault.webp",
+            "/img/projects/featured/card_vault.webp",
+            "/img/projects/featured/card_vault.webp",
+            "/img/projects/featured/card_vault.webp",
+            "/img/projects/featured/card_vault.webp",
+            "/img/projects/featured/card_vault.webp"
+        ]
+    },
+    {
         id: "buzz",
+        type: null,
         imgSrc: "/img/projects/buzz.webp",
         title: "Buzz",
         subheading: "Real-time Chat Application",
@@ -25,6 +76,7 @@ const proj = [
     },
     {
         id: "ecommerce",
+        type: null,
         imgSrc: "/img/projects/ecommerce.webp",
         title: "eCommerce Website",
         subheading: "Full-Stack E-commerce Platform",
@@ -49,6 +101,7 @@ const proj = [
     },
     {
         id: "hms",
+        type: null,
         imgSrc: "/img/projects/hms.webp",
         title: "MediManage CLI",
         subheading: "Hospital Management System",
@@ -73,6 +126,7 @@ const proj = [
     },
     {
         id: "spotify-clone",
+        type: null,
         imgSrc: "/img/projects/spotify-clone.webp",
         title: "Spotify Clone",
         subheading: "Music Streaming Application",
@@ -97,6 +151,7 @@ const proj = [
     },
     {
         id: "garage",
+        type: null,
         imgSrc: "/img/projects/garage.webp",
         title: "Garage Manager",
         subheading: "Vehicle Service Management System",
@@ -121,6 +176,7 @@ const proj = [
     },
     {
         id: "stellar-ai",
+        type: null,
         imgSrc: "/img/projects/stellar-ai.webp",
         title: "Stellar AI Chatbot",
         subheading: "AI-Powered Chat Assistant",
@@ -145,6 +201,7 @@ const proj = [
     },
     {
         id: "bamboo-blogs",
+        type: null,
         imgSrc: "/img/projects/bamboo-blogs.webp",
         title: "Bamboo Blogs",
         subheading: "Blog Platform with Flask",
@@ -169,6 +226,7 @@ const proj = [
     },
     {
         id: "tic-tac-toe",
+        type: null,
         imgSrc: "/img/projects/tic-tac-toe.webp",
         title: "Tic Tac Toe",
         subheading: "Classic Game Implementation",
@@ -193,6 +251,7 @@ const proj = [
     },
     {
         id: "timer",
+        type: null,
         imgSrc: "/img/projects/timer.webp",
         title: "Focus Timer",
         subheading: "Productivity Timer Application",
@@ -217,6 +276,7 @@ const proj = [
     },
     {
         id: "lms",
+        type: null,
         imgSrc: "/img/projects/lms.webp",
         title: "Library Manager CLI",
         subheading: "Library Management System",
@@ -241,6 +301,7 @@ const proj = [
     },
     {
         id: "simple-portfolio",
+        type: null,
         imgSrc: "/img/projects/simple-portfolio.webp",
         title: "Simple Portfolio",
         subheading: "Personal Portfolio Website",
@@ -265,6 +326,7 @@ const proj = [
     },
     {
         id: "rider",
+        type: null,
         imgSrc: "/img/projects/rider.webp",
         title: "Rider",
         subheading: "Car Booking Application",
@@ -289,6 +351,7 @@ const proj = [
     },
     {
         id: "weather-app",
+        type: null,
         imgSrc: "/img/projects/weather-app.webp",
         title: "Weather App",
         subheading: "Weather Forecast Application",
@@ -313,6 +376,7 @@ const proj = [
     },
     {
         id: "swiggy-clone",
+        type: null,
         imgSrc: "/img/projects/swiggy-clone.webp",
         title: "Swiggy Clone",
         subheading: "Food Delivery Platform",
@@ -337,6 +401,7 @@ const proj = [
     },
     {
         id: "pass-strength",
+        type: null,
         imgSrc: "/img/projects/pass-strength.webp",
         title: "PassStrength",
         subheading: "Password Strength Analyzer",
@@ -361,6 +426,7 @@ const proj = [
     },
     {
         id: "qr-generator",
+        type: null,
         imgSrc: "/img/projects/qr-generator.webp",
         title: "QR Generator",
         subheading: "QR Code Generator Tool",
@@ -385,6 +451,7 @@ const proj = [
     },
     {
         id: "google-drive",
+        type: null,
         imgSrc: "/img/projects/google-drive.webp",
         title: "Drive to Image",
         subheading: "Google Drive Link Converter",
@@ -409,6 +476,7 @@ const proj = [
     },
     {
         id: "microsoft-clone",
+        type: null,
         imgSrc: "/img/projects/microsoft-clone.webp",
         title: "Microsoft Clone",
         subheading: "Microsoft Landing Page Clone",
@@ -433,6 +501,7 @@ const proj = [
     },
     {
         id: "linkedin-profile-clone",
+        type: null,
         imgSrc: "/img/projects/linkedin-profile-clone.webp",
         title: "LinkedIn Clone",
         subheading: "Professional Profile Page",
@@ -457,6 +526,7 @@ const proj = [
     },
     {
         id: "budget-map",
+        type: null,
         imgSrc: "/img/projects/budget-map.webp",
         title: "Budget Map",
         subheading: "AI-Powered Budget Planner",
@@ -481,6 +551,7 @@ const proj = [
     },
     {
         id: "horoscope-checker",
+        type: null,
         imgSrc: "/img/projects/horoscope-checker.webp",
         title: "Horoscope Checker",
         subheading: "Daily Horoscope Application",
@@ -505,6 +576,7 @@ const proj = [
     },
     {
         id: "todo",
+        type: null,
         imgSrc: "/img/projects/todo.webp",
         title: "ToDo App",
         subheading: "Task Management Application",
@@ -529,6 +601,7 @@ const proj = [
     },
     {
         id: "calculator",
+        type: null,
         imgSrc: "/img/projects/calculator.webp",
         title: "Calculator App",
         subheading: "Scientific Calculator Application",
@@ -553,6 +626,7 @@ const proj = [
     },
     {
         id: "shopping-list",
+        type: null,
         imgSrc: "/img/projects/shopping-list.webp",
         title: "Shopping List",
         subheading: "Grocery List Manager",
@@ -577,6 +651,7 @@ const proj = [
     },
     {
         id: "profile-card",
+        type: null,
         imgSrc: "/img/projects/profile-card.webp",
         title: "Profile Card",
         subheading: "Personal Profile Card",
@@ -601,6 +676,7 @@ const proj = [
     },
     {
         id: "crud-app",
+        type: null,
         imgSrc: "/img/projects/crud-app-json.webp",
         title: "CRUD Application",
         subheading: "JSON-Based CRUD Operations",
@@ -625,6 +701,7 @@ const proj = [
     },
     {
         id: "dev-snapshot",
+        type: null,
         imgSrc: "/img/projects/dev-snapshot.webp",
         title: "Dev Snapshot",
         subheading: "Developer Profile Showcase",
@@ -649,6 +726,7 @@ const proj = [
     },
     {
         id: "spotify-tuneback",
+        type: null,
         imgSrc: "/img/projects/spotify-tuneback.webp",
         title: "Tune Back",
         subheading: "Music Discovery App",
@@ -673,6 +751,7 @@ const proj = [
     },
     {
         id: "ai-portfolio",
+        type: null,
         imgSrc: "/img/projects/ai-portfolio.webp",
         title: "AI Portfolio",
         subheading: "AI-Enhanced Portfolio Website",
@@ -697,6 +776,7 @@ const proj = [
     },
     {
         id: "agnps",
+        type: null,
         imgSrc: "/img/projects/agnps.webp",
         title: "Silver vs Bacteria",
         subheading: "Antimicrobial Research Visualization",
@@ -721,6 +801,7 @@ const proj = [
     },
     {
         id: "api-cafe",
+        type: null,
         imgSrc: "/img/projects/api-cafe.webp",
         title: "API Cafe",
         subheading: "API Documentation & Testing Platform",
@@ -745,6 +826,7 @@ const proj = [
     },
     {
         id: "internet-reporter",
+        type: null,
         imgSrc: "/img/projects/internet-reporter.webp",
         title: "Internet Reporter",
         subheading: "Network Status Monitoring Tool",
@@ -769,6 +851,7 @@ const proj = [
     },
     {
         id: "ionps",
+        type: null,
         imgSrc: "/img/projects/ionps.webp",
         title: "IONPS Analysis",
         subheading: "Iron Oxide Nanoparticle Study",
@@ -793,6 +876,7 @@ const proj = [
     },
     {
         id: "pong",
+        type: null,
         imgSrc: "/img/projects/pong.webp",
         title: "Pong Game",
         subheading: "Classic Pong Arcade Game",
@@ -817,6 +901,7 @@ const proj = [
     },
     {
         id: "snake",
+        type: null,
         imgSrc: "/img/projects/snake.webp",
         title: "Snake Game",
         subheading: "Classic Snake Arcade Game",

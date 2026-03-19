@@ -11,10 +11,18 @@ import ShowMoreCard from "./ShowMoreCard";
 import CountUp from "./CountUp";
 
 import { proj } from "./data/ProjectData";
-import { featureproj } from "./data/FeaturedProjectData"
+// import { featureproj } from "./data/FeaturedProjectData";
 import ProjectFeaturedCard from "./ProjectFeaturedCard";
 
-const sTags = ["React", "JavaScript", "HTML", "Java", "Python", "AI Made", "Biotech"];
+const sTags = [
+  "React",
+  "JavaScript",
+  "HTML",
+  "Java",
+  "Python",
+  "AI Made",
+  "Biotech",
+];
 
 const Project = () => {
   const [expanded, setExpanded] = useState(false);
@@ -27,10 +35,10 @@ const Project = () => {
     const tagMatch =
       selectedTag === "all" ||
       project.tags.some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase()
+        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       ) ||
       project.sTags.some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase()
+        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       );
 
     // Filter by search query
@@ -38,10 +46,10 @@ const Project = () => {
       searchQuery === "" ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
       ) ||
       project.sTags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     return tagMatch && searchMatch;
@@ -107,10 +115,10 @@ const Project = () => {
         </p>
 
         <div className="w-full mb-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {featureproj.map((project, index) => (
+          {/* {featureproj.map((project, index) => (
             <ProjectFeaturedCard
               key={index}
-              id={`project-${index}`}
+              projectId={project.id}
               imgSrc={project.imgSrc}
               title={project.title}
               tags={project.tags}
@@ -121,7 +129,7 @@ const Project = () => {
               live={project.live}
               gitUrl={project.gitUrl}
             />
-          ))}
+          ))} */}
         </div>
 
         <div className="bg-zinc-500 w-full h-0.5 mb-8 rounded-lg flex lg:hidden"></div>
@@ -199,7 +207,7 @@ const Project = () => {
           {projectsToShow.map((project, index) => (
             <ProjectCard
               key={index}
-              id={`project-${index}`}
+              projectId={project.id}
               imgSrc={project.imgSrc}
               title={project.title}
               tags={project.tags}

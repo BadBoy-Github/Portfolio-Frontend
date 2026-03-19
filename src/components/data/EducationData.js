@@ -8,7 +8,7 @@ const EduContent = [
     instName: "K S Rangasamy College of Technology",
     instLogo: "/img/education/ksr logo.webp",
     instLink: "https://www.ksrct.ac.in/",
-    desc: "Gaining a strong foundation in core principles and practical lab skills. Beyond academics, active participation in extracurricular and cultural events helped me develop leadership and interpersonal abilities. This experience nurtured my passion for continuous learning and innovation in biotechnology.",
+    desc: "Built strong foundation in biotechnology with practical lab skills. Active in extracurricular activities developing leadership and interpersonal abilities.",
     skills:
       ["Microbiology", "Genetic Engineering", "Nanobiotechnology", "Plant Tissue Culture", "Bioinformatics"],
   },
@@ -19,7 +19,7 @@ const EduContent = [
     instName: "U R C Palaniammal Matriculation Higher Secondary School",
     instLogo: "/img/education/urc logo.webp",
     instLink: "https://urcpmhss.edu.in/",
-    desc: "I built a strong academic foundation while growing both personally and socially. Guided by dedicated teachers, I developed critical thinking and a disciplined approach to learning. Involvement in sports, clubs, and cultural events helped strengthen my leadership and teamwork skills.",
+    desc: "Built strong academic foundation with dedicated teachers. Developed critical thinking and discipline through involvement in sports and cultural events.",
     skills: ["Human Anatomy", "Plant Biology", "Quantitative Aptitude Math"],
   },
   {

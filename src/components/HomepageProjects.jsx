@@ -2,10 +2,21 @@ import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import ProjectFeaturedCard from "./ProjectFeaturedCard";
 import { proj } from "./data/ProjectData";
-import { featureproj } from "./data/FeaturedProjectData";
 
 const HomepageProjects = () => {
-  const displayProjects = proj.slice(0, 8);
+
+  let featuredProject = [];
+  let normalProject = [];
+
+  proj.map((e) => {
+    if (e.type == "featured") {
+      featuredProject.push(e);
+    } else {
+      normalProject.push(e);
+    }
+  });
+
+  const displayProjects = normalProject.slice(0, 8);
   const remainingCount = proj.length - 8;
 
   return (
@@ -13,12 +24,12 @@ const HomepageProjects = () => {
       <div className="container">
         <h2 className="headline-2">My project highlights</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-          Explore the innovative projects I've built
+          Explore the innovative projects I&apos;ve built
         </p>
 
         {/* Featured Projects */}
         <div className="w-full mb-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {featureproj.map((project, index) => (
+          {featuredProject.map((project, index) => (
             <ProjectFeaturedCard
               key={index}
               imgSrc={project.imgSrc}

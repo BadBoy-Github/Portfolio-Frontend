@@ -1,5 +1,3 @@
-
-
 import EducationCard from "./EducationCard";
 
 import { EduContent } from "./data/EducationData";
@@ -14,7 +12,7 @@ const Education = () => {
         </p>
 
         <div className="">
-          <ol className="relative border-l-2 border-zinc-50/10 ml-6 border-separate">
+          <ol className="relative border-r-2 border-zinc-50/10 mr-6 border-separate flex flex-col items-end">
             {EduContent.map((edu, index) => (
               <EducationCard
                 key={index}
