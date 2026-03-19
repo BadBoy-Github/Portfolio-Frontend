@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 // Components
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [navOpen, setNavOpen] = useState(false);
@@ -35,12 +36,12 @@ const Header = () => {
             <Navbar navOpen={navOpen} />
           </div>
 
-          <a
-            href="#contactme"
+          <Link
+            to="/?scroll=contact"
             className="max-w-max h-10 flex justify-center items-center gap-2 px-4 rounded-xl font-medium text-xs md:text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color] bg-zinc-50 text-zinc-900 active:bg-zinc-50/80 max-lg:hidden lg:justify-self-end"
           >
             Contact Me
-          </a>
+          </Link>
         </div>
       </header>
     );
