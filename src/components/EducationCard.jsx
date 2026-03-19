@@ -13,7 +13,7 @@ const EducationCard = ({
 }) => {
   return (
     <>
-      <li className="mb-10 mr-12">
+      <li className="mb-10 mr-12 bg-red-500 left-0">
         <a
           href={instLink}
           target="_blank"
@@ -38,7 +38,7 @@ const EducationCard = ({
             </div>
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
             <div className=" mt-2 w-[90%]">
-              <p className=" text-sm font-normal text-zinc-300">{desc}</p>
+              {/* <p className=" text-sm font-normal text-zinc-300">{desc}</p> */}
               <div className="flex items-center justify-start text-zinc-400 w-full gap-2 mt-4">
                 <TbBulb
                   size={20}

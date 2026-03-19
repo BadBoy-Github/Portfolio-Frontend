@@ -7,7 +7,6 @@ import Journey from '../sections/Journey';
 import Project from '../sections/Project';
 import Review from '../sections/Review';
 import Work from '../sections/Work';
-import React from 'react'
 
 const LandingPage = () => {
   return (

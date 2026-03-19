@@ -50,7 +50,7 @@ const ExperienceCard = ({
             </div>
             <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
             <div className=" mt-2 w-[90%]">
-              <p className=" text-sm font-normal text-zinc-300">{desc}</p>
+              {/* <p className=" text-sm font-normal text-zinc-300">{desc}</p> */}
               <div className="flex items-center mt-4 gap-4 ">
                 <div
                   onClick={openImage}
