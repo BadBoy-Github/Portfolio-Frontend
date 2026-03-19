@@ -1,6 +1,6 @@
 import EducationCard from "./EducationCard";
 
-import { EduContent } from "./data/EducationData";
+import { EduContent } from "../data/EducationData";
 
 const Education = () => {
   return (

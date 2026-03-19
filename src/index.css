@@ -347,11 +347,6 @@ body {
 }
 
 
-/* Achievements list  */
-
-.achi-ul>.achi-li::marker{
-    @apply text-sky-600 text-xl;
-}
 
 /* Blog Content Styles */
 .blog-content {

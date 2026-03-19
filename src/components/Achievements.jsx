@@ -1,14 +1,12 @@
 import AchievementsCard from "./AchievementsCard";
 import { useRef } from "react";
 
-import { achievements } from "./data/AchievementData";
+import { achievements } from "../data/AchievementData";
 
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaAnglesRight } from "react-icons/fa6";
 import { FaAnglesLeft } from "react-icons/fa6";
-
-
 
 const Achievements = () => {
   const scrollRef = useRef(null);

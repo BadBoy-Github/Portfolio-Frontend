@@ -2,17 +2,14 @@
 import CertificationsCard from "./CertificationsCard";
 import { useRef } from "react";
 
-import { certificates } from "./data/CertificateData";
+import { certificates } from "../data/CertificateData";
 
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaAnglesRight } from "react-icons/fa6";
 import { FaAnglesLeft } from "react-icons/fa6";
 
-
-
 const Certifications = () => {
-
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -43,8 +40,6 @@ const Certifications = () => {
       });
     }
   };
-
-
 
   return (
     <section className="section ">
@@ -125,7 +120,7 @@ const Certifications = () => {
                     )}
                   </div>
                 );
-              }
+              },
             )}
           </div>
         </div>

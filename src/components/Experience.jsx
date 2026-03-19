@@ -1,7 +1,7 @@
 import ExperienceCard from "./ExperienceCard";
 import ExperienceCompoundCard from "./ExperienceCompoundCard";
 
-import { ExpContent } from "./data/ExperienceData";
+import { ExpContent } from "../data/ExperienceData";
 
 const Experience = () => {
   return (
@@ -70,7 +70,7 @@ const Experience = () => {
                   certifi={edu.certifi}
                   skills={edu.skills}
                 />
-              )
+              ),
             )}
           </ol>
         </div>

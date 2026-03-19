@@ -1,16 +1,17 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
   return (
     <Link to={`/blog/${blog.id}`} className="group">
       <article className="bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors h-full flex flex-col">
-        <div className="aspect-video overflow-hidden">
-          <img
-            src={blog.imageSrc}
-            alt={blog.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
+          <div className="m-4 rounded-lg overflow-hidden">
+            <img
+              src={blog.imageSrc}
+              alt={blog.title}
+              className="w-full h-full aspect-video  object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
         <div className="p-4 flex flex-col flex-grow">
           <div className="flex flex-wrap gap-2 mb-2">
             {blog.tags.slice(0, 3).map((tag, idx) => (
@@ -37,5 +38,9 @@ const BlogCard = ({ blog }) => {
     </Link>
   );
 };
+
+BlogCard.propTypes = {
+  blog: PropTypes.object.isRequired,
+}
 
 export default BlogCard;

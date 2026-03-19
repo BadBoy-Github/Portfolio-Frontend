@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import ProjectFeaturedCard from "./ProjectFeaturedCard";
-import { proj } from "./data/ProjectData";
+import { proj } from "../data/ProjectData";
 
 const HomepageProjects = () => {
-
   let featuredProject = [];
   let normalProject = [];
 
@@ -16,8 +15,8 @@ const HomepageProjects = () => {
     }
   });
 
-  const displayProjects = normalProject.slice(0, 8);
-  const remainingCount = proj.length - 8;
+  const displayProjects = normalProject.slice(0, 5);
+  const remainingCount = proj.length - 5;
 
   return (
     <section id="project" className="pt-20">

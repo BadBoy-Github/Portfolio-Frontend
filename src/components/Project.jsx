@@ -10,7 +10,7 @@ import ShowMoreCard from "./ShowMoreCard";
 
 import CountUp from "./CountUp";
 
-import { proj } from "./data/ProjectData";
+import { proj } from "../data/ProjectData";
 // import { featureproj } from "./data/FeaturedProjectData";
 import ProjectFeaturedCard from "./ProjectFeaturedCard";
 

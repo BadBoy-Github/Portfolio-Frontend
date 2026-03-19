@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
-import { blogs } from "./data/BlogData";
+import { blogs } from "../data/BlogData";
 
 const BlogsLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");

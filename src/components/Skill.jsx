@@ -1,7 +1,7 @@
 // Components
 import SkillCard from "./SkillCard";
 
-import { skillItem } from "./data/SkillData";
+import { skillItem } from "../data/SkillData";
 
 const Skills = () => {
   return (

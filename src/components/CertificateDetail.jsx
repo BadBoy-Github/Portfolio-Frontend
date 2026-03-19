@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineFullscreen } from "react-icons/ai";
-import { certificates } from "./data/CertificateData";
+import { certificates } from "../data/CertificateData";
 
 const CertificateDetail = () => {
   const { id } = useParams();

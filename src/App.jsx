@@ -37,11 +37,11 @@ const ScrollToTop = () => {
 
 // Components
 import Header from "./components/Header";
-import Home from "./components/Home";
-import About from "./components/About";
+import Home from "./sections/Home";
+import About from "./sections/About";
 import Journey from "./components/Journey";
 import Review from "./components/Review";
-import Contact from "./components/Contact";
+import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
 // New Page Components

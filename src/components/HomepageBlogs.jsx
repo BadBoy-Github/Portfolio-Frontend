@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import BlogCard from "./BlogCard";
-import { blogs } from "./data/BlogData";
+import { blogs } from "../data/BlogData";
 
 const HomepageBlogs = () => {
   const displayBlogs = blogs.slice(0, 3);
@@ -14,7 +14,7 @@ const HomepageBlogs = () => {
           Insights, tutorials, and thoughts on web development
         </p>
 
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
           {displayBlogs.map((blog, index) => (
             <BlogCard key={index} blog={blog} />
           ))}

@@ -1,5 +1,5 @@
 // Components
-import { ButtonPrimary, ButtonOutline } from "./Button";
+import { ButtonPrimary, ButtonOutline } from "../components/Button";
 
 const Home = () => {
   return (
@@ -50,9 +50,7 @@ const Home = () => {
         </div>
 
         <div className="hidden lg:block">
-          <figure
-            className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden"
-          >
+          <figure className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden">
             <img
               src="/img/icons/hero-banner.webp"
               width={656}

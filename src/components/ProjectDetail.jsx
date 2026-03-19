@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
 import { IoArrowBack, IoArrowForwardOutline } from "react-icons/io5";
-import { proj } from "./data/ProjectData";
+import { proj } from "../data/ProjectData";
 
 const ProjectDetail = () => {
   const { id } = useParams();

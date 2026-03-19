@@ -1,5 +1,5 @@
 import CountUp from "./CountUp";
-import { skillItem } from "./data/SkillData";
+import { skillItem } from "../data/SkillData";
 
 import { useState, useEffect } from "react";
 
@@ -27,7 +27,7 @@ const Welcome = () => {
         // Fetch all pages of repositories
         while (hasMorePages) {
           const response = await fetch(
-            `${REPOS_API_URL}?per_page=${PER_PAGE}&page=${page}`
+            `${REPOS_API_URL}?per_page=${PER_PAGE}&page=${page}`,
           );
 
           if (!response.ok) {
@@ -44,7 +44,7 @@ const Welcome = () => {
 
         // Count live projects (repos with a homepage URL)
         const liveProjectsCount = allRepos.filter(
-          (repo) => repo.homepage && repo.homepage.trim() !== ""
+          (repo) => repo.homepage && repo.homepage.trim() !== "",
         ).length;
 
         setStats({
@@ -135,7 +135,9 @@ const Welcome = () => {
                 height={30}
                 className="w-[30px] md:w-[40px] md:h-[40px]"
               />
-              <p className="text-sm md:mt-1 group-hover:text-sky-200 duration-500 transition-all">GitHub</p>
+              <p className="text-sm md:mt-1 group-hover:text-sky-200 duration-500 transition-all">
+                GitHub
+              </p>
             </a>
           </div>
         </div>

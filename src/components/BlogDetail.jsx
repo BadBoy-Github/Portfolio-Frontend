@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
-import { blogs } from "./data/BlogData";
+import { blogs } from "../data/BlogData";
 
 const BlogDetail = () => {
   const { id } = useParams();

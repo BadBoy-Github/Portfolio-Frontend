@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineFullscreen } from "react-icons/ai";
-import { achievements } from "./data/AchievementData";
+import { achievements } from "../data/AchievementData";
 
 const AchievementDetail = () => {
   const { id } = useParams();

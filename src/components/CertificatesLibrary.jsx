@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import CertificationsCard from "./CertificationsCard";
-import { certificates } from "./data/CertificateData";
+import { certificates } from "../data/CertificateData";
 
 const CertificatesLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");

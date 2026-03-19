@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import AchievementsCard from "./AchievementsCard";
-import { achievements } from "./data/AchievementData";
+import { achievements } from "../data/AchievementData";
 
 const AchievementsLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");
