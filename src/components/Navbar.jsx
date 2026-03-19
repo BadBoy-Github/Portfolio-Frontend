@@ -10,6 +10,7 @@ const Navbar = ({ navOpen }) => {
 
   const navItems = [
     { label: "Home", link: "/", isRoute: true },
+    { label: "About", link: "/about", isRoute: true },
     { label: "Projects", link: "/projects", isRoute: true },
     { label: "Blogs", link: "/blogs", isRoute: true },
   ];

@@ -36,6 +36,7 @@ import BlogsLibrary from "./pages/BlogsLibrary";
 
 // Homepage Section Components
 import LandingPage from "./pages/LandingPage";
+import AboutPage from "./pages/AboutPage";
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/" element={<LandingPage />} />
 
             {/* Individual Pages */}
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="/certificate/:id" element={<CertificateDetail />} />
             <Route path="/achievement/:id" element={<AchievementDetail />} />

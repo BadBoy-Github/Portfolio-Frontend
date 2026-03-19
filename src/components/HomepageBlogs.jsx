@@ -3,8 +3,8 @@ import BlogCard from "./BlogCard";
 import { blogs } from "../data/BlogData";
 
 const HomepageBlogs = () => {
-  const displayBlogs = blogs.slice(0, 3);
-  const remainingCount = blogs.length - 3;
+  const displayBlogs = blogs.slice(0, 5);
+  const remainingCount = blogs.length - 5;
 
   return (
     <section id="blogs" className="section">
@@ -14,7 +14,7 @@ const HomepageBlogs = () => {
           Insights, tutorials, and thoughts on web development
         </p>
 
-        <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
+        <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {displayBlogs.map((blog, index) => (
             <BlogCard key={index} blog={blog} />
           ))}

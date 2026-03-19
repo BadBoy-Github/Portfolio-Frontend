@@ -3,8 +3,8 @@ import { achievements } from "../data/AchievementData";
 
 const HomepageAchievements = () => {
   const navigate = useNavigate();
-  const displayAchievements = achievements.slice(0, 3);
-  const remainingCount = achievements.length - 3;
+  const displayAchievements = achievements.slice(0, 5);
+  const remainingCount = achievements.length - 5;
 
   const handleAchievementClick = (achiId) => {
     navigate(`/achievement/${achiId}`);
@@ -17,12 +17,12 @@ const HomepageAchievements = () => {
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
           A collection of milestones that showcase my passion and impact
         </p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {displayAchievements.map((achi, index) => (
             <div
               key={index}
               onClick={() => handleAchievementClick(achi.id)}
-              className="min-w-[320px] lg:min-w-[420px] bg-zinc-800 lg:h-[480px] h-[600px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
+              className=" bg-zinc-800 h-[600px] lg:h-[500px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="w-full">
@@ -55,7 +55,7 @@ const HomepageAchievements = () => {
                   ))}
               </div>
 
-              <div className="absolute bottom-0 gap-3 flex flex-wrap mb-5">
+              <div className="absolute w-[90%] bottom-0 gap-3 flex flex-wrap mb-5">
                 {achi.tags.map((label, key) => (
                   <span
                     key={key}
@@ -72,7 +72,7 @@ const HomepageAchievements = () => {
           {remainingCount > 0 && (
             <div
               onClick={() => navigate("/achievements")}
-              className="min-w-[320px] lg:min-w-[420px] bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl flex flex-col items-center justify-center cursor-pointer group"
+              className=" bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl flex flex-col items-center justify-center cursor-pointer group"
             >
               <div className="w-16 h-16 rounded-full bg-sky-600/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-rounded text-4xl text-sky-400">

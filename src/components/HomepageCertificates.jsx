@@ -3,8 +3,8 @@ import { certificates } from "../data/CertificateData";
 
 const HomepageCertificates = () => {
   const navigate = useNavigate();
-  const displayCertificates = certificates.slice(0, 3);
-  const remainingCount = certificates.length - 3;
+  const displayCertificates = certificates.slice(0, 5);
+  const remainingCount = certificates.length - 5;
 
   const handleCertClick = (certId) => {
     navigate(`/certificate/${certId}`);
@@ -17,12 +17,12 @@ const HomepageCertificates = () => {
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
           A journey through certifications that validate my skills and growth
         </p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {displayCertificates.map((cert, index) => (
             <div
               key={index}
               onClick={() => handleCertClick(cert.id)}
-              className="min-w-[320px] lg:min-w-[420px] bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors"
+              className=" bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors"
             >
               <div className="flex items-center justify-between gap-2 mt-auto">
                 <div>
@@ -61,7 +61,7 @@ const HomepageCertificates = () => {
           {remainingCount > 0 && (
             <div
               onClick={() => navigate("/certificates")}
-              className="min-w-[320px] lg:min-w-[420px] bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl flex flex-col items-center justify-center cursor-pointer group"
+              className=" bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl flex flex-col items-center justify-center cursor-pointer group"
             >
               <div className="w-16 h-16 rounded-full bg-sky-600/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <span className="material-symbols-rounded text-4xl text-sky-400">

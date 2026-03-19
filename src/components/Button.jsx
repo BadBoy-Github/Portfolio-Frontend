@@ -1,6 +1,7 @@
 
 // Node modules
 import PropTypes from "prop-types"
+import { Link } from "react-router-dom";
 
 // Primary Button
 
@@ -71,8 +72,8 @@ const ButtonOutline = ({
 
     if (href) {
         return (
-            <a
-                href={href}
+            <Link
+                to={href}
                 target={target}
                 className={"btn btn-outline " + classes}
             >
@@ -85,7 +86,7 @@ const ButtonOutline = ({
                     </span>
                     : undefined
                 }
-            </a>
+            </Link>
         )
     } else {
         return (
