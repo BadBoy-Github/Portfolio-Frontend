@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
-import AchievementsCard from "./AchievementsCard";
-import { achievements } from "../data/AchievementData";
+import CertificationsCard from "../components/CertificationsCard";
+import { certificates } from "../data/CertificateData";
 
-const AchievementsLibrary = () => {
+const CertificatesLibrary = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Get unique tags for filtering
-  const allTags = achievements.flatMap((a) => a.tags);
-  const uniqueTags = [...new Set(allTags)];
-  const [selectedTag, setSelectedTag] = useState("");
+  // Get unique companies for filtering
+  const companies = [...new Set(certificates.map((c) => c.company))];
+  const [selectedCompany, setSelectedCompany] = useState("all");
 
-  // Filter achievements
-  const filteredAchievements = achievements.filter((achi) => {
+  // Filter certificates
+  const filteredCerts = certificates.filter((cert) => {
     const searchMatch =
       searchQuery === "" ||
-      achi.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      achi.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      achi.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cert.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cert.technologiesLearned.some((tech) =>
+        tech.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
-    const tagMatch = selectedTag === "" || achi.tags.includes(selectedTag);
+    const companyMatch =
+      selectedCompany === "all" || cert.company === selectedCompany;
 
-    return searchMatch && tagMatch;
+    return searchMatch && companyMatch;
   });
 
   // Handle search
@@ -35,7 +35,7 @@ const AchievementsLibrary = () => {
   // Clear search
   const clearSearch = () => {
     setSearchQuery("");
-    document.getElementById("achievement_search").value = "";
+    document.getElementById("cert_search").value = "";
   };
 
   return (
@@ -43,9 +43,11 @@ const AchievementsLibrary = () => {
       <div className="container mx-auto px-4">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2">
-            All Achievements
+            All Certificates
           </h1>
-          <p className="text-zinc-400">My accomplishments and milestones</p>
+          <p className="text-zinc-400">
+            Browse my certifications and achievements
+          </p>
         </div>
 
         {/* Search and Filter */}
@@ -53,38 +55,38 @@ const AchievementsLibrary = () => {
           <div className="flex items-center gap-2 flex-wrap">
             <button
               className={`px-3 py-2 rounded-lg text-sm ${
-                selectedTag === ""
+                selectedCompany === "all"
                   ? "bg-sky-600 text-zinc-800"
                   : "text-zinc-400 bg-zinc-50/5"
               } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-              onClick={() => setSelectedTag("")}
+              onClick={() => setSelectedCompany("all")}
             >
               All
             </button>
-            {uniqueTags.slice(0, 10).map((tag, index) => (
+            {companies.slice(0, 8).map((company, index) => (
               <button
                 key={index}
                 className={`px-3 py-2 rounded-lg text-sm ${
-                  selectedTag === tag
+                  selectedCompany === company
                     ? "bg-sky-600 text-zinc-800"
                     : "text-zinc-400 bg-zinc-50/5"
                 } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-                onClick={() => setSelectedTag(tag)}
+                onClick={() => setSelectedCompany(company)}
               >
-                {tag.replace("#", "")}
+                {company}
               </button>
             ))}
           </div>
 
           <div className="flex items-center gap-2 w-full lg:w-auto">
             <div className="text-xs text-zinc-400 mr-3">
-              #{filteredAchievements.length} achievements
+              #{filteredCerts.length} certificates
             </div>
 
             <input
               type="text"
-              id="achievement_search"
-              placeholder="Search achievements..."
+              id="cert_search"
+              placeholder="Search certificates..."
               className="bg-zinc-800 w-full lg:w-60 text-sky-100 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 rounded-lg px-2 py-1 transition-all duration-500"
               onChange={(e) => handleSearch(e.target.value)}
               value={searchQuery}
@@ -101,25 +103,24 @@ const AchievementsLibrary = () => {
           </div>
         </div>
 
-        {/* Achievements Grid */}
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {filteredAchievements.map((achi, index) => (
-            <Link key={index} to={`/achievement/${achi.id}`}>
-              <AchievementsCard
-                achiId={achi.id}
-                title={achi.title}
-                imgSrc={achi.imgSrc}
-                desc={achi.subtitle}
-                tags={achi.tags}
-                date={achi.date}
+        {/* Certificates Grid */}
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredCerts.map((cert, index) => (
+            <Link key={index} to={`/certificate/${cert.id}`}>
+              <CertificationsCard
+                title={cert.title}
+                imgSrc={cert.imgSrc}
+                company={cert.company}
+                logo={cert.logo}
+                certNumber={certificates.length - index}
               />
             </Link>
           ))}
 
-          {filteredAchievements.length === 0 && (
+          {filteredCerts.length === 0 && (
             <div className="col-span-full text-center py-10">
               <h3 className="text-xl font-semibold text-zinc-300">
-                No achievements found
+                No certificates found
               </h3>
               <p className="text-zinc-500 mt-2">
                 Try a different search term or filter
@@ -132,4 +133,4 @@ const AchievementsLibrary = () => {
   );
 };
 
-export default AchievementsLibrary;
+export default CertificatesLibrary;

@@ -40,23 +40,24 @@ import Header from "./components/Header";
 import Home from "./sections/Home";
 import About from "./sections/About";
 import Journey from "./sections/Journey";
-import Review from "./components/Review";
+import Review from "./sections/Review";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
 // New Page Components
-import ProjectDetail from "./components/ProjectDetail";
-import CertificateDetail from "./components/CertificateDetail";
-import AchievementDetail from "./components/AchievementDetail";
-import BlogDetail from "./components/BlogDetail";
-import ProjectsLibrary from "./components/ProjectsLibrary";
-import CertificatesLibrary from "./components/CertificatesLibrary";
-import AchievementsLibrary from "./components/AchievementsLibrary";
-import BlogsLibrary from "./components/BlogsLibrary";
+import ProjectDetail from "./pages/ProjectDetail";
+import CertificateDetail from "./pages/CertificateDetail";
+import AchievementDetail from "./pages/AchievementDetail";
+import BlogDetail from "./pages/BlogDetail";
+import ProjectsLibrary from "./pages/ProjectsLibrary";
+import CertificatesLibrary from "./pages/CertificatesLibrary";
+import AchievementsLibrary from "./pages/AchievementsLibrary";
+import BlogsLibrary from "./pages/BlogsLibrary";
 
 // Homepage Section Components
 import Project from "./sections/Project";
 import Work from "./sections/Work";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
   useEffect(() => {
@@ -223,20 +224,7 @@ const App = () => {
         <main>
           <Routes>
             {/* Homepage */}
-            <Route
-              path="/"
-              element={
-                <>
-                  <Home />
-                  <About />
-                  <Journey />
-                  <Project />
-                  <Work />
-                  <Review />
-                  <Contact />
-                </>
-              }
-            />
+            <Route path="/" element={<LandingPage />} />
 
             {/* Individual Pages */}
             <Route path="/project/:id" element={<ProjectDetail />} />
