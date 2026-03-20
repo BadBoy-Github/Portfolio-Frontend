@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import ProjectCard from "../components/ProjectCard";
 import { proj } from "../data/ProjectData";
+import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 
 const sTags = [
   "React",
@@ -18,8 +19,11 @@ const ProjectsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const featuredProject = proj.filter((e) => e.type === "featured");
+  const normalProject = proj.filter((e) => e.type !== "featured");
+
   // Filter projects based on selected tag and search query
-  const filteredWorks = proj.filter((project) => {
+  const filteredWorks = normalProject.filter((project) => {
     // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
@@ -70,8 +74,10 @@ const ProjectsLibrary = () => {
           <p className="text-zinc-400">Explore all my projects</p>
         </div>
 
+        <FeaturedProjectGrid />
+
         {/* Search and Filter */}
-        <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div className="my-10  bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex items-center gap-2 flex-wrap">
             <button
               className={`p-2 rounded-lg text-sm ${
@@ -143,8 +149,12 @@ const ProjectsLibrary = () => {
           ))}
 
           {filteredWorks.length === 0 && (
-            <div className="col-span-full text-center py-10">
-              <h3 className="text-xl font-semibold text-zinc-300">
+            <div className="col-span-full text-center py-10 flex flex-col justify-center items-center">
+              <div className="loader mb-4">
+                <span></span>
+              </div>
+
+              <h3 className="text-xl font-semibold text-zinc-300 mt-2">
                 No projects found
               </h3>
               <p className="text-zinc-500 mt-2">

@@ -1,5 +1,5 @@
-import Education from "../components/Education";
-import Experience from "../components/Experience";
+import Education from "./Education";
+import Experience from "./Experience";
 
 const Journey = () => {
   return (

@@ -1,5 +1,6 @@
 // Components
-import { ButtonPrimary, ButtonOutline } from "../components/Button";
+
+import { ButtonPrimary, ButtonOutline } from "./Button";
 
 const Home = () => {
   return (
@@ -49,7 +50,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block bg-black h-[480px]"></div>
+        {/* Updated Model Container */}
+        <div className="hidden lg:block h-[480px] w-full relative bg-red-500"></div>
       </div>
     </section>
   );

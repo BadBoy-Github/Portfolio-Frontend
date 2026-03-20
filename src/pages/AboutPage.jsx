@@ -1,8 +1,6 @@
-
-
-import About from '../sections/About';
-import Journey from '../sections/Journey';
-import React from 'react'
+import About from "../components/About";
+import Journey from "../components/Journey";
+import React from "react";
 
 const AboutPage = () => {
   return (
@@ -13,6 +11,6 @@ const AboutPage = () => {
       </div>
     </>
   );
-}
+};
 
-export default AboutPage
+export default AboutPage;

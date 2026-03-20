@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@react-three/drei": "^9.97.0",
-    "@react-three/fiber": "^8.15.19",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@types/three": "^0.183.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
@@ -29,7 +30,7 @@
     "require": "^2.4.20",
     "styled-components": "^6.1.19",
     "tailwind-scrollbar": "^3.1.0",
-    "three": "^0.160.0"
+    "three": "^0.160.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

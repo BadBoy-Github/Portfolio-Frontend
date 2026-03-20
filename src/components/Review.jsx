@@ -1,5 +1,5 @@
 // Components
-import ReviewCard from "../components/ReviewCard";
+import ReviewCard from "./ReviewCard";
 
 import { reviews } from "../data/ReviewData";
 

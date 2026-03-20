@@ -1,6 +1,4 @@
-import HomepageProjects from "../components/HomepageProjects";
-
-
+import HomepageProjects from "./HomepageProjects";
 
 const Project = () => {
   return (
@@ -8,6 +6,6 @@ const Project = () => {
       <HomepageProjects />
     </section>
   );
-}
+};
 
-export default Project
+export default Project;
