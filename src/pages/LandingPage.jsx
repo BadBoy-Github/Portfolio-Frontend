@@ -11,9 +11,7 @@ const LandingPage = () => {
     <div>
       <>
         <Home />
-        <div className="container mt-20">
-          <FeaturedProjectGrid />
-        </div>
+        <FeaturedProjectGrid />
         <Skills />
         <HomepageCertificates />
         <HomepageAchievements />

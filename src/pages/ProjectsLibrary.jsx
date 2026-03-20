@@ -19,7 +19,6 @@ const ProjectsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const featuredProject = proj.filter((e) => e.type === "featured");
   const normalProject = proj.filter((e) => e.type !== "featured");
 
   // Filter projects based on selected tag and search query
