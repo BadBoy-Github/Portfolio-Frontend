@@ -12,7 +12,7 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
 
   return (
     <div
-      className="bg-zinc-800 h-[600px] lg:h-[500px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
+      className="bg-zinc-800 h-[600px] lg:h-[460px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
       onClick={handleCardClick}
     >
       <div className="flex items-center justify-between gap-2">
@@ -45,7 +45,7 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
       </div>
 
       <div className="absolute w-[90%] bottom-0 gap-3 flex flex-wrap mb-5">
-        {tags.map((label, key) => (
+        {tags.slice(0,2).map((label, key) => (
           <span
             key={key}
             className="text-sm text-sky-600 group-hover:text-sky-400 transition-all duration-300 flex w-fit bg-zinc-700/40 px-2 py-1 rounded-lg"
