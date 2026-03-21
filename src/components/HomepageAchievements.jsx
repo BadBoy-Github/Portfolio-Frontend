@@ -12,7 +12,6 @@ const HomepageAchievements = () => {
 
   return (
     <section className="section">
-      <div className="container mx-auto relative">
         <h2 className="headline-2">My Achievements</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
           A collection of milestones that showcase my passion and impact
@@ -88,7 +87,6 @@ const HomepageAchievements = () => {
             </div>
           )}
         </div>
-      </div>
     </section>
   );
 };

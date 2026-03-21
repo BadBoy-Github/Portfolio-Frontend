@@ -209,15 +209,12 @@ const Chat = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section id="chatbot" className="section">
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
+    <section id="chatbot" className="section relative">
         <h2 className="headline-2">Talk With My Portfolio</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
           Explore my portfolio, skills, and resume in a conversational way
         </p>
-      </div>
 
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
           {/* Left side */}
           <div className="relative">
@@ -381,7 +378,6 @@ const Chat = () => {
             </form>
           </div>
         </div>
-      </div>
     </section>
   );
 };

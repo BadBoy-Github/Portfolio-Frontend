@@ -67,7 +67,7 @@ const ProjectsLibrary = () => {
 
   return (
     <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="container">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2">All Projects</h1>
           <p className="text-zinc-400">Explore all my projects</p>

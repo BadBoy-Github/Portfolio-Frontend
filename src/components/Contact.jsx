@@ -19,7 +19,7 @@ const socialLinks = [
 const Contact = () => {
     return (
       <section id="contactme" className="section">
-        <div className="container lg:grid lg:grid-cols-2 lg:items-stretch">
+        <div className=" lg:grid lg:grid-cols-2 lg:items-stretch">
           <div className="mb-12 lg:mb-0 lg:flex lg:flex-col">
             <h2 className="headline-2 lg:max-w-[12ch]">
               Contact me for collaboration

@@ -75,6 +75,7 @@ const ProjectCard = ({
           }`}
         />
       </figure>
+      
       <div className="flex items-center justify-between gap-4">
         <div>
           <h3 className="title-1 mb-3">{title}</h3>

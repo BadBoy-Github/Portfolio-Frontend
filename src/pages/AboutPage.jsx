@@ -5,14 +5,12 @@ import Education from "../components/Education";
 
 const AboutPage = () => {
   return (
-    <>
-      <div className="">
+      <div className="container">
         <Welcome />
         <Chat />
         <Experience />
         <Education />
       </div>
-    </>
   );
 };
 

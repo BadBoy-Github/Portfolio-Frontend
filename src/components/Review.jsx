@@ -6,7 +6,6 @@ import { reviews } from "../data/ReviewData";
 const Review = () => {
   return (
     <section id="reviews" className="section overflow-hidden ">
-      <div className="container ">
         <h2 className="headline-2 ">What my colleagues say</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
           Hear directly from those who’ve collaborated with me
@@ -23,7 +22,6 @@ const Review = () => {
             />
           ))}
         </div>
-      </div>
     </section>
   );
 };

@@ -5,8 +5,7 @@ import { skillItem } from "../data/SkillData";
 
 const Skills = () => {
   return (
-    <section className="section" id="skills">
-      <div className="container">
+    <section className="section mb-20" id="skills">
         <h2 className="headline-2 ">Essential Tech Stacks I use</h2>
 
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
@@ -24,7 +23,6 @@ const Skills = () => {
             />
           ))}
         </div>
-      </div>
     </section>
   );
 };

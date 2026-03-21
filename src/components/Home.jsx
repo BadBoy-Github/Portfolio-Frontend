@@ -5,7 +5,7 @@ import { ButtonPrimary, ButtonOutline } from "./Button";
 const Home = () => {
   return (
     <section className="pt-28 lg:pt-36 mb-20" id="home">
-      <div className="container lg:grid lg:grid-cols-2 items-center lg:gap-10">
+      <div className=" lg:grid lg:grid-cols-2 items-center lg:gap-10">
         <div>
           <div className="flex items-center gap-3">
             <figure className="img-box size-10 rounded-lg">

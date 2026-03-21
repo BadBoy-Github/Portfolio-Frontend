@@ -8,16 +8,14 @@ import HomepageAchievements from "../components/HomepageAchievements";
 
 const LandingPage = () => {
   return (
-    <div>
-      <>
+    <div className="container">
         <Home />
-        <FeaturedProjectGrid />
         <Skills />
+        <FeaturedProjectGrid />
         <HomepageCertificates />
         <HomepageAchievements />
         <Review />
         <Contact />
-      </>
     </div>
   );
 };
