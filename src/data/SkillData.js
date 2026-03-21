@@ -100,6 +100,7 @@ const skillItem = [
         label: "MS Office",
         desc: "Productivity Suite",
     },
+    
 ];
 
 export { skillItem };

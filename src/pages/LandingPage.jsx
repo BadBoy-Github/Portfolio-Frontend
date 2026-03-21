@@ -5,17 +5,19 @@ import Review from "../components/Review";
 import HomepageCertificates from "../components/HomepageCertificates";
 import HomepageAchievements from "../components/HomepageAchievements";
 import HomepageFeaturedProjectGrid from "../components/HomepageFeaturedProjectGrid";
+import QATerminal from "../components/QATerminal";
 
 const LandingPage = () => {
   return (
     <div className="container">
-        <Home />
-        <Skills />
-        <HomepageFeaturedProjectGrid />
-        <HomepageCertificates />
-        <HomepageAchievements />
-        <Review />
-        <Contact />
+      <Home />
+      <QATerminal />
+      <Skills />
+      <HomepageFeaturedProjectGrid />
+      <HomepageCertificates />
+      <HomepageAchievements />
+      <Review />
+      <Contact />
     </div>
   );
 };
