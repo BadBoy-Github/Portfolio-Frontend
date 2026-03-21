@@ -137,8 +137,11 @@ const BlogsLibrary = () => {
           ))}
 
           {filteredBlogs.length === 0 && (
-            <div className="col-span-full text-center py-10">
-              <h3 className="text-xl font-semibold text-zinc-300">
+            <div className="col-span-full text-center py-10 flex flex-col justify-center items-center">
+              <div className="loader mb-4">
+                <span></span>
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-300 mt-2">
                 No blogs found
               </h3>
               <p className="text-zinc-500 mt-2">
