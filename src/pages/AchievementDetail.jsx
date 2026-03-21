@@ -25,9 +25,6 @@ const AchievementDetail = () => {
   // Get other achievements
   const otherAchievements = achievements.filter((a) => a.id !== id);
 
-  const openImage = () => {
-    window.open(achievement.imgSrc, "_blank");
-  };
 
   return (
     <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
@@ -58,12 +55,8 @@ const AchievementDetail = () => {
             <div>
               <div
                 className="cursor-pointer group rounded-xl overflow-hidden"
-                onClick={openImage}
               >
                 <div className="relative">
-                  <div className="hidden group-hover:flex absolute inset-0 bg-zinc-900/60 items-center justify-center z-10">
-                    <AiOutlineFullscreen className="w-16 h-16 text-white" />
-                  </div>
                   <img
                     src={achievement.imgSrc}
                     alt={achievement.title}
@@ -71,9 +64,6 @@ const AchievementDetail = () => {
                   />
                 </div>
               </div>
-              <p className="text-center text-zinc-500 text-sm mt-2">
-                Click to view full size
-              </p>
             </div>
 
             {/* Right - Key Points */}
@@ -96,8 +86,6 @@ const AchievementDetail = () => {
           </div>
 
           {/* Tags */}
-          <div className="bg-zinc-800 rounded-xl p-6">
-            <h2 className="text-xl font-semibold text-white mb-4">Tags</h2>
             <div className="flex flex-wrap gap-2">
               {achievement.tags.map((tag, index) => (
                 <span
@@ -108,7 +96,6 @@ const AchievementDetail = () => {
                 </span>
               ))}
             </div>
-          </div>
         </div>
 
         {/* Other Achievements Section */}
@@ -117,7 +104,7 @@ const AchievementDetail = () => {
             Other Achievements
           </h2>
           <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
-            {otherAchievements.slice(0, 10).map((other) => (
+            {otherAchievements.map((other) => (
               <Link
                 key={other.id}
                 to={`/achievement/${other.id}`}

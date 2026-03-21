@@ -1,36 +1,29 @@
 
 
 // Components
+import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
 
 const sitemap = [
   {
     label: "Home",
-    href: "#home",
+    href: "/",
   },
   {
     label: "About",
-    href: "#about",
+    href: "/about",
   },
   {
-    label: "Journey",
-    href: "#journey",
+    label: "Projects",
+    href: "/projects",
   },
   {
-    label: "Project",
-    href: "#project",
-  },
-  {
-    label: "Certifications",
-    href: "#certification",
-  },
-  {
-    label: "Reviews",
-    href: "#reviews",
+    label: "Blogs",
+    href: "/blogs",
   },
   {
     label: "Contact me",
-    href: "#contactme",
+    href: "/?scroll=contact",
   },
 ];
 
@@ -74,13 +67,13 @@ const Footer = () => {
                 <ul>
                   {socials.map(({ label, href }, key) => (
                     <li key={key}>
-                      <a
-                        href={href}
+                      <Link
+                        to={href}
                         target="_blank"
                         className="block text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -91,12 +84,12 @@ const Footer = () => {
                 <ul>
                   {sitemap.map(({ label, href }, key) => (
                     <li key={key}>
-                      <a
-                        href={href}
+                      <Link
+                        to={href}
                         className="block gap-4 text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

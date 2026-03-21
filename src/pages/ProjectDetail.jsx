@@ -23,7 +23,7 @@ const ProjectDetail = () => {
   }
 
   // Get other projects for the "Other Projects" section
-  const otherProjects = proj.filter((p) => p.id !== id).slice(0, 6);
+  const otherProjects = proj.filter((p) => p.id !== id);
 
   return (
     <div className="min-h-screen bg-zinc-900 pt-24 pb-16">

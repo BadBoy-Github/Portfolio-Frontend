@@ -80,7 +80,7 @@ const BlogDetail = () => {
         <div className="mt-16">
           <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
           <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
-            {otherBlogs.slice(0, 6).map((otherBlog) => (
+            {otherBlogs.map((otherBlog) => (
               <Link
                 key={otherBlog.id}
                 to={`/blog/${otherBlog.id}`}
