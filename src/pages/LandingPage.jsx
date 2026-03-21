@@ -5,12 +5,14 @@ import Review from "../components/Review";
 import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 import HomepageCertificates from "../components/HomepageCertificates";
 import HomepageAchievements from "../components/HomepageAchievements";
+import FeaturedProjectGridTitle from "../components/FeaturedProjectGridTitle";
 
 const LandingPage = () => {
   return (
     <div className="container">
         <Home />
         <Skills />
+        <FeaturedProjectGridTitle />
         <FeaturedProjectGrid />
         <HomepageCertificates />
         <HomepageAchievements />

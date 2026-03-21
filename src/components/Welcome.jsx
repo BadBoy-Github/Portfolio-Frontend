@@ -2,6 +2,7 @@ import CountUp from "./CountUp";
 import { skillItem } from "../data/SkillData";
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const GITHUB_USERNAME = "BadBoy-Github";
 const REPOS_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
@@ -122,10 +123,9 @@ const Welcome = () => {
               </div>
             ))}
 
-            <a
-              href="https://github.com/BadBoy-Github"
+            <Link
+              to="/"
               className="ml-auto flex flex-col items-center group"
-              target="_blank"
             >
               <img
                 src="/img/icons/favicon.svg"
@@ -134,10 +134,7 @@ const Welcome = () => {
                 height={30}
                 className="w-[30px] md:w-[40px] md:h-[40px]"
               />
-              <p className="text-sm md:mt-1 group-hover:text-sky-200 duration-500 transition-all">
-                GitHub
-              </p>
-            </a>
+            </Link>
           </div>
         </div>
     </section>
