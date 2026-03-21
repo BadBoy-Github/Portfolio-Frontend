@@ -20,7 +20,7 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
 
   return (
     <div 
-      className="bg-zinc-800 lg:h-[520px] h-[600px] hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group relative cursor-pointer"
+      className="bg-zinc-800 lg:h-[520px] h-[600px] hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl flex flex-col group relative cursor-pointer"
       onClick={handleCardClick}
     >
       <div className="flex items-center justify-between gap-2">
@@ -32,14 +32,9 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
         </div>
       </div>
       <figure
-        className="rounded-lg bg-zinc-700 mt-4 hover:scale-[101%] group/achi transition-all duration-300 relative cursor-pointer"
+        className="rounded-lg bg-zinc-700 mt-4 my-2 hover:scale-[101%] group/achi transition-all duration-300 relative cursor-pointer"
         onClick={handleImageClick}
       >
-        <div className="hidden bg-zinc-950/60 font-bold group-hover/achi:flex absolute top-0 bottom-0 left-0 right-0 rounded-lg transition-all duration-300 ">
-          <div className="flex items-center justify-center rounded-lg h-full w-full transition-all duration-300">
-            <AiOutlineFullscreen className="w-10 h-10" />
-          </div>
-        </div>
         <img
           src={imgSrc}
           width={44}
@@ -49,7 +44,7 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
           className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg"
         />
       </figure>
-      <ul className="list-disc text-sm text-zinc-400 mt-3 tracking-wider pl-5 space-y-1 h-64 lg:h-48 overflow-y-auto achi-ul">
+      <ul className="list-disc text-sm text-zinc-400 mt-4 my-2 tracking-wider pl-5 space-y-1 h-64 lg:h-48 overflow-hidden achi-ul">
         {desc
           .split(". ")
           .filter((sentence) => sentence.trim() !== "")

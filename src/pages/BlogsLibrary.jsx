@@ -103,11 +103,11 @@ const BlogsLibrary = () => {
           {filteredBlogs.map((blog, index) => (
             <Link key={index} to={`/blog/${blog.id}`} className="group">
               <article className="bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors h-full flex flex-col">
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-video overflow-hidden m-2 rounded-lg">
                   <img
                     src={blog.imageSrc}
                     alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-grow">
