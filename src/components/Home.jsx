@@ -1,11 +1,12 @@
 // Components
 
 import { ButtonPrimary, ButtonOutline } from "./Button";
+import EvilEye from "./EvilEye";
 
 const Home = () => {
   return (
     <section className="pt-28 lg:pt-36 mb-20" id="home">
-      <div className=" lg:grid lg:grid-cols-2 items-center lg:gap-10">
+      <div className=" lg:grid lg:grid-cols-[3fr_4fr] items-center lg:gap-10">
         <div>
           <div className="flex items-center gap-3">
             <figure className="img-box size-10 rounded-lg">
@@ -49,9 +50,21 @@ const Home = () => {
             />
           </div>
         </div>
-
         {/* Updated Model Container */}
-        <div className="hidden lg:block h-[480px] w-full relative bg-red-500"></div>
+        <div className="hidden lg:flex justify-center items-center h-[480px] w-full">
+          <EvilEye
+            eyeColor="#0284c7"
+            intensity={1}
+            pupilSize={1}
+            irisWidth={0.3}
+            glowIntensity={0.35}
+            scale={0.6}
+            noiseScale={1}
+            pupilFollow={1.2}
+            flameSpeed={1.2}
+            backgroundColor="#18181b"
+          />
+        </div>
       </div>
     </section>
   );

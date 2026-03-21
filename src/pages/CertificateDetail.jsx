@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
+import { IoArrowBack, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { certificates } from "../data/CertificateData";
 import { useState } from "react";
 
@@ -130,11 +130,38 @@ const CertificateDetail = () => {
         </div>
 
         {/* Other Certificates Section */}
-        <div className="mt-16">
+        <div className="mt-16 relative">
           <h2 className="text-2xl font-bold text-white mb-6">
             Other Certificates
           </h2>
-          <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+          {/* Left Scroll Button */}
+          <button
+            onClick={() =>
+              document
+                .getElementById("other-certificates-scroll")
+                .scrollBy({ left: -672, behavior: "smooth" })
+            }
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+            aria-label="Scroll left"
+          >
+            <IoChevronBack className="size-6" />
+          </button>
+          {/* Right Scroll Button */}
+          <button
+            onClick={() =>
+              document
+                .getElementById("other-certificates-scroll")
+                .scrollBy({ left: 672, behavior: "smooth" })
+            }
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+            aria-label="Scroll right"
+          >
+            <IoChevronForward className="size-6" />
+          </button>
+          <div
+            id="other-certificates-scroll"
+            className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
+          >
             {otherCertificates.map((cert) => (
               <Link
                 key={cert.id}

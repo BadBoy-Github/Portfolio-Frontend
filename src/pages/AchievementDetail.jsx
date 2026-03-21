@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
-import { AiOutlineFullscreen } from "react-icons/ai";
+import { IoArrowBack, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { achievements } from "../data/AchievementData";
 
 const AchievementDetail = () => {
@@ -53,9 +52,7 @@ const AchievementDetail = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             {/* Left - Image */}
             <div>
-              <div
-                className="cursor-pointer group rounded-xl overflow-hidden"
-              >
+              <div className="cursor-pointer group rounded-xl overflow-hidden">
                 <div className="relative">
                   <img
                     src={achievement.imgSrc}
@@ -86,24 +83,51 @@ const AchievementDetail = () => {
           </div>
 
           {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {achievement.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-2">
+            {achievement.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Other Achievements Section */}
-        <div className="mt-16">
+        <div className="mt-16 relative">
           <h2 className="text-2xl font-bold text-white mb-6">
             Other Achievements
           </h2>
-          <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+          {/* Left Scroll Button */}
+          <button
+            onClick={() =>
+              document
+                .getElementById("other-achievements-scroll")
+                .scrollBy({ left: -672, behavior: "smooth" })
+            }
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+            aria-label="Scroll left"
+          >
+            <IoChevronBack className="size-6" />
+          </button>
+          {/* Right Scroll Button */}
+          <button
+            onClick={() =>
+              document
+                .getElementById("other-achievements-scroll")
+                .scrollBy({ left: 672, behavior: "smooth" })
+            }
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+            aria-label="Scroll right"
+          >
+            <IoChevronForward className="size-6" />
+          </button>
+          <div
+            id="other-achievements-scroll"
+            className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
+          >
             {otherAchievements.map((other) => (
               <Link
                 key={other.id}
