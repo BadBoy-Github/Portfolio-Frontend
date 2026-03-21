@@ -68,6 +68,41 @@ const PageNotFound = () => {
     },
   ];
 
+  const reloadTerminal = () => {
+    // Clear all timers
+    timeoutsRef.current.forEach(clearTimeout);
+    timeoutsRef.current = [];
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // Reset state
+    setLines([]);
+    setAnimationComplete(false);
+    setShowCursor(true);
+
+    // Restart animation
+    intervalRef.current = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 530);
+
+    terminalLines.forEach((line) => {
+      const timeoutId = setTimeout(() => {
+        setLines((prev) => {
+          if (prev.some((p) => p.id === line.id)) {
+            return prev;
+          }
+          return [...prev, line];
+        });
+
+        if (line.id === 10) {
+          setTimeout(() => setAnimationComplete(true), 100);
+        }
+      }, line.delay);
+      timeoutsRef.current.push(timeoutId);
+    });
+  };
+
   useEffect(() => {
     // Clear any existing timeouts on mount
     timeoutsRef.current.forEach(clearTimeout);
@@ -113,13 +148,35 @@ const PageNotFound = () => {
         {/* Terminal Window */}
         <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden shadow-2xl">
           {/* Terminal Header */}
-          <div className="flex items-center gap-2 px-4 py-3 bg-zinc-800/50 border-b border-zinc-800">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="ml-4 text-zinc-500 text-sm font-mono">
-              bash — 404
-            </span>
+          <div className="flex items-center justify-between px-4 py-3 bg-zinc-800/50 border-b border-zinc-800">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="ml-4 text-zinc-500 text-sm font-mono">
+                bash — 404
+              </span>
+            </div>
+            <button
+              onClick={reloadTerminal}
+              className="text-zinc-500 hover:text-zinc-300 transition-colors p-1"
+              title="Reload terminal"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+            </button>
           </div>
 
           {/* Terminal Body */}
