@@ -313,11 +313,7 @@ const QATerminal = () => {
 
   return (
     <div className="w-full mx-auto mt-16">
-      {/* Section Title */}
-      <div className="text-center mb-8">
-        <h2 className="headline-2">From Biotech to Tech</h2>
-        <p className="text-zinc-400 mt-2">My journey and insights</p>
-      </div>
+
 
       {/* Terminal Window */}
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden shadow-2xl">
