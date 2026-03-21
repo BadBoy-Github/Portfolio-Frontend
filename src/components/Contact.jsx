@@ -33,11 +33,83 @@ const Contact = () => {
     category: "query",
     message: "",
   });
+
+  const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({
     loading: false,
     success: false,
     error: "",
   });
+
+  // Validation functions
+  const validateName = (value) => {
+    if (!value.trim()) {
+      return "Name is required";
+    }
+    if (value.trim().length < 2) {
+      return "Name must be at least 2 characters";
+    }
+    if (!/^[a-zA-Z\s]+$/.test(value.trim())) {
+      return "Name should contain only letters";
+    }
+    return "";
+  };
+
+  const validateEmail = (value) => {
+    if (!value.trim()) {
+      return "Email is required";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value.trim())) {
+      return "Please enter a valid email address";
+    }
+    return "";
+  };
+
+  const validateSubject = (value) => {
+    if (!value.trim()) {
+      return "Subject is required";
+    }
+    if (value.trim().length < 3) {
+      return "Subject must be at least 3 characters";
+    }
+    if (value.trim().length > 100) {
+      return "Subject must be less than 100 characters";
+    }
+    return "";
+  };
+
+  const validateMessage = (value) => {
+    if (!value.trim()) {
+      return "Message is required";
+    }
+    if (value.trim().length < 10) {
+      return "Message must be at least 10 characters";
+    }
+    if (value.trim().length > 2000) {
+      return "Message must be less than 2000 characters";
+    }
+    return "";
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: validateName(formData.name),
+      email: validateEmail(formData.email),
+      subject: validateSubject(formData.subject),
+      message: validateMessage(formData.message),
+    };
+
+    // Remove empty error messages
+    Object.keys(newErrors).forEach((key) => {
+      if (!newErrors[key]) {
+        delete newErrors[key];
+      }
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,10 +117,54 @@ const Contact = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+
+    // Validate on blur
+    let error = "";
+    switch (name) {
+      case "name":
+        error = validateName(value);
+        break;
+      case "email":
+        error = validateEmail(value);
+        break;
+      case "subject":
+        error = validateSubject(value);
+        break;
+      case "message":
+        error = validateMessage(value);
+        break;
+      default:
+        break;
+    }
+
+    if (error) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate entire form
+    if (!validateForm()) {
+      return;
+    }
+
     setStatus({ loading: true, success: false, error: "" });
 
     try {
@@ -71,6 +187,7 @@ const Contact = () => {
           category: "query",
           message: "",
         });
+        setErrors({});
         // Reset success message after 5 seconds
         setTimeout(() => {
           setStatus((prev) => ({ ...prev, success: false }));
@@ -132,11 +249,14 @@ const Contact = () => {
                 id="name"
                 value={formData.name}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 autoComplete="name"
-                required
                 placeholder="Enter your name"
-                className="text-field "
+                className={`text-field ${errors.name ? "ring-2 ring-red-500" : ""}`}
               />
+              {errors.name && (
+                <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+              )}
             </div>
 
             <div className="mb-4">
@@ -145,16 +265,19 @@ const Contact = () => {
               </label>
 
               <input
-                type="email"
+                type="text"
                 name="email"
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 autoComplete="email"
-                required
                 placeholder="Enter your email"
-                className="text-field "
+                className={`text-field ${errors.email ? "ring-2 ring-red-500" : ""}`}
               />
+              {errors.email && (
+                <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
           </div>
 
@@ -170,10 +293,13 @@ const Contact = () => {
                 id="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                required
+                onBlur={handleBlur}
                 placeholder="Enter subject"
-                className="text-field "
+                className={`text-field ${errors.subject ? "ring-2 ring-red-500" : ""}`}
               />
+              {errors.subject && (
+                <p className="text-red-400 text-xs mt-1">{errors.subject}</p>
+              )}
             </div>
 
             <div className="mb-4">
@@ -186,8 +312,7 @@ const Contact = () => {
                 id="category"
                 value={formData.category}
                 onChange={handleChange}
-                required
-                className="text-field "
+                className="text-field"
               >
                 {categories.map((cat) => (
                   <option key={cat.value} value={cat.value}>
@@ -208,10 +333,13 @@ const Contact = () => {
               id="message"
               value={formData.message}
               onChange={handleChange}
-              required
+              onBlur={handleBlur}
               placeholder="Enter your message"
-              className="text-field resize-y min-h-32 max-h-80 "
+              className={`text-field resize-y min-h-32 max-h-80 ${errors.message ? "ring-2 ring-red-500" : ""}`}
             ></textarea>
+            {errors.message && (
+              <p className="text-red-400 text-xs mt-1">{errors.message}</p>
+            )}
           </div>
 
           {/* Status Messages */}
