@@ -108,8 +108,9 @@ const Footer = () => {
             </a>
 
             <p className="text-zinc-500 text-sm ">
-              &copy; 2025{" "}
+              &copy; {new Date().getFullYear()}
               <span className="text-zinc-200">
+                {" "}
                 · All Rights Reserved |{" "}
                 <span className="text-sky-600 font-semibold">
                   Elayabarathi M V
