@@ -138,9 +138,11 @@ const PageNotFound = () => {
                   ) : (
                     line.text
                   )}
-                  {line.id === lines.length && showCursor && (
-                    <span className="inline-block w-2 h-4 bg-zinc-400 ml-1 animate-pulse"></span>
-                  )}
+                  {line.id === lines.length &&
+                    showCursor &&
+                    !animationComplete && (
+                      <span className="inline-block w-2 h-4 bg-zinc-400 ml-1 animate-pulse"></span>
+                    )}
                 </div>
               ))}
             </div>
