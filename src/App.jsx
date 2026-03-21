@@ -37,6 +37,7 @@ import BlogsLibrary from "./pages/BlogsLibrary";
 // Homepage Section Components
 import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage";
+import PageNotFound from "./pages/PageNotFound";
 
 const App = () => {
   return (
@@ -62,6 +63,9 @@ const App = () => {
             <Route path="/certificates" element={<CertificatesLibrary />} />
             <Route path="/achievements" element={<AchievementsLibrary />} />
             <Route path="/blogs" element={<BlogsLibrary />} />
+
+            {/* 404 - Page Not Found */}
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </main>
         <Footer />
