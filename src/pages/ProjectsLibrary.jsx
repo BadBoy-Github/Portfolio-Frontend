@@ -31,6 +31,9 @@ const ProjectsLibrary = () => {
       ) ||
       project.sTags.some(
         (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
+      ) ||
+      project.techUsed.some(
+        (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
       );
 
     // Filter by search query
@@ -42,6 +45,9 @@ const ProjectsLibrary = () => {
       ) ||
       project.sTags.some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      ) ||
+      project.techUsed.some((tech) =>
+        tech.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     return tagMatch && searchMatch;
