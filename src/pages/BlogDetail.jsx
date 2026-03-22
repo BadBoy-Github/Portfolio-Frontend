@@ -35,7 +35,7 @@ const BlogDetail = () => {
         </Link>
 
         {/* Main Content */}
-        <article className="max-w-3xl mx-auto">
+        <article className="mx-auto">
           {/* Header */}
           <header className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">

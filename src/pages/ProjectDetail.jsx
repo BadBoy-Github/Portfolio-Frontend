@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
+import { VscDebugBreakpointFunctionUnverified } from "react-icons/vsc";
 import {
   IoArrowBack,
   IoArrowForwardOutline,
@@ -74,27 +75,59 @@ const ProjectDetail = () => {
               <h2 className="text-lg font-semibold text-white mb-3">
                 Description
               </h2>
-              <p className="text-zinc-300 leading-relaxed">
+              <p className="text-zinc-300 leading-relaxed indent-16 text-justify first-letter:text-xl">
                 {project.description}
               </p>
             </div>
 
-            {/* Uses */}
+            {/* Uses / What I Learned */}
             <div className="mb-8">
               <h2 className="text-lg font-semibold text-white mb-3">
                 What I Learned
               </h2>
-              <p className="text-zinc-300 leading-relaxed">{project.uses}</p>
+              <ul className="space-y-2">
+                {project.uses
+                  .split(/(?<=[.!?])\s+/)
+                  .filter((item) => item.trim())
+                  .map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-zinc-300"
+                    >
+                      <span className="text-sky-400 mt-1">
+                        <VscDebugBreakpointFunctionUnverified className="size-5" />
+                      </span>
+                      <span className="leading-relaxed text-justify">
+                        {item.trim()}
+                      </span>
+                    </li>
+                  ))}
+              </ul>
             </div>
 
-            {/* Improvements */}
+            {/* Improvements / Unique Features */}
             <div className="mb-8">
               <h2 className="text-lg font-semibold text-white mb-3">
                 Unique Features & Improvements
               </h2>
-              <p className="text-zinc-300 leading-relaxed">
-                {project.improvements}
-              </p>
+              <ul className="space-y-2">
+                {project.improvements
+                  .split(/(?<=[.!?])\s+/)
+                  .filter((item) => item.trim())
+                  .map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-zinc-300"
+                    >
+                      <span className="text-sky-400 mt-1">
+                        <VscDebugBreakpointFunctionUnverified className="size-5" />
+                      </span>
+                      <span className="leading-relaxed text-justify">
+                        {item.trim()}
+                      </span>
+                    </li>
+                  ))}
+              </ul>
             </div>
           </div>
 
@@ -127,7 +160,7 @@ const ProjectDetail = () => {
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-sky-600 hover:bg-sky-500 rounded-xl text-white transition-colors"
                   >
-                    <span>Live Demo</span>
+                    <span>Visit </span>
                     <IoArrowForwardOutline className="size-4" />
                   </a>
                 )}

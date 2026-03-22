@@ -70,11 +70,6 @@ const skillItem = [
     //     label: "Figma",
     //     desc: "UI/UX Design",
     // },
-    // {
-    //     imgSrc: "/img/skills/",
-    //     label: "Adobe Photoshop",
-    //     desc: "UI/UX Design",
-    // },
     {
         imgSrc: "/img/skills/canva.svg",
         label: "Canva",
