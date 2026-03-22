@@ -1158,18 +1158,56 @@ const proj = [
         id: "google-drive",
         type: null,
         imgSrc: "/img/projects/google-drive.webp",
-        title: "Drive to Image",
-        subheading: "Google Drive Link Converter",
-        tags: ["Converter", "Utility"],
+
+        title: "DriveDirect",
+
+        subheading: "Convert Google Drive links into direct image URLs",
+
+        tags: ["Utility", "Converter", "Tool"],
+
         live: "True",
         projectLink: "https://google-image-to-link.netlify.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Google-Image-Link-Generator",
-        sTags: ["ai made", "react", "javascript", "google drive", "image link generator", "drive to direct link", "file converter", "utility tool", "web tool", "responsive", "web app"],
-        techUsed: ["React", "JavaScript"],
-        description: "A utility tool that converts Google Drive links to direct image links for embedding.",
-        uses: "This tool demonstrates URL manipulation and parsing. It converts shared Drive links to direct image URLs that can be used in websites.",
-        improvements: "Unlike basic link converters, this handles various share settings and file types. Could be enhanced with batch conversion and folder support.",
+
+        sTags: [
+            // Recruiter Focus
+            "javascript url parser project",
+            "react utility tool project",
+            "string manipulation javascript",
+            "frontend problem solving project",
+            "api less tool development",
+            "link conversion logic javascript",
+            "ai assisted development project",
+            "dynamic url transformation",
+            "web tools development project",
+            "frontend logic implementation",
+
+            // Client / General
+            "google drive image link converter",
+            "drive to direct link tool",
+            "image link generator online",
+            "convert drive link to image url",
+            "google drive file converter",
+
+            // Features / USP
+            "ai made",
+            "instant link conversion",
+            "direct image url generation",
+            "client side processing tool",
+            "no backend required",
+            "simple and fast interface",
+            "practical utility for developers"
+        ],
+
+        techUsed: ["HTML", "CSS" ,"JavaScript"],
+
+        description: "DriveDirect is a lightweight utility tool designed to convert Google Drive sharing links into direct image URLs that can be embedded and used across web platforms. Built using HTML, CSS and JavaScript, the project focuses on solving a common limitation by transforming inaccessible links into usable resources through efficient client-side logic.",
+
+        uses: "This tool is useful for developers, designers, and content creators who store images on Google Drive but need direct links for embedding in websites or applications. It simplifies the process by instantly converting standard share links into usable image URLs without requiring any backend processing.",
+
+        improvements: "DriveDirect enables instant conversion of Google Drive links into direct image URLs, making otherwise restricted links usable for embedding and sharing. It performs all processing on the client side without requiring a backend, ensuring fast and efficient execution. The tool provides a clean and simple interface for quick interactions while solving a real-world limitation in content sharing workflows.",
+
         gallery: [
             "/img/projects/google-drive.webp",
             "/img/projects/google-drive.webp",

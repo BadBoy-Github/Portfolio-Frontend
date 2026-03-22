@@ -12,11 +12,11 @@ const achievements = [
         date: "2023",
         imgSrc: "/img/achievements/sip.webp",
         keyPoints: [
-            "Led Student Induction Program for the Biotechnology Department",
+            "Led Student Induction Program [SIP] for the Biotechnology Department",
             "Guided new students to adapt and engage effectively with campus life",
             "Coordinated orientation sessions and welcome activities",
             "Managed a team of 15+ volunteers for smooth execution",
-            "Developed communication materials for新生 orientation"
+            "Developed communication materials for SIP orientation"
         ]
     },
     {
