@@ -1221,18 +1221,55 @@ const proj = [
         id: "microsoft-clone",
         type: null,
         imgSrc: "/img/projects/microsoft-clone.webp",
-        title: "Microsoft Clone",
-        subheading: "Microsoft Landing Page Clone",
-        tags: ["Clone", "Profile"],
+
+        title: "Microsoft UI Replica",
+
+        subheading: "Pixel-perfect enterprise landing page clone",
+
+        tags: ["UI Clone", "Frontend", "Design"],
+
         live: "True",
         projectLink: "https://ms-clone1.netlify.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Microsoft-clone",
-        sTags: ["html", "css", "microsoft", "profile", "clone", "web app"],
-        techUsed: ["HTML", "CSS", "JavaScript"],
-        description: "A clone of Microsoft's landing page demonstrating modern web design techniques.",
-        uses: "This clone demonstrates CSS layout techniques including flexbox and grid. It includes responsive design and modern UI components.",
-        improvements: "Could be enhanced with more pages, interactivity, and accessibility features.",
+
+        sTags: [
+            // Recruiter Focus
+            "html css clone project",
+            "pixel perfect ui replication",
+            "frontend layout design project",
+            "css flexbox grid project",
+            "responsive landing page clone",
+            "enterprise ui cloning project",
+            "frontend design implementation",
+            "static website design html css",
+            "layout structuring project",
+            "real world ui replication",
+
+            // Client / General
+            "microsoft website clone",
+            "landing page clone",
+            "corporate website design",
+            "profile page ui design",
+            "modern landing page ui",
+
+            // Features / USP
+            "pixel perfect ui replication",
+            "responsive layout design",
+            "flexbox and grid implementation",
+            "clean css structure",
+            "accurate design reproduction",
+            "enterprise level ui structure"
+        ],
+
+        techUsed: ["HTML", "CSS"],
+
+        description: "Microsoft UI Replica is a pixel-perfect clone of a Microsoft landing and profile interface, built using HTML and CSS. The project focuses on accurately recreating a complex enterprise-level design, demonstrating strong skills in layout structuring, responsiveness, and visual consistency without relying on frameworks.",
+
+        uses: "This project showcases the ability to replicate large-scale, real-world UI designs using core frontend technologies. It highlights expertise in CSS layout systems such as flexbox and grid, along with responsive design principles required to build professional landing pages.",
+
+        improvements: "Microsoft UI Replica delivers an accurate reproduction of a complex enterprise interface with structured layouts and responsive design. It utilizes flexbox and grid systems to recreate real-world UI components with precision, maintaining visual consistency across different screen sizes. The project highlights strong attention to detail and the ability to implement professional-grade designs using only HTML and CSS.",
+
         gallery: [
             "/img/projects/microsoft-clone.webp",
             "/img/projects/microsoft-clone.webp",
@@ -1246,18 +1283,55 @@ const proj = [
         id: "linkedin-profile-clone",
         type: null,
         imgSrc: "/img/projects/linkedin-profile-clone.webp",
-        title: "LinkedIn Clone",
-        subheading: "Professional Profile Page",
-        tags: ["Social", "Network"],
+
+        title: "LinkedIn Pro",
+
+        subheading: "Enhanced professional profile interface",
+
+        tags: ["Social", "Profile", "UI"],
+
         live: "True",
         projectLink: "https://linkedin-profile-clone.vercel.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Linkedin-Profile-Clone",
-        sTags: ["react", "tailwind css", "html", "css", "javascript", "clone", "linkedin", "web app"],
+
+        sTags: [
+            // Recruiter Focus
+            "react linkedin clone project",
+            "complex ui layout react",
+            "frontend system design project",
+            "tailwind css responsive layout",
+            "component based architecture react",
+            "ui ux redesign project",
+            "profile dashboard frontend",
+            "react advanced layout project",
+            "frontend optimization project",
+            "modern web ui design",
+
+            // Client / General
+            "linkedin profile clone",
+            "professional profile website",
+            "portfolio profile ui",
+            "social network profile design",
+            "modern profile dashboard",
+
+            // Features / USP
+            "enhanced component layout design",
+            "github integration visualization",
+            "optimized information hierarchy",
+            "responsive profile interface",
+            "modern professional ui",
+            "clean structured design system"
+        ],
+
         techUsed: ["React", "Tailwind CSS", "JavaScript"],
-        description: "A LinkedIn profile page clone showcasing professional information and network connections.",
-        uses: "This clone demonstrates complex UI layouts with React and Tailwind CSS. It includes profile sections, experience, education, and skills display.",
-        improvements: "Could be enhanced with connection suggestions, messaging, and job recommendations.",
+
+        description: "LinkedIn Pro is an enhanced professional profile interface inspired by LinkedIn, built using React and Tailwind CSS. The project focuses on improving layout structure and visual hierarchy to create a more refined and user-friendly experience while maintaining familiarity with real-world social platforms.",
+
+        uses: "This application demonstrates advanced frontend layout design by organizing professional and personal information in a structured and intuitive manner. It showcases how component-based architecture and responsive design can be used to build scalable and visually appealing profile dashboards.",
+
+        improvements: "LinkedIn Pro introduces an optimized layout where key professional sections such as projects and experience are highlighted in the main view, while supporting details like skills, education, and recommendations are placed in a structured side panel. It also integrates GitHub visualizations including repository activity and contribution animations, delivering a rich and modern profile experience with improved information hierarchy and design clarity.",
+
         gallery: [
             "/img/projects/linkedin-profile-clone.webp",
             "/img/projects/linkedin-profile-clone.webp",
@@ -1271,18 +1345,56 @@ const proj = [
         id: "budget-map",
         type: null,
         imgSrc: "/img/projects/budget-map.webp",
-        title: "Budget Map",
-        subheading: "AI-Powered Budget Planner",
-        tags: ["AI", "Finance", "Map"],
+
+        title: "BudgetMap AI",
+
+        subheading: "Smart expense tracking & financial insights platform",
+
+        tags: ["AI", "Finance", "Analytics"],
+
         live: "True",
         projectLink: "https://budget-map-website.vercel.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Budget-Map",
-        sTags: ["ai made", "next js", "react", "tailwind css", "html", "css", "javascript", "web app"],
-        techUsed: ["Next.js", "React", "Tailwind CSS", "AI Integration"],
-        description: "An AI-powered budget planning application that helps users manage their finances and track expenses.",
-        uses: "This app demonstrates Next.js development with AI integration. It includes expense tracking, budget categories, and financial insights.",
-        improvements: "Unlike basic budget apps, this includes AI-powered suggestions and predictions. Could be enhanced with investment tracking and bill reminders.",
+
+        sTags: [
+            // Recruiter Focus
+            "next js finance app",
+            "react expense tracker project",
+            "ai powered web application",
+            "financial analytics dashboard",
+            "data visualization web app",
+            "typescript next js project",
+            "frontend dashboard system",
+            "chart visualization project",
+            "real world finance application",
+            "react dashboard ui",
+
+            // Client / General
+            "budget planner app",
+            "expense tracking website",
+            "finance management tool",
+            "monthly budget tracker",
+            "money tracking app",
+
+            // Features / USP
+            "ai made",
+            "ai assisted financial insights",
+            "monthly expense tracking",
+            "data visualization charts",
+            "comparative financial analysis",
+            "interactive dashboard ui",
+            "clean modern finance interface"
+        ],
+
+        techUsed: ["Next.js", "React", "Tailwind CSS", "TypeScript", "AI Integration"],
+
+        description: "BudgetMap AI is a smart financial planning and expense tracking platform built using Next.js and TypeScript. It enables users to manage monthly budgets, track daily expenses, and visualize financial data through interactive charts and structured dashboards for better decision-making.",
+
+        uses: "This application demonstrates modern full-stack frontend development using Next.js along with TypeScript for scalability and maintainability. It highlights the implementation of data visualization, structured state management, and AI-assisted insights to build a real-world finance dashboard experience.",
+
+        improvements: "BudgetMap AI provides an interactive financial dashboard that allows users to track daily expenses within monthly budgets and visualize spending patterns through charts and data tables. It enables comparative analysis between different months to identify savings trends and improve financial planning. The platform integrates AI-assisted insights to enhance user understanding, while maintaining a clean and responsive interface built with modern technologies.",
+
         gallery: [
             "/img/projects/budget-map.webp",
             "/img/projects/budget-map.webp",
@@ -1296,18 +1408,55 @@ const proj = [
         id: "horoscope-checker",
         type: null,
         imgSrc: "/img/projects/horoscope-checker.webp",
-        title: "Horoscope Checker",
-        subheading: "Daily Horoscope Application",
-        tags: ["Astrology", "Zodiac"],
+
+        title: "ZodiacScope",
+
+        subheading: "Real-time horoscope insights platform",
+
+        tags: ["Astrology", "API", "Interactive"],
+
         live: "True",
         projectLink: "https://daily-horoscope-check.netlify.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Horoscope-Check",
-        sTags: ["react", "tailwind css", "html", "css", "javascript", "horoscope", "astrology", "zodiac", "api integration", "daily horoscope", "astrological predictions", "birth chart", "zodiac signs", "astrology app", "web app", "responsive"],
-        techUsed: ["React", "Tailwind CSS", "JavaScript", "Horoscope API"],
-        description: "A daily horoscope application that provides personalized readings based on zodiac signs.",
-        uses: "This app demonstrates API integration with external horoscope services. It includes zodiac selection, daily predictions, and compatibility readings.",
-        improvements: "Unlike basic horoscope widgets, this includes birth chart calculations and personalized readings. Could be enhanced with notifications and calendar integration.",
+
+        sTags: [
+            // Recruiter Focus
+            "react api integration project",
+            "frontend api based application",
+            "dynamic data rendering react",
+            "external api integration javascript",
+            "real time data ui project",
+            "responsive web application react",
+            "api driven frontend project",
+            "interactive web app design",
+            "async await fetch project",
+            "frontend data handling project",
+
+            // Client / General
+            "horoscope checker app",
+            "daily horoscope website",
+            "zodiac prediction app",
+            "astrology web application",
+            "horoscope reading tool",
+
+            // Features / USP
+            "real time horoscope data",
+            "zodiac based predictions",
+            "interactive user experience",
+            "clean responsive interface",
+            "dynamic content rendering",
+            "api powered insights"
+        ],
+
+        techUsed: ["HTML", "CSS", "JavaScript", "Horoscope API"],
+
+        description: "ZodiacScope is a real-time horoscope application that delivers daily astrological insights based on user-selected zodiac signs. Built using core web technologies, the app integrates external APIs to dynamically fetch and display personalized predictions in a clean and interactive interface.",
+
+        uses: "This project demonstrates API integration and dynamic data handling using JavaScript. It showcases how external data sources can be consumed and presented in a user-friendly format, with responsive design and smooth user interactions.",
+
+        improvements: "ZodiacScope delivers real-time horoscope insights through seamless API integration, allowing users to instantly access daily predictions based on their zodiac sign. It provides a dynamic and interactive interface that updates content on demand, ensuring a smooth user experience. The application maintains a clean and responsive design while effectively handling external data to present personalized astrological information.",
+
         gallery: [
             "/img/projects/horoscope-checker.webp",
             "/img/projects/horoscope-checker.webp",
@@ -1321,18 +1470,55 @@ const proj = [
         id: "todo",
         type: null,
         imgSrc: "/img/projects/todo.webp",
-        title: "ToDo App",
-        subheading: "Task Management Application",
-        tags: ["Task", "List", "CRUD"],
+
+        title: "TaskFlow",
+
+        subheading: "Modern task management interface",
+
+        tags: ["Task", "Productivity", "CRUD"],
+
         live: "True",
         projectLink: "https://to-do-app-se8u.onrender.com/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/To_Do-App",
-        sTags: ["react", "tailwind css", "html", "css", "javascript", "todo", "crud", "web app"],
+
+        sTags: [
+            // Recruiter Focus
+            "react crud application",
+            "frontend state management project",
+            "react todo app project",
+            "component based architecture react",
+            "tailwind css ui design",
+            "javascript dom manipulation project",
+            "frontend data handling project",
+            "responsive web app react",
+            "basic full functionality app",
+            "clean ui implementation",
+
+            // Client / General
+            "todo list app",
+            "task management app",
+            "daily planner website",
+            "productivity web app",
+            "task tracker",
+
+            // Features / USP
+            "crud operations interface",
+            "task status management",
+            "modern responsive ui",
+            "clean minimal design",
+            "interactive task handling",
+            "smooth user experience"
+        ],
+
         techUsed: ["React", "Tailwind CSS", "JavaScript"],
-        description: "A task management application for organizing and tracking daily tasks and goals.",
-        uses: "This app demonstrates CRUD operations with React state management. It includes task creation, editing, deletion, and completion tracking.",
-        improvements: "Unlike basic todo lists, this includes categories, priorities, and due dates. Could be enhanced with collaboration and calendar integration.",
+
+        description: "TaskFlow is a modern task management application built using React and Tailwind CSS, designed to help users organize and track their daily activities efficiently. It provides a clean and intuitive interface for managing tasks with a focus on usability and responsiveness.",
+
+        uses: "This project demonstrates core frontend development concepts including CRUD operations, state management, and component-based architecture. It highlights how React can be used to build interactive and responsive applications with efficient data handling.",
+
+        improvements: "TaskFlow provides a complete task management experience with smooth CRUD operations, allowing users to create, update, and manage tasks effortlessly. It features a clean and responsive interface designed for everyday usability, along with structured task handling that enhances productivity and organization.",
+
         gallery: [
             "/img/projects/todo.webp",
             "/img/projects/todo.webp",
@@ -1346,18 +1532,55 @@ const proj = [
         id: "calculator",
         type: null,
         imgSrc: "/img/projects/calculator.webp",
-        title: "Calculator App",
-        subheading: "Scientific Calculator Application",
+
+        title: "CalcPro",
+
+        subheading: "Interactive scientific calculator interface",
+
         tags: ["Math", "Utility", "Logic"],
+
         live: "True",
         projectLink: "https://calculator-nextjs.netlify.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Calculator",
-        sTags: ["next js", "react", "tailwind css", "html", "css", "javascript", "calculator", "responsive", "math", "web app"],
+
+        sTags: [
+            // Recruiter Focus
+            "react calculator project",
+            "mathematical logic implementation",
+            "frontend logic building project",
+            "next js web app project",
+            "javascript calculations app",
+            "state management math app",
+            "interactive ui react project",
+            "tailwind css responsive design",
+            "frontend problem solving project",
+            "clean ui implementation",
+
+            // Client / General
+            "scientific calculator app",
+            "online calculator tool",
+            "math calculator website",
+            "responsive calculator",
+            "utility web app",
+
+            // Features / USP
+            "scientific calculation support",
+            "interactive user interface",
+            "clean responsive design",
+            "real time calculation updates",
+            "smooth input handling",
+            "modern calculator ui"
+        ],
+
         techUsed: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
-        description: "A scientific calculator application with advanced mathematical functions and history.",
-        uses: "This app demonstrates mathematical logic implementation in React. It includes basic operations, scientific functions, and calculation history.",
-        improvements: "Unlike basic calculators, this includes graphing capabilities and unit conversions. Could be enhanced with programming mode and formula storage.",
+
+        description: "CalcPro is a modern scientific calculator application built using Next.js and React, designed to perform accurate mathematical computations with a clean and responsive user interface. It combines functionality with a visually appealing design to enhance user interaction.",
+
+        uses: "This project demonstrates the implementation of mathematical logic and real-time calculations in a frontend application. It showcases efficient state handling, user input processing, and responsive UI design using modern web technologies.",
+
+        improvements: "CalcPro delivers a smooth and interactive calculation experience with support for scientific operations and real-time result updates. It features a clean and responsive interface that enhances usability, along with efficient input handling and structured logic implementation for accurate computations.",
+
         gallery: [
             "/img/projects/calculator.webp",
             "/img/projects/calculator.webp",
@@ -1371,18 +1594,55 @@ const proj = [
         id: "shopping-list",
         type: null,
         imgSrc: "/img/projects/shopping-list.webp",
-        title: "Shopping List",
-        subheading: "Grocery List Manager",
-        tags: ["Cart", "Items", "List"],
+
+        title: "CartList",
+
+        subheading: "Visual grocery planning interface",
+
+        tags: ["Shopping", "List", "Utility"],
+
         live: "True",
         projectLink: "https://frontend-shopping-list-app.vercel.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Frontend-Shopping-List-App",
-        sTags: ["html", "css", "javascript", "shopping", "list", "web app"],
+
+        sTags: [
+            // Recruiter Focus
+            "javascript list management project",
+            "frontend local storage project",
+            "dom manipulation project",
+            "vanilla javascript web app",
+            "responsive ui html css project",
+            "frontend data handling project",
+            "interactive ui javascript",
+            "basic web application project",
+            "user input handling javascript",
+            "clean ui implementation",
+
+            // Client / General
+            "shopping list app",
+            "grocery planner website",
+            "shopping checklist app",
+            "daily shopping planner",
+            "cart list app",
+
+            // Features / USP
+            "visual list interface",
+            "interactive item management",
+            "local storage persistence",
+            "clean responsive design",
+            "real time item updates",
+            "simple user friendly ui"
+        ],
+
         techUsed: ["HTML", "CSS", "JavaScript"],
-        description: "A shopping list application for managing grocery items and shopping trips.",
-        uses: "This app demonstrates list management and local storage. It includes item categorization, quantity tracking, and checked items.",
-        improvements: "Unlike basic lists, this includes recipe integration and store mapping. Could be enhanced with barcode scanning and price comparison.",
+
+        description: "CartList is a frontend shopping list application designed to help users plan and manage grocery items efficiently. Built using core web technologies, it provides a clean and visual interface for organizing shopping tasks with ease.",
+
+        uses: "This project demonstrates fundamental frontend concepts such as DOM manipulation, user input handling, and local storage usage. It highlights how simple tools can be built to solve everyday problems with an intuitive and responsive design.",
+
+        improvements: "CartList offers a visual and interactive approach to managing shopping items, allowing users to organize, update, and track their lists in real time. It utilizes local storage to maintain data persistence within the browser and provides a clean, user-friendly interface for efficient planning.",
+
         gallery: [
             "/img/projects/shopping-list.webp",
             "/img/projects/shopping-list.webp",
@@ -1396,18 +1656,55 @@ const proj = [
         id: "profile-card",
         type: null,
         imgSrc: "/img/projects/profile-card.webp",
-        title: "Profile Card",
-        subheading: "Personal Profile Card",
-        tags: ["Profile", "Card", "UI"],
+
+        title: "IdentityCard UI",
+
+        subheading: "Minimal personal profile showcase component",
+
+        tags: ["UI", "Profile", "Design"],
+
         live: "True",
         projectLink: "https://profile-card-001.netlify.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Profile-Card-1",
-        sTags: ["html", "css", "profile", "card", "web app"],
-        techUsed: ["HTML", "CSS", "JavaScript"],
-        description: "A visually appealing profile card showcasing personal information and social links.",
-        uses: "This card demonstrates CSS styling and responsive design. It includes hover effects, social links, and contact information.",
-        improvements: "Could be enhanced with QR code sharing and vCard generation.",
+
+        sTags: [
+            // Recruiter Focus
+            "html css ui component",
+            "frontend design component",
+            "responsive card design",
+            "css styling project",
+            "ui micro interaction design",
+            "frontend layout component",
+            "clean ui implementation",
+            "css animation effects",
+            "basic frontend project",
+            "web design practice",
+
+            // Client / General
+            "profile card design",
+            "personal card website",
+            "developer profile card",
+            "minimal ui design",
+            "portfolio card component",
+
+            // Features / USP
+            "minimal clean design",
+            "responsive card layout",
+            "hover interaction effects",
+            "social links integration",
+            "modern ui styling",
+            "lightweight frontend component"
+        ],
+
+        techUsed: ["HTML", "CSS"],
+
+        description: "IdentityCard UI is a minimal and visually refined profile card designed to showcase personal and professional information in a compact format. Built using HTML and CSS, it emphasizes clean design, simplicity, and effective presentation.",
+
+        uses: "This project demonstrates core UI design principles such as layout structuring, spacing, and responsive styling. It highlights how simple components can be crafted to create impactful user interfaces with minimal code.",
+
+        improvements: "IdentityCard UI delivers a clean and minimal profile presentation with well-structured layout and responsive design. It includes smooth hover interactions and integrated social links, providing a compact yet effective way to represent personal identity in a modern web interface.",
+
         gallery: [
             "/img/projects/profile-card.webp",
             "/img/projects/profile-card.webp",
@@ -1421,18 +1718,55 @@ const proj = [
         id: "crud-app",
         type: null,
         imgSrc: "/img/projects/crud-app-json.webp",
-        title: "CRUD Application",
-        subheading: "JSON-Based CRUD Operations",
-        tags: ["CRUD", "Data"],
+
+        title: "DataCraft CRUD",
+
+        subheading: "Structured data management interface",
+
+        tags: ["CRUD", "Data", "Frontend"],
+
         live: "True",
         projectLink: "https://crud-application-json.onrender.com/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/CRUD-Application-JSON",
-        sTags: ["javascript", "html", "css", "crud", "json", "web app"],
-        techUsed: ["JavaScript", "HTML", "CSS", "JSON"],
-        description: "A CRUD application demonstrating create, read, update, and delete operations with JSON data.",
-        uses: "This app demonstrates DOM manipulation and local storage. It includes data entry forms, table display, and edit/delete actions.",
-        improvements: "Could be enhanced with search, filtering, and data export features.",
+
+        sTags: [
+            // Recruiter Focus
+            "javascript crud application",
+            "frontend data management project",
+            "dom manipulation project",
+            "json data handling javascript",
+            "user input handling project",
+            "table data ui frontend",
+            "basic full functionality app",
+            "vanilla javascript project",
+            "data operations frontend",
+            "responsive web application",
+
+            // Client / General
+            "crud app",
+            "data management tool",
+            "user management app",
+            "record management system",
+            "simple database interface",
+
+            // Features / USP
+            "full crud operations",
+            "structured data display",
+            "interactive table interface",
+            "real time data updates",
+            "clean responsive ui",
+            "user friendly data handling"
+        ],
+
+        techUsed: ["HTML", "CSS", "JavaScript", "JSON"],
+
+        description: "DataCraft CRUD is a frontend data management application that enables users to create, read, update, and delete records through a clean and structured interface. Built using HTML, CSS, and JavaScript, it focuses on simplicity and effective data handling.",
+
+        uses: "This project demonstrates fundamental concepts of data operations in frontend development, including DOM manipulation, form handling, and dynamic table rendering. It showcases how structured data can be managed efficiently without backend integration.",
+
+        improvements: "DataCraft CRUD provides a complete data management experience with full create, read, update, and delete operations through an interactive interface. It features structured data presentation in tabular format with real-time updates, enabling efficient handling of user records while maintaining a clean and responsive design.",
+
         gallery: [
             "/img/projects/crud-app-json.webp",
             "/img/projects/crud-app-json.webp",
@@ -1446,18 +1780,55 @@ const proj = [
         id: "dev-snapshot",
         type: null,
         imgSrc: "/img/projects/dev-snapshot.webp",
-        title: "Dev Snapshot",
-        subheading: "Developer Profile Showcase",
+
+        title: "DevSnapshot UI",
+
+        subheading: "Compact developer portfolio component",
+
         tags: ["Profile", "UI", "Showcase"],
+
         live: "True",
         projectLink: "https://profile-card-002.netlify.app/",
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Profile-Card-2",
-        sTags: ["html", "css", "profile", "snapshot", "card", "web app"],
-        techUsed: ["HTML", "CSS", "JavaScript"],
-        description: "A developer profile showcase with skills, projects, and contact information.",
-        uses: "This profile demonstrates creative CSS and layout techniques. It includes skill visualization and project previews.",
-        improvements: "Could be enhanced with dark mode and animation controls.",
+
+        sTags: [
+            // Recruiter Focus
+            "html css portfolio component",
+            "frontend ui design project",
+            "responsive profile layout",
+            "css layout structuring project",
+            "developer profile component",
+            "clean ui implementation",
+            "frontend design practice",
+            "component based ui design",
+            "web design fundamentals",
+            "minimal portfolio ui",
+
+            // Client / General
+            "developer profile website",
+            "portfolio card design",
+            "personal showcase ui",
+            "developer snapshot",
+            "mini portfolio page",
+
+            // Features / USP
+            "compact profile showcase",
+            "skills and project highlights",
+            "structured layout design",
+            "clean responsive interface",
+            "minimal modern ui",
+            "lightweight frontend component"
+        ],
+
+        techUsed: ["HTML", "CSS"],
+
+        description: "DevSnapshot UI is a compact developer profile component designed to present key information such as skills, projects, and contact details in a clean and structured format. Built using HTML and CSS, it focuses on simplicity and effective visual communication.",
+
+        uses: "This project demonstrates layout structuring and UI composition for showcasing professional information. It highlights how minimal design and proper content organization can create an impactful developer profile interface.",
+
+        improvements: "DevSnapshot UI presents a compact and structured developer profile with clearly organized sections for skills, projects, and personal details. It features a clean and responsive layout that enhances readability and visual appeal, providing an effective way to showcase professional information in a minimal interface.",
+
         gallery: [
             "/img/projects/dev-snapshot.webp",
             "/img/projects/dev-snapshot.webp",
@@ -1471,18 +1842,55 @@ const proj = [
         id: "spotify-tuneback",
         type: null,
         imgSrc: "/img/projects/spotify-tuneback.webp",
-        title: "Tune Back",
-        subheading: "Music Discovery App",
-        tags: ["Music", "Retro", "Spotify"],
+
+        title: "TuneBack CLI",
+
+        subheading: "Time-travel playlist generator using Spotify",
+
+        tags: ["Automation", "Music", "Python"],
+
         live: "False",
         projectLink: "#",
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Spotify-Tuneback",
-        sTags: ["react", "music", "discovery", "spotify", "web app"],
-        techUsed: ["React", "Tailwind CSS", "JavaScript", "Spotify API"],
-        description: "A music discovery application that helps users find new music based on their preferences.",
-        uses: "This app demonstrates API integration with Spotify. It includes playlist generation, artist recommendations, and music exploration.",
-        improvements: "Could be enhanced with social features and concert discovery.",
+        gitUrl: "https://github.com/BadBoy-Github/Musically-Time-Machine",
+
+        sTags: [
+            // Recruiter Focus
+            "python automation project",
+            "api integration python spotify",
+            "web scraping beautifulsoup project",
+            "backend scripting project",
+            "data extraction automation",
+            "spotify api python project",
+            "cli based application python",
+            "real world automation project",
+            "bot development python",
+            "script based integration project",
+
+            // Client / General
+            "spotify playlist generator",
+            "music automation tool",
+            "playlist creator app",
+            "music discovery tool",
+            "time based playlist generator",
+
+            // Features / USP
+            "date based playlist generation",
+            "top 100 songs extraction",
+            "spotify playlist automation",
+            "web scraping integration",
+            "api based music search",
+            "automated playlist creation"
+        ],
+
+        techUsed: ["Python", "BeautifulSoup", "Spotify API"],
+
+        description: "TuneBack CLI is a Python-based automation tool that generates Spotify playlists based on a specific date. By extracting historical top 100 songs using web scraping and integrating with the Spotify API, it recreates the musical atmosphere of a chosen moment in time.",
+
+        uses: "This project demonstrates advanced backend concepts including web scraping with BeautifulSoup, API integration with Spotify, and automation scripting. It highlights the ability to combine multiple data sources to create a meaningful and personalized user experience.",
+
+        improvements: "TuneBack CLI enables users to generate personalized playlists by selecting any specific date, automatically extracting top songs from that period and mapping them to Spotify. It integrates web scraping with API-based search to create and populate playlists directly in the user’s account, delivering a unique time-based music discovery experience.",
+
         gallery: [
             "/img/projects/spotify-tuneback.webp",
             "/img/projects/spotify-tuneback.webp",
@@ -1496,18 +1904,56 @@ const proj = [
         id: "ai-portfolio",
         type: null,
         imgSrc: "/img/projects/ai-portfolio.webp",
-        title: "AI Portfolio",
-        subheading: "AI-Enhanced Portfolio Website",
-        tags: ["AI", "Portfolio", "Modern"],
+
+        title: "3D DevCard",
+
+        subheading: "Minimal 3D developer portfolio concept",
+
+        tags: ["Portfolio", "3D", "UI"],
+
         live: "True",
-        projectLink: "https://ai-portfolio-generator.netlify.app/",
+        projectLink: "https://elayabarathi-ai.netlify.app/",
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/AI-Portfolio",
-        sTags: ["react", "tailwind css", "javascript", "ai made", "portfolio", "openai", "web app"],
-        techUsed: ["React", "Tailwind CSS", "JavaScript", "OpenAI API"],
-        description: "An AI-enhanced portfolio website that uses artificial intelligence to help showcase projects and skills in an interactive way.",
-        uses: "This portfolio demonstrates AI integration in web applications. It includes AI-powered content suggestions, smart project categorization, and interactive elements.",
-        improvements: "Could be enhanced with AI chatbots for visitor interaction and automated content generation.",
+        gitUrl: "https://github.com/BadBoy-Github/AI-3D-Portfolio",
+
+        sTags: [
+            // Recruiter Focus
+            "react three js project",
+            "3d web portfolio project",
+            "frontend creative ui project",
+            "three js integration react",
+            "interactive web design project",
+            "modern ui experiment",
+            "tailwind css react project",
+            "frontend animation project",
+            "3d model web integration",
+            "creative developer portfolio",
+
+            // Client / General
+            "3d portfolio website",
+            "developer portfolio design",
+            "interactive portfolio",
+            "modern portfolio ui",
+            "minimal portfolio website",
+
+            // Features / USP
+            "ai made",
+            "3d background integration",
+            "minimal single screen layout",
+            "interactive visual design",
+            "clean developer showcase",
+            "creative ui concept",
+            "lightweight portfolio structure"
+        ],
+
+        techUsed: ["React", "Tailwind CSS", "JavaScript", "Three.js"],
+
+        description: "3D DevCard is a minimal developer portfolio concept that combines a single-screen layout with an interactive 3D background. Built using React, Tailwind CSS, and Three.js, it focuses on visual creativity and modern UI experimentation.",
+
+        uses: "This project demonstrates the integration of 3D models into web applications using Three.js, along with modern frontend design practices. It highlights creative UI thinking and the ability to build visually engaging interfaces.",
+
+        improvements: "3D DevCard presents a minimal single-screen portfolio design enhanced with an interactive 3D background. It combines modern frontend technologies with creative visual elements to deliver a unique developer showcase experience, blending design aesthetics with functional simplicity.",
+
         gallery: [
             "/img/projects/ai-portfolio.webp",
             "/img/projects/ai-portfolio.webp",
@@ -1519,20 +1965,68 @@ const proj = [
     },
     {
         id: "agnps",
-        type: null,
+        type: "research",
+
         imgSrc: "/img/projects/agnps.webp",
-        title: "Silver vs Bacteria",
-        subheading: "Antimicrobial Research Visualization",
-        tags: ["Research", "Science", "Visualization"],
+
+        title: "Green Synthesis of Silver Nanoparticles",
+
+        subheading: "Biotech Research on Antioxidant & Antimicrobial Activity",
+
+        tags: ["Research", "Biotechnology", "Nanoscience"],
+
         live: "True",
-        projectLink: "https://silver-vs-bacteria.netlify.app/",
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Silver-vs-Bacteria",
-        sTags: ["react", "javascript", "research", "science", "visualization", "data visualization", "web app"],
-        techUsed: ["React", "JavaScript", "D3.js", "Chart.js"],
-        description: "An interactive visualization project comparing the effectiveness of silver nanoparticles against various bacteria strains.",
-        uses: "This project demonstrates data visualization of scientific research. It includes interactive charts showing antibacterial effectiveness across different concentrations and exposure times.",
-        improvements: "Could be enhanced with more bacteria strains, real-time data updates, and exportable reports.",
+        projectLink: "https://journals.innovareacademics.in/index.php/ijap/article/view/51711",
+
+        code: "False",
+        gitUrl: "",
+
+        sTags: [
+            // Recruiter / Academic
+            "biotechnology research project",
+            "silver nanoparticles synthesis",
+            "green synthesis nanoparticles",
+            "antimicrobial research study",
+            "nanotechnology research paper",
+            "scientific research publication",
+            "biotech experimental study",
+            "nanoparticles antibacterial activity",
+            "research paper publication",
+            "life sciences research",
+
+            // Domain Keywords
+            "muntingia calabura nanoparticles",
+            "plant based nanoparticle synthesis",
+            "bio reduction silver nanoparticles",
+            "nanoparticle characterization FTIR XRD",
+            "FESEM nanoparticle analysis",
+            "EDX spectroscopy research",
+
+            // Impact / Features
+            "biotech",
+            "antioxidant activity analysis",
+            "free radical scavenging study",
+            "antibacterial and antifungal study",
+            "dose dependent activity research",
+            "zone of inhibition analysis",
+            "eco friendly nanotechnology"
+        ],
+
+        techUsed: [
+            "FTIR",
+            "XRD",
+            "EDX",
+            "FESEM",
+            "DPPH Assay",
+            "FRAP Assay"
+        ],
+
+        description: "A biotechnology research project focused on the green synthesis of silver nanoparticles (AgNPs) using Muntingia calabura fruit extract. The study explores eco-friendly nanoparticle production and evaluates their antioxidant and antimicrobial properties.",
+
+        uses: "This research demonstrates nanoparticle synthesis using plant-based bio-reduction methods and their characterization through advanced analytical techniques. It evaluates antioxidant activity using DPPH, FRAP, and H2O2 assays, along with antibacterial and antifungal effectiveness.",
+
+        improvements: "This study highlights an eco-friendly approach to nanoparticle synthesis with strong antioxidant and antimicrobial properties. It can be further expanded with clinical validation, large-scale synthesis, and real-world biomedical or pharmaceutical applications.",
+
         gallery: [
             "/img/projects/agnps.webp",
             "/img/projects/agnps.webp",
@@ -1544,20 +2038,61 @@ const proj = [
     },
     {
         id: "api-cafe",
-        type: null,
+        type: "backend",
+
         imgSrc: "/img/projects/api-cafe.webp",
-        title: "API Cafe",
-        subheading: "API Documentation & Testing Platform",
-        tags: ["API", "Developer Tools", "Documentation"],
+
+        title: "Cafe & Wifi API",
+
+        subheading: "RESTful API for Coffee Shop Data",
+
+        tags: ["API", "Backend", "Flask"],
+
         live: "True",
-        projectLink: "https://api-cafe.vercel.app/",
+        projectLink: "https://documenter.getpostman.com/view/39718363/2sB34ZrPqt",
+
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/API-Cafe",
-        sTags: ["react", "javascript", "api", "documentation", "developer tools", "rest api", "testing", "web app"],
-        techUsed: ["React", "JavaScript", "Node.js", "Express"],
-        description: "A comprehensive API documentation and testing platform for developers to explore and test REST APIs.",
-        uses: "This platform demonstrates API documentation and testing capabilities. It includes request builder, response viewer, and code generation features.",
-        improvements: "Could be enhanced with authentication support, collaboration features, and API monitoring.",
+        gitUrl: "https://github.com/BadBoy-Github/Restful-API--Flask-SQLite-Postman-Cafe-Wifi-",
+
+        sTags: [
+            // Recruiter Focus
+            "flask api project",
+            "python backend project",
+            "rest api flask sqlite",
+            "crud api python project",
+            "backend developer portfolio project",
+            "api development project python",
+            "restful services flask",
+            "sqlite database api project",
+            "postman api testing project",
+            "backend logic implementation",
+
+            // Features / Technical
+            "get post patch delete api",
+            "crud operations api",
+            "database integration sqlite",
+            "json api response",
+            "api endpoint design",
+            "data handling backend",
+            "flask routing api",
+            "restful architecture project",
+
+            // General / Client
+            "coffee shop api",
+            "location based data api",
+            "api for cafe details",
+            "wifi cafe finder api",
+            "backend service project"
+        ],
+
+        techUsed: ["Python", "Flask", "SQLite", "Postman"],
+
+        description: "Cafe  & Wifi API is a RESTful backend service built using Python and Flask that allows users to manage and retrieve coffee shop data. It provides structured endpoints for handling real-world cafe information.",
+
+        uses: "This project demonstrates CRUD operations through API endpoints, including GET, POST, PATCH, and DELETE. It manages data such as cafe name, location, seating capacity, and amenities like WiFi, sockets, and coffee pricing.",
+
+        improvements: "This API provides a clean and functional backend structure for managing cafe data. It can be further enhanced with authentication, rate limiting, deployment, and integration with frontend applications.",
+
         gallery: [
             "/img/projects/api-cafe.webp",
             "/img/projects/api-cafe.webp",
@@ -1569,20 +2104,43 @@ const proj = [
     },
     {
         id: "internet-reporter",
-        type: null,
+        type: "automation",
+
         imgSrc: "/img/projects/internet-reporter.webp",
-        title: "Internet Reporter",
-        subheading: "Network Status Monitoring Tool",
-        tags: ["Network", "Monitoring", "Utility"],
-        live: "True",
-        projectLink: "https://internet-reporter.netlify.app/",
+
+        title: "Internet Speed Complaint Bot",
+
+        subheading: "Console-Based Network Monitoring & Automation Tool",
+
+        tags: ["Automation", "Python", "Selenium"],
+
+        live: "False",
+        projectLink: "",
+
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Internet-Reporter",
-        sTags: ["react", "javascript", "network", "monitoring", "status", "utility", "web app"],
-        techUsed: ["React", "JavaScript", "Chart.js"],
-        description: "A network status monitoring tool that tracks internet connectivity and reports on network performance.",
-        uses: "This tool demonstrates real-time network monitoring. It includes latency tracking, uptime statistics, and visual reports.",
-        improvements: "Could be enhanced with alerts, historical data analysis, and multi-location testing.",
+        gitUrl: "https://github.com/BadBoy-Github/Twitter-Complaint-Automation",
+
+        sTags: [
+            "python automation project",
+            "selenium automation bot",
+            "console based python project",
+            "real world automation python",
+            "browser automation selenium",
+            "internet speed testing automation",
+            "twitter automation bot",
+            "conditional logic automation",
+            "task automation python",
+            "backend automation script"
+        ],
+
+        techUsed: ["Python", "Selenium", "Speedtest"],
+
+        description: "A console-based automation tool built with Python and Selenium that monitors internet speed and automatically raises complaints when the service does not meet promised performance.",
+
+        uses: "The application runs in the console, checks real-time download and upload speeds, compares them with user-defined expected values, and if the speed is below the promised level, it automatically logs into Twitter and posts a complaint tagging the network provider.",
+
+        improvements: "This project stands out by combining real-time data monitoring with automated decision-making and action execution. It uniquely bridges the gap between data validation and user advocacy by directly raising complaints on behalf of the user. The integration of speed testing, conditional logic, and browser automation into a single workflow makes it a powerful real-world automation solution.",
+
         gallery: [
             "/img/projects/internet-reporter.webp",
             "/img/projects/internet-reporter.webp",
@@ -1594,20 +2152,53 @@ const proj = [
     },
     {
         id: "ionps",
-        type: null,
+        type: "research",
+
         imgSrc: "/img/projects/ionps.webp",
-        title: "IONPS Analysis",
-        subheading: "Iron Oxide Nanoparticle Study",
-        tags: ["Research", "Science", "Chemistry"],
-        live: "True",
-        projectLink: "https://ionps-analysis.netlify.app/",
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/IONPS-Analysis",
-        sTags: ["react", "javascript", "research", "science", "chemistry", "nanoparticles", "data visualization", "web app"],
-        techUsed: ["React", "JavaScript", "D3.js", "Chart.js"],
-        description: "An interactive analysis tool for studying iron oxide nanoparticle properties and their applications.",
-        uses: "This project demonstrates scientific data visualization for chemistry research. It includes particle size analysis, magnetic properties visualization, and comparison charts.",
-        improvements: "Could be enhanced with more nanoparticle types, simulation features, and exportable reports.",
+
+        title: "Encapsulated Iron Oxide Nanoparticles for Cancer Therapy",
+
+        subheading: "ROS-Mediated Apoptosis Study on Colorectal Cancer Cells",
+
+        tags: ["Research", "Biotechnology", "Nanomedicine"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "False",
+        gitUrl: "",
+
+        sTags: [
+            "nanotechnology cancer research",
+            "iron oxide nanoparticles study",
+            "biotech research project",
+            "nanomedicine research",
+            "anticancer nanoparticle study",
+            "cytotoxicity research HT29",
+            "apoptosis research study",
+            "biomedical research project",
+            "drug delivery nanoparticles",
+            "scientific experimental study"
+        ],
+
+        techUsed: [
+            "UV-Vis Spectroscopy",
+            "FTIR",
+            "XRD",
+            "SEM",
+            "TEM",
+            "PSA",
+            "MTT Assay",
+            "Flow Cytometry",
+            "Caspase Assay"
+        ],
+
+        description: "This research focuses on the synthesis and evaluation of dioxepine-encapsulated iron oxide nanoparticles (IONPs) as a potential anticancer agent against colorectal cancer cells (HT-29). The study explores a nanotechnology-driven therapeutic approach where bioactive compounds derived from Parmotrema reticulatum are integrated with iron oxide nanoparticles to enhance biological activity. Special emphasis is given to understanding how these nanoparticles interact with cancer cells and induce cell death through reactive oxygen species (ROS)-mediated apoptosis.",
+
+        uses: "The project demonstrates a complete experimental workflow starting from nanoparticle synthesis and characterization to biological validation. Advanced analytical techniques such as UV-Vis, FTIR, XRD, SEM, and TEM were used to confirm structural and compositional properties. Antioxidant activity was evaluated using multiple assays including DPPH, FRAP, phosphomolybdenum, and hydrogen peroxide scavenging methods. The cytotoxic potential was assessed using MTT assay, while apoptosis and cellular damage were confirmed through staining techniques, flow cytometry, and caspase activity analysis.",
+
+        improvements: "This research uniquely integrates nanotechnology with targeted cancer therapy by combining dioxepine with iron oxide nanoparticles. It demonstrates a complete experimental pipeline from synthesis to biological validation, including ROS-mediated apoptosis analysis. The study highlights a multidisciplinary approach involving chemistry, biology, and nanomedicine for potential therapeutic applications.",
+
         gallery: [
             "/img/projects/ionps.webp",
             "/img/projects/ionps.webp",
@@ -1619,20 +2210,43 @@ const proj = [
     },
     {
         id: "pong",
-        type: null,
+        type: "game",
+
         imgSrc: "/img/projects/pong.webp",
-        title: "Pong Game",
-        subheading: "Classic Pong Arcade Game",
-        tags: ["Game", "Classic", "Arcade"],
-        live: "True",
-        projectLink: "https://pong-game-classic.netlify.app/",
+
+        title: "Retro Pong Game",
+
+        subheading: "Two-Player Classic Arcade Game in Python",
+
+        tags: ["Game", "Python", "Retro"],
+
+        live: "False",
+        projectLink: "",
+
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Pong-Game",
-        sTags: ["react", "javascript", "game", "arcade", "classic", "interactive", "web app"],
-        techUsed: ["React", "JavaScript", "HTML Canvas"],
-        description: "A classic Pong arcade game with modern visuals and smooth gameplay mechanics.",
-        uses: "This game demonstrates game development with React and HTML Canvas. It includes AI opponent, score tracking, and responsive controls.",
-        improvements: "Could be enhanced with power-ups, multiplayer mode, and tournament features.",
+
+        sTags: [
+            "python game development",
+            "turtle graphics game",
+            "console based game python",
+            "retro arcade game project",
+            "two player game python",
+            "pong game implementation",
+            "game logic python project",
+            "collision detection game",
+            "interactive python project",
+            "classic game recreation"
+        ],
+
+        techUsed: ["Python", "Turtle Graphics"],
+
+        description: "Retro Pong Game is a classic two-player arcade game recreated using Python and the Turtle graphics library. Inspired by the original Pong, this project brings back the nostalgic gameplay experience with simple yet engaging mechanics where two players control paddles on either side to bounce a moving ball. The focus of the project is on recreating a timeless game using fundamental programming concepts and interactive graphics.",
+
+        uses: "This project demonstrates core game development logic including real-time movement, collision detection, score tracking, and user input handling. Players can control paddles using keyboard inputs, and the game dynamically responds to ball collisions with paddles and screen boundaries. It showcases how basic Python libraries like Turtle can be used to build fully interactive and enjoyable games.",
+
+        improvements: "This project captures the essence of classic arcade gaming by recreating Pong with clean logic and interactive controls. It emphasizes real-time gameplay mechanics, two-player interaction, and precise collision handling, delivering a nostalgic gaming experience using minimal yet effective Python-based graphics.",
+
         gallery: [
             "/img/projects/pong.webp",
             "/img/projects/pong.webp",
@@ -1644,20 +2258,43 @@ const proj = [
     },
     {
         id: "snake",
-        type: null,
+        type: "game",
+
         imgSrc: "/img/projects/snake.webp",
-        title: "Snake Game",
-        subheading: "Classic Snake Arcade Game",
-        tags: ["Game", "Classic", "Arcade"],
-        live: "True",
-        projectLink: "https://snake-game-classic.netlify.app/",
+
+        title: "Classic Snake Game",
+
+        subheading: "Console-Based Arcade Game in Python",
+
+        tags: ["Game", "Python", "Retro"],
+
+        live: "False",
+        projectLink: "",
+
         code: "True",
         gitUrl: "https://github.com/BadBoy-Github/Snake-Game",
-        sTags: ["react", "javascript", "game", "arcade", "classic", "snake", "interactive", "web app"],
-        techUsed: ["React", "JavaScript", "HTML Canvas"],
-        description: "A classic Snake game with modern visuals, multiple difficulty levels, and smooth animations.",
-        uses: "This game demonstrates game logic and state management in React. It includes food collection, growing mechanics, and collision detection.",
-        improvements: "Could be enhanced with power-ups, leaderboards, and special levels.",
+
+        sTags: [
+            "python snake game",
+            "turtle graphics game",
+            "console based python project",
+            "arcade game python",
+            "snake game implementation",
+            "game logic python",
+            "collision detection game",
+            "interactive python project",
+            "classic game development",
+            "beginner game python"
+        ],
+
+        techUsed: ["Python", "Turtle Graphics"],
+
+        description: "Classic Snake Game is a console-based arcade game developed using Python and the Turtle graphics library, inspired by one of the most popular and timeless games ever created. This project recreates the nostalgic gameplay experience where the player controls a continuously moving snake that grows longer as it consumes food. With each successful move, the challenge increases, requiring better control and quicker decision-making. The primary goal of this project is to demonstrate how fundamental programming concepts can be used to build an engaging and interactive game from scratch.",
+
+        uses: "This project demonstrates essential game development principles such as real-time movement, event-driven user input handling, collision detection, and dynamic state updates. The snake responds instantly to keyboard controls, grows in size upon consuming food, and the game continuously checks for boundary collisions and self-collisions to determine failure conditions. It also incorporates a scoring mechanism that updates as the player progresses, showcasing how logic, loops, and condition handling work together to create a smooth and responsive gameplay experience.",
+
+        improvements: "This project effectively recreates one of the most iconic arcade games using fundamental programming concepts. It showcases dynamic game progression through snake growth, real-time movement, and strict rule enforcement, highlighting strong control over game logic and interactive system design.",
+
         gallery: [
             "/img/projects/snake.webp",
             "/img/projects/snake.webp",
