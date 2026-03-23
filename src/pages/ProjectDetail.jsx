@@ -229,10 +229,10 @@ const ProjectDetail = () => {
                   className="w-full aspect-video object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors truncate">
                     {otherProject.title}
                   </h3>
-                  <p className="text-sm text-zinc-400 mt-1">
+                  <p className="text-sm text-zinc-400 mt-1 truncate">
                     {otherProject.subheading}
                   </p>
                   <div className="flex flex-wrap gap-1 mt-2">
