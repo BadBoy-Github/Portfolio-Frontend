@@ -111,8 +111,8 @@ const Footer = () => {
               &copy; {new Date().getFullYear()}
               <span className="text-zinc-200">
                 {" "}
-                · All Rights Reserved |{" "}
-                <span className="text-sky-600 font-semibold">
+                · All Rights Reserved <span className="hidden md:inline"> | </span>
+                <span className="text-sky-600 font-semibold block md:inline mt-1 text-end md:mt-0">
                   Elayabarathi M V
                 </span>
               </span>

@@ -118,59 +118,61 @@ const BlogDetail = () => {
         </article>
 
         {/* Other Blogs Section */}
-        <div className="mt-16 relative">
-          <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
-          {/* Left Scroll Button */}
-          <button
-            onClick={() =>
-              document
-                .getElementById("other-blogs-scroll")
-                .scrollBy({ left: -672, behavior: "smooth" })
-            }
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
-            aria-label="Scroll left"
-          >
-            <IoChevronBack className="size-6" />
-          </button>
-          {/* Right Scroll Button */}
-          <button
-            onClick={() =>
-              document
-                .getElementById("other-blogs-scroll")
-                .scrollBy({ left: 672, behavior: "smooth" })
-            }
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
-            aria-label="Scroll right"
-          >
-            <IoChevronForward className="size-6" />
-          </button>
-          <div
-            id="other-blogs-scroll"
-            className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
-          >
-            {otherBlogs.map((otherBlog) => (
-              <Link
-                key={otherBlog.id}
-                to={`/blog/${otherBlog.id}`}
-                className="min-w-[280px] md:min-w-[320px] bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
-              >
-                <img
-                  src={otherBlog.imageSrc}
-                  alt={otherBlog.title}
-                  className="w-full h-40 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors line-clamp-2">
-                    {otherBlog.title}
-                  </h3>
-                  <p className="text-sm text-zinc-400 mt-2">
-                    {otherBlog.readTime}
-                  </p>
-                </div>
-              </Link>
-            ))}
+        { otherBlogs.length!=0 &&
+          <div className="mt-16 relative">
+            <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
+            {/* Left Scroll Button */}
+            <button
+              onClick={() =>
+                document
+                  .getElementById("other-blogs-scroll")
+                  .scrollBy({ left: -672, behavior: "smooth" })
+              }
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+              aria-label="Scroll left"
+            >
+              <IoChevronBack className="size-6" />
+            </button>
+            {/* Right Scroll Button */}
+            <button
+              onClick={() =>
+                document
+                  .getElementById("other-blogs-scroll")
+                  .scrollBy({ left: 672, behavior: "smooth" })
+              }
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+              aria-label="Scroll right"
+            >
+              <IoChevronForward className="size-6" />
+            </button>
+            <div
+              id="other-blogs-scroll"
+              className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
+            >
+              {otherBlogs.map((otherBlog) => (
+                <Link
+                  key={otherBlog.id}
+                  to={`/blog/${otherBlog.id}`}
+                  className="min-w-[280px] md:min-w-[320px] bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
+                >
+                  <img
+                    src={otherBlog.imageSrc}
+                    alt={otherBlog.title}
+                    className="w-full h-40 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors line-clamp-2">
+                      {otherBlog.title}
+                    </h3>
+                    <p className="text-sm text-zinc-400 mt-2">
+                      {otherBlog.readTime}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        }
       </div>
     </div>
   );

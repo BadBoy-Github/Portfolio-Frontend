@@ -12,7 +12,7 @@ const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
 
   return (
     <div
-      className="bg-zinc-800 h-[600px] lg:h-[460px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
+      className="bg-zinc-800 h-[460px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
       onClick={handleCardClick}
     >
       <div className="flex items-center justify-between gap-2">

@@ -6,11 +6,11 @@ const blogs = [
         date: "2026-03-23",
         readTime: "38 min read",
         tags: ["Portfolio", "AI Chatbot", "Showcase"],
-        imageSrc: "/img/projects/featured/portfolio.webp",
+        imageSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279871/Portfolio_head_cd3ap3.png",
         content: `
             <p>Welcome to my interactive portfolio hub—a carefully crafted digital space that represents my complete professional identity. This portfolio stands as a testament to my journey as a developer, showcasing not just my technical skills but also my passion for creating meaningful digital experiences. In this blog, I'll walk you through the conception, development, and unique features that make this portfolio truly special.</p>
             
-            <img src="/img/projects/featured/portfolio.webp" alt="Portfolio Hero Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_1_kh2gr7.png" alt="Portfolio Hero Section" class="blog-image" />
             
             <h2>The Vision Behind My Portfolio</h2>
             <p>Every developer needs a space to call their own—a digital home that tells their story, displays their work, and connects with potential employers or clients. When I set out to build my portfolio, I wanted more than just a static showcase. I wanted to create an interactive experience that would leave a lasting impression on visitors. The goal was simple yet ambitious: build a portfolio that not only displays projects but actively engages with visitors through intelligent conversation.</p>
@@ -22,7 +22,7 @@ const blogs = [
             <h2>Architecture and Technical Foundation</h2>
             <p>The portfolio's architecture follows modern React best practices, leveraging hooks for state management and functional components for better performance. Each section—from projects to certifications, achievements to blogs—is modular, allowing for easy updates and maintenance. The component-based structure means I can add new features or modify existing ones without affecting the entire application.</p>
             
-            <img src="/img/projects/portfolio.webp" alt="Projects Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_2_adu0zg.png" alt="Projects Section" class="blog-image" />
             
             <p>Performance optimization played a critical role in the development process. I implemented lazy loading for images and components, ensuring fast initial load times even with multiple high-resolution project images. The use of React's useMemo and useCallback hooks prevents unnecessary re-renders, keeping the application responsive and smooth.</p>
             
@@ -31,7 +31,7 @@ const blogs = [
             <h2>The AI Chatbot: A Standout Feature</h2>
             <p>The integrated AI chatbot represents the portfolio's most innovative feature. This intelligent assistant communicates on my behalf, engaging with visitors and answering questions about my skills, projects, and experience. Unlike traditional contact forms that require manual follow-up, the chatbot provides instant responses, making the portfolio more interactive and accessible.</p>
             
-            <img src="/img/projects/ai-portfolio.webp" alt="AI Chatbot Interface" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279870/Portfolio_3_bg5wmq.png" alt="AI Chatbot Interface" class="blog-image" />
             
             <p>The chatbot was designed to simulate natural conversation while providing accurate information. It can discuss my technical stack, explain project details, share my educational background, and even provide recommendations based on visitor interests. The natural language processing capabilities ensure that conversations feel organic and helpful rather than robotic.</p>
             
@@ -45,7 +45,8 @@ const blogs = [
             <h2>Achievements and Certifications</h2>
             <p>Beyond projects, the portfolio highlights my professional achievements and certifications. This section demonstrates continuous learning and professional growth—qualities that employers value highly. From technical certifications to competition achievements, each entry tells a story of dedication and skill development.</p>
             
-            <img src="/img/projects/todo.webp" alt="Achievements Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279876/Portfolio_4_jh0jqz.png" alt="Achievements Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279872/Portfolio_5_cy7qds.png" alt="Achievements Section" class="blog-image" />
             
             <p>The certifications section is particularly valuable—it provides potential employers with verifiable proof of my skills. Each certification includes details about the issuing organization, the skills covered, and the validation period. This transparency builds trust and credibility, showing that my claims are backed by recognized credentials.</p>
             
