@@ -1,32 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Pages -->
     <url>
         <loc>https://elayabarathimv.vercel.app/</loc>
-        <lastmod>2026-03-13</lastmod>
+        <lastmod>2026-03-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://elayabarathimv.vercel.app/#about</loc>
-        <lastmod>2026-03-13</lastmod>
+        <loc>https://elayabarathimv.vercel.app/about</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Project Pages -->
+    <url>
+        <loc>https://elayabarathimv.vercel.app/projects</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/portfolio</loc>
+        <lastmod>2026-03-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://elayabarathimv.vercel.app/#project</loc>
-        <lastmod>2026-03-13</lastmod>
+        <loc>https://elayabarathimv.vercel.app/project/stellar-ai</loc>
+        <lastmod>2026-03-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://elayabarathimv.vercel.app/#contact</loc>
-        <lastmod>2026-03-13</lastmod>
+        <loc>https://elayabarathimv.vercel.app/project/card-vault</loc>
+        <lastmod>2026-03-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/ecommerce</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/linkedin-profile-clone</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/spotify-clone</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/lms</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/ionps</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/hms</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/internet-reporter</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/agnps</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/ai-portfolio</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/budget-map</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/weather-app</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/todo</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/project/tic-tac-toe</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Certificate Pages -->
+    <url>
+        <loc>https://elayabarathimv.vercel.app/certificates</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Achievement Pages -->
+    <url>
+        <loc>https://elayabarathimv.vercel.app/achievements</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Blog Pages -->
+    <url>
+        <loc>https://elayabarathimv.vercel.app/blogs</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Resume -->
     <url>
         <loc>https://elayabarathimv.vercel.app/docs/resume.pdf</loc>
-        <lastmod>2026-03-13</lastmod>
+        <lastmod>2026-03-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>

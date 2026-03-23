@@ -3,7 +3,7 @@ const blogs = [
         id: "portfolio-journey",
         title: "My Interactive Portfolio Hub",
         subtitle: "A modern showcase of my complete journey",
-        date: "2024-01-15",
+        date: "2026-03-23",
         readTime: "38 min read",
         tags: ["Portfolio", "AI Chatbot", "Showcase"],
         imageSrc: "/img/projects/featured/portfolio.webp",
