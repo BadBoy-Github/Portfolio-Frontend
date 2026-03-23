@@ -81,62 +81,59 @@ const Welcome = () => {
 
   return (
     <section className="section">
-        <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
-          <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
-            Welcome! I&apos;m Elayabarathi M V, a passionate frontend and
-            software developer dedicated to building responsive, scalable, and
-            user-focused digital solutions. I specialize in transforming ideas
-            into clean, high-performance applications using modern web
-            technologies and strong programming fundamentals. A collaborative
-            problem-solver and continuous learner, I combine creativity, logic,
-            and technical expertise to develop efficient software and intuitive
-            interfaces that follow modern development standards and deliver
-            meaningful user experiences.
-          </p>
+      <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
+        <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
+          Welcome! I&apos;m Elayabarathi M V, a passionate frontend and software
+          developer dedicated to building responsive, scalable, and user-focused
+          digital solutions. I specialize in transforming ideas into clean,
+          high-performance applications using modern web technologies and strong
+          programming fundamentals. A collaborative problem-solver and
+          continuous learner, I combine creativity, logic, and technical
+          expertise to develop efficient software and intuitive interfaces that
+          follow modern development standards and deliver meaningful user
+          experiences.
+        </p>
 
-          {error && <div className="mb-4 text-sky-700 text-sm">{error}</div>}
+        {error && <div className="mb-4 text-sky-700 text-sm">{error}</div>}
 
-          <div className="flex flex-wrap items-center gap-5 md:gap-8">
-            {aboutItems.map(({ label, number }, key) => (
-              <div key={key}>
-                <div className="flex items-center md:mb-2">
-                  <span className="text-2xl font-semibold md:text-4xl">
-                    {loading ? (
-                      <span className="inline-block w-12 h-8 bg-zinc-700/50 rounded animate-pulse"></span>
-                    ) : (
-                      <CountUp
-                        from={0}
-                        to={number}
-                        separator=","
-                        direction="up"
-                        duration={0.1}
-                        className="count-up-text"
-                      />
-                    )}
-                  </span>
-                  <span className="text-sky-400 font-semibold md:text-3xl">
-                    +
-                  </span>
-                </div>
-
-                <p className="text-sm text-zinc-400">{label}</p>
+        <div className="flex flex-wrap items-center gap-5 md:gap-8">
+          {aboutItems.map(({ label, number }, key) => (
+            <div key={key}>
+              <div className="flex items-center md:mb-2">
+                <span className="text-2xl font-semibold md:text-4xl">
+                  {loading ? (
+                    <span className="inline-block w-12 h-8 bg-zinc-700/50 rounded animate-pulse"></span>
+                  ) : (
+                    <CountUp
+                      from={0}
+                      to={number}
+                      separator=","
+                      direction="up"
+                      duration={0.1}
+                      className="count-up-text"
+                    />
+                  )}
+                </span>
+                <span className="text-sky-400 font-semibold md:text-3xl">
+                  +
+                </span>
               </div>
-            ))}
 
-            <Link
-              to="/"
-              className="ml-auto flex flex-col items-center group"
-            >
-              <img
-                src="/img/icons/favicon.svg"
-                alt="Elayabarathi M V"
-                width={30}
-                height={30}
-                className="w-[30px] md:w-[40px] md:h-[40px]"
-              />
-            </Link>
-          </div>
+              <p className="text-sm text-zinc-400">{label}</p>
+            </div>
+          ))}
+
+          <Link to="/" className="ml-auto flex flex-col items-center group">
+            <img
+              src="/img/icons/favicon.svg"
+              alt="Elayabarathi M V"
+              width={30}
+              height={30}
+              className="w-[30px] md:w-[40px] md:h-[40px]"
+            />
+          </Link>
         </div>
+      </div>
     </section>
   );
 };

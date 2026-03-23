@@ -120,10 +120,10 @@ const ProjectDetail = () => {
                     .map((item, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-2 text-zinc-300"
+                        className="flex items-start gap-2 text-zinc-300 group/lear"
                       >
                         <span className="text-sky-400 mt-1">
-                          <VscDebugBreakpointFunctionUnverified className="size-5" />
+                          <VscDebugBreakpointFunctionUnverified className="size-5 group-hover/lear:rotate-[360deg] transition-all duration-300" />
                         </span>
                         <span className="leading-relaxed text-justify">
                           {item.trim()}
@@ -145,12 +145,12 @@ const ProjectDetail = () => {
                     .map((item, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-2 text-zinc-300"
+                        className="flex items-start gap-2 text-zinc-300 group/uniq"
                       >
                         <span className="text-sky-400 mt-1">
-                          <VscDebugBreakpointFunctionUnverified className="size-5" />
+                          <VscDebugBreakpointFunctionUnverified className="size-5 transition-all duration-300 group-hover/uniq:rotate-[360deg] " />
                         </span>
-                        <span className="leading-relaxed text-justify">
+                        <span className="leading-relaxed text-justify transition-all duration-300 ">
                           {item.trim()}
                         </span>
                       </li>
@@ -165,7 +165,7 @@ const ProjectDetail = () => {
                 <img
                   src={project.imgSrc}
                   alt={project.title}
-                  className="w-full rounded-xl mb-6 border border-white/40"
+                  className="w-full rounded-xl mb-6 border border-white/20"
                 />
 
                 {/* Action Buttons */}
@@ -202,13 +202,13 @@ const ProjectDetail = () => {
             <h2 className="text-2xl font-bold text-white mb-6">
               Project Gallery
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {project.gallery.map((image, index) => (
                 <img
                   key={index}
                   src={image}
                   alt={`${project.title} screenshot ${index + 1}`}
-                  className="w-full rounded-xl hover:scale-[101%] transition-transform border border-white/40"
+                  className="w-full rounded-xl hover:scale-[101%] hover:shadow-xl transition-transform border border-white/20"
                 />
               ))}
             </div>

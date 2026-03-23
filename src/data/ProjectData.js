@@ -2,7 +2,7 @@ const proj = [
     {
         id: "portfolio",
         type: "featured",
-        imgSrc: "/img/projects/featured/portfolio.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279871/Portfolio_head_cd3ap3.png",
 
         title: "Dev Portfolio Hub",
 
@@ -52,12 +52,12 @@ const proj = [
         improvements: "This portfolio stands out with its integrated AI chatbot that communicates on behalf of the developer, creating an interactive and personalized experience for visitors. It also features a structured project library, smooth animations, and a well-organized presentation of skills, achievements, and journey, making it more engaging than traditional static portfolios.",
 
         gallery: [
-            "/img/projects/featured/portfolio.webp",
-            "/img/projects/featured/portfolio.webp",
-            "/img/projects/featured/portfolio.webp",
-            "/img/projects/featured/portfolio.webp",
-            "/img/projects/featured/portfolio.webp",
-            "/img/projects/featured/portfolio.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_1_kh2gr7.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_2_adu0zg.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279870/Portfolio_3_bg5wmq.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279876/Portfolio_4_jh0jqz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279872/Portfolio_5_cy7qds.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774280881/Portfolio_6_urfawm.png"
         ]
     },
     {
