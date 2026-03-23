@@ -68,14 +68,14 @@ const ProjectCard = ({
           src={imgSrc}
           alt={title}
           loading="lazy"
-          className={`img-cover rounded-xl w-full h-full ${
+          className={`img-cover rounded-xl w-full h-full  cursor-pointer ${
             live !== "True"
               ? "group-hover:grayscale transition-all duration-300"
               : ""
           }`}
         />
       </figure>
-      
+
       <div className="flex items-center justify-between gap-4">
         <div>
           <h3 className="title-1 mb-3">{title}</h3>
@@ -105,8 +105,7 @@ const ProjectCard = ({
             </span>
           </a>
         ) : (
-          <div className="">
-          </div>
+          <div className=""></div>
         )}
       </div>
     </div>

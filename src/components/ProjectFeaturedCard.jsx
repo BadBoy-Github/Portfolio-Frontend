@@ -67,7 +67,7 @@ const ProjectFeaturedCard = ({
           src={imgSrc}
           alt={title}
           loading="lazy"
-          className={`rounded-xl w-full h-full object-cover ${
+          className={`rounded-xl w-full h-full object-cover  cursor-pointer ${
             live !== "True"
               ? "group-hover:grayscale transition-all duration-300"
               : ""
@@ -106,8 +106,7 @@ const ProjectFeaturedCard = ({
             </span>
           </a>
         ) : (
-          <div className="">
-          </div>
+          <div className=""></div>
         )}
       </div>
     </div>

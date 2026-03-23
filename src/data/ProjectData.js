@@ -2169,6 +2169,7 @@ const proj = [
         gitUrl: "",
 
         sTags: [
+            "biotech",
             "nanotechnology cancer research",
             "iron oxide nanoparticles study",
             "biotech research project",
