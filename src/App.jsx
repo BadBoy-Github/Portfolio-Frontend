@@ -12,6 +12,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 /**
  * Register gsap plugin
@@ -42,34 +43,36 @@ import PageNotFound from "./pages/PageNotFound";
 const App = () => {
   return (
     <ReactLenis root options={{ scroll: { smoothing: 0.05 } }}>
-      <CustomCursor />
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <main>
-          <Routes>
-            {/* Homepage */}
-            <Route path="/" element={<LandingPage />} />
+      <HelmetProvider>
+        <CustomCursor />
+        <Router>
+          <ScrollToTop />
+          <Header />
+          <main>
+            <Routes>
+              {/* Homepage */}
+              <Route path="/" element={<LandingPage />} />
 
-            {/* Individual Pages */}
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
-            <Route path="/certificate/:id" element={<CertificateDetail />} />
-            <Route path="/achievement/:id" element={<AchievementDetail />} />
-            <Route path="/blog/:id" element={<BlogDetail />} />
+              {/* Individual Pages */}
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/project/:id" element={<ProjectDetail />} />
+              <Route path="/certificate/:id" element={<CertificateDetail />} />
+              <Route path="/achievement/:id" element={<AchievementDetail />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
 
-            {/* Library Pages */}
-            <Route path="/projects" element={<ProjectsLibrary />} />
-            <Route path="/certificates" element={<CertificatesLibrary />} />
-            <Route path="/achievements" element={<AchievementsLibrary />} />
-            <Route path="/blogs" element={<BlogsLibrary />} />
+              {/* Library Pages */}
+              <Route path="/projects" element={<ProjectsLibrary />} />
+              <Route path="/certificates" element={<CertificatesLibrary />} />
+              <Route path="/achievements" element={<AchievementsLibrary />} />
+              <Route path="/blogs" element={<BlogsLibrary />} />
 
-            {/* 404 - Page Not Found */}
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
+              {/* 404 - Page Not Found */}
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </Router>
+      </HelmetProvider>
     </ReactLenis>
   );
 };

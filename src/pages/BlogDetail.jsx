@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBack, IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/BlogData";
 
 const BlogDetail = () => {
@@ -24,6 +25,44 @@ const BlogDetail = () => {
 
   return (
     <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
+      <Helmet>
+        <title>{blog.title} | Elayabarathi M V Blog</title>
+        <meta name="description" content={blog.subtitle} />
+        <meta
+          name="keywords"
+          content={blog.tags.join(", ") + ", portfolio, developer, blog"}
+        />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.subtitle} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://elayabarathimv.vercel.app/blog/${blog.id}`}
+        />
+        <meta property="og:image" content={blog.imageSrc} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blog.title} />
+        <meta name="twitter:description" content={blog.subtitle} />
+        <meta name="twitter:image" content={blog.imageSrc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: blog.title,
+            description: blog.subtitle,
+            image: blog.imageSrc,
+            author: {
+              "@type": "Person",
+              name: "Elayabarathi M V",
+            },
+            datePublished: blog.date,
+            publisher: {
+              "@type": "Person",
+              name: "Elayabarathi M V",
+            },
+          })}
+        </script>
+      </Helmet>
       <div className="container mx-auto px-4">
         {/* Back Button */}
         <Link
