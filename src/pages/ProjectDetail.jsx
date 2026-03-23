@@ -36,8 +36,8 @@ const ProjectDetail = () => {
     <>
       <Helmet>
         <title>{project.title} | Elayabarathi M V</title>
-        <meta name="description" content={project.subtitle} />
-        <meta name="keywords" content={project.tech.join(", ")} />
+        <meta name="description" content={project.subtitle || ""} />
+        <meta name="keywords" content={(project.tech || []).join(", ")} />
         <meta
           property="og:title"
           content={`${project.title} | Project Portfolio`}
@@ -161,11 +161,11 @@ const ProjectDetail = () => {
 
             {/* Right Column - Image and Links */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24">
+              <div className="sticky top-24 ">
                 <img
                   src={project.imgSrc}
                   alt={project.title}
-                  className="w-full rounded-xl mb-6"
+                  className="w-full rounded-xl mb-6 border border-white/40"
                 />
 
                 {/* Action Buttons */}
@@ -208,7 +208,7 @@ const ProjectDetail = () => {
                   key={index}
                   src={image}
                   alt={`${project.title} screenshot ${index + 1}`}
-                  className="w-full rounded-xl hover:scale-[101%] transition-transform"
+                  className="w-full rounded-xl hover:scale-[101%] transition-transform border border-white/40"
                 />
               ))}
             </div>

@@ -27,10 +27,12 @@ const BlogDetail = () => {
     <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
       <Helmet>
         <title>{blog.title} | Elayabarathi M V Blog</title>
-        <meta name="description" content={blog.subtitle} />
+        <meta name="description" content={blog.subtitle || ""} />
         <meta
           name="keywords"
-          content={blog.tags.join(", ") + ", portfolio, developer, blog"}
+          content={
+            (blog.tags || []).join(", ") + ", portfolio, developer, blog"
+          }
         />
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={blog.subtitle} />
