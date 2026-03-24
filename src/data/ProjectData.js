@@ -63,7 +63,7 @@ const proj = [
     {
         id: "card-vault",
         type: "featured",
-        imgSrc: "/img/projects/featured/card_vault.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320957/cv_head_l3uxbt.png",
 
         title: "Card Vault",
 
@@ -123,12 +123,12 @@ const proj = [
         improvements: "Card Vault delivers a complete digital product marketplace experience with features like secure gift card purchasing, QR-based payments, bulk and individual checkout flows, and real-time email notifications for order updates. It also includes wishlist management, expiry tracking, and advanced analytics, providing users with a reliable and transparent platform for managing digital assets.",
 
         gallery: [
-            "/img/projects/featured/card_vault.webp",
-            "/img/projects/featured/card_vault.webp",
-            "/img/projects/featured/card_vault.webp",
-            "/img/projects/featured/card_vault.webp",
-            "/img/projects/featured/card_vault.webp",
-            "/img/projects/featured/card_vault.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_1_epiijo.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_2_wztz5q.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_3_h9h9ip.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320956/cv_4_qikprw.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320957/cv_5_lwj26i.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320956/cv_6_aaxorv.png"
         ]
     },
     {
