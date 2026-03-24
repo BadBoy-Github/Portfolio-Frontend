@@ -68,11 +68,7 @@ const ProjectCard = ({
           src={imgSrc}
           alt={title}
           loading="lazy"
-          className={`img-cover rounded-xl w-full h-full  cursor-pointer ${
-            live !== "True"
-              ? "group-hover:grayscale transition-all duration-300"
-              : ""
-          }`}
+          className={`img-cover rounded-xl w-full h-full  cursor-pointer transition-all duration-300 grayscale-[0.4] group-hover:grayscale-0 }`}
         />
       </figure>
 

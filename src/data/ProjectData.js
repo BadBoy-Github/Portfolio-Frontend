@@ -391,7 +391,7 @@ const proj = [
     {
         id: "garage",
         type: null,
-        imgSrc: "/img/projects/garage.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358736/garage_cax9fk.webp",
 
         title: "Garage Manager",
 
@@ -446,18 +446,19 @@ const proj = [
         improvements: "Garage Manager offers a structured dashboard for managing vehicle services with features like customer management, repair tracking, and real-time status visualization. The role-based system ensures secure access while enabling efficient workflow management, making it a practical solution for automating and organizing garage operations.",
 
         gallery: [
-            "/img/projects/garage.webp",
-            "/img/projects/garage.webp",
-            "/img/projects/garage.webp",
-            "/img/projects/garage.webp",
-            "/img/projects/garage.webp",
-            "/img/projects/garage.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358736/1_uyasr5.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358740/6_zytoqo.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358737/2_ttpbrs.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358740/3_qcjsuu.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358742/4_nxy5hq.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358736/5_adehsb.png",
+
         ]
     },
     {
         id: "stellar-ai",
         type: null,
-        imgSrc: "/img/projects/stellar-ai.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774359356/stellar-ai_clv90o.webp",
 
         title: "Stellar AI",
 
@@ -511,18 +512,16 @@ const proj = [
         improvements: "Stellar AI delivers an intelligent conversational experience powered by advanced AI models, combined with a clean and modern chat interface. It supports real-time responses, maintains conversation history, and provides a smooth user experience, making it both functional and visually engaging as a personal AI assistant.",
 
         gallery: [
-            "/img/projects/stellar-ai.webp",
-            "/img/projects/stellar-ai.webp",
-            "/img/projects/stellar-ai.webp",
-            "/img/projects/stellar-ai.webp",
-            "/img/projects/stellar-ai.webp",
-            "/img/projects/stellar-ai.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774359354/1_qkdvcm.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774359351/2_egfq2o.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774359351/3_qryrdk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774359354/4_udyk4i.png",
         ]
     },
     {
         id: "bamboo-blogs",
         type: null,
-        imgSrc: "/img/projects/bamboo-blogs.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360230/bamboo-blogs_a0bltm.webp",
 
         title: "Bamboo Blogs",
 
@@ -578,18 +577,24 @@ const proj = [
         improvements: "Bamboo Blogs introduces a creator-focused blogging system with a unique approval workflow where users can apply to become bloggers and publish content upon admin approval. It supports content creation, editing, and commenting with secure database storage, enabling a structured and scalable multi-user publishing platform.",
 
         gallery: [
-            "/img/projects/bamboo-blogs.webp",
-            "/img/projects/bamboo-blogs.webp",
-            "/img/projects/bamboo-blogs.webp",
-            "/img/projects/bamboo-blogs.webp",
-            "/img/projects/bamboo-blogs.webp",
-            "/img/projects/bamboo-blogs.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360219/1_snypzz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360211/2_zbyazy.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360219/3_tc1akk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360211/4_mpxhun.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360221/5_p9n9n4.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360221/6_skr3su.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360224/7_gxbnif.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360225/8_rlpybv.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360228/9_gi4cpz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/10_umj7tr.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360217/11_lgbmb1.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/12_nicrpr.png"
         ]
     },
     {
         id: "tic-tac-toe",
         type: null,
-        imgSrc: "/img/projects/tic-tac-toe.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360959/tic-tac-toe_baiunc.webp",
 
         title: "Tic Tac Toe",
 
@@ -640,18 +645,16 @@ const proj = [
         improvements: "Tic Tac Toe delivers a smooth and interactive two-player gaming experience with precise win detection logic and responsive UI design. It emphasizes clean gameplay mechanics and intuitive user interaction, making a classic strategy game feel modern and engaging.",
 
         gallery: [
-            "/img/projects/tic-tac-toe.webp",
-            "/img/projects/tic-tac-toe.webp",
-            "/img/projects/tic-tac-toe.webp",
-            "/img/projects/tic-tac-toe.webp",
-            "/img/projects/tic-tac-toe.webp",
-            "/img/projects/tic-tac-toe.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360958/1_tdveli.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360956/2_xqx2co.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360958/3_xqi9sk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360962/4_h7qeju.png",
         ]
     },
     {
         id: "timer",
         type: null,
-        imgSrc: "/img/projects/timer.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774363896/timer_ccpn6z.webp",
 
         title: "TimeFlow",
 
@@ -702,18 +705,14 @@ const proj = [
         improvements: "TimeFlow provides a clean and distraction-free timing experience with accurate stopwatch functionality and a modern minimal interface. Its smooth interaction and lightweight design make it a reliable utility tool for tracking time across various activities.",
 
         gallery: [
-            "/img/projects/timer.webp",
-            "/img/projects/timer.webp",
-            "/img/projects/timer.webp",
-            "/img/projects/timer.webp",
-            "/img/projects/timer.webp",
-            "/img/projects/timer.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774363900/1_sdl68r.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774363897/2_y5nf3l.png",
         ]
     },
     {
         id: "lms",
         type: null,
-        imgSrc: "/img/projects/lms.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774363987/lms_zaqh83.webp",
 
         title: "LibraCore CLI",
 
@@ -763,19 +762,12 @@ const proj = [
 
         improvements: "The system implements a role-based access model where administrators control inventory and users manage borrowing activities. It supports full CRUD operations for book management, tracks transactions for issued and returned books, and includes fine calculation for overdue returns. With JDBC-powered database integration, all data is persistently stored in MySQL, ensuring reliable and consistent library record management through a structured command-line interface.",
 
-        gallery: [
-            "/img/projects/lms.webp",
-            "/img/projects/lms.webp",
-            "/img/projects/lms.webp",
-            "/img/projects/lms.webp",
-            "/img/projects/lms.webp",
-            "/img/projects/lms.webp"
-        ]
+        gallery: []
     },
     {
         id: "simple-portfolio",
         type: null,
-        imgSrc: "/img/projects/simple-portfolio.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364215/simple-portfolio_ec17xe.webp",
 
         title: "Portify Lite",
 
@@ -826,18 +818,16 @@ const proj = [
         improvements: "Portify Lite delivers a clean and minimal portfolio structure with a strong focus on readability and user experience. It includes a responsive layout, dark mode support, smooth navigation, and well-organized sections for projects, skills, and contact details. Its lightweight design ensures fast loading performance while providing a professional and visually appealing presentation.",
 
         gallery: [
-            "/img/projects/simple-portfolio.webp",
-            "/img/projects/simple-portfolio.webp",
-            "/img/projects/simple-portfolio.webp",
-            "/img/projects/simple-portfolio.webp",
-            "/img/projects/simple-portfolio.webp",
-            "/img/projects/simple-portfolio.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364227/1_bhkpkz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364218/2_yiqew6.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364224/3_ehefxz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364221/4_pgzaaf.png",
         ]
     },
     {
         id: "rider",
         type: null,
-        imgSrc: "/img/projects/rider.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364565/rider_z8bakw.webp",
 
         title: "Rider",
 
@@ -889,18 +879,18 @@ const proj = [
         improvements: "Rider delivers a complete ride booking flow with features like vehicle selection, fare estimation, booking confirmation, and a structured user journey. It showcases a clean and responsive interface inspired by real-world transport platforms, along with smooth navigation and intuitive interaction design. The project also highlights rapid development capability by delivering a production-like UI within a short timeframe using modern frontend tools.",
 
         gallery: [
-            "/img/projects/rider.webp",
-            "/img/projects/rider.webp",
-            "/img/projects/rider.webp",
-            "/img/projects/rider.webp",
-            "/img/projects/rider.webp",
-            "/img/projects/rider.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364560/1_jjtxa9.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364577/2_axspbb.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364568/3_wn8jmi.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364562/4_yzojwt.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364571/5_wspv4m.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364574/6_bo5ljv.png "
         ]
     },
     {
         id: "weather-app",
         type: null,
-        imgSrc: "/img/projects/weather-app.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364791/weather-app_nkda3c.webp",
 
         title: "ClimaSense",
 
@@ -951,18 +941,14 @@ const proj = [
         improvements: "ClimaSense delivers a rich weather experience by presenting multiple environmental parameters including temperature, cloud status, air quality, wind speed, humidity, and precipitation levels in a structured and visually intuitive interface. It supports location-based search using postal codes and transforms raw API data into meaningful visual metrics, ensuring users can easily understand weather conditions at a glance.",
 
         gallery: [
-            "/img/projects/weather-app.webp",
-            "/img/projects/weather-app.webp",
-            "/img/projects/weather-app.webp",
-            "/img/projects/weather-app.webp",
-            "/img/projects/weather-app.webp",
-            "/img/projects/weather-app.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364794/1_ktrnt3.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364797/2_ckvouq.png",
         ]
     },
     {
         id: "swiggy-clone",
         type: null,
-        imgSrc: "/img/projects/swiggy-clone.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365095/swiggy-clone_rhefld.webp",
 
         title: "Swiggy UI Replica",
 
@@ -1013,18 +999,18 @@ const proj = [
         improvements: "Swiggy UI Replica delivers an accurate and visually consistent reproduction of a real-world food delivery platform interface. It includes structured restaurant listings, menu layouts, and a responsive design that closely matches the original application. The project highlights precise layout control, attention to detail, and the ability to recreate complex UI components using only HTML and CSS.",
 
         gallery: [
-            "/img/projects/swiggy-clone.webp",
-            "/img/projects/swiggy-clone.webp",
-            "/img/projects/swiggy-clone.webp",
-            "/img/projects/swiggy-clone.webp",
-            "/img/projects/swiggy-clone.webp",
-            "/img/projects/swiggy-clone.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365111/1_cpuxp7.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365109/2_fnnw3o.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365115/3_c1iphi.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365102/4_gvjnwv.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365098/5_ygt8x2.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365105/6_ovy9rj.png"
         ]
     },
     {
         id: "pass-strength",
         type: null,
-        imgSrc: "/img/projects/pass-strength.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365313/pass-strength_rc8zgy.webp",
 
         title: "SecurePass Insight",
 
@@ -1075,18 +1061,14 @@ const proj = [
         improvements: "SecurePass Insight provides real-time password evaluation with visual strength indicators and instant feedback based on multiple security conditions. It processes all inputs entirely on the client side, ensuring complete privacy with no data storage. The application delivers a smooth and responsive validation experience with a clean interface, helping users understand and create stronger passwords effectively.",
 
         gallery: [
-            "/img/projects/pass-strength.webp",
-            "/img/projects/pass-strength.webp",
-            "/img/projects/pass-strength.webp",
-            "/img/projects/pass-strength.webp",
-            "/img/projects/pass-strength.webp",
-            "/img/projects/pass-strength.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365317/1_hfstlf.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365309/2_b8muvu.png",
         ]
     },
     {
         id: "qr-generator",
         type: null,
-        imgSrc: "/img/projects/qr-generator.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365581/qr-generator_jcgzj3.webp",
 
         title: "QuickQR",
 
@@ -1137,18 +1119,14 @@ const proj = [
         improvements: "QuickQR provides instant QR code generation with real-time data conversion and supports multiple input types such as links and text. It includes downloadable QR outputs for easy sharing and delivers a smooth, responsive interface for quick interactions. The application transforms traditional data sharing into a fast and accessible scanning experience.",
 
         gallery: [
-            "/img/projects/qr-generator.webp",
-            "/img/projects/qr-generator.webp",
-            "/img/projects/qr-generator.webp",
-            "/img/projects/qr-generator.webp",
-            "/img/projects/qr-generator.webp",
-            "/img/projects/qr-generator.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365582/1_q6knau.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365581/2_y13owh.png",
         ]
     },
     {
         id: "google-drive",
         type: null,
-        imgSrc: "/img/projects/google-drive.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365787/google-drive_c0ewdf.webp",
 
         title: "DriveDirect",
 
@@ -1200,18 +1178,14 @@ const proj = [
         improvements: "DriveDirect enables instant conversion of Google Drive links into direct image URLs, making otherwise restricted links usable for embedding and sharing. It performs all processing on the client side without requiring a backend, ensuring fast and efficient execution. The tool provides a clean and simple interface for quick interactions while solving a real-world limitation in content sharing workflows.",
 
         gallery: [
-            "/img/projects/google-drive.webp",
-            "/img/projects/google-drive.webp",
-            "/img/projects/google-drive.webp",
-            "/img/projects/google-drive.webp",
-            "/img/projects/google-drive.webp",
-            "/img/projects/google-drive.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365788/1_o8g3sk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365809/2_mpykps.png"
         ]
     },
     {
         id: "microsoft-clone",
         type: null,
-        imgSrc: "/img/projects/microsoft-clone.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367226/microsoft-clone_iubrps.webp",
 
         title: "Microsoft UI Replica",
 
@@ -1262,18 +1236,24 @@ const proj = [
         improvements: "Microsoft UI Replica delivers an accurate reproduction of a complex enterprise interface with structured layouts and responsive design. It utilizes flexbox and grid systems to recreate real-world UI components with precision, maintaining visual consistency across different screen sizes. The project highlights strong attention to detail and the ability to implement professional-grade designs using only HTML and CSS.",
 
         gallery: [
-            "/img/projects/microsoft-clone.webp",
-            "/img/projects/microsoft-clone.webp",
-            "/img/projects/microsoft-clone.webp",
-            "/img/projects/microsoft-clone.webp",
-            "/img/projects/microsoft-clone.webp",
-            "/img/projects/microsoft-clone.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367225/1_oodjcc.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367225/2_yfztwr.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367224/3_ovh1wp.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367224/4_gbmkpm.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367225/5_yry8ax.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367225/6_ebgrdd.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367225/7_hrt5ok.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367226/8_tp4wly.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367227/9_qwrayk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367223/10_trquak.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367223/11_jvoyiq.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367224/12_xrxpoc.png"
         ]
     },
     {
         id: "linkedin-profile-clone",
         type: null,
-        imgSrc: "/img/projects/linkedin-profile-clone.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367561/linkedin-profile-clone_atmop0.webp",
 
         title: "LinkedIn Pro",
 
@@ -1324,18 +1304,16 @@ const proj = [
         improvements: "LinkedIn Pro introduces an optimized layout where key professional sections such as projects and experience are highlighted in the main view, while supporting details like skills, education, and recommendations are placed in a structured side panel. It also integrates GitHub visualizations including repository activity and contribution animations, delivering a rich and modern profile experience with improved information hierarchy and design clarity.",
 
         gallery: [
-            "/img/projects/linkedin-profile-clone.webp",
-            "/img/projects/linkedin-profile-clone.webp",
-            "/img/projects/linkedin-profile-clone.webp",
-            "/img/projects/linkedin-profile-clone.webp",
-            "/img/projects/linkedin-profile-clone.webp",
-            "/img/projects/linkedin-profile-clone.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367563/1_xb2l0o.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367562/2_yuf2gw.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367564/3_lwx28i.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367563/4_ugo6uq.png",
         ]
     },
     {
         id: "budget-map",
         type: null,
-        imgSrc: "/img/projects/budget-map.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368023/budget-map_mo9m8y.webp",
 
         title: "BudgetMap AI",
 
@@ -1387,18 +1365,18 @@ const proj = [
         improvements: "BudgetMap AI provides an interactive financial dashboard that allows users to track daily expenses within monthly budgets and visualize spending patterns through charts and data tables. It enables comparative analysis between different months to identify savings trends and improve financial planning. The platform integrates AI-assisted insights to enhance user understanding, while maintaining a clean and responsive interface built with modern technologies.",
 
         gallery: [
-            "/img/projects/budget-map.webp",
-            "/img/projects/budget-map.webp",
-            "/img/projects/budget-map.webp",
-            "/img/projects/budget-map.webp",
-            "/img/projects/budget-map.webp",
-            "/img/projects/budget-map.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368017/1_nc9f06.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368018/2_bsbrkg.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368018/3_pw0u9t.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368018/4_pitoeu.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368019/5_wyq040.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774368023/6_xmd5ca.png"
         ]
     },
     {
         id: "horoscope-checker",
         type: null,
-        imgSrc: "/img/projects/horoscope-checker.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774369194/horoscope-checker_mufb3e.webp",
 
         title: "ZodiacScope",
 
@@ -1449,18 +1427,14 @@ const proj = [
         improvements: "ZodiacScope delivers real-time horoscope insights through seamless API integration, allowing users to instantly access daily predictions based on their zodiac sign. It provides a dynamic and interactive interface that updates content on demand, ensuring a smooth user experience. The application maintains a clean and responsive design while effectively handling external data to present personalized astrological information.",
 
         gallery: [
-            "/img/projects/horoscope-checker.webp",
-            "/img/projects/horoscope-checker.webp",
-            "/img/projects/horoscope-checker.webp",
-            "/img/projects/horoscope-checker.webp",
-            "/img/projects/horoscope-checker.webp",
-            "/img/projects/horoscope-checker.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774369193/1_omby9k.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774369195/2_sa3vbf.png",
         ]
     },
     {
         id: "todo",
         type: null,
-        imgSrc: "/img/projects/todo.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358359/todo_q71dpz.webp",
 
         title: "TaskFlow",
 
@@ -1511,18 +1485,14 @@ const proj = [
         improvements: "TaskFlow provides a complete task management experience with smooth CRUD operations, allowing users to create, update, and manage tasks effortlessly. It features a clean and responsive interface designed for everyday usability, along with structured task handling that enhances productivity and organization.",
 
         gallery: [
-            "/img/projects/todo.webp",
-            "/img/projects/todo.webp",
-            "/img/projects/todo.webp",
-            "/img/projects/todo.webp",
-            "/img/projects/todo.webp",
-            "/img/projects/todo.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358358/1_k3gw9s.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358358/2_cj6ddh.png",
         ]
     },
     {
         id: "calculator",
         type: null,
-        imgSrc: "/img/projects/calculator.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358156/calculator_mmw9ej.webp",
 
         title: "CalcPro",
 
@@ -1573,18 +1543,14 @@ const proj = [
         improvements: "CalcPro delivers a smooth and interactive calculation experience with support for scientific operations and real-time result updates. It features a clean and responsive interface that enhances usability, along with efficient input handling and structured logic implementation for accurate computations.",
 
         gallery: [
-            "/img/projects/calculator.webp",
-            "/img/projects/calculator.webp",
-            "/img/projects/calculator.webp",
-            "/img/projects/calculator.webp",
-            "/img/projects/calculator.webp",
-            "/img/projects/calculator.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358157/1_ujk0pp.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358157/2_psdirt.png",
         ]
     },
     {
         id: "shopping-list",
         type: null,
-        imgSrc: "/img/projects/shopping-list.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774357909/shopping-list_j1hxof.webp",
 
         title: "CartList",
 
@@ -1635,12 +1601,8 @@ const proj = [
         improvements: "CartList offers a visual and interactive approach to managing shopping items, allowing users to organize, update, and track their lists in real time. It utilizes local storage to maintain data persistence within the browser and provides a clean, user-friendly interface for efficient planning.",
 
         gallery: [
-            "/img/projects/shopping-list.webp",
-            "/img/projects/shopping-list.webp",
-            "/img/projects/shopping-list.webp",
-            "/img/projects/shopping-list.webp",
-            "/img/projects/shopping-list.webp",
-            "/img/projects/shopping-list.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774357908/1_pmhpeq.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774357909/2_hrkuxl.png",
         ]
     },
     {

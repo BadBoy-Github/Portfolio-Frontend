@@ -128,7 +128,7 @@ const BlogDetail = () => {
                   .getElementById("other-blogs-scroll")
                   .scrollBy({ left: -672, behavior: "smooth" })
               }
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
               aria-label="Scroll left"
             >
               <IoChevronBack className="size-6" />
@@ -140,7 +140,7 @@ const BlogDetail = () => {
                   .getElementById("other-blogs-scroll")
                   .scrollBy({ left: 672, behavior: "smooth" })
               }
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 transition-all duration-300 z-10 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
               aria-label="Scroll right"
             >
               <IoChevronForward className="size-6" />

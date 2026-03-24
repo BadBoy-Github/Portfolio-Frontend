@@ -198,21 +198,23 @@ const ProjectDetail = () => {
           </div>
 
           {/* Gallery */}
-         {project.gallery.length>0 && <div className="mb-16">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Project Gallery
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {project.gallery.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`${project.title} screenshot ${index + 1}`}
-                  className="w-full rounded-xl hover:scale-[101%] hover:shadow-xl transition-transform border border-white/20"
-                />
-              ))}
+          {project.gallery.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-2xl font-bold text-white mb-6">
+                Project Gallery
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {project.gallery.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    className="w-full rounded-xl hover:scale-[101%] hover:shadow-xl transition-transform border border-white/20"
+                  />
+                ))}
+              </div>
             </div>
-          </div>}
+          )}
 
           {/* Other Projects Section */}
           <div className="relative">
@@ -226,7 +228,7 @@ const ProjectDetail = () => {
                   .getElementById("other-projects-scroll")
                   .scrollBy({ left: -672, behavior: "smooth" })
               }
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-zinc-800/90 transition-all duration-300 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg  hidden md:flex items-center justify-center"
               aria-label="Scroll left"
             >
               <IoChevronBack className="size-6" />
@@ -238,7 +240,7 @@ const ProjectDetail = () => {
                   .getElementById("other-projects-scroll")
                   .scrollBy({ left: 672, behavior: "smooth" })
               }
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-zinc-800 hover:bg-zinc-700 text-white p-3 rounded-full shadow-lg transition-colors hidden md:flex items-center justify-center"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 hidden md:flex items-center justify-center"
               aria-label="Scroll right"
             >
               <IoChevronForward className="size-6" />
