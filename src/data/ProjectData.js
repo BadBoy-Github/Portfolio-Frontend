@@ -134,7 +134,7 @@ const proj = [
     {
         id: "buzz",
         type: null,
-        imgSrc: "/img/projects/buzz.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322992/buzz_e2ouzq.webp",
 
         title: "BuzzChat Live",
 
@@ -188,18 +188,16 @@ const proj = [
         improvements: "BuzzChat Live offers real-time one-to-one messaging with authentication and persistent chat history, ensuring smooth and reliable communication. A unique highlight is the shared playground chat where all users can interact together, creating a community-driven experience. The project also showcases AI-assisted development, reflecting efficient and modern problem-solving approaches.",
 
         gallery: [
-            "/img/projects/buzz.webp",
-            "/img/projects/buzz.webp",
-            "/img/projects/buzz.webp",
-            "/img/projects/buzz.webp",
-            "/img/projects/buzz.webp",
-            "/img/projects/buzz.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322993/buzz_1_qibd8k.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322993/buzz_2_gfiwjg.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322993/buzz_3_uqlfuv.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322993/buzz_4_xmfs72.png",
         ]
     },
     {
         id: "ecommerce",
         type: null,
-        imgSrc: "/img/projects/ecommerce.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348727/shopsphere_x_q1zbiu.webp",
 
         title: "ShopSphere X",
 
@@ -260,18 +258,18 @@ const proj = [
         improvements: "ShopSphere X provides a complete eCommerce experience with features like role-based authentication, product search, filtering, and sorting, along with cart and order management workflows. It includes a structured product catalog, cloud-based image handling, and a simulated payment system, delivering a realistic and fully functional online shopping environment.",
 
         gallery: [
-            "/img/projects/ecommerce.webp",
-            "/img/projects/ecommerce.webp",
-            "/img/projects/ecommerce.webp",
-            "/img/projects/ecommerce.webp",
-            "/img/projects/ecommerce.webp",
-            "/img/projects/ecommerce.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348726/shopsphere_1_ritwa7.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348728/shopsphere_2_vr4pwp.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348725/shopsphere_3_rihvva.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348727/shopsphere_4_yilpzj.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348726/shopsphere_5_fvg8tc.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348726/shopsphere_6_cm5mas.png"
         ]
     },
     {
         id: "hms",
         type: null,
-        imgSrc: "/img/projects/hms.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352925/hms_unqodq.webp",
 
         title: "MediCore CLI",
 
@@ -323,19 +321,12 @@ const proj = [
 
         improvements: "MediCore CLI implements a robust role-based system with clearly defined workflows for administrators, doctors, and patients. It efficiently manages hospital operations such as doctor allocation, patient handling, and data access through secure database interactions, showcasing strong backend logic and structured system design in a healthcare context.",
 
-        gallery: [
-            "/img/projects/hms.webp",
-            "/img/projects/hms.webp",
-            "/img/projects/hms.webp",
-            "/img/projects/hms.webp",
-            "/img/projects/hms.webp",
-            "/img/projects/hms.webp"
-        ]
+        gallery: [ ]
     },
     {
         id: "spotify-clone",
         type: null,
-        imgSrc: "/img/projects/spotify-clone.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352970/spotify-clone_q2cdb9.webp",
 
         title: "Spotify Clone",
 
@@ -389,12 +380,12 @@ const proj = [
         improvements: "Spotify Clone enhances traditional music streaming by combining seamless playback with social interaction features. Users can directly connect with artists and other listeners, view what others are listening to, and engage beyond passive consumption. This creates a more open, community-driven music experience compared to standard streaming platforms.",
 
         gallery: [
-            "/img/projects/spotify-clone.webp",
-            "/img/projects/spotify-clone.webp",
-            "/img/projects/spotify-clone.webp",
-            "/img/projects/spotify-clone.webp",
-            "/img/projects/spotify-clone.webp",
-            "/img/projects/spotify-clone.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352964/spotify_clone_1_dp5p82.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352967/spotify_clone_2_fxyzol.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352966/spotify_clone_3_iw54yr.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352967/spotify_clone_4_e1pftf.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352967/spotify_clone_5_opansp.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352969/spotify_clone_6_jskmw3.png"
         ]
     },
     {
@@ -1655,7 +1646,7 @@ const proj = [
     {
         id: "profile-card",
         type: null,
-        imgSrc: "/img/projects/profile-card.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356273/profile-card_clhuat.webp",
 
         title: "IdentityCard UI",
 
@@ -1706,18 +1697,14 @@ const proj = [
         improvements: "IdentityCard UI delivers a clean and minimal profile presentation with well-structured layout and responsive design. It includes smooth hover interactions and integrated social links, providing a compact yet effective way to represent personal identity in a modern web interface.",
 
         gallery: [
-            "/img/projects/profile-card.webp",
-            "/img/projects/profile-card.webp",
-            "/img/projects/profile-card.webp",
-            "/img/projects/profile-card.webp",
-            "/img/projects/profile-card.webp",
-            "/img/projects/profile-card.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356266/1_db1nta.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356269/2_gm7sso.png",
         ]
     },
     {
         id: "crud-app",
         type: null,
-        imgSrc: "/img/projects/crud-app-json.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356103/crud-app-json_vmc54b.webp",
 
         title: "DataCraft CRUD",
 
@@ -1768,18 +1755,14 @@ const proj = [
         improvements: "DataCraft CRUD provides a complete data management experience with full create, read, update, and delete operations through an interactive interface. It features structured data presentation in tabular format with real-time updates, enabling efficient handling of user records while maintaining a clean and responsive design.",
 
         gallery: [
-            "/img/projects/crud-app-json.webp",
-            "/img/projects/crud-app-json.webp",
-            "/img/projects/crud-app-json.webp",
-            "/img/projects/crud-app-json.webp",
-            "/img/projects/crud-app-json.webp",
-            "/img/projects/crud-app-json.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356110/1_trxg5n.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356107/2_ciodph.png",
         ]
     },
     {
         id: "dev-snapshot",
         type: null,
-        imgSrc: "/img/projects/dev-snapshot.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355832/dev-snapshot_llzzkw.webp",
 
         title: "DevSnapshot UI",
 
@@ -1830,18 +1813,14 @@ const proj = [
         improvements: "DevSnapshot UI presents a compact and structured developer profile with clearly organized sections for skills, projects, and personal details. It features a clean and responsive layout that enhances readability and visual appeal, providing an effective way to showcase professional information in a minimal interface.",
 
         gallery: [
-            "/img/projects/dev-snapshot.webp",
-            "/img/projects/dev-snapshot.webp",
-            "/img/projects/dev-snapshot.webp",
-            "/img/projects/dev-snapshot.webp",
-            "/img/projects/dev-snapshot.webp",
-            "/img/projects/dev-snapshot.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355839/1_gn5hok.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355835/2_u9wric.png",
         ]
     },
     {
         id: "spotify-tuneback",
         type: null,
-        imgSrc: "/img/projects/spotify-tuneback.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355664/spotify-tuneback_jbd5tr.webp",
 
         title: "TuneBack CLI",
 
@@ -1891,19 +1870,12 @@ const proj = [
 
         improvements: "TuneBack CLI enables users to generate personalized playlists by selecting any specific date, automatically extracting top songs from that period and mapping them to Spotify. It integrates web scraping with API-based search to create and populate playlists directly in the user’s account, delivering a unique time-based music discovery experience.",
 
-        gallery: [
-            "/img/projects/spotify-tuneback.webp",
-            "/img/projects/spotify-tuneback.webp",
-            "/img/projects/spotify-tuneback.webp",
-            "/img/projects/spotify-tuneback.webp",
-            "/img/projects/spotify-tuneback.webp",
-            "/img/projects/spotify-tuneback.webp"
-        ]
+        gallery: []
     },
     {
         id: "ai-portfolio",
         type: null,
-        imgSrc: "/img/projects/ai-portfolio.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355563/ai-portfolio_uetbnt.webp",
 
         title: "3D DevCard",
 
@@ -1955,19 +1927,15 @@ const proj = [
         improvements: "3D DevCard presents a minimal single-screen portfolio design enhanced with an interactive 3D background. It combines modern frontend technologies with creative visual elements to deliver a unique developer showcase experience, blending design aesthetics with functional simplicity.",
 
         gallery: [
-            "/img/projects/ai-portfolio.webp",
-            "/img/projects/ai-portfolio.webp",
-            "/img/projects/ai-portfolio.webp",
-            "/img/projects/ai-portfolio.webp",
-            "/img/projects/ai-portfolio.webp",
-            "/img/projects/ai-portfolio.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355567/1_aovpbn.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774355565/2_bk9xzu.png",
         ]
     },
     {
         id: "agnps",
         type: "research",
 
-        imgSrc: "/img/projects/agnps.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354479/agnps_jrw3bp.webp",
 
         title: "Green Synthesis of Silver Nanoparticles",
 
@@ -2028,19 +1996,15 @@ const proj = [
         improvements: "This study highlights an eco-friendly approach to nanoparticle synthesis with strong antioxidant and antimicrobial properties. It can be further expanded with clinical validation, large-scale synthesis, and real-world biomedical or pharmaceutical applications.",
 
         gallery: [
-            "/img/projects/agnps.webp",
-            "/img/projects/agnps.webp",
-            "/img/projects/agnps.webp",
-            "/img/projects/agnps.webp",
-            "/img/projects/agnps.webp",
-            "/img/projects/agnps.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354481/1_mq0pry.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354484/2_ajdky2.png",
         ]
     },
     {
         id: "api-cafe",
         type: "backend",
 
-        imgSrc: "/img/projects/api-cafe.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354203/api-cafe_fxzjln.webp",
 
         title: "Cafe & Wifi API",
 
@@ -2094,19 +2058,19 @@ const proj = [
         improvements: "This API provides a clean and functional backend structure for managing cafe data. It can be further enhanced with authentication, rate limiting, deployment, and integration with frontend applications.",
 
         gallery: [
-            "/img/projects/api-cafe.webp",
-            "/img/projects/api-cafe.webp",
-            "/img/projects/api-cafe.webp",
-            "/img/projects/api-cafe.webp",
-            "/img/projects/api-cafe.webp",
-            "/img/projects/api-cafe.webp"
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354200/1_hvrv7u.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354197/2_untkz6.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354198/3_df7vkz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354213/4_wxqfc4.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354215/5_dcx5s8.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354218/6_udsyqe.png"
         ]
     },
     {
         id: "internet-reporter",
         type: "automation",
 
-        imgSrc: "/img/projects/internet-reporter.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353769/internet-reporter_zcitsf.webp",
 
         title: "Internet Speed Complaint Bot",
 
@@ -2141,20 +2105,13 @@ const proj = [
 
         improvements: "This project stands out by combining real-time data monitoring with automated decision-making and action execution. It uniquely bridges the gap between data validation and user advocacy by directly raising complaints on behalf of the user. The integration of speed testing, conditional logic, and browser automation into a single workflow makes it a powerful real-world automation solution.",
 
-        gallery: [
-            "/img/projects/internet-reporter.webp",
-            "/img/projects/internet-reporter.webp",
-            "/img/projects/internet-reporter.webp",
-            "/img/projects/internet-reporter.webp",
-            "/img/projects/internet-reporter.webp",
-            "/img/projects/internet-reporter.webp"
-        ]
+        gallery: []
     },
     {
         id: "ionps",
         type: "research",
 
-        imgSrc: "/img/projects/ionps.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353705/ionps_s9aqbj.webp",
 
         title: "Encapsulated Iron Oxide Nanoparticles for Cancer Therapy",
 
@@ -2200,20 +2157,13 @@ const proj = [
 
         improvements: "This research uniquely integrates nanotechnology with targeted cancer therapy by combining dioxepine with iron oxide nanoparticles. It demonstrates a complete experimental pipeline from synthesis to biological validation, including ROS-mediated apoptosis analysis. The study highlights a multidisciplinary approach involving chemistry, biology, and nanomedicine for potential therapeutic applications.",
 
-        gallery: [
-            "/img/projects/ionps.webp",
-            "/img/projects/ionps.webp",
-            "/img/projects/ionps.webp",
-            "/img/projects/ionps.webp",
-            "/img/projects/ionps.webp",
-            "/img/projects/ionps.webp"
-        ]
+        gallery: []
     },
     {
         id: "pong",
         type: "game",
 
-        imgSrc: "/img/projects/pong.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353643/pong_vuun82.webp",
 
         title: "Retro Pong Game",
 
@@ -2248,20 +2198,13 @@ const proj = [
 
         improvements: "This project captures the essence of classic arcade gaming by recreating Pong with clean logic and interactive controls. It emphasizes real-time gameplay mechanics, two-player interaction, and precise collision handling, delivering a nostalgic gaming experience using minimal yet effective Python-based graphics.",
 
-        gallery: [
-            "/img/projects/pong.webp",
-            "/img/projects/pong.webp",
-            "/img/projects/pong.webp",
-            "/img/projects/pong.webp",
-            "/img/projects/pong.webp",
-            "/img/projects/pong.webp"
-        ]
+        gallery: []
     },
     {
         id: "snake",
         type: "game",
 
-        imgSrc: "/img/projects/snake.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353565/snake_v68xow.webp",
 
         title: "Classic Snake Game",
 
@@ -2296,14 +2239,7 @@ const proj = [
 
         improvements: "This project effectively recreates one of the most iconic arcade games using fundamental programming concepts. It showcases dynamic game progression through snake growth, real-time movement, and strict rule enforcement, highlighting strong control over game logic and interactive system design.",
 
-        gallery: [
-            "/img/projects/snake.webp",
-            "/img/projects/snake.webp",
-            "/img/projects/snake.webp",
-            "/img/projects/snake.webp",
-            "/img/projects/snake.webp",
-            "/img/projects/snake.webp"
-        ]
+        gallery: []
     }
 ];
 

@@ -198,7 +198,7 @@ const ProjectDetail = () => {
           </div>
 
           {/* Gallery */}
-          <div className="mb-16">
+         {project.gallery.length>0 && <div className="mb-16">
             <h2 className="text-2xl font-bold text-white mb-6">
               Project Gallery
             </h2>
@@ -212,7 +212,7 @@ const ProjectDetail = () => {
                 />
               ))}
             </div>
-          </div>
+          </div>}
 
           {/* Other Projects Section */}
           <div className="relative">
