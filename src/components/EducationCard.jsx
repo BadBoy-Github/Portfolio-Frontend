@@ -13,11 +13,11 @@ const EducationCard = ({
 }) => {
   return (
     <>
-      <li className="mb-10 ml-12">
+      <li className="mb-10 mr-12">
         <a
           href={instLink}
           target="_blank"
-          className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
+          className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -end-5 ring-8 ring-zinc-50/10 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
         >
           <img
             className="rounded-full shadow-lg bg-red-500/0"
@@ -25,10 +25,7 @@ const EducationCard = ({
             alt={instName}
           />
         </a>
-        <div className="items-center justify-between p-6 ml-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
-            {year}
-          </time>
+        <div className="items-center justify-between p-6 mr-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
           <div className="text-sm font-medium text-zinc-300 w-[90%]">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
@@ -60,6 +57,9 @@ const EducationCard = ({
               </div>
             </div>
           </div>
+          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
+            {year}
+          </time>
         </div>
       </li>
     </>

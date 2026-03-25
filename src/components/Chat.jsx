@@ -9,6 +9,7 @@ import { FaUser } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
 import { PiExclamationMarkBold } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -208,15 +209,12 @@ const Chat = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section id="chatbot" className="section">
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
+    <section id="chatbot" className="section relative">
         <h2 className="headline-2">Talk With My Portfolio</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
           Explore my portfolio, skills, and resume in a conversational way
         </p>
-      </div>
 
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container">
         <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
           {/* Left side */}
           <div className="relative">
@@ -274,17 +272,17 @@ const Chat = () => {
 
             <div className=" flex items-end justify-start gap-4 mt-4">
               <a
-                href="/docs/resume.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 className="btn btn-primary"
               >
                 <button className="text-xs md:text-sm">Download Resume</button>
                 <MdOutlineFileDownload className="hidden md:block size-[20px]" />
               </a>
-              <a href="#contactme" className="btn btn-outline">
+              <Link to="/?scroll=contact" className="btn btn-outline">
                 <button className="text-xs md:text-sm">Contact Me</button>
                 <LuMessagesSquare className="hidden md:block size-[20px]" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -380,7 +378,6 @@ const Chat = () => {
             </form>
           </div>
         </div>
-      </div>
     </section>
   );
 };

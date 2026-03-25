@@ -1,15 +1,17 @@
 // Components
+
 import { ButtonPrimary, ButtonOutline } from "./Button";
+import EvilEye from "./EvilEye";
 
 const Home = () => {
   return (
-    <section className="pt-28 lg:pt-36" id="home">
-      <div className="container lg:grid lg:grid-cols-2 items-center lg:gap-10">
+    <section className="pt-28 lg:pt-36 mb-20" id="home">
+      <div className=" lg:grid lg:grid-cols-[3fr_4fr] items-center lg:gap-10">
         <div>
           <div className="flex items-center gap-3">
             <figure className="img-box size-10 rounded-lg">
               <img
-                src="/img/icons/icon.webp"
+                src="/icon.webp"
                 width={40}
                 height={40}
                 alt="Elayabarathi M V Portrait"
@@ -37,30 +39,31 @@ const Home = () => {
             <ButtonPrimary
               label="Download Resume"
               icon="download"
-              href="/docs/resume.pdf"
+              href="/resume.pdf"
               target="_blank"
             />
 
             <ButtonOutline
-              href="#chatbot"
+              href="/about?scroll=chatbot"
               label="Chat with AI"
               icon="robot_2"
             />
           </div>
         </div>
-
-        <div className="hidden lg:block">
-          <figure
-            className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden"
-          >
-            <img
-              src="/img/icons/hero-banner.webp"
-              width={656}
-              height={800}
-              alt="Elayabarathi M V"
-              className="w-full"
-            />
-          </figure>
+        {/* Updated Model Container */}
+        <div className="hidden lg:flex justify-center items-center h-[480px] w-full">
+          <EvilEye
+            eyeColor="#0284c7"
+            intensity={1}
+            pupilSize={1}
+            irisWidth={0.3}
+            glowIntensity={0.35}
+            scale={0.6}
+            noiseScale={1}
+            pupilFollow={1.2}
+            flameSpeed={1.2}
+            backgroundColor="#18181b"
+          />
         </div>
       </div>
     </section>

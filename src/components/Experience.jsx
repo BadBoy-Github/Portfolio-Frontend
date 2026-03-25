@@ -1,12 +1,11 @@
 import ExperienceCard from "./ExperienceCard";
 import ExperienceCompoundCard from "./ExperienceCompoundCard";
 
-import { ExpContent } from "./data/ExperienceData";
+import { ExpContent } from "../data/ExperienceData";
 
 const Experience = () => {
   return (
-    <section id="experience" className=" pt-20">
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
+    <section id="experience" className=" pt-20 relative">
         <h2 className="headline-2 ">My Professional Experience</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
           A timeline of my internships, roles, and real-world contributions.
@@ -70,11 +69,10 @@ const Experience = () => {
                   certifi={edu.certifi}
                   skills={edu.skills}
                 />
-              )
+              ),
             )}
           </ol>
         </div>
-      </div>
     </section>
   );
 };

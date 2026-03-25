@@ -1,36 +1,29 @@
 
 
 // Components
+import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
 
 const sitemap = [
   {
     label: "Home",
-    href: "#home",
+    href: "/",
   },
   {
     label: "About",
-    href: "#about",
+    href: "/about",
   },
   {
-    label: "Journey",
-    href: "#journey",
+    label: "Projects",
+    href: "/projects",
   },
   {
-    label: "Project",
-    href: "#project",
-  },
-  {
-    label: "Certifications",
-    href: "#certification",
-  },
-  {
-    label: "Reviews",
-    href: "#reviews",
+    label: "Blogs",
+    href: "/blogs",
   },
   {
     label: "Contact me",
-    href: "#contactme",
+    href: "/?scroll=contact",
   },
 ];
 
@@ -74,13 +67,13 @@ const Footer = () => {
                 <ul>
                   {socials.map(({ label, href }, key) => (
                     <li key={key}>
-                      <a
-                        href={href}
+                      <Link
+                        to={href}
                         target="_blank"
                         className="block text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -91,12 +84,12 @@ const Footer = () => {
                 <ul>
                   {sitemap.map(({ label, href }, key) => (
                     <li key={key}>
-                      <a
-                        href={href}
+                      <Link
+                        to={href}
                         className="block gap-4 text-sm text-zinc-400 py-1 transition-all duration-300 hover:text-zinc-200 w-fit"
                       >
                         {label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -107,7 +100,7 @@ const Footer = () => {
           <div className="flex items-center justify-between pt-10 mb-8">
             <a href="/" className="logo ">
               <img
-                src="/img/icons/favicon.svg"
+                src="/favicon.svg"
                 width={40}
                 height={40}
                 alt="Elayabarathi M V"
@@ -115,10 +108,11 @@ const Footer = () => {
             </a>
 
             <p className="text-zinc-500 text-sm ">
-              &copy; 2025{" "}
+              &copy; {new Date().getFullYear()}
               <span className="text-zinc-200">
-                · All Rights Reserved |{" "}
-                <span className="text-sky-600 font-semibold">
+                {" "}
+                · All Rights Reserved <span className="hidden md:inline"> | </span>
+                <span className="text-sky-600 font-semibold block md:inline mt-1 text-end md:mt-0">
                   Elayabarathi M V
                 </span>
               </span>

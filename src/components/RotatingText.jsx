@@ -10,6 +10,8 @@ import {
   useState,
 } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import PropTypes from "prop-types";
+import { animate } from "motion";
 
 function cn(...classes) {
   return classes.filter(Boolean).join(" ");

@@ -1,20 +1,17 @@
-
-
 import EducationCard from "./EducationCard";
 
-import { EduContent } from "./data/EducationData";
+import { EduContent } from "../data/EducationData";
 
 const Education = () => {
   return (
-    <section className="section">
-      <div className="px-4 mx-auto lg:px-6 xl:max-w-6xl container relative">
+    <section className="section relative">
         <h2 className="headline-2 ">My Academic Journey</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
           A summary of my academic qualifications
         </p>
 
         <div className="">
-          <ol className="relative border-l-2 border-zinc-50/10 ml-6 border-separate">
+          <ol className="relative border-r-2 border-zinc-50/10 mr-6 border-separate flex flex-col items-start">
             {EduContent.map((edu, index) => (
               <EducationCard
                 key={index}
@@ -30,7 +27,6 @@ const Education = () => {
             ))}
           </ol>
         </div>
-      </div>
     </section>
   );
 };
