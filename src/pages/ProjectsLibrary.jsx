@@ -95,9 +95,9 @@ const ProjectsLibrary = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://elayaResume.vercel.app/projects"
+          content="https://elayabarathimv.vercel.app/projects"
         />
-        <link rel="canonical" href="https://elayaResume.vercel.app/projects" />
+        <link rel="canonical" href="https://elayabarathimv.vercel.app/projects" />
       </Helmet>
       <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
         <div className="container">

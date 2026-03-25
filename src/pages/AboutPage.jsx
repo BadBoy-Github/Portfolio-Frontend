@@ -30,7 +30,7 @@ const AboutPage = () => {
         />
         <meta
           property="og:image"
-          content="https://elayabarathimv.vercel.app/img/icons/icon.webp"
+          content="https://elayabarathimv.vercel.app/icon.webp"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Me | Elayabarathi M V" />

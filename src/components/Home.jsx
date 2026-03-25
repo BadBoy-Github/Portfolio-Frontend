@@ -11,7 +11,7 @@ const Home = () => {
           <div className="flex items-center gap-3">
             <figure className="img-box size-10 rounded-lg">
               <img
-                src="/img/icons/icon.webp"
+                src="/icon.webp"
                 width={40}
                 height={40}
                 alt="Elayabarathi M V Portrait"
@@ -39,7 +39,7 @@ const Home = () => {
             <ButtonPrimary
               label="Download Resume"
               icon="download"
-              href="/docs/resume.pdf"
+              href="/resume.pdf"
               target="_blank"
             />
 

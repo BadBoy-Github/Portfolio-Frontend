@@ -272,7 +272,7 @@ const Chat = () => {
 
             <div className=" flex items-end justify-start gap-4 mt-4">
               <a
-                href="/docs/resume.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 className="btn btn-primary"
               >

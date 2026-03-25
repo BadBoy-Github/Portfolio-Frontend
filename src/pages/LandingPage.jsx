@@ -33,7 +33,7 @@ const LandingPage = () => {
         <meta property="og:url" content="https://elayabarathimv.vercel.app/" />
         <meta
           property="og:image"
-          content="https://elayabarathimv.vercel.app/img/icons/icon.webp"
+          content="https://elayabarathimv.vercel.app/icon.webp"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta

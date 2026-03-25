@@ -125,7 +125,7 @@ const Welcome = () => {
 
           <Link to="/" className="ml-auto flex flex-col items-center group">
             <img
-              src="/img/icons/favicon.svg"
+              src="/favicon.svg"
               alt="Elayabarathi M V"
               width={30}
               height={30}

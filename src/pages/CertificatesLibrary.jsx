@@ -78,11 +78,11 @@ const CertificatesLibrary = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://elayaResume.vercel.app/certificates"
+          content="https://elayabarathimv.vercel.app/certificates"
         />
         <link
           rel="canonical"
-          href="https://elayaResume.vercel.app/certificates"
+          href="https://elayabarathimv.vercel.app/certificates"
         />
       </Helmet>
       <div className="min-h-screen bg-zinc-900 pt-24 pb-16">

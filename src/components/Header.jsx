@@ -15,7 +15,7 @@ const Header = () => {
           <h1>
             <Link to="/" className="logo">
               <img
-                src="/img/icons/favicon.svg"
+                src="/favicon.svg"
                 alt="Elayabarathi"
                 width={40}
                 height={40}

@@ -82,11 +82,11 @@ const AchievementsLibrary = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://elayaResume.vercel.app/achievements"
+          content="https://elayabarathimv.vercel.app/achievements"
         />
         <link
           rel="canonical"
-          href="https://elayaResume.vercel.app/achievements"
+          href="https://elayabarathimv.vercel.app/achievements"
         />
       </Helmet>
       <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
