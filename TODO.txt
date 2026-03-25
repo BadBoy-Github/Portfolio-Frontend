@@ -1,5 +1,5 @@
 
 
-nodemailer integration
+all search bars in the library pages (certificate, achievements, projects, blog) -> check if search and tag search work.
 
 

@@ -1,36 +1,48 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
+import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import CertificationsCard from "../components/CertificationsCard";
 import { certificates } from "../data/CertificateData";
 
+const sTags = ["React"];
+
 const CertificatesLibrary = () => {
+  const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Get unique companies for filtering
-  const companies = [...new Set(certificates.map((c) => c.company))];
-  const [selectedCompany, setSelectedCompany] = useState("all");
-
-  // Filter certificates
+  // Filter certificates based on selected tag and search query
   const filteredCerts = certificates.filter((cert) => {
+    // Filter by tag (company)
+    const tagMatch =
+      selectedTag === "all" ||
+      cert.company.toLowerCase() === selectedTag.toLowerCase();
+
+    // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       cert.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      cert.technologiesLearned.some((tech) =>
-        tech.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
+      cert.technologiesLearned((tech) => {
+        tech.toLowerCase().includes(searchQuery.toLowerCase());
+      });
 
-    const companyMatch =
-      selectedCompany === "all" || cert.company === selectedCompany;
+    console.log(tagMatch, searchMatch);
 
-    return searchMatch && companyMatch;
+    return tagMatch && searchMatch;
   });
+
+  // Handle tag selection
+  const handleTagSelect = (tag) => {
+    setSelectedTag(tag);
+    setSearchQuery(""); // Clear search when selecting a tag
+  };
 
   // Handle search
   const handleSearch = (query) => {
     setSearchQuery(query);
+    setSelectedTag("all"); // Reset tag filter when searching
   };
 
   // Clear search
@@ -86,28 +98,31 @@ const CertificatesLibrary = () => {
           <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
-                className={`px-3 py-2 rounded-lg text-sm ${
-                  selectedCompany === "all"
+                className={`p-2 rounded-lg text-sm ${
+                  selectedTag === "all"
                     ? "bg-sky-600 text-zinc-800"
-                    : "text-zinc-400 bg-zinc-50/5"
+                    : "bg-zinc-50/5 text-zinc-400"
                 } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-                onClick={() => setSelectedCompany("all")}
+                onClick={() => handleTagSelect("all")}
               >
-                All
+                <HiOutlineMenu className="size-5" />
               </button>
-              {companies.slice(0, 8).map((company, index) => (
-                <button
-                  key={index}
-                  className={`px-3 py-2 rounded-lg text-sm ${
-                    selectedCompany === company
-                      ? "bg-sky-600 text-zinc-800"
-                      : "text-zinc-400 bg-zinc-50/5"
-                  } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-                  onClick={() => setSelectedCompany(company)}
-                >
-                  {company}
-                </button>
-              ))}
+
+              <div className="flex items-center gap-2 flex-wrap">
+                {sTags.map((tag, index) => (
+                  <button
+                    key={index}
+                    className={`px-3 py-2 rounded-lg text-sm ${
+                      selectedTag === tag.toLowerCase()
+                        ? "bg-sky-600 text-zinc-800"
+                        : "text-zinc-400 bg-zinc-50/5"
+                    } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
+                    onClick={() => handleTagSelect(tag.toLowerCase())}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="flex items-center gap-2 w-full lg:w-auto">

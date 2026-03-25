@@ -1,20 +1,27 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
+import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import AchievementsCard from "../components/AchievementsCard";
 import { achievements } from "../data/AchievementData";
 
+const sTags = ["1st Place", "Leadership"];
+
 const AchievementsLibrary = () => {
+  const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Get unique tags for filtering
-  const allTags = achievements.flatMap((a) => a.tags);
-  const uniqueTags = [...new Set(allTags)];
-  const [selectedTag, setSelectedTag] = useState("");
-
-  // Filter achievements
+  // Filter achievements based on selected tag and search query
   const filteredAchievements = achievements.filter((achi) => {
+    // Filter by tag
+    const tagMatch =
+      selectedTag === "all" ||
+      achi.tags.some(
+        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
+      );
+
+    // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       achi.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -23,14 +30,19 @@ const AchievementsLibrary = () => {
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
-    const tagMatch = selectedTag === "" || achi.tags.includes(selectedTag);
-
-    return searchMatch && tagMatch;
+    return tagMatch && searchMatch;
   });
+
+  // Handle tag selection
+  const handleTagSelect = (tag) => {
+    setSelectedTag(tag);
+    setSearchQuery(""); // Clear search when selecting a tag
+  };
 
   // Handle search
   const handleSearch = (query) => {
     setSearchQuery(query);
+    setSelectedTag("all"); // Reset tag filter when searching
   };
 
   // Clear search
@@ -84,28 +96,31 @@ const AchievementsLibrary = () => {
           <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
-                className={`px-3 py-2 rounded-lg text-sm ${
-                  selectedTag === ""
+                className={`p-2 rounded-lg text-sm ${
+                  selectedTag === "all"
                     ? "bg-sky-600 text-zinc-800"
-                    : "text-zinc-400 bg-zinc-50/5"
+                    : "bg-zinc-50/5 text-zinc-400"
                 } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-                onClick={() => setSelectedTag("")}
+                onClick={() => handleTagSelect("all")}
               >
-                All
+                <HiOutlineMenu className="size-5" />
               </button>
-              {uniqueTags.slice(0, 10).map((tag, index) => (
-                <button
-                  key={index}
-                  className={`px-3 py-2 rounded-lg text-sm ${
-                    selectedTag === tag
-                      ? "bg-sky-600 text-zinc-800"
-                      : "text-zinc-400 bg-zinc-50/5"
-                  } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
-                  onClick={() => setSelectedTag(tag)}
-                >
-                  {tag.replace("#", "")}
-                </button>
-              ))}
+
+              <div className="flex items-center gap-2 flex-wrap">
+                {sTags.map((tag, index) => (
+                  <button
+                    key={index}
+                    className={`px-3 py-2 rounded-lg text-sm ${
+                      selectedTag === tag.toLowerCase()
+                        ? "bg-sky-600 text-zinc-800"
+                        : "text-zinc-400 bg-zinc-50/5"
+                    } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
+                    onClick={() => handleTagSelect(tag.toLowerCase())}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="flex items-center gap-2 w-full lg:w-auto">
