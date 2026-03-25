@@ -5,9 +5,7 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/BlogData";
 
-const sTags = [
-  
-];
+const sTags = ["Portfolio"];
 
 const BlogsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
@@ -18,6 +16,8 @@ const BlogsLibrary = () => {
     // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
+      blog.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
+      blog.subtitle.toLowerCase().includes(selectedTag.toLowerCase()) ||
       blog.tags.some((tag) => tag.toLowerCase() === selectedTag.toLowerCase());
 
     // Filter by search query

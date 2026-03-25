@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import CertificationsCard from "../components/CertificationsCard";
 import { certificates } from "../data/CertificateData";
 
-const sTags = ["React"];
+const sTags = ["React", "JavaScript", "HTML", "CSS", "Java", "Python"];
 
 const CertificatesLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
@@ -14,29 +14,31 @@ const CertificatesLibrary = () => {
 
   // Filter certificates based on selected tag and search query
   const filteredCerts = certificates.filter((cert) => {
-    // Filter by tag (company)
+    // Filter by tag (technologies)
     const tagMatch =
       selectedTag === "all" ||
-      cert.company.toLowerCase() === selectedTag.toLowerCase();
+      cert.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
+      cert.company.toLowerCase().includes(selectedTag.toLowerCase()) ||
+      cert.technologiesLearned.some(
+        (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
+      );
 
     // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       cert.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      cert.technologiesLearned((tech) => {
-        tech.toLowerCase().includes(searchQuery.toLowerCase());
-      });
-
-    console.log(tagMatch, searchMatch);
+      cert.technologiesLearned.some((tech) =>
+        tech.toLowerCase().includes(searchQuery.toLowerCase()),
+      );
 
     return tagMatch && searchMatch;
   });
 
   // Handle tag selection
   const handleTagSelect = (tag) => {
-    setSelectedTag(tag);
     setSearchQuery(""); // Clear search when selecting a tag
+    setSelectedTag(tag);
   };
 
   // Handle search

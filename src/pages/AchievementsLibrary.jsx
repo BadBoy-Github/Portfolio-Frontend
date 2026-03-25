@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import AchievementsCard from "../components/AchievementsCard";
 import { achievements } from "../data/AchievementData";
 
-const sTags = ["1st Place", "Leadership"];
+const sTags = ["Leadership", "Collaboration"];
 
 const AchievementsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
@@ -17,15 +17,21 @@ const AchievementsLibrary = () => {
     // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
-      achi.tags.some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
-      );
+      achi.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
+      achi.subtitle.toLowerCase().includes(selectedTag.toLowerCase()) ||
+      achi.tags.some((tag) =>
+        tag.toLowerCase().includes(selectedTag.toLowerCase()),
+      ) ||
+      achi.tags.some((tag) => tag.toLowerCase() === selectedTag.toLowerCase());
 
     // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       achi.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       achi.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      achi.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      ) ||
       achi.tags.some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
