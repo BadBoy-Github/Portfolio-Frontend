@@ -31,7 +31,7 @@ const ProjectFeaturedCard = ({
 
     // ✅ Navigate only if valid click
     if (projectId) {
-       e.preventDefault();
+      e.preventDefault();
       navigate(`/project/${projectId}`);
     }
   };
@@ -51,6 +51,7 @@ const ProjectFeaturedCard = ({
             href={gitUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`View ${title} source code on GitHub`}
             className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 bg-zinc-700 p-1 flex transition-all duration-300 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
           >
             <div className="flex items-center justify-end">
@@ -98,6 +99,7 @@ const ProjectFeaturedCard = ({
             href={projectLink}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`View ${title} live demo`}
             className="live-link w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 hover:scale-110 transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
