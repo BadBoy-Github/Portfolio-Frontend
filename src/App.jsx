@@ -1,5 +1,5 @@
 /**
- * @copyright 2025 Panda Productions
+ * @copyright 2025 Elayabarathi M V
  * @author Elayabarathi M V <elayabarathiedison@gmail.com>
  * @license Apache-2.0
  */
