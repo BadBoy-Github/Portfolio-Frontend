@@ -1,4 +1,24 @@
 User-agent: *
 Allow: /
 
+# Main sections allowed
+Allow: /about
+Allow: /projects
+Allow: /certificates
+Allow: /achievements
+Allow: /blogs
+Allow: /contact
+
+# Disallow admin/private areas (if any)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
 Sitemap: https://elayabarathimv.vercel.app/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1
+
+# Additional SEO hints
+# Clean URLs
+Clean-param: utm_source&utm_medium&utm_campaign
