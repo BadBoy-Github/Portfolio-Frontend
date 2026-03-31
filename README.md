@@ -2,7 +2,7 @@
 
 A modern, interactive portfolio website built with React, showcasing projects, blogs, certifications, achievements, and more.
 
-![Portfolio Preview](https://eloey.vercel.app/favicon.svg)
+![Portfolio Preview](https://res.cloudinary.com/dz53e3szr/image/upload/v1774279871/Portfolio_head_cd3ap3.png)
 
 ## Features
 
