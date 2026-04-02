@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TbBrandGithubFilled } from "react-icons/tb";
+import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa6";
 
 const socialLinks = [
@@ -13,6 +14,11 @@ const socialLinks = [
     icon: <FaLinkedinIn />,
     alt: "LinkedIn",
   },
+  {
+    href: "mailto:elayabarathiedison@gmail.com",
+    icon: <BiLogoGmail />,
+    alt: "Gmail",
+  }
 ];
 
 const categories = [
