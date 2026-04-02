@@ -36,6 +36,10 @@ const socials = [
         label: 'LinkedIn',
         href: 'https://www.linkedin.com/in/elayabarathi/'
     },
+    {
+        label: 'Gmail',
+        href: 'mailto:elayabarathiedison@gmail.com'
+    }
 ];
 
 const Footer = () => {

@@ -6,6 +6,7 @@ const QATerminal = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
   const timeoutsRef = useRef([]);
   const intervalRef = useRef(null);
+  const terminalBodyRef = useRef(null);
 
   const terminalPath = "C:\\Users\\elayabarathi > ";
 
@@ -311,14 +312,20 @@ const QATerminal = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (terminalBodyRef.current) {
+      terminalBodyRef.current.scrollTop = terminalBodyRef.current.scrollHeight;
+    }
+  }, [lines]);
+
   return (
-    <div className="w-full mx-auto mt-16">
+    <div className="w-full mx-auto mt-16 h-[80vh] flex flex-col">
 
 
       {/* Terminal Window */}
-      <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden shadow-2xl">
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden shadow-2xl flex flex-col flex-1 min-h-0">
         {/* Terminal Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-zinc-800/50 border-b border-zinc-800">
+        <div className="flex items-center justify-between px-4 py-3 bg-zinc-800/50 border-b border-zinc-800 shrink-0">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -350,7 +357,7 @@ const QATerminal = () => {
         </div>
 
         {/* Terminal Body */}
-        <div className="p-6 font-mono text-sm">
+        <div ref={terminalBodyRef} className="p-6 font-mono text-sm overflow-y-auto flex-1 min-h-0 scroll-smooth" style={{ scrollbarWidth: 'thin', scrollbarColor: '#3f3f46 #18181b' }}>
           {/* Terminal Output */}
           <div className="space-y-1">
             {lines.map((line) => (

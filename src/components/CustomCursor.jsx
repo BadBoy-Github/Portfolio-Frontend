@@ -17,67 +17,16 @@ import { useEffect } from "react";
  */
 const CustomCursor = () => {
   useEffect(() => {
-    // Hide default cursor completely on all elements
-    const style = document.createElement("style");
-    style.textContent = `
-      html, body {
-        cursor: none !important;
-      }
-      * {
-        cursor: none !important;
-      }
-      a, button, input, textarea, select, [role="button"] {
-        cursor: none !important;
-      }
-      ::-webkit-scrollbar {
-        cursor: none !important;
-        width: 10px !important;
-      }
-      ::-webkit-scrollbar * {
-        cursor: none !important;
-      }
-      ::-webkit-scrollbar-track {
-        cursor: none !important;
-      }
-      ::-webkit-scrollbar-thumb {
-        cursor: none !important;
-        background: #38bdf8 !important;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        cursor: none !important;
-      }
-      ::-webkit-scrollbar-button {
-        cursor: none !important;
-      }
-      .scrollbar-thin {
-        scrollbar-color: #38bdf8 transparent !important;
-        scrollbar-width: thin !important;
-      }
-    `;
-    document.head.appendChild(style);
+    const isDesktop = () => window.matchMedia("(min-width: 1024px)").matches;
 
-    // Force cursor hidden on all elements
-    document.body.style.cursor = "none";
-    document.documentElement.style.cursor = "none";
+    if (!isDesktop()) return;
 
-    const TRAIL_LENGTH = 10;
-    const trailRefs = [];
+     // Keep default cursor visible - removed cursor hiding rules
+     // The custom cursor will be visible alongside the default cursor
 
-    // Create particle trail elements - small glowing dots
-    for (let i = 0; i < TRAIL_LENGTH; i++) {
-      const trail = document.createElement("div");
-      trail.className = "fixed pointer-events-none z-[9998] rounded-full";
-      // Purple to cyan gradient for particles
-      const hue = 270 + (i / TRAIL_LENGTH) * 60; // Purple to pink to cyan
-      trail.style.background = `hsla(${hue}, 80%, 60%, ${0.8 - i * 0.025})`;
-      trail.style.width = `${8 - i * 0.15}px`;
-      trail.style.height = `${8 - i * 0.15}px`;
-      trail.style.left = "-100px";
-      trail.style.top = "-100px";
-      trail.style.boxShadow = `0 0 ${10 - i * 0.3}px hsla(${hue}, 80%, 60%, 0.5)`;
-      document.body.appendChild(trail);
-      trailRefs.push({ el: trail, x: -100, y: -100, vx: 0, vy: 0 });
-    }
+     // Removed particle trail - no trailing circles
+     const TRAIL_LENGTH = 0;
+     const trailRefs = [];
 
     // Main cursor - ring with center dot (futuristic style)
     const mainCursor = document.createElement("div");
@@ -178,19 +127,18 @@ const CustomCursor = () => {
 
     animate();
 
-    return () => {
-      style.remove();
-      document.body.style.cursor = "auto";
-      document.documentElement.style.cursor = "auto";
-      document.removeEventListener("mousemove", moveCursor);
-      document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseout", handleMouseOut);
-      document.body.removeEventListener("mouseover", handleMouseOver);
-      document.body.removeEventListener("mouseout", handleMouseOut);
-      mainCursor.remove();
-      hoverCursor.remove();
-      trailRefs.forEach((item) => item.el.remove());
-    };
+     return () => {
+       document.body.style.cursor = "auto";
+       document.documentElement.style.cursor = "auto";
+       document.removeEventListener("mousemove", moveCursor);
+       document.removeEventListener("mouseover", handleMouseOver);
+       document.removeEventListener("mouseout", handleMouseOut);
+       document.body.removeEventListener("mouseover", handleMouseOver);
+       document.body.removeEventListener("mouseout", handleMouseOut);
+       mainCursor.remove();
+       hoverCursor.remove();
+       // trailRefs is empty now, no cleanup needed
+     };
   }, []);
 
   // This component doesn't render any DOM elements
