@@ -17,6 +17,10 @@ import { useEffect } from "react";
  */
 const CustomCursor = () => {
   useEffect(() => {
+    const isDesktop = () => window.matchMedia("(min-width: 1024px)").matches;
+
+    if (!isDesktop()) return;
+
     // Hide default cursor completely on all elements
     const style = document.createElement("style");
     style.textContent = `
