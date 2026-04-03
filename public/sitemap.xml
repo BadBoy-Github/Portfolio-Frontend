@@ -6,7 +6,7 @@
     <!-- Main Homepage - Primary Target for "elayabarathi" and "elayabarathi portfolio" -->
     <url>
         <loc>https://elayabarathimv.vercel.app/</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -18,7 +18,7 @@
     <!-- About Page - Target for "elayabarathi m v" -->
     <url>
         <loc>https://elayabarathimv.vercel.app/about</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -26,7 +26,7 @@
     <!-- Projects Library - Important for SEO -->
     <url>
         <loc>https://elayabarathimv.vercel.app/projects</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -258,7 +258,7 @@
     <!-- Certificates Library -->
     <url>
         <loc>https://elayabarathimv.vercel.app/certificates</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -266,7 +266,7 @@
     <!-- Achievements Library -->
     <url>
         <loc>https://elayabarathimv.vercel.app/achievements</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -274,7 +274,7 @@
     <!-- Blogs Library -->
     <url>
         <loc>https://elayabarathimv.vercel.app/blogs</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -286,11 +286,17 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <url>
+        <loc>https://elayabarathimv.vercel.app/blog/card-vault-journey</loc>
+        <lastmod>2026-04-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
     <!-- Resume -->
     <url>
         <loc>https://elayabarathimv.vercel.app/resume.pdf</loc>
-        <lastmod>2026-03-31</lastmod>
+        <lastmod>2026-04-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
