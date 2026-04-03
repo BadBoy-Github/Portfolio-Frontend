@@ -84,6 +84,18 @@ const BlogDetail = () => {
             </h1>
             <p className="text-xl text-zinc-400 mb-4">{blog.subtitle}</p>
 
+            {blog.link && (
+              <a
+                href={blog.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors mb-4"
+              >
+                <span>Live</span>
+                <IoArrowBack className="size-4 rotate-180" />
+              </a>
+            )}
+
             <div className="flex flex-wrap items-center gap-4 text-zinc-500">
               <span>{blog.date}</span>
               <span>•</span>

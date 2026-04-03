@@ -6,6 +6,7 @@ const blogs = [
         date: "2026-03-23",
         readTime: "38 min read",
         tags: ["Portfolio", "AI Chatbot", "Showcase"],
+        link: "https://elayabarathimv.vercel.app/",
         imageSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279871/Portfolio_head_cd3ap3.png",
         content: `
             <p>Welcome to my interactive portfolio hub—a carefully crafted digital space that represents my complete professional identity. This portfolio stands as a testament to my journey as a developer, showcasing not just my technical skills but also my passion for creating meaningful digital experiences. In this blog, I'll walk you through the conception, development, and unique features that make this portfolio truly special.</p>
@@ -78,11 +79,12 @@ const blogs = [
     },
     {
         id: "card-vault-journey",
-        title: "Card Vault: The Ultimate Digital Gift Card Marketplace",
+        title: "Card Vaults: The Ultimate Digital Gift Card Marketplace",
         subtitle: "From concept to a secure, real-time digital commerce platform",
         date: "2026-04-02",
         readTime: "45 min read",
         tags: ["E-Commerce", "Gift Cards", "Full Stack", "React", "Fintech"],
+        link: "https://card-vaults.vercel.app/",
         imageSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320957/cv_head_l3uxbt.png",
         content: `
         <p>Card Vault is more than just a website—it's a complete digital ecosystem designed to simplify how users discover, purchase, and manage digital gift cards. Built with performance, security, and user experience at its core, this platform represents my evolution as a full-stack developer and my ability to create real-world, scalable solutions. In this blog, I’ll take you deep into the journey behind Card Vault—from the initial idea to the technical architecture, challenges, and future vision.</p>

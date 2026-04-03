@@ -5,7 +5,7 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/BlogData";
 
-const sTags = ["Portfolio"];
+const sTags = ["Portfolio", "Card Vaults"];
 
 const BlogsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
