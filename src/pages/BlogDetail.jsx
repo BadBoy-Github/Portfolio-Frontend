@@ -224,7 +224,7 @@ const BlogDetail = () => {
                 <Link
                   key={otherBlog.id}
                   to={`/blog/${otherBlog.id}`}
-                  className="min-w-[280px] md:min-w-[320px] bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
+                  className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
                 >
                   <img
                     src={otherBlog.imageSrc}
