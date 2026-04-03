@@ -319,9 +319,10 @@ const QATerminal = () => {
   }, [lines]);
 
   return (
-    <div className="w-full mx-auto mt-16 h-[80vh] flex flex-col">
-
-
+    <section
+      id="qa-terminal"
+      className="section w-full mx-auto h-[90vh] flex flex-col"
+    >
       {/* Terminal Window */}
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden shadow-2xl flex flex-col flex-1 min-h-0">
         {/* Terminal Header */}
@@ -357,7 +358,11 @@ const QATerminal = () => {
         </div>
 
         {/* Terminal Body */}
-        <div ref={terminalBodyRef} className="p-6 font-mono text-sm overflow-y-auto flex-1 min-h-0 scroll-smooth" style={{ scrollbarWidth: 'thin', scrollbarColor: '#3f3f46 #18181b' }}>
+        <div
+          ref={terminalBodyRef}
+          className="p-6 font-mono text-sm overflow-y-auto flex-1 min-h-0 scroll-smooth"
+          style={{ scrollbarWidth: "thin", scrollbarColor: "#3f3f46 #18181b" }}
+        >
           {/* Terminal Output */}
           <div className="space-y-1">
             {lines.map((line) => (
@@ -383,7 +388,7 @@ const QATerminal = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

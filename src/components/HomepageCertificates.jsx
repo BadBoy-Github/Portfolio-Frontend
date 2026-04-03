@@ -8,7 +8,7 @@ const HomepageCertificates = () => {
   const remainingCount = certificates.length - 5;
 
   return (
-    <section className="section relative">
+    <section id="certificates" className="section relative">
       <h2 className="headline-2">My Certification Milestones</h2>
       <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
         A journey through certifications that validate my skills and growth

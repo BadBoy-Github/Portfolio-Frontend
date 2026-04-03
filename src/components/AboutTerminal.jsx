@@ -323,7 +323,7 @@ const AboutTerminal = () => {
   }, [lines]);
 
   return (
-    <div className="w-full mx-auto mt-12 h-[80vh] flex flex-col">
+    <section id="about-terminal" className="w-full mx-auto section h-[90vh] flex flex-col">
       {/* Terminal Window */}
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden shadow-2xl flex flex-col flex-1 min-h-0">
         {/* Terminal Header */}
@@ -385,7 +385,7 @@ const AboutTerminal = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -4,8 +4,17 @@ import AboutTerminal from "../components/AboutTerminal";
 import Chat from "../components/Chat";
 import Experience from "../components/Experience";
 import Education from "../components/Education";
+import RightSideNav from "../components/RightSideNav";
 
 const AboutPage = () => {
+  const sections = [
+    { id: "welcome", label: "Welcome" },
+    { id: "about-terminal", label: "About Terminal" },
+    { id: "chatbot", label: "Chat" },
+    { id: "experience", label: "Experience" },
+    { id: "education", label: "Education" },
+  ];
+
   return (
     <>
       <Helmet>
@@ -47,6 +56,7 @@ const AboutPage = () => {
         <Experience />
         <Education />
       </div>
+      <RightSideNav sections={sections} />
     </>
   );
 };
