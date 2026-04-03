@@ -165,6 +165,7 @@ const ProjectDetail = () => {
                 <img
                   src={project.imgSrc}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full rounded-xl mb-6 border border-white/20"
                 />
 
@@ -209,6 +210,7 @@ const ProjectDetail = () => {
                     key={index}
                     src={image}
                     alt={`${project.title} screenshot ${index + 1}`}
+                    loading="lazy"
                     className="w-full rounded-xl hover:scale-[101%] hover:shadow-xl transition-transform border border-white/20"
                   />
                 ))}
@@ -258,6 +260,7 @@ const ProjectDetail = () => {
                   <img
                     src={otherProject.imgSrc}
                     alt={otherProject.title}
+                    loading="lazy"
                     className="w-full aspect-video object-cover"
                   />
                   <div className="p-4">

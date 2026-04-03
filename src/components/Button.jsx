@@ -11,7 +11,9 @@ const ButtonPrimary = ({
     target = '_self',
     label,
     icon,
-    classes
+    classes,
+    ariaLabel,
+    disabled = false
 }) => {
 
     if (href) {
@@ -20,6 +22,9 @@ const ButtonPrimary = ({
             href={href}
             target={target}
             className={"btn btn-primary " + classes}
+            aria-label={ariaLabel || label}
+            role="button"
+            tabIndex={disabled ? -1 : 0}
           >
             {label}
 
@@ -35,7 +40,12 @@ const ButtonPrimary = ({
         );
     } else {
         return (
-            <button className={"btn btn-primary " + classes}>
+            <button
+              className={"btn btn-primary " + classes}
+              aria-label={ariaLabel || label}
+              disabled={disabled}
+              type="button"
+            >
                 {label}
 
                 {icon ?
@@ -56,7 +66,9 @@ ButtonPrimary.propTypes = {
     href: PropTypes.string,
     target: PropTypes.string,
     icon: PropTypes.string,
-    classes: PropTypes.string
+    classes: PropTypes.string,
+    ariaLabel: PropTypes.string,
+    disabled: PropTypes.bool
 }
 
 // Outline Button
@@ -67,7 +79,9 @@ const ButtonOutline = ({
     target = '_self',
     label,
     icon,
-    classes
+    classes,
+    ariaLabel,
+    disabled = false
 }) => {
 
     if (href) {
@@ -76,6 +90,9 @@ const ButtonOutline = ({
                 to={href}
                 target={target}
                 className={"btn btn-outline " + classes}
+                aria-label={ariaLabel || label}
+                role="button"
+                tabIndex={disabled ? -1 : 0}
             >
                 {label}
 
@@ -90,7 +107,12 @@ const ButtonOutline = ({
         )
     } else {
         return (
-            <button className={"btn btn-outline " + classes}>
+            <button
+              className={"btn btn-outline " + classes}
+              aria-label={ariaLabel || label}
+              disabled={disabled}
+              type="button"
+            >
                 {label}
 
                 {icon ?
@@ -111,7 +133,9 @@ ButtonOutline.propTypes = {
     href: PropTypes.string,
     target: PropTypes.string,
     icon: PropTypes.string,
-    classes: PropTypes.string
+    classes: PropTypes.string,
+    ariaLabel: PropTypes.string,
+    disabled: PropTypes.bool
 }
 
 export {

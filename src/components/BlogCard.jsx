@@ -9,6 +9,7 @@ const BlogCard = ({ blog }) => {
             <img
               src={blog.imageSrc}
               alt={blog.title}
+              loading="lazy"
               className="w-full h-full aspect-video  object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>

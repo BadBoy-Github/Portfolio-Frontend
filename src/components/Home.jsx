@@ -5,7 +5,12 @@ import EvilEye from "./EvilEye";
 
 const Home = () => {
   return (
-    <section className="pt-28 lg:pt-36 mb-20" id="home">
+    <section
+      className="pt-28 lg:pt-36 mb-20"
+      id="home"
+      role="banner"
+      aria-labelledby="home-heading"
+    >
       <div className=" lg:grid lg:grid-cols-[3fr_4fr] items-center lg:gap-10">
         <div>
           <div className="flex items-center gap-3">
@@ -15,6 +20,7 @@ const Home = () => {
                 width={40}
                 height={40}
                 alt="Elayabarathi M V Portrait"
+                loading="lazy"
                 className="img-cover rounded-md"
               />
             </figure>
@@ -30,7 +36,10 @@ const Home = () => {
           <div className="animated-text mt-6">
             <span className="headline-transition"></span>
 
-            <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[14ch] mt-1 mb-4 lg:mb-10">
+            <h2
+              id="home-heading"
+              className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[14ch] mt-1 mb-4 lg:mb-10"
+            >
               Creating Modern User Focused Interfaces
             </h2>
           </div>

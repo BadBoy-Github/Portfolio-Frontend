@@ -108,6 +108,7 @@ const Footer = () => {
                 width={40}
                 height={40}
                 alt="Elayabarathi M V"
+                loading="lazy"
               />
             </a>
 

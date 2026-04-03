@@ -172,6 +172,7 @@ const BlogDetail = () => {
           <img
             src={blog.imageSrc}
             alt={blog.title}
+            loading="lazy"
             className="w-full rounded-xl mb-8"
           />
 
@@ -229,6 +230,7 @@ const BlogDetail = () => {
                   <img
                     src={otherBlog.imageSrc}
                     alt={otherBlog.title}
+                    loading="lazy"
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-4">

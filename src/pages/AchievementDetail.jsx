@@ -90,6 +90,7 @@ const AchievementDetail = () => {
                     <img
                       src={achievement.imgSrc}
                       alt={achievement.title}
+                      loading="lazy"
                       className="w-full rounded-xl"
                     />
                   </div>
@@ -170,6 +171,7 @@ const AchievementDetail = () => {
                   <img
                     src={other.imgSrc}
                     alt={other.title}
+                    loading="lazy"
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-4">

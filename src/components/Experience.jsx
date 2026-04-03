@@ -26,6 +26,7 @@ const Experience = () => {
                       className="rounded-full shadow-lg"
                       src={edu.instLogo}
                       alt={edu.instName}
+                      loading="lazy"
                     />
                   </a>
                   <div className="ml-4 p-6 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all hover:scale-[101%]  flex flex-col gap-4">
