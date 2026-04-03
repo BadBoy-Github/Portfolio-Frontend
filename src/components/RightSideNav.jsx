@@ -17,6 +17,22 @@ import { MdReviews } from "react-icons/md";
 
 const RightSideNav = ({ sections }) => {
   const [activeSection, setActiveSection] = useState("");
+  const [visibleIcons, setVisibleIcons] = useState(new Set());
+
+  // Wave animation effect - icons appear one by one
+  useEffect(() => {
+    const timers = [];
+    sections.forEach((section, index) => {
+      const timer = setTimeout(() => {
+        setVisibleIcons(prev => new Set([...prev, section.id]));
+      }, 200 + index * 100); // 300ms initial delay, 150ms between each icon
+      timers.push(timer);
+    });
+
+    return () => {
+      timers.forEach(clearTimeout);
+    };
+  }, [sections]);
 
   // Icon mapping for sections
   const getIcon = (id) => {
@@ -70,11 +86,16 @@ const RightSideNav = ({ sections }) => {
     <nav className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden md:flex flex-col gap-3">
       {sections.map((section) => {
         const IconComponent = getIcon(section.id);
+        const isIconVisible = visibleIcons.has(section.id);
         return (
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${
+            className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-500 ease-out ${
+              isIconVisible
+                ? 'opacity-100 scale-100 translate-x-0'
+                : 'opacity-0 scale-75 translate-x-8'
+            } ${
               activeSection === section.id
                 ? "bg-sky-400 text-zinc-900 scale-110 shadow-lg"
                 : "bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700/80 hover:text-zinc-300"

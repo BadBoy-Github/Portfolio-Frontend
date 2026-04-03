@@ -10,7 +10,7 @@ const blogs = [
         content: `
             <p>Welcome to my interactive portfolio hub—a carefully crafted digital space that represents my complete professional identity. This portfolio stands as a testament to my journey as a developer, showcasing not just my technical skills but also my passion for creating meaningful digital experiences. In this blog, I'll walk you through the conception, development, and unique features that make this portfolio truly special.</p>
             
-            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_1_kh2gr7.png" alt="Portfolio Hero Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_1_kh2gr7.png" alt="Portfolio About Page" class="blog-image" />
             
             <h2>The Vision Behind My Portfolio</h2>
             <p>Every developer needs a space to call their own—a digital home that tells their story, displays their work, and connects with potential employers or clients. When I set out to build my portfolio, I wanted more than just a static showcase. I wanted to create an interactive experience that would leave a lasting impression on visitors. The goal was simple yet ambitious: build a portfolio that not only displays projects but actively engages with visitors through intelligent conversation.</p>
@@ -22,7 +22,7 @@ const blogs = [
             <h2>Architecture and Technical Foundation</h2>
             <p>The portfolio's architecture follows modern React best practices, leveraging hooks for state management and functional components for better performance. Each section—from projects to certifications, achievements to blogs—is modular, allowing for easy updates and maintenance. The component-based structure means I can add new features or modify existing ones without affecting the entire application.</p>
             
-            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_2_adu0zg.png" alt="Projects Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_2_adu0zg.png" alt="Portfolio Skills Section" class="blog-image" />
             
             <p>Performance optimization played a critical role in the development process. I implemented lazy loading for images and components, ensuring fast initial load times even with multiple high-resolution project images. The use of React's useMemo and useCallback hooks prevents unnecessary re-renders, keeping the application responsive and smooth.</p>
             
@@ -31,7 +31,7 @@ const blogs = [
             <h2>The AI Chatbot: A Standout Feature</h2>
             <p>The integrated AI chatbot represents the portfolio's most innovative feature. This intelligent assistant communicates on my behalf, engaging with visitors and answering questions about my skills, projects, and experience. Unlike traditional contact forms that require manual follow-up, the chatbot provides instant responses, making the portfolio more interactive and accessible.</p>
             
-            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279870/Portfolio_3_bg5wmq.png" alt="AI Chatbot Interface" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279870/Portfolio_3_bg5wmq.png" alt="Portfolio AI Chatbot Interface" class="blog-image" />
             
             <p>The chatbot was designed to simulate natural conversation while providing accurate information. It can discuss my technical stack, explain project details, share my educational background, and even provide recommendations based on visitor interests. The natural language processing capabilities ensure that conversations feel organic and helpful rather than robotic.</p>
             
@@ -45,8 +45,8 @@ const blogs = [
             <h2>Achievements and Certifications</h2>
             <p>Beyond projects, the portfolio highlights my professional achievements and certifications. This section demonstrates continuous learning and professional growth—qualities that employers value highly. From technical certifications to competition achievements, each entry tells a story of dedication and skill development.</p>
             
-            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279876/Portfolio_4_jh0jqz.png" alt="Achievements Section" class="blog-image" />
-            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279872/Portfolio_5_cy7qds.png" alt="Achievements Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279876/Portfolio_4_jh0jqz.png" alt="Portfolio Certificates Page Section" class="blog-image" />
+            <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279872/Portfolio_5_cy7qds.png" alt="Portfolio Achievements Page" class="blog-image" />
             
             <p>The certifications section is particularly valuable—it provides potential employers with verifiable proof of my skills. Each certification includes details about the issuing organization, the skills covered, and the validation period. This transparency builds trust and credibility, showing that my claims are backed by recognized credentials.</p>
             
@@ -78,16 +78,16 @@ const blogs = [
     },
     {
         id: "card-vault-journey",
-        title: "Building Card Vault: The Ultimate Digital Gift Card Marketplace",
+        title: "Card Vault: The Ultimate Digital Gift Card Marketplace",
         subtitle: "From concept to a secure, real-time digital commerce platform",
         date: "2026-04-02",
         readTime: "45 min read",
         tags: ["E-Commerce", "Gift Cards", "Full Stack", "React", "Fintech"],
-        imageSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774279871/Portfolio_head_cd3ap3.png",
+        imageSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320957/cv_head_l3uxbt.png",
         content: `
         <p>Card Vault is more than just a website—it's a complete digital ecosystem designed to simplify how users discover, purchase, and manage digital gift cards. Built with performance, security, and user experience at its core, this platform represents my evolution as a full-stack developer and my ability to create real-world, scalable solutions. In this blog, I’ll take you deep into the journey behind Card Vault—from the initial idea to the technical architecture, challenges, and future vision.</p>
 
-        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_1_kh2gr7.png" alt="Card Vault Homepage" class="blog-image" />
+        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_1_epiijo.png" alt="Card Vault Trust Section" class="blog-image" />
 
         <h2>The Idea Behind Card Vault</h2>
         <p>The concept of Card Vault originated from a simple observation—digital gift cards are everywhere, yet the buying experience often feels fragmented, slow, or untrustworthy. Many platforms lack transparency, real-time updates, or seamless delivery. I wanted to change that.</p>
@@ -103,6 +103,10 @@ const blogs = [
 
         <p>Microcopy and UI text were carefully crafted to add personality—phrases like “Faster Than Regret” and “Fort Knox Security” make the platform feel alive. These small details transform a basic e-commerce experience into something engaging and memorable.</p>
 
+
+        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1775229943/7_jmyz5p.png" alt="Card Vault Featured products" class="blog-image" />
+        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1775229943/8_juptqq.png" alt="Card Vault Gift Cards" class="blog-image" />
+
         <h2>Core Features That Power Card Vault</h2>
         <p>Card Vault is built around a set of powerful features that ensure a smooth and reliable user experience. The product browsing system allows users to explore various categories, including shopping, gaming, entertainment, and lifestyle gift cards.</p>
 
@@ -110,7 +114,7 @@ const blogs = [
 
         <p>The search functionality enables users to instantly find specific gift cards, reducing friction and improving usability. Combined with categorized listings, it ensures that users always find what they’re looking for quickly.</p>
 
-        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279869/Portfolio_2_adu0zg.png" alt="Featured Products Section" class="blog-image" />
+        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_3_h9h9ip.png" alt="Card Vault Frequently Asked Questions" class="blog-image" />
 
         <h2>Secure Payment System & UPI Integration</h2>
         <p>One of the most critical aspects of Card Vault is its secure payment system. Since the platform deals with digital assets, ensuring safe transactions was a top priority.</p>
@@ -135,6 +139,8 @@ const blogs = [
 
         <p>Data flows seamlessly between the frontend and backend, ensuring that users receive instant updates on their purchases, stock availability, and order status.</p>
 
+        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774320957/cv_5_lwj26i.png" alt="Card Vault Orders Page" class="blog-image" />
+
         <h2>Performance Optimization</h2>
         <p>Performance was a key focus during development. The application is optimized for fast load times, ensuring that users can browse and purchase without delays.</p>
 
@@ -149,7 +155,7 @@ const blogs = [
 
         <p>The branding combines professionalism with personality, creating a unique identity that stands out from generic e-commerce websites.</p>
 
-        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774279876/Portfolio_4_jh0jqz.png" alt="Trust Section" class="blog-image" />
+        <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1774320956/cv_4_qikprw.png" alt="Card Vault Contact Section" class="blog-image" />
 
         <h2>Contact System & User Interaction</h2>
         <p>Card Vault includes a comprehensive contact system that allows users to reach out بسهولة. Whether it’s a query, issue, or feedback, the platform ensures that communication is smooth and efficient.</p>
