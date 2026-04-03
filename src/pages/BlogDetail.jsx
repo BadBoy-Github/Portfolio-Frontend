@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { IoArrowBack, IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/BlogData";
+import SocialShare from "../components/SocialShare";
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -126,6 +127,12 @@ const BlogDetail = () => {
           <div
             className="prose prose-invert prose-lg max-w-none blog-content"
             dangerouslySetInnerHTML={{ __html: blog.content }}
+          />
+
+          {/* Social Share */}
+          <SocialShare
+            title={blog.title}
+            url={`https://elayabarathimv.vercel.app/blog/${blog.id}`}
           />
         </article>
 
