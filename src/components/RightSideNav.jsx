@@ -1,8 +1,42 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import {
+  IoHome,
+  IoTerminal,
+  IoCodeSlash,
+  IoRibbon,
+  IoTrophy,
+  IoMail,
+  IoPerson,
+  IoChatbubble,
+  IoBriefcase,
+  IoSchool,
+  IoStar,
+} from "react-icons/io5";
+import { MdReviews } from "react-icons/md";
 
 const RightSideNav = ({ sections }) => {
   const [activeSection, setActiveSection] = useState("");
+
+  // Icon mapping for sections
+  const getIcon = (id) => {
+    const iconMap = {
+      home: IoHome,
+      "qa-terminal": IoTerminal,
+      skills: IoCodeSlash,
+      projects: IoStar,
+      certificates: IoRibbon,
+      achievements: IoTrophy,
+      reviews: MdReviews,
+      contactme: IoMail,
+      welcome: IoPerson,
+      "about-terminal": IoTerminal,
+      chatbot: IoChatbubble,
+      experience: IoBriefcase,
+      education: IoSchool,
+    };
+    return iconMap[id] || IoHome; // Default to IoHome if not found
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,19 +67,24 @@ const RightSideNav = ({ sections }) => {
   };
 
   return (
-    <nav className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden md:flex flex-col gap-2">
-      {sections.map((section) => (
-        <button
-          key={section.id}
-          onClick={() => scrollToSection(section.id)}
-          className={`w-3 h-3 rounded-full transition-all duration-300 ${
-            activeSection === section.id
-              ? "bg-sky-400 scale-125"
-              : "bg-zinc-600 hover:bg-zinc-500"
-          }`}
-          title={section.label}
-        />
-      ))}
+    <nav className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden md:flex flex-col gap-3">
+      {sections.map((section) => {
+        const IconComponent = getIcon(section.id);
+        return (
+          <button
+            key={section.id}
+            onClick={() => scrollToSection(section.id)}
+            className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${
+              activeSection === section.id
+                ? "bg-sky-400 text-zinc-900 scale-110 shadow-lg"
+                : "bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700/80 hover:text-zinc-300"
+            }`}
+            title={section.label}
+          >
+            <IconComponent className="w-2.5 h-2.5" />
+          </button>
+        );
+      })}
     </nav>
   );
 };
