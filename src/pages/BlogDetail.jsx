@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { IoArrowBack, IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { IoArrowBack, IoChevronBack, IoChevronForward, IoShareSocial, IoCopy } from "react-icons/io5";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/BlogData";
 import SocialShare from "../components/SocialShare";
@@ -7,6 +8,7 @@ import SocialShare from "../components/SocialShare";
 const BlogDetail = () => {
   const { id } = useParams();
   const blog = blogs.find((b) => b.id === id);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   if (!blog) {
     return (
@@ -23,6 +25,35 @@ const BlogDetail = () => {
 
   // Get other blogs
   const otherBlogs = blogs.filter((b) => b.id !== id);
+
+  const handleShare = async () => {
+    const url = `https://elayabarathimv.vercel.app/blog/${blog.id}`;
+    const title = blog.title;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title,
+          url,
+        });
+      } catch (err) {
+        // User cancelled or error
+      }
+    } else {
+      // Fallback: copy to clipboard
+      handleCopy();
+    }
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(`https://elayabarathimv.vercel.app/blog/${blog.id}`);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 5000);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
@@ -86,15 +117,36 @@ const BlogDetail = () => {
             <p className="text-xl text-zinc-400 mb-4">{blog.subtitle}</p>
 
             {blog.link && (
-              <a
-                href={blog.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors mb-4"
-              >
-                <span>Live</span>
-                <IoArrowBack className="size-4 rotate-180" />
-              </a>
+                <div className="flex items-center gap-2 my-4 w-fit">
+                  <button
+                    onClick={handleShare}
+                    className="flex items-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+                    title="Share this blog"
+                  >
+                    <IoShareSocial className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={handleCopy}
+                    className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors ${
+                      copySuccess
+                        ? 'bg-sky-400 text-zinc-900'
+                        : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                    }`}
+                    title="Copy link"
+                  >
+                    <IoCopy className="w-4 h-4" />
+                  </button>
+                  <a
+                    href={blog.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
+                  >
+                    <span>Live</span>
+                    <IoArrowBack className="size-4 rotate-180" />
+                  </a>
+                </div>
             )}
 
             <div className="flex flex-wrap items-center gap-4 text-zinc-500">
@@ -137,7 +189,7 @@ const BlogDetail = () => {
         </article>
 
         {/* Other Blogs Section */}
-        { otherBlogs.length!=0 &&
+        {otherBlogs.length != 0 && (
           <div className="mt-16 relative">
             <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
             {/* Left Scroll Button */}
@@ -191,7 +243,7 @@ const BlogDetail = () => {
               ))}
             </div>
           </div>
-        }
+        )}
       </div>
     </div>
   );
