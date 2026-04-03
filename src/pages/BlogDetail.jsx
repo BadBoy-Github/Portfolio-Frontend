@@ -143,7 +143,7 @@ const BlogDetail = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
                   >
-                    <span>Live</span>
+                    <span>View Project</span>
                     <IoArrowBack className="size-4 rotate-180" />
                   </a>
                 </div>

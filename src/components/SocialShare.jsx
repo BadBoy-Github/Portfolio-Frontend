@@ -43,15 +43,11 @@ const SocialShare = ({ title, url }) => {
 
       <button
         onClick={handleCopy}
-        className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-          copySuccess
-            ? 'bg-sky-400 text-zinc-900'
-            : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
-        }`}
+        className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
         title="Copy link"
       >
         <IoCopy className="w-4 h-4" />
-        <span className="text-sm">Copy Link</span>
+        <span className="text-sm">{copySuccess ? "Copied!" : "Copy Link"}</span>
       </button>
     </div>
   );
