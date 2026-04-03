@@ -8,7 +8,7 @@ const HomepageAchievements = () => {
   const remainingCount = achievements.length - 5;
 
   return (
-    <section className="section">
+    <section id="achievements" className="section">
       <h2 className="headline-2">My Achievements</h2>
       <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
         A collection of milestones that showcase my passion and impact

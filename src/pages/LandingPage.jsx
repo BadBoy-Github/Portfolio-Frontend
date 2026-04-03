@@ -7,8 +7,20 @@ import HomepageCertificates from "../components/HomepageCertificates";
 import HomepageAchievements from "../components/HomepageAchievements";
 import HomepageFeaturedProjectGrid from "../components/HomepageFeaturedProjectGrid";
 import QATerminal from "../components/QATerminal";
+import RightSideNav from "../components/RightSideNav";
 
 const LandingPage = () => {
+  const sections = [
+    { id: "home", label: "Home" },
+    { id: "qa-terminal", label: "Q&A Terminal" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "certificates", label: "Certificates" },
+    { id: "achievements", label: "Achievements" },
+    { id: "reviews", label: "Reviews" },
+    { id: "contactme", label: "Contact" },
+  ];
+
   return (
     <>
       <Helmet>
@@ -69,6 +81,7 @@ const LandingPage = () => {
         <Review />
         <Contact />
       </div>
+      <RightSideNav sections={sections} />
     </>
   );
 };

@@ -4,7 +4,7 @@ import { EduContent } from "../data/EducationData";
 
 const Education = () => {
   return (
-    <section className="section relative">
+    <section id="education" className="section relative">
         <h2 className="headline-2 ">My Academic Journey</h2>
         <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
           A summary of my academic qualifications

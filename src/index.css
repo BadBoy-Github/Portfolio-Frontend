@@ -226,16 +226,66 @@ body {
     @apply text-zinc-400
 }
 
+/* Complete scrollbar removal */
+html, body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  overflow: -moz-scrollbars-none !important;
+}
+
+/* Make scrollbars invisible */
+::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* Firefox specific */
+html, body {
+  scrollbar-width: none !important;
+}
+
+/* IE and Edge */
+html, body {
+  -ms-overflow-style: none !important;
+}
+
 .hide-scrollbar {
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari, Opera */ }
+  display: none;
+  /* Chrome, Safari, Opera */ }
+
+/* Force hide all scrollbars - final attempt */
+html {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
 /* Animation for card reveal */
 @keyframes fadeInUp {

@@ -239,8 +239,48 @@
     </script>
   </head>
 
-  <body>
+  <body style="background-color: #18181b; scrollbar-width: none; -ms-overflow-style: none;">
     <div id="root"></div>
+    <style>
+      /* Additional scrollbar hiding for body */
+      body::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+      html::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+      *::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+      }
+    </style>
+    <script>
+      // Aggressive scrollbar hiding
+      document.addEventListener('DOMContentLoaded', function() {
+        // Hide scrollbars immediately
+        document.documentElement.style.scrollbarWidth = 'none';
+        document.documentElement.style.msOverflowStyle = 'none';
+        document.body.style.scrollbarWidth = 'none';
+        document.body.style.msOverflowStyle = 'none';
+
+        // Force hide webkit scrollbars
+        const style = document.createElement('style');
+        style.textContent = `
+          html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+          }
+        `;
+        document.head.appendChild(style);
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

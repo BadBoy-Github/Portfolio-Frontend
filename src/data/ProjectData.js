@@ -124,11 +124,11 @@ const proj = [
 
         gallery: [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_1_epiijo.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_2_wztz5q.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320955/cv_3_h9h9ip.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775229943/7_jmyz5p.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775229943/8_juptqq.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320956/cv_4_qikprw.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320957/cv_5_lwj26i.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774320956/cv_6_aaxorv.png"
         ]
     },
     {
