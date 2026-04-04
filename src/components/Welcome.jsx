@@ -129,6 +129,7 @@ const Welcome = () => {
               alt="Elayabarathi M V"
               width={30}
               height={30}
+              loading="lazy"
               className="w-[30px] md:w-[40px] md:h-[40px]"
             />
           </Link>

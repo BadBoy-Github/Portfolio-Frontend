@@ -95,6 +95,7 @@ const CertificateDetail = () => {
                 <img
                   src={certificate.imgSrc}
                   alt={certificate.title}
+                  loading="lazy"
                   className="w-full max-h-[500px] object-contain rounded-xl"
                 />
               </div>
@@ -170,6 +171,7 @@ const CertificateDetail = () => {
                   <img
                     src={cert.imgSrc}
                     alt={cert.title}
+                    loading="lazy"
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-4">

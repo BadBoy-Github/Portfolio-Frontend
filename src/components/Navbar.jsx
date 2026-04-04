@@ -15,37 +15,7 @@ const Navbar = ({ navOpen }) => {
     { label: "Blogs", link: "/blogs", isRoute: true },
   ];
 
-  // Handle query param for contact section
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.get("scroll") === "contact") {
-      // Clear the query param
-      const url = new URL(window.location.href);
-      url.search = "";
-      window.history.replaceState({}, "", url.toString());
 
-      // Scroll to contact section
-      setTimeout(() => {
-        const contactSection = document.getElementById("contactme");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100)
-    } else if (searchParams.get("scroll") === "chatbot") {
-      // Clear the query param
-      const url = new URL(window.location.href);
-      url.search = "";
-      window.history.replaceState({}, "", url.toString());
-
-      // Scroll to contact section
-      setTimeout(() => {
-        const contactSection = document.getElementById("chatbot");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  }, [location]);
 
   // Set active index based on current route
   useEffect(() => {
@@ -102,6 +72,43 @@ const Navbar = ({ navOpen }) => {
     }
   }, [activeIndex, navOpen]);
 
+  // Keyboard navigation
+  const handleKeyDown = (e) => {
+    if (!navOpen) return;
+
+    switch (e.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        e.preventDefault();
+        setActiveIndex((prev) => (prev + 1) % navItems.length);
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        e.preventDefault();
+        setActiveIndex((prev) => (prev - 1 + navItems.length) % navItems.length);
+        break;
+      case 'Enter':
+      case ' ': {
+        e.preventDefault();
+        const activeLink = linkRefs.current[activeIndex];
+        if (activeLink) activeLink.click();
+        break;
+      }
+      case 'Escape':
+        // Close navigation if there's a close function
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    if (navOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [navOpen, activeIndex]);
+
   // Handle contact click - scroll to contact section
   const handleContactClick = (e) => {
     // If we're already on home page, just scroll to contact section
@@ -116,7 +123,11 @@ const Navbar = ({ navOpen }) => {
   };
 
   return (
-    <nav className={"navbar " + (navOpen ? "active" : "")}>
+    <nav
+      className={"navbar " + (navOpen ? "active" : "")}
+      role="navigation"
+      aria-label="Main navigation"
+    >
       {navItems.map(
         ({ label, link, className = "", isRoute, isContact }, index) =>
           isRoute ? (
@@ -128,6 +139,8 @@ const Navbar = ({ navOpen }) => {
               } ${className}`}
               ref={(el) => (linkRefs.current[index] = el)}
               onClick={isContact ? handleContactClick : undefined}
+              aria-current={index === activeIndex ? "page" : undefined}
+              tabIndex={navOpen ? 0 : -1}
             >
               {label}
             </Link>
@@ -139,12 +152,14 @@ const Navbar = ({ navOpen }) => {
                 index === activeIndex ? "active" : ""
               } ${className}`}
               ref={(el) => (linkRefs.current[index] = el)}
+              aria-current={index === activeIndex ? "page" : undefined}
+              tabIndex={navOpen ? 0 : -1}
             >
               {label}
             </a>
           ),
       )}
-      <div className="active-box" ref={activeBox}></div>
+      <div className="active-box" ref={activeBox} aria-hidden="true"></div>
     </nav>
   );
 };

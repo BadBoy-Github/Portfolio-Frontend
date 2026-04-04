@@ -1,5 +1,6 @@
 // Node modules
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Icons
@@ -18,6 +19,7 @@ const ProjectCard = ({
   projectId,
 }) => {
   const navigate = useNavigate();
+  const [ripples, setRipples] = useState([]);
 
   const handleCardClick = (e) => {
     // Don't navigate if clicking on GitHub or Live link
@@ -29,21 +31,47 @@ const ProjectCard = ({
       return;
     }
 
+    // Create ripple effect
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const newRipple = { x, y, id: Date.now() };
+
+    setRipples(prev => [...prev, newRipple]);
+
+    // Remove ripple after animation
+    setTimeout(() => {
+      setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
+    }, 600);
+
     // Navigate to detail page if projectId provided
     if (projectId) {
       e.preventDefault();
-      navigate(`/project/${projectId}`);
+      setTimeout(() => navigate(`/project/${projectId}`), 150);
     }
   };
 
   return (
     <div
       className={
-        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] " +
+        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] overflow-hidden " +
         classes
       }
       onClick={handleCardClick}
     >
+      {/* Ripple effects */}
+      {ripples.map(ripple => (
+        <span
+          key={ripple.id}
+          className="absolute bg-white/20 rounded-full animate-ping"
+          style={{
+            left: ripple.x - 10,
+            top: ripple.y - 10,
+            width: 20,
+            height: 20,
+          }}
+        />
+      ))}
       <figure className={`img-box aspect-square rounded-xl mb-4 relative`}>
         {code == "True" && (
           <a
@@ -81,7 +109,11 @@ const ProjectCard = ({
             {tags.map((label, key) => (
               <span
                 key={key}
-                className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg"
+                className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg transition-all duration-300 hover:bg-zinc-50/10 hover:text-zinc-300 hover:scale-105"
+                style={{
+                  animationDelay: `${key * 50}ms`,
+                  animation: 'fadeInUp 0.5s ease-out forwards'
+                }}
               >
                 {label}
               </span>

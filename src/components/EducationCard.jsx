@@ -23,6 +23,7 @@ const EducationCard = ({
             className="rounded-full shadow-lg bg-red-500/0"
             src={instLogo}
             alt={instName}
+            loading="lazy"
           />
         </a>
         <div className="items-center justify-between p-6 mr-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
