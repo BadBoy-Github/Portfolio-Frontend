@@ -41,11 +41,9 @@ const AchievementsLibrary = lazy(() => import("./pages/AchievementsLibrary"));
 const BlogsLibrary = lazy(() => import("./pages/BlogsLibrary"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
-// Loading component for Suspense fallback
+// Loading component for Suspense fallback - removed spinner
 const LoadingFallback = () => (
-  <div className="flex items-center justify-center min-h-screen">
-    <div className="animate-spin rounded-full h-32 w-32 border-b-8 border-sky-500"></div>
-  </div>
+  <div className="min-h-screen bg-zinc-900"></div>
 );
 
 const AppContent = () => {
