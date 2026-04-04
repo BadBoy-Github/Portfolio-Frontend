@@ -15,32 +15,39 @@ const ScrollToTop = () => {
   const { pathname, hash, search } = useLocation();
 
   useEffect(() => {
-    // If there's a hash or query parameter, let the browser handle the scroll to the section
-    if (hash || search) {
-      return;
+    // Check for scroll query parameter
+    const scrollTarget = new URLSearchParams(search).get('scroll');
+    
+    if (scrollTarget) {
+      // Handle scroll to specific section when ?scroll= parameter is present
+      const scrollToSection = () => {
+        const element = document.getElementById(scrollTarget);
+        const lenis = window.lenis;
+        
+        if (element) {
+          if (lenis) {
+            lenis.scrollTo(element, { offset: -100, duration: 0.8 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      };
+      
+      // Delay to allow page transition, lazy loading and content to load
+      setTimeout(scrollToSection, 600);
+    } else if (!hash) {
+      // Only scroll to top if there's no hash and no scroll parameter
+      const scrollToTop = () => {
+        const lenis = window.lenis;
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: false, duration: 0.3 });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      };
+
+      setTimeout(scrollToTop, 100);
     }
-
-    // Use setTimeout to ensure this runs after route change completes
-    const scrollToTop = () => {
-      // Use lenis scrollTo if available
-      const lenis = window.lenis;
-      if (lenis) {
-        lenis.scrollTo(0, { immediate: true });
-      }
-      // Force scroll on html and body
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-
-      // Additional fallback
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-      }, 1000);
-    };
-
-    scrollToTop();
   }, [pathname, hash, search]);
 
   return null;

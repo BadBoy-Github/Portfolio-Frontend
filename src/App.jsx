@@ -14,6 +14,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { AnimatePresence, motion } from "framer-motion";
 
 /**
  * Register gsap plugin
@@ -56,26 +57,127 @@ const AppContent = () => {
       <Header />
       <main id="main-content">
         <Suspense fallback={<LoadingFallback />}>
-          <Routes>
-            {/* Homepage */}
-            <Route path="/" element={<LandingPage />} />
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              {/* Homepage */}
+              <Route path="/" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <LandingPage />
+                </motion.div>
+              } />
 
-            {/* Individual Pages */}
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
-            <Route path="/certificate/:id" element={<CertificateDetail />} />
-            <Route path="/achievement/:id" element={<AchievementDetail />} />
-            <Route path="/blog/:id" element={<BlogDetail />} />
+              {/* Individual Pages */}
+              <Route path="/about" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <AboutPage />
+                </motion.div>
+              } />
+              <Route path="/project/:id" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <ProjectDetail />
+                </motion.div>
+              } />
+              <Route path="/certificate/:id" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <CertificateDetail />
+                </motion.div>
+              } />
+              <Route path="/achievement/:id" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <AchievementDetail />
+                </motion.div>
+              } />
+              <Route path="/blog/:id" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <BlogDetail />
+                </motion.div>
+              } />
 
-            {/* Library Pages */}
-            <Route path="/projects" element={<ProjectsLibrary />} />
-            <Route path="/certificates" element={<CertificatesLibrary />} />
-            <Route path="/achievements" element={<AchievementsLibrary />} />
-            <Route path="/blogs" element={<BlogsLibrary />} />
+              {/* Library Pages */}
+              <Route path="/projects" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <ProjectsLibrary />
+                </motion.div>
+              } />
+              <Route path="/certificates" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <CertificatesLibrary />
+                </motion.div>
+              } />
+              <Route path="/achievements" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <AchievementsLibrary />
+                </motion.div>
+              } />
+              <Route path="/blogs" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <BlogsLibrary />
+                </motion.div>
+              } />
 
-            {/* 404 - Page Not Found */}
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+              {/* 404 - Page Not Found */}
+              <Route path="*" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <PageNotFound />
+                </motion.div>
+              } />
+            </Routes>
+          </AnimatePresence>
         </Suspense>
       </main>
       <Footer />
