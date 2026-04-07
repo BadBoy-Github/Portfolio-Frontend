@@ -132,6 +132,72 @@ const proj = [
         ]
     },
     {
+        id: "codepad",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543058/CodePad_yraevd.png",
+
+        title: "CodePad",
+
+        subheading: "AI-powered online code editor for multi-language development",
+
+        tags: ["Editor", "Fullstack", "AI"],
+
+        live: "True",
+        projectLink: "https://code-pad-frontend.vercel.app/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/CodePad-Frontend",
+
+        sTags: [
+            // Recruiter Focus
+            "online code editor project",
+            "ai powered code editor",
+            "multi language code editor javascript python java",
+            "fullstack code editor application",
+            "react code editor project",
+            "developer tools web application",
+            "browser based code editor",
+            "real time code execution platform",
+            "frontend backend integrated project",
+            "modern developer productivity tools",
+
+            // Client Focus
+            "build online code editor",
+            "web based coding platform",
+            "code editor for developers",
+            "run code online javascript python java",
+            "interactive coding platform",
+            "developer playground online",
+            "cloud based coding environment",
+
+            // Unique / USP
+            "ai made",
+            "ai assisted development project",
+            "code editor built using ai tools",
+            "human refined ai generated application",
+            "multi language execution engine",
+            "scalable fullstack architecture",
+            "clean ui developer experience",
+            "browser ide with backend integration"
+        ],
+
+        techUsed: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Express", "Firebase"],
+
+        description: "CodePad is a modern AI-powered online code editor designed to deliver a seamless and efficient development experience directly in the browser. Built as a fullstack application, it integrates a robust frontend with a scalable backend to support real-time code writing and execution. The platform supports multiple programming languages including JavaScript, Python, and Java, enabling developers to test and validate their code instantly. A key highlight of this project is its development approach—leveraging AI tools for rapid implementation, followed by human refinement to ensure performance, usability, and reliability.",
+
+        uses: "CodePad serves as a versatile platform for developers, students, and coding enthusiasts to write, test, and experiment with code without the need for local setup. It is ideal for practicing algorithms, debugging snippets, and learning new programming languages in an interactive environment. The fullstack architecture ensures smooth communication between the frontend editor and backend execution engine, making it suitable for both educational and practical development use cases.",
+
+        improvements: "CodePad delivers a complete browser-based coding environment with multi-language support and real-time execution capabilities. Its AI-assisted development foundation demonstrates modern engineering efficiency, while human optimizations ensure a polished and reliable user experience. The platform is designed with scalability, clean UI/UX, and developer productivity in mind, making it a strong representation of next-generation web-based development tools.",
+
+        gallery: [
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543053/1_hervgj.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/2_d7sbgj.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/3_diwu53.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/4_vftig6.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/5_upbuih.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543062/6_x7ppeg.png"
+        ]
+    },
+    {
         id: "buzz",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322992/buzz_e2ouzq.webp",
