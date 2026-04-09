@@ -387,7 +387,7 @@ const proj = [
 
         improvements: "MediCore CLI implements a robust role-based system with clearly defined workflows for administrators, doctors, and patients. It efficiently manages hospital operations such as doctor allocation, patient handling, and data access through secure database interactions, showcasing strong backend logic and structured system design in a healthcare context.",
 
-        gallery: [ ]
+        gallery: []
     },
     {
         id: "spotify-clone",
@@ -453,6 +453,59 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352967/spotify_clone_5_opansp.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352969/spotify_clone_6_jskmw3.png"
         ]
+    },
+    {
+        id: "aadhar-pan-one2one",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775754348/aadhar-pan_eiobq2.png",
+
+        title: "Aadhar–PAN Identity Linker",
+
+        subheading: "Robust One-to-One Entity Mapping System using JPA & Hibernate",
+
+        tags: ["Java", "JPA", "Hibernate"],
+
+        live: "False",
+        projectLink: "",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Aadhar-Pan-one2one",
+
+        sTags: [
+            "jpa one to one mapping example",
+            "hibernate one to one mapping project",
+            "java persistence api project",
+            "entity relationship mapping java",
+            "mysql integration java project",
+            "backend java application",
+            "object relational mapping system",
+            "crud operations using hibernate",
+            "database driven java backend",
+            "console based java system",
+
+            "aadhar pan linking system",
+            "identity management backend",
+            "secure data mapping system",
+            "relational database project java",
+            "user data management system",
+            "backend identity linking solution",
+
+            "one to one entity relationship",
+            "bidirectional mapping jpa",
+            "data consistency validation",
+            "linked identity architecture",
+            "real world database modeling",
+            "enterprise level mapping logic"
+        ],
+
+        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
+
+        description: "Aadhar–PAN Identity Linker is a backend-centric Java application engineered to demonstrate precise one-to-one entity mapping using JPA and Hibernate. It models the relationship between Aadhar and PAN records with strict referential integrity, reflecting real-world identity linkage systems. The application leverages MySQL for persistent storage and emphasizes clean architecture, scalability, and adherence to object-relational mapping principles.",
+
+        uses: "This application facilitates the creation, retrieval, modification, and deletion of Aadhar and PAN records while enforcing a strict one-to-one association between them. It ensures data integrity by maintaining exclusive linkage, where each Aadhar corresponds to exactly one PAN. Advanced features such as correction validation, synchronized updates, and controlled deletion workflows highlight its practical applicability in real-world identity management systems.",
+
+        improvements: "This project extends beyond basic CRUD operations by incorporating structured one-to-one entity mapping with validation mechanisms to ensure consistency across linked records. It demonstrates bidirectional relationship handling, efficient data synchronization, and robust validation logic. The system closely mirrors enterprise-level identity management solutions, making it a strong representation of real-world backend engineering practices.",
+
+        gallery: []
     },
     {
         id: "garage",
@@ -656,6 +709,64 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360217/11_lgbmb1.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/12_nicrpr.png"
         ]
+    },
+    {
+        id: "order-payment-system",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775754510/order_payment_b2tk3n.png",
+
+        title: "Order–Payment Management System",
+
+        subheading: "Scalable Backend System for Order Processing and Transaction Management using JPA & Hibernate",
+
+        tags: ["Java", "JPA", "Hibernate"],
+
+        live: "False",
+        projectLink: "",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Order-Payment-one2one",
+
+        sTags: [
+            // Recruiter Focus
+            "jpa one to many mapping example",
+            "hibernate order payment project",
+            "java backend order management system",
+            "transaction management java project",
+            "crud operations using hibernate",
+            "entity relationship mapping java",
+            "mysql integration java backend",
+            "console based java application",
+            "order processing system java",
+            "database driven java backend",
+
+            // Client Focus
+            "order and payment system",
+            "transaction management backend",
+            "ecommerce backend java project",
+            "order tracking system java",
+            "payment handling system",
+            "business logic backend system",
+            "data driven order management",
+
+            // Unique / USP
+            "order payment relationship mapping",
+            "transaction consistency handling",
+            "real world ecommerce backend logic",
+            "linked order payment system",
+            "data integrity validation system",
+            "structured backend architecture",
+            "enterprise level backend design"
+        ],
+
+        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
+
+        description: "Order–Payment Management System is a backend-oriented Java application designed to simulate real-world order processing and payment handling workflows. Built using JPA and Hibernate, the system demonstrates efficient entity relationship mapping between orders and their corresponding payments. It emphasizes clean architecture, transactional integrity, and scalable backend design using MySQL as the persistent data store.",
+
+        uses: "This application enables users to perform complete CRUD operations on orders, including creation, retrieval, updates, and deletion. It models the association between orders and payments, ensuring that each transaction is accurately recorded and maintained. The system is designed to reflect practical business scenarios such as order tracking, payment management, and data consistency, making it highly relevant for backend development use cases.",
+
+        improvements: "The project goes beyond basic CRUD functionality by incorporating structured entity relationships and transaction-aware operations. It ensures data integrity between orders and payments, supports scalable backend logic, and demonstrates how real-world ecommerce systems manage linked transactional data. The implementation highlights best practices in ORM, database normalization, and backend system design.",
+
+        gallery: []
     },
     {
         id: "tic-tac-toe",
@@ -1235,7 +1346,7 @@ const proj = [
             "practical utility for developers"
         ],
 
-        techUsed: ["HTML", "CSS" ,"JavaScript"],
+        techUsed: ["HTML", "CSS", "JavaScript"],
 
         description: "DriveDirect is a lightweight utility tool designed to convert Google Drive sharing links into direct image URLs that can be embedded and used across web platforms. Built using HTML, CSS and JavaScript, the project focuses on solving a common limitation by transforming inaccessible links into usable resources through efficient client-side logic.",
 
