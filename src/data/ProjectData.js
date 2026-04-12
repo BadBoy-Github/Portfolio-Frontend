@@ -594,7 +594,7 @@ const proj = [
     {
         id: "user-order-system",
         type: null,
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352970/user_order_project.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1776011671/user_order_iwuhzz.png",
 
         title: "User–Order System",
 
@@ -605,7 +605,7 @@ const proj = [
         live: "False",
         projectLink: "",
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/users-orders",
+        gitUrl: "https://github.com/BadBoy-Github/User-Orders-one-to-many",
 
         sTags: [
             // Recruiter Focus
@@ -1306,7 +1306,7 @@ const proj = [
     {
         id: "author-book-system",
         type: null,
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352970/author_book_project.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1776011898/author_book_fcl4k7.png",
 
         title: "Author–Book System",
 
@@ -1317,7 +1317,7 @@ const proj = [
         live: "False",
         projectLink: "",
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/author-book",
+        gitUrl: "https://github.com/BadBoy-Github/Author-Book-one-to-many",
 
         sTags: [
             // Recruiter Focus
@@ -1351,15 +1351,14 @@ const proj = [
 
         techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
 
-        description: "The Author–Book System is a backend-driven Java application that demonstrates one-to-many entity mapping using JPA and Hibernate. It models the relationship between authors and their books, ensuring structured data organization and referential integrity. The system uses MySQL for data persistence and reflects real-world content management scenarios.",
+        description: "Author–Book System is a backend-driven Java application that demonstrates one-to-many entity mapping using JPA and Hibernate. It models the relationship between authors and their books, ensuring structured data organization and referential integrity. The system uses MySQL for data persistence and reflects real-world content management scenarios.",
 
         uses: "This application allows users to manage authors and their associated books through complete CRUD operations. It enables efficient retrieval of books under specific authors and supports updates and deletions while maintaining relationship consistency, making it ideal for backend and database learning use cases.",
 
         improvements: "The project goes beyond basic CRUD by implementing a well-defined one-to-many relationship with validation and synchronization. It showcases how real-world systems handle hierarchical data structures while ensuring scalability, consistency, and clean backend architecture.",
 
         gallery: [
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352964/author_book_1.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352967/author_book_2.png"
+            
         ]
     },
     {
