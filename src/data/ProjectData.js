@@ -132,72 +132,6 @@ const proj = [
         ]
     },
     {
-        id: "codepad",
-        type: null,
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543058/CodePad_yraevd.png",
-
-        title: "CodePad",
-
-        subheading: "AI-powered online code editor for multi-language development",
-
-        tags: ["Editor", "Fullstack", "AI"],
-
-        live: "True",
-        projectLink: "https://code-pad-frontend.vercel.app/",
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/CodePad-Frontend",
-
-        sTags: [
-            // Recruiter Focus
-            "online code editor project",
-            "ai powered code editor",
-            "multi language code editor javascript python java",
-            "fullstack code editor application",
-            "react code editor project",
-            "developer tools web application",
-            "browser based code editor",
-            "real time code execution platform",
-            "frontend backend integrated project",
-            "modern developer productivity tools",
-
-            // Client Focus
-            "build online code editor",
-            "web based coding platform",
-            "code editor for developers",
-            "run code online javascript python java",
-            "interactive coding platform",
-            "developer playground online",
-            "cloud based coding environment",
-
-            // Unique / USP
-            "ai made",
-            "ai assisted development project",
-            "code editor built using ai tools",
-            "human refined ai generated application",
-            "multi language execution engine",
-            "scalable fullstack architecture",
-            "clean ui developer experience",
-            "browser ide with backend integration"
-        ],
-
-        techUsed: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Express", "Firebase"],
-
-        description: "CodePad is a modern AI-powered online code editor designed to deliver a seamless and efficient development experience directly in the browser. Built as a fullstack application, it integrates a robust frontend with a scalable backend to support real-time code writing and execution. The platform supports multiple programming languages including JavaScript, Python, and Java, enabling developers to test and validate their code instantly. A key highlight of this project is its development approach—leveraging AI tools for rapid implementation, followed by human refinement to ensure performance, usability, and reliability.",
-
-        uses: "CodePad serves as a versatile platform for developers, students, and coding enthusiasts to write, test, and experiment with code without the need for local setup. It is ideal for practicing algorithms, debugging snippets, and learning new programming languages in an interactive environment. The fullstack architecture ensures smooth communication between the frontend editor and backend execution engine, making it suitable for both educational and practical development use cases.",
-
-        improvements: "CodePad delivers a complete browser-based coding environment with multi-language support and real-time execution capabilities. Its AI-assisted development foundation demonstrates modern engineering efficiency, while human optimizations ensure a polished and reliable user experience. The platform is designed with scalability, clean UI/UX, and developer productivity in mind, making it a strong representation of next-generation web-based development tools.",
-
-        gallery: [
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543053/1_hervgj.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/2_d7sbgj.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/3_diwu53.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/4_vftig6.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/5_upbuih.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543062/6_x7ppeg.png"
-        ]
-    },
-    {
         id: "buzz",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322992/buzz_e2ouzq.webp",
@@ -455,59 +389,6 @@ const proj = [
         ]
     },
     {
-        id: "aadhar-pan-one2one",
-        type: null,
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775754348/aadhar-pan_eiobq2.png",
-
-        title: "Aadhar–PAN Identity Linker",
-
-        subheading: "Robust One-to-One Entity Mapping System using JPA & Hibernate",
-
-        tags: ["Java", "JPA", "Hibernate"],
-
-        live: "False",
-        projectLink: "",
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Aadhar-Pan-one2one",
-
-        sTags: [
-            "jpa one to one mapping example",
-            "hibernate one to one mapping project",
-            "java persistence api project",
-            "entity relationship mapping java",
-            "mysql integration java project",
-            "backend java application",
-            "object relational mapping system",
-            "crud operations using hibernate",
-            "database driven java backend",
-            "console based java system",
-
-            "aadhar pan linking system",
-            "identity management backend",
-            "secure data mapping system",
-            "relational database project java",
-            "user data management system",
-            "backend identity linking solution",
-
-            "one to one entity relationship",
-            "bidirectional mapping jpa",
-            "data consistency validation",
-            "linked identity architecture",
-            "real world database modeling",
-            "enterprise level mapping logic"
-        ],
-
-        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
-
-        description: "Aadhar–PAN Identity Linker is a backend-centric Java application engineered to demonstrate precise one-to-one entity mapping using JPA and Hibernate. It models the relationship between Aadhar and PAN records with strict referential integrity, reflecting real-world identity linkage systems. The application leverages MySQL for persistent storage and emphasizes clean architecture, scalability, and adherence to object-relational mapping principles.",
-
-        uses: "This application facilitates the creation, retrieval, modification, and deletion of Aadhar and PAN records while enforcing a strict one-to-one association between them. It ensures data integrity by maintaining exclusive linkage, where each Aadhar corresponds to exactly one PAN. Advanced features such as correction validation, synchronized updates, and controlled deletion workflows highlight its practical applicability in real-world identity management systems.",
-
-        improvements: "This project extends beyond basic CRUD operations by incorporating structured one-to-one entity mapping with validation mechanisms to ensure consistency across linked records. It demonstrates bidirectional relationship handling, efficient data synchronization, and robust validation logic. The system closely mirrors enterprise-level identity management solutions, making it a strong representation of real-world backend engineering practices.",
-
-        gallery: []
-    },
-    {
         id: "garage",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358736/garage_cax9fk.webp",
@@ -711,11 +592,67 @@ const proj = [
         ]
     },
     {
+        id: "user-order-system",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352970/user_order_project.webp",
+
+        title: "User–Order System",
+
+        subheading: "Efficient One-to-Many Entity Mapping for User and Order Management",
+
+        tags: ["Java", "JPA", "Hibernate"],
+
+        live: "False",
+        projectLink: "",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/users-orders",
+
+        sTags: [
+            // Recruiter Focus
+            "jpa one to many mapping example",
+            "hibernate user order project",
+            "java backend relationship mapping",
+            "entity relationship mapping java",
+            "crud operations using hibernate",
+            "mysql integration java backend",
+            "console based java application",
+            "backend development java project",
+            "database driven application java",
+            "object relational mapping system",
+
+            // Client Focus
+            "user order management system",
+            "backend user data management",
+            "order tracking system java",
+            "database driven backend solution",
+            "java application for order handling",
+            "data management system java",
+
+            // Unique / USP
+            "one to many relationship mapping",
+            "user to multiple orders system",
+            "bidirectional mapping jpa",
+            "data consistency handling",
+            "real world backend modeling",
+            "scalable relationship architecture"
+        ],
+
+        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
+
+        description: "User–Order System is a backend-focused Java application designed to demonstrate one-to-many entity mapping using JPA and Hibernate. It models a real-world scenario where a single user can manage multiple orders, ensuring proper relational integrity and structured data handling. The application leverages MySQL for persistent storage and follows clean object-relational mapping principles.",
+
+        uses: "This application enables users to create, retrieve, update, and delete both user and order records while maintaining a one-to-many relationship. It allows efficient tracking of orders associated with specific users, making it suitable for simulating real-world systems such as eCommerce platforms or order management backends.",
+
+        improvements: "The project enhances traditional CRUD functionality by implementing structured one-to-many relationships with proper validation and synchronization. It demonstrates how scalable backend systems manage linked data efficiently while maintaining consistency and integrity across multiple entities.",
+
+        gallery: []
+    },
+    {
         id: "order-payment-system",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775754510/order_payment_b2tk3n.png",
 
-        title: "Order–Payment Management System",
+        title: "Order–Payment System",
 
         subheading: "Scalable Backend System for Order Processing and Transaction Management using JPA & Hibernate",
 
@@ -826,6 +763,72 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360956/2_xqx2co.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360958/3_xqi9sk.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360962/4_h7qeju.png",
+        ]
+    },
+    {
+        id: "codepad",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543058/CodePad_yraevd.png",
+
+        title: "CodePad",
+
+        subheading: "AI-powered online code editor for multi-language development",
+
+        tags: ["Editor", "Fullstack", "AI"],
+
+        live: "True",
+        projectLink: "https://code-pad-frontend.vercel.app/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/CodePad-Frontend",
+
+        sTags: [
+            // Recruiter Focus
+            "online code editor project",
+            "ai powered code editor",
+            "multi language code editor javascript python java",
+            "fullstack code editor application",
+            "react code editor project",
+            "developer tools web application",
+            "browser based code editor",
+            "real time code execution platform",
+            "frontend backend integrated project",
+            "modern developer productivity tools",
+
+            // Client Focus
+            "build online code editor",
+            "web based coding platform",
+            "code editor for developers",
+            "run code online javascript python java",
+            "interactive coding platform",
+            "developer playground online",
+            "cloud based coding environment",
+
+            // Unique / USP
+            "ai made",
+            "ai assisted development project",
+            "code editor built using ai tools",
+            "human refined ai generated application",
+            "multi language execution engine",
+            "scalable fullstack architecture",
+            "clean ui developer experience",
+            "browser ide with backend integration"
+        ],
+
+        techUsed: ["React", "Tailwind CSS", "TypeScript", "Node.js", "Express", "Firebase"],
+
+        description: "CodePad is a modern AI-powered online code editor designed to deliver a seamless and efficient development experience directly in the browser. Built as a fullstack application, it integrates a robust frontend with a scalable backend to support real-time code writing and execution. The platform supports multiple programming languages including JavaScript, Python, and Java, enabling developers to test and validate their code instantly. A key highlight of this project is its development approach—leveraging AI tools for rapid implementation, followed by human refinement to ensure performance, usability, and reliability.",
+
+        uses: "CodePad serves as a versatile platform for developers, students, and coding enthusiasts to write, test, and experiment with code without the need for local setup. It is ideal for practicing algorithms, debugging snippets, and learning new programming languages in an interactive environment. The fullstack architecture ensures smooth communication between the frontend editor and backend execution engine, making it suitable for both educational and practical development use cases.",
+
+        improvements: "CodePad delivers a complete browser-based coding environment with multi-language support and real-time execution capabilities. Its AI-assisted development foundation demonstrates modern engineering efficiency, while human optimizations ensure a polished and reliable user experience. The platform is designed with scalability, clean UI/UX, and developer productivity in mind, making it a strong representation of next-generation web-based development tools.",
+
+        gallery: [
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543053/1_hervgj.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/2_d7sbgj.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/3_diwu53.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/4_vftig6.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/5_upbuih.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543062/6_x7ppeg.png"
         ]
     },
     {
@@ -1301,6 +1304,65 @@ const proj = [
         ]
     },
     {
+        id: "author-book-system",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352970/author_book_project.webp",
+
+        title: "Author–Book System",
+
+        subheading: "Structured One-to-Many Mapping for Author and Book Relationships",
+
+        tags: ["Java", "JPA", "Hibernate"],
+
+        live: "False",
+        projectLink: "",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/author-book",
+
+        sTags: [
+            // Recruiter Focus
+            "jpa one to many mapping example",
+            "hibernate author book project",
+            "java backend relationship mapping",
+            "entity relationship mapping java",
+            "crud operations using hibernate",
+            "mysql integration java backend",
+            "console based java application",
+            "object relational mapping system",
+            "database driven java backend",
+            "backend development project java",
+
+            // Client Focus
+            "author book management system",
+            "library management backend java",
+            "book tracking system java",
+            "data driven application java",
+            "content management backend",
+            "java database application",
+
+            // Unique / USP
+            "one to many entity mapping system",
+            "author to multiple books mapping",
+            "bidirectional relationship handling",
+            "data consistency validation",
+            "real world database modeling",
+            "structured backend architecture"
+        ],
+
+        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
+
+        description: "The Author–Book System is a backend-driven Java application that demonstrates one-to-many entity mapping using JPA and Hibernate. It models the relationship between authors and their books, ensuring structured data organization and referential integrity. The system uses MySQL for data persistence and reflects real-world content management scenarios.",
+
+        uses: "This application allows users to manage authors and their associated books through complete CRUD operations. It enables efficient retrieval of books under specific authors and supports updates and deletions while maintaining relationship consistency, making it ideal for backend and database learning use cases.",
+
+        improvements: "The project goes beyond basic CRUD by implementing a well-defined one-to-many relationship with validation and synchronization. It showcases how real-world systems handle hierarchical data structures while ensuring scalability, consistency, and clean backend architecture.",
+
+        gallery: [
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352964/author_book_1.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352967/author_book_2.png"
+        ]
+    },
+    {
         id: "google-drive",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365787/google-drive_c0ewdf.webp",
@@ -1358,6 +1420,59 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365788/1_o8g3sk.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365809/2_mpykps.png"
         ]
+    },
+    {
+        id: "aadhar-pan-one2one",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775754348/aadhar-pan_eiobq2.png",
+
+        title: "Aadhar–PAN Identity Linker",
+
+        subheading: "Robust One-to-One Entity Mapping System using JPA & Hibernate",
+
+        tags: ["Java", "JPA", "Hibernate"],
+
+        live: "False",
+        projectLink: "",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Aadhar-Pan-one2one",
+
+        sTags: [
+            "jpa one to one mapping example",
+            "hibernate one to one mapping project",
+            "java persistence api project",
+            "entity relationship mapping java",
+            "mysql integration java project",
+            "backend java application",
+            "object relational mapping system",
+            "crud operations using hibernate",
+            "database driven java backend",
+            "console based java system",
+
+            "aadhar pan linking system",
+            "identity management backend",
+            "secure data mapping system",
+            "relational database project java",
+            "user data management system",
+            "backend identity linking solution",
+
+            "one to one entity relationship",
+            "bidirectional mapping jpa",
+            "data consistency validation",
+            "linked identity architecture",
+            "real world database modeling",
+            "enterprise level mapping logic"
+        ],
+
+        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
+
+        description: "Aadhar–PAN Identity Linker is a backend-centric Java application engineered to demonstrate precise one-to-one entity mapping using JPA and Hibernate. It models the relationship between Aadhar and PAN records with strict referential integrity, reflecting real-world identity linkage systems. The application leverages MySQL for persistent storage and emphasizes clean architecture, scalability, and adherence to object-relational mapping principles.",
+
+        uses: "This application facilitates the creation, retrieval, modification, and deletion of Aadhar and PAN records while enforcing a strict one-to-one association between them. It ensures data integrity by maintaining exclusive linkage, where each Aadhar corresponds to exactly one PAN. Advanced features such as correction validation, synchronized updates, and controlled deletion workflows highlight its practical applicability in real-world identity management systems.",
+
+        improvements: "This project extends beyond basic CRUD operations by incorporating structured one-to-one entity mapping with validation mechanisms to ensure consistency across linked records. It demonstrates bidirectional relationship handling, efficient data synchronization, and robust validation logic. The system closely mirrors enterprise-level identity management solutions, making it a strong representation of real-world backend engineering practices.",
+
+        gallery: []
     },
     {
         id: "microsoft-clone",
