@@ -267,60 +267,60 @@ const proj = [
         ]
     },
     {
-        id: "hms",
+        id: "student-course",
         type: null,
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352925/hms_unqodq.webp",
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1776500140/student-course_tnouyv.png",
 
-        title: "MediCore CLI",
+        title: "Student Course Manager",
 
-        subheading: "Role-based hospital system via console",
+        subheading: "Many-to-Many relationship system using JPA & Hibernate",
 
-        tags: ["Java", "CLI", "Backend"],
+        tags: ["Java", "JPA", "Hibernate"],
 
-        live: "false",
+        live: "False",
         projectLink: "",
         code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Hospital-Management-System-Console",
+        gitUrl: "https://github.com/BadBoy-Github/Students-Courses---QSpiders",
 
         sTags: [
             // Recruiter Focus
-            "java backend project",
-            "jdbc mysql integration",
-            "console based java application",
-            "hospital management system java",
-            "role based access control java",
-            "authentication system java",
-            "crud operations jdbc",
-            "database driven java application",
-            "multi role system design",
-            "admin doctor patient roles",
-            "sql database management project",
-            "backend logic implementation java",
+            "many to many mapping jpa",
+            "hibernate relationship project",
+            "java backend crud project",
+            "jpa entity relationship example",
+            "student course management system java",
+            "hibernate many to many example",
+            "backend database relationship project",
+            "java full stack interview project",
+            "crud operations using jpa",
+            "entity manager hibernate project",
 
-            // Client / Real-world relevance
-            "hospital management software",
-            "healthcare management system",
-            "patient doctor management system",
-            "appointment and hospital system",
-            "medical data management system",
+            // Client Focus
+            "student course management system",
+            "course purchase system backend",
+            "education management software",
+            "student enrollment system",
+            "course registration system",
+            "academic management application",
 
             // Features / USP
-            "cli based management system",
-            "multi user role handling system",
-            "admin doctor patient workflow",
-            "secure data access system",
-            "structured backend architecture",
-            "real world problem solving system"
+            "many to many relationship mapping",
+            "course enrollment system",
+            "dynamic course purchase feature",
+            "student course linking system",
+            "jpa persistence project",
+            "database relationship handling",
+            "menu driven java application",
+            "real world backend simulation"
         ],
 
-        techUsed: ["Java", "JDBC", "MySQL", "SQL"],
+        techUsed: ["Java", "JPA", "Hibernate", "MySQL"],
 
-        description: "MediCore CLI is a backend-driven hospital management system developed as a console-based application using Java and JDBC with MySQL integration. The system is designed around role-based access control, supporting administrators, doctors, and patients with clearly defined responsibilities. It handles core functionalities such as hospital management, doctor allocation, patient records, and data operations through structured database interactions. This project highlights strong backend logic, database connectivity, and system design thinking in a real-world healthcare scenario.",
+        description: "Student Course Manager is a backend-focused Java application designed to demonstrate the implementation of a many-to-many relationship using JPA and Hibernate. The system models real-world scenarios where multiple students can enroll in multiple courses, and each course can be accessed by multiple students. It includes a menu-driven interface to perform operations such as creating students and courses, enrolling in courses, viewing relationships, updating records, and deleting data. The project emphasizes strong understanding of ORM concepts, entity mapping, and relational database design.",
 
-        uses: "This application demonstrates how a centralized system can efficiently manage relationships between hospitals, doctors, and patients. Administrators can manage hospital data and assign doctors, doctors can handle patient-related operations, and patients can access relevant medical information. It serves as a foundational model for healthcare management systems, emphasizing secure data access, structured workflows, and role-based responsibilities in real-world environments.",
+        uses: "This application serves as a practical demonstration of handling complex database relationships in real-world systems like learning management platforms and course registration portals. It allows users to manage students and courses efficiently, simulate course purchases, and maintain relational integrity between entities. From a developer perspective, it showcases the implementation of JPA annotations, bidirectional relationships, and transaction management using Hibernate.",
 
-        improvements: "MediCore CLI implements a robust role-based system with clearly defined workflows for administrators, doctors, and patients. It efficiently manages hospital operations such as doctor allocation, patient handling, and data access through secure database interactions, showcasing strong backend logic and structured system design in a healthcare context.",
-
+        improvements: "The project effectively demonstrates many-to-many relationship handling using JPA with features like course enrollment, cancellation, and dynamic data management. It uses a structured menu-driven approach to simulate real-world operations and ensures proper entity mapping and database consistency. Future improvements could include adding a frontend UI, REST API layer, authentication system, and deploying it as a full-stack application.",
         gallery: []
     },
     {
@@ -1188,6 +1188,63 @@ const proj = [
         ]
     },
     {
+        id: "hms",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774352925/hms_unqodq.webp",
+
+        title: "MediCore CLI",
+
+        subheading: "Role-based hospital system via console",
+
+        tags: ["Java", "CLI", "Backend"],
+
+        live: "false",
+        projectLink: "",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Hospital-Management-System-Console",
+
+        sTags: [
+            // Recruiter Focus
+            "java backend project",
+            "jdbc mysql integration",
+            "console based java application",
+            "hospital management system java",
+            "role based access control java",
+            "authentication system java",
+            "crud operations jdbc",
+            "database driven java application",
+            "multi role system design",
+            "admin doctor patient roles",
+            "sql database management project",
+            "backend logic implementation java",
+
+            // Client / Real-world relevance
+            "hospital management software",
+            "healthcare management system",
+            "patient doctor management system",
+            "appointment and hospital system",
+            "medical data management system",
+
+            // Features / USP
+            "cli based management system",
+            "multi user role handling system",
+            "admin doctor patient workflow",
+            "secure data access system",
+            "structured backend architecture",
+            "real world problem solving system"
+        ],
+
+        techUsed: ["Java", "JDBC", "MySQL", "SQL"],
+
+        description: "MediCore CLI is a backend-driven hospital management system developed as a console-based application using Java and JDBC with MySQL integration. The system is designed around role-based access control, supporting administrators, doctors, and patients with clearly defined responsibilities. It handles core functionalities such as hospital management, doctor allocation, patient records, and data operations through structured database interactions. This project highlights strong backend logic, database connectivity, and system design thinking in a real-world healthcare scenario.",
+
+        uses: "This application demonstrates how a centralized system can efficiently manage relationships between hospitals, doctors, and patients. Administrators can manage hospital data and assign doctors, doctors can handle patient-related operations, and patients can access relevant medical information. It serves as a foundational model for healthcare management systems, emphasizing secure data access, structured workflows, and role-based responsibilities in real-world environments.",
+
+        improvements: "MediCore CLI implements a robust role-based system with clearly defined workflows for administrators, doctors, and patients. It efficiently manages hospital operations such as doctor allocation, patient handling, and data access through secure database interactions, showcasing strong backend logic and structured system design in a healthcare context.",
+
+        gallery: []
+    },
+    {
         id: "pass-strength",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774365313/pass-strength_rc8zgy.webp",
@@ -1358,7 +1415,7 @@ const proj = [
         improvements: "The project goes beyond basic CRUD by implementing a well-defined one-to-many relationship with validation and synchronization. It showcases how real-world systems handle hierarchical data structures while ensuring scalability, consistency, and clean backend architecture.",
 
         gallery: [
-            
+
         ]
     },
     {
