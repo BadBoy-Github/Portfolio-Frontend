@@ -939,6 +939,63 @@ const proj = [
         ]
     },
     {
+        id: "order-customer-system",
+        type: "backend",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777213301/order_user_i2rp64.png",
+
+        title: "CustOrder Nexus",
+
+        subheading: "Customer-centric order mapping powered by Hibernate ORM",
+
+        tags: ["Hibernate", "Java", "Backend"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Orders-Customers",
+
+        sTags: [
+            // Recruiter Focus
+            "hibernate many to one relationship project",
+            "java order management backend",
+            "jpa entity mapping project",
+            "orm hibernate mysql integration",
+            "backend data modeling java",
+            "entity manager hibernate application",
+            "console based java system",
+            "relational database mapping project",
+            "java backend architecture design",
+            "crud operations hibernate project",
+
+            // Client / General
+            "order customer management system",
+            "customer order tracking system",
+            "ecommerce backend logic",
+            "order processing application",
+            "customer database manager",
+
+            // Features / USP
+            "many to one relationship mapping",
+            "bidirectional entity navigation",
+            "customer based order filtering",
+            "reverse lookup by order id",
+            "structured relational data flow",
+            "menu driven console interface"
+        ],
+
+        techUsed: ["Java", "Hibernate", "JPA", "MySQL"],
+
+        description: "CustOrder Nexus is a console-based backend system built using Java and Hibernate that manages customer and order data through a structured relational database. It models a real-world Many-to-One relationship where multiple orders are associated with a single customer, enabling efficient tracking and organization of transactional records.",
+
+        uses: "This project demonstrates key backend development concepts including ORM with Hibernate, entity relationship mapping, CRUD operations, and database interaction using JPA. It showcases how customer-centric data can be structured and queried efficiently using a menu-driven application.",
+
+        improvements: "CustOrder Nexus stands out by modeling a real-world customer-order relationship with precise Many-to-One mapping and bidirectional navigation. It enables both forward queries (fetching all orders of a customer) and reverse lookups (identifying the customer from an order), reflecting practical e-commerce data flows. Compared to basic CRUD systems, it emphasizes relational integrity and clean object-oriented data handling through Hibernate, reducing direct SQL complexity while maintaining scalability and clarity.",
+
+        gallery: []
+    },
+    {
         id: "codepad",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543058/CodePad_yraevd.png",
@@ -1941,6 +1998,63 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367223/11_jvoyiq.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774367224/12_xrxpoc.png"
         ]
+    },
+    {
+        id: "book-author-system",
+        type: "backend",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777212401/book_author_z7r8yt.png",
+
+        title: "AuthorLink Engine",
+
+        subheading: "Many-to-One relational data management with Hibernate",
+
+        tags: ["Hibernate", "Java", "Database"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Book-Author",
+
+        sTags: [
+            // Recruiter Focus
+            "hibernate many to one project",
+            "java hibernate crud application",
+            "jpa entity relationship project",
+            "backend data management java",
+            "mysql hibernate integration",
+            "orm mapping java project",
+            "console based java application",
+            "entity manager hibernate project",
+            "relational database mapping java",
+            "java backend architecture project",
+
+            // Client / General
+            "book author management system",
+            "library management backend",
+            "author book database system",
+            "book tracking application",
+            "author database manager",
+
+            // Features / USP
+            "many to one relationship mapping",
+            "bidirectional entity navigation",
+            "complete crud operations",
+            "dynamic data retrieval",
+            "structured database design",
+            "menu driven console interface"
+        ],
+
+        techUsed: ["Java", "Hibernate", "JPA", "MySQL"],
+
+        description: "AuthorLink Engine is a console-based backend application built using Java and Hibernate to manage books and their corresponding authors through a structured relational database system. It enables efficient handling of entity relationships where multiple books are associated with a single author.",
+
+        uses: "This project demonstrates core backend development concepts such as ORM (Object Relational Mapping), entity relationship mapping, CRUD operations, and database interaction using Hibernate and JPA. It provides a practical implementation of managing relational data through a menu-driven interface.",
+
+        improvements: "AuthorLink Engine stands out by clearly implementing a real-world Many-to-One relationship with bidirectional navigation between entities. Unlike basic CRUD applications, it enables seamless querying such as fetching all books by a specific author and retrieving author details from a given book. The structured use of Hibernate ORM reduces boilerplate SQL while maintaining clean and scalable data handling logic, making it a strong representation of enterprise-level backend design principles.",
+
+        gallery: []
     },
     {
         id: "linkedin-profile-clone",
