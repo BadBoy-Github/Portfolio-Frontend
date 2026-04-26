@@ -521,6 +521,47 @@ const proj = [
         ]
     },
     {
+        id: "snake",
+        type: "game",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777224790/snake_x1vib6.png",
+
+        title: "Classic Snake Game",
+
+        subheading: "Console-Based Arcade Game in Python",
+
+        tags: ["Game", "Python", "Retro"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Snake-Game",
+
+        sTags: [
+            "python snake game",
+            "turtle graphics game",
+            "console based python project",
+            "arcade game python",
+            "snake game implementation",
+            "game logic python",
+            "collision detection game",
+            "interactive python project",
+            "classic game development",
+            "beginner game python"
+        ],
+
+        techUsed: ["Python", "Turtle Graphics"],
+
+        description: "Classic Snake Game is a console-based arcade game developed using Python and the Turtle graphics library, inspired by one of the most popular and timeless games ever created. This project recreates the nostalgic gameplay experience where the player controls a continuously moving snake that grows longer as it consumes food. With each successful move, the challenge increases, requiring better control and quicker decision-making. The primary goal of this project is to demonstrate how fundamental programming concepts can be used to build an engaging and interactive game from scratch.",
+
+        uses: "This project demonstrates essential game development principles such as real-time movement, event-driven user input handling, collision detection, and dynamic state updates. The snake responds instantly to keyboard controls, grows in size upon consuming food, and the game continuously checks for boundary collisions and self-collisions to determine failure conditions. It also incorporates a scoring mechanism that updates as the player progresses, showcasing how logic, loops, and condition handling work together to create a smooth and responsive gameplay experience.",
+
+        improvements: "This project effectively recreates one of the most iconic arcade games using fundamental programming concepts. It showcases dynamic game progression through snake growth, real-time movement, and strict rule enforcement, highlighting strong control over game logic and interactive system design.",
+
+        gallery: []
+    },
+    {
         id: "garage",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358736/garage_cax9fk.webp",
@@ -586,6 +627,63 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358736/5_adehsb.png",
 
         ]
+    },
+    {
+        id: "iss-tracker",
+        type: "automation",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777225631/iss_tracker_zqztjg.png",
+
+        title: "SkyWatch Alert",
+
+        subheading: "Real-time ISS tracking with location-based night visibility alerts",
+
+        tags: ["Automation", "Python", "API"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/ISS-Overhead-Notifier",
+
+        sTags: [
+            // Recruiter Focus
+            "python api integration project",
+            "real time tracking python",
+            "automation alert system python",
+            "location based condition checking",
+            "datetime logic python project",
+            "smtp email automation python",
+            "event driven python script",
+            "loop based monitoring system",
+            "external api usage python",
+            "backend automation script",
+
+            // Client / General
+            "iss tracker python",
+            "space station tracker",
+            "astronomy alert system",
+            "night sky notification tool",
+            "iss overhead alert",
+
+            // Features / USP
+            "real time iss position tracking",
+            "location based filtering",
+            "day night condition detection",
+            "automated email notifications",
+            "continuous monitoring loop",
+            "event triggered alert system"
+        ],
+
+        techUsed: ["Python", "Requests", "Datetime", "SMTP"],
+
+        description: "SkyWatch Alert is a Python-based automation tool that tracks the real-time position of the International Space Station (ISS) and notifies the user when it is visible overhead. It combines live location data with time-based conditions to determine optimal viewing moments.",
+
+        uses: "This project demonstrates API integration, real-time data processing, conditional logic based on geolocation and time, and automated email notifications. It showcases how external data sources can be used to build intelligent event-driven systems.",
+
+        improvements: "SkyWatch Alert stands out by combining multiple real-world conditions—geographical proximity and night-time visibility—to trigger meaningful alerts rather than raw data updates. Unlike simple trackers, it filters information contextually to notify only when the ISS is actually observable. The integration of continuous monitoring with event-based email alerts demonstrates a practical and efficient automation pattern for real-time tracking systems.",
+
+        gallery: []
     },
     {
         id: "stellar-ai",
@@ -1178,6 +1276,63 @@ const proj = [
         ]
     },
     {
+        id: "pomodoro-timer",
+        type: "utility",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777226217/pomodoro_timer_shm4kx.png",
+
+        title: "FocusFlow Timer",
+
+        subheading: "Smart Pomodoro productivity timer with session tracking and adaptive breaks",
+
+        tags: ["Productivity", "Python", "GUI"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Pomorodo-Times",
+
+        sTags: [
+            // Recruiter Focus
+            "python tkinter project",
+            "gui based timer application",
+            "event driven programming python",
+            "state management python app",
+            "time based logic implementation",
+            "desktop productivity tool python",
+            "python automation gui",
+            "loop and callback handling python",
+            "user interface python project",
+            "real time countdown application",
+
+            // Client / General
+            "pomodoro timer app",
+            "study timer application",
+            "productivity timer tool",
+            "focus timer",
+            "work break timer",
+
+            // Features / USP
+            "pomodoro technique implementation",
+            "automatic session switching",
+            "short and long break cycles",
+            "visual countdown timer",
+            "progress tracking with checkmarks",
+            "interactive gui controls"
+        ],
+
+        techUsed: ["Python", "Tkinter", "Math"],
+
+        description: "FocusFlow Timer is a Python-based GUI application that implements the Pomodoro Technique to enhance productivity through structured work and break intervals. It provides a visual countdown timer along with automatic session transitions between focused work and rest periods.",
+
+        uses: "This project demonstrates GUI development using Tkinter, event-driven programming with timed callbacks, and state management for handling multiple session cycles. It showcases how time-based logic can be used to build practical productivity tools with an interactive interface.",
+
+        improvements: "FocusFlow Timer stands out by fully automating the Pomodoro workflow with intelligent session switching between work, short breaks, and long breaks based on repetition cycles. Unlike basic timers, it incorporates visual progress tracking through checkmarks and maintains session state across intervals, providing a more structured and engaging productivity experience. The seamless integration of timing logic with GUI updates highlights efficient event-driven design in desktop applications.",
+
+        gallery: []
+    },
+    {
         id: "lms",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774363987/lms_zaqh83.webp",
@@ -1525,6 +1680,63 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364794/1_ktrnt3.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364797/2_ckvouq.png",
         ]
+    },
+    {
+        id: "birthday-wisher",
+        type: "automation",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777226013/birthday_wisher_jyyepz.png",
+
+        title: "AutoWish Engine",
+
+        subheading: "Personalized birthday email automation with dynamic templates",
+
+        tags: ["Automation", "Python", "Email"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Birthday-Wisher",
+
+        sTags: [
+            // Recruiter Focus
+            "python automation project",
+            "email automation python",
+            "pandas data handling project",
+            "csv data processing python",
+            "datetime based automation",
+            "smtp email python project",
+            "event driven python script",
+            "template based messaging system",
+            "backend scripting python",
+            "file handling automation project",
+
+            // Client / General
+            "birthday reminder app",
+            "birthday email sender",
+            "automated greeting system",
+            "personalized message sender",
+            "birthday notification tool",
+
+            // Features / USP
+            "dynamic email templates",
+            "personalized name insertion",
+            "csv based contact storage",
+            "random message selection",
+            "date based triggering",
+            "automated email delivery"
+        ],
+
+        techUsed: ["Python", "Pandas", "Datetime", "SMTP", "Random"],
+
+        description: "AutoWish Engine is a Python-based automation tool that sends personalized birthday wishes via email by reading user data from a CSV file. It dynamically selects message templates and customizes them with recipient details for a more personal touch.",
+
+        uses: "This project demonstrates data handling using Pandas, date-based event triggering with datetime, file-based template processing, and automated email delivery using SMTP. It showcases how simple data-driven logic can be used to build meaningful automation tools.",
+
+        improvements: "AutoWish Engine stands out by combining structured data processing with dynamic template-based personalization, allowing each message to feel unique rather than repetitive. Unlike basic reminder scripts, it integrates randomized message selection and automated content customization, creating a more engaging user experience. The use of CSV-based contact management with scalable template handling reflects a practical and extensible approach to real-world automation systems.",
+
+        gallery: []
     },
     {
         id: "swiggy-clone",
@@ -2296,6 +2508,63 @@ const proj = [
         ]
     },
     {
+        id: "password-manager",
+        type: "utility",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777224504/password_generator_manager_ujaudk.png",
+
+        title: "SecureKey Vault",
+
+        subheading: "GUI-based password generator with smart storage and quick access",
+
+        tags: ["Security", "Python", "Utility"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Password-Generator-Manager",
+
+        sTags: [
+            // Recruiter Focus
+            "python tkinter project",
+            "password generator python",
+            "desktop gui application python",
+            "random password generation logic",
+            "clipboard automation python",
+            "file handling python project",
+            "user input handling gui",
+            "python utility application",
+            "secure data storage python",
+            "desktop tool development",
+
+            // Client / General
+            "password manager app",
+            "password generator tool",
+            "login credential saver",
+            "secure password storage",
+            "account manager tool",
+
+            // Features / USP
+            "strong random password generation",
+            "clipboard auto copy feature",
+            "simple gui interface",
+            "credential storage system",
+            "user friendly input flow",
+            "quick access password tool"
+        ],
+
+        techUsed: ["Python", "Tkinter", "Random", "Pyperclip"],
+
+        description: "SecureKey Vault is a Python-based desktop utility that allows users to generate strong passwords and securely store login credentials through a simple graphical interface. It provides an efficient way to manage multiple account details in one place.",
+
+        uses: "This project demonstrates GUI development using Tkinter, secure password generation using randomized logic, file handling for persistent storage, and clipboard automation for improved user experience. It highlights how desktop tools can simplify everyday digital tasks.",
+
+        improvements: "SecureKey Vault stands out by combining password generation and credential management into a single streamlined interface. Unlike basic generators, it integrates instant clipboard copying and structured data storage, reducing friction in real-world usage. The balance between usability and functionality makes it an effective lightweight alternative to complex password managers, showcasing practical desktop utility design with Python.",
+
+        gallery: []
+    },
+    {
         id: "calculator",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358156/calculator_mmw9ej.webp",
@@ -2352,6 +2621,63 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358157/1_ujk0pp.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774358157/2_psdirt.png",
         ]
+    },
+    {
+        id: "turtle-crossing-game",
+        type: "game",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777222297/turtle_crossing_game_tcopgt.png",
+
+        title: "Traffic Escape Turtle",
+
+        subheading: "Endless reflex-based road survival game with dynamic difficulty",
+
+        tags: ["Game", "Python", "Turtle"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Turtle-crossing-game",
+
+        sTags: [
+            // Recruiter Focus
+            "python turtle game project",
+            "object oriented python game",
+            "collision detection python",
+            "game logic implementation python",
+            "random obstacle generation",
+            "real time game mechanics",
+            "python mini game development",
+            "loop and event driven game",
+            "beginner game dev project python",
+            "interactive python application",
+
+            // Client / General
+            "turtle crossing game",
+            "road crossing game python",
+            "arcade style game",
+            "endless survival game",
+            "traffic dodge game",
+
+            // Features / USP
+            "endless gameplay mechanics",
+            "progressive difficulty increase",
+            "random obstacle spawning",
+            "collision detection system",
+            "real time movement control",
+            "nostalgic arcade experience"
+        ],
+
+        techUsed: ["Python", "Turtle", "Random", "Time"],
+
+        description: "Traffic Escape Turtle is a Python-based arcade-style game built using the Turtle graphics module, where players control a turtle navigating through continuous traffic. The objective is to cross the road while avoiding dynamically moving obstacles in an endless gameplay loop.",
+
+        uses: "This project demonstrates fundamental game development concepts such as real-time movement, collision detection, random object spawning, and game loop control. It highlights how core Python libraries can be used to build interactive and engaging applications.",
+
+        improvements: "Traffic Escape Turtle stands out with its endless gameplay design combined with progressive difficulty scaling, where obstacle speed increases after each successful crossing. Unlike static mini-games, it introduces dynamic challenge adaptation and randomized obstacle behavior, creating a more engaging and replayable experience. The use of simple Turtle graphics to simulate real-time game mechanics showcases efficient implementation of game logic with minimal dependencies.",
+
+        gallery: []
     },
     {
         id: "shopping-list",
@@ -2567,6 +2893,63 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356110/1_trxg5n.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356107/2_ciodph.png",
         ]
+    },
+    {
+        id: "flight-deal-tracker",
+        type: "automation",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777221420/flight_deal_tracker_rwgung.png",
+
+        title: "SkySaver Bot",
+
+        subheading: "Automated flight deal hunter with real-time price intelligence",
+
+        tags: ["Automation", "Python", "API"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Flight-Finder-System",
+
+        sTags: [
+            // Recruiter Focus
+            "python automation project",
+            "api integration python project",
+            "flight price tracker python",
+            "real world automation system",
+            "backend scripting python",
+            "data comparison automation",
+            "third party api integration",
+            "python notification system",
+            "email and sms automation",
+            "google sheets api project",
+
+            // Client / General
+            "flight deal tracker",
+            "travel price alert system",
+            "flight price comparison tool",
+            "cheap flight finder",
+            "travel automation tool",
+
+            // Features / USP
+            "real time flight price tracking",
+            "google sheets data integration",
+            "price comparison logic",
+            "automated deal detection",
+            "email and sms notifications",
+            "multi api integration system"
+        ],
+
+        techUsed: ["Python", "Requests", "Amadeus API", "Sheety API", "Twilio", "SMTP", "dotenv"],
+
+        description: "SkySaver Bot is an intelligent automation system built with Python that tracks flight prices and identifies the best travel deals in real time. It integrates multiple APIs to fetch, store, and analyze flight data, helping users find cost-effective travel options effortlessly.",
+
+        uses: "This project demonstrates advanced backend and automation concepts including API integration, data comparison logic, environment variable management, and multi-channel notification systems. It showcases how real-time data can be processed and transformed into actionable insights for users.",
+
+        improvements: "SkySaver Bot stands out by combining multiple external services into a unified automation pipeline, integrating flight data retrieval, cloud-based storage, and dual-channel notification delivery. Unlike basic trackers, it not only compares current prices with historical averages stored in Google Sheets but also evaluates multiple deals to identify maximum savings before notifying the user. The seamless combination of APIs like Amadeus, Sheety, Twilio, and SMTP demonstrates a production-like architecture for real-world automation systems.",
+
+        gallery: []
     },
     {
         id: "dev-snapshot",
@@ -2810,6 +3193,99 @@ const proj = [
         ]
     },
     {
+        id: "pong",
+        type: "game",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777224643/pong_tgmp5a.png",
+
+        title: "Retro Pong Game",
+
+        subheading: "Two-Player Classic Arcade Game in Python",
+
+        tags: ["Game", "Python", "Retro"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Pong-Game",
+
+        sTags: [
+            "python game development",
+            "turtle graphics game",
+            "console based game python",
+            "retro arcade game project",
+            "two player game python",
+            "pong game implementation",
+            "game logic python project",
+            "collision detection game",
+            "interactive python project",
+            "classic game recreation"
+        ],
+
+        techUsed: ["Python", "Turtle Graphics"],
+
+        description: "Retro Pong Game is a classic two-player arcade game recreated using Python and the Turtle graphics library. Inspired by the original Pong, this project brings back the nostalgic gameplay experience with simple yet engaging mechanics where two players control paddles on either side to bounce a moving ball. The focus of the project is on recreating a timeless game using fundamental programming concepts and interactive graphics.",
+
+        uses: "This project demonstrates core game development logic including real-time movement, collision detection, score tracking, and user input handling. Players can control paddles using keyboard inputs, and the game dynamically responds to ball collisions with paddles and screen boundaries. It showcases how basic Python libraries like Turtle can be used to build fully interactive and enjoyable games.",
+
+        improvements: "This project captures the essence of classic arcade gaming by recreating Pong with clean logic and interactive controls. It emphasizes real-time gameplay mechanics, two-player interaction, and precise collision handling, delivering a nostalgic gaming experience using minimal yet effective Python-based graphics.",
+
+        gallery: []
+    },
+    {
+        id: "ionps",
+        type: "research",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353705/ionps_s9aqbj.webp",
+
+        title: "Encapsulated Iron Oxide Nanoparticles for Cancer Therapy",
+
+        subheading: "ROS-Mediated Apoptosis Study on Colorectal Cancer Cells",
+
+        tags: ["Research", "Biotechnology", "Nanomedicine"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "False",
+        gitUrl: "",
+
+        sTags: [
+            "biotech",
+            "nanotechnology cancer research",
+            "iron oxide nanoparticles study",
+            "biotech research project",
+            "nanomedicine research",
+            "anticancer nanoparticle study",
+            "cytotoxicity research HT29",
+            "apoptosis research study",
+            "biomedical research project",
+            "drug delivery nanoparticles",
+            "scientific experimental study"
+        ],
+
+        techUsed: [
+            "UV-Vis Spectroscopy",
+            "FTIR",
+            "XRD",
+            "SEM",
+            "TEM",
+            "PSA",
+            "MTT Assay",
+            "Flow Cytometry",
+            "Caspase Assay"
+        ],
+
+        description: "This research focuses on the synthesis and evaluation of dioxepine-encapsulated iron oxide nanoparticles (IONPs) as a potential anticancer agent against colorectal cancer cells (HT-29). The study explores a nanotechnology-driven therapeutic approach where bioactive compounds derived from Parmotrema reticulatum are integrated with iron oxide nanoparticles to enhance biological activity. Special emphasis is given to understanding how these nanoparticles interact with cancer cells and induce cell death through reactive oxygen species (ROS)-mediated apoptosis.",
+
+        uses: "The project demonstrates a complete experimental workflow starting from nanoparticle synthesis and characterization to biological validation. Advanced analytical techniques such as UV-Vis, FTIR, XRD, SEM, and TEM were used to confirm structural and compositional properties. Antioxidant activity was evaluated using multiple assays including DPPH, FRAP, phosphomolybdenum, and hydrogen peroxide scavenging methods. The cytotoxic potential was assessed using MTT assay, while apoptosis and cellular damage were confirmed through staining techniques, flow cytometry, and caspase activity analysis.",
+
+        improvements: "This research uniquely integrates nanotechnology with targeted cancer therapy by combining dioxepine with iron oxide nanoparticles. It demonstrates a complete experimental pipeline from synthesis to biological validation, including ROS-mediated apoptosis analysis. The study highlights a multidisciplinary approach involving chemistry, biology, and nanomedicine for potential therapeutic applications.",
+
+        gallery: []
+    },
+    {
         id: "api-cafe",
         type: "backend",
 
@@ -2875,140 +3351,6 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354218/6_udsyqe.png"
         ]
     },
-    {
-        id: "ionps",
-        type: "research",
-
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353705/ionps_s9aqbj.webp",
-
-        title: "Encapsulated Iron Oxide Nanoparticles for Cancer Therapy",
-
-        subheading: "ROS-Mediated Apoptosis Study on Colorectal Cancer Cells",
-
-        tags: ["Research", "Biotechnology", "Nanomedicine"],
-
-        live: "False",
-        projectLink: "",
-
-        code: "False",
-        gitUrl: "",
-
-        sTags: [
-            "biotech",
-            "nanotechnology cancer research",
-            "iron oxide nanoparticles study",
-            "biotech research project",
-            "nanomedicine research",
-            "anticancer nanoparticle study",
-            "cytotoxicity research HT29",
-            "apoptosis research study",
-            "biomedical research project",
-            "drug delivery nanoparticles",
-            "scientific experimental study"
-        ],
-
-        techUsed: [
-            "UV-Vis Spectroscopy",
-            "FTIR",
-            "XRD",
-            "SEM",
-            "TEM",
-            "PSA",
-            "MTT Assay",
-            "Flow Cytometry",
-            "Caspase Assay"
-        ],
-
-        description: "This research focuses on the synthesis and evaluation of dioxepine-encapsulated iron oxide nanoparticles (IONPs) as a potential anticancer agent against colorectal cancer cells (HT-29). The study explores a nanotechnology-driven therapeutic approach where bioactive compounds derived from Parmotrema reticulatum are integrated with iron oxide nanoparticles to enhance biological activity. Special emphasis is given to understanding how these nanoparticles interact with cancer cells and induce cell death through reactive oxygen species (ROS)-mediated apoptosis.",
-
-        uses: "The project demonstrates a complete experimental workflow starting from nanoparticle synthesis and characterization to biological validation. Advanced analytical techniques such as UV-Vis, FTIR, XRD, SEM, and TEM were used to confirm structural and compositional properties. Antioxidant activity was evaluated using multiple assays including DPPH, FRAP, phosphomolybdenum, and hydrogen peroxide scavenging methods. The cytotoxic potential was assessed using MTT assay, while apoptosis and cellular damage were confirmed through staining techniques, flow cytometry, and caspase activity analysis.",
-
-        improvements: "This research uniquely integrates nanotechnology with targeted cancer therapy by combining dioxepine with iron oxide nanoparticles. It demonstrates a complete experimental pipeline from synthesis to biological validation, including ROS-mediated apoptosis analysis. The study highlights a multidisciplinary approach involving chemistry, biology, and nanomedicine for potential therapeutic applications.",
-
-        gallery: []
-    },
-    {
-        id: "pong",
-        type: "game",
-
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353643/pong_vuun82.webp",
-
-        title: "Retro Pong Game",
-
-        subheading: "Two-Player Classic Arcade Game in Python",
-
-        tags: ["Game", "Python", "Retro"],
-
-        live: "False",
-        projectLink: "",
-
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Pong-Game",
-
-        sTags: [
-            "python game development",
-            "turtle graphics game",
-            "console based game python",
-            "retro arcade game project",
-            "two player game python",
-            "pong game implementation",
-            "game logic python project",
-            "collision detection game",
-            "interactive python project",
-            "classic game recreation"
-        ],
-
-        techUsed: ["Python", "Turtle Graphics"],
-
-        description: "Retro Pong Game is a classic two-player arcade game recreated using Python and the Turtle graphics library. Inspired by the original Pong, this project brings back the nostalgic gameplay experience with simple yet engaging mechanics where two players control paddles on either side to bounce a moving ball. The focus of the project is on recreating a timeless game using fundamental programming concepts and interactive graphics.",
-
-        uses: "This project demonstrates core game development logic including real-time movement, collision detection, score tracking, and user input handling. Players can control paddles using keyboard inputs, and the game dynamically responds to ball collisions with paddles and screen boundaries. It showcases how basic Python libraries like Turtle can be used to build fully interactive and enjoyable games.",
-
-        improvements: "This project captures the essence of classic arcade gaming by recreating Pong with clean logic and interactive controls. It emphasizes real-time gameplay mechanics, two-player interaction, and precise collision handling, delivering a nostalgic gaming experience using minimal yet effective Python-based graphics.",
-
-        gallery: []
-    },
-    {
-        id: "snake",
-        type: "game",
-
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353565/snake_v68xow.webp",
-
-        title: "Classic Snake Game",
-
-        subheading: "Console-Based Arcade Game in Python",
-
-        tags: ["Game", "Python", "Retro"],
-
-        live: "False",
-        projectLink: "",
-
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Snake-Game",
-
-        sTags: [
-            "python snake game",
-            "turtle graphics game",
-            "console based python project",
-            "arcade game python",
-            "snake game implementation",
-            "game logic python",
-            "collision detection game",
-            "interactive python project",
-            "classic game development",
-            "beginner game python"
-        ],
-
-        techUsed: ["Python", "Turtle Graphics"],
-
-        description: "Classic Snake Game is a console-based arcade game developed using Python and the Turtle graphics library, inspired by one of the most popular and timeless games ever created. This project recreates the nostalgic gameplay experience where the player controls a continuously moving snake that grows longer as it consumes food. With each successful move, the challenge increases, requiring better control and quicker decision-making. The primary goal of this project is to demonstrate how fundamental programming concepts can be used to build an engaging and interactive game from scratch.",
-
-        uses: "This project demonstrates essential game development principles such as real-time movement, event-driven user input handling, collision detection, and dynamic state updates. The snake responds instantly to keyboard controls, grows in size upon consuming food, and the game continuously checks for boundary collisions and self-collisions to determine failure conditions. It also incorporates a scoring mechanism that updates as the player progresses, showcasing how logic, loops, and condition handling work together to create a smooth and responsive gameplay experience.",
-
-        improvements: "This project effectively recreates one of the most iconic arcade games using fundamental programming concepts. It showcases dynamic game progression through snake growth, real-time movement, and strict rule enforcement, highlighting strong control over game logic and interactive system design.",
-
-        gallery: []
-    }
 ];
 
 export { proj };
