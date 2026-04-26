@@ -132,6 +132,79 @@ const proj = [
         ]
     },
     {
+        id: "bamboo-blogs",
+        type: null,
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360230/bamboo-blogs_a0bltm.webp",
+
+        title: "Bamboo Blogs",
+
+        subheading: "Multi-user blogging with creator access",
+
+        tags: ["Blog", "CMS", "Python"],
+
+        live: "True",
+        projectLink: "https://bamboo-blogs-sample.onrender.com/",
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Bamboo-Blogs-Sample",
+
+        sTags: [
+            // Recruiter Focus
+            "flask blog application",
+            "python web development project",
+            "postgresql database integration",
+            "sqlite to postgresql migration",
+            "crud blog system flask",
+            "user authentication flask app",
+            "multi user role system python",
+            "content management system flask",
+            "backend development python flask",
+            "blog platform with comments",
+            "database driven web app python",
+
+            // Client Focus
+            "build blog website",
+            "custom blogging platform",
+            "multi author blog system",
+            "content publishing website",
+            "blog website with admin panel",
+            "user generated content platform",
+            "website with login and posting",
+
+            // Features / USP
+            "blogger approval workflow",
+            "admin controlled publishing system",
+            "multi role blog platform",
+            "user to blogger conversion system",
+            "post edit delete functionality",
+            "secure blog storage database",
+            "comment system blog app",
+            "creator onboarding system"
+        ],
+
+        techUsed: ["Python", "Flask", "PostgreSQL", "SQLAlchemy", "HTML/CSS"],
+
+        description: "Bamboo Blogs is a multi-user blogging platform built using Python Flask, designed to go beyond traditional blog systems by introducing a structured creator workflow. Users can explore blogs, interact through comments, and apply to become content creators. Once approved by an admin, users gain the ability to create, edit, and manage their own blog posts. The platform uses PostgreSQL for reliable data storage and demonstrates a complete content management system with authentication, role-based access, and persistent data handling.",
+
+        uses: "This application serves as a foundation for building modern content publishing platforms where users can transition into creators. It enables reading, writing, and interacting with content in a structured environment while maintaining admin control over publishing rights. It is ideal for showcasing how user-generated content platforms operate, and demonstrates backend workflows like approval systems, role transitions, and database-driven content management.",
+
+        improvements: "Bamboo Blogs introduces a creator-focused blogging system with a unique approval workflow where users can apply to become bloggers and publish content upon admin approval. It supports content creation, editing, and commenting with secure database storage, enabling a structured and scalable multi-user publishing platform.",
+
+        gallery: [
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360219/1_snypzz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360211/2_zbyazy.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360219/3_tc1akk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360211/4_mpxhun.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360221/5_p9n9n4.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360221/6_skr3su.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360224/7_gxbnif.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360225/8_rlpybv.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360228/9_gi4cpz.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/10_umj7tr.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360217/11_lgbmb1.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/12_nicrpr.png"
+        ]
+    },
+    {
         id: "buzz",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774322992/buzz_e2ouzq.webp",
@@ -265,6 +338,65 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348726/shopsphere_5_fvg8tc.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774348726/shopsphere_6_cm5mas.png"
         ]
+    },
+    {
+        "id": "movie-ranking",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777185394/movie_ranking_mu7dkh.png",
+
+        "title": "CineRank",
+        "subheading": "Build, rate, and rank your personal movie universe",
+
+        "tags": ["Flask", "Movies", "CRUD"],
+
+        "live": "false",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "https://github.com/BadBoy-Github/SQLite-Flask-Movie-Search-Ranking",
+
+        "sTags": [
+            // Recruiter Focus
+            "flask crud application project",
+            "python movie database app",
+            "flask sqlalchemy project",
+            "api integration python project",
+            "movie ranking system python",
+            "full stack flask web app",
+            "sqlite database project python",
+            "server side rendering flask app",
+            "python web development project",
+            "dynamic ranking system application",
+
+            // Client Focus
+            "movie watchlist web app",
+            "personal movie tracker",
+            "rate and review movies website",
+            "custom movie library app",
+            "movie collection manager",
+            "film rating website",
+            "movie recommendation tracker",
+            "watchlist organizer website",
+
+            // Features / USP
+            "tmdb api integration project",
+            "auto ranking system based on rating",
+            "dynamic movie search api",
+            "real time movie data fetching",
+            "review and rating system",
+            "movie poster and metadata fetch",
+            "pagination flask project",
+            "error handling api requests"
+        ],
+
+        "techUsed": ["Python", "Flask", "SQLAlchemy", "SQLite", "WTForms", "Bootstrap", "TMDB API"],
+
+        "description": "CineRank is a dynamic movie ranking web application built using Flask that allows users to create and manage a personalized movie collection. Instead of manually entering movie details, the platform integrates with the TMDB API to fetch accurate and rich movie data including titles, descriptions, ratings, and posters. Users can simply search for a movie, select the desired result, and instantly add it to their collection with complete metadata. The application provides a seamless interface for rating and reviewing movies, making it a practical tool for maintaining a curated watchlist.",
+
+        "uses": "This application serves as a personalized movie management system where users can build their own ranked watchlist. It simplifies the process of tracking movies by automating data retrieval and allowing users to focus only on rating and reviewing. It is ideal for movie enthusiasts who want to maintain a structured and evolving collection. From a development perspective, it demonstrates real-world API integration, database management, and full CRUD operations in a clean and scalable manner.",
+
+        "improvements": "CineRank differentiates itself from typical CRUD-based movie apps by integrating live movie data from the TMDB API, eliminating the need for manual data entry and ensuring accuracy. The automatic ranking system dynamically updates positions based on user ratings, providing a more intelligent and responsive experience compared to static lists. Additionally, features like pagination, robust API error handling, and duplicate prevention enhance usability and reliability, making it closer to a production-ready application than basic demo projects.",
+
+        "gallery": []
     },
     {
         id: "student-course",
@@ -519,79 +651,6 @@ const proj = [
         ]
     },
     {
-        id: "bamboo-blogs",
-        type: null,
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360230/bamboo-blogs_a0bltm.webp",
-
-        title: "Bamboo Blogs",
-
-        subheading: "Multi-user blogging with creator access",
-
-        tags: ["Blog", "CMS", "Python"],
-
-        live: "True",
-        projectLink: "https://bamboo-blogs-sample.onrender.com/",
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Bamboo-Blogs-Sample",
-
-        sTags: [
-            // Recruiter Focus
-            "flask blog application",
-            "python web development project",
-            "postgresql database integration",
-            "sqlite to postgresql migration",
-            "crud blog system flask",
-            "user authentication flask app",
-            "multi user role system python",
-            "content management system flask",
-            "backend development python flask",
-            "blog platform with comments",
-            "database driven web app python",
-
-            // Client Focus
-            "build blog website",
-            "custom blogging platform",
-            "multi author blog system",
-            "content publishing website",
-            "blog website with admin panel",
-            "user generated content platform",
-            "website with login and posting",
-
-            // Features / USP
-            "blogger approval workflow",
-            "admin controlled publishing system",
-            "multi role blog platform",
-            "user to blogger conversion system",
-            "post edit delete functionality",
-            "secure blog storage database",
-            "comment system blog app",
-            "creator onboarding system"
-        ],
-
-        techUsed: ["Python", "Flask", "PostgreSQL", "SQLAlchemy", "HTML/CSS"],
-
-        description: "Bamboo Blogs is a multi-user blogging platform built using Python Flask, designed to go beyond traditional blog systems by introducing a structured creator workflow. Users can explore blogs, interact through comments, and apply to become content creators. Once approved by an admin, users gain the ability to create, edit, and manage their own blog posts. The platform uses PostgreSQL for reliable data storage and demonstrates a complete content management system with authentication, role-based access, and persistent data handling.",
-
-        uses: "This application serves as a foundation for building modern content publishing platforms where users can transition into creators. It enables reading, writing, and interacting with content in a structured environment while maintaining admin control over publishing rights. It is ideal for showcasing how user-generated content platforms operate, and demonstrates backend workflows like approval systems, role transitions, and database-driven content management.",
-
-        improvements: "Bamboo Blogs introduces a creator-focused blogging system with a unique approval workflow where users can apply to become bloggers and publish content upon admin approval. It supports content creation, editing, and commenting with secure database storage, enabling a structured and scalable multi-user publishing platform.",
-
-        gallery: [
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360219/1_snypzz.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360211/2_zbyazy.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360219/3_tc1akk.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360211/4_mpxhun.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360221/5_p9n9n4.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360221/6_skr3su.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360224/7_gxbnif.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360225/8_rlpybv.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360228/9_gi4cpz.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/10_umj7tr.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360217/11_lgbmb1.png",
-            "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360209/12_nicrpr.png"
-        ]
-    },
-    {
         id: "user-order-system",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1776011671/user_order_iwuhzz.png",
@@ -704,6 +763,120 @@ const proj = [
         improvements: "The project goes beyond basic CRUD functionality by incorporating structured entity relationships and transaction-aware operations. It ensures data integrity between orders and payments, supports scalable backend logic, and demonstrates how real-world ecommerce systems manage linked transactional data. The implementation highlights best practices in ORM, database normalization, and backend system design.",
 
         gallery: []
+    },
+    {
+        "id": "insta-bot",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777186392/insta_bot_tvv8pv.png",
+
+        "title": "InstaFlow Bot",
+        "subheading": "Automate follower discovery and engagement workflows",
+
+        "tags": ["Automation", "Selenium", "Bot"],
+
+        "live": "False",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "https://github.com/BadBoy-Github/Insta-Follower-Bot",
+
+        "sTags": [
+            // Recruiter Focus
+            "selenium automation python project",
+            "web automation bot python",
+            "browser automation selenium project",
+            "python scripting automation",
+            "real world selenium use case",
+            "automation testing concepts python",
+            "dynamic web scraping selenium",
+            "python dotenv environment variables",
+            "secure credential handling python",
+            "automation workflow design project",
+
+            // Client Focus
+            "instagram automation tool",
+            "social media automation bot",
+            "automate repetitive browser tasks",
+            "auto login and interaction system",
+            "task automation software python",
+            "social engagement automation tool",
+
+            // Features / USP
+            "instagram login automation",
+            "auto follower interaction system",
+            "random delay bot detection avoidance",
+            "scroll based dynamic loading automation",
+            "xpath based element targeting",
+            "exception handling selenium bot",
+            "secure credentials using dotenv",
+            "controlled follow limit system"
+        ],
+
+        "techUsed": ["Python", "Selenium", "ChromeDriver", "dotenv", "OS", "Random", "Time"],
+
+        "description": "InstaFlow Bot is a browser automation project built using Selenium that simulates user interactions on Instagram to automate repetitive tasks. The bot logs into an account securely using environment variables, navigates to a target profile, and dynamically loads followers using scroll-based interaction. It intelligently identifies and interacts with follow buttons, replicating real user behavior through controlled delays and randomized actions. The project demonstrates how automation scripts can interact with modern dynamic web applications using DOM manipulation and event simulation.",
+
+        "uses": "This project serves as a practical demonstration of browser automation for handling repetitive tasks such as navigation, login workflows, and user interactions. It highlights how Selenium can be used to automate real-world web processes including scrolling, button interaction, and dynamic content handling. From a developer perspective, it showcases skills in automation logic, exception handling, and secure credential management using environment variables.",
+
+        "improvements": "InstaFlow Bot goes beyond basic automation scripts by incorporating randomized delays and scroll-based interaction to mimic human behavior, making the automation flow more adaptive compared to static bots. It also integrates secure credential handling using dotenv, avoiding hardcoded sensitive data. The inclusion of exception handling for dynamic elements and controlled action limits adds robustness and stability, positioning it as a more refined and realistic automation workflow compared to simple Selenium demos.",
+
+        "gallery": []
+    },
+    {
+        "id": "linkedin-auto-apply",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777187271/linkedin_auto_apply_e8grqy.png",
+
+        "title": "ApplyFlow",
+        "subheading": "Automate and streamline job application workflows",
+
+        "tags": ["Automation", "Selenium", "Jobs"],
+
+        "live": "False",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "http://github.com/BadBoy-Github/LinkedIn-Automatic-Job-Application",
+
+        "sTags": [
+            // Recruiter Focus
+            "selenium automation python project",
+            "linkedin automation bot python",
+            "browser automation workflow",
+            "python web automation script",
+            "real world automation project selenium",
+            "form automation selenium python",
+            "xpath automation project",
+            "secure login automation python",
+            "task automation using python",
+            "automation testing concepts selenium",
+
+            // Client Focus
+            "job application automation tool",
+            "auto apply jobs linkedin",
+            "streamline job application process",
+            "automated form filling system",
+            "job search productivity tool",
+            "career workflow automation tool",
+
+            // Features / USP
+            "linkedin login automation",
+            "easy apply workflow automation",
+            "multi step form automation",
+            "user assisted checkpoints system",
+            "secure credentials using dotenv",
+            "dynamic element interaction selenium",
+            "guided submission flow",
+            "step by step automation execution"
+        ],
+
+        "techUsed": ["Python", "Selenium", "ChromeDriver", "dotenv", "OS", "Time"],
+
+        "description": "ApplyFlow is a browser automation project built using Selenium that streamlines the job application process on LinkedIn. The system automates login, navigates through job listings, and interacts with the Easy Apply workflow by simulating real user actions. It handles multi-step form submissions, allowing users to review and confirm details at key checkpoints before proceeding. By combining automation with controlled user interaction, the project demonstrates how repetitive workflows can be optimized without completely removing human oversight.",
+
+        "uses": "This project serves as a productivity tool for simplifying repetitive job application steps, reducing manual effort in navigating forms and submission workflows. It showcases how browser automation can be used for real-world scenarios like form handling, authentication flows, and step-based navigation. From a development perspective, it highlights skills in DOM interaction, XPath targeting, and automation of multi-step user interfaces.",
+
+        "improvements": "ApplyFlow stands out from basic automation scripts by incorporating guided checkpoints where users can verify details before submission, making it more reliable than fully blind automation bots. The structured step-by-step workflow handling of multi-page forms improves stability compared to simple click-based scripts. Additionally, secure credential management using dotenv and precise element targeting enhance robustness, making it a more practical and controlled automation solution.",
+
+        "gallery": []
     },
     {
         id: "tic-tac-toe",
@@ -830,6 +1003,64 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543054/5_upbuih.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1775543062/6_x7ppeg.png"
         ]
+    },
+    {
+        "id": "data-entry-automation",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777191890/data_entry_automation_cnpiir.png",
+
+        "title": "DataFlow Automator",
+        "subheading": "Scrape, process, and auto-fill data pipelines effortlessly",
+
+        "tags": ["Automation", "Scraping", "Data"],
+
+        "live": "False",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "https://github.com/BadBoy-Github/Data-Entry-Automation-Bot",
+
+        "sTags": [
+            // Recruiter Focus
+            "python web scraping project",
+            "beautifulsoup scraping python",
+            "selenium automation project",
+            "data pipeline automation python",
+            "web scraping and automation integration",
+            "real world scraping project",
+            "form automation selenium python",
+            "data cleaning python project",
+            "requests and bs4 integration",
+            "end to end automation workflow",
+
+            // Client Focus
+            "automated data entry system",
+            "scrape and store data automatically",
+            "google form automation tool",
+            "data collection automation software",
+            "real estate data scraper",
+            "automated data pipeline solution",
+            "bulk form submission automation",
+
+            // Features / USP
+            "zillow clone scraping project",
+            "address price link extraction",
+            "data cleaning and preprocessing",
+            "google form auto submission",
+            "structured data pipeline workflow",
+            "loop based bulk submission",
+            "selenium form automation",
+            "multi source integration python"
+        ],
+
+        "techUsed": ["Python", "BeautifulSoup", "Selenium", "Requests", "dotenv", "OS", "Time"],
+
+        "description": "DataFlow Automator is an end-to-end data automation project that combines web scraping and browser automation to create a seamless data pipeline. The system extracts property data such as addresses, prices, and links from a Zillow-like website using BeautifulSoup and Requests. It then processes and cleans the data before automatically submitting it into a Google Form using Selenium, effectively storing the information in a structured format. This project demonstrates how multiple tools can be integrated to transform raw web data into organized datasets without manual intervention.",
+
+        "uses": "This project serves as a practical automation pipeline for collecting, processing, and storing structured data from web sources. It is useful for scenarios like market research, property tracking, and bulk data entry tasks. From a development perspective, it highlights the ability to combine scraping, data cleaning, and browser automation into a unified workflow, reducing manual effort and improving efficiency.",
+
+        "improvements": "DataFlow Automator goes beyond basic scraping scripts by integrating a complete pipeline that not only extracts data but also processes and stores it automatically. The inclusion of data cleaning logic ensures consistency compared to raw scraping outputs, while the automated form submission bridges the gap between data collection and storage. This multi-step workflow, combining BeautifulSoup for extraction and Selenium for interaction, makes it more robust and practical than isolated scraping or automation projects.",
+
+        "gallery": []
     },
     {
         id: "timer",
@@ -1005,6 +1236,63 @@ const proj = [
         ]
     },
     {
+        "id": "amazon-price-tracker",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777193020/amazon_price_tracker_fzwzwn.png",
+
+        "title": "PricePulse",
+        "subheading": "Track price drops and get instant deal alerts",
+
+        "tags": ["Automation", "Scraping", "Alerts"],
+
+        "live": "False",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "https://github.com/BadBoy-Github/Amazon-Price-Tracker",
+
+        "sTags": [
+            // Recruiter Focus
+            "python web scraping project",
+            "amazon price tracker python",
+            "beautifulsoup scraping automation",
+            "requests session handling python",
+            "email automation python project",
+            "real world scraping application",
+            "anti bot scraping techniques",
+            "python smtp email automation",
+            "data extraction and alert system",
+            "automation pipeline python",
+
+            // Client Focus
+            "price tracking tool online shopping",
+            "get notified price drops amazon",
+            "deal alert automation system",
+            "product price monitoring tool",
+            "shopping alert software",
+            "discount tracking system",
+
+            // Features / USP
+            "multi selector price extraction",
+            "anti bot detection handling",
+            "random user agent rotation",
+            "email alert system smtp",
+            "target price trigger system",
+            "session based request handling",
+            "robust error handling scraping",
+            "console based monitoring tool"
+        ],
+
+        "techUsed": ["Python", "BeautifulSoup", "Requests", "SMTP", "dotenv", "OS", "Time", "Random"],
+
+        "description": "PricePulse is a console-based price tracking application that monitors product prices on Amazon and notifies users when a desired price threshold is reached. Built using BeautifulSoup and Requests, the system intelligently scrapes product data while handling anti-bot mechanisms through user-agent rotation and session management. It continuously checks the product price and triggers an email alert using SMTP when the price drops below the target value. Designed for reliability, the application includes multiple fallback selectors and robust error handling to ensure consistent performance.",
+
+        "uses": "This project serves as a practical tool for tracking price fluctuations of online products and ensuring users never miss a good deal. It automates the process of checking prices manually and provides instant notifications when conditions are met. From a development perspective, it demonstrates how to build an end-to-end automation pipeline involving data extraction, processing, and real-time alerting.",
+
+        "improvements": "PricePulse stands out from basic scraping scripts by incorporating anti-detection strategies such as user-agent rotation and randomized request timing, making it more resilient against blocking. The use of multiple fallback selectors ensures reliable data extraction even when page structures change. Additionally, the integration of an automated email alert system transforms it from a simple scraper into a complete monitoring solution, offering real-world usability beyond typical demo projects.",
+
+        "gallery": []
+    },
+    {
         id: "rider",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364565/rider_z8bakw.webp",
@@ -1066,6 +1354,62 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364571/5_wspv4m.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774364574/6_bo5ljv.png "
         ]
+    },
+    {
+        "id": "quote-scroll-bot",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777192313/quote_scroll_bot_jy0wzg.png",
+
+        "title": "ScrollSense Bot",
+        "subheading": "Automate intelligent scrolling across paginated content",
+
+        "tags": ["Automation", "Selenium", "Scraping"],
+
+        "live": "False",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "http://github.com/BadBoy-Github/Quotes-Scrolling-Automation",
+
+        "sTags": [
+            // Recruiter Focus
+            "selenium automation python project",
+            "pagination handling selenium",
+            "scroll automation python",
+            "dynamic page navigation selenium",
+            "web automation workflow python",
+            "browser automation scrolling logic",
+            "recursive automation python",
+            "xpath element handling selenium",
+            "login automation python project",
+            "real world selenium use case",
+
+            // Client Focus
+            "automated content browsing tool",
+            "scroll and navigate websites automatically",
+            "automated reading assistant bot",
+            "pagination automation tool",
+            "content extraction automation system",
+
+            // Features / USP
+            "auto login functionality",
+            "smooth scrolling automation",
+            "dynamic page height detection",
+            "recursive next page navigation",
+            "end of page detection logic",
+            "multi page automation workflow",
+            "controlled scroll speed simulation",
+            "exception handling selenium"
+        ],
+
+        "techUsed": ["Python", "Selenium", "ChromeDriver", "dotenv", "OS", "Time"],
+
+        "description": "ScrollSense Bot is a Selenium-based automation project designed to simulate intelligent browsing behavior across paginated web content. The bot logs into a website, performs user actions, and gradually scrolls through the page while dynamically detecting content height. Once it reaches the end, it automatically navigates to the next page and continues the process recursively. Built on the Quotes to Scrape platform, the project demonstrates how automation scripts can handle both scrolling and pagination seamlessly in real-world web environments.",
+
+        "uses": "This project serves as a demonstration of advanced browser automation techniques such as scrolling, pagination handling, and session-based navigation. It can be applied to automate content browsing, data collection, or repetitive navigation tasks across multi-page websites. From a development perspective, it highlights how to build automation flows that mimic real user behavior while handling dynamic page structures.",
+
+        "improvements": "ScrollSense Bot improves upon basic automation scripts by combining smooth scrolling with recursive pagination handling, creating a continuous browsing experience rather than isolated page interactions. The dynamic page height detection ensures adaptability across different content lengths, while the structured navigation logic makes it more robust than simple scroll or click-based bots. This integration of scrolling intelligence with multi-page traversal sets it apart from standard Selenium automation examples.",
+
+        "gallery": []
     },
     {
         id: "weather-app",
@@ -2012,6 +2356,47 @@ const proj = [
         ]
     },
     {
+        id: "internet-reporter",
+        type: "automation",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353769/internet-reporter_zcitsf.webp",
+
+        title: "Internet Speed Complaint Bot",
+
+        subheading: "Console-Based Network Monitoring & Automation Tool",
+
+        tags: ["Automation", "Python", "Selenium"],
+
+        live: "False",
+        projectLink: "",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/Twitter-Complaint-Automation",
+
+        sTags: [
+            "python automation project",
+            "selenium automation bot",
+            "console based python project",
+            "real world automation python",
+            "browser automation selenium",
+            "internet speed testing automation",
+            "twitter automation bot",
+            "conditional logic automation",
+            "task automation python",
+            "backend automation script"
+        ],
+
+        techUsed: ["Python", "Selenium", "Speedtest"],
+
+        description: "A console-based automation tool built with Python and Selenium that monitors internet speed and automatically raises complaints when the service does not meet promised performance.",
+
+        uses: "The application runs in the console, checks real-time download and upload speeds, compares them with user-defined expected values, and if the speed is below the promised level, it automatically logs into Twitter and posts a complaint tagging the network provider.",
+
+        improvements: "This project stands out by combining real-time data monitoring with automated decision-making and action execution. It uniquely bridges the gap between data validation and user advocacy by directly raising complaints on behalf of the user. The integration of speed testing, conditional logic, and browser automation into a single workflow makes it a powerful real-world automation solution.",
+
+        gallery: []
+    },
+    {
         id: "crud-app",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774356103/crud-app-json_vmc54b.webp",
@@ -2375,47 +2760,6 @@ const proj = [
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354215/5_dcx5s8.png",
             "https://res.cloudinary.com/dz53e3szr/image/upload/v1774354218/6_udsyqe.png"
         ]
-    },
-    {
-        id: "internet-reporter",
-        type: "automation",
-
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774353769/internet-reporter_zcitsf.webp",
-
-        title: "Internet Speed Complaint Bot",
-
-        subheading: "Console-Based Network Monitoring & Automation Tool",
-
-        tags: ["Automation", "Python", "Selenium"],
-
-        live: "False",
-        projectLink: "",
-
-        code: "True",
-        gitUrl: "https://github.com/BadBoy-Github/Twitter-Complaint-Automation",
-
-        sTags: [
-            "python automation project",
-            "selenium automation bot",
-            "console based python project",
-            "real world automation python",
-            "browser automation selenium",
-            "internet speed testing automation",
-            "twitter automation bot",
-            "conditional logic automation",
-            "task automation python",
-            "backend automation script"
-        ],
-
-        techUsed: ["Python", "Selenium", "Speedtest"],
-
-        description: "A console-based automation tool built with Python and Selenium that monitors internet speed and automatically raises complaints when the service does not meet promised performance.",
-
-        uses: "The application runs in the console, checks real-time download and upload speeds, compares them with user-defined expected values, and if the speed is below the promised level, it automatically logs into Twitter and posts a complaint tagging the network provider.",
-
-        improvements: "This project stands out by combining real-time data monitoring with automated decision-making and action execution. It uniquely bridges the gap between data validation and user advocacy by directly raising complaints on behalf of the user. The integration of speed testing, conditional logic, and browser automation into a single workflow makes it a powerful real-world automation solution.",
-
-        gallery: []
     },
     {
         id: "ionps",
