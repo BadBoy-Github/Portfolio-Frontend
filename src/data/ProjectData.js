@@ -977,6 +977,90 @@ const proj = [
         "gallery": []
     },
     {
+        id: "college-sms",
+        type: "fullstack",
+
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305973/clgstdms_kr96qj.png",
+
+        title: "College Student Management System",
+
+        subheading: "Fullstack Web App for Managing Students, Academics & Documentation",
+
+        tags: ["Fullstack", "Web App", "Management"],
+
+        live: "True",
+        projectLink: "https://college-student-management-system-f.vercel.app/",
+
+        code: "True",
+        gitUrl: "https://github.com/BadBoy-Github/College-Student-Management-System-frontend",
+
+        sTags: [
+            // Recruiter Focus
+            "fullstack web application project",
+            "mern stack project student management",
+            "react node mongodb project",
+            "backend api development nodejs",
+            "role based authentication jwt project",
+            "crud operations fullstack project",
+            "database driven web application",
+            "admin dashboard system project",
+            "real world management system",
+            "secure authentication system bcrypt",
+
+            // Client / General
+            "college management system",
+            "student management web app",
+            "academic tracking system",
+            "student records management",
+            "education management software",
+
+            // Features / USP
+            "ai made",
+            "role based access admin teacher",
+            "student marks tracking system",
+            "fees management system",
+            "document generation system",
+            "certificate and transcript generator",
+            "data visualization dashboard recharts",
+            "secure login authentication",
+            "mongodb database integration",
+            "api driven architecture",
+            "modern react frontend vite"
+        ],
+
+        techUsed: [
+            "React",
+            "Vite",
+            "React Router DOM",
+            "Axios",
+            "Recharts",
+            "React Icons",
+            "CSS",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Mongoose",
+            "JWT",
+            "bcryptjs",
+            "express-validator"
+        ],
+
+        description: "College Student Management System is a fullstack MERN-based web application designed to manage student records, academic performance, fee tracking, and official document generation. It replaces traditional manual processes with a centralized digital platform for educational institutions.",
+
+        uses: "This project demonstrates fullstack development using React for frontend and Node.js with Express for backend, along with MongoDB for database management. It includes role-based authentication using JWT, secure password handling with bcrypt, REST API integration, and data visualization using Recharts.",
+
+        improvements: "This system enables efficient management of students, marks, and fees with role-based access for admins and teachers. It supports document generation such as certificates and transcripts, integrates secure authentication, and provides a scalable architecture that can be extended with features like notifications, analytics, and multi-institution support.",
+
+        gallery: [
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305969/1_ilrfij.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305969/2_rsy7gi.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305970/3_d4ko64.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305969/4_y9zetw.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305969/5_qtzxmd.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777305970/6_nfsvjh.png"
+        ]
+    },
+    {
         id: "tic-tac-toe",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360959/tic-tac-toe_baiunc.webp",
