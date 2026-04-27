@@ -31,7 +31,7 @@ const LandingPage = () => {
         />
         <meta
           name="keywords"
-          content="frontend developer, web developer, React, JavaScript, portfolio, Tailwind CSS, designer, Madurai"
+          content="elayabarathi, elayabarathimv, elayabarathi m v, frontend developer, web developer, React, JavaScript, portfolio, Tailwind CSS, designer, Madurai"
         />
         <meta
           property="og:title"

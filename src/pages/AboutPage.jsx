@@ -25,7 +25,7 @@ const AboutPage = () => {
         />
         <meta
           name="keywords"
-          content="about, about me, frontend developer, experience, education, skills, Elayabarathi"
+          content="about, about me, frontend developer, experience, education, skills, elayabarathi, elayabarathimv, elayabarathi m v"
         />
         <meta property="og:title" content="About Me | Elayabarathi M V" />
         <meta

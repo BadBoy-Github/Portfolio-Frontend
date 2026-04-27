@@ -16,6 +16,11 @@ const proj = [
         gitUrl: "https://github.com/BadBoy-Github/Portfolio",
 
         sTags: [
+            // Name Keywords
+            "elayabarathi",
+            "elayabarathimv",
+            "elayabarathi m v",
+
             // Recruiter
             "frontend developer portfolio",
             "react developer portfolio",
