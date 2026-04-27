@@ -25,7 +25,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 import ErrorBoundary from "./components/ErrorBoundary";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CustomCursor from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
@@ -191,7 +190,6 @@ const App = () => {
     <ErrorBoundary>
       <ReactLenis root options={{ scroll: { smoothing: 0.05 } }}>
         <HelmetProvider>
-          <CustomCursor />
           <Router>
             <AppContent />
           </Router>

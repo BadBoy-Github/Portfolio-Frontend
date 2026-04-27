@@ -3,79 +3,77 @@
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-    <!-- Main Homepage - Primary Target for "elayabarathi" and "elayabarathi portfolio" -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-        <image:image>
-            <image:loc>https://elayabarathimv.vercel.app/icon.webp</image:loc>
-            <image:title>Elayabarathi M V Portfolio - elayabarathi.m.v</image:title>
-        </image:image>
-    </url>
+     <!-- Main Homepage - Primary Target for "elayabarathi" and "elayabarathi portfolio" -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>daily</changefreq>
+         <priority>1.0</priority>
+         <image:image>
+             <image:loc>https://elayabarathimv.vercel.app/icon.webp</image:loc>
+             <image:title>Elayabarathi M V Portfolio - elayabarathi.m.v</image:title>
+         </image:image>
+     </url>
 
-    <!-- About Page - Target for "elayabarathi m v" -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/about</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+     <!-- About Page - Target for "elayabarathi m v" -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/about</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>weekly</changefreq>
+         <priority>0.9</priority>
+     </url>
 
-    <!-- Projects Library - Important for SEO -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/projects</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+     <!-- Projects Library - Important for SEO -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/projects</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>weekly</changefreq>
+         <priority>0.9</priority>
+     </url>
 
+     <!-- Certificates Library -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/certificates</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>weekly</changefreq>
+         <priority>0.8</priority>
+     </url>
 
+     <!-- Achievements Library -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/achievements</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>weekly</changefreq>
+         <priority>0.8</priority>
+     </url>
 
-    <!-- Certificates Library -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/certificates</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+     <!-- Blogs Library -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/blogs</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>weekly</changefreq>
+         <priority>0.8</priority>
+     </url>
 
-    <!-- Achievements Library -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/achievements</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+     <!-- Individual Blog Pages -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/blog/portfolio-journey</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>monthly</changefreq>
+         <priority>0.7</priority>
+     </url>
+     <url>
+         <loc>https://elayabarathimv.vercel.app/blog/card-vault-journey</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>monthly</changefreq>
+         <priority>0.7</priority>
+     </url>
 
-    <!-- Blogs Library -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/blogs</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- Individual Blog Pages -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/blog/portfolio-journey</loc>
-        <lastmod>2026-03-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://elayabarathimv.vercel.app/blog/card-vault-journey</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <!-- Resume -->
-    <url>
-        <loc>https://elayabarathimv.vercel.app/resume.pdf</loc>
-        <lastmod>2026-04-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
+     <!-- Resume -->
+     <url>
+         <loc>https://elayabarathimv.vercel.app/resume.pdf</loc>
+         <lastmod>2026-04-27</lastmod>
+         <changefreq>monthly</changefreq>
+         <priority>0.9</priority>
+     </url>
 </urlset>

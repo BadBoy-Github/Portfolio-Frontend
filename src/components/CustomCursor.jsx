@@ -21,36 +21,35 @@ const CustomCursor = () => {
 
     if (!isDesktop()) return;
 
-     // Keep default cursor visible - removed cursor hiding rules
-     // The custom cursor will be visible alongside the default cursor
+    // Hide default cursor
+    document.body.style.cursor = "none";
+    document.documentElement.style.cursor = "none";
 
      // Removed particle trail - no trailing circles
      const TRAIL_LENGTH = 0;
      const trailRefs = [];
 
-    // Main cursor - ring with center dot (futuristic style)
+    // Main cursor - center dot only (white)
     const mainCursor = document.createElement("div");
     mainCursor.className = "fixed pointer-events-none z-[9999]";
     mainCursor.style.cssText =
       "width: 24px; height: 24px; left: -100px; top: -100px;";
     mainCursor.innerHTML = `
       <div class="relative w-6 h-6">
-        <div class="absolute inset-0 rounded-full border-2 border-violet-400 shadow-[0_0_10px_rgba(167,139,250,0.8),0_0_20px_rgba(167,139,250,0.4)]"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#38bdf8] rounded-full shadow-[0_0_8px_rgba(34,211,238,0.9)]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.9)]"></div>
       </div>
     `;
     document.body.appendChild(mainCursor);
 
-    // Hover cursor - larger expanding ring for interactive elements
+    // Hover cursor - dot with small pulsing gradient background
     const hoverCursor = document.createElement("div");
     hoverCursor.className = "fixed pointer-events-none z-[9999]";
     hoverCursor.style.cssText =
       "left: -100px; top: -100px; opacity: 0; transition: opacity 0.2s, transform 0.2s;";
     hoverCursor.innerHTML = `
-      <div class="relative w-16 h-16">
-        <div class="absolute inset-0 rounded-full border-2 border-fuchsia-400 animate-ping" style="animation-duration: 1.5s; opacity: 0.6;"></div>
-        <div class="absolute inset-1 rounded-full border-2 border-violet-300 shadow-[0_0_15px_rgba(167,139,250,0.8),0_0_30px_rgba(167,139,250,0.4)]"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#38bdf8] rounded-full shadow-[0_0_10px_rgba(34,211,238,1)]"></div>
+      <div class="relative w-4 h-4">
+        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 animate-ping opacity-50"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-50 shadow-[0_0_12px_rgba(255,255,255,0.5)]"></div>
       </div>
     `;
     document.body.appendChild(hoverCursor);
@@ -97,8 +96,8 @@ const CustomCursor = () => {
 
       mainCursor.style.left = currentX + "px";
       mainCursor.style.top = currentY + "px";
-      hoverCursor.style.left = currentX - 32 + "px";
-      hoverCursor.style.top = currentY - 32 + "px";
+      hoverCursor.style.left = currentX - 8 + "px";
+      hoverCursor.style.top = currentY - 8 + "px";
       hoverCursor.style.transform = isHovering ? "scale(1.2)" : "scale(1)";
 
       // Trail with smooth delay and slight scatter effect
