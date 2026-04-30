@@ -345,6 +345,64 @@ const proj = [
         ]
     },
     {
+        "id": "country-info",
+        "type": null,
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777539565/country_info_orkusa.png",
+
+        "title": "Country Info Manager",
+
+        "subheading": "JPA & Hibernate based country-state-capital system",
+
+        "tags": ["Java", "JPA", "Hibernate"],
+
+        "live": "False",
+        "projectLink": "",
+        "code": "True",
+        "gitUrl": "https://github.com/BadBoy-Github/country-info",
+
+        "sTags": [
+            // Recruiter Focus
+            "jpa hibernate project java",
+            "one to many mapping hibernate",
+            "one to one mapping jpa",
+            "entity relationship java project",
+            "country state capital database system",
+            "hibernate crud operations project",
+            "java backend console application",
+            "entity manager jpa example",
+            "relational mapping hibernate project",
+            "menu driven java project",
+
+            // Client Focus
+            "country information management system",
+            "geographical data management app",
+            "country state capital tracking system",
+            "data management console application",
+            "backend system for location data",
+            "hierarchical data management system",
+
+            // Features / USP
+            "country state capital relationship mapping",
+            "one to many and one to one relationships",
+            "menu driven console interface",
+            "dynamic data retrieval by id",
+            "population tracking system",
+            "bidirectional entity mapping",
+            "separate dao layer architecture",
+            "database persistence using jpa"
+        ],
+
+        "techUsed": ["Java", "JPA", "Hibernate", "MySQL"],
+
+        "description": "Country Info Manager is a backend-focused Java application built using JPA and Hibernate to manage hierarchical geographical data including countries, states, and capitals. The system models real-world relationships where a country can have multiple states (one-to-many) and each country or state can have a capital (one-to-one). It provides a menu-driven console interface to perform operations such as adding records, retrieving details by ID, viewing all entries, and checking population data. The project demonstrates strong understanding of ORM concepts, entity relationships, and database persistence using Hibernate.",
+
+        "uses": "This application serves as a practical example of managing hierarchical and relational data in backend systems. It can be used as a foundation for applications dealing with geographical information, administrative data systems, or structured datasets involving parent-child relationships. For developers, it showcases how to implement entity relationships, DAO design patterns, and transaction handling using JPA and Hibernate.",
+
+        "improvements": "The project effectively demonstrates one-to-many and one-to-one relationship mapping using JPA with a structured DAO layer and menu-driven interaction. It supports CRUD operations and population tracking across entities, ensuring proper relational mapping and data consistency. Future improvements could include adding a REST API layer, frontend UI, validation mechanisms, and deploying it as a full-stack application.",
+
+        "gallery": []
+    },
+    {
         "id": "movie-ranking",
         "type": null,
         "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777185394/movie_ranking_mu7dkh.png",
