@@ -137,6 +137,81 @@ const proj = [
         ]
     },
     {
+        "id": "test-hive",
+        "type": "utility",
+        "imgSrc": "https://res.cloudinary.com/dz53e3szr/image/upload/v1777821220/test_hive_mxhkqc.png",
+
+        "title": "Test Hive",
+
+        "subheading": "Smart exam platform with analytics, anti-cheat & AI-assisted development",
+
+        "tags": ["EdTech", "FullStack", "ExamPlatform", "AI-Assisted"],
+
+        "live": "True",
+        "projectLink": "https://test-hive-frontend.vercel.app/",
+        "code": "True",
+        "gitUrl": "https://github.com/BadBoy-Github/Test-Hive-Frontend",
+
+        "sTags": [
+            "ai assisted development project",
+            "modern developer productivity using ai",
+            "full stack exam platform project",
+            "mern online test system",
+            "react exam application",
+            "node js exam backend",
+            "mongodb test platform database",
+            "jwt authentication system",
+            "role based access control project",
+            "admin dashboard analytics system",
+            "online assessment platform",
+            "coding test platform project",
+            "exam management system full stack",
+            "secure test taking application",
+
+            "online exam platform",
+            "build test taking website",
+            "student assessment system",
+            "mock test platform",
+            "coding interview test platform",
+            "exam portal with leaderboard",
+            "online quiz and test website",
+            "student performance tracking system",
+            "learning and assessment platform",
+
+            "study streak gamification system",
+            "anti cheating tab detection",
+            "multiple question types exam",
+            "coding question support platform",
+            "advanced test configuration system",
+            "leaderboard ranking system",
+            "real time timer exam interface",
+            "confetti completion animation",
+            "analytics dashboard exam platform",
+            "auto submit test system",
+            "question randomization system",
+            "negative marking system"
+        ],
+
+        "techUsed": ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Framer Motion"],
+
+        "description": "Test Hive is a full-stack examination platform designed to deliver a complete and modern online assessment experience. Built using the MERN stack with advanced frontend enhancements, the platform allows students to take interactive tests with real-time timers, question navigation, and detailed result analysis. The project was developed using an AI-assisted workflow, where AI tools were leveraged to accelerate development, improve debugging efficiency, and enhance overall productivity while maintaining full control over system design and implementation.",
+
+        "uses": "This platform serves as a comprehensive solution for conducting online exams, mock tests, and coding assessments. Students can practice regularly, track their performance, and improve consistency through study streak tracking. Admins can create and manage tests, monitor student performance, and gain insights through analytics dashboards. It also demonstrates how AI-assisted development can be effectively used in building scalable real-world applications.",
+
+        "improvements": "Test Hive stands out with advanced features like study streak gamification that visually tracks daily consistency, along with a built-in anti-cheating system that detects tab switching during exams. It supports flexible question formats including coding challenges, enabling technical assessments beyond standard quizzes. The project also highlights AI-assisted development, showcasing modern development practices where AI is used to accelerate problem-solving and implementation. Combined with granular test controls, rich analytics, and polished UI interactions, the platform goes beyond basic quiz apps into a near enterprise-level assessment system.",
+
+        "gallery": [
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816736/1_obzcmk.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816736/2_zqqwsh.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816736/3_xsl7wo.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816737/4_qk5u01.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816737/5_wtxyrs.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816737/6_xzc69a.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816738/7_cszlm9.png",
+            "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816740/8_naqzwn.png"
+        ]
+    },
+    {
         id: "bamboo-blogs",
         type: null,
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774360230/bamboo-blogs_a0bltm.webp",
