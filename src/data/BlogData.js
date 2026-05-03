@@ -187,7 +187,88 @@ const blogs = [
 
         <p>If you haven’t explored it yet, now’s the time. Pick a card. Any card.</p>
     `
-    }
+    },
+    // {
+    //     id: "test-hive-journey",
+    //     title: "Test Hive: Building a Smart Exam Platform with Real-Time Intelligence",
+    //     subtitle: "From simple quizzes to a full-scale proctored assessment system",
+    //     date: "2026-05-03",
+    //     readTime: "42 min read",
+    //     tags: ["EdTech", "Full Stack", "MERN", "Exam Platform", "Analytics"],
+    //     link: "https://test-hive-frontend.vercel.app/",
+    //     imageSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1777816742/test_hive_jxqm1j.png",
+    //     content: `
+    //     <p>Test Hive is not just another quiz application—it's a fully engineered online examination platform designed to simulate real-world testing environments with intelligence, security, and scalability at its core. This project represents my journey of building a system that goes beyond basic MCQs and evolves into a powerful assessment platform with analytics, anti-cheating mechanisms, and gamification.</p>
+
+    //     <p>A unique aspect of this project is its development approach. Test Hive was built using a combination of my problem-solving skills and AI-assisted development, where AI tools were used to accelerate implementation, debug complex issues, and optimize workflows. This reflects a modern development mindset—leveraging AI as a productivity partner while maintaining full control over architecture and logic.</p>
+
+    //     <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1777816736/1_obzcmk.png" alt="Test Hive Dashboard" class="blog-image" />
+
+    //     <h2>The Idea Behind Test Hive</h2>
+    //     <p>The idea for Test Hive came from observing the limitations of existing online test platforms. Most systems focus only on delivering questions and calculating scores, but they lack engagement, security, and deep insights. I wanted to build something more—an intelligent system that not only evaluates users but also motivates them to improve consistently.</p>
+
+    //     <p>The vision was to create a platform where students can practice, track progress, and compete, while admins can control and analyze everything with precision. This required combining multiple concepts like real-time interaction, role-based access, and data-driven insights into a single cohesive system.</p>
+
+    //     <h2>Technology Stack & Architecture</h2>
+    //     <p>Test Hive is built using the MERN stack, ensuring a seamless connection between frontend and backend systems. React powers the frontend with dynamic UI updates, while Node.js and Express handle the backend logic and API structure. MongoDB serves as the database, providing flexible and scalable data storage.</p>
+
+    //     <p>The frontend is enhanced with Tailwind CSS and Framer Motion, creating smooth animations and a modern interface. Axios is used for API communication, while JWT ensures secure authentication. On the backend, tools like Bcrypt, Nodemailer, and Helmet strengthen security and communication.</p>
+
+    //     <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1777816736/2_zqqwsh.png" alt="Test Hive Test Interface" class="blog-image" />
+
+    //     <h2>Interactive Test Experience</h2>
+    //     <p>The test-taking experience in Test Hive is designed to feel immersive and responsive. Users can navigate between questions, flag items for review, and track time in real time. The system automatically submits tests when time runs out, ensuring fairness and consistency.</p>
+
+    //     <p>To make the experience more engaging, visual feedback like confetti animations is triggered upon completion. These small details transform a standard exam interface into something more interactive and enjoyable.</p>
+
+    //     <p>The platform supports multiple question types including MCQ, checkbox, descriptive, and even coding-based questions. This flexibility makes it suitable for both academic tests and technical assessments.</p>
+
+    //     <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1777816736/3_xsl7wo.png" alt="Test Hive Question Types" class="blog-image" />
+
+    //     <h2>Anti-Cheating & Smart Monitoring</h2>
+    //     <p>One of the standout features of Test Hive is its built-in anti-cheating system. The platform tracks tab switching behavior during tests, allowing admins to monitor suspicious activity. This adds a layer of proctoring that is rarely seen in basic online exam systems.</p>
+
+    //     <p>This feature ensures that tests maintain integrity, especially in remote environments where supervision is limited. It reflects a shift from simple quiz apps to more controlled and reliable examination systems.</p>
+
+    //     <h2>Gamification with Study Streaks</h2>
+    //     <p>To encourage consistency, Test Hive introduces a study streak system. This feature tracks how many consecutive days a user engages with the platform, rewarding consistency with a visual fire indicator.</p>
+
+    //     <p>This gamification approach transforms learning into a habit-building process rather than a one-time activity. It adds a psychological layer that motivates users to return daily and improve over time.</p>
+
+    //     <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1777816737/5_wtxyrs.png" alt="Test Hive Study Streak" class="blog-image" />
+
+    //     <h2>Admin Dashboard & Analytics</h2>
+    //     <p>The admin panel is designed to provide deep insights into platform activity. It includes metrics such as total students, test attempts, and performance summaries. Admins can also view top-performing students and analyze score distributions.</p>
+
+    //     <p>This data-driven approach allows better decision-making and helps identify trends in student performance. Instead of just managing tests, admins gain a complete overview of the system’s effectiveness.</p>
+
+    //     <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1777816737/4_qk5u01.png" alt="Test Hive Analytics Dashboard" class="blog-image" />
+
+    //     <h2>Advanced Test Configuration</h2>
+    //     <p>Test Hive provides granular control over how tests are conducted. Features like negative marking, question randomization, attempt limits, and delayed result visibility give admins complete flexibility.</p>
+
+    //     <p>This level of customization makes the platform adaptable to different use cases—from casual quizzes to high-stakes examinations.</p>
+
+    //     <h2>Performance & User Experience</h2>
+    //     <p>Performance optimization was a key focus during development. The platform uses skeleton loaders, efficient state management, and responsive design to ensure smooth operation across devices.</p>
+
+    //     <p>Transitions and animations powered by Framer Motion create a polished user experience, making the platform feel modern and professional.</p>
+
+    //     <img src="https://res.cloudinary.com/dz53e3szr/image/upload/v1777816740/8_naqzwn.png" alt="Test Hive Mobile View" class="blog-image" />
+
+    //     <h2>Security & Reliability</h2>
+    //     <p>Security is handled through JWT-based authentication, password hashing with Bcrypt, and secure headers using Helmet. Input validation ensures data integrity, while backend logic manages attempts and scoring automatically.</p>
+
+    //     <p>The system is built to be production-ready, with scalability and reliability in mind. It can handle multiple users, concurrent tests, and real-time updates efficiently.</p>
+
+    //     <h2>Conclusion</h2>
+    //     <p>Test Hive represents a complete evolution from basic quiz applications to a smart, secure, and feature-rich examination platform. It combines real-time interaction, analytics, gamification, and security into a single system.</p>
+
+    //     <p>This project showcases my ability to design and build complex full-stack applications that solve real-world problems. It stands as a strong example of how thoughtful design and advanced features can transform a simple idea into a powerful product.</p>
+
+    //     <p>If you're looking to build or explore modern assessment systems, Test Hive is a great place to start.</p>
+    // `
+    // }
 
 ];
 
