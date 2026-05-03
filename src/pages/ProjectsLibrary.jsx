@@ -12,7 +12,7 @@ const sTags = [
   "HTML",
   "Java",
   "Python",
-  "AI Made",
+  "AI Assist",
   "Biotech",
 ];
 
