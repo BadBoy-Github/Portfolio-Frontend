@@ -178,6 +178,7 @@ const proj = [
             "student performance tracking system",
             "learning and assessment platform",
 
+            "ai assist",
             "study streak gamification system",
             "anti cheating tab detection",
             "multiple question types exam",
@@ -1153,7 +1154,7 @@ const proj = [
             "education management software",
 
             // Features / USP
-            "ai made",
+            "ai assist",
             "role based access admin teacher",
             "student marks tracking system",
             "fees management system",
@@ -1354,7 +1355,7 @@ const proj = [
             "cloud based coding environment",
 
             // Unique / USP
-            "ai made",
+            "ai assist",
             "ai assisted development project",
             "code editor built using ai tools",
             "human refined ai generated application",
@@ -1763,7 +1764,7 @@ const proj = [
             "uber like web application",
 
             // Features / USP
-            "ai made",
+            "ai assist",
             "modern booking interface design",
             "fast developed web application",
             "clean and intuitive user flow",
@@ -2290,7 +2291,7 @@ const proj = [
             "google drive file converter",
 
             // Features / USP
-            "ai made",
+            "ai assist",
             "instant link conversion",
             "direct image url generation",
             "client side processing tool",
@@ -2587,7 +2588,7 @@ const proj = [
             "money tracking app",
 
             // Features / USP
-            "ai made",
+            "ai assist",
             "ai assisted financial insights",
             "monthly expense tracking",
             "data visualization charts",
@@ -3323,7 +3324,7 @@ const proj = [
             "minimal portfolio website",
 
             // Features / USP
-            "ai made",
+            "ai assist",
             "3d background integration",
             "minimal single screen layout",
             "interactive visual design",
