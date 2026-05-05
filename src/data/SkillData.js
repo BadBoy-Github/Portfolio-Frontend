@@ -31,6 +31,21 @@ const skillItem = [
         desc: "Framework for CSS",
     },
     {
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005035/JSON_wposim.svg",
+        label: "JSON",
+        desc: "Data Interchange Format",
+    },
+    {
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005034/Markdown_xzuwtx.svg",
+        label: "Markdown",
+        desc: "Lightweight Markup",
+    },
+    {
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005034/Postman_fjjcb7.svg",
+        label: "Postman",
+        desc: "API Testing Tool",
+    },
+    {
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435626/sql_ylvdii.svg",
         label: "SQL",
         desc: "Relational DBMS",
@@ -44,6 +59,11 @@ const skillItem = [
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435626/java_xq1yxm.svg",
         label: "JAVA",
         desc: "High Level Programming",
+    },
+    {
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005034/Hibernate_qe4xlg.svg",
+        label: "Hibernate",
+        desc: "ORM Framework",
     },
     {
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435624/python_dzk3ku.svg",
@@ -60,6 +80,7 @@ const skillItem = [
         label: "Vercel",
         desc: "Deployment & Hosting",
     },
+    
     // {
     //     imgSrc: "",
     //     label: "React Native",
