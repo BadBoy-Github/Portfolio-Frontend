@@ -31,19 +31,9 @@ const skillItem = [
         desc: "Framework for CSS",
     },
     {
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005035/JSON_wposim.svg",
-        label: "JSON",
-        desc: "Data Interchange Format",
-    },
-    {
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005034/Markdown_xzuwtx.svg",
         label: "Markdown",
         desc: "Lightweight Markup",
-    },
-    {
-        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005034/Postman_fjjcb7.svg",
-        label: "Postman",
-        desc: "API Testing Tool",
     },
     {
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435626/sql_ylvdii.svg",
@@ -69,6 +59,16 @@ const skillItem = [
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435624/python_dzk3ku.svg",
         label: "Python",
         desc: "High Level Programming",
+    },
+     {
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005035/JSON_wposim.svg",
+        label: "JSON",
+        desc: "Data Interchange Format",
+    },
+     {
+        imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1778005034/Postman_fjjcb7.svg",
+        label: "Postman",
+        desc: "API Testing Tool",
     },
     {
         imgSrc: "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435616/github_g8fa2b.svg",
