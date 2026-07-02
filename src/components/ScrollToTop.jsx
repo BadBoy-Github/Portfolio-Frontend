@@ -1,53 +1,35 @@
-/**
- * @copyright 2025 Panda Productions
- * @author Elayabarathi M V <elayabarathiedison@gmail.com>
- * @license Apache-2.0
- */
-
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useLenis } from "lenis/react";
 
-/**
- * ScrollToTop - A component that scrolls to the top of the page
- * on route changes, except for hash/query links.
- */
 const ScrollToTop = () => {
   const { pathname, hash, search } = useLocation();
+  const lenis = useLenis();
+  const scrollTarget = new URLSearchParams(search).get("scroll");
 
   useEffect(() => {
-    // Check for scroll query parameter
-    const scrollTarget = new URLSearchParams(search).get('scroll');
-    
-    if (scrollTarget) {
-      // Handle scroll to specific section when ?scroll= parameter is present
-      const scrollToSection = () => {
+    const doScroll = () => {
+      if (scrollTarget) {
         const element = document.getElementById(scrollTarget);
-        const lenis = window.lenis;
-        
         if (element) {
           if (lenis) {
             lenis.scrollTo(element, { offset: -100, duration: 0.8 });
           } else {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         }
-      };
-      
-      // Delay to allow page transition, lazy loading and content to load
-      setTimeout(scrollToSection, 600);
-    } else if (!hash) {
-      // Only scroll to top if there's no hash and no scroll parameter
-      const scrollToTop = () => {
-        const lenis = window.lenis;
+      } else if (!hash) {
         if (lenis) {
           lenis.scrollTo(0, { immediate: false, duration: 0.3 });
+          lenis.resize();
         } else {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
-      };
+      }
+    };
 
-      setTimeout(scrollToTop, 100);
-    }
+    const timer = setTimeout(doScroll, 100);
+    return () => clearTimeout(timer);
   }, [pathname, hash, search]);
 
   return null;

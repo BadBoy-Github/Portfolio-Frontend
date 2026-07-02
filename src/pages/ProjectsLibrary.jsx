@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import ProjectCard from "../components/ProjectCard";
 import { proj } from "../data/ProjectData";
+import { useLenis } from "lenis/react";
 import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 
 const sTags = [
@@ -19,6 +20,16 @@ const sTags = [
 const ProjectsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+      lenis.resize();
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [lenis]);
 
   const normalProject = proj.filter((e) => e.type !== "featured");
 

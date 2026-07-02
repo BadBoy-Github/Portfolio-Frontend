@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import { blogs } from "../data/BlogData";
+import { useLenis } from "lenis/react";
 
 const sTags = ["Portfolio", "Card Vaults"];
 
 const BlogsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+      lenis.resize();
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [lenis]);
 
   // Filter blogs based on selected tag and search query
   const filteredBlogs = blogs.filter((blog) => {
@@ -182,6 +193,7 @@ const BlogsLibrary = () => {
                 <div className="loader mb-4">
                   <span></span>
                 </div>
+
                 <h3 className="text-xl font-semibold text-zinc-300 mt-2">
                   No blogs found
                 </h3>
