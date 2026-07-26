@@ -28,6 +28,10 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
+// Admin pages
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+
 // Lazy loaded page components
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
@@ -41,23 +45,28 @@ const AchievementsLibrary = lazy(() => import("./pages/AchievementsLibrary"));
 const BlogsLibrary = lazy(() => import("./pages/BlogsLibrary"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
-// Loading component for Suspense fallback - removed spinner
+// Loading component for Suspense fallback
 const LoadingFallback = () => (
   <div className="min-h-screen bg-zinc-900"></div>
 );
 
 const AppContent = () => {
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
   const showScrollToTopButton = location.pathname !== "/" && location.pathname !== "/about";
 
   return (
     <>
       <ScrollToTop />
-      <Header />
+      {!isAdminRoute && <Header />}
       <main id="main-content">
         <Suspense fallback={<LoadingFallback />}>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
+              {/* Admin Routes */}
+              <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
+
               {/* Homepage */}
               <Route path="/" element={
                 <motion.div
@@ -179,8 +188,8 @@ const AppContent = () => {
           </AnimatePresence>
         </Suspense>
       </main>
-      <Footer />
-      {showScrollToTopButton && <ScrollToTopButton />}
+      {!isAdminRoute && <Footer />}
+      {showScrollToTopButton && !isAdminRoute && <ScrollToTopButton />}
     </>
   );
 };
