@@ -1,6 +1,37 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const SESSION_KEY = 'adminSession';
+const SESSION_DURATION = 3 * 60 * 60 * 1000;
+
+const getSession = () => {
+  try {
+    const session = sessionStorage.getItem(SESSION_KEY);
+    if (!session) return null;
+    const parsed = JSON.parse(session);
+    if (Date.now() > parsed.expiresAt) {
+      sessionStorage.removeItem(SESSION_KEY);
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+};
+
+const setSession = (token, email) => {
+  const session = {
+    token,
+    email,
+    expiresAt: Date.now() + SESSION_DURATION,
+  };
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+};
+
+const clearSession = () => {
+  sessionStorage.removeItem(SESSION_KEY);
+};
+
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -54,8 +85,7 @@ const AdminLogin = () => {
         }
         return;
       }
-      localStorage.setItem('adminToken', data.token);
-      localStorage.setItem('adminEmail', data.email);
+      setSession(data.token, data.email);
       navigate('/admin-dashboard');
     } catch (err) {
       setPasswordError('Login failed. Please try again.');
@@ -65,9 +95,8 @@ const AdminLogin = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
-    const adminEmail = localStorage.getItem('adminEmail');
-    if (token && adminEmail) {
+    const session = getSession();
+    if (session) {
       navigate('/admin-dashboard');
     }
   }, [navigate]);
@@ -75,8 +104,20 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen bg-zinc-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-zinc-800 rounded-2xl p-8 ring-1 ring-zinc-50/5">
-        <h1 className="text-2xl font-semibold text-zinc-50 mb-2">Admin Login</h1>
-        <p className="text-zinc-400 text-sm mb-8">Sign in to manage portfolio content</p>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h1 className="text-2xl font-semibold text-zinc-50">Admin Login</h1>
+            <p className="text-zinc-400 text-sm mt-1">Sign in to manage portfolio content</p>
+          </div>
+          <a
+            href="/"
+            className="btn btn-outline text-xs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Go to Website
+          </a>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
@@ -137,4 +178,5 @@ const AdminLogin = () => {
   );
 };
 
+export { AdminLogin, getSession, clearSession };
 export default AdminLogin;

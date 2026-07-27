@@ -1,22 +1,26 @@
 import { useState, useEffect } from 'react';
+import { ConfirmModal } from './AdminDashboard';
+import SkillCard from '../../components/SkillCard';
 
 const TechStacksTab = () => {
-  const [items, setItems] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
   const [form, setForm] = useState({ category: '', items: '' });
   const [error, setError] = useState('');
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('adminToken');
+      const session = sessionStorage.getItem('adminSession');
+      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) setItems(data.data);
+      if (data.success) setCategories(data.data);
     } catch (err) {
       setError('Failed to fetch data');
     } finally {
@@ -34,31 +38,33 @@ const TechStacksTab = () => {
 
   const openEdit = (item) => {
     setEditingItem(item);
-    setForm({ category: item.category, items: item.items.join(', ') });
+    setForm({ category: item.category, items: item.items.map(i => typeof i === 'string' ? i : i.label).join(', ') });
     setModalOpen(true);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const payload = {
-      category: form.category,
-      items: form.items.split(',').map(s => s.trim()).filter(Boolean),
-    };
+    const items = form.items.split(',').map(s => s.trim()).filter(Boolean).map(label => ({
+      label,
+      desc: '',
+      imgSrc: ''
+    }));
 
     try {
+      const session = sessionStorage.getItem('adminSession');
+      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${editingItem._id}`
         : `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks`;
       const method = editingItem ? 'PUT' : 'POST';
-      const token = localStorage.getItem('adminToken');
       const res = await fetch(url, {
         method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ category: form.category, items }),
       });
       const data = await res.json();
       if (!data.success) {
@@ -72,11 +78,12 @@ const TechStacksTab = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this?')) return;
+  const handleDelete = async () => {
+    if (!deleteTarget) return;
     try {
-      const token = localStorage.getItem('adminToken');
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${id}`, {
+      const session = sessionStorage.getItem('adminSession');
+      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${deleteTarget._id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -84,40 +91,72 @@ const TechStacksTab = () => {
       if (data.success) fetchItems();
     } catch (err) {
       alert('Failed to delete');
+    } finally {
+      setDeleteTarget(null);
     }
   };
+
+  const skills = categories.flatMap(category =>
+    (category.items || []).map(item => ({
+      ...item,
+      _category: category.category,
+      _id: category._id
+    }))
+  );
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-semibold text-zinc-50">Tech Stacks</h2>
+        <div>
+          <h2 className="text-2xl font-semibold text-zinc-50">Tech Stacks</h2>
+          <p className="text-zinc-400 text-sm mt-1">Manage technical skills and categories</p>
+        </div>
         <button onClick={openAdd} className="btn btn-primary">Add Tech Stack</button>
       </div>
 
       {loading ? (
-        <p className="text-zinc-400">Loading...</p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3].map(i => <div key={i} className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-24 animate-pulse" />)}
+        </div>
       ) : (
-        <div className="grid gap-4">
-          {items.map((item) => (
-            <div key={item._id} className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <h3 className="text-lg font-medium text-zinc-50">{item.category}</h3>
-                <p className="text-zinc-400 text-sm mt-1">{item.items.join(', ')}</p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((item, idx) => (
+            <div key={`${item._id}-${idx}`} className="relative group">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-xs text-zinc-500">{item._category}</p>
+                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={() => {
+                    setEditingItem({ _id: item._id, category: item._category, items: [item] });
+                    setForm({ category: item._category, items: item.label });
+                    setModalOpen(true);
+                  }} className="btn btn-outline text-xs py-1 px-2">
+                    <span className="material-symbols-rounded text-[16px]">edit</span>
+                  </button>
+                  <button onClick={() => setDeleteTarget({ _id: item._id, category: item._category })} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
+                    <span className="material-symbols-rounded text-[16px]">delete</span>
+                  </button>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <button onClick={() => openEdit(item)} className="btn btn-outline">Edit</button>
-                <button onClick={() => handleDelete(item._id)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10">Delete</button>
-              </div>
+              <SkillCard
+                imgSrc={item.imgSrc || 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774435625/react_hzi0da.svg'}
+                label={item.label}
+                desc={item.desc}
+              />
             </div>
           ))}
-          {items.length === 0 && <p className="text-zinc-400">No items found.</p>}
+          {skills.length === 0 && <p className="text-zinc-400 col-span-full">No items found.</p>}
         </div>
       )}
 
       {modalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
           <div className="bg-zinc-800 rounded-2xl p-6 w-full max-w-lg ring-1 ring-zinc-50/5">
-            <h3 className="text-xl font-semibold text-zinc-50 mb-4">{editingItem ? 'Edit' : 'Add'} Tech Stack</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold text-zinc-50">{editingItem && !editingItem.items?.length ? 'Edit' : 'Add'} Tech Stack</h3>
+              <button onClick={() => setModalOpen(false)} className="text-zinc-400 hover:text-zinc-200">
+                <span className="material-symbols-rounded">close</span>
+              </button>
+            </div>
             {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -136,6 +175,14 @@ const TechStacksTab = () => {
           </div>
         </div>
       )}
+
+      <ConfirmModal
+        open={!!deleteTarget}
+        title="Delete Tech Stack"
+        message={`Are you sure you want to delete "${deleteTarget?.category}"? This action cannot be undone.`}
+        onConfirm={handleDelete}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
   );
 };
