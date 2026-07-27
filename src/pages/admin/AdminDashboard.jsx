@@ -72,7 +72,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Sidebar */}
-      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:block md:w-64 md:sticky md:top-0 md:h-screen md:overflow-y-auto bg-zinc-800 ring-1 ring-zinc-50/5`}>
+      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:block md:w-64 md:sticky md:top-0 md:h-screen bg-zinc-800 ring-1 ring-zinc-50/5`}>
         <div className="p-4">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
@@ -105,7 +105,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-4 md:p-8 overflow-auto">
+      <main className="flex-1 p-4 md:p-8">
         {activeTab === 'tech-stacks' && <TechStacksTab />}
         {activeTab === 'projects' && <ProjectsTab />}
         {activeTab === 'certificates' && <CertificatesTab />}
