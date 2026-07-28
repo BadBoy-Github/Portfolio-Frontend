@@ -88,7 +88,7 @@ const AdminDashboard = () => {
   if (!authChecked) return null;
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen">
+    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen md:overflow-hidden">
       {/* Mobile header */}
       <div className="md:hidden flex items-center justify-between bg-zinc-800 p-4 ring-1 ring-zinc-50/5">
         <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-4 md:p-8 md:h-screen md:overflow-y-auto md:min-h-0">
+      <main className="flex-1 p-4 md:p-8 md:overflow-y-auto">
         {activeTab === 'tech-stacks' && <TechStacksTab />}
         {activeTab === 'projects' && <ProjectsTab />}
         {activeTab === 'certificates' && <CertificatesTab />}
