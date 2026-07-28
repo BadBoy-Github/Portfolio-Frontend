@@ -13,7 +13,7 @@ const EducationCard = ({
 }) => {
   return (
     <>
-      <li className="mb-10 mr-12">
+      <li className="mb-10 mr-12 md:mr-16 relative before:content-[''] before:absolute before:right-[22px] before:top-10 before:bottom-0 before:w-[1.5px] before:bg-zinc-700 last:before:hidden">
         <a
           href={instLink}
           target="_blank"
@@ -26,8 +26,8 @@ const EducationCard = ({
             loading="lazy"
           />
         </a>
-        <div className="items-center justify-between p-6 mr-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
-          <div className="text-sm font-medium text-zinc-300 w-[90%]">
+        <div className="items-center justify-between p-4 sm:p-5 mr-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
+          <div className="text-sm font-medium text-zinc-300 w-full">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
                 {name}

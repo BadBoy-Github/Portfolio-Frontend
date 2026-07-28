@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ConfirmModal } from './AdminDashboard';
+import { ConfirmModal, FormModal } from './AdminDashboard';
 import BlogCard from '../../components/BlogCard';
 
 const BlogsTab = () => {
@@ -122,8 +122,7 @@ const BlogsTab = () => {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <div key={item._id} className="relative group">
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xs text-zinc-500">{item.title}</p>
+              <div className="flex items-center justify-end mb-2">
                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
                     <span className="material-symbols-rounded text-[16px]">edit</span>
@@ -150,57 +149,46 @@ const BlogsTab = () => {
         </div>
       )}
 
-      {modalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-          <div className="bg-zinc-800 rounded-2xl p-6 w-full max-w-lg ring-1 ring-zinc-50/5 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-zinc-50">{editingItem ? 'Edit' : 'Add'} Blog</h3>
-              <button onClick={() => setModalOpen(false)} className="text-zinc-400 hover:text-zinc-200">
-                <span className="material-symbols-rounded">close</span>
-              </button>
-            </div>
-            {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="label">ID</label>
-                <input className="text-field" value={form.id} onChange={(e) => setForm({ ...form, id: e.target.value })} required disabled={!!editingItem} />
-              </div>
-              <div>
-                <label className="label">Title</label>
-                <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
-              </div>
-              <div>
-                <label className="label">Subtitle</label>
-                <input className="text-field" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Date</label>
-                <input className="text-field" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
-              </div>
-              <div>
-                <label className="label">Read Time</label>
-                <input className="text-field" value={form.readTime} onChange={(e) => setForm({ ...form, readTime: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Tags (comma separated)</label>
-                <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Image URL</label>
-                <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Content (HTML)</label>
-                <textarea className="text-field" rows={5} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} />
-              </div>
-              <div className="flex gap-3 justify-end">
-                <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
-                <button type="submit" className="btn btn-primary">Save</button>
-              </div>
-            </form>
+      <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Blog`} error={error}>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="input-box">
+            <label className="label">ID</label>
+            <input className="text-field" value={form.id} onChange={(e) => setForm({ ...form, id: e.target.value })} required disabled={!!editingItem} />
           </div>
-        </div>
-      )}
+          <div className="input-box">
+            <label className="label">Title</label>
+            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+          </div>
+          <div className="input-box">
+            <label className="label">Subtitle</label>
+            <input className="text-field" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Date</label>
+            <input className="text-field" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
+          </div>
+          <div className="input-box">
+            <label className="label">Read Time</label>
+            <input className="text-field" value={form.readTime} onChange={(e) => setForm({ ...form, readTime: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Tags (comma separated)</label>
+            <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Image URL</label>
+            <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Content (HTML)</label>
+            <textarea className="text-field" rows={5} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} />
+          </div>
+          <div className="flex gap-3 justify-end pt-2">
+            <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
+            <button type="submit" className="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </FormModal>
 
       <ConfirmModal
         open={!!deleteTarget}

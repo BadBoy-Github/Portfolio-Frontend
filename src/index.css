@@ -251,6 +251,10 @@ body {
     @apply text-zinc-400
 }
 
+.input-box {
+    @apply bg-zinc-900/50 rounded-xl p-3 ring-1 ring-zinc-50/5
+}
+
 /* Complete scrollbar removal */
 html, body {
   scrollbar-width: none !important;

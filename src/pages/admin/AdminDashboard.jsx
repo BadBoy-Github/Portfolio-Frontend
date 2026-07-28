@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getSession, clearSession as adminClearSession } from '../AdminLogin';
+import PropTypes from 'prop-types';
 
 import TechStacksTab from './TechStacksTab';
 import ProjectsTab from './ProjectsTab';
@@ -19,21 +20,49 @@ const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60" onClick={onCancel} />
-      <div className="relative bg-zinc-800 rounded-2xl p-6 w-full max-w-sm ring-1 ring-zinc-50/5 shadow-xl">
-        <div className="flex items-center justify-between mb-2">
+      <div className="relative bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-sm">
+        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50">
           <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
           <button onClick={onCancel} className="text-zinc-400 hover:text-zinc-200">
             <span className="material-symbols-rounded">close</span>
           </button>
         </div>
-        <p className="text-zinc-300 text-sm mb-6">{message}</p>
-        <div className="flex gap-3 justify-end">
+        <p className="text-zinc-300 text-sm p-5">{message}</p>
+        <div className="flex gap-3 justify-end p-5 border-t border-zinc-700/50">
           <button onClick={onCancel} className="btn btn-outline">Cancel</button>
           <button onClick={onConfirm} className="btn btn-primary !bg-red-500 hover:!bg-red-400">Delete</button>
         </div>
       </div>
     </div>
   );
+};
+
+const FormModal = ({ open, onClose, title, error, children }) => {
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
+      <div className="bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-lg max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
+          <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
+          <button onClick={onClose} className="text-zinc-400 hover:text-zinc-200">
+            <span className="material-symbols-rounded">close</span>
+          </button>
+        </div>
+        <div className="overflow-y-auto flex-1 p-5">
+          {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+FormModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
 const AdminDashboard = () => {
@@ -59,7 +88,7 @@ const AdminDashboard = () => {
   if (!authChecked) return null;
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen">
       {/* Mobile header */}
       <div className="md:hidden flex items-center justify-between bg-zinc-800 p-4 ring-1 ring-zinc-50/5">
         <div className="flex items-center gap-3">
@@ -72,8 +101,8 @@ const AdminDashboard = () => {
       </div>
 
       {/* Sidebar */}
-      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:block md:w-64 md:sticky md:top-0 md:h-screen bg-zinc-800 ring-1 ring-zinc-50/5`}>
-        <div className="p-4">
+      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:flex md:w-64 md:h-screen md:overflow-y-auto bg-zinc-800 ring-1 ring-zinc-50/5`}>
+        <div className="p-4 w-64">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
               <h1 className="text-xl font-semibold text-zinc-50">Admin Dashboard</h1>
@@ -105,7 +134,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-4 md:p-8">
+      <main className="flex-1 p-4 md:p-8 md:h-screen md:overflow-y-auto md:min-h-0">
         {activeTab === 'tech-stacks' && <TechStacksTab />}
         {activeTab === 'projects' && <ProjectsTab />}
         {activeTab === 'certificates' && <CertificatesTab />}
@@ -136,5 +165,5 @@ const TabButton = ({ id, label, icon, activeTab, setActiveTab, setMobileOpen }) 
   </button>
 );
 
-export { ConfirmModal, AdminDashboard };
+export { ConfirmModal, FormModal, AdminDashboard };
 export default AdminDashboard;

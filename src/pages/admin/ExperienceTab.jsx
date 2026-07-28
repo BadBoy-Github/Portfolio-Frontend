@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ConfirmModal } from './AdminDashboard';
+import { ConfirmModal, FormModal } from './AdminDashboard';
 import ExperienceCard from '../../components/ExperienceCard';
 
 const ExperienceTab = () => {
@@ -151,65 +151,54 @@ const ExperienceTab = () => {
         </ul>
       )}
 
-      {modalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-          <div className="bg-zinc-800 rounded-2xl p-6 w-full max-w-lg ring-1 ring-zinc-50/5 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-zinc-50">{editingItem ? 'Edit' : 'Add'} Experience</h3>
-              <button onClick={() => setModalOpen(false)} className="text-zinc-400 hover:text-zinc-200">
-                <span className="material-symbols-rounded">close</span>
-              </button>
-            </div>
-            {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="label">Title</label>
-                <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
-              </div>
-              <div>
-                <label className="label">Company</label>
-                <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} required />
-              </div>
-              <div>
-                <label className="label">Period</label>
-                <input className="text-field" value={form.period} onChange={(e) => setForm({ ...form, period: e.target.value })} required />
-              </div>
-              <div>
-                <label className="label">Description</label>
-                <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
-              </div>
-              <div>
-                <label className="label">Skills (comma separated)</label>
-                <input className="text-field" value={form.skills} onChange={(e) => setForm({ ...form, skills: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Link</label>
-                <input className="text-field" value={form.link} onChange={(e) => setForm({ ...form, link: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Role</label>
-                <input className="text-field" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Institute Logo URL</label>
-                <input className="text-field" value={form.instLogo} onChange={(e) => setForm({ ...form, instLogo: e.target.value })} />
-              </div>
-              <div>
-                <label className="label">Certificate Image URL</label>
-                <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
-              </div>
-              <div className="flex items-center gap-2">
-                <input id="certifi" type="checkbox" checked={form.certifi} onChange={(e) => setForm({ ...form, certifi: e.target.checked })} />
-                <label htmlFor="certifi" className="text-sm text-zinc-300">Has certificate</label>
-              </div>
-              <div className="flex gap-3 justify-end">
-                <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
-                <button type="submit" className="btn btn-primary">Save</button>
-              </div>
-            </form>
+      <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Experience`} error={error}>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="input-box">
+            <label className="label">Title</label>
+            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
           </div>
-        </div>
-      )}
+          <div className="input-box">
+            <label className="label">Company</label>
+            <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} required />
+          </div>
+          <div className="input-box">
+            <label className="label">Period</label>
+            <input className="text-field" value={form.period} onChange={(e) => setForm({ ...form, period: e.target.value })} required />
+          </div>
+          <div className="input-box">
+            <label className="label">Description</label>
+            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
+          </div>
+          <div className="input-box">
+            <label className="label">Skills (comma separated)</label>
+            <input className="text-field" value={form.skills} onChange={(e) => setForm({ ...form, skills: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Link</label>
+            <input className="text-field" value={form.link} onChange={(e) => setForm({ ...form, link: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Role</label>
+            <input className="text-field" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Institute Logo URL</label>
+            <input className="text-field" value={form.instLogo} onChange={(e) => setForm({ ...form, instLogo: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Certificate Image URL</label>
+            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
+          </div>
+          <div className="input-box flex items-center gap-2">
+            <input id="certifi" type="checkbox" checked={form.certifi} onChange={(e) => setForm({ ...form, certifi: e.target.checked })} />
+            <label htmlFor="certifi" className="text-sm text-zinc-300">Has certificate</label>
+          </div>
+          <div className="flex gap-3 justify-end pt-2">
+            <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
+            <button type="submit" className="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </FormModal>
 
       <ConfirmModal
         open={!!deleteTarget}

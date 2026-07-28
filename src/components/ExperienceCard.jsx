@@ -22,7 +22,7 @@ const ExperienceCard = ({
 
   return (
     <>
-      <li className="mb-10 ml-12">
+      <li className="mb-10 ml-12 md:ml-16 relative before:content-[''] before:absolute before:left-[22px] before:top-10 before:bottom-0 before:w-[1.5px] before:bg-zinc-700 last:before:hidden">
         <a
           href={instLink}
           target="_blank"
@@ -35,11 +35,11 @@ const ExperienceCard = ({
             loading="lazy"
           />
         </a>
-        <div className="items-center justify-between p-6 ml-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
+        <div className="items-center justify-between p-4 sm:p-5 ml-4 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
+          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full flex-shrink-0">
             {year}
           </time>
-          <div className="text-sm font-medium text-zinc-300 w-[90%]">
+          <div className="text-sm font-medium text-zinc-300 w-full">
             <div className="flex gap-1 items-center">
               <p className="group-hover:text-sky-400 transition-colors duration-300">
                 {name}
