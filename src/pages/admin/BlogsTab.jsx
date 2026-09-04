@@ -7,7 +7,7 @@ const BlogsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', image: '', content: '' });
+  const [form, setForm] = useState({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const BlogsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', image: '', content: '' });
+    setForm({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: '' });
     setModalOpen(true);
   };
 
@@ -45,7 +45,7 @@ const BlogsTab = () => {
       date: item.date,
       readTime: item.readTime || '',
       tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
-      image: item.image || '',
+      imageSrc: item.imageSrc || '',
       content: item.content || '',
     });
     setModalOpen(true);
@@ -140,7 +140,7 @@ const BlogsTab = () => {
                   date: item.date,
                   readTime: item.readTime || '',
                   tags: item.tags || [],
-                  imageSrc: item.image || '',
+                  imageSrc: item.imageSrc || '',
                 }}
               />
             </div>
@@ -177,7 +177,7 @@ const BlogsTab = () => {
           </div>
           <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+            <input className="text-field" value={form.imageSrc} onChange={(e) => setForm({ ...form, imageSrc: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Content (HTML)</label>

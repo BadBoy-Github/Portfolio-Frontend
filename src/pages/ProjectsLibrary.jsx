@@ -3,7 +3,6 @@ import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import ProjectCard from "../components/ProjectCard";
-import { proj } from "../data/ProjectData";
 import { useLenis } from "lenis/react";
 import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 
@@ -17,10 +16,32 @@ const sTags = [
   "Biotech",
 ];
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const ProjectsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const lenis = useLenis();
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/projects`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setProjects(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   useEffect(() => {
     if (lenis) {
@@ -31,57 +52,70 @@ const ProjectsLibrary = () => {
     }
   }, [lenis]);
 
-  const normalProject = proj.filter((e) => e.type !== "featured");
+  const normalProject = projects.filter((e) => e.type !== "featured");
 
-  // Filter projects based on selected tag and search query
   const filteredWorks = normalProject.filter((project) => {
-    // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
       project.tags.some(
         (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       ) ||
-      project.sTags.some(
+      (project.sTags || []).some(
         (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       ) ||
-      project.techUsed.some(
+      (project.techUsed || []).some(
         (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
       );
 
-    // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.tags.some((tag) =>
+      (project.tags || []).some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
       ) ||
-      project.sTags.some((tag) =>
+      (project.sTags || []).some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
       ) ||
-      project.techUsed.some((tech) =>
+      (project.techUsed || []).some((tech) =>
         tech.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     return tagMatch && searchMatch;
   });
 
-  // Handle tag selection
   const handleTagSelect = (tag) => {
     setSelectedTag(tag);
-    setSearchQuery(""); // Clear search when selecting a tag
+    setSearchQuery("");
   };
 
-  // Handle search
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setSelectedTag("all"); // Reset tag filter when searching
+    setSelectedTag("all");
   };
 
-  // Clear search field
   const clearSearch = () => {
     setSearchQuery("");
     document.getElementById("project_search").value = "";
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-red-400 mb-2">Failed to load projects</h2>
+          <p className="text-zinc-400">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -119,7 +153,6 @@ const ProjectsLibrary = () => {
 
           <FeaturedProjectGrid />
 
-          {/* Search and Filter */}
           <div className="my-10  bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
@@ -175,7 +208,6 @@ const ProjectsLibrary = () => {
             </div>
           </div>
 
-          {/* Projects Grid */}
           <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
             {filteredWorks.map((project, index) => (
               <ProjectCard

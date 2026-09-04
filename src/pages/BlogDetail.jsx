@@ -1,16 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBack, IoChevronBack, IoChevronForward, IoShareSocial, IoCopy } from "react-icons/io5";
 import { Helmet } from "react-helmet-async";
-import { blogs } from "../data/BlogData";
 import SocialShare from "../components/SocialShare";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const BlogDetail = () => {
   const { id } = useParams();
-  const blog = blogs.find((b) => b.id === id);
+  const [blog, setBlog] = useState(null);
+  const [otherBlogs, setOtherBlogs] = useState([]);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!blog) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const [blogRes, allRes] = await Promise.all([
+          fetch(`${BACKEND_URL}/api/blogs/${id}`),
+          fetch(`${BACKEND_URL}/api/blogs`),
+        ]);
+        if (!blogRes.ok) throw new Error("Blog not found");
+        const blogData = await blogRes.json();
+        const allData = await allRes.json();
+        setBlog(blogData.data);
+        setOtherBlogs(allData.data.filter((b) => b.id !== id));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error || !blog) {
     return (
       <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
         <div className="text-center">
@@ -23,24 +57,16 @@ const BlogDetail = () => {
     );
   }
 
-  // Get other blogs
-  const otherBlogs = blogs.filter((b) => b.id !== id);
-
   const handleShare = async () => {
     const url = `https://elayabarathimv.vercel.app/blog/${blog.id}`;
     const title = blog.title;
 
     if (navigator.share) {
       try {
-        await navigator.share({
-          title,
-          url,
-        });
+        await navigator.share({ title, url });
       } catch (err) {
-        // User cancelled or error
       }
     } else {
-      // Fallback: copy to clipboard
       handleCopy();
     }
   };
@@ -98,7 +124,6 @@ const BlogDetail = () => {
         </script>
       </Helmet>
       <div className="container mx-auto px-4">
-        {/* Back Button */}
         <Link
           to="/blogs"
           className="inline-flex items-center gap-2 text-zinc-400 hover:text-sky-400 transition-colors mb-8"
@@ -107,9 +132,7 @@ const BlogDetail = () => {
           <span>Back to All Blogs</span>
         </Link>
 
-        {/* Main Content */}
         <article className="mx-auto">
-          {/* Header */}
           <header className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {blog.title}
@@ -155,9 +178,8 @@ const BlogDetail = () => {
               <span>{blog.readTime}</span>
             </div>
 
-            {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-4">
-              {blog.tags.map((tag, index) => (
+              {(blog.tags || []).map((tag, index) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
@@ -168,7 +190,6 @@ const BlogDetail = () => {
             </div>
           </header>
 
-          {/* Featured Image */}
           <img
             src={blog.imageSrc}
             alt={blog.title}
@@ -176,24 +197,20 @@ const BlogDetail = () => {
             className="w-full rounded-xl mb-8"
           />
 
-          {/* Content */}
           <div
             className="prose prose-invert prose-lg max-w-none blog-content"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
 
-          {/* Social Share */}
           <SocialShare
             title={blog.title}
             url={`https://elayabarathimv.vercel.app/blog/${blog.id}`}
           />
         </article>
 
-        {/* Other Blogs Section */}
         {otherBlogs.length != 0 && (
           <div className="mt-16 relative">
             <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
-            {/* Left Scroll Button */}
             <button
               onClick={() =>
                 document
@@ -205,7 +222,6 @@ const BlogDetail = () => {
             >
               <IoChevronBack className="size-6" />
             </button>
-            {/* Right Scroll Button */}
             <button
               onClick={() =>
                 document

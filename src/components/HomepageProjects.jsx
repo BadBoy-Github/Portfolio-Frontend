@@ -1,14 +1,67 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import ProjectFeaturedCard from "./ProjectFeaturedCard";
-import { proj } from "../data/ProjectData";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const HomepageProjects = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/projects`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setProjects(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="project" className="pt-20">
+        <div className="container">
+          <h2 className="headline-2">My project highlights</h2>
+          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+            Explore the innovative projects I&apos;ve built
+          </p>
+          <div className="flex items-center justify-center py-10">
+            <div className="loader mb-4"><span></span></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="project" className="pt-20">
+        <div className="container">
+          <h2 className="headline-2">My project highlights</h2>
+          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+            Explore the innovative projects I&apos;ve built
+          </p>
+          <p className="text-red-400">Failed to load projects.</p>
+        </div>
+      </section>
+    );
+  }
+
   let featuredProject = [];
   let normalProject = [];
 
-  proj.map((e) => {
-    if (e.type == "featured") {
+  projects.map((e) => {
+    if (e.type === "featured") {
       featuredProject.push(e);
     } else {
       normalProject.push(e);
@@ -16,7 +69,7 @@ const HomepageProjects = () => {
   });
 
   const displayProjects = normalProject.slice(0, 5);
-  const remainingCount = proj.length - 5;
+  const remainingCount = projects.length - 5;
 
   return (
     <section id="project" className="pt-20">
@@ -26,11 +79,10 @@ const HomepageProjects = () => {
           Explore the innovative projects I&apos;ve built
         </p>
 
-        {/* Featured Projects */}
         <div className="w-full mb-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
           {featuredProject.map((project, index) => (
             <ProjectFeaturedCard
-              key={index}
+              key={project.id || index}
               imgSrc={project.imgSrc}
               title={project.title}
               tags={project.tags}
@@ -45,11 +97,10 @@ const HomepageProjects = () => {
 
         <div className="bg-zinc-500 w-full h-0.5 mb-8 rounded-lg flex lg:hidden"></div>
 
-        {/* Regular Projects Grid */}
         <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
           {displayProjects.map((project, index) => (
             <ProjectCard
-              key={index}
+              key={project.id || index}
               imgSrc={project.imgSrc}
               title={project.title}
               tags={project.tags}
@@ -61,7 +112,6 @@ const HomepageProjects = () => {
             />
           ))}
 
-          {/* Show More Card */}
           {remainingCount > 0 && (
             <Link
               to="/projects"

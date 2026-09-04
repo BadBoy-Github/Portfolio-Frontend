@@ -7,7 +7,7 @@ const ReviewsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', role: '', company: '', comment: '', rating: 5, image: '' });
+  const [form, setForm] = useState({ name: '', role: '', company: '', content: '', rating: 5, image: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const ReviewsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', role: '', company: '', comment: '', rating: 5, image: '' });
+    setForm({ name: '', role: '', company: '', content: '', rating: 5, image: '' });
     setModalOpen(true);
   };
 
@@ -42,7 +42,7 @@ const ReviewsTab = () => {
       name: item.name,
       role: item.role || '',
       company: item.company || '',
-      comment: item.comment || '',
+      content: item.content || '',
       rating: item.rating || 5,
       image: item.image || ''
     });
@@ -126,7 +126,7 @@ const ReviewsTab = () => {
                 </div>
               </div>
               <ReviewCard
-                content={item.comment || ''}
+                content={item.content || ''}
                 imgSrc={item.image || ''}
                 name={item.name}
                 company={item.company || item.role || ''}
@@ -153,8 +153,8 @@ const ReviewsTab = () => {
             <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">Comment</label>
-            <textarea className="text-field" rows={3} value={form.comment} onChange={(e) => setForm({ ...form, comment: e.target.value })} />
+            <label className="label">Content</label>
+            <textarea className="text-field" rows={3} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Rating (1-5)</label>

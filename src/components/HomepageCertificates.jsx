@@ -1,9 +1,58 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { certificates } from "../data/CertificateData";
 import CertificationsCard from "./CertificationsCard";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const HomepageCertificates = () => {
   const navigate = useNavigate();
+  const [certificates, setCertificates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCertificates = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/certificates`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setCertificates(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCertificates();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="certificates" className="section relative">
+        <h2 className="headline-2">My Certification Milestones</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+          A journey through certifications that validate my skills and growth
+        </p>
+        <div className="flex items-center justify-center py-10">
+          <div className="loader mb-4"><span></span></div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="certificates" className="section relative">
+        <h2 className="headline-2">My Certification Milestones</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+          A journey through certifications that validate my skills and growth
+        </p>
+        <p className="text-red-400">Failed to load certificates.</p>
+      </section>
+    );
+  }
+
   const displayCertificates = certificates.slice(0, 5);
   const remainingCount = certificates.length - 5;
 
@@ -15,7 +64,7 @@ const HomepageCertificates = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {displayCertificates.map((cert, index) => (
-          <Link key={index} to={`/certificate/${cert.id}`}>
+          <Link key={cert.id} to={`/certificate/${cert.id}`}>
             <CertificationsCard
               title={cert.title}
               imgSrc={cert.imgSrc}
@@ -26,7 +75,6 @@ const HomepageCertificates = () => {
           </Link>
         ))}
 
-        {/* See All Card */}
         {remainingCount > 0 && (
           <div
             onClick={() => navigate("/certificates")}

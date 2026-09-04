@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams, Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
@@ -8,13 +9,47 @@ import {
   IoChevronBack,
   IoChevronForward,
 } from "react-icons/io5";
-import { proj } from "../data/ProjectData";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  const project = proj.find((p) => p.id === id);
+  const [project, setProject] = useState(null);
+  const [otherProjects, setOtherProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!project) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const [projectRes, allRes] = await Promise.all([
+          fetch(`${BACKEND_URL}/api/projects/${id}`),
+          fetch(`${BACKEND_URL}/api/projects`),
+        ]);
+        if (!projectRes.ok) throw new Error("Project not found");
+        const projectData = await projectRes.json();
+        const allData = await allRes.json();
+        setProject(projectData.data);
+        setOtherProjects(allData.data.filter((p) => p.id !== id));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error || !project) {
     return (
       <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
         <div className="text-center">
@@ -29,15 +64,12 @@ const ProjectDetail = () => {
     );
   }
 
-  // Get other projects for the "Other Projects" section
-  const otherProjects = proj.filter((p) => p.id !== id);
-
   return (
     <>
       <Helmet>
         <title>{project.title} | Elayabarathi M V</title>
         <meta name="description" content={project.subtitle || ""} />
-        <meta name="keywords" content={(project.tech || []).join(", ")} />
+        <meta name="keywords" content={(project.techUsed || []).join(", ")} />
         <meta
           property="og:title"
           content={`${project.title} | Project Portfolio`}
@@ -62,7 +94,6 @@ const ProjectDetail = () => {
       </Helmet>
       <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* Back Button */}
           <Link
             to="/projects"
             className="inline-flex items-center gap-2 text-zinc-400 hover:text-sky-400 transition-colors mb-8"
@@ -71,23 +102,19 @@ const ProjectDetail = () => {
             <span>Back to All Projects</span>
           </Link>
 
-          {/* Main Content */}
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {/* Left Column - Project Info */}
             <div className="lg:col-span-2">
-              {/* Title and Subtitle */}
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                 {project.title}
               </h1>
               <p className="text-xl text-zinc-400 mb-6">{project.subheading}</p>
 
-              {/* Tech Used */}
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-white mb-3">
                   Technologies Used
                 </h2>
                 <div className="flex flex-wrap gap-2">
-                  {project.techUsed.map((tech, index) => (
+                  {(project.techUsed || []).map((tech, index) => (
                     <span
                       key={index}
                       className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
@@ -98,7 +125,6 @@ const ProjectDetail = () => {
                 </div>
               </div>
 
-              {/* Description */}
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-white mb-3">
                   Description
@@ -108,13 +134,12 @@ const ProjectDetail = () => {
                 </p>
               </div>
 
-              {/* Uses / What I Learned */}
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-white mb-3">
                   What I Learned
                 </h2>
                 <ul className="space-y-2">
-                  {project.uses
+                  {(project.uses || "")
                     .split(/(?<=[.!?])\s+/)
                     .filter((item) => item.trim())
                     .map((item, index) => (
@@ -133,13 +158,12 @@ const ProjectDetail = () => {
                 </ul>
               </div>
 
-              {/* Improvements / Unique Features */}
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-white mb-3">
                   Unique Features & Improvements
                 </h2>
                 <ul className="space-y-2">
-                  {project.improvements
+                  {(project.improvements || "")
                     .split(/(?<=[.!?])\s+/)
                     .filter((item) => item.trim())
                     .map((item, index) => (
@@ -159,7 +183,6 @@ const ProjectDetail = () => {
               </div>
             </div>
 
-            {/* Right Column - Image and Links */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 ">
                 <img
@@ -169,7 +192,6 @@ const ProjectDetail = () => {
                   className="w-full rounded-xl mb-6 border border-white/20"
                 />
 
-                {/* Action Buttons */}
                 <div className="flex gap-4">
                   {project.code === "True" && (
                     <a
@@ -198,8 +220,7 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          {/* Gallery */}
-          {project.gallery.length > 0 && (
+          {(project.gallery || []).length > 0 && (
             <div className="mb-16">
               <h2 className="text-2xl font-bold text-white mb-6">
                 Project Gallery
@@ -218,12 +239,10 @@ const ProjectDetail = () => {
             </div>
           )}
 
-          {/* Other Projects Section */}
           <div className="relative">
             <h2 className="text-2xl font-bold text-white mb-6">
               Other Projects
             </h2>
-            {/* Left Scroll Button */}
             <button
               onClick={() =>
                 document
@@ -235,7 +254,6 @@ const ProjectDetail = () => {
             >
               <IoChevronBack className="size-6" />
             </button>
-            {/* Right Scroll Button */}
             <button
               onClick={() =>
                 document
@@ -271,7 +289,7 @@ const ProjectDetail = () => {
                       {otherProject.subheading}
                     </p>
                     <div className="flex flex-wrap gap-1 mt-2">
-                      {otherProject.tags.slice(0, 2).map((tag, index) => (
+                      {(otherProject.tags || []).slice(0, 2).map((tag, index) => (
                         <span
                           key={index}
                           className="text-xs text-zinc-500 bg-zinc-700/50 px-2 py-1 rounded"

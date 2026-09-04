@@ -1,61 +1,91 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import AchievementsCard from "../components/AchievementsCard";
-import { achievements } from "../data/AchievementData";
 
 const sTags = ["Leadership", "Collaboration"];
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const AchievementsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [achievements, setAchievements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Filter achievements based on selected tag and search query
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/achievements`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setAchievements(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAchievements();
+  }, []);
+
   const filteredAchievements = achievements.filter((achi) => {
-    // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
       achi.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
       achi.subtitle.toLowerCase().includes(selectedTag.toLowerCase()) ||
-      achi.tags.some((tag) =>
-        tag.toLowerCase().includes(selectedTag.toLowerCase()),
-      ) ||
-      achi.tags.some((tag) => tag.toLowerCase() === selectedTag.toLowerCase());
+      (achi.tags || []).some(
+        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
+      );
 
-    // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       achi.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       achi.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      achi.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
-      ) ||
-      achi.tags.some((tag) =>
+      (achi.tags || []).some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     return tagMatch && searchMatch;
   });
 
-  // Handle tag selection
   const handleTagSelect = (tag) => {
     setSelectedTag(tag);
-    setSearchQuery(""); // Clear search when selecting a tag
+    setSearchQuery("");
   };
 
-  // Handle search
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setSelectedTag("all"); // Reset tag filter when searching
+    setSelectedTag("all");
   };
 
-  // Clear search
   const clearSearch = () => {
     setSearchQuery("");
     document.getElementById("achievement_search").value = "";
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-red-400 mb-2">Failed to load achievements</h2>
+          <p className="text-zinc-400">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -98,7 +128,6 @@ const AchievementsLibrary = () => {
             <p className="text-zinc-400">My accomplishments and milestones</p>
           </div>
 
-          {/* Search and Filter */}
           <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
@@ -154,10 +183,9 @@ const AchievementsLibrary = () => {
             </div>
           </div>
 
-          {/* Achievements Grid */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {filteredAchievements.map((achi, index) => (
-              <Link key={index} to={`/achievement/${achi.id}`}>
+              <Link key={achi.id} to={`/achievement/${achi.id}`}>
                 <AchievementsCard
                   achiId={achi.id}
                   title={achi.title}

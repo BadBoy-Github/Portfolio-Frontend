@@ -1,9 +1,58 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { achievements } from "../data/AchievementData";
 import AchievementsCard from "./AchievementsCard";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const HomepageAchievements = () => {
   const navigate = useNavigate();
+  const [achievements, setAchievements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/achievements`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setAchievements(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAchievements();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="achievements" className="section">
+        <h2 className="headline-2">My Achievements</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+          A collection of milestones that showcase my passion and impact
+        </p>
+        <div className="flex items-center justify-center py-10">
+          <div className="loader mb-4"><span></span></div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="achievements" className="section">
+        <h2 className="headline-2">My Achievements</h2>
+        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+          A collection of milestones that showcase my passion and impact
+        </p>
+        <p className="text-red-400">Failed to load achievements.</p>
+      </section>
+    );
+  }
+
   const displayAchievements = achievements.slice(0, 5);
   const remainingCount = achievements.length - 5;
 
@@ -14,8 +63,8 @@ const HomepageAchievements = () => {
         A collection of milestones that showcase my passion and impact
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {displayAchievements.map((achi, index) => (
-          <Link key={index} to={`/achievement/${achi.id}`}>
+        {displayAchievements.map((achi) => (
+          <Link key={achi.id} to={`/achievement/${achi.id}`}>
             <AchievementsCard
               achiId={achi.id}
               title={achi.title}
@@ -27,7 +76,6 @@ const HomepageAchievements = () => {
           </Link>
         ))}
 
-        {/* More Achievements Card */}
         {remainingCount > 0 && (
           <div
             onClick={() => navigate("/achievements")}

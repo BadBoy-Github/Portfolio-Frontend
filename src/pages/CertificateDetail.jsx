@@ -1,15 +1,48 @@
 import { Helmet } from "react-helmet-async";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { IoArrowBack, IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { certificates } from "../data/CertificateData";
 
-import { IoClose } from "react-icons/io5";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const CertificateDetail = () => {
   const { id } = useParams();
-  const certificate = certificates.find((c) => c.id === id);
+  const [certificate, setCertificate] = useState(null);
+  const [otherCertificates, setOtherCertificates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!certificate) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const [certRes, allRes] = await Promise.all([
+          fetch(`${BACKEND_URL}/api/certificates/${id}`),
+          fetch(`${BACKEND_URL}/api/certificates`),
+        ]);
+        if (!certRes.ok) throw new Error("Certificate not found");
+        const certData = await certRes.json();
+        const allData = await allRes.json();
+        setCertificate(certData.data);
+        setOtherCertificates(allData.data.filter((c) => c.id !== id));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error || !certificate) {
     return (
       <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
         <div className="text-center">
@@ -23,9 +56,6 @@ const CertificateDetail = () => {
       </div>
     );
   }
-
-  // Get other certificates
-  const otherCertificates = certificates.filter((c) => c.id !== id);
 
   return (
     <>
@@ -43,10 +73,7 @@ const CertificateDetail = () => {
           property="og:title"
           content={`${certificate.title} | Certificate`}
         />
-        <meta
-          property="og:description"
-          content={`${certificate.title} certification from ${certificate.company}`}
-        />
+        <meta property="og:description" content={`${certificate.title} certification from ${certificate.company}`} />
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
@@ -69,7 +96,6 @@ const CertificateDetail = () => {
       </Helmet>
       <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
         <div className="container mx-auto px-4">
-          {/* Back Button */}
           <Link
             to="/certificates"
             className="inline-flex items-center gap-2 text-zinc-400 hover:text-sky-400 transition-colors mb-8"
@@ -78,9 +104,7 @@ const CertificateDetail = () => {
             <span>Back to All Certificates</span>
           </Link>
 
-          {/* Main Content */}
           <div className="max-w-4xl mx-auto">
-            {/* Certificate Title and Year */}
             <div className="text-center mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
                 {certificate.title}
@@ -89,7 +113,6 @@ const CertificateDetail = () => {
               <p className="text-zinc-500 mt-2">Year: {certificate.year}</p>
             </div>
 
-            {/* Certificate Image */}
             <div className="cursor-pointer group bg-zinc-800 w-fit mx-auto rounded-3xl">
               <div className="relative rounded-xl overflow-hidden p-4">
                 <img
@@ -101,13 +124,12 @@ const CertificateDetail = () => {
               </div>
             </div>
 
-            {/* Technologies Learned */}
             <div className="bg-zinc-800 rounded-xl p-6 my-8">
               <h2 className="text-xl font-semibold text-white mb-4">
                 Technologies Learned
               </h2>
               <div className="flex flex-wrap gap-2">
-                {certificate.technologiesLearned.map((tech, index) => (
+                {(certificate.technologiesLearned || []).map((tech, index) => (
                   <span
                     key={index}
                     className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
@@ -118,7 +140,6 @@ const CertificateDetail = () => {
               </div>
             </div>
 
-            {/* Description */}
             <div className="bg-zinc-800 rounded-xl p-6 mb-8">
               <h2 className="text-xl font-semibold text-white mb-4">
                 About This Certificate
@@ -129,12 +150,10 @@ const CertificateDetail = () => {
             </div>
           </div>
 
-          {/* Other Certificates Section */}
           <div className="mt-16 relative">
             <h2 className="text-2xl font-bold text-white mb-6">
               Other Certificates
             </h2>
-            {/* Left Scroll Button */}
             <button
               onClick={() =>
                 document
@@ -146,7 +165,6 @@ const CertificateDetail = () => {
             >
               <IoChevronBack className="size-6" />
             </button>
-            {/* Right Scroll Button */}
             <button
               onClick={() =>
                 document

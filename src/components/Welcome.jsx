@@ -1,12 +1,12 @@
 import CountUp from "./CountUp";
-import { skillItem } from "../data/SkillData";
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const GITHUB_USERNAME = "BadBoy-Github";
 const REPOS_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 const PER_PAGE = 100;
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const Welcome = () => {
   const [stats, setStats] = useState({
@@ -25,7 +25,6 @@ const Welcome = () => {
         let page = 1;
         let hasMorePages = true;
 
-        // Fetch all pages of repositories
         while (hasMorePages) {
           const response = await fetch(
             `${REPOS_API_URL}?per_page=${PER_PAGE}&page=${page}`,
@@ -38,20 +37,29 @@ const Welcome = () => {
           const reposPage = await response.json();
           allRepos.push(...reposPage);
 
-          // Stop if we got fewer items than requested (last page)
           hasMorePages = reposPage.length === PER_PAGE;
           page++;
         }
 
-        // Count live projects (repos with a homepage URL)
         const liveProjectsCount = allRepos.filter(
           (repo) => repo.homepage && repo.homepage.trim() !== "",
         ).length;
 
+        let techCount = 0;
+        try {
+          const techRes = await fetch(`${BACKEND_URL}/api/tech-stacks`);
+          if (techRes.ok) {
+            const techData = await techRes.json();
+            techCount = techData.length;
+          }
+        } catch (err) {
+          console.warn("Could not fetch tech stacks for Welcome stats:", err);
+        }
+
         setStats({
           repositories: allRepos.length,
           liveProjects: liveProjectsCount,
-          technologies: skillItem.length,
+          technologies: techCount,
         });
       } catch (err) {
         console.error("Failed to fetch GitHub data:", err);

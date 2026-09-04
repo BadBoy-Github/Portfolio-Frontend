@@ -7,7 +7,7 @@ const ProjectsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', description: '', link: '', github: '', skills: '', image: '' });
+  const [form, setForm] = useState({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,19 +32,28 @@ const ProjectsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', description: '', link: '', github: '', skills: '', image: '' });
+    setForm({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: '' });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditingItem(item);
     setForm({
-      name: item.name,
+      title: item.title,
       description: item.description,
-      link: item.link || '',
-      github: item.github || '',
-      skills: Array.isArray(item.skills) ? item.skills.join(', ') : '',
-      image: item.image || '',
+      projectLink: item.projectLink || '',
+      gitUrl: item.gitUrl || '',
+      techUsed: Array.isArray(item.techUsed) ? item.techUsed.join(', ') : '',
+      imgSrc: item.imgSrc || '',
+      type: item.type || '',
+      subheading: item.subheading || '',
+      tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
+      sTags: Array.isArray(item.sTags) ? item.sTags.join(', ') : '',
+      live: item.live || '',
+      code: item.code || '',
+      uses: item.uses || '',
+      improvements: item.improvements || '',
+      gallery: item.gallery || '',
     });
     setModalOpen(true);
   };
@@ -54,7 +63,9 @@ const ProjectsTab = () => {
     setError('');
     const payload = {
       ...form,
-      skills: form.skills.split(',').map(s => s.trim()).filter(Boolean),
+      techUsed: form.techUsed.split(',').map(s => s.trim()).filter(Boolean),
+      tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
+      sTags: form.sTags.split(',').map(s => s.trim()).filter(Boolean),
     };
 
     try {
@@ -136,13 +147,13 @@ const ProjectsTab = () => {
                       </div>
                     </div>
                     <ProjectCard
-                      imgSrc={item.image || ''}
-                      title={item.name}
-                      tags={item.skills || []}
-                      projectLink={item.link || '#'}
-                      code={item.github ? 'True' : 'False'}
-                      live={item.link ? 'True' : 'False'}
-                      gitUrl={item.github || '#'}
+                      imgSrc={item.imgSrc || ''}
+                      title={item.title}
+                      tags={item.techUsed || []}
+                      projectLink={item.projectLink || '#'}
+                      code={item.code || 'False'}
+                      live={item.live || 'False'}
+                      gitUrl={item.gitUrl || '#'}
                       projectId={item._id}
                     />
                   </div>
@@ -169,13 +180,13 @@ const ProjectsTab = () => {
                       </div>
                     </div>
                     <ProjectCard
-                      imgSrc={item.image || ''}
-                      title={item.name}
-                      tags={item.skills || []}
-                      projectLink={item.link || '#'}
-                      code={item.github ? 'True' : 'False'}
-                      live={item.link ? 'True' : 'False'}
-                      gitUrl={item.github || '#'}
+                      imgSrc={item.imgSrc || ''}
+                      title={item.title}
+                      tags={item.techUsed || []}
+                      projectLink={item.projectLink || '#'}
+                      code={item.code || 'False'}
+                      live={item.live || 'False'}
+                      gitUrl={item.gitUrl || '#'}
                       projectId={item._id}
                     />
                   </div>
@@ -191,28 +202,64 @@ const ProjectsTab = () => {
       <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Project`} error={error}>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
-            <label className="label">Name</label>
-            <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+            <label className="label">Title</label>
+            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Description</label>
             <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Link</label>
-            <input className="text-field" value={form.link} onChange={(e) => setForm({ ...form, link: e.target.value })} />
+            <label className="label">Project Link</label>
+            <input className="text-field" value={form.projectLink} onChange={(e) => setForm({ ...form, projectLink: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">GitHub</label>
-            <input className="text-field" value={form.github} onChange={(e) => setForm({ ...form, github: e.target.value })} />
+            <label className="label">GitHub URL</label>
+            <input className="text-field" value={form.gitUrl} onChange={(e) => setForm({ ...form, gitUrl: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">Skills (comma separated)</label>
-            <input className="text-field" value={form.skills} onChange={(e) => setForm({ ...form, skills: e.target.value })} />
+            <label className="label">Tech Used (comma separated)</label>
+            <input className="text-field" value={form.techUsed} onChange={(e) => setForm({ ...form, techUsed: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Type</label>
+            <input className="text-field" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Subheading</label>
+            <input className="text-field" value={form.subheading} onChange={(e) => setForm({ ...form, subheading: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Tags (comma separated)</label>
+            <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">STags (comma separated)</label>
+            <input className="text-field" value={form.sTags} onChange={(e) => setForm({ ...form, sTags: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Live</label>
+            <input className="text-field" value={form.live} onChange={(e) => setForm({ ...form, live: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Code</label>
+            <input className="text-field" value={form.code} onChange={(e) => setForm({ ...form, code: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Uses</label>
+            <input className="text-field" value={form.uses} onChange={(e) => setForm({ ...form, uses: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Improvements</label>
+            <input className="text-field" value={form.improvements} onChange={(e) => setForm({ ...form, improvements: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Gallery</label>
+            <input className="text-field" value={form.gallery} onChange={(e) => setForm({ ...form, gallery: e.target.value })} />
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
@@ -224,7 +271,7 @@ const ProjectsTab = () => {
       <ConfirmModal
         open={!!deleteTarget}
         title="Delete Project"
-        message={`Are you sure you want to delete "${deleteTarget?.name}"? This action cannot be undone.`}
+        message={`Are you sure you want to delete "${deleteTarget?.title}"? This action cannot be undone.`}
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />

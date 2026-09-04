@@ -7,7 +7,7 @@ const AchievementsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ title: '', description: '', date: '', image: '', tags: '' });
+  const [form, setForm] = useState({ title: '', subtitle: '', description: '', date: '', image: '', tags: '', keyPoints: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const AchievementsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ title: '', description: '', date: '', image: '', tags: '' });
+    setForm({ title: '', subtitle: '', description: '', date: '', image: '', tags: '', keyPoints: '' });
     setModalOpen(true);
   };
 
@@ -40,10 +40,12 @@ const AchievementsTab = () => {
     setEditingItem(item);
     setForm({
       title: item.title,
+      subtitle: item.subtitle || '',
       description: item.description || '',
       date: item.date,
       image: item.image || '',
-      tags: Array.isArray(item.tags) ? item.tags.join(', ') : ''
+      tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
+      keyPoints: Array.isArray(item.keyPoints) ? item.keyPoints.join(', ') : ''
     });
     setModalOpen(true);
   };
@@ -66,7 +68,8 @@ const AchievementsTab = () => {
         },
         body: JSON.stringify({
           ...form,
-          tags: form.tags.split(',').map(s => s.trim()).filter(Boolean)
+          tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
+          keyPoints: form.keyPoints.split(',').map(s => s.trim()).filter(Boolean)
         }),
       });
       const data = await res.json();
@@ -148,6 +151,10 @@ const AchievementsTab = () => {
             <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
           </div>
           <div className="input-box">
+            <label className="label">Subtitle</label>
+            <input className="text-field" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
+          </div>
+          <div className="input-box">
             <label className="label">Description</label>
             <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           </div>
@@ -162,6 +169,10 @@ const AchievementsTab = () => {
           <div className="input-box">
             <label className="label">Tags (comma separated)</label>
             <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Key Points (comma separated)</label>
+            <input className="text-field" value={form.keyPoints} onChange={(e) => setForm({ ...form, keyPoints: e.target.value })} />
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>

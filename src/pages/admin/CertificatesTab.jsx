@@ -7,7 +7,7 @@ const CertificatesTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', issuer: '', date: '', description: '', link: '', image: '', logo: '', certNumber: 0 });
+  const [form, setForm] = useState({ name: '', company: '', year: '', description: '', link: '', imgSrc: '', logo: '', certNumber: 0, technologiesLearned: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const CertificatesTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', issuer: '', date: '', description: '', link: '', image: '', logo: '', certNumber: 0 });
+    setForm({ name: '', company: '', year: '', description: '', link: '', imgSrc: '', logo: '', certNumber: 0, technologiesLearned: '' });
     setModalOpen(true);
   };
 
@@ -40,13 +40,14 @@ const CertificatesTab = () => {
     setEditingItem(item);
     setForm({
       name: item.name,
-      issuer: item.issuer,
-      date: item.date,
+      company: item.company,
+      year: item.year,
       description: item.description,
       link: item.link || '',
-      image: item.image || '',
+      imgSrc: item.imgSrc || '',
       logo: item.logo || '',
-      certNumber: item.certNumber || 0
+      certNumber: item.certNumber || 0,
+      technologiesLearned: item.technologiesLearned || ''
     });
     setModalOpen(true);
   };
@@ -128,9 +129,9 @@ const CertificatesTab = () => {
                 </div>
               </div>
               <CertificationsCard
-                imgSrc={item.image || item.link || ''}
+                imgSrc={item.imgSrc || item.link || ''}
                 title={item.name}
-                company={item.issuer}
+                company={item.company}
                 logo={item.logo || 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774434456/ai_gqzbmi.webp'}
                 certNumber={item.certNumber || idx + 1}
               />
@@ -147,12 +148,12 @@ const CertificatesTab = () => {
             <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Issuer</label>
-            <input className="text-field" value={form.issuer} onChange={(e) => setForm({ ...form, issuer: e.target.value })} required />
+            <label className="label">Company</label>
+            <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Date</label>
-            <input className="text-field" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
+            <label className="label">Year</label>
+            <input className="text-field" value={form.year} onChange={(e) => setForm({ ...form, year: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Description</label>
@@ -164,11 +165,15 @@ const CertificatesTab = () => {
           </div>
           <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Logo URL</label>
             <input className="text-field" value={form.logo} onChange={(e) => setForm({ ...form, logo: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Technologies Learned</label>
+            <input className="text-field" value={form.technologiesLearned} onChange={(e) => setForm({ ...form, technologiesLearned: e.target.value })} />
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
