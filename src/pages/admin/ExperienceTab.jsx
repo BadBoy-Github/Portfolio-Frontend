@@ -14,7 +14,7 @@ const ExperienceTab = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/experience`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -62,7 +62,7 @@ const ExperienceTab = () => {
     };
 
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/experience/${editingItem._id}`
@@ -91,7 +91,7 @@ const ExperienceTab = () => {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/experience/${deleteTarget._id}`, {
         method: 'DELETE',

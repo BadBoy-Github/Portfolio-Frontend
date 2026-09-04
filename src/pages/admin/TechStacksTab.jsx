@@ -14,7 +14,7 @@ const TechStacksTab = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -48,7 +48,7 @@ const TechStacksTab = () => {
     const payload = { ...form };
 
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${editingItem._id}`
@@ -77,7 +77,7 @@ const TechStacksTab = () => {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${deleteTarget._id}`, {
         method: 'DELETE',

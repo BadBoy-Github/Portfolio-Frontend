@@ -6,11 +6,11 @@ const SESSION_DURATION = 3 * 60 * 60 * 1000;
 
 const getSession = () => {
   try {
-    const session = sessionStorage.getItem(SESSION_KEY);
+    const session = localStorage.getItem(SESSION_KEY);
     if (!session) return null;
     const parsed = JSON.parse(session);
     if (Date.now() > parsed.expiresAt) {
-      sessionStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem(SESSION_KEY);
       return null;
     }
     return parsed;
@@ -25,11 +25,11 @@ const setSession = (token, email) => {
     email,
     expiresAt: Date.now() + SESSION_DURATION,
   };
-  sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
 };
 
 const clearSession = () => {
-  sessionStorage.removeItem(SESSION_KEY);
+  localStorage.removeItem(SESSION_KEY);
 };
 
 const AdminLogin = () => {

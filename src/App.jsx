@@ -31,6 +31,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 // Admin pages
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import { getSession } from "./pages/AdminLogin";
 
 // Lazy loaded page components
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -50,6 +51,15 @@ const LoadingFallback = () => (
   <div className="min-h-screen bg-zinc-900"></div>
 );
 
+const ProtectedRoute = ({ children }) => {
+  const session = getSession();
+  if (!session) {
+    window.location.href = "/admin-login";
+    return null;
+  }
+  return children;
+};
+
 const AppContent = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
@@ -65,7 +75,11 @@ const AppContent = () => {
             <Routes location={location} key={location.pathname}>
               {/* Admin Routes */}
               <Route path="/admin-login" element={<AdminLogin />} />
-              <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/admin-dashboard" element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } />
 
               {/* Homepage */}
               <Route path="/" element={

@@ -12,23 +12,22 @@ import ExperienceTab from './ExperienceTab';
 import EducationTab from './EducationTab';
 import BlogsTab from './BlogsTab';
 
-const SESSION_KEY = 'adminSession';
-const SESSION_DURATION = 3 * 60 * 60 * 1000;
-
 const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60" onClick={onCancel} />
-      <div className="relative bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-sm">
-        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50">
+      <div className="relative bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-sm max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
           <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
           <button onClick={onCancel} className="text-zinc-400 hover:text-zinc-200">
             <span className="material-symbols-rounded">close</span>
           </button>
         </div>
-        <p className="text-zinc-300 text-sm p-5">{message}</p>
-        <div className="flex gap-3 justify-end p-5 border-t border-zinc-700/50">
+        <div className="overflow-y-auto flex-1 p-5">
+          <p className="text-zinc-300 text-sm">{message}</p>
+        </div>
+        <div className="flex gap-3 justify-end p-5 border-t border-zinc-700/50 shrink-0">
           <button onClick={onCancel} className="btn btn-outline">Cancel</button>
           <button onClick={onConfirm} className="btn btn-primary !bg-red-500 hover:!bg-red-400">Delete</button>
         </div>
@@ -134,7 +133,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 p-4 md:p-8 md:overflow-y-auto">
+      <main className="flex-1 h-[100dvh] overflow-y-auto p-4 md:p-8">
         {activeTab === 'tech-stacks' && <TechStacksTab />}
         {activeTab === 'projects' && <ProjectsTab />}
         {activeTab === 'certificates' && <CertificatesTab />}

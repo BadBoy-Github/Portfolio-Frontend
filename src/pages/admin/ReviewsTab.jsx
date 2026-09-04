@@ -14,7 +14,7 @@ const ReviewsTab = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/reviews`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -53,7 +53,7 @@ const ReviewsTab = () => {
     e.preventDefault();
     setError('');
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/reviews/${editingItem._id}`
@@ -82,7 +82,7 @@ const ReviewsTab = () => {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/reviews/${deleteTarget._id}`, {
         method: 'DELETE',

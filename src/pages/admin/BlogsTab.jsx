@@ -14,7 +14,7 @@ const BlogsTab = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -60,7 +60,7 @@ const BlogsTab = () => {
     };
 
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${editingItem._id}`
@@ -89,7 +89,7 @@ const BlogsTab = () => {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${deleteTarget._id}`, {
         method: 'DELETE',

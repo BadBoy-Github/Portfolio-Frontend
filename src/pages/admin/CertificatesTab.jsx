@@ -14,7 +14,7 @@ const CertificatesTab = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/certificates`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -55,7 +55,7 @@ const CertificatesTab = () => {
     e.preventDefault();
     setError('');
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/certificates/${editingItem._id}`
@@ -84,7 +84,7 @@ const CertificatesTab = () => {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = sessionStorage.getItem('adminSession');
+      const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/certificates/${deleteTarget._id}`, {
         method: 'DELETE',
