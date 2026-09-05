@@ -60,15 +60,18 @@ const Skills = () => {
         </p>
 
         <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
-          {skillItem.map(({ imgSrc, label, desc }, key) => (
-            <SkillCard
-              imgSrc={imgSrc}
-              label={label}
-              desc={desc}
-              key={key}
-              classes=""
-            />
-          ))}
+          {skillItem
+            .slice()
+            .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+            .map(({ imgSrc, label, desc }, key) => (
+              <SkillCard
+                imgSrc={imgSrc}
+                label={label}
+                desc={desc}
+                key={key}
+                classes=""
+              />
+            ))}
         </div>
     </section>
   );
