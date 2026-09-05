@@ -67,6 +67,7 @@ FormModal.propTypes = {
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('tech-stacks');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [toasts, setToasts] = useState([]);
   const [authChecked, setAuthChecked] = useState(false);
   const navigate = useNavigate();
 
@@ -82,6 +83,14 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     adminClearSession();
     navigate('/admin-login');
+  };
+
+  const addToast = (message, type = 'success') => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, message, type }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
+    }, 3000);
   };
 
   if (!authChecked) return null;
@@ -134,7 +143,7 @@ const AdminDashboard = () => {
 
       {/* Main content */}
       <main className="flex-1 md:h-screen md:overflow-y-auto p-4 md:p-8">
-        {activeTab === 'tech-stacks' && <TechStacksTab />}
+        {activeTab === 'tech-stacks' && <TechStacksTab addToast={addToast} />}
         {activeTab === 'projects' && <ProjectsTab />}
         {activeTab === 'certificates' && <CertificatesTab />}
         {activeTab === 'achievements' && <AchievementsTab />}
@@ -143,6 +152,25 @@ const AdminDashboard = () => {
         {activeTab === 'education' && <EducationTab />}
         {activeTab === 'blogs' && <BlogsTab />}
       </main>
+
+      {/* Toast Container */}
+      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
+        {toasts.map((toast) => (
+          <div
+            key={toast.id}
+            className={`px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 ${
+              toast.type === 'success'
+                ? 'bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30'
+                : 'bg-red-500/20 text-red-400 ring-1 ring-red-500/30'
+            }`}
+          >
+            <span className="material-symbols-rounded text-[18px]">
+              {toast.type === 'success' ? 'check_circle' : 'error'}
+            </span>
+            {toast.message}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

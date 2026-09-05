@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { ConfirmModal, FormModal } from './AdminDashboard';
-import SkillCard from '../../components/SkillCard';
+import { useState, useEffect, useRef } from "react";
+import { ConfirmModal, FormModal } from "./AdminDashboard";
+import SkillCard from "../../components/SkillCard";
 
-const TechStacksTab = () => {
+const TechStacksTab = ({ addToast }) => {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ label: '', desc: '', imgSrc: '' });
-  const [error, setError] = useState('');
+  const [form, setForm] = useState({ label: "", desc: "", imgSrc: "" });
+  const [error, setError] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragItem = useRef(null);
@@ -16,86 +16,110 @@ const TechStacksTab = () => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const data = await res.json();
-      if (data.success) setSkills(data.data);
+      if (data.success) {
+        const sorted = (data.data || [])
+          .slice()
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        setSkills(sorted);
+      }
     } catch (err) {
-      setError('Failed to fetch data');
+      setError("Failed to fetch data");
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => { fetchItems(); }, []);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ label: '', desc: '', imgSrc: '' });
+    setForm({ label: "", desc: "", imgSrc: "" });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditingItem(item);
-    setForm({ label: item.label, desc: item.desc || '', imgSrc: item.imgSrc || '' });
+    setForm({
+      label: item.label,
+      desc: item.desc || "",
+      imgSrc: item.imgSrc || "",
+    });
     setModalOpen(true);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     const payload = { ...form };
 
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
       const url = editingItem
         ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${editingItem._id}`
         : `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks`;
-      const method = editingItem ? 'PUT' : 'POST';
+      const method = editingItem ? "PUT" : "POST";
       const res = await fetch(url, {
         method,
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (!data.success) {
-        setError(data.message || 'Failed to save');
+        setError(data.message || "Failed to save");
         return;
       }
       setModalOpen(false);
       fetchItems();
     } catch (err) {
-      setError('Failed to save');
+      setError("Failed to save");
     }
   };
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${deleteTarget._id}`, {
-        method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${deleteTarget._id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const data = await res.json();
       if (data.success) fetchItems();
     } catch (err) {
-      alert('Failed to delete');
+      alert("Failed to delete");
     } finally {
       setDeleteTarget(null);
     }
   };
 
-  const handleDragStart = (index) => {
+  const handleDragStart = (e, index) => {
     dragItem.current = index;
+    e.dataTransfer.effectAllowed = "move";
     setDragOverIndex(null);
   };
 
@@ -123,27 +147,33 @@ const TechStacksTab = () => {
 
   const saveOrder = async () => {
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
       const updates = skills.map((item, index) => ({
         _id: item._id,
-        order: index
+        order: index,
       }));
       await Promise.all(
         updates.map((item) =>
-          fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${item._id}/order`, {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
+          fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/admin/tech-stacks/${item._id}/order`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ order: item.order }),
             },
-            body: JSON.stringify({ order: item.order })
-          })
-        )
+          ),
+        ),
       );
-      alert('Order saved successfully');
+      addToast("Tech stack order updated successfully", "success");
+      fetchItems();
     } catch (err) {
-      alert('Failed to save order');
+      addToast("Failed to save order", "error");
     }
   };
 
@@ -183,7 +213,7 @@ const TechStacksTab = () => {
               <div
                 key={item._id}
                 draggable
-                onDragStart={() => handleDragStart(index)}
+                onDragStart={(e) => handleDragStart(e, index)}
                 onDragOver={(e) => handleDragOver(e, index)}
                 onDrop={() => handleDrop(index)}
                 onDragEnd={handleDragEnd}
