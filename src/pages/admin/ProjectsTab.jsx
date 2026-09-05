@@ -487,7 +487,7 @@ const ProjectsTab = ({ addToast }) => {
             placeholder="Add search tag"
           />
           <div className="input-box">
-            <label className="label">Uses</label>
+            <label className="label">Applications</label>
             <textarea
               className="text-field"
               rows={4}
@@ -496,7 +496,7 @@ const ProjectsTab = ({ addToast }) => {
             />
           </div>
           <div className="input-box">
-            <label className="label">Improvements</label>
+            <label className="label">Unique Features</label>
             <textarea
               className="text-field"
               rows={4}

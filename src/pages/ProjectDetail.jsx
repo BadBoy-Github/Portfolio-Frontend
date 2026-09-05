@@ -136,7 +136,7 @@ const ProjectDetail = () => {
 
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-white mb-3">
-                  What I Learned
+                  Applications & Use Cases
                 </h2>
                 <ul className="space-y-2">
                   {(project.uses || "")
@@ -160,7 +160,7 @@ const ProjectDetail = () => {
 
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-white mb-3">
-                  Unique Features & Improvements
+                  Unique Features
                 </h2>
                 <ul className="space-y-2">
                   {(project.improvements || "")
@@ -289,14 +289,16 @@ const ProjectDetail = () => {
                       {otherProject.subheading}
                     </p>
                     <div className="flex flex-wrap gap-1 mt-2">
-                      {(otherProject.tags || []).slice(0, 2).map((tag, index) => (
-                        <span
-                          key={index}
-                          className="text-xs text-zinc-500 bg-zinc-700/50 px-2 py-1 rounded"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                      {(otherProject.tags || [])
+                        .slice(0, 2)
+                        .map((tag, index) => (
+                          <span
+                            key={index}
+                            className="text-xs text-zinc-500 bg-zinc-700/50 px-2 py-1 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </Link>

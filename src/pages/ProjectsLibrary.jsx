@@ -9,12 +9,12 @@ import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const filterTags = [
-  "react",
-  "javascript",
-  "java",
-  "python",
-  "ai made",
-  "biotech",
+  "React",
+  "JavaScript",
+  "Java",
+  "Python",
+  "AI made",
+  "Biotech",
 ];
 
 const ProjectsLibrary = () => {
