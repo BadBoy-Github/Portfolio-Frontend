@@ -63,11 +63,11 @@ const Experience = () => {
           <ol className="relative border-l-2 border-zinc-50/10 ml-6 border-separate">
             {experience.map((edu, index) =>
               edu.compound ? (
-                <div className="mb-10 ml-12 " key={index}>
+                <li className="mb-10 relative pl-8" key={index}>
                   <a
                     href={edu.instLink}
                     target="_blank"
-                    className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-50/10 cursor-pointer"
+                    className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-900 cursor-pointer"
                   >
                     <img
                       className="rounded-full shadow-lg"
@@ -76,7 +76,7 @@ const Experience = () => {
                       loading="lazy"
                     />
                   </a>
-                  <div className="ml-4 p-6 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all hover:scale-[101%]  flex flex-col gap-4">
+                  <div className="p-6 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all hover:scale-[101%]  flex flex-col gap-4">
                     <div className="flex items-center justify-between">
                       <div
                         target="_blank"
@@ -102,7 +102,7 @@ const Experience = () => {
                       />
                     ))}
                   </div>
-                </div>
+                </li>
               ) : (
                 <ExperienceCard
                   key={index}
