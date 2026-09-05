@@ -19,6 +19,7 @@ const ProjectsTab = ({ addToast }) => {
     improvements: "",
     techUsed: [],
     sTags: [],
+    displayTags: [],
     gallery: [],
     featured: false,
   });
@@ -66,6 +67,7 @@ const ProjectsTab = ({ addToast }) => {
       improvements: "",
       techUsed: [],
       sTags: [],
+      displayTags: [],
       gallery: [],
       featured: false,
     });
@@ -85,6 +87,7 @@ const ProjectsTab = ({ addToast }) => {
       improvements: item.improvements || "",
       techUsed: Array.isArray(item.techUsed) ? item.techUsed : [],
       sTags: Array.isArray(item.sTags) ? item.sTags : [],
+      displayTags: Array.isArray(item.displayTags) ? item.displayTags : [],
       gallery: Array.isArray(item.gallery) ? item.gallery : [],
       featured: item.type === "featured",
     });
@@ -354,6 +357,7 @@ const ProjectsTab = ({ addToast }) => {
                           live={item.live || "False"}
                           gitUrl={item.gitUrl || "#"}
                           projectId={item._id}
+                          displayTags={item.displayTags || []}
                         />
                       </div>
                     ))}
@@ -392,16 +396,17 @@ const ProjectsTab = ({ addToast }) => {
                         </button>
                       </div>
                     </div>
-                    <ProjectCard
-                      imgSrc={item.imgSrc || ""}
-                      title={item.title}
-                      techUsed={item.techUsed || []}
-                      projectLink={item.projectLink || "#"}
-                      code={item.code || "False"}
-                      live={item.live || "False"}
-                      gitUrl={item.gitUrl || "#"}
-                      projectId={item._id}
-                    />
+                     <ProjectCard
+                       imgSrc={item.imgSrc || ""}
+                       title={item.title}
+                       techUsed={item.techUsed || []}
+                       projectLink={item.projectLink || "#"}
+                       code={item.code || "False"}
+                       live={item.live || "False"}
+                       gitUrl={item.gitUrl || "#"}
+                       projectId={item._id}
+                       displayTags={item.displayTags || []}
+                     />
                   </div>
                 ))}
               </div>
@@ -450,6 +455,11 @@ const ProjectsTab = ({ addToast }) => {
               required
             />
           </div>
+          <TagInput
+            label="Display Tags"
+            field="displayTags"
+            placeholder="Add display tag"
+          />
           <div className="input-box">
             <label className="label">Project Link</label>
             <input

@@ -109,6 +109,7 @@ const HomepageProjects = () => {
               live={project.live}
               gitUrl={project.gitUrl}
               projectId={project.id}
+              displayTags={project.displayTags}
             />
           ))}
 

@@ -58,6 +58,7 @@ const FeaturedProjectGrid = () => {
             live={e.live}
             gitUrl={e.gitUrl}
             projectId={e.id}
+            displayTags={e.displayTags}
           />
         );
       })}

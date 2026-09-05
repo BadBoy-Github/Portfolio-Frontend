@@ -17,6 +17,7 @@ const ProjectCard = ({
   live,
   gitUrl,
   projectId,
+  displayTags,
 }) => {
   const navigate = useNavigate();
   const [ripples, setRipples] = useState([]);
@@ -106,7 +107,7 @@ const ProjectCard = ({
           <h3 className="title-1 mb-3">{title}</h3>
 
           <div className="flex flex-wrap items-center gap-2">
-            {(techUsed || []).map((label, key) => (
+            {(displayTags || []).map((label, key) => (
               <span
                 key={key}
                 className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg transition-all duration-300 hover:bg-zinc-50/10 hover:text-zinc-300 hover:scale-105"
@@ -152,6 +153,7 @@ ProjectCard.propTypes = {
   live: PropTypes.string,
   gitUrl: PropTypes.string,
   projectId: PropTypes.string,
+  displayTags: PropTypes.array,
 };
 
 export default ProjectCard;

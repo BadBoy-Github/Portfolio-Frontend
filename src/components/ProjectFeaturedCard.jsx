@@ -16,6 +16,7 @@ const ProjectFeaturedCard = ({
   live,
   gitUrl,
   projectId,
+  displayTags,
 }) => {
   const navigate = useNavigate();
 
@@ -82,7 +83,7 @@ const ProjectFeaturedCard = ({
           <h3 className="title-1 mb-3">{title}</h3>
 
           <div className="flex flex-wrap items-center gap-2">
-            {(techUsed || []).map((label, key) => (
+            {(displayTags || []).map((label, key) => (
               <span
                 key={key}
                 className="h-8 text-sm text-zinc-400 bg-zinc-50/5 px-3 rounded-lg flex items-center"
@@ -125,6 +126,7 @@ ProjectFeaturedCard.propTypes = {
   live: PropTypes.string,
   gitUrl: PropTypes.string,
   projectId: PropTypes.string,
+  displayTags: PropTypes.array,
 };
 
 export default ProjectFeaturedCard;
