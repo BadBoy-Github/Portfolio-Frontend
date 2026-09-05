@@ -186,10 +186,16 @@ const ProjectsTab = () => {
           <button
             type="button"
             onClick={() => { addItem(field, input); setInput(''); }}
-            className="btn btn-outline"
+            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
-            Add
+          </button>
+          <button
+            type="button"
+            onClick={() => setForm({ ...form, [field]: [] })}
+            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+          >
+            <span className="material-symbols-rounded text-[16px]">refresh</span>
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -335,7 +341,7 @@ const ProjectsTab = () => {
             <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
           </div>
           <TagInput label="Technology Used" field="techUsed" placeholder="Add technology" />
-          <TagInput label="Secondary Tags" field="sTags" placeholder="Add secondary tag" />
+          <TagInput label="Search Tags" field="sTags" placeholder="Add search tag" />
           <div className="input-box">
             <label className="label">Uses</label>
             <textarea className="text-field" rows={4} value={form.uses} onChange={(e) => setForm({ ...form, uses: e.target.value })} />
