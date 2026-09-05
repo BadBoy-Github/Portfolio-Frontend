@@ -65,6 +65,7 @@ FormModal.propTypes = {
 };
 
 const TOAST_KEY = 'adminToast';
+const LOGOUT_TOAST_KEY = 'adminLogoutToast';
 
 const getPersistentToast = () => {
   try {
@@ -78,8 +79,24 @@ const getPersistentToast = () => {
   }
 };
 
+const getLogoutToast = () => {
+  try {
+    const raw = sessionStorage.getItem(LOGOUT_TOAST_KEY);
+    if (!raw) return null;
+    const toast = JSON.parse(raw);
+    sessionStorage.removeItem(LOGOUT_TOAST_KEY);
+    return toast;
+  } catch {
+    return null;
+  }
+};
+
 const setPersistentToast = (message, type = 'success') => {
   sessionStorage.setItem(TOAST_KEY, JSON.stringify({ message, type }));
+};
+
+const setLogoutToast = (message, type = 'success') => {
+  sessionStorage.setItem(LOGOUT_TOAST_KEY, JSON.stringify({ message, type }));
 };
 
 const AdminDashboard = () => {
@@ -115,7 +132,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     adminClearSession();
-    setPersistentToast('Logged out successfully', 'success');
+    setLogoutToast('Logged out successfully', 'success');
     navigate('/admin-login');
   };
 

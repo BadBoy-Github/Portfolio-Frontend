@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const SESSION_KEY = 'adminSession';
 const SESSION_DURATION = 3 * 60 * 60 * 1000;
 const TOAST_KEY = 'adminToast';
+const LOGOUT_TOAST_KEY = 'adminLogoutToast';
 
 const getSession = () => {
   try {
@@ -39,6 +40,18 @@ const getPersistentToast = () => {
     if (!raw) return null;
     const toast = JSON.parse(raw);
     sessionStorage.removeItem(TOAST_KEY);
+    return toast;
+  } catch {
+    return null;
+  }
+};
+
+const getLogoutToast = () => {
+  try {
+    const raw = sessionStorage.getItem(LOGOUT_TOAST_KEY);
+    if (!raw) return null;
+    const toast = JSON.parse(raw);
+    sessionStorage.removeItem(LOGOUT_TOAST_KEY);
     return toast;
   } catch {
     return null;
@@ -127,7 +140,7 @@ const AdminLogin = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const pending = getPersistentToast();
+    const pending = getLogoutToast();
     if (pending) {
       setToast(pending);
       setTimeout(() => setToast(null), 3000);
