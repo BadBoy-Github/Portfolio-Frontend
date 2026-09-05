@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import ProjectCard from '../../components/ProjectCard';
+import ProjectFeaturedCard from '../../components/ProjectFeaturedCard';
 
 const ProjectsTab = () => {
   const [items, setItems] = useState([]);
@@ -260,7 +261,7 @@ const ProjectsTab = () => {
                           </button>
                         </div>
                       </div>
-                      <ProjectCard
+                      <ProjectFeaturedCard
                         imgSrc={item.imgSrc || ''}
                         title={item.title}
                         techUsed={item.techUsed || []}
