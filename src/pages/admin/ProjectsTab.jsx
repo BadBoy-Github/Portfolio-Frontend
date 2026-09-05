@@ -28,6 +28,12 @@ const ProjectsTab = ({ addToast }) => {
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragItem = useRef(null);
 
+  const [featuredDragOverIndex, setFeaturedDragOverIndex] = useState(null);
+  const featuredDragItem = useRef(null);
+
+  const [nonFeaturedDragOverIndex, setNonFeaturedDragOverIndex] = useState(null);
+  const nonFeaturedDragItem = useRef(null);
+
   const fetchItems = async () => {
     setLoading(true);
     try {
@@ -42,7 +48,12 @@ const ProjectsTab = ({ addToast }) => {
         },
       );
       const data = await res.json();
-      if (data.success) setItems(data.data);
+      if (data.success) {
+        const sorted = (data.data || [])
+          .slice()
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        setItems(sorted);
+      }
     } catch (err) {
       setError("Failed to fetch data");
     } finally {
@@ -50,9 +61,123 @@ const ProjectsTab = ({ addToast }) => {
     }
   };
 
-  useEffect(() => {
-    fetchItems();
-  }, []);
+   useEffect(() => {
+     fetchItems();
+   }, []);
+
+  const moveItem = (list, from, to) => {
+    const updated = [...list];
+    const [moved] = updated.splice(from, 1);
+    updated.splice(to, 0, moved);
+    return updated;
+  };
+
+  const handleFeaturedDragStart = (index) => {
+    featuredDragItem.current = index;
+    setFeaturedDragOverIndex(null);
+  };
+
+  const handleFeaturedDragOver = (e, index) => {
+    e.preventDefault();
+    if (featuredDragItem.current === null || featuredDragItem.current === index) return;
+    setFeaturedDragOverIndex(index);
+  };
+
+  const handleFeaturedDrop = (dropIndex, featuredItems) => {
+    if (featuredDragItem.current === null) return;
+    const updated = moveItem(featuredItems, featuredDragItem.current, dropIndex);
+    setItems((prev) => {
+      const nonFeatured = prev.filter((item) => item.type !== "featured");
+      return [...updated, ...nonFeatured];
+    });
+    featuredDragItem.current = null;
+    setFeaturedDragOverIndex(null);
+  };
+
+  const handleFeaturedDragEnd = () => {
+    featuredDragItem.current = null;
+    setFeaturedDragOverIndex(null);
+  };
+
+  const saveFeaturedOrder = async (featuredItems) => {
+    const session = localStorage.getItem("adminSession");
+    const token = session ? JSON.parse(session).token : localStorage.getItem("adminToken");
+    try {
+      await Promise.all(
+        featuredItems.map((item, index) =>
+          fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/${item._id}/order`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ order: index }),
+            },
+          ),
+        ),
+      );
+      addToast("Featured projects order updated successfully", "success");
+      fetchItems();
+    } catch (err) {
+      addToast("Failed to save order", "error");
+    }
+  };
+
+  const handleNonFeaturedDragStart = (index) => {
+    nonFeaturedDragItem.current = index;
+    setNonFeaturedDragOverIndex(null);
+  };
+
+  const handleNonFeaturedDragOver = (e, index) => {
+    e.preventDefault();
+    if (nonFeaturedDragItem.current === null || nonFeaturedDragItem.current === index) return;
+    setNonFeaturedDragOverIndex(index);
+  };
+
+  const handleNonFeaturedDrop = (dropIndex, nonFeaturedItems) => {
+    if (nonFeaturedDragItem.current === null) return;
+    const updated = moveItem(nonFeaturedItems, nonFeaturedDragItem.current, dropIndex);
+    setItems((prev) => {
+      const featured = prev.filter((item) => item.type === "featured");
+      return [...featured, ...updated];
+    });
+    nonFeaturedDragItem.current = null;
+    setNonFeaturedDragOverIndex(null);
+  };
+
+  const handleNonFeaturedDragEnd = () => {
+    nonFeaturedDragItem.current = null;
+    setNonFeaturedDragOverIndex(null);
+  };
+
+  const saveNonFeaturedOrder = async (nonFeaturedItems) => {
+    const session = localStorage.getItem("adminSession");
+    const token = session ? JSON.parse(session).token : localStorage.getItem("adminToken");
+    try {
+      await Promise.all(
+        nonFeaturedItems.map((item, index) =>
+          fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/${item._id}/order`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ order: index }),
+            },
+          ),
+        ),
+      );
+      addToast("Projects order updated successfully", "success");
+      fetchItems();
+    } catch (err) {
+      addToast("Failed to save order", "error");
+    }
+  };
+
 
   const openAdd = () => {
     setEditingItem(null);
@@ -76,7 +201,7 @@ const ProjectsTab = ({ addToast }) => {
 
   const openEdit = (item) => {
     setEditingItem(item);
-    setForm({
+     setForm({
       title: item.title,
       subheading: item.subheading || "",
       description: item.description,
@@ -101,6 +226,7 @@ const ProjectsTab = ({ addToast }) => {
       ...form,
       type: form.featured ? "featured" : "",
       gallery: form.gallery.filter((url) => url.trim() !== ""),
+      order: editingItem ? editingItem.order : items.length,
     };
 
     try {
@@ -325,13 +451,37 @@ const ProjectsTab = ({ addToast }) => {
               <>
                 {featuredItems.length > 0 && (
                   <div className="mb-8">
-                    <h3 className="text-lg font-semibold text-zinc-50 mb-1 flex items-center gap-2">
-                      Featured Projects <span className="text-sky-400">({featuredItems.length})</span>
-                    </h3>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
+                        Featured Projects <span className="text-sky-400">({featuredItems.length})</span>
+                      </h3>
+                      <button
+                        onClick={() => saveFeaturedOrder(featuredItems)}
+                        className="btn btn-primary"
+                      >
+                        <span className="material-symbols-rounded text-[16px]">save</span>
+                        Save Order
+                      </button>
+                    </div>
                     <div className="border-b border-zinc-700 mb-4" />
                     <div className="grid gap-4 sm:grid-cols-2">
-                      {featuredItems.map((item) => (
-                        <div key={item._id} className="relative group">
+                      {featuredItems.map((item, index) => (
+                        <div
+                          key={item._id}
+                          draggable
+                          onDragStart={() => handleFeaturedDragStart(index)}
+                          onDragOver={(e) => handleFeaturedDragOver(e, index)}
+                          onDrop={() => handleFeaturedDrop(index, featuredItems)}
+                          onDragEnd={handleFeaturedDragEnd}
+                          className={`relative group cursor-grab active:cursor-grabbing transition-all ${
+                            featuredDragOverIndex === index ? "ring-2 ring-sky-500" : ""
+                          }`}
+                        >
+                          <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
+                              drag_indicator
+                            </span>
+                          </div>
                           <div className="flex items-center justify-end mb-2">
                             <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                               <button
@@ -371,13 +521,37 @@ const ProjectsTab = ({ addToast }) => {
 
                 {nonFeaturedItems.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-zinc-50 mb-1 flex items-center gap-2">
-                      Projects <span className="text-sky-400">({nonFeaturedItems.length})</span>
-                    </h3>
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
+                        Projects <span className="text-sky-400">({nonFeaturedItems.length})</span>
+                      </h3>
+                      <button
+                        onClick={() => saveNonFeaturedOrder(nonFeaturedItems)}
+                        className="btn btn-primary"
+                      >
+                        <span className="material-symbols-rounded text-[16px]">save</span>
+                        Save Order
+                      </button>
+                    </div>
                     <div className="border-b border-zinc-700 mb-4" />
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      {nonFeaturedItems.map((item) => (
-                        <div key={item._id} className="relative group">
+                      {nonFeaturedItems.map((item, index) => (
+                        <div
+                          key={item._id}
+                          draggable
+                          onDragStart={() => handleNonFeaturedDragStart(index)}
+                          onDragOver={(e) => handleNonFeaturedDragOver(e, index)}
+                          onDrop={() => handleNonFeaturedDrop(index, nonFeaturedItems)}
+                          onDragEnd={handleNonFeaturedDragEnd}
+                          className={`relative group cursor-grab active:cursor-grabbing transition-all ${
+                            nonFeaturedDragOverIndex === index ? "ring-2 ring-sky-500" : ""
+                          }`}
+                        >
+                          <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
+                              drag_indicator
+                            </span>
+                          </div>
                           <div className="flex items-center justify-end mb-2">
                             <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                               <button
