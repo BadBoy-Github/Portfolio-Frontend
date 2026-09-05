@@ -40,7 +40,7 @@ const FormModal = ({ open, onClose, title, error, children }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-      <div className="bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-lg max-h-[85vh] flex flex-col">
+      <div className="bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col">
         <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
           <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
           <button onClick={onClose} className="text-zinc-400 hover:text-zinc-200">
