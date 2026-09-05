@@ -87,7 +87,7 @@ const AdminDashboard = () => {
   if (!authChecked) return null;
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen md:overflow-hidden">
+    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen">
       {/* Mobile header */}
       <div className="md:hidden flex items-center justify-between bg-zinc-800 p-4 ring-1 ring-zinc-50/5">
         <div className="flex items-center gap-3">
@@ -100,7 +100,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Sidebar */}
-      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:flex md:w-64 md:h-screen md:overflow-y-auto bg-zinc-800 ring-1 ring-zinc-50/5`}>
+      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:flex md:w-64 md:h-screen md:overflow-hidden bg-zinc-800 ring-1 ring-zinc-50/5`}>
         <div className="p-4 w-64">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
@@ -133,7 +133,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 h-[100dvh] overflow-y-auto p-4 md:p-8">
+      <main className="flex-1 md:h-screen md:overflow-y-auto p-4 md:p-8">
         {activeTab === 'tech-stacks' && <TechStacksTab />}
         {activeTab === 'projects' && <ProjectsTab />}
         {activeTab === 'certificates' && <CertificatesTab />}

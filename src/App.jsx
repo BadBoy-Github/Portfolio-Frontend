@@ -60,12 +60,12 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-const AppContent = () => {
+const AppInner = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const showScrollToTopButton = location.pathname !== "/" && location.pathname !== "/about";
 
-  return (
+  const content = (
     <>
       <ScrollToTop />
       {!isAdminRoute && <Header />}
@@ -206,18 +206,26 @@ const AppContent = () => {
       {showScrollToTopButton && !isAdminRoute && <ScrollToTopButton />}
     </>
   );
+
+  if (isAdminRoute) {
+    return content;
+  }
+
+  return (
+    <ReactLenis root options={{ scroll: { smoothing: 0.05 } }}>
+      {content}
+    </ReactLenis>
+  );
 };
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <ReactLenis root options={{ scroll: { smoothing: 0.05 } }}>
-        <HelmetProvider>
-          <Router>
-            <AppContent />
-          </Router>
-        </HelmetProvider>
-      </ReactLenis>
+      <HelmetProvider>
+        <Router>
+          <AppInner />
+        </Router>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 };

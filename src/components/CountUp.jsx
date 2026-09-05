@@ -14,7 +14,7 @@ export default function CountUp({
   onEnd
 }) {
   const ref = useRef(null);
-  const motionValue = useMotionValue(direction === 'down' ? to : from);
+  const motionValue = useMotionValue(direction === 'down' ? (Number(to) || 0) : from);
 
   const damping = 20 + 40 * (1 / duration);
   const stiffness = 100 * (1 / duration);
@@ -27,7 +27,9 @@ export default function CountUp({
   const isInView = useInView(ref, { once: true, margin: '0px' });
 
   const getDecimalPlaces = num => {
-    const str = num.toString();
+    const value = Number(num);
+    if (!Number.isFinite(value)) return 0;
+    const str = value.toString();
 
     if (str.includes('.')) {
       const decimals = str.split('.')[1];

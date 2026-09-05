@@ -50,7 +50,7 @@ const Welcome = () => {
           const techRes = await fetch(`${BACKEND_URL}/api/tech-stacks`);
           if (techRes.ok) {
             const techData = await techRes.json();
-            techCount = techData.length;
+            techCount = techData.data?.length || 0;
           }
         } catch (err) {
           console.warn("Could not fetch tech stacks for Welcome stats:", err);

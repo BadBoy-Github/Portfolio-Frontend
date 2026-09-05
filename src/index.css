@@ -255,19 +255,7 @@ body {
     @apply bg-zinc-900/50 rounded-xl p-3 ring-1 ring-zinc-50/5
 }
 
-/* Complete scrollbar removal - scoped to dash layout handled in JS, global hide only */
-html {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-}
-
-body {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  overflow: hidden !important;
-}
-
-/* Animation for card reveal */
+/* Custom scrollbar for chat */
 @keyframes fadeInUp {
     from {
         opacity: 0;
