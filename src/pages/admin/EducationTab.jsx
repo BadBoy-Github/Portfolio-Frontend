@@ -7,7 +7,7 @@ const EducationTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ institution: '', degree: '', year: '', percentage: '', description: '', instLogo: '', instLink: '', skills: '' });
+  const [form, setForm] = useState({ name: '', instName: '', year: '', perc: '', desc: '', instLogo: '', instLink: '', skills: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,18 +32,18 @@ const EducationTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ institution: '', degree: '', year: '', percentage: '', description: '', instLogo: '', instLink: '', skills: '' });
+    setForm({ name: '', instName: '', year: '', perc: '', desc: '', instLogo: '', instLink: '', skills: '' });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditingItem(item);
     setForm({
-      institution: item.institution,
-      degree: item.degree,
+      name: item.name,
+      instName: item.instName,
       year: item.year,
-      percentage: item.percentage || '',
-      description: item.description || '',
+      perc: item.perc || '',
+      desc: item.desc || '',
       instLogo: item.instLogo || '',
       instLink: item.instLink || '',
       skills: Array.isArray(item.skills) ? item.skills.join(', ') : ''
@@ -133,12 +133,12 @@ const EducationTab = () => {
               </div>
               <EducationCard
                 year={item.year}
-                name={item.degree}
-                perc={item.percentage || ''}
-                instName={item.institution}
+                name={item.name}
+                perc={item.perc || ''}
+                instName={item.instName}
                 instLogo={item.instLogo || 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774435010/ksr_logo_jej2x4.webp'}
                 instLink={item.instLink || '#'}
-                desc={item.description || ''}
+                desc={item.desc || ''}
                 skills={item.skills || []}
               />
             </li>
@@ -150,12 +150,12 @@ const EducationTab = () => {
       <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Education`} error={error}>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
-            <label className="label">Institution</label>
-            <input className="text-field" value={form.institution} onChange={(e) => setForm({ ...form, institution: e.target.value })} required />
+            <label className="label">Degree / Course Name</label>
+            <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Degree</label>
-            <input className="text-field" value={form.degree} onChange={(e) => setForm({ ...form, degree: e.target.value })} required />
+            <label className="label">Institution</label>
+            <input className="text-field" value={form.instName} onChange={(e) => setForm({ ...form, instName: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Year</label>
@@ -163,11 +163,11 @@ const EducationTab = () => {
           </div>
           <div className="input-box">
             <label className="label">Percentage / Grade</label>
-            <input className="text-field" value={form.percentage} onChange={(e) => setForm({ ...form, percentage: e.target.value })} />
+            <input className="text-field" value={form.perc} onChange={(e) => setForm({ ...form, perc: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Description</label>
-            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+            <textarea className="text-field" rows={3} value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Institute Logo URL</label>

@@ -7,7 +7,7 @@ const AchievementsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ title: '', subtitle: '', description: '', date: '', image: '', tags: '', keyPoints: '' });
+  const [form, setForm] = useState({ title: '', subtitle: '', date: '', imgSrc: '', tags: '', keyPoints: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const AchievementsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ title: '', subtitle: '', description: '', date: '', image: '', tags: '', keyPoints: '' });
+    setForm({ title: '', subtitle: '', date: '', imgSrc: '', tags: '', keyPoints: '' });
     setModalOpen(true);
   };
 
@@ -41,9 +41,8 @@ const AchievementsTab = () => {
     setForm({
       title: item.title,
       subtitle: item.subtitle || '',
-      description: item.description || '',
       date: item.date,
-      image: item.image || '',
+      imgSrc: item.imgSrc || '',
       tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
       keyPoints: Array.isArray(item.keyPoints) ? item.keyPoints.join(', ') : ''
     });
@@ -131,11 +130,11 @@ const AchievementsTab = () => {
                 </div>
               </div>
               <AchievementsCard
-                imgSrc={item.image || ''}
+                imgSrc={item.imgSrc || ''}
                 title={item.title}
                 date={item.date}
                 tags={item.tags || []}
-                desc={item.description || ''}
+                desc={item.subtitle || ''}
                 achiId={item._id}
               />
             </div>
@@ -155,16 +154,12 @@ const AchievementsTab = () => {
             <input className="text-field" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">Description</label>
-            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
-          </div>
-          <div className="input-box">
             <label className="label">Date</label>
             <input className="text-field" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Tags (comma separated)</label>

@@ -7,7 +7,7 @@ const CertificatesTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', company: '', year: '', description: '', link: '', imgSrc: '', logo: '', certNumber: 0, technologiesLearned: '' });
+  const [form, setForm] = useState({ title: '', company: '', year: '', description: '', imgSrc: '', logo: '', technologiesLearned: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,22 +32,20 @@ const CertificatesTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', company: '', year: '', description: '', link: '', imgSrc: '', logo: '', certNumber: 0, technologiesLearned: '' });
+    setForm({ title: '', company: '', year: '', description: '', imgSrc: '', logo: '', technologiesLearned: '' });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditingItem(item);
     setForm({
-      name: item.name,
+      title: item.title,
       company: item.company,
       year: item.year,
       description: item.description,
-      link: item.link || '',
       imgSrc: item.imgSrc || '',
       logo: item.logo || '',
-      certNumber: item.certNumber || 0,
-      technologiesLearned: item.technologiesLearned || ''
+      technologiesLearned: Array.isArray(item.technologiesLearned) ? item.technologiesLearned.join(', ') : ''
     });
     setModalOpen(true);
   };
@@ -129,8 +127,8 @@ const CertificatesTab = () => {
                 </div>
               </div>
               <CertificationsCard
-                imgSrc={item.imgSrc || item.link || ''}
-                title={item.name}
+                imgSrc={item.imgSrc || item.imgSrc || ''}
+                title={item.title}
                 company={item.company}
                 logo={item.logo || 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774434456/ai_gqzbmi.webp'}
                 certNumber={item.certNumber || idx + 1}
@@ -144,8 +142,8 @@ const CertificatesTab = () => {
       <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Certificate`} error={error}>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
-            <label className="label">Name</label>
-            <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+            <label className="label">Title</label>
+            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Company</label>
@@ -157,11 +155,7 @@ const CertificatesTab = () => {
           </div>
           <div className="input-box">
             <label className="label">Description</label>
-            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
-          </div>
-          <div className="input-box">
-            <label className="label">Link</label>
-            <input className="text-field" value={form.link} onChange={(e) => setForm({ ...form, link: e.target.value })} />
+            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Image URL</label>

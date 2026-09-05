@@ -7,7 +7,7 @@ const ExperienceTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ title: '', company: '', period: '', description: '', skills: '', link: '', role: '', instLogo: '', imgSrc: '', certifi: false });
+  const [form, setForm] = useState({ name: '', instName: '', year: '', desc: '', skills: '', instLink: '', role: '', instLogo: '', imgSrc: '', certifi: false });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,19 +32,19 @@ const ExperienceTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ title: '', company: '', period: '', description: '', skills: '', link: '', role: '', instLogo: '', imgSrc: '', certifi: false });
+    setForm({ name: '', instName: '', year: '', desc: '', skills: '', instLink: '', role: '', instLogo: '', imgSrc: '', certifi: false });
     setModalOpen(true);
   };
 
   const openEdit = (item) => {
     setEditingItem(item);
     setForm({
-      title: item.title,
-      company: item.company,
-      period: item.period,
-      description: item.description,
+      name: item.name,
+      instName: item.instName,
+      year: item.year,
+      desc: item.desc,
       skills: Array.isArray(item.skills) ? item.skills.join(', ') : '',
-      link: item.link || '',
+      instLink: item.instLink || '',
       role: item.role || '',
       instLogo: item.instLogo || '',
       imgSrc: item.imgSrc || '',
@@ -123,7 +123,7 @@ const ExperienceTab = () => {
           {items.map((item) => (
             <li key={item._id} className="relative group/item">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-xs text-zinc-500">{item.period}</p>
+                <p className="text-xs text-zinc-500">{item.year}</p>
                 <div className="flex gap-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
                   <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
                     <span className="material-symbols-rounded text-[16px]">edit</span>
@@ -134,13 +134,13 @@ const ExperienceTab = () => {
                 </div>
               </div>
               <ExperienceCard
-                year={item.period}
-                name={item.title}
+                year={item.year}
+                name={item.name}
                 role={item.role || ''}
-                instName={item.company}
+                instName={item.instName}
                 instLogo={item.instLogo || 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774435128/skybrisk_logo_aladdz.webp'}
-                instLink={item.link || '#'}
-                desc={item.description}
+                instLink={item.instLink || '#'}
+                desc={item.desc}
                 imgSrc={item.imgSrc || ''}
                 certifi={!!item.certifi}
                 skills={item.skills || []}
@@ -154,20 +154,20 @@ const ExperienceTab = () => {
       <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Experience`} error={error}>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
-            <label className="label">Title</label>
-            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+            <label className="label">Name / Role Title</label>
+            <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Company</label>
-            <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} required />
+            <label className="label">Institute / Company</label>
+            <input className="text-field" value={form.instName} onChange={(e) => setForm({ ...form, instName: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Period</label>
-            <input className="text-field" value={form.period} onChange={(e) => setForm({ ...form, period: e.target.value })} required />
+            <label className="label">Year</label>
+            <input className="text-field" value={form.year} onChange={(e) => setForm({ ...form, year: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Description</label>
-            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
+            <textarea className="text-field" rows={3} value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Skills (comma separated)</label>
@@ -175,7 +175,7 @@ const ExperienceTab = () => {
           </div>
           <div className="input-box">
             <label className="label">Link</label>
-            <input className="text-field" value={form.link} onChange={(e) => setForm({ ...form, link: e.target.value })} />
+            <input className="text-field" value={form.instLink} onChange={(e) => setForm({ ...form, instLink: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Role</label>

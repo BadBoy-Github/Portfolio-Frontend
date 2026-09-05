@@ -7,7 +7,7 @@ const ReviewsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', role: '', company: '', content: '', rating: 5, image: '' });
+  const [form, setForm] = useState({ name: '', company: '', content: '', imgSrc: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const ReviewsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', role: '', company: '', content: '', rating: 5, image: '' });
+    setForm({ name: '', company: '', content: '', imgSrc: '' });
     setModalOpen(true);
   };
 
@@ -40,11 +40,9 @@ const ReviewsTab = () => {
     setEditingItem(item);
     setForm({
       name: item.name,
-      role: item.role || '',
       company: item.company || '',
       content: item.content || '',
-      rating: item.rating || 5,
-      image: item.image || ''
+      imgSrc: item.imgSrc || ''
     });
     setModalOpen(true);
   };
@@ -127,10 +125,9 @@ const ReviewsTab = () => {
               </div>
               <ReviewCard
                 content={item.content || ''}
-                imgSrc={item.image || ''}
+                imgSrc={item.imgSrc || ''}
                 name={item.name}
-                company={item.company || item.role || ''}
-                rating={item.rating || 5}
+                company={item.company || ''}
               />
             </div>
           ))}
@@ -145,10 +142,6 @@ const ReviewsTab = () => {
             <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
           </div>
           <div className="input-box">
-            <label className="label">Role</label>
-            <input className="text-field" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} />
-          </div>
-          <div className="input-box">
             <label className="label">Company</label>
             <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
           </div>
@@ -157,12 +150,8 @@ const ReviewsTab = () => {
             <textarea className="text-field" rows={3} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">Rating (1-5)</label>
-            <input type="number" min="1" max="5" className="text-field" value={form.rating} onChange={(e) => setForm({ ...form, rating: parseInt(e.target.value) || 1 })} />
-          </div>
-          <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.image} onChange={(e) => setForm({ ...form, image: e.target.value })} />
+            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
