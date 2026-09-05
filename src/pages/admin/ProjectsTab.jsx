@@ -34,6 +34,9 @@ const ProjectsTab = ({ addToast }) => {
   const [nonFeaturedDragOverIndex, setNonFeaturedDragOverIndex] = useState(null);
   const nonFeaturedDragItem = useRef(null);
 
+  const [galleryDragOverIndex, setGalleryDragOverIndex] = useState(null);
+  const galleryDragItem = useRef(null);
+
   const fetchItems = async () => {
     setLoading(true);
     try {
@@ -415,8 +418,37 @@ const ProjectsTab = ({ addToast }) => {
     );
   };
 
-  return (
-    <div>
+  const moveGalleryItem = (from, to) => {
+    const updated = [...form.gallery];
+    const [moved] = updated.splice(from, 1);
+    updated.splice(to, 0, moved);
+    setForm({ ...form, gallery: updated });
+  };
+
+  const handleGalleryDragStart = (index) => {
+    galleryDragItem.current = index;
+    setGalleryDragOverIndex(null);
+  };
+
+  const handleGalleryDragOver = (e, index) => {
+    e.preventDefault();
+    if (galleryDragItem.current === null || galleryDragItem.current === index) return;
+    setGalleryDragOverIndex(index);
+  };
+
+  const handleGalleryDrop = (dropIndex) => {
+    if (galleryDragItem.current === null) return;
+    moveGalleryItem(galleryDragItem.current, dropIndex);
+    galleryDragItem.current = null;
+    setGalleryDragOverIndex(null);
+  };
+
+  const handleGalleryDragEnd = () => {
+    galleryDragItem.current = null;
+    setGalleryDragOverIndex(null);
+  };
+
+  return (<div>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Projects <span className="text-sky-400">({items.length})</span></h2>
@@ -711,26 +743,37 @@ const ProjectsTab = ({ addToast }) => {
             </div>
           </div>
           <div className="input-box">
-            <label className="label">Gallery</label>
-            {form.gallery.map((url, index) => (
-              <div key={index} className="flex gap-2 mb-2">
-                <input
-                  className="text-field flex-1"
-                  value={url}
-                  onChange={(e) => updateGalleryField(index, e.target.value)}
-                  placeholder="Image URL"
-                />
-                <button
-                  type="button"
-                  onClick={() => removeGalleryField(index)}
-                  className="btn btn-outline !text-red-400 hover:!bg-red-400/10"
-                >
-                  <span className="material-symbols-rounded text-[16px]">
-                    delete
-                  </span>
-                </button>
-              </div>
-            ))}
+             <label className="label">Gallery</label>
+             {form.gallery.map((url, index) => (
+               <div
+                 key={index}
+                 draggable
+                 onDragStart={() => handleGalleryDragStart(index)}
+                 onDragOver={(e) => handleGalleryDragOver(e, index)}
+                 onDrop={() => handleGalleryDrop(index)}
+                 onDragEnd={handleGalleryDragEnd}
+                 className={`flex gap-2 mb-2 items-center cursor-grab active:cursor-grabbing transition-all ${galleryDragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+               >
+                 <span className="material-symbols-rounded text-[16px] text-zinc-400">
+                   drag_indicator
+                 </span>
+                 <input
+                   className="text-field flex-1"
+                   value={url}
+                   onChange={(e) => updateGalleryField(index, e.target.value)}
+                   placeholder="Image URL"
+                 />
+                 <button
+                   type="button"
+                   onClick={() => removeGalleryField(index)}
+                   className="btn btn-outline !text-red-400 hover:!bg-red-400/10"
+                 >
+                   <span className="material-symbols-rounded text-[16px]">
+                     delete
+                   </span>
+                 </button>
+               </div>
+             ))}
             <button
               type="button"
               onClick={addGalleryField}
