@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import ReviewCard from '../../components/ReviewCard';
 
-const ReviewsTab = () => {
+const ReviewsTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -68,12 +68,18 @@ const ReviewsTab = () => {
       const data = await res.json();
       if (!data.success) {
         setError(data.message || 'Failed to save');
+        addToast(data.message || 'Failed to save review', 'error');
         return;
       }
       setModalOpen(false);
       fetchItems();
+      addToast(
+        editingItem ? 'Review updated successfully' : 'Review added successfully',
+        'success'
+      );
     } catch (err) {
       setError('Failed to save');
+      addToast('Failed to save review', 'error');
     }
   };
 
@@ -87,9 +93,10 @@ const ReviewsTab = () => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) fetchItems();
-    } catch (err) {
-      alert('Failed to delete');
+      if (data.success) {
+        fetchItems();
+        addToast('Review deleted successfully', 'success');
+      }
     } finally {
       setDeleteTarget(null);
     }

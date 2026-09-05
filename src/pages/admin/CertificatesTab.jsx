@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import CertificationsCard from '../../components/CertificationsCard';
 
-const CertificatesTab = () => {
+const CertificatesTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -71,12 +71,18 @@ const CertificatesTab = () => {
       const data = await res.json();
       if (!data.success) {
         setError(data.message || 'Failed to save');
+        addToast(data.message || 'Failed to save certificate', 'error');
         return;
       }
       setModalOpen(false);
       fetchItems();
+      addToast(
+        editingItem ? 'Certificate updated successfully' : 'Certificate added successfully',
+        'success'
+      );
     } catch (err) {
       setError('Failed to save');
+      addToast('Failed to save certificate', 'error');
     }
   };
 
@@ -90,9 +96,10 @@ const CertificatesTab = () => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) fetchItems();
-    } catch (err) {
-      alert('Failed to delete');
+      if (data.success) {
+        fetchItems();
+        addToast('Certificate deleted successfully', 'success');
+      }
     } finally {
       setDeleteTarget(null);
     }

@@ -3,7 +3,7 @@ import { ConfirmModal, FormModal } from "./AdminDashboard";
 import ProjectCard from "../../components/ProjectCard";
 import ProjectFeaturedCard from "../../components/ProjectFeaturedCard";
 
-const ProjectsTab = () => {
+const ProjectsTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -120,10 +120,15 @@ const ProjectsTab = () => {
       const data = await res.json();
       if (!data.success) {
         setError(data.message || "Failed to save");
+        addToast(data.message || "Failed to save project", "error");
         return;
       }
       setModalOpen(false);
       fetchItems();
+      addToast(
+        editingItem ? "Project updated successfully" : "Project added successfully",
+        "success"
+      );
     } catch (err) {
       setError("Failed to save");
     }
@@ -144,9 +149,12 @@ const ProjectsTab = () => {
         },
       );
       const data = await res.json();
-      if (data.success) fetchItems();
+      if (data.success) {
+        fetchItems();
+        addToast('Project deleted successfully', 'success');
+      }
     } catch (err) {
-      alert("Failed to delete");
+      addToast('Failed to delete project', 'error');
     } finally {
       setDeleteTarget(null);
     }

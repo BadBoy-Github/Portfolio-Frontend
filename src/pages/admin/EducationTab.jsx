@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import EducationCard from '../../components/EducationCard';
 
-const EducationTab = () => {
+const EducationTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -77,12 +77,18 @@ const EducationTab = () => {
       const data = await res.json();
       if (!data.success) {
         setError(data.message || 'Failed to save');
+        addToast(data.message || 'Failed to save education', 'error');
         return;
       }
       setModalOpen(false);
       fetchItems();
+      addToast(
+        editingItem ? 'Education updated successfully' : 'Education added successfully',
+        'success'
+      );
     } catch (err) {
       setError('Failed to save');
+      addToast('Failed to save education', 'error');
     }
   };
 
@@ -96,9 +102,10 @@ const EducationTab = () => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) fetchItems();
-    } catch (err) {
-      alert('Failed to delete');
+      if (data.success) {
+        fetchItems();
+        addToast('Education deleted successfully', 'success');
+      }
     } finally {
       setDeleteTarget(null);
     }

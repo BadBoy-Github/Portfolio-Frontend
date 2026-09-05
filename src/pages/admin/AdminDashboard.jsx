@@ -82,6 +82,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     adminClearSession();
+    addToast('Logged out successfully', 'success');
     navigate('/admin-login');
   };
 
@@ -144,17 +145,17 @@ const AdminDashboard = () => {
       {/* Main content */}
       <main className="flex-1 md:h-screen md:overflow-y-auto p-4 md:p-8">
         {activeTab === 'tech-stacks' && <TechStacksTab addToast={addToast} />}
-        {activeTab === 'projects' && <ProjectsTab />}
-        {activeTab === 'certificates' && <CertificatesTab />}
-        {activeTab === 'achievements' && <AchievementsTab />}
-        {activeTab === 'reviews' && <ReviewsTab />}
-        {activeTab === 'experience' && <ExperienceTab />}
-        {activeTab === 'education' && <EducationTab />}
-        {activeTab === 'blogs' && <BlogsTab />}
+        {activeTab === 'projects' && <ProjectsTab addToast={addToast} />}
+        {activeTab === 'certificates' && <CertificatesTab addToast={addToast} />}
+        {activeTab === 'achievements' && <AchievementsTab addToast={addToast} />}
+        {activeTab === 'reviews' && <ReviewsTab addToast={addToast} />}
+        {activeTab === 'experience' && <ExperienceTab addToast={addToast} />}
+        {activeTab === 'education' && <EducationTab addToast={addToast} />}
+        {activeTab === 'blogs' && <BlogsTab addToast={addToast} />}
       </main>
 
       {/* Toast Container */}
-      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
         {toasts.map((toast) => (
           <div
             key={toast.id}

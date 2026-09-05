@@ -85,12 +85,18 @@ const TechStacksTab = ({ addToast }) => {
       const data = await res.json();
       if (!data.success) {
         setError(data.message || "Failed to save");
+        addToast(data.message || "Failed to save tech stack", "error");
         return;
       }
       setModalOpen(false);
       fetchItems();
+      addToast(
+        editingItem ? "Tech stack updated successfully" : "Tech stack added successfully",
+        "success"
+      );
     } catch (err) {
       setError("Failed to save");
+      addToast("Failed to save tech stack", "error");
     }
   };
 
@@ -109,9 +115,10 @@ const TechStacksTab = ({ addToast }) => {
         },
       );
       const data = await res.json();
-      if (data.success) fetchItems();
-    } catch (err) {
-      alert("Failed to delete");
+      if (data.success) {
+        fetchItems();
+        addToast('Tech stack deleted successfully', 'success');
+      }
     } finally {
       setDeleteTarget(null);
     }

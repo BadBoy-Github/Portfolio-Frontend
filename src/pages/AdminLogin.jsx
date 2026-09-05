@@ -39,10 +39,16 @@ const AdminLogin = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(null);
   const navigate = useNavigate();
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const showPasswordField = isEmailValid && email.length > 0;
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
 
   const validateEmail = (value) => {
     if (value.length === 0) {
@@ -86,9 +92,11 @@ const AdminLogin = () => {
         return;
       }
       setSession(data.token, data.email);
+      showToast('Login successful', 'success');
       navigate('/admin-dashboard');
     } catch (err) {
       setPasswordError('Login failed. Please try again.');
+      showToast('Login failed', 'error');
     } finally {
       setLoading(false);
     }
@@ -174,6 +182,23 @@ const AdminLogin = () => {
           )}
         </form>
       </div>
+
+      {toast && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <div
+            className={`px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 ${
+              toast.type === 'success'
+                ? 'bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30'
+                : 'bg-red-500/20 text-red-400 ring-1 ring-red-500/30'
+            }`}
+          >
+            <span className="material-symbols-rounded text-[18px]">
+              {toast.type === 'success' ? 'check_circle' : 'error'}
+            </span>
+            {toast.message}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

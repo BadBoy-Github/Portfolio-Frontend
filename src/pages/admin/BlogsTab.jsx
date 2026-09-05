@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import BlogCard from '../../components/BlogCard';
 
-const BlogsTab = () => {
+const BlogsTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -77,12 +77,18 @@ const BlogsTab = () => {
       const data = await res.json();
       if (!data.success) {
         setError(data.message || 'Failed to save');
+        addToast(data.message || 'Failed to save blog', 'error');
         return;
       }
       setModalOpen(false);
       fetchItems();
+      addToast(
+        editingItem ? 'Blog updated successfully' : 'Blog added successfully',
+        'success'
+      );
     } catch (err) {
       setError('Failed to save');
+      addToast('Failed to save blog', 'error');
     }
   };
 
@@ -96,9 +102,10 @@ const BlogsTab = () => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) fetchItems();
-    } catch (err) {
-      alert('Failed to delete');
+      if (data.success) {
+        fetchItems();
+        addToast('Blog deleted successfully', 'success');
+      }
     } finally {
       setDeleteTarget(null);
     }
