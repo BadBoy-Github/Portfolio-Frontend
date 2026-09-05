@@ -64,12 +64,38 @@ FormModal.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+const TOAST_KEY = 'adminToast';
+
+const getPersistentToast = () => {
+  try {
+    const raw = sessionStorage.getItem(TOAST_KEY);
+    if (!raw) return null;
+    const toast = JSON.parse(raw);
+    sessionStorage.removeItem(TOAST_KEY);
+    return toast;
+  } catch {
+    return null;
+  }
+};
+
+const setPersistentToast = (message, type = 'success') => {
+  sessionStorage.setItem(TOAST_KEY, JSON.stringify({ message, type }));
+};
+
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('tech-stacks');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
   const [authChecked, setAuthChecked] = useState(false);
   const navigate = useNavigate();
+
+  const addToast = (message, type = 'success') => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, message, type }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
+    }, 3000);
+  };
 
   useEffect(() => {
     const session = getSession();
@@ -80,18 +106,17 @@ const AdminDashboard = () => {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    const pending = getPersistentToast();
+    if (pending) {
+      addToast(pending.message, pending.type);
+    }
+  }, [navigate, addToast]);
+
   const handleLogout = () => {
     adminClearSession();
-    addToast('Logged out successfully', 'success');
+    setPersistentToast('Logged out successfully', 'success');
     navigate('/admin-login');
-  };
-
-  const addToast = (message, type = 'success') => {
-    const id = Date.now();
-    setToasts((prev) => [...prev, { id, message, type }]);
-    setTimeout(() => {
-      setToasts((prev) => prev.filter((toast) => toast.id !== id));
-    }, 3000);
   };
 
   if (!authChecked) return null;

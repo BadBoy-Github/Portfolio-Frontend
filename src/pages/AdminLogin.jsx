@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SESSION_KEY = 'adminSession';
 const SESSION_DURATION = 3 * 60 * 60 * 1000;
+const TOAST_KEY = 'adminToast';
 
 const getSession = () => {
   try {
@@ -30,6 +31,22 @@ const setSession = (token, email) => {
 
 const clearSession = () => {
   localStorage.removeItem(SESSION_KEY);
+};
+
+const getPersistentToast = () => {
+  try {
+    const raw = sessionStorage.getItem(TOAST_KEY);
+    if (!raw) return null;
+    const toast = JSON.parse(raw);
+    sessionStorage.removeItem(TOAST_KEY);
+    return toast;
+  } catch {
+    return null;
+  }
+};
+
+const setPersistentToast = (message, type = 'success') => {
+  sessionStorage.setItem(TOAST_KEY, JSON.stringify({ message, type }));
 };
 
 const AdminLogin = () => {
@@ -92,11 +109,11 @@ const AdminLogin = () => {
         return;
       }
       setSession(data.token, data.email);
-      showToast('Login successful', 'success');
+      setPersistentToast('Login successful', 'success');
       navigate('/admin-dashboard');
     } catch (err) {
       setPasswordError('Login failed. Please try again.');
-      showToast('Login failed', 'error');
+      setToast({ message: 'Login failed', type: 'error' });
     } finally {
       setLoading(false);
     }
@@ -108,6 +125,14 @@ const AdminLogin = () => {
       navigate('/admin-dashboard');
     }
   }, [navigate]);
+
+  useEffect(() => {
+    const pending = getPersistentToast();
+    if (pending) {
+      setToast(pending);
+      setTimeout(() => setToast(null), 3000);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-zinc-900 flex items-center justify-center p-4">
