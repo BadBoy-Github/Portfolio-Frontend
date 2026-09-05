@@ -115,7 +115,7 @@ const EducationTab = ({ addToast }) => {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50">Education</h2>
+          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Education <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">Manage educational qualifications</p>
         </div>
         <button onClick={openAdd} className="btn btn-primary">Add Education</button>

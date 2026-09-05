@@ -293,7 +293,7 @@ const ProjectsTab = ({ addToast }) => {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50">Projects</h2>
+          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Projects <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">
             Manage your portfolio projects
           </p>
@@ -318,100 +318,105 @@ const ProjectsTab = ({ addToast }) => {
             const featuredItems = items.filter(
               (item) => item.type === "featured",
             );
+            const nonFeaturedItems = items.filter(
+              (item) => item.type !== "featured",
+            );
             return (
-              featuredItems.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-zinc-50 mb-1">
-                    Featured Projects
-                  </h3>
-                  <div className="border-b border-zinc-700 mb-4" />
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {featuredItems.map((item) => (
-                      <div key={item._id} className="relative group">
-                        <div className="flex items-center justify-end mb-2">
-                          <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button
-                              onClick={() => openEdit(item)}
-                              className="btn btn-outline text-xs py-1 px-2"
-                            >
-                              <span className="material-symbols-rounded text-[16px]">
-                                edit
-                              </span>
-                            </button>
-                            <button
-                              onClick={() => setDeleteTarget(item)}
-                              className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                            >
-                              <span className="material-symbols-rounded text-[16px]">
-                                delete
-                              </span>
-                            </button>
+              <>
+                {featuredItems.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold text-zinc-50 mb-1 flex items-center gap-2">
+                      Featured Projects <span className="text-sky-400">({featuredItems.length})</span>
+                    </h3>
+                    <div className="border-b border-zinc-700 mb-4" />
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {featuredItems.map((item) => (
+                        <div key={item._id} className="relative group">
+                          <div className="flex items-center justify-end mb-2">
+                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <button
+                                onClick={() => openEdit(item)}
+                                className="btn btn-outline text-xs py-1 px-2"
+                              >
+                                <span className="material-symbols-rounded text-[16px]">
+                                  edit
+                                </span>
+                              </button>
+                              <button
+                                onClick={() => setDeleteTarget(item)}
+                                className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                              >
+                                <span className="material-symbols-rounded text-[16px]">
+                                  delete
+                                </span>
+                              </button>
+                            </div>
                           </div>
+                          <ProjectFeaturedCard
+                            imgSrc={item.imgSrc || ""}
+                            title={item.title}
+                            techUsed={item.techUsed || []}
+                            projectLink={item.projectLink || "#"}
+                            code={item.code || "False"}
+                            live={item.live || "False"}
+                            gitUrl={item.gitUrl || "#"}
+                            projectId={item._id}
+                            displayTags={item.displayTags || []}
+                          />
                         </div>
-                        <ProjectFeaturedCard
-                          imgSrc={item.imgSrc || ""}
-                          title={item.title}
-                          techUsed={item.techUsed || []}
-                          projectLink={item.projectLink || "#"}
-                          code={item.code || "False"}
-                          live={item.live || "False"}
-                          gitUrl={item.gitUrl || "#"}
-                          projectId={item._id}
-                          displayTags={item.displayTags || []}
-                        />
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )
+                )}
+
+                {nonFeaturedItems.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-zinc-50 mb-1 flex items-center gap-2">
+                      Projects <span className="text-sky-400">({nonFeaturedItems.length})</span>
+                    </h3>
+                    <div className="border-b border-zinc-700 mb-4" />
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {nonFeaturedItems.map((item) => (
+                        <div key={item._id} className="relative group">
+                          <div className="flex items-center justify-end mb-2">
+                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <button
+                                onClick={() => openEdit(item)}
+                                className="btn btn-outline text-xs py-1 px-2"
+                              >
+                                <span className="material-symbols-rounded text-[16px]">
+                                  edit
+                                </span>
+                              </button>
+                              <button
+                                onClick={() => setDeleteTarget(item)}
+                                className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                              >
+                                <span className="material-symbols-rounded text-[16px]">
+                                  delete
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <ProjectCard
+                            imgSrc={item.imgSrc || ""}
+                            title={item.title}
+                            techUsed={item.techUsed || []}
+                            projectLink={item.projectLink || "#"}
+                            code={item.code || "False"}
+                            live={item.live || "False"}
+                            gitUrl={item.gitUrl || "#"}
+                            projectId={item._id}
+                            displayTags={item.displayTags || []}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             );
           })()}
-
-          {items.length > 0 && (
-            <div>
-              <h3 className="text-lg font-semibold text-zinc-50 mb-1">
-                All Projects
-              </h3>
-              <div className="border-b border-zinc-700 mb-4" />
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((item) => (
-                  <div key={item._id} className="relative group">
-                    <div className="flex items-center justify-end mb-2">
-                      <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button
-                          onClick={() => openEdit(item)}
-                          className="btn btn-outline text-xs py-1 px-2"
-                        >
-                          <span className="material-symbols-rounded text-[16px]">
-                            edit
-                          </span>
-                        </button>
-                        <button
-                          onClick={() => setDeleteTarget(item)}
-                          className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                        >
-                          <span className="material-symbols-rounded text-[16px]">
-                            delete
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                     <ProjectCard
-                       imgSrc={item.imgSrc || ""}
-                       title={item.title}
-                       techUsed={item.techUsed || []}
-                       projectLink={item.projectLink || "#"}
-                       code={item.code || "False"}
-                       live={item.live || "False"}
-                       gitUrl={item.gitUrl || "#"}
-                       projectId={item._id}
-                       displayTags={item.displayTags || []}
-                     />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {items.length === 0 && (
             <p className="text-zinc-400 col-span-full">No items found.</p>
