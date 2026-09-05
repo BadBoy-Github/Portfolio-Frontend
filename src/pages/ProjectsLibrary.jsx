@@ -57,7 +57,7 @@ const ProjectsLibrary = () => {
   const filteredWorks = normalProject.filter((project) => {
     const tagMatch =
       selectedTag === "all" ||
-      project.tags.some(
+      (project.tags || []).some(
         (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       ) ||
       (project.sTags || []).some(

@@ -7,9 +7,10 @@ const ProjectsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: [], featured: false });
+  const [form, setForm] = useState({ title: '', subheading: '', description: '', projectLink: '', gitUrl: '', imgSrc: '', uses: '', improvements: '', techUsed: [], sTags: [], gallery: [], featured: false });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [dragTarget, setDragTarget] = useState({ field: null, index: null });
 
   const fetchItems = async () => {
     setLoading(true);
@@ -32,7 +33,7 @@ const ProjectsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: [], featured: false });
+    setForm({ title: '', subheading: '', description: '', projectLink: '', gitUrl: '', imgSrc: '', uses: '', improvements: '', techUsed: [], sTags: [], gallery: [], featured: false });
     setModalOpen(true);
   };
 
@@ -40,19 +41,15 @@ const ProjectsTab = () => {
     setEditingItem(item);
     setForm({
       title: item.title,
+      subheading: item.subheading || '',
       description: item.description,
       projectLink: item.projectLink || '',
       gitUrl: item.gitUrl || '',
-      techUsed: Array.isArray(item.techUsed) ? item.techUsed.join(', ') : '',
       imgSrc: item.imgSrc || '',
-      type: item.type || '',
-      subheading: item.subheading || '',
-      tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
-      sTags: Array.isArray(item.sTags) ? item.sTags.join(', ') : '',
-      live: item.live || '',
-      code: item.code || '',
       uses: item.uses || '',
       improvements: item.improvements || '',
+      techUsed: Array.isArray(item.techUsed) ? item.techUsed : [],
+      sTags: Array.isArray(item.sTags) ? item.sTags : [],
       gallery: Array.isArray(item.gallery) ? item.gallery : [],
       featured: item.type === 'featured'
     });
@@ -64,9 +61,6 @@ const ProjectsTab = () => {
     setError('');
     const payload = {
       ...form,
-      techUsed: form.techUsed.split(',').map(s => s.trim()).filter(Boolean),
-      tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
-      sTags: form.sTags.split(',').map(s => s.trim()).filter(Boolean),
       type: form.featured ? 'featured' : '',
       gallery: form.gallery.filter(url => url.trim() !== '')
     };
@@ -116,6 +110,39 @@ const ProjectsTab = () => {
     }
   };
 
+  const addItem = (field, value) => {
+    if (!value.trim()) return;
+    setForm({ ...form, [field]: [...form[field], value.trim()] });
+  };
+
+  const removeItem = (field, index) => {
+    const updated = form[field].filter((_, i) => i !== index);
+    setForm({ ...form, [field]: updated });
+  };
+
+  const handleDragStart = (field, index) => {
+    setDragTarget({ field, index });
+  };
+
+  const handleDragOver = (e, field, index) => {
+    e.preventDefault();
+    if (dragTarget.field !== field || dragTarget.index === index) return;
+  };
+
+  const handleDrop = (field, dropIndex) => {
+    if (dragTarget.field !== field || dragTarget.index === null) return;
+    const items = [...form[field]];
+    const draggedItem = items[dragTarget.index];
+    items.splice(dragTarget.index, 1);
+    items.splice(dropIndex, 0, draggedItem);
+    setForm({ ...form, [field]: items });
+    setDragTarget({ field: null, index: null });
+  };
+
+  const handleDragEnd = () => {
+    setDragTarget({ field: null, index: null });
+  };
+
   const addGalleryField = () => {
     setForm({ ...form, gallery: [...form.gallery, ''] });
   };
@@ -129,6 +156,61 @@ const ProjectsTab = () => {
   const removeGalleryField = (index) => {
     const updated = form.gallery.filter((_, i) => i !== index);
     setForm({ ...form, gallery: updated });
+  };
+
+  const TagInput = ({ label, field, placeholder }) => {
+    const [input, setInput] = useState('');
+    return (
+      <div className="input-box">
+        <label className="label">{label}</label>
+        <div className="flex gap-2 mb-2">
+          <input
+            className="text-field flex-1"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={placeholder}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                addItem(field, input);
+                setInput('');
+              }
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => { addItem(field, input); setInput(''); }}
+            className="btn btn-outline"
+          >
+            <span className="material-symbols-rounded text-[16px]">add</span>
+            Add
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {form[field].map((item, index) => (
+            <span
+              key={index}
+              draggable
+              onDragStart={() => handleDragStart(field, index)}
+              onDragOver={(e) => handleDragOver(e, field, index)}
+              onDrop={() => handleDrop(field, index)}
+              onDragEnd={handleDragEnd}
+              className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing hover:bg-zinc-600 transition-colors"
+            >
+              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">drag_indicator</span>
+              {item}
+              <button
+                type="button"
+                onClick={() => removeItem(field, index)}
+                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+              >
+                close
+              </button>
+            </span>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -227,8 +309,12 @@ const ProjectsTab = () => {
             <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
           </div>
           <div className="input-box">
+            <label className="label">Subheading</label>
+            <input className="text-field" value={form.subheading} onChange={(e) => setForm({ ...form, subheading: e.target.value })} />
+          </div>
+          <div className="input-box">
             <label className="label">Description</label>
-            <textarea className="text-field" rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
+            <textarea className="text-field" rows={5} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
           </div>
           <div className="input-box">
             <label className="label">Project Link</label>
@@ -239,44 +325,18 @@ const ProjectsTab = () => {
             <input className="text-field" value={form.gitUrl} onChange={(e) => setForm({ ...form, gitUrl: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">Tech Used (comma separated)</label>
-            <input className="text-field" value={form.techUsed} onChange={(e) => setForm({ ...form, techUsed: e.target.value })} />
-          </div>
-          <div className="input-box">
             <label className="label">Image URL</label>
             <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
           </div>
-          <div className="input-box">
-            <label className="label">Type</label>
-            <input className="text-field" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} />
-          </div>
-          <div className="input-box">
-            <label className="label">Subheading</label>
-            <input className="text-field" value={form.subheading} onChange={(e) => setForm({ ...form, subheading: e.target.value })} />
-          </div>
-          <div className="input-box">
-            <label className="label">Tags (comma separated)</label>
-            <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
-          </div>
-          <div className="input-box">
-            <label className="label">STags (comma separated)</label>
-            <input className="text-field" value={form.sTags} onChange={(e) => setForm({ ...form, sTags: e.target.value })} />
-          </div>
-          <div className="input-box">
-            <label className="label">Live</label>
-            <input className="text-field" value={form.live} onChange={(e) => setForm({ ...form, live: e.target.value })} />
-          </div>
-          <div className="input-box">
-            <label className="label">Code</label>
-            <input className="text-field" value={form.code} onChange={(e) => setForm({ ...form, code: e.target.value })} />
-          </div>
+          <TagInput label="Technology Used" field="techUsed" placeholder="Add technology" />
+          <TagInput label="Secondary Tags" field="sTags" placeholder="Add secondary tag" />
           <div className="input-box">
             <label className="label">Uses</label>
-            <input className="text-field" value={form.uses} onChange={(e) => setForm({ ...form, uses: e.target.value })} />
+            <textarea className="text-field" rows={4} value={form.uses} onChange={(e) => setForm({ ...form, uses: e.target.value })} />
           </div>
           <div className="input-box">
             <label className="label">Improvements</label>
-            <input className="text-field" value={form.improvements} onChange={(e) => setForm({ ...form, improvements: e.target.value })} />
+            <textarea className="text-field" rows={4} value={form.improvements} onChange={(e) => setForm({ ...form, improvements: e.target.value })} />
           </div>
           <div className="input-box">
             <div className="flex items-center gap-2 mb-2">
