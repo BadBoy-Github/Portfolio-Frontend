@@ -6,16 +6,6 @@ import ProjectCard from "../components/ProjectCard";
 import { useLenis } from "lenis/react";
 import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 
-const sTags = [
-  "React",
-  "JavaScript",
-  "HTML",
-  "Java",
-  "Python",
-  "AI Assist",
-  "Biotech",
-];
-
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const ProjectsLibrary = () => {
@@ -54,15 +44,13 @@ const ProjectsLibrary = () => {
 
   const normalProject = projects.filter((e) => e.type !== "featured");
 
+  const techTags = Array.from(
+    new Set(normalProject.flatMap((project) => project.techUsed || []))
+  );
+
   const filteredWorks = normalProject.filter((project) => {
     const tagMatch =
       selectedTag === "all" ||
-      (project.tags || []).some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
-      ) ||
-      (project.sTags || []).some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
-      ) ||
       (project.techUsed || []).some(
         (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
       );
@@ -70,14 +58,11 @@ const ProjectsLibrary = () => {
     const searchMatch =
       searchQuery === "" ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (project.tags || []).some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      (project.techUsed || []).some((tech) =>
+        tech.toLowerCase().includes(searchQuery.toLowerCase()),
       ) ||
       (project.sTags || []).some((tag) =>
         tag.toLowerCase().includes(searchQuery.toLowerCase()),
-      ) ||
-      (project.techUsed || []).some((tech) =>
-        tech.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     return tagMatch && searchMatch;
@@ -167,9 +152,9 @@ const ProjectsLibrary = () => {
               </button>
 
               <div className="flex items-center gap-2 flex-wrap">
-                {sTags.map((tag, index) => (
+                {techTags.map((tag) => (
                   <button
-                    key={index}
+                    key={tag}
                     className={`px-3 py-2 rounded-lg text-sm ${
                       selectedTag === tag.toLowerCase()
                         ? "bg-sky-600 text-zinc-800"
@@ -214,7 +199,7 @@ const ProjectsLibrary = () => {
                 key={index}
                 imgSrc={project.imgSrc}
                 title={project.title}
-                tags={project.tags}
+                techUsed={project.techUsed}
                 projectLink={project.projectLink}
                 code={project.code}
                 live={project.live}

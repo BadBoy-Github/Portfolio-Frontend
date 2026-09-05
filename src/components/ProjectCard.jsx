@@ -10,7 +10,7 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 const ProjectCard = ({
   imgSrc,
   title,
-  tags,
+  techUsed,
   projectLink,
   classes,
   code,
@@ -106,7 +106,7 @@ const ProjectCard = ({
           <h3 className="title-1 mb-3">{title}</h3>
 
           <div className="flex flex-wrap items-center gap-2">
-            {tags.map((label, key) => (
+            {(techUsed || []).map((label, key) => (
               <span
                 key={key}
                 className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg transition-all duration-300 hover:bg-zinc-50/10 hover:text-zinc-300 hover:scale-105"
@@ -145,7 +145,7 @@ const ProjectCard = ({
 ProjectCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired,
+  techUsed: PropTypes.array.isRequired,
   projectLink: PropTypes.string.isRequired,
   classes: PropTypes.string,
   code: PropTypes.string,

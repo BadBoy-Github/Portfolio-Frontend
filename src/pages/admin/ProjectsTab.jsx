@@ -257,7 +257,7 @@ const ProjectsTab = () => {
                       <ProjectCard
                         imgSrc={item.imgSrc || ''}
                         title={item.title}
-                        tags={item.techUsed || []}
+                        techUsed={item.techUsed || []}
                         projectLink={item.projectLink || '#'}
                         code={item.code || 'False'}
                         live={item.live || 'False'}
@@ -291,7 +291,7 @@ const ProjectsTab = () => {
                     <ProjectCard
                       imgSrc={item.imgSrc || ''}
                       title={item.title}
-                      tags={item.techUsed || []}
+                      techUsed={item.techUsed || []}
                       projectLink={item.projectLink || '#'}
                       code={item.code || 'False'}
                       live={item.live || 'False'}

@@ -51,7 +51,7 @@ const FeaturedProjectGrid = () => {
             key={e.id || i}
             imgSrc={e.imgSrc}
             title={e.title}
-            tags={e.tags}
+            techUsed={e.techUsed}
             projectLink={e.projectLink}
             classes={e.classes}
             code={e.code}
