@@ -7,7 +7,7 @@ const ProjectsTab = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: '' });
+  const [form, setForm] = useState({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: [], featured: false });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
 
@@ -32,7 +32,7 @@ const ProjectsTab = () => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: '' });
+    setForm({ title: '', description: '', projectLink: '', gitUrl: '', techUsed: '', imgSrc: '', type: '', subheading: '', tags: '', sTags: '', live: '', code: '', uses: '', improvements: '', gallery: [], featured: false });
     setModalOpen(true);
   };
 
@@ -53,7 +53,8 @@ const ProjectsTab = () => {
       code: item.code || '',
       uses: item.uses || '',
       improvements: item.improvements || '',
-      gallery: item.gallery || '',
+      gallery: Array.isArray(item.gallery) ? item.gallery : [],
+      featured: item.type === 'featured'
     });
     setModalOpen(true);
   };
@@ -66,6 +67,8 @@ const ProjectsTab = () => {
       techUsed: form.techUsed.split(',').map(s => s.trim()).filter(Boolean),
       tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
       sTags: form.sTags.split(',').map(s => s.trim()).filter(Boolean),
+      type: form.featured ? 'featured' : '',
+      gallery: form.gallery.filter(url => url.trim() !== '')
     };
 
     try {
@@ -113,6 +116,21 @@ const ProjectsTab = () => {
     }
   };
 
+  const addGalleryField = () => {
+    setForm({ ...form, gallery: [...form.gallery, ''] });
+  };
+
+  const updateGalleryField = (index, value) => {
+    const updated = [...form.gallery];
+    updated[index] = value;
+    setForm({ ...form, gallery: updated });
+  };
+
+  const removeGalleryField = (index) => {
+    const updated = form.gallery.filter((_, i) => i !== index);
+    setForm({ ...form, gallery: updated });
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -129,38 +147,41 @@ const ProjectsTab = () => {
         </div>
       ) : (
         <>
-          {items.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-lg font-semibold text-zinc-50 mb-1">Featured Projects</h3>
-              <div className="border-b border-zinc-700 mb-4" />
-              <div className="grid gap-4 sm:grid-cols-2">
-                {items.slice(0, 3).map((item) => (
-                  <div key={item._id} className="relative group">
-                    <div className="flex items-center justify-end mb-2">
-                      <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
-                          <span className="material-symbols-rounded text-[16px]">edit</span>
-                        </button>
-                        <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
-                          <span className="material-symbols-rounded text-[16px]">delete</span>
-                        </button>
+          {(() => {
+            const featuredItems = items.filter((item) => item.type === 'featured');
+            return featuredItems.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-zinc-50 mb-1">Featured Projects</h3>
+                <div className="border-b border-zinc-700 mb-4" />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {featuredItems.map((item) => (
+                    <div key={item._id} className="relative group">
+                      <div className="flex items-center justify-end mb-2">
+                        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
+                            <span className="material-symbols-rounded text-[16px]">edit</span>
+                          </button>
+                          <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
+                            <span className="material-symbols-rounded text-[16px]">delete</span>
+                          </button>
+                        </div>
                       </div>
+                      <ProjectCard
+                        imgSrc={item.imgSrc || ''}
+                        title={item.title}
+                        tags={item.techUsed || []}
+                        projectLink={item.projectLink || '#'}
+                        code={item.code || 'False'}
+                        live={item.live || 'False'}
+                        gitUrl={item.gitUrl || '#'}
+                        projectId={item._id}
+                      />
                     </div>
-                    <ProjectCard
-                      imgSrc={item.imgSrc || ''}
-                      title={item.title}
-                      tags={item.techUsed || []}
-                      projectLink={item.projectLink || '#'}
-                      code={item.code || 'False'}
-                      live={item.live || 'False'}
-                      gitUrl={item.gitUrl || '#'}
-                      projectId={item._id}
-                    />
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
           {items.length > 0 && (
             <div>
@@ -258,8 +279,43 @@ const ProjectsTab = () => {
             <input className="text-field" value={form.improvements} onChange={(e) => setForm({ ...form, improvements: e.target.value })} />
           </div>
           <div className="input-box">
+            <div className="flex items-center gap-2 mb-2">
+              <input
+                id="featured"
+                type="checkbox"
+                checked={form.featured}
+                onChange={(e) => setForm({ ...form, featured: e.target.checked })}
+              />
+              <label htmlFor="featured" className="label mb-0">Featured Project</label>
+            </div>
+          </div>
+          <div className="input-box">
             <label className="label">Gallery</label>
-            <input className="text-field" value={form.gallery} onChange={(e) => setForm({ ...form, gallery: e.target.value })} />
+            {form.gallery.map((url, index) => (
+              <div key={index} className="flex gap-2 mb-2">
+                <input
+                  className="text-field flex-1"
+                  value={url}
+                  onChange={(e) => updateGalleryField(index, e.target.value)}
+                  placeholder="Image URL"
+                />
+                <button
+                  type="button"
+                  onClick={() => removeGalleryField(index)}
+                  className="btn btn-outline !text-red-400 hover:!bg-red-400/10"
+                >
+                  <span className="material-symbols-rounded text-[16px]">delete</span>
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addGalleryField}
+              className="btn btn-outline w-full"
+            >
+              <span className="material-symbols-rounded text-[16px]">add</span>
+              Add Gallery Image
+            </button>
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
