@@ -8,6 +8,15 @@ import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
+const filterTags = [
+  "react",
+  "javascript",
+  "java",
+  "python",
+  "ai made",
+  "biotech",
+];
+
 const ProjectsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,25 +53,24 @@ const ProjectsLibrary = () => {
 
   const normalProject = projects.filter((e) => e.type !== "featured");
 
-  const techTags = Array.from(
-    new Set(normalProject.flatMap((project) => project.techUsed || []))
-  );
-
   const filteredWorks = normalProject.filter((project) => {
     const tagMatch =
       selectedTag === "all" ||
       (project.techUsed || []).some(
         (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
+      ) ||
+      (project.sTags || []).some(
+        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       );
 
     const searchMatch =
       searchQuery === "" ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (project.techUsed || []).some((tech) =>
-        tech.toLowerCase().includes(searchQuery.toLowerCase()),
+      (project.techUsed || []).some(
+        (tech) => tech.toLowerCase() === searchQuery.toLowerCase(),
       ) ||
-      (project.sTags || []).some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      (project.sTags || []).some(
+        (tag) => tag.toLowerCase() === searchQuery.toLowerCase(),
       );
 
     return tagMatch && searchMatch;
@@ -152,7 +160,7 @@ const ProjectsLibrary = () => {
               </button>
 
               <div className="flex items-center gap-2 flex-wrap">
-                {techTags.map((tag) => (
+                {filterTags.map((tag) => (
                   <button
                     key={tag}
                     className={`px-3 py-2 rounded-lg text-sm ${
