@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import ProjectCard from '../../components/ProjectCard';
 
@@ -10,7 +10,8 @@ const ProjectsTab = () => {
   const [form, setForm] = useState({ title: '', subheading: '', description: '', projectLink: '', gitUrl: '', imgSrc: '', uses: '', improvements: '', techUsed: [], sTags: [], gallery: [], featured: false });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
-  const [dragTarget, setDragTarget] = useState({ field: null, index: null });
+  const [dragOverIndex, setDragOverIndex] = useState(null);
+  const dragItem = useRef(null);
 
   const fetchItems = async () => {
     setLoading(true);
@@ -121,26 +122,31 @@ const ProjectsTab = () => {
   };
 
   const handleDragStart = (field, index) => {
-    setDragTarget({ field, index });
+    dragItem.current = { field, index };
+    setDragOverIndex(null);
   };
 
   const handleDragOver = (e, field, index) => {
     e.preventDefault();
-    if (dragTarget.field !== field || dragTarget.index === index) return;
+    if (!dragItem.current || dragItem.current.field !== field || dragItem.current.index === index) return;
+    setDragOverIndex(index);
   };
 
   const handleDrop = (field, dropIndex) => {
-    if (dragTarget.field !== field || dragTarget.index === null) return;
+    if (!dragItem.current || dragItem.current.field !== field) return;
     const items = [...form[field]];
-    const draggedItem = items[dragTarget.index];
-    items.splice(dragTarget.index, 1);
+    const draggedIndex = dragItem.current.index;
+    const draggedItem = items[draggedIndex];
+    items.splice(draggedIndex, 1);
     items.splice(dropIndex, 0, draggedItem);
     setForm({ ...form, [field]: items });
-    setDragTarget({ field: null, index: null });
+    dragItem.current = null;
+    setDragOverIndex(null);
   };
 
   const handleDragEnd = () => {
-    setDragTarget({ field: null, index: null });
+    dragItem.current = null;
+    setDragOverIndex(null);
   };
 
   const addGalleryField = () => {
@@ -195,7 +201,7 @@ const ProjectsTab = () => {
               onDragOver={(e) => handleDragOver(e, field, index)}
               onDrop={() => handleDrop(field, index)}
               onDragEnd={handleDragEnd}
-              className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing hover:bg-zinc-600 transition-colors"
+              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? 'ring-2 ring-sky-500 bg-zinc-600' : 'hover:bg-zinc-600'}`}
             >
               <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">drag_indicator</span>
               {item}
