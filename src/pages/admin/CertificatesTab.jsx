@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import CertificationsCard from '../../components/CertificationsCard';
 
@@ -112,7 +113,7 @@ const CertificatesTab = ({ addToast }) => {
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Certificates <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">Manage your certifications</p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">Add Certificate</button>
+        <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Certificate</button>
       </div>
 
       {loading ? (

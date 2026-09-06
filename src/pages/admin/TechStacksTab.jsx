@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from "./AdminDashboard";
 import SkillCard from "../../components/SkillCard";
 
@@ -199,6 +200,7 @@ const TechStacksTab = ({ addToast }) => {
             Save Order
           </button>
           <button onClick={openAdd} className="btn btn-primary">
+            <IoAdd className="text-[18px]" />
             Add Tech Stack
           </button>
         </div>

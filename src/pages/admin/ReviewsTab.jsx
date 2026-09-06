@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import ReviewCard from '../../components/ReviewCard';
 
@@ -109,7 +110,7 @@ const ReviewsTab = ({ addToast }) => {
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Reviews <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">Manage testimonials and reviews</p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">Add Review</button>
+        <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Review</button>
       </div>
 
       {loading ? (

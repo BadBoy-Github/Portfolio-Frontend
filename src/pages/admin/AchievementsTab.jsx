@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import AchievementsCard from '../../components/AchievementsCard';
 
@@ -120,6 +121,7 @@ const AchievementsTab = ({ addToast }) => {
           </p>
         </div>
         <button onClick={openAdd} className="btn btn-primary">
+          <IoAdd className="text-[18px]" />
           Add Achievement
         </button>
       </div>

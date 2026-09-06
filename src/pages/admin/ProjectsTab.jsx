@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from "./AdminDashboard";
 import ProjectCard from "../../components/ProjectCard";
 import ProjectFeaturedCard from "../../components/ProjectFeaturedCard";
@@ -443,9 +444,10 @@ const ProjectsTab = ({ addToast }) => {
              <span className="material-symbols-rounded text-[16px]">save</span>
              Save Order
            </button>
-           <button onClick={openAdd} className="btn btn-primary">
-             Add Project
-           </button>
+          <button onClick={openAdd} className="btn btn-primary">
+            <IoAdd className="text-[18px]" />
+            Add Project
+          </button>
          </div>
       </div>
 

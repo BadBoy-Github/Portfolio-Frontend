@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import BlogCard from '../../components/BlogCard';
 
@@ -118,7 +119,7 @@ const BlogsTab = ({ addToast }) => {
           <h2 className="text-2xl font-semibold text-zinc-50">Blogs</h2>
           <p className="text-zinc-400 text-sm mt-1">Manage blog posts and articles</p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">Add Blog</button>
+        <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Blog</button>
       </div>
 
       {loading ? (
