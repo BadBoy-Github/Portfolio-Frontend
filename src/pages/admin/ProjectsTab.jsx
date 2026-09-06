@@ -429,8 +429,9 @@ const ProjectsTab = ({ addToast }) => {
     }
   };
 
-  return (<div>
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
+  return (
+   <div className="px-4 md:px-8 pb-4 md:pb-8">
+      <div className="flex items-center justify-between sticky top-0 z-20 bg-zinc-900 pt-8 pb-4">
         <div>
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Projects <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">
@@ -470,12 +471,15 @@ const ProjectsTab = ({ addToast }) => {
               <>
                 {featuredItems.length > 0 && (
                   <div className="mb-8">
-                    <div className="flex items-center justify-between mb-4 sticky top-16 z-10 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
+                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-zinc-900 pb-4 border-b border-zinc-700">
                       <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
-                        Featured Projects <span className="text-sky-400">({featuredItems.length})</span>
+                        Featured Projects{" "}
+                        <span className="text-sky-400">
+                          ({featuredItems.length})
+                        </span>
                       </h3>
                     </div>
-                    <div className="border-b border-zinc-700 mb-4" />
+                    <div className="mb-4" />
                     <div className="grid gap-4 sm:grid-cols-2">
                       {featuredItems.map((item, index) => (
                         <div
@@ -483,10 +487,14 @@ const ProjectsTab = ({ addToast }) => {
                           draggable
                           onDragStart={() => handleFeaturedDragStart(index)}
                           onDragOver={(e) => handleFeaturedDragOver(e, index)}
-                          onDrop={() => handleFeaturedDrop(index, featuredItems)}
+                          onDrop={() =>
+                            handleFeaturedDrop(index, featuredItems)
+                          }
                           onDragEnd={handleFeaturedDragEnd}
                           className={`relative group cursor-grab active:cursor-grabbing transition-all ${
-                            featuredDragOverIndex === index ? "ring-2 ring-sky-500" : ""
+                            featuredDragOverIndex === index
+                              ? "ring-2 ring-sky-500"
+                              : ""
                           }`}
                         >
                           <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -533,23 +541,32 @@ const ProjectsTab = ({ addToast }) => {
 
                 {nonFeaturedItems.length > 0 && (
                   <div>
-                    <div className="flex items-center justify-between mb-4 sticky top-16 z-10 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
+                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-zinc-900 pb-4 border-b border-zinc-700">
                       <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
-                        Projects <span className="text-sky-400">({nonFeaturedItems.length})</span>
+                        Projects{" "}
+                        <span className="text-sky-400">
+                          ({nonFeaturedItems.length})
+                        </span>
                       </h3>
                     </div>
-                    <div className="border-b border-zinc-700 mb-4" />
+                    <div className="mb-4" />
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       {nonFeaturedItems.map((item, index) => (
                         <div
                           key={item._id}
                           draggable
                           onDragStart={() => handleNonFeaturedDragStart(index)}
-                          onDragOver={(e) => handleNonFeaturedDragOver(e, index)}
-                          onDrop={() => handleNonFeaturedDrop(index, nonFeaturedItems)}
+                          onDragOver={(e) =>
+                            handleNonFeaturedDragOver(e, index)
+                          }
+                          onDrop={() =>
+                            handleNonFeaturedDrop(index, nonFeaturedItems)
+                          }
                           onDragEnd={handleNonFeaturedDragEnd}
                           className={`relative group cursor-grab active:cursor-grabbing transition-all ${
-                            nonFeaturedDragOverIndex === index ? "ring-2 ring-sky-500" : ""
+                            nonFeaturedDragOverIndex === index
+                              ? "ring-2 ring-sky-500"
+                              : ""
                           }`}
                         >
                           <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">

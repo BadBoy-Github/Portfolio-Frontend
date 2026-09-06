@@ -109,18 +109,29 @@ const AchievementsTab = ({ addToast }) => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
+    <div className="px-4 md:px-8 pb-4 md:pb-8">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 pt-8 pb-4 bg-zinc-900 border-b border-zinc-700">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Achievements <span className="text-sky-400">({items.length})</span></h2>
-          <p className="text-zinc-400 text-sm mt-1">Manage your achievements and awards</p>
+          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
+            Achievements <span className="text-sky-400">({items.length})</span>
+          </h2>
+          <p className="text-zinc-400 text-sm mt-1">
+            Manage your achievements and awards
+          </p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">Add Achievement</button>
+        <button onClick={openAdd} className="btn btn-primary">
+          Add Achievement
+        </button>
       </div>
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3].map(i => <div key={i} className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-32 animate-pulse" />)}
+          {[1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-32 animate-pulse"
+            />
+          ))}
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -128,57 +139,108 @@ const AchievementsTab = ({ addToast }) => {
             <div key={item._id} className="relative group">
               <div className="flex items-center justify-end mb-2">
                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">edit</span>
+                  <button
+                    onClick={() => openEdit(item)}
+                    className="btn btn-outline text-xs py-1 px-2"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      edit
+                    </span>
                   </button>
-                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">delete</span>
+                  <button
+                    onClick={() => setDeleteTarget(item)}
+                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      delete
+                    </span>
                   </button>
                 </div>
               </div>
               <AchievementsCard
-                imgSrc={item.imgSrc || ''}
+                imgSrc={item.imgSrc || ""}
                 title={item.title}
                 date={item.date}
                 tags={item.tags || []}
-                desc={item.subtitle || ''}
+                desc={item.subtitle || ""}
                 achiId={item._id}
               />
             </div>
           ))}
-          {items.length === 0 && <p className="text-zinc-400 col-span-full">No items found.</p>}
+          {items.length === 0 && (
+            <p className="text-zinc-400 col-span-full">No items found.</p>
+          )}
         </div>
       )}
 
-      <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Achievement`} error={error}>
+      <FormModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={`${editingItem ? "Edit" : "Add"} Achievement`}
+        error={error}
+      >
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
             <label className="label">Title</label>
-            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+            <input
+              className="text-field"
+              value={form.title}
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Subtitle</label>
-            <input className="text-field" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.subtitle}
+              onChange={(e) => setForm({ ...form, subtitle: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Date</label>
-            <input className="text-field" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
+            <input
+              className="text-field"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.imgSrc}
+              onChange={(e) => setForm({ ...form, imgSrc: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Tags (comma separated)</label>
-            <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.tags}
+              onChange={(e) => setForm({ ...form, tags: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Key Points (comma separated)</label>
-            <input className="text-field" value={form.keyPoints} onChange={(e) => setForm({ ...form, keyPoints: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.keyPoints}
+              onChange={(e) => setForm({ ...form, keyPoints: e.target.value })}
+            />
           </div>
           <div className="flex gap-3 justify-end pt-2">
-            <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              className="btn btn-outline"
+            >
+              Cancel
+            </button>
+            <button type="submit" className="btn btn-primary">
+              Save
+            </button>
           </div>
         </form>
       </FormModal>

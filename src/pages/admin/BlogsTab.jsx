@@ -112,8 +112,8 @@ const BlogsTab = ({ addToast }) => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
+     <div className="px-4 md:px-8 pb-4 md:pb-8">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900 border-b border-zinc-700 pt-8 pb-4">
         <div>
           <h2 className="text-2xl font-semibold text-zinc-50">Blogs</h2>
           <p className="text-zinc-400 text-sm mt-1">Manage blog posts and articles</p>

@@ -114,95 +114,177 @@ const ExperienceTab = ({ addToast }) => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
+    <div className="px-4 md:px-8 pb-4 md:pb-8">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900 border-b border-zinc-700 pt-8 pb-4">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Experience <span className="text-sky-400">({items.length})</span></h2>
-          <p className="text-zinc-400 text-sm mt-1">Manage work experience and internships</p>
+          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
+            Experience <span className="text-sky-400">({items.length})</span>
+          </h2>
+          <p className="text-zinc-400 text-sm mt-1">
+            Manage work experience and internships
+          </p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">Add Experience</button>
+        <button onClick={openAdd} className="btn btn-primary">
+          Add Experience
+        </button>
       </div>
 
       {loading ? (
         <p className="text-zinc-400">Loading...</p>
       ) : (
-        <ul className="space-y-0">
+        <ul className="space-y-0 pl-6">
           {items.map((item) => (
             <li key={item._id} className="relative group/item">
               <div className="flex items-center justify-between mb-2">
                 <p className="text-xs text-zinc-500">{item.year}</p>
                 <div className="flex gap-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">edit</span>
+                  <button
+                    onClick={() => openEdit(item)}
+                    className="btn btn-outline text-xs py-1 px-2"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      edit
+                    </span>
                   </button>
-                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">delete</span>
+                  <button
+                    onClick={() => setDeleteTarget(item)}
+                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      delete
+                    </span>
                   </button>
                 </div>
               </div>
               <ExperienceCard
                 year={item.year}
                 name={item.name}
-                role={item.role || ''}
+                role={item.role || ""}
                 instName={item.instName}
-                instLogo={item.instLogo || 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774435128/skybrisk_logo_aladdz.webp'}
-                instLink={item.instLink || '#'}
+                instLogo={
+                  item.instLogo ||
+                  "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435128/skybrisk_logo_aladdz.webp"
+                }
+                instLink={item.instLink || "#"}
                 desc={item.desc}
-                imgSrc={item.imgSrc || ''}
+                imgSrc={item.imgSrc || ""}
                 certifi={!!item.certifi}
                 skills={item.skills || []}
               />
             </li>
           ))}
-          {items.length === 0 && <p className="text-zinc-400">No items found.</p>}
+          {items.length === 0 && (
+            <p className="text-zinc-400">No items found.</p>
+          )}
         </ul>
       )}
 
-      <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Experience`} error={error}>
+      <FormModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={`${editingItem ? "Edit" : "Add"} Experience`}
+        error={error}
+      >
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
             <label className="label">Name / Role Title</label>
-            <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+            <input
+              className="text-field"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Institute / Company</label>
-            <input className="text-field" value={form.instName} onChange={(e) => setForm({ ...form, instName: e.target.value })} required />
+            <input
+              className="text-field"
+              value={form.instName}
+              onChange={(e) => setForm({ ...form, instName: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Year</label>
-            <input className="text-field" value={form.year} onChange={(e) => setForm({ ...form, year: e.target.value })} required />
+            <input
+              className="text-field"
+              value={form.year}
+              onChange={(e) => setForm({ ...form, year: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Description</label>
-            <textarea className="text-field" rows={3} value={form.desc} onChange={(e) => setForm({ ...form, desc: e.target.value })} required />
+            <textarea
+              className="text-field"
+              rows={3}
+              value={form.desc}
+              onChange={(e) => setForm({ ...form, desc: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Skills (comma separated)</label>
-            <input className="text-field" value={form.skills} onChange={(e) => setForm({ ...form, skills: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.skills}
+              onChange={(e) => setForm({ ...form, skills: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Link</label>
-            <input className="text-field" value={form.instLink} onChange={(e) => setForm({ ...form, instLink: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.instLink}
+              onChange={(e) => setForm({ ...form, instLink: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Role</label>
-            <input className="text-field" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.role}
+              onChange={(e) => setForm({ ...form, role: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Institute Logo URL</label>
-            <input className="text-field" value={form.instLogo} onChange={(e) => setForm({ ...form, instLogo: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.instLogo}
+              onChange={(e) => setForm({ ...form, instLogo: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Certificate Image URL</label>
-            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.imgSrc}
+              onChange={(e) => setForm({ ...form, imgSrc: e.target.value })}
+            />
           </div>
           <div className="input-box flex items-center gap-2">
-            <input id="certifi" type="checkbox" checked={form.certifi} onChange={(e) => setForm({ ...form, certifi: e.target.checked })} />
-            <label htmlFor="certifi" className="text-sm text-zinc-300">Has certificate</label>
+            <input
+              id="certifi"
+              type="checkbox"
+              checked={form.certifi}
+              onChange={(e) => setForm({ ...form, certifi: e.target.checked })}
+            />
+            <label htmlFor="certifi" className="text-sm text-zinc-300">
+              Has certificate
+            </label>
           </div>
           <div className="flex gap-3 justify-end pt-2">
-            <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              className="btn btn-outline"
+            >
+              Cancel
+            </button>
+            <button type="submit" className="btn btn-primary">
+              Save
+            </button>
           </div>
         </form>
       </FormModal>

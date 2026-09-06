@@ -185,7 +185,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 md:h-screen md:overflow-y-auto p-4 md:p-8">
+      <main className="flex-1 md:h-screen md:overflow-y-auto">
         {activeTab === 'tech-stacks' && <TechStacksTab addToast={addToast} />}
         {activeTab === 'projects' && <ProjectsTab addToast={addToast} />}
         {activeTab === 'certificates' && <CertificatesTab addToast={addToast} />}
