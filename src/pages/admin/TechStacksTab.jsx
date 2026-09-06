@@ -186,16 +186,22 @@ const TechStacksTab = ({ addToast }) => {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
         <div>
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Tech Stacks <span className="text-sky-400">({skills.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">
             Manage your technical skills
           </p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">
-          Add Tech Stack
-        </button>
+        <div className="flex items-center gap-2">
+          <button onClick={saveOrder} className="btn btn-outline">
+            <span className="material-symbols-rounded text-[16px]">save</span>
+            Save Order
+          </button>
+          <button onClick={openAdd} className="btn btn-primary">
+            Add Tech Stack
+          </button>
+        </div>
       </div>
 
       {loading ? (
@@ -209,12 +215,6 @@ const TechStacksTab = ({ addToast }) => {
         </div>
       ) : (
         <>
-          <div className="flex justify-end mb-4">
-            <button onClick={saveOrder} className="btn btn-primary">
-              <span className="material-symbols-rounded text-[16px]">save</span>
-              Save Order
-            </button>
-          </div>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {skills.map((item, index) => (
               <div

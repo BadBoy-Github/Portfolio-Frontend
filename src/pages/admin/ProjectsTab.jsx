@@ -102,32 +102,6 @@ const ProjectsTab = ({ addToast }) => {
     setFeaturedDragOverIndex(null);
   };
 
-  const saveFeaturedOrder = async (featuredItems) => {
-    const session = localStorage.getItem("adminSession");
-    const token = session ? JSON.parse(session).token : localStorage.getItem("adminToken");
-    try {
-      await Promise.all(
-        featuredItems.map((item, index) =>
-          fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/${item._id}/order`,
-            {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-              body: JSON.stringify({ order: index }),
-            },
-          ),
-        ),
-      );
-      addToast("Featured projects order updated successfully", "success");
-      fetchItems();
-    } catch (err) {
-      addToast("Failed to save order", "error");
-    }
-  };
-
   const handleNonFeaturedDragStart = (index) => {
     nonFeaturedDragItem.current = index;
     setNonFeaturedDragOverIndex(null);
@@ -154,33 +128,6 @@ const ProjectsTab = ({ addToast }) => {
     nonFeaturedDragItem.current = null;
     setNonFeaturedDragOverIndex(null);
   };
-
-  const saveNonFeaturedOrder = async (nonFeaturedItems) => {
-    const session = localStorage.getItem("adminSession");
-    const token = session ? JSON.parse(session).token : localStorage.getItem("adminToken");
-    try {
-      await Promise.all(
-        nonFeaturedItems.map((item, index) =>
-          fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/${item._id}/order`,
-            {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-              body: JSON.stringify({ order: index }),
-            },
-          ),
-        ),
-      );
-      addToast("Projects order updated successfully", "success");
-      fetchItems();
-    } catch (err) {
-      addToast("Failed to save order", "error");
-    }
-  };
-
 
   const openAdd = () => {
     setEditingItem(null);
@@ -448,17 +395,57 @@ const ProjectsTab = ({ addToast }) => {
     setGalleryDragOverIndex(null);
   };
 
+  const saveAllOrders = async () => {
+    const session = localStorage.getItem("adminSession");
+    const token = session ? JSON.parse(session).token : localStorage.getItem("adminToken");
+    const featuredItems = items.filter((item) => item.type === "featured");
+    const nonFeaturedItems = items.filter((item) => item.type !== "featured");
+    try {
+      await Promise.all(
+        items.map((item, index) => {
+          let order;
+          if (item.type === "featured") {
+            order = featuredItems.findIndex((f) => f._id === item._id);
+          } else {
+            order = nonFeaturedItems.findIndex((n) => n._id === item._id);
+          }
+          return fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/${item._id}/order`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ order }),
+            },
+          );
+        }),
+      );
+      addToast("Project order updated successfully", "success");
+      fetchItems();
+    } catch (err) {
+      addToast("Failed to save order", "error");
+    }
+  };
+
   return (<div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
         <div>
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Projects <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">
             Manage your portfolio projects
           </p>
         </div>
-        <button onClick={openAdd} className="btn btn-primary">
-          Add Project
-        </button>
+         <div className="flex items-center gap-2">
+           <button onClick={saveAllOrders} className="btn btn-outline">
+             <span className="material-symbols-rounded text-[16px]">save</span>
+             Save Order
+           </button>
+           <button onClick={openAdd} className="btn btn-primary">
+             Add Project
+           </button>
+         </div>
       </div>
 
       {loading ? (
@@ -483,17 +470,10 @@ const ProjectsTab = ({ addToast }) => {
               <>
                 {featuredItems.length > 0 && (
                   <div className="mb-8">
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-4 sticky top-16 z-10 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
                       <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
                         Featured Projects <span className="text-sky-400">({featuredItems.length})</span>
                       </h3>
-                      <button
-                        onClick={() => saveFeaturedOrder(featuredItems)}
-                        className="btn btn-primary"
-                      >
-                        <span className="material-symbols-rounded text-[16px]">save</span>
-                        Save Order
-                      </button>
                     </div>
                     <div className="border-b border-zinc-700 mb-4" />
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -553,17 +533,10 @@ const ProjectsTab = ({ addToast }) => {
 
                 {nonFeaturedItems.length > 0 && (
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-4 sticky top-16 z-10 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
                       <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
                         Projects <span className="text-sky-400">({nonFeaturedItems.length})</span>
                       </h3>
-                      <button
-                        onClick={() => saveNonFeaturedOrder(nonFeaturedItems)}
-                        className="btn btn-primary"
-                      >
-                        <span className="material-symbols-rounded text-[16px]">save</span>
-                        Save Order
-                      </button>
                     </div>
                     <div className="border-b border-zinc-700 mb-4" />
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -110,7 +110,7 @@ const AchievementsTab = ({ addToast }) => {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50">
         <div>
           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Achievements <span className="text-sky-400">({items.length})</span></h2>
           <p className="text-zinc-400 text-sm mt-1">Manage your achievements and awards</p>
