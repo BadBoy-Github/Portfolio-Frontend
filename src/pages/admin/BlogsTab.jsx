@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import BlogCard from '../../components/BlogCard';
@@ -11,6 +11,8 @@ const BlogsTab = ({ addToast }) => {
   const [form, setForm] = useState({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: '' });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
+  const [dragOverIndex, setDragOverIndex] = useState(null);
+  const dragItem = useRef(null);
 
   const fetchItems = async () => {
     setLoading(true);
@@ -21,7 +23,12 @@ const BlogsTab = ({ addToast }) => {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
-      if (data.success) setItems(data.data);
+       if (data.success) {
+        const sorted = (data.data || [])
+          .slice()
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        setItems(sorted);
+      }
     } catch (err) {
       setError('Failed to fetch data');
     } finally {
@@ -54,10 +61,11 @@ const BlogsTab = ({ addToast }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+     setError('');
     const payload = {
       ...form,
       tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
+      order: editingItem ? editingItem.order : items.length,
     };
 
     try {
@@ -110,16 +118,76 @@ const BlogsTab = ({ addToast }) => {
     } finally {
       setDeleteTarget(null);
     }
+   };
+
+  const handleDragStart = (e, index) => {
+    dragItem.current = index;
+    e.dataTransfer.effectAllowed = "move";
+    setDragOverIndex(null);
   };
 
-  return (
+  const handleDragOver = (e, index) => {
+    e.preventDefault();
+    if (dragItem.current === null || dragItem.current === index) return;
+    setDragOverIndex(index);
+  };
+
+  const handleDrop = (dropIndex) => {
+    if (dragItem.current === null) return;
+    const updated = [...items];
+    const draggedItem = updated[dragItem.current];
+    updated.splice(dragItem.current, 1);
+    updated.splice(dropIndex, 0, draggedItem);
+    setItems(updated);
+    dragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const handleDragEnd = () => {
+    dragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const saveOrder = async () => {
+    const session = localStorage.getItem('adminSession');
+    const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
+    try {
+      await Promise.all(
+        items.map((item, index) =>
+          fetch(
+            `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${item._id}/order`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ order: index }),
+            },
+          ),
+        ),
+      );
+      addToast("Blog order updated successfully", "success");
+      fetchItems();
+    } catch (err) {
+      addToast("Failed to save order", "error");
+    }
+  };
+
+   return (
      <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900 border-b border-zinc-700 pt-8 pb-4">
-        <div>
-          <h2 className="text-2xl font-semibold text-zinc-50">Blogs</h2>
-          <p className="text-zinc-400 text-sm mt-1">Manage blog posts and articles</p>
-        </div>
-        <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Blog</button>
+       <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50 pt-8 pb-4">
+         <div>
+           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Blogs <span className="text-sky-400">({items.length})</span></h2>
+           <p className="text-zinc-400 text-sm mt-1">Manage blog posts and articles</p>
+         </div>
+         <div className="flex items-center gap-2">
+           <button onClick={saveOrder} className="btn btn-outline">
+             <span className="material-symbols-rounded text-[16px]">save</span>
+             Save Order
+           </button>
+           <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Blog</button>
+         </div>
       </div>
 
       {loading ? (
@@ -128,8 +196,21 @@ const BlogsTab = ({ addToast }) => {
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
-            <div key={item._id} className="relative group">
+          {items.map((item, index) => (
+            <div
+              key={item._id}
+              draggable
+              onDragStart={(e) => handleDragStart(e, index)}
+              onDragOver={(e) => handleDragOver(e, index)}
+              onDrop={() => handleDrop(index)}
+              onDragEnd={handleDragEnd}
+              className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+            >
+              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
+                  drag_indicator
+                </span>
+              </div>
               <div className="flex items-center justify-end mb-2">
                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
@@ -153,7 +234,6 @@ const BlogsTab = ({ addToast }) => {
               />
             </div>
           ))}
-          {items.length === 0 && <p className="text-zinc-400 col-span-full">No items found.</p>}
         </div>
       )}
 
