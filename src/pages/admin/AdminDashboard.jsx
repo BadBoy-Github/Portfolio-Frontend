@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getSession, clearSession as adminClearSession } from '../AdminLogin';
 import PropTypes from 'prop-types';
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 import TechStacksTab from './TechStacksTab';
 import ProjectsTab from './ProjectsTab';
@@ -136,6 +137,10 @@ const AdminDashboard = () => {
     navigate('/admin-login');
   };
 
+  const handleGoToWebsite = () => {
+    navigate("/");
+  }
+
   if (!authChecked) return null;
 
   return (
@@ -143,41 +148,119 @@ const AdminDashboard = () => {
       {/* Mobile header */}
       <div className="md:hidden flex items-center justify-between bg-zinc-800 p-4 ring-1 ring-zinc-50/5">
         <div className="flex items-center gap-3">
-          <h1 className="text-lg font-semibold text-zinc-50">Admin Dashboard</h1>
-          <a href="/" className="text-xs text-sky-400 hover:text-sky-300">Go to Website</a>
+          <h1 className="text-lg font-semibold text-zinc-50">
+            Admin Dashboard
+          </h1>
+          <a href="/" className="text-xs text-sky-400 hover:text-sky-300">
+            Go to Website
+          </a>
         </div>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="menu-btn">
-          <span className="material-symbols-rounded">{mobileOpen ? 'close' : 'menu'}</span>
+          <span className="material-symbols-rounded">
+            {mobileOpen ? "close" : "menu"}
+          </span>
         </button>
       </div>
 
       {/* Sidebar */}
-      <aside className={`${mobileOpen ? 'block' : 'hidden'} md:flex md:w-64 md:h-screen md:overflow-hidden bg-zinc-800 ring-1 ring-zinc-50/5`}>
+      <aside
+        className={`${mobileOpen ? "block" : "hidden"} md:flex md:w-64 md:h-screen md:overflow-hidden bg-zinc-800 ring-1 ring-zinc-50/5`}
+      >
         <div className="p-4 w-64">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-xl font-semibold text-zinc-50">Admin Dashboard</h1>
-              <p className="text-xs text-zinc-400 mt-1">Portfolio Content Manager</p>
+              <h1 className="text-xl font-semibold text-zinc-50">
+                Admin Dashboard
+              </h1>
+              <p className="text-xs text-zinc-400 mt-1">
+                Portfolio Content Manager
+              </p>
             </div>
-            <a href="/" className="text-xs text-sky-400 hover:text-sky-300" target="_blank" rel="noopener noreferrer">
-              Go to Website
-            </a>
+            
           </div>
 
           <nav className="space-y-1">
-            <TabButton id="tech-stacks" label="Tech Stacks" icon="code" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="projects" label="Projects" icon="folder_open" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="certificates" label="Certificates" icon="badge" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="achievements" label="Achievements" icon="emoji_events" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="reviews" label="Reviews" icon="rate_review" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="experience" label="Experience" icon="work" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="education" label="Education" icon="school" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
-            <TabButton id="blogs" label="Blogs" icon="article" activeTab={activeTab} setActiveTab={setActiveTab} setMobileOpen={setMobileOpen} />
+            <TabButton
+              id="tech-stacks"
+              label="Tech Stacks"
+              icon="code"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="projects"
+              label="Projects"
+              icon="folder_open"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="certificates"
+              label="Certificates"
+              icon="badge"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="achievements"
+              label="Achievements"
+              icon="emoji_events"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="reviews"
+              label="Reviews"
+              icon="rate_review"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="experience"
+              label="Experience"
+              icon="work"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="education"
+              label="Education"
+              icon="school"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
+            <TabButton
+              id="blogs"
+              label="Blogs"
+              icon="article"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
           </nav>
 
           <div className="mt-8 pt-6 border-t border-zinc-700/50">
-            <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-zinc-700/50 transition-colors">
-              <span className="material-symbols-rounded text-[20px]">logout</span>
+            <button
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-sky-400 hover:text-sky-300 hover:bg-zinc-700/50 transition-colors"
+              onClick={handleGoToWebsite}
+            >
+              <IoArrowBackCircleOutline className="size-5" />
+              <p>Go to Website</p>
+            </button>
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-zinc-700/50 transition-colors"
+            >
+              <span className="material-symbols-rounded text-[20px]">
+                logout
+              </span>
               Logout
             </button>
           </div>
@@ -186,14 +269,18 @@ const AdminDashboard = () => {
 
       {/* Main content */}
       <main className="flex-1 md:h-screen md:overflow-y-auto">
-        {activeTab === 'tech-stacks' && <TechStacksTab addToast={addToast} />}
-        {activeTab === 'projects' && <ProjectsTab addToast={addToast} />}
-        {activeTab === 'certificates' && <CertificatesTab addToast={addToast} />}
-        {activeTab === 'achievements' && <AchievementsTab addToast={addToast} />}
-        {activeTab === 'reviews' && <ReviewsTab addToast={addToast} />}
-        {activeTab === 'experience' && <ExperienceTab addToast={addToast} />}
-        {activeTab === 'education' && <EducationTab addToast={addToast} />}
-        {activeTab === 'blogs' && <BlogsTab addToast={addToast} />}
+        {activeTab === "tech-stacks" && <TechStacksTab addToast={addToast} />}
+        {activeTab === "projects" && <ProjectsTab addToast={addToast} />}
+        {activeTab === "certificates" && (
+          <CertificatesTab addToast={addToast} />
+        )}
+        {activeTab === "achievements" && (
+          <AchievementsTab addToast={addToast} />
+        )}
+        {activeTab === "reviews" && <ReviewsTab addToast={addToast} />}
+        {activeTab === "experience" && <ExperienceTab addToast={addToast} />}
+        {activeTab === "education" && <EducationTab addToast={addToast} />}
+        {activeTab === "blogs" && <BlogsTab addToast={addToast} />}
       </main>
 
       {/* Toast Container */}
@@ -202,13 +289,13 @@ const AdminDashboard = () => {
           <div
             key={toast.id}
             className={`px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 ${
-              toast.type === 'success'
-                ? 'bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30'
-                : 'bg-red-500/20 text-red-400 ring-1 ring-red-500/30'
+              toast.type === "success"
+                ? "bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30"
+                : "bg-red-500/20 text-red-400 ring-1 ring-red-500/30"
             }`}
           >
             <span className="material-symbols-rounded text-[18px]">
-              {toast.type === 'success' ? 'check_circle' : 'error'}
+              {toast.type === "success" ? "check_circle" : "error"}
             </span>
             {toast.message}
           </div>
