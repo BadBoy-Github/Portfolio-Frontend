@@ -1,33 +1,12 @@
-
-// Node modules
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-
-// Components
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Header = () => {
     const [navOpen, setNavOpen] = useState(false);
-    const location = useLocation();
-
-    const handleContactClick = (e) => {
-      if (location.pathname === "/") {
-        e.preventDefault();
-        const contactSection = document.getElementById("contactme");
-        const lenis = window.lenis;
-        if (contactSection) {
-          if (lenis) {
-            lenis.scrollTo(contactSection, { offset: -100, duration: 0.8 });
-          } else {
-            contactSection.scrollIntoView({ behavior: "smooth" });
-          }
-        }
-      }
-    };
 
     return (
       <>
-        {/* Skip to main content link for accessibility */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-sky-500 text-white px-4 py-2 rounded z-50 focus:z-50"
@@ -62,9 +41,8 @@ const Header = () => {
           </div>
 
           <Link
-            to="/?scroll=contactme"
+            to="/contact"
             className="max-w-max h-10 flex justify-center items-center gap-2 px-4 rounded-xl font-medium text-xs md:text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color] bg-zinc-50 text-zinc-900 active:bg-zinc-50/80 max-lg:hidden lg:justify-self-end"
-            onClick={handleContactClick}
           >
             Contact Me
           </Link>

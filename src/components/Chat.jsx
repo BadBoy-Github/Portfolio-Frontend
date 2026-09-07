@@ -248,6 +248,14 @@ const Chat = () => {
                 )}
               </button>
 
+              {/* Admin Link */}
+              <Link
+                to="/admin-login"
+                className="w-6 h-6 p-1 rounded-full transition-all duration-300 opacity-0 hover:opacity-60 flex items-center justify-center bg-zinc-200"
+              >
+                <FaUser className="size-3 text-zinc-700" />
+              </Link>
+
               {/* Info Panel */}
               <div
                 className={` text-zinc-300 leading-relaxed text-[10px] px-3 py-2 bg-zinc-800/70 rounded-xl ring-1 ring-zinc-300/10 ring-inset transition-all duration-500 ${
@@ -279,7 +287,7 @@ const Chat = () => {
                 <button className="text-xs md:text-sm">Download Resume</button>
                 <MdOutlineFileDownload className="hidden md:block size-[20px]" />
               </a>
-              <Link to="/?scroll=contactme" className="btn btn-outline">
+              <Link to="/contact" className="btn btn-outline">
                 <button className="text-xs md:text-sm">Contact Me</button>
                 <LuMessagesSquare className="hidden md:block size-[20px]" />
               </Link>

@@ -251,68 +251,11 @@ body {
     @apply text-zinc-400
 }
 
-/* Complete scrollbar removal */
-html, body {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  overflow: -moz-scrollbars-none !important;
+.input-box {
+    @apply bg-zinc-900/50 rounded-xl p-3 ring-1 ring-zinc-50/5
 }
 
-/* Make scrollbars invisible */
-::-webkit-scrollbar {
-  width: 0px !important;
-  height: 0px !important;
-  background: transparent !important;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-
-::-webkit-scrollbar-thumb {
-  background: transparent !important;
-  border: none !important;
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent !important;
-}
-
-/* Firefox specific */
-html, body {
-  scrollbar-width: none !important;
-}
-
-/* IE and Edge */
-html, body {
-  -ms-overflow-style: none !important;
-}
-
-.hide-scrollbar {
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE and Edge */
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Opera */ }
-
-/* Force hide all scrollbars - final attempt */
-html {
-  overflow: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-body {
-  overflow: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Animation for card reveal */
+/* Custom scrollbar for chat */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -451,4 +394,8 @@ body {
 
 .blog-content pre code {
     @apply text-zinc-300;
+}
+
+.imgimgimg>img {
+    @apply border-2 border-zinc-700 rounded-xl my-8;
 }

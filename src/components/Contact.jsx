@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { IoChevronForward } from "react-icons/io5";
+import ReviewModal from "./ReviewModal";
 
 const socialLinks = [
   {
@@ -166,7 +169,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate entire form
     if (!validateForm()) {
       return;
     }
@@ -174,7 +176,7 @@ const Contact = () => {
     setStatus({ loading: true, success: false, error: "" });
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -185,7 +187,7 @@ const Contact = () => {
       const data = await response.json();
 
       if (data.success) {
-        setStatus({ loading: false, success: true, error: "" });
+        setStatus({ loading: false, success: false, error: "" });
         setFormData({
           name: "",
           email: "",
@@ -194,16 +196,14 @@ const Contact = () => {
           message: "",
         });
         setErrors({});
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setStatus((prev) => ({ ...prev, success: false }));
-        }, 5000);
+        showToast("Message sent successfully", "success");
       } else {
         setStatus({
           loading: false,
           success: false,
           error: data.error || "Failed to send message",
         });
+        showToast(data.error || "Failed to send message", "error");
       }
     } catch {
       setStatus({
@@ -211,8 +211,34 @@ const Contact = () => {
         success: false,
         error: "Network error. Please try again.",
       });
+      showToast("Network error. Please try again.", "error");
     }
   };
+
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 4000);
+  };
+
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/blogs`);
+        const data = await res.json();
+        if (data.success) {
+          setBlogs((data.data || []).slice(0, 5));
+        }
+      } catch {
+        // silent
+      }
+    };
+    fetchBlogs();
+  }, []);
 
   return (
     <section id="contactme" className="section">
@@ -350,12 +376,6 @@ const Contact = () => {
           </div>
 
           {/* Status Messages */}
-          {status.success && (
-            <div className="mb-4 p-3 bg-green-500/20 text-green-400 rounded-lg text-sm">
-              ✓ Message sent successfully! I&apos;ll get back to you soon.
-            </div>
-          )}
-
           {status.error && (
             <div className="mb-4 p-3 bg-red-500/20 text-red-400 rounded-lg text-sm">
               ✗ {status.error}
@@ -371,6 +391,81 @@ const Contact = () => {
           </button>
         </form>
       </div>
+
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/15 text-sky-400 shrink-0">
+              <span className="material-symbols-rounded text-3xl">
+                rate_review
+              </span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Enjoyed working with me?
+              </h3>
+              <p className="text-zinc-400 text-sm mb-4">
+                Your review helps others understand what it is like to
+                collaborate with me. It only takes a minute and means a lot.
+              </p>
+              <button
+                type="button"
+                onClick={() => setReviewOpen(true)}
+                className="btn btn-primary"
+              >
+                Leave a Review
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/15 text-sky-400 shrink-0">
+              <span className="material-symbols-rounded text-3xl">article</span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold text-white mb-2">
+                From the Blog
+              </h3>
+              <p className="text-zinc-400 text-sm mb-4">
+                Explore more about my work, thoughts, and latest updates.
+              </p>
+
+              <Link
+              to="/blogs"
+                className="btn btn-primary"
+              >
+                View all blogs
+                <IoChevronForward className="size-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {toast && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <div
+            className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
+              toast.type === "success"
+                ? "bg-sky-500 text-white"
+                : "bg-red-500 text-white"
+            }`}
+          >
+            {toast.type === "success" ? "✓ " : "✗ "}
+            {toast.message}
+          </div>
+        </div>
+      )}
+
+      {reviewOpen && (
+        <ReviewModal
+          isOpen={reviewOpen}
+          onClose={() => setReviewOpen(false)}
+          onSuccess={() => showToast('Your review sent successfully', 'success')}
+        />
+      )}
     </section>
   );
 };

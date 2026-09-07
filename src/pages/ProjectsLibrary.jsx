@@ -1,76 +1,114 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import ProjectCard from "../components/ProjectCard";
-import { proj } from "../data/ProjectData";
+import { useLenis } from "lenis/react";
 import FeaturedProjectGrid from "../components/FeaturedProjectGrid";
 
-const sTags = [
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+const filterTags = [
   "React",
   "JavaScript",
-  "HTML",
   "Java",
   "Python",
-  "AI Assist",
+  "AI made",
   "Biotech",
 ];
 
 const ProjectsLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const lenis = useLenis();
 
-  const normalProject = proj.filter((e) => e.type !== "featured");
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/projects`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setProjects(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
 
-  // Filter projects based on selected tag and search query
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+      lenis.resize();
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [lenis]);
+
+  const normalProject = projects.filter((e) => e.type !== "featured");
+
   const filteredWorks = normalProject.filter((project) => {
-    // Filter by tag
     const tagMatch =
       selectedTag === "all" ||
-      project.tags.some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
-      ) ||
-      project.sTags.some(
-        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
-      ) ||
-      project.techUsed.some(
+      (project.techUsed || []).some(
         (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
+      ) ||
+      (project.sTags || []).some(
+        (tag) => tag.toLowerCase() === selectedTag.toLowerCase(),
       );
 
-    // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
+      (project.techUsed || []).some(
+        (tech) => tech.toLowerCase() === searchQuery.toLowerCase(),
       ) ||
-      project.sTags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
-      ) ||
-      project.techUsed.some((tech) =>
-        tech.toLowerCase().includes(searchQuery.toLowerCase()),
+      (project.sTags || []).some(
+        (tag) => tag.toLowerCase() === searchQuery.toLowerCase(),
       );
 
     return tagMatch && searchMatch;
   });
 
-  // Handle tag selection
   const handleTagSelect = (tag) => {
     setSelectedTag(tag);
-    setSearchQuery(""); // Clear search when selecting a tag
+    setSearchQuery("");
   };
 
-  // Handle search
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setSelectedTag("all"); // Reset tag filter when searching
+    setSelectedTag("all");
   };
 
-  // Clear search field
   const clearSearch = () => {
     setSearchQuery("");
     document.getElementById("project_search").value = "";
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-red-400 mb-2">Failed to load projects</h2>
+          <p className="text-zinc-400">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -108,7 +146,6 @@ const ProjectsLibrary = () => {
 
           <FeaturedProjectGrid />
 
-          {/* Search and Filter */}
           <div className="my-10  bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
@@ -123,9 +160,9 @@ const ProjectsLibrary = () => {
               </button>
 
               <div className="flex items-center gap-2 flex-wrap">
-                {sTags.map((tag, index) => (
+                {filterTags.map((tag) => (
                   <button
-                    key={index}
+                    key={tag}
                     className={`px-3 py-2 rounded-lg text-sm ${
                       selectedTag === tag.toLowerCase()
                         ? "bg-sky-600 text-zinc-800"
@@ -164,19 +201,19 @@ const ProjectsLibrary = () => {
             </div>
           </div>
 
-          {/* Projects Grid */}
           <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
             {filteredWorks.map((project, index) => (
               <ProjectCard
                 key={index}
                 imgSrc={project.imgSrc}
                 title={project.title}
-                tags={project.tags}
+                techUsed={project.techUsed}
                 projectLink={project.projectLink}
                 code={project.code}
                 live={project.live}
                 gitUrl={project.gitUrl}
                 projectId={project.id}
+                displayTags={project.displayTags}
               />
             ))}
 

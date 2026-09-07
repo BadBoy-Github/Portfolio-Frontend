@@ -1,57 +1,91 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { HiOutlineMenu } from "react-icons/hi";
 import { Helmet } from "react-helmet-async";
 import CertificationsCard from "../components/CertificationsCard";
-import { certificates } from "../data/CertificateData";
 
 const sTags = ["React", "JavaScript", "HTML", "CSS", "Java", "Python"];
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const CertificatesLibrary = () => {
   const [selectedTag, setSelectedTag] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [certificates, setCertificates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Filter certificates based on selected tag and search query
+  useEffect(() => {
+    const fetchCertificates = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`${BACKEND_URL}/api/certificates`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setCertificates(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCertificates();
+  }, []);
+
   const filteredCerts = certificates.filter((cert) => {
-    // Filter by tag (technologies)
     const tagMatch =
       selectedTag === "all" ||
       cert.title.toLowerCase().includes(selectedTag.toLowerCase()) ||
       cert.company.toLowerCase().includes(selectedTag.toLowerCase()) ||
-      cert.technologiesLearned.some(
+      (cert.technologiesLearned || []).some(
         (tech) => tech.toLowerCase() === selectedTag.toLowerCase(),
       );
 
-    // Filter by search query
     const searchMatch =
       searchQuery === "" ||
       cert.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       cert.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      cert.technologiesLearned.some((tech) =>
+      (cert.technologiesLearned || []).some((tech) =>
         tech.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     return tagMatch && searchMatch;
   });
 
-  // Handle tag selection
   const handleTagSelect = (tag) => {
-    setSearchQuery(""); // Clear search when selecting a tag
+    setSearchQuery("");
     setSelectedTag(tag);
   };
 
-  // Handle search
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setSelectedTag("all"); // Reset tag filter when searching
+    setSelectedTag("all");
   };
 
-  // Clear search
   const clearSearch = () => {
     setSearchQuery("");
     document.getElementById("cert_search").value = "";
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="loader mb-4"><span></span></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-red-400 mb-2">Failed to load certificates</h2>
+          <p className="text-zinc-400">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -96,7 +130,6 @@ const CertificatesLibrary = () => {
             </p>
           </div>
 
-          {/* Search and Filter */}
           <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
@@ -152,10 +185,9 @@ const CertificatesLibrary = () => {
             </div>
           </div>
 
-          {/* Certificates Grid */}
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
             {filteredCerts.map((cert, index) => (
-              <Link key={index} to={`/certificate/${cert.id}`}>
+              <Link key={cert.id} to={`/certificate/${cert.id}`}>
                 <CertificationsCard
                   title={cert.title}
                   imgSrc={cert.imgSrc}

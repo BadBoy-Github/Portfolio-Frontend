@@ -9,13 +9,14 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 const ProjectFeaturedCard = ({
   imgSrc,
   title,
-  tags,
+  techUsed,
   projectLink,
   classes,
   code,
   live,
   gitUrl,
   projectId,
+  displayTags,
 }) => {
   const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const ProjectFeaturedCard = ({
     >
       {/* Image */}
       <figure className="aspect-[16/7] rounded-xl mb-4 relative">
-        {code === "True" && (
+        {gitUrl && (
           <a
             href={gitUrl}
             target="_blank"
@@ -68,10 +69,8 @@ const ProjectFeaturedCard = ({
           src={imgSrc}
           alt={title}
           loading="lazy"
-          className={`rounded-xl w-full h-full object-cover  cursor-pointer ${
-            live !== "True"
-              ? "group-hover:grayscale transition-all duration-300"
-              : ""
+          className={`rounded-xl w-full h-full object-cover cursor-pointer transition-all duration-300 ${
+            projectLink ? "grayscale-[0.4] group-hover:grayscale-0" : "group-hover:grayscale"
           }`}
         />
       </figure>
@@ -82,7 +81,7 @@ const ProjectFeaturedCard = ({
           <h3 className="title-1 mb-3">{title}</h3>
 
           <div className="flex flex-wrap items-center gap-2">
-            {tags.map((label, key) => (
+            {(displayTags || []).map((label, key) => (
               <span
                 key={key}
                 className="h-8 text-sm text-zinc-400 bg-zinc-50/5 px-3 rounded-lg flex items-center"
@@ -94,7 +93,7 @@ const ProjectFeaturedCard = ({
         </div>
 
         {/* ✅ Live Button (NOT overlay) */}
-        {live == "True" ? (
+        {projectLink ? (
           <a
             href={projectLink}
             target="_blank"
@@ -118,13 +117,14 @@ const ProjectFeaturedCard = ({
 ProjectFeaturedCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired,
-  projectLink: PropTypes.string.isRequired,
+  techUsed: PropTypes.array.isRequired,
+  projectLink: PropTypes.string,
   classes: PropTypes.string,
   code: PropTypes.string,
   live: PropTypes.string,
   gitUrl: PropTypes.string,
   projectId: PropTypes.string,
+  displayTags: PropTypes.array,
 };
 
 export default ProjectFeaturedCard;

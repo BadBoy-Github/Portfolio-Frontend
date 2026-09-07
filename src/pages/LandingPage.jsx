@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import Skills from "../components/Skill";
-import Contact from "../components/Contact";
 import Home from "../components/Home";
 import Review from "../components/Review";
 import HomepageCertificates from "../components/HomepageCertificates";
@@ -18,7 +17,6 @@ const LandingPage = () => {
     { id: "certificates", label: "Certificates" },
     { id: "achievements", label: "Achievements" },
     { id: "reviews", label: "Reviews" },
-    { id: "contactme", label: "Contact" },
   ];
 
   return (
@@ -79,7 +77,6 @@ const LandingPage = () => {
         <HomepageCertificates />
         <HomepageAchievements />
         <Review />
-        <Contact />
       </div>
       <RightSideNav sections={sections} />
     </>

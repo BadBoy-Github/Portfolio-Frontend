@@ -1,29 +1,24 @@
-
-import PropTypes from "prop-types"
-
-const ratings = new Array(5)
-ratings.fill({
-    icon: 'star',
-    style: { fontVariationSettings: '"FILL" 1' }
-})
-
+import PropTypes from "prop-types";
 
 const ReviewCard = ({
     content,
     imgSrc,
     name,
-    company
+    company,
+    rating = 5
 }) => {
+    const stars = Array.from({ length: 5 }, (_, i) => i < Number(rating));
+
     return (
       <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group transition-all duration-300">
         <div className="flex items-center gap-1 mb-3">
-          {ratings.map(({ icon, style }, key) => (
+          {stars.map((filled, key) => (
             <span
               key={key}
-              className="material-symbols-rounded text-yellow-600 group-hover:text-yellow-400 text-[18px] cursor-pointer group-hover:scale-110 transition-all duration-300"
-              style={style}
+              className={`material-symbols-rounded text-[18px] cursor-pointer group-hover:scale-110 transition-all duration-300 ${filled ? 'text-yellow-600 group-hover:text-yellow-400' : 'text-zinc-600'}`}
+              style={filled ? { fontVariationSettings: '"FILL" 1' } : undefined}
             >
-              {icon}
+              star
             </span>
           ))}
         </div>
@@ -56,7 +51,8 @@ ReviewCard.propTypes = {
     content: PropTypes.string,
     imgSrc: PropTypes.string,
     name: PropTypes.string,
-    company: PropTypes.string
+    company: PropTypes.string,
+    rating: PropTypes.number
 }
 
 export default ReviewCard

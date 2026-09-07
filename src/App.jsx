@@ -28,9 +28,15 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
+// Admin pages
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import { getSession } from "./pages/AdminLogin";
+
 // Lazy loaded page components
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const CertificateDetail = lazy(() => import("./pages/CertificateDetail"));
 const AchievementDetail = lazy(() => import("./pages/AchievementDetail"));
@@ -41,23 +47,41 @@ const AchievementsLibrary = lazy(() => import("./pages/AchievementsLibrary"));
 const BlogsLibrary = lazy(() => import("./pages/BlogsLibrary"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
-// Loading component for Suspense fallback - removed spinner
+// Loading component for Suspense fallback
 const LoadingFallback = () => (
   <div className="min-h-screen bg-zinc-900"></div>
 );
 
-const AppContent = () => {
+const ProtectedRoute = ({ children }) => {
+  const session = getSession();
+  if (!session) {
+    window.location.href = "/admin-login";
+    return null;
+  }
+  return children;
+};
+
+const AppInner = () => {
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
   const showScrollToTopButton = location.pathname !== "/" && location.pathname !== "/about";
 
-  return (
+  const content = (
     <>
       <ScrollToTop />
-      <Header />
+      {!isAdminRoute && <Header />}
       <main id="main-content">
         <Suspense fallback={<LoadingFallback />}>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
+              {/* Admin Routes */}
+              <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/admin-dashboard" element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } />
+
               {/* Homepage */}
               <Route path="/" element={
                 <motion.div
@@ -121,6 +145,16 @@ const AppContent = () => {
                   <BlogDetail />
                 </motion.div>
               } />
+              <Route path="/contact" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <ContactPage />
+                </motion.div>
+              } />
 
               {/* Library Pages */}
               <Route path="/projects" element={
@@ -179,22 +213,30 @@ const AppContent = () => {
           </AnimatePresence>
         </Suspense>
       </main>
-      <Footer />
-      {showScrollToTopButton && <ScrollToTopButton />}
+      {!isAdminRoute && <Footer />}
+      {showScrollToTopButton && !isAdminRoute && <ScrollToTopButton />}
     </>
+  );
+
+  if (isAdminRoute) {
+    return content;
+  }
+
+  return (
+    <ReactLenis root options={{ scroll: { smoothing: 0.05 } }}>
+      {content}
+    </ReactLenis>
   );
 };
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <ReactLenis root options={{ scroll: { smoothing: 0.05 } }}>
-        <HelmetProvider>
-          <Router>
-            <AppContent />
-          </Router>
-        </HelmetProvider>
-      </ReactLenis>
+      <HelmetProvider>
+        <Router>
+          <AppInner />
+        </Router>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 };
