@@ -118,6 +118,7 @@ const ExperienceTab = ({ addToast }) => {
       skills: form.skills,
       order: editingItem ? editingItem.order : items.length,
       compound: false,
+      certifi: !!form.imgSrc,
     };
 
     try {
@@ -171,7 +172,7 @@ const ExperienceTab = ({ addToast }) => {
         role: role.role,
         desc: role.desc,
         imgSrc: role.imgSrc,
-        certifi: role.certifi,
+        certifi: !!role.imgSrc,
         skills: role.skills,
       })),
     };
@@ -395,24 +396,38 @@ const ExperienceTab = ({ addToast }) => {
                 </div>
               </div>
               {item.compound ? (
-                <div className="mb-6">
-                  <div className="p-4 bg-zinc-800/50 rounded-xl mb-3">
-                    <p className="font-semibold text-zinc-200">{item.instName}</p>
-                    {item.period && <p className="text-xs text-zinc-400">{item.period}</p>}
-                  </div>
-                  {(item.content || []).map((content, i) => (
-                    <div key={i} className="mb-3 last:mb-0">
-                      <ExperienceCompoundCard
-                        year={content.year}
-                        name={content.name}
-                        role={content.role}
-                        desc={content.desc}
-                        imgSrc={content.imgSrc || ""}
-                        certifi={!!content.certifi}
-                        skills={content.skills || []}
-                      />
+                <div className="mb-6 relative pl-8">
+                  <a
+                    href={item.instLink || '#'}
+                    target="_blank"
+                    className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-900 cursor-pointer"
+                  >
+                    <img
+                      className="rounded-full shadow-lg"
+                      src={item.instLogo || defaultInstLogo}
+                      alt={item.instName}
+                      loading="lazy"
+                    />
+                  </a>
+                  <div className="bg-zinc-800 rounded-2xl ring-1 ring-inset ring-zinc-50/5 p-4 sm:p-5">
+                    <div className="p-4 bg-zinc-800/50 rounded-xl mb-3">
+                      <p className="font-semibold text-zinc-200">{item.instName}</p>
+                      {item.period && <p className="text-xs text-zinc-400">{item.period}</p>}
                     </div>
-                  ))}
+                    {(item.content || []).map((content, i) => (
+                      <div key={i} className="mb-3 last:mb-0">
+                        <ExperienceCompoundCard
+                          year={content.year}
+                          name={content.name}
+                          role={content.role}
+                          desc={content.desc}
+                          imgSrc={content.imgSrc || ""}
+                          certifi={!!content.certifi}
+                          skills={content.skills || []}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <ExperienceCard
@@ -546,19 +561,6 @@ const ExperienceTab = ({ addToast }) => {
               value={form.imgSrc}
               onChange={(e) => setForm({ ...form, imgSrc: e.target.value })}
             />
-          </div>
-          <div className="input-box flex items-center gap-2">
-            <input
-              id="certifi"
-              type="checkbox"
-              checked={form.certifi}
-              onChange={(e) =>
-                setForm({ ...form, certifi: e.target.checked })
-              }
-            />
-            <label htmlFor="certifi" className="text-sm text-zinc-300">
-              Has certificate
-            </label>
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button
@@ -703,14 +705,6 @@ const ExperienceTab = ({ addToast }) => {
                     value={role.imgSrc}
                     onChange={(e) => updateRoleField(roleIndex, 'imgSrc', e.target.value)}
                   />
-                </div>
-                <div className="input-box flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={role.certifi}
-                    onChange={(e) => updateRoleField(roleIndex, 'certifi', e.target.checked)}
-                  />
-                  <label className="text-sm text-zinc-300">Has certificate</label>
                 </div>
               </div>
             ))}
