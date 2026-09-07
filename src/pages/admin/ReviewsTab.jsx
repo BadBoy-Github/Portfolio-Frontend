@@ -2,13 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import ReviewCard from '../../components/ReviewCard';
+import { Star } from "lucide-react";
 
 const ReviewsTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', company: '', content: '', imgSrc: '' });
+  const [form, setForm] = useState({ name: '', company: '', content: '', imgSrc: '', rating: 5 });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
@@ -47,7 +48,7 @@ const ReviewsTab = ({ addToast }) => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', company: '', content: '', imgSrc: '' });
+    setForm({ name: '', company: '', content: '', imgSrc: '', rating: 5 });
     setModalOpen(true);
   };
 
@@ -57,7 +58,8 @@ const ReviewsTab = ({ addToast }) => {
       name: item.name,
       company: item.company || '',
       content: item.content || '',
-      imgSrc: item.imgSrc || ''
+      imgSrc: item.imgSrc || '',
+      rating: item.rating ?? 5
     });
     setModalOpen(true);
   };
@@ -227,6 +229,7 @@ const ReviewsTab = ({ addToast }) => {
                 imgSrc={item.imgSrc || ''}
                 name={item.name}
                 company={item.company || ''}
+                rating={item.rating ?? 5}
               />
             </div>
           ))}
@@ -243,6 +246,29 @@ const ReviewsTab = ({ addToast }) => {
           <div className="input-box">
             <label className="label">Company</label>
             <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} />
+          </div>
+          <div className="input-box">
+            <label className="label">Rating</label>
+            <div className="flex items-center gap-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setForm({ ...form, rating: star })}
+                  className="transition-all duration-200"
+                >
+                  <Star
+                    size={28}
+                    className={`cursor-pointer ${
+                      star <= form.rating
+                        ? 'text-yellow-400 fill-yellow-400'
+                        : 'text-zinc-600'
+                    }`}
+                  />
+                </button>
+              ))}
+              <span className="text-sm text-zinc-400 ml-2">{form.rating}/5</span>
+            </div>
           </div>
           <div className="input-box">
             <label className="label">Content</label>
