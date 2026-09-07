@@ -1,48 +1,68 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 import { IoAdd } from "react-icons/io5";
-import { ConfirmModal, FormModal } from './AdminDashboard';
-import BlogCard from '../../components/BlogCard';
+import { ConfirmModal, FormModal } from "./AdminDashboard";
+import BlogCard from "../../components/BlogCard";
 
 const BlogsTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: [] });
-  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    id: "",
+    title: "",
+    subtitle: "",
+    date: "",
+    readTime: "",
+    tags: [],
+    imageSrc: "",
+    content: [],
+  });
+  const [error, setError] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragItem = useRef(null);
 
   const generateId = () => {
-    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    if (typeof crypto !== "undefined" && crypto.randomUUID) {
       return crypto.randomUUID();
     }
     return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
   };
 
   const serializeBlocks = (blocks) => {
-    return blocks.map(block => {
-      if (block.type === 'h2') return `<h2>${block.value}</h2>`;
-      if (block.type === 'p') return `<p>${block.value}</p>`;
-      if (block.type === 'img') return `<img src="${block.value}" class="blog-image" />`;
-      return '';
-    }).join('\n');
+    return blocks
+      .map((block) => {
+        if (block.type === "h2") return `<h2>${block.value}</h2>`;
+        if (block.type === "p") return `<p>${block.value}</p>`;
+        if (block.type === "img")
+          return `<img src="${block.value}" class="blog-image" />`;
+        return "";
+      })
+      .join("\n");
   };
 
   const deserializeBlocks = (html) => {
     if (!html) return [];
     const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
+    const doc = parser.parseFromString(html, "text/html");
     const blocks = [];
-    doc.body.childNodes.forEach(node => {
+    doc.body.childNodes.forEach((node) => {
       if (node.nodeType === 1) {
-        if (node.tagName === 'H2') {
-          blocks.push({ id: generateId(), type: 'h2', value: node.textContent });
-        } else if (node.tagName === 'P') {
-          blocks.push({ id: generateId(), type: 'p', value: node.innerHTML });
-        } else if (node.tagName === 'IMG') {
-          blocks.push({ id: generateId(), type: 'img', value: node.getAttribute('src') || '' });
+        if (node.tagName === "H2") {
+          blocks.push({
+            id: generateId(),
+            type: "h2",
+            value: node.textContent,
+          });
+        } else if (node.tagName === "P") {
+          blocks.push({ id: generateId(), type: "p", value: node.innerHTML });
+        } else if (node.tagName === "IMG") {
+          blocks.push({
+            id: generateId(),
+            type: "img",
+            value: node.getAttribute("src") || "",
+          });
         }
       }
     });
@@ -52,30 +72,46 @@ const BlogsTab = ({ addToast }) => {
   const fetchItems = async () => {
     setLoading(true);
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const data = await res.json();
-       if (data.success) {
+      if (data.success) {
         const sorted = (data.data || [])
           .slice()
           .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
         setItems(sorted);
       }
     } catch (err) {
-      setError('Failed to fetch data');
+      setError("Failed to fetch data");
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => { fetchItems(); }, []);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: [] });
+    setForm({
+      id: "",
+      title: "",
+      subtitle: "",
+      date: "",
+      readTime: "",
+      tags: [],
+      imageSrc: "",
+      content: [],
+    });
     setModalOpen(true);
   };
 
@@ -84,77 +120,91 @@ const BlogsTab = ({ addToast }) => {
     setForm({
       id: item.id,
       title: item.title,
-      subtitle: item.subtitle || '',
+      subtitle: item.subtitle || "",
       date: item.date,
-      readTime: item.readTime || '',
-      tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
-      imageSrc: item.imageSrc || '',
-      content: deserializeBlocks(item.content || ''),
+      readTime: item.readTime || "",
+      tags: Array.isArray(item.tags)
+        ? item.tags
+        : typeof item.tags === "string"
+          ? item.tags
+              .split(",")
+              .map((s) => s.trim())
+              .filter(Boolean)
+          : [],
+      imageSrc: item.imageSrc || "",
+      content: deserializeBlocks(item.content || ""),
     });
     setModalOpen(true);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     const payload = {
       ...form,
       content: serializeBlocks(form.content),
-      tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
+      tags: form.tags,
       order: editingItem ? editingItem.order : items.length,
     };
 
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
       const url = editingItem
-        ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${editingItem._id}`
+        ? `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${editingItem.id}`
         : `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs`;
-      const method = editingItem ? 'PUT' : 'POST';
+      const method = editingItem ? "PUT" : "POST";
       const res = await fetch(url, {
         method,
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (!data.success) {
-        setError(data.message || 'Failed to save');
-        addToast(data.message || 'Failed to save blog', 'error');
+        setError(data.message || "Failed to save");
+        addToast(data.message || "Failed to save blog", "error");
         return;
       }
       setModalOpen(false);
       fetchItems();
       addToast(
-        editingItem ? 'Blog updated successfully' : 'Blog added successfully',
-        'success'
+        editingItem ? "Blog updated successfully" : "Blog added successfully",
+        "success",
       );
     } catch (err) {
-      setError('Failed to save');
-      addToast('Failed to save blog', 'error');
+      setError("Failed to save");
+      addToast("Failed to save blog", "error");
     }
   };
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      const session = localStorage.getItem('adminSession');
-      const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${deleteTarget._id}`, {
-        method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
+      const session = localStorage.getItem("adminSession");
+      const token = session
+        ? JSON.parse(session).token
+        : localStorage.getItem("adminToken");
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${deleteTarget.id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const data = await res.json();
       if (data.success) {
         fetchItems();
-        addToast('Blog deleted successfully', 'success');
+        addToast("Blog deleted successfully", "success");
       }
     } finally {
       setDeleteTarget(null);
     }
-   };
+  };
 
   const handleDragStart = (e, index) => {
     dragItem.current = index;
@@ -185,13 +235,15 @@ const BlogsTab = ({ addToast }) => {
   };
 
   const saveOrder = async () => {
-    const session = localStorage.getItem('adminSession');
-    const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
+    const session = localStorage.getItem("adminSession");
+    const token = session
+      ? JSON.parse(session).token
+      : localStorage.getItem("adminToken");
     try {
       await Promise.all(
         items.map((item, index) =>
           fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${item._id}/order`,
+            `${import.meta.env.VITE_BACKEND_URL}/api/admin/blogs/${item.id}/order`,
             {
               method: "PATCH",
               headers: {
@@ -211,11 +263,10 @@ const BlogsTab = ({ addToast }) => {
   };
 
   const addBlock = (type) => {
-    let value = '';
-    if (type === 'h2') value = 'New Heading';
-    if (type === 'p') value = 'New paragraph text';
-    if (type === 'img') value = 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774435128/skybrisk_logo_aladdz.webp';
-    setForm({ ...form, content: [...form.content, { id: generateId(), type, value }] });
+    setForm({
+      ...form,
+      content: [...form.content, { id: generateId(), type, value: "" }],
+    });
   };
 
   const removeBlock = (index) => {
@@ -235,48 +286,174 @@ const BlogsTab = ({ addToast }) => {
     setForm({ ...form, content: updated });
   };
 
+  const blockDragItem = useRef(null);
+
   const handleBlockDragStart = (e, index) => {
-    dragItem.current = index;
+    blockDragItem.current = index;
     setDragOverIndex(null);
   };
 
   const handleBlockDragOver = (e, index) => {
     e.preventDefault();
-    if (dragItem.current === null || dragItem.current === index) return;
+    if (blockDragItem.current === null || blockDragItem.current === index) return;
     setDragOverIndex(index);
   };
 
   const handleBlockDrop = (dropIndex) => {
-    if (dragItem.current === null) return;
-    moveBlock(dragItem.current, dropIndex);
-    dragItem.current = null;
+    if (blockDragItem.current === null) return;
+    moveBlock(blockDragItem.current, dropIndex);
+    blockDragItem.current = null;
     setDragOverIndex(null);
   };
 
   const handleBlockDragEnd = () => {
-    dragItem.current = null;
+    blockDragItem.current = null;
     setDragOverIndex(null);
   };
 
+  const addItem = (field, value) => {
+    if (!value.trim()) return;
+    setForm({ ...form, [field]: [...form[field], value.trim()] });
+  };
+
+  const removeItem = (field, index) => {
+    const updated = form[field].filter((_, i) => i !== index);
+    setForm({ ...form, [field]: updated });
+  };
+
+  const tagDragItem = useRef(null);
+
+  const handleTagDragStart = (field, index) => {
+    tagDragItem.current = { field, index };
+    setDragOverIndex(null);
+  };
+
+  const handleTagDragOver = (e, field, index) => {
+    e.preventDefault();
+    if (
+      !tagDragItem.current ||
+      tagDragItem.current.field !== field ||
+      tagDragItem.current.index === index
+    )
+      return;
+    setDragOverIndex(index);
+  };
+
+  const handleTagDrop = (field, dropIndex) => {
+    if (!tagDragItem.current || tagDragItem.current.field !== field) return;
+    const items = [...form[field]];
+    const draggedIndex = tagDragItem.current.index;
+    const draggedItem = items[draggedIndex];
+    items.splice(draggedIndex, 1);
+    items.splice(dropIndex, 0, draggedItem);
+    setForm({ ...form, [field]: items });
+    tagDragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const handleTagDragEnd = () => {
+    tagDragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const TagInput = ({ label, field, placeholder }) => {
+    const [input, setInput] = useState("");
+    return (
+      <div className="input-box">
+        <label className="label">{label}</label>
+        <div className="flex gap-2 mb-2">
+          <input
+            className="text-field flex-1"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={placeholder}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                addItem(field, input);
+                setInput("");
+              }
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => {
+              addItem(field, input);
+              setInput("");
+            }}
+            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+          >
+            <span className="material-symbols-rounded text-[16px]">add</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setForm({ ...form, [field]: [] })}
+            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+          >
+            <span className="material-symbols-rounded text-[16px]">
+              refresh
+            </span>
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {form[field].map((item, index) => (
+            <span
+              key={index}
+              draggable
+              onDragStart={() => handleTagDragStart(field, index)}
+              onDragOver={(e) => handleTagDragOver(e, field, index)}
+              onDrop={() => handleTagDrop(field, index)}
+              onDragEnd={handleTagDragEnd}
+              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+            >
+              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+                drag_indicator
+              </span>
+              {item}
+              <button
+                type="button"
+                onClick={() => removeItem(field, index)}
+                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+              >
+                close
+              </button>
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-     <div className="px-4 md:px-8 pb-4 md:pb-8">
-       <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50 pt-8 pb-4">
-         <div>
-           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Blogs <span className="text-sky-400">({items.length})</span></h2>
-           <p className="text-zinc-400 text-sm mt-1">Manage blog posts and articles</p>
-         </div>
-         <div className="flex items-center gap-2">
-           <button onClick={saveOrder} className="btn btn-outline">
-             <span className="material-symbols-rounded text-[16px]">save</span>
-             Save Order
-           </button>
-           <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Blog</button>
-         </div>
+    <div className="px-4 md:px-8 pb-4 md:pb-8">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50 pt-8 pb-4">
+        <div>
+          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
+            Blogs <span className="text-sky-400">({items.length})</span>
+          </h2>
+          <p className="text-zinc-400 text-sm mt-1">
+            Manage blog posts and articles
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <button onClick={saveOrder} className="btn btn-outline">
+            <span className="material-symbols-rounded text-[16px]">save</span>
+            Save Order
+          </button>
+          <button onClick={openAdd} className="btn btn-primary">
+            <IoAdd className="text-[18px]" /> Add Blog
+          </button>
+        </div>
       </div>
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3].map(i => <div key={i} className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-40 animate-pulse" />)}
+          {[1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-40 animate-pulse"
+            />
+          ))}
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -297,11 +474,21 @@ const BlogsTab = ({ addToast }) => {
               </div>
               <div className="flex items-center justify-end mb-2">
                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">edit</span>
+                  <button
+                    onClick={() => openEdit(item)}
+                    className="btn btn-outline text-xs py-1 px-2"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      edit
+                    </span>
                   </button>
-                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">delete</span>
+                  <button
+                    onClick={() => setDeleteTarget(item)}
+                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      delete
+                    </span>
                   </button>
                 </div>
               </div>
@@ -309,11 +496,11 @@ const BlogsTab = ({ addToast }) => {
                 blog={{
                   id: item.id,
                   title: item.title,
-                  subtitle: item.subtitle || '',
+                  subtitle: item.subtitle || "",
                   date: item.date,
-                  readTime: item.readTime || '',
+                  readTime: item.readTime || "",
                   tags: item.tags || [],
-                  imageSrc: item.imageSrc || '',
+                  imageSrc: item.imageSrc || "",
                 }}
               />
             </div>
@@ -321,48 +508,111 @@ const BlogsTab = ({ addToast }) => {
         </div>
       )}
 
-      <FormModal open={modalOpen} onClose={() => setModalOpen(false)} title={`${editingItem ? 'Edit' : 'Add'} Blog`} error={error}>
+      <FormModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={`${editingItem ? "Edit" : "Add"} Blog`}
+        error={error}
+      >
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="input-box">
             <label className="label">ID</label>
-            <input className="text-field" value={form.id} onChange={(e) => setForm({ ...form, id: e.target.value })} required disabled={!!editingItem} />
+            <input
+              className="text-field"
+              value={form.id}
+              onChange={(e) => setForm({ ...form, id: e.target.value })}
+              required
+              disabled={!!editingItem}
+            />
           </div>
           <div className="input-box">
             <label className="label">Title</label>
-            <input className="text-field" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required />
+            <input
+              className="text-field"
+              value={form.title}
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Subtitle</label>
-            <input className="text-field" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.subtitle}
+              onChange={(e) => setForm({ ...form, subtitle: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Date</label>
-            <input className="text-field" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
+            <input
+              type="date"
+              className="text-field"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              required
+            />
           </div>
           <div className="input-box">
             <label className="label">Read Time</label>
-            <input className="text-field" value={form.readTime} onChange={(e) => setForm({ ...form, readTime: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.readTime}
+              onChange={(e) => setForm({ ...form, readTime: e.target.value })}
+            />
           </div>
-          <div className="input-box">
-            <label className="label">Tags (comma separated)</label>
-            <input className="text-field" value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} />
-          </div>
+          <TagInput
+            label="Tags"
+            field="tags"
+            placeholder="Add a tag"
+          />
           <div className="input-box">
             <label className="label">Image URL</label>
-            <input className="text-field" value={form.imageSrc} onChange={(e) => setForm({ ...form, imageSrc: e.target.value })} />
+            <input
+              className="text-field"
+              value={form.imageSrc}
+              onChange={(e) => setForm({ ...form, imageSrc: e.target.value })}
+            />
           </div>
           <div className="input-box">
             <label className="label">Content Blocks</label>
             <div className="flex gap-2 mb-3">
-              <button type="button" onClick={() => addBlock('h2')} className="btn btn-outline text-xs">Heading</button>
-              <button type="button" onClick={() => addBlock('p')} className="btn btn-outline text-xs">Paragraph</button>
-              <button type="button" onClick={() => addBlock('img')} className="btn btn-outline text-xs">Image</button>
+              <button
+                type="button"
+                onClick={() => addBlock("h2")}
+                className="btn btn-outline text-xs"
+              >
+                Heading
+              </button>
+              <button
+                type="button"
+                onClick={() => addBlock("p")}
+                className="btn btn-outline text-xs"
+              >
+                Paragraph
+              </button>
+              <button
+                type="button"
+                onClick={() => addBlock("img")}
+                className="btn btn-outline text-xs"
+              >
+                Image
+              </button>
             </div>
             <div className="space-y-2">
               {form.content.map((block, index) => (
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 cursor-grab active:cursor-grabbing" key={index}>
-                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing shrink-0">drag_indicator</span>
-                  {block.type === 'img' ? (
+                <div
+                  key={block.id}
+                  draggable
+                  onDragStart={(e) => handleBlockDragStart(e, index)}
+                  onDragOver={(e) => handleBlockDragOver(e, index)}
+                  onDrop={() => handleBlockDrop(index)}
+                  onDragEnd={handleBlockDragEnd}
+                  className={`flex items-center gap-2 p-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 cursor-grab active:cursor-grabbing ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+                >
+                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing shrink-0">
+                    drag_indicator
+                  </span>
+                  {block.type === "img" ? (
                     <input
                       className="text-field flex-1"
                       value={block.value}
@@ -372,26 +622,47 @@ const BlogsTab = ({ addToast }) => {
                   ) : (
                     <textarea
                       className="text-field flex-1"
-                      rows={block.type === 'h2' ? 1 : 2}
+                      rows={block.type === "h2" ? 1 : 2}
                       value={block.value}
                       onChange={(e) => updateBlock(index, e.target.value)}
-                      placeholder={block.type === 'h2' ? 'Heading text' : 'Paragraph text'}
+                      placeholder={
+                        block.type === "h2" ? "Heading text" : "Paragraph text"
+                      }
                     />
                   )}
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 border border-zinc-700 rounded px-1.5 py-0.5">{block.type}</span>
-                  <button type="button" onClick={() => removeBlock(index)} className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900">
-                    <span className="material-symbols-rounded text-[16px]">close</span>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 border border-zinc-700 rounded px-1.5 py-0.5">
+                    {block.type}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => removeBlock(index)}
+                    className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      close
+                    </span>
                   </button>
                 </div>
               ))}
               {form.content.length === 0 && (
-                <p className="text-xs text-zinc-500">No content blocks yet. Add a heading, paragraph, or image above.</p>
+                <p className="text-xs text-zinc-500">
+                  No content blocks yet. Add a heading, paragraph, or image
+                  above.
+                </p>
               )}
             </div>
           </div>
           <div className="flex gap-3 justify-end pt-2">
-            <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              className="btn btn-outline"
+            >
+              Cancel
+            </button>
+            <button type="submit" className="btn btn-primary">
+              Save
+            </button>
           </div>
         </form>
       </FormModal>
