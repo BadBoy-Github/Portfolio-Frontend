@@ -8,11 +8,46 @@ const BlogsTab = ({ addToast }) => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: '' });
+  const [form, setForm] = useState({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: [] });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragItem = useRef(null);
+
+  const generateId = () => {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  };
+
+  const serializeBlocks = (blocks) => {
+    return blocks.map(block => {
+      if (block.type === 'h2') return `<h2>${block.value}</h2>`;
+      if (block.type === 'p') return `<p>${block.value}</p>`;
+      if (block.type === 'img') return `<img src="${block.value}" class="blog-image" />`;
+      return '';
+    }).join('\n');
+  };
+
+  const deserializeBlocks = (html) => {
+    if (!html) return [];
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const blocks = [];
+    doc.body.childNodes.forEach(node => {
+      if (node.nodeType === 1) {
+        if (node.tagName === 'H2') {
+          blocks.push({ id: generateId(), type: 'h2', value: node.textContent });
+        } else if (node.tagName === 'P') {
+          blocks.push({ id: generateId(), type: 'p', value: node.innerHTML });
+        } else if (node.tagName === 'IMG') {
+          blocks.push({ id: generateId(), type: 'img', value: node.getAttribute('src') || '' });
+        }
+      }
+    });
+    return blocks;
+  };
 
   const fetchItems = async () => {
     setLoading(true);
@@ -40,7 +75,7 @@ const BlogsTab = ({ addToast }) => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: '' });
+    setForm({ id: '', title: '', subtitle: '', date: '', readTime: '', tags: '', imageSrc: '', content: [] });
     setModalOpen(true);
   };
 
@@ -54,16 +89,17 @@ const BlogsTab = ({ addToast }) => {
       readTime: item.readTime || '',
       tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
       imageSrc: item.imageSrc || '',
-      content: item.content || '',
+      content: deserializeBlocks(item.content || ''),
     });
     setModalOpen(true);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     setError('');
+    setError('');
     const payload = {
       ...form,
+      content: serializeBlocks(form.content),
       tags: form.tags.split(',').map(s => s.trim()).filter(Boolean),
       order: editingItem ? editingItem.order : items.length,
     };
@@ -174,7 +210,55 @@ const BlogsTab = ({ addToast }) => {
     }
   };
 
-   return (
+  const addBlock = (type) => {
+    let value = '';
+    if (type === 'h2') value = 'New Heading';
+    if (type === 'p') value = 'New paragraph text';
+    if (type === 'img') value = 'https://res.cloudinary.com/dz53e3szr/image/upload/v1774435128/skybrisk_logo_aladdz.webp';
+    setForm({ ...form, content: [...form.content, { id: generateId(), type, value }] });
+  };
+
+  const removeBlock = (index) => {
+    setForm({ ...form, content: form.content.filter((_, i) => i !== index) });
+  };
+
+  const updateBlock = (index, value) => {
+    const updated = [...form.content];
+    updated[index] = { ...updated[index], value };
+    setForm({ ...form, content: updated });
+  };
+
+  const moveBlock = (from, to) => {
+    const updated = [...form.content];
+    const [moved] = updated.splice(from, 1);
+    updated.splice(to, 0, moved);
+    setForm({ ...form, content: updated });
+  };
+
+  const handleBlockDragStart = (e, index) => {
+    dragItem.current = index;
+    setDragOverIndex(null);
+  };
+
+  const handleBlockDragOver = (e, index) => {
+    e.preventDefault();
+    if (dragItem.current === null || dragItem.current === index) return;
+    setDragOverIndex(index);
+  };
+
+  const handleBlockDrop = (dropIndex) => {
+    if (dragItem.current === null) return;
+    moveBlock(dragItem.current, dropIndex);
+    dragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const handleBlockDragEnd = () => {
+    dragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  return (
      <div className="px-4 md:px-8 pb-4 md:pb-8">
        <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50 pt-8 pb-4">
          <div>
@@ -268,8 +352,42 @@ const BlogsTab = ({ addToast }) => {
             <input className="text-field" value={form.imageSrc} onChange={(e) => setForm({ ...form, imageSrc: e.target.value })} />
           </div>
           <div className="input-box">
-            <label className="label">Content (HTML)</label>
-            <textarea className="text-field" rows={5} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} />
+            <label className="label">Content Blocks</label>
+            <div className="flex gap-2 mb-3">
+              <button type="button" onClick={() => addBlock('h2')} className="btn btn-outline text-xs">Heading</button>
+              <button type="button" onClick={() => addBlock('p')} className="btn btn-outline text-xs">Paragraph</button>
+              <button type="button" onClick={() => addBlock('img')} className="btn btn-outline text-xs">Image</button>
+            </div>
+            <div className="space-y-2">
+              {form.content.map((block, index) => (
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 cursor-grab active:cursor-grabbing" key={index}>
+                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing shrink-0">drag_indicator</span>
+                  {block.type === 'img' ? (
+                    <input
+                      className="text-field flex-1"
+                      value={block.value}
+                      onChange={(e) => updateBlock(index, e.target.value)}
+                      placeholder="Image URL"
+                    />
+                  ) : (
+                    <textarea
+                      className="text-field flex-1"
+                      rows={block.type === 'h2' ? 1 : 2}
+                      value={block.value}
+                      onChange={(e) => updateBlock(index, e.target.value)}
+                      placeholder={block.type === 'h2' ? 'Heading text' : 'Paragraph text'}
+                    />
+                  )}
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 border border-zinc-700 rounded px-1.5 py-0.5">{block.type}</span>
+                  <button type="button" onClick={() => removeBlock(index)} className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900">
+                    <span className="material-symbols-rounded text-[16px]">close</span>
+                  </button>
+                </div>
+              ))}
+              {form.content.length === 0 && (
+                <p className="text-xs text-zinc-500">No content blocks yet. Add a heading, paragraph, or image above.</p>
+              )}
+            </div>
           </div>
           <div className="flex gap-3 justify-end pt-2">
             <button type="button" onClick={() => setModalOpen(false)} className="btn btn-outline">Cancel</button>
