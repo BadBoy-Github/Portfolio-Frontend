@@ -23,7 +23,7 @@ const sitemap = [
   },
   {
     label: "Contact me",
-    href: "/?scroll=contact",
+    href: "/contact",
   },
 ];
 

@@ -36,6 +36,7 @@ import { getSession } from "./pages/AdminLogin";
 // Lazy loaded page components
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const CertificateDetail = lazy(() => import("./pages/CertificateDetail"));
 const AchievementDetail = lazy(() => import("./pages/AchievementDetail"));
@@ -142,6 +143,16 @@ const AppInner = () => {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
                   <BlogDetail />
+                </motion.div>
+              } />
+              <Route path="/contact" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <ContactPage />
                 </motion.div>
               } />
 

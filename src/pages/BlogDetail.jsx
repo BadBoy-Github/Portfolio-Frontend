@@ -244,7 +244,7 @@ const BlogDetail = () => {
                 I'd love to hear about your ideas and collaborate on something amazing. Reach out and let's build great things together.
               </p>
               <Link
-                to="/#contactme"
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
               >
                 <span>Get In Touch</span>

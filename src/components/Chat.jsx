@@ -287,7 +287,7 @@ const Chat = () => {
                 <button className="text-xs md:text-sm">Download Resume</button>
                 <MdOutlineFileDownload className="hidden md:block size-[20px]" />
               </a>
-              <Link to="/?scroll=contactme" className="btn btn-outline">
+              <Link to="/contact" className="btn btn-outline">
                 <button className="text-xs md:text-sm">Contact Me</button>
                 <LuMessagesSquare className="hidden md:block size-[20px]" />
               </Link>
