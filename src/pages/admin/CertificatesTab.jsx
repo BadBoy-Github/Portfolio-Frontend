@@ -8,7 +8,7 @@ const CertificatesTab = ({ addToast }) => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ title: '', company: '', year: '', description: '', imgSrc: '', logo: '', technologiesLearned: '' });
+  const [form, setForm] = useState({ title: '', company: '', year: '', description: '', imgSrc: '', logo: '', technologiesLearned: [] });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
@@ -47,7 +47,7 @@ const CertificatesTab = ({ addToast }) => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ title: '', company: '', year: '', description: '', imgSrc: '', logo: '', technologiesLearned: '' });
+    setForm({ title: '', company: '', year: '', description: '', imgSrc: '', logo: '', technologiesLearned: [] });
     setModalOpen(true);
   };
 
@@ -60,7 +60,7 @@ const CertificatesTab = ({ addToast }) => {
       description: item.description,
       imgSrc: item.imgSrc || '',
       logo: item.logo || '',
-      technologiesLearned: Array.isArray(item.technologiesLearned) ? item.technologiesLearned.join(', ') : ''
+      technologiesLearned: Array.isArray(item.technologiesLearned) ? item.technologiesLearned : (typeof item.technologiesLearned === 'string' ? item.technologiesLearned.split(',').map(s => s.trim()).filter(Boolean) : [])
     });
     setModalOpen(true);
   };
@@ -177,6 +177,117 @@ const CertificatesTab = ({ addToast }) => {
     } catch (err) {
       addToast("Failed to save order", "error");
     }
+  };
+
+  const addItem = (field, value) => {
+    if (!value.trim()) return;
+    setForm({ ...form, [field]: [...form[field], value.trim()] });
+  };
+
+  const removeItem = (field, index) => {
+    const updated = form[field].filter((_, i) => i !== index);
+    setForm({ ...form, [field]: updated });
+  };
+
+  const tagHandleDragStart = (field, index) => {
+    dragItem.current = { field, index };
+    setDragOverIndex(null);
+  };
+
+  const tagHandleDragOver = (e, field, index) => {
+    e.preventDefault();
+    if (
+      !dragItem.current ||
+      dragItem.current.field !== field ||
+      dragItem.current.index === index
+    )
+      return;
+    setDragOverIndex(index);
+  };
+
+  const tagHandleDrop = (field, dropIndex) => {
+    if (!dragItem.current || dragItem.current.field !== field) return;
+    const items = [...form[field]];
+    const draggedIndex = dragItem.current.index;
+    const draggedItem = items[draggedIndex];
+    items.splice(draggedIndex, 1);
+    items.splice(dropIndex, 0, draggedItem);
+    setForm({ ...form, [field]: items });
+    dragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const tagHandleDragEnd = () => {
+    dragItem.current = null;
+    setDragOverIndex(null);
+  };
+
+  const TagInput = ({ label, field, placeholder }) => {
+    const [input, setInput] = useState("");
+    return (
+      <div className="input-box">
+        <label className="label">{label}</label>
+        <div className="flex gap-2 mb-2">
+          <input
+            className="text-field flex-1"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={placeholder}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                addItem(field, input);
+                setInput("");
+              }
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => {
+              addItem(field, input);
+              setInput("");
+            }}
+            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+          >
+            <span className="material-symbols-rounded text-[16px]">add</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setForm({ ...form, [field]: [] })}
+            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+          >
+            <span className="material-symbols-rounded text-[16px]">
+              refresh
+            </span>
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {form[field].map((item, index) => (
+            <span
+              key={index}
+              draggable
+              onDragStart={() => tagHandleDragStart(field, index)}
+              onDragOver={(e) => tagHandleDragOver(e, field, index)}
+              onDrop={() => tagHandleDrop(field, index)}
+              onDragEnd={tagHandleDragEnd}
+              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+            >
+              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+                drag_indicator
+              </span>
+              {item}
+              <button
+                type="button"
+                onClick={() => removeItem(field, index)}
+                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+              >
+                close
+              </button>
+            </span>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -326,16 +437,11 @@ const CertificatesTab = ({ addToast }) => {
               onChange={(e) => setForm({ ...form, logo: e.target.value })}
             />
           </div>
-          <div className="input-box">
-            <label className="label">Technologies Learned</label>
-            <input
-              className="text-field"
-              value={form.technologiesLearned}
-              onChange={(e) =>
-                setForm({ ...form, technologiesLearned: e.target.value })
-              }
-            />
-          </div>
+          <TagInput
+            label="Technologies Learned"
+            field="technologiesLearned"
+            placeholder="Add a technology"
+          />
           <div className="flex gap-3 justify-end pt-2">
             <button
               type="button"
