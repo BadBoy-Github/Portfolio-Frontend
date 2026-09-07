@@ -48,6 +48,10 @@ const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
             <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Enter your name" required />
           </div>
           <div>
+            <label className="label">Your Email</label>
+            <input className="text-field" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Enter your email" required />
+          </div>
+          <div>
             <label className="label">Your Designation</label>
             <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} placeholder="Enter your job role" />
           </div>
