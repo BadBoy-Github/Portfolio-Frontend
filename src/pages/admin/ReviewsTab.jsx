@@ -14,6 +14,13 @@ const ReviewsTab = ({ addToast }) => {
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragItem = useRef(null);
 
+  const generateId = () => {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  };
+
   const fetchItems = async () => {
     setLoading(true);
     try {
@@ -58,6 +65,11 @@ const ReviewsTab = ({ addToast }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    const payload = {
+      id: editingItem ? editingItem.id : generateId(),
+      ...form,
+      order: editingItem ? editingItem.order : items.length,
+    };
     try {
       const session = localStorage.getItem('adminSession');
       const token = session ? JSON.parse(session).token : localStorage.getItem('adminToken');
@@ -71,7 +83,7 @@ const ReviewsTab = ({ addToast }) => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ ...form, order: editingItem ? editingItem.order : items.length }),
+        body: JSON.stringify(payload),
       });
       const data = await res.json();
       if (!data.success) {
