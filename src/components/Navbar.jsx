@@ -21,6 +21,15 @@ const Navbar = ({ navOpen }) => {
   useEffect(() => {
     const path = location.pathname;
 
+    // Clear active state for non-nav pages
+    const nonActivePaths = ['/contact', '/projects', '/certificates', '/certificate/', '/achievements', '/achievement/', '/blogs', '/blog/', '/project/', '/about'];
+    const isNonActivePath = nonActivePaths.some(p => path === p || path.startsWith(p));
+    
+    if (isNonActivePath) {
+      setActiveIndex(-1);
+      return;
+    }
+
     // Check if we're on a route page
     const routeIndex = navItems.findIndex(
       (item) => item.isRoute && item.link === path,
@@ -63,12 +72,19 @@ const Navbar = ({ navOpen }) => {
 
   // Active box animation effect
   useEffect(() => {
+    if (activeIndex < 0 || !linkRefs.current[activeIndex] || !activeBox.current) {
+      if (activeBox.current) {
+        activeBox.current.style.opacity = '0';
+      }
+      return;
+    }
     const activeLink = linkRefs.current[activeIndex];
-    if (activeLink && activeBox.current) {
-      activeBox.current.style.top = activeLink.offsetTop + "px";
-      activeBox.current.style.left = activeLink.offsetLeft + "px";
-      activeBox.current.style.width = activeLink.offsetWidth + "px";
-      activeBox.current.style.height = activeLink.offsetHeight + "px";
+    if (activeBox.current) {
+      activeBox.current.style.opacity = '1';
+      activeBox.current.style.top = activeLink.offsetTop + 'px';
+      activeBox.current.style.left = activeLink.offsetLeft + 'px';
+      activeBox.current.style.width = activeLink.offsetWidth + 'px';
+      activeBox.current.style.height = activeLink.offsetHeight + 'px';
     }
   }, [activeIndex, navOpen]);
 

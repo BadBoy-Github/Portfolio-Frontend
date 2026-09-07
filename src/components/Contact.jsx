@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { Star } from "lucide-react";
 
 const socialLinks = [
   {
@@ -166,7 +167,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate entire form
     if (!validateForm()) {
       return;
     }
@@ -185,7 +185,7 @@ const Contact = () => {
       const data = await response.json();
 
       if (data.success) {
-        setStatus({ loading: false, success: true, error: "" });
+        setStatus({ loading: false, success: false, error: "" });
         setFormData({
           name: "",
           email: "",
@@ -194,16 +194,14 @@ const Contact = () => {
           message: "",
         });
         setErrors({});
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setStatus((prev) => ({ ...prev, success: false }));
-        }, 5000);
+        showToast("Message sent successfully", "success");
       } else {
         setStatus({
           loading: false,
           success: false,
           error: data.error || "Failed to send message",
         });
+        showToast(data.error || "Failed to send message", "error");
       }
     } catch {
       setStatus({
@@ -211,6 +209,42 @@ const Contact = () => {
         success: false,
         error: "Network error. Please try again.",
       });
+      showToast("Network error. Please try again.", "error");
+    }
+  };
+
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 4000);
+  };
+
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [reviewLoading, setReviewLoading] = useState(false);
+  const [reviewForm, setReviewForm] = useState({ name: '', email: '', company: '', content: '', rating: 5, imgSrc: '' });
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    setReviewLoading(true);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/reviews/public`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reviewForm),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setReviewOpen(false);
+        setReviewForm({ name: '', email: '', company: '', content: '', rating: 5, imgSrc: '' });
+        showToast('Your review sent successfully', 'success');
+      } else {
+        showToast(data.error || 'Failed to send review', 'error');
+      }
+    } catch {
+      showToast('Network error. Please try again.', 'error');
+    } finally {
+      setReviewLoading(false);
     }
   };
 
@@ -350,12 +384,6 @@ const Contact = () => {
           </div>
 
           {/* Status Messages */}
-          {status.success && (
-            <div className="mb-4 p-3 bg-green-500/20 text-green-400 rounded-lg text-sm">
-              ✓ Message sent successfully! I&apos;ll get back to you soon.
-            </div>
-          )}
-
           {status.error && (
             <div className="mb-4 p-3 bg-red-500/20 text-red-400 rounded-lg text-sm">
               ✗ {status.error}
@@ -370,7 +398,116 @@ const Contact = () => {
             {status.loading ? "Sending..." : "Submit"}
           </button>
         </form>
+
+        <div className="mt-10 text-center">
+          <p className="text-zinc-400 mb-3">Would you like to leave a review?</p>
+          <button
+            type="button"
+            onClick={() => setReviewOpen(true)}
+            className="btn btn-primary"
+          >
+            Leave a Review
+          </button>
+        </div>
       </div>
+
+      {toast && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <div className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
+            toast.type === 'success' ? 'bg-sky-500 text-white' : 'bg-red-500 text-white'
+          }`}>
+            {toast.type === 'success' ? '✓ ' : '✗ '}{toast.message}
+          </div>
+        </div>
+      )}
+
+      {reviewOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-lg shadow-2xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-semibold text-white">Leave a Review</h3>
+              <button
+                type="button"
+                onClick={() => setReviewOpen(false)}
+                className="text-zinc-400 hover:text-white transition-colors"
+              >
+                <span className="material-symbols-rounded">close</span>
+              </button>
+            </div>
+            <form onSubmit={handleReviewSubmit} className="space-y-3">
+              <div>
+                <label className="label">Your Name</label>
+                <input
+                  className="text-field"
+                  value={reviewForm.name}
+                  onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div>
+                <label className="label">Your Company Name</label>
+                <input
+                  className="text-field"
+                  value={reviewForm.company}
+                  onChange={(e) => setReviewForm({ ...reviewForm, company: e.target.value })}
+                  placeholder="Enter your company name"
+                />
+              </div>
+              <div>
+                <label className="label">Your Image URL</label>
+                <input
+                  className="text-field"
+                  value={reviewForm.imgSrc}
+                  onChange={(e) => setReviewForm({ ...reviewForm, imgSrc: e.target.value })}
+                  placeholder="https://example.com/your-image.jpg"
+                />
+              </div>
+              <div>
+                <label className="label">Rating</label>
+                <div className="flex items-center gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setReviewForm({ ...reviewForm, rating: star })}
+                      className="transition-all duration-200"
+                    >
+                      <Star
+                        size={28}
+                        className={`cursor-pointer ${
+                          star <= reviewForm.rating
+                            ? 'text-yellow-400 fill-yellow-400'
+                            : 'text-zinc-600'
+                        }`}
+                      />
+                    </button>
+                  ))}
+                  <span className="text-sm text-zinc-400 ml-2">{reviewForm.rating}/5</span>
+                </div>
+              </div>
+              <div>
+                <label className="label">Review Content</label>
+                <textarea
+                  className="text-field"
+                  rows={3}
+                  value={reviewForm.content}
+                  onChange={(e) => setReviewForm({ ...reviewForm, content: e.target.value })}
+                  placeholder="Write your review here..."
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={reviewLoading}
+                className="btn btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {reviewLoading ? 'Sending...' : 'Send Review'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
