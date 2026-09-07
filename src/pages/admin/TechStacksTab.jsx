@@ -14,6 +14,13 @@ const TechStacksTab = ({ addToast }) => {
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragItem = useRef(null);
 
+  const generateId = () => {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  };
+
   const fetchItems = async () => {
     setLoading(true);
     try {
@@ -64,7 +71,10 @@ const TechStacksTab = ({ addToast }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    const payload = { ...form };
+    const payload = {
+      id: editingItem ? editingItem.id : generateId(),
+      ...form,
+    };
 
     try {
       const session = localStorage.getItem("adminSession");
