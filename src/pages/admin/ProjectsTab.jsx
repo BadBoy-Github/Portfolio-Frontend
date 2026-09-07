@@ -532,17 +532,17 @@ const ProjectsTab = ({ addToast }) => {
                               </button>
                             </div>
                           </div>
-                          <ProjectFeaturedCard
-                            imgSrc={item.imgSrc || ""}
-                            title={item.title}
-                            techUsed={item.techUsed || []}
-                            projectLink={item.projectLink || "#"}
-                            code={item.code || "False"}
-                            live={item.live || "False"}
-                            gitUrl={item.gitUrl || "#"}
-                            projectId={item._id}
-                            displayTags={item.displayTags || []}
-                          />
+                           <ProjectFeaturedCard
+                             imgSrc={item.imgSrc || ""}
+                             title={item.title}
+                             techUsed={item.techUsed || []}
+                             projectLink={item.projectLink || ""}
+                             code={item.code || "False"}
+                             live={item.live || "False"}
+                             gitUrl={item.gitUrl || ""}
+                             projectId={item._id}
+                             displayTags={item.displayTags || []}
+                           />
                         </div>
                       ))}
                     </div>
@@ -604,17 +604,17 @@ const ProjectsTab = ({ addToast }) => {
                               </button>
                             </div>
                           </div>
-                          <ProjectCard
-                            imgSrc={item.imgSrc || ""}
-                            title={item.title}
-                            techUsed={item.techUsed || []}
-                            projectLink={item.projectLink || "#"}
-                            code={item.code || "False"}
-                            live={item.live || "False"}
-                            gitUrl={item.gitUrl || "#"}
-                            projectId={item._id}
-                            displayTags={item.displayTags || []}
-                          />
+                           <ProjectCard
+                             imgSrc={item.imgSrc || ""}
+                             title={item.title}
+                             techUsed={item.techUsed || []}
+                             projectLink={item.projectLink || ""}
+                             code={item.code || "False"}
+                             live={item.live || "False"}
+                             gitUrl={item.gitUrl || ""}
+                             projectId={item._id}
+                             displayTags={item.displayTags || []}
+                           />
                         </div>
                       ))}
                     </div>

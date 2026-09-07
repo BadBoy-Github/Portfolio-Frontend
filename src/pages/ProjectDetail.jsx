@@ -192,26 +192,26 @@ const ProjectDetail = () => {
                   className="w-full rounded-xl mb-6 border border-white/20"
                 />
 
-                <div className="flex gap-4">
-                  {project.code === "True" && (
+                <div className="flex flex-wrap gap-4">
+                  {project.gitUrl && (
                     <a
                       href={project.gitUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-white transition-colors"
+                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-white transition-colors"
                     >
                       <FaGithub className="size-5" />
-                      <span>View Code</span>
+                      <span>GitHub</span>
                     </a>
                   )}
-                  {project.live === "True" && project.projectLink && (
+                  {project.projectLink && (
                     <a
                       href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-sky-600 hover:bg-sky-500 rounded-xl text-white transition-colors"
+                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-3 bg-sky-600 hover:bg-sky-500 rounded-xl text-white transition-colors"
                     >
-                      <span>Visit </span>
+                      <span>Live Link</span>
                       <IoArrowForwardOutline className="size-4" />
                     </a>
                   )}
