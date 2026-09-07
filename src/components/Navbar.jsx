@@ -22,7 +22,7 @@ const Navbar = ({ navOpen }) => {
     const path = location.pathname;
 
     // Clear active state for non-nav pages
-    const nonActivePaths = ['/contact', '/projects', '/certificates', '/certificate/', '/achievements', '/achievement/', '/blogs', '/blog/', '/project/', '/about'];
+    const nonActivePaths = ['/contact', '/certificates', '/certificate/', '/achievements', '/achievement/'];
     const isNonActivePath = nonActivePaths.some(p => path === p || path.startsWith(p));
     
     if (isNonActivePath) {
@@ -68,6 +68,9 @@ const Navbar = ({ navOpen }) => {
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }
+
+    // Default: no active nav item for unmatched routes
+    setActiveIndex(-1);
   }, [location]);
 
   // Active box animation effect

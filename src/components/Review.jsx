@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ReviewCard from "./ReviewCard";
+import ReviewModal from "./ReviewModal";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -7,6 +8,13 @@ const Review = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 4000);
+  };
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -53,23 +61,63 @@ const Review = () => {
 
   return (
     <section id="reviews" className="section overflow-hidden ">
-        <h2 className="headline-2 ">What my colleagues say</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-          Hear directly from those who've collaborated with me
-        </p>
+      <h2 className="headline-2 ">What my colleagues say</h2>
+      <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
+        Hear directly from those who've collaborated with me
+      </p>
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 pb-10">
-          {reviews.map(({ content, name, imgSrc, company, rating }, key) => (
-            <ReviewCard
-              key={key}
-              name={name}
-              imgSrc={imgSrc}
-              company={company}
-              content={content}
-              rating={rating ?? 5}
-            />
-          ))}
+      <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 pb-10">
+        {reviews.map(({ content, name, imgSrc, company, rating }, key) => (
+          <ReviewCard
+            key={key}
+            name={name}
+            imgSrc={imgSrc}
+            company={company}
+            content={content}
+            rating={rating ?? 5}
+          />
+        ))}
+      </div>
+
+      {reviewOpen && (
+        <ReviewModal
+          isOpen={reviewOpen}
+          onClose={() => setReviewOpen(false)}
+          onSuccess={() =>
+            showToast("Your review sent successfully", "success")
+          }
+        />
+      )}
+
+      <div className="">
+        <div className="flex items-start gap-4">
+          <div className="flex-1">
+            <p className="text-zinc-400 text-sm mb-4">
+              <span className="text-zinc-300">Want to write a review?</span> I would love to hear about
+              your experience working with me. It only takes a minute and helps
+              others learn more about me.{" "}
+              <span onClick={() => setReviewOpen(true)} className="text-sky-500 cursor-pointer">
+                Click here to write a review.
+              </span>
+            </p>
+          </div>
         </div>
+      </div>
+
+      {toast && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <div
+            className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
+              toast.type === "success"
+                ? "bg-sky-500 text-white"
+                : "bg-red-500 text-white"
+            }`}
+          >
+            {toast.type === "success" ? "✓ " : "✗ "}
+            {toast.message}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

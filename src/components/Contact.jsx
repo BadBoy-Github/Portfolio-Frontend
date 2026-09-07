@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { Star } from "lucide-react";
+import { IoChevronForward } from "react-icons/io5";
+import ReviewModal from "./ReviewModal";
 
 const socialLinks = [
   {
@@ -221,32 +223,22 @@ const Contact = () => {
   };
 
   const [reviewOpen, setReviewOpen] = useState(false);
-  const [reviewLoading, setReviewLoading] = useState(false);
-  const [reviewForm, setReviewForm] = useState({ name: '', email: '', company: '', content: '', rating: 5, imgSrc: '' });
+  const [blogs, setBlogs] = useState([]);
 
-  const handleReviewSubmit = async (e) => {
-    e.preventDefault();
-    setReviewLoading(true);
-    try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/reviews/public`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(reviewForm),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setReviewOpen(false);
-        setReviewForm({ name: '', email: '', company: '', content: '', rating: 5, imgSrc: '' });
-        showToast('Your review sent successfully', 'success');
-      } else {
-        showToast(data.error || 'Failed to send review', 'error');
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/blogs`);
+        const data = await res.json();
+        if (data.success) {
+          setBlogs((data.data || []).slice(0, 5));
+        }
+      } catch {
+        // silent
       }
-    } catch {
-      showToast('Network error. Please try again.', 'error');
-    } finally {
-      setReviewLoading(false);
-    }
-  };
+    };
+    fetchBlogs();
+  }, []);
 
   return (
     <section id="contactme" className="section">
@@ -398,115 +390,81 @@ const Contact = () => {
             {status.loading ? "Sending..." : "Submit"}
           </button>
         </form>
+      </div>
 
-        <div className="mt-10 text-center">
-          <p className="text-zinc-400 mb-3">Would you like to leave a review?</p>
-          <button
-            type="button"
-            onClick={() => setReviewOpen(true)}
-            className="btn btn-primary"
-          >
-            Leave a Review
-          </button>
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/15 text-sky-400 shrink-0">
+              <span className="material-symbols-rounded text-3xl">
+                rate_review
+              </span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Enjoyed working with me?
+              </h3>
+              <p className="text-zinc-400 text-sm mb-4">
+                Your review helps others understand what it is like to
+                collaborate with me. It only takes a minute and means a lot.
+              </p>
+              <button
+                type="button"
+                onClick={() => setReviewOpen(true)}
+                className="btn btn-primary"
+              >
+                Leave a Review
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 md:p-8">
+          <div className="flex items-start gap-4">
+            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/15 text-sky-400 shrink-0">
+              <span className="material-symbols-rounded text-3xl">article</span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold text-white mb-2">
+                From the Blog
+              </h3>
+              <p className="text-zinc-400 text-sm mb-4">
+                Explore more about my work, thoughts, and latest updates.
+              </p>
+
+              <Link
+              to="/blogs"
+                className="btn btn-primary"
+              >
+                View all blogs
+                <IoChevronForward className="size-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
       {toast && (
         <div className="fixed bottom-4 right-4 z-50">
-          <div className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
-            toast.type === 'success' ? 'bg-sky-500 text-white' : 'bg-red-500 text-white'
-          }`}>
-            {toast.type === 'success' ? '✓ ' : '✗ '}{toast.message}
+          <div
+            className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
+              toast.type === "success"
+                ? "bg-sky-500 text-white"
+                : "bg-red-500 text-white"
+            }`}
+          >
+            {toast.type === "success" ? "✓ " : "✗ "}
+            {toast.message}
           </div>
         </div>
       )}
 
       {reviewOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-lg shadow-2xl">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-semibold text-white">Leave a Review</h3>
-              <button
-                type="button"
-                onClick={() => setReviewOpen(false)}
-                className="text-zinc-400 hover:text-white transition-colors"
-              >
-                <span className="material-symbols-rounded">close</span>
-              </button>
-            </div>
-            <form onSubmit={handleReviewSubmit} className="space-y-3">
-              <div>
-                <label className="label">Your Name</label>
-                <input
-                  className="text-field"
-                  value={reviewForm.name}
-                  onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-              <div>
-                <label className="label">Your Company Name</label>
-                <input
-                  className="text-field"
-                  value={reviewForm.company}
-                  onChange={(e) => setReviewForm({ ...reviewForm, company: e.target.value })}
-                  placeholder="Enter your company name"
-                />
-              </div>
-              <div>
-                <label className="label">Your Image URL</label>
-                <input
-                  className="text-field"
-                  value={reviewForm.imgSrc}
-                  onChange={(e) => setReviewForm({ ...reviewForm, imgSrc: e.target.value })}
-                  placeholder="https://example.com/your-image.jpg"
-                />
-              </div>
-              <div>
-                <label className="label">Rating</label>
-                <div className="flex items-center gap-2">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      type="button"
-                      onClick={() => setReviewForm({ ...reviewForm, rating: star })}
-                      className="transition-all duration-200"
-                    >
-                      <Star
-                        size={28}
-                        className={`cursor-pointer ${
-                          star <= reviewForm.rating
-                            ? 'text-yellow-400 fill-yellow-400'
-                            : 'text-zinc-600'
-                        }`}
-                      />
-                    </button>
-                  ))}
-                  <span className="text-sm text-zinc-400 ml-2">{reviewForm.rating}/5</span>
-                </div>
-              </div>
-              <div>
-                <label className="label">Review Content</label>
-                <textarea
-                  className="text-field"
-                  rows={3}
-                  value={reviewForm.content}
-                  onChange={(e) => setReviewForm({ ...reviewForm, content: e.target.value })}
-                  placeholder="Write your review here..."
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={reviewLoading}
-                className="btn btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {reviewLoading ? 'Sending...' : 'Send Review'}
-              </button>
-            </form>
-          </div>
-        </div>
+        <ReviewModal
+          isOpen={reviewOpen}
+          onClose={() => setReviewOpen(false)}
+          onSuccess={() => showToast('Your review sent successfully', 'success')}
+        />
       )}
     </section>
   );
