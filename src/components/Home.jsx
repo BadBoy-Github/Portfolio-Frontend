@@ -53,7 +53,7 @@ const Home = () => {
             />
 
             <ButtonOutline
-              href="/about?scroll=chatbot"
+              href="/about"
               label="Chat with AI"
               icon="robot_2"
             />

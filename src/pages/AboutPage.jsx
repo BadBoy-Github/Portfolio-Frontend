@@ -8,9 +8,9 @@ import RightSideNav from "../components/RightSideNav";
 
 const AboutPage = () => {
   const sections = [
+    { id: "chatbot", label: "Chat" },
     { id: "welcome", label: "Welcome" },
     { id: "about-terminal", label: "About Terminal" },
-    { id: "chatbot", label: "Chat" },
     { id: "experience", label: "Experience" },
     { id: "education", label: "Education" },
   ];
@@ -50,9 +50,9 @@ const AboutPage = () => {
         <link rel="canonical" href="https://elayabarathimv.vercel.app/about" />
       </Helmet>
       <div className="container">
+        <Chat />
         <Welcome />
         <AboutTerminal />
-        <Chat />
         <Experience />
         <Education />
       </div>
