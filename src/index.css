@@ -395,3 +395,7 @@ body {
 .blog-content pre code {
     @apply text-zinc-300;
 }
+
+.imgimgimg>img {
+    @apply border-2 border-zinc-700 rounded-xl my-8;
+}

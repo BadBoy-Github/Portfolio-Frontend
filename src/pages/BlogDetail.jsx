@@ -132,9 +132,9 @@ const BlogDetail = () => {
           <span>Back to All Blogs</span>
         </Link>
 
-        <article className="mx-auto">
-          <header className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <article className="mx-auto ">
+          <header className="mb-8 ">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 ">
               {blog.title}
             </h1>
             <p className="text-xl text-zinc-400 mb-4">{blog.subtitle}</p>
@@ -197,8 +197,10 @@ const BlogDetail = () => {
             className="w-full rounded-xl mb-8"
           />
 
+          <div className="my-8 bg-zinc-700 h-1 w-full"></div>
+
           <div
-            className="prose prose-invert prose-lg max-w-none blog-content"
+            className="prose prose-invert prose-lg max-w-none blog-content imgimgimg"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
 
