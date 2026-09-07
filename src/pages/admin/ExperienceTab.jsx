@@ -640,7 +640,7 @@ const ExperienceTab = ({ addToast }) => {
                 onDragOver={(e) => handleCompoundRoleDragOver(e, roleIndex)}
                 onDrop={() => handleCompoundRoleDrop(roleIndex)}
                 onDragEnd={handleCompoundRoleDragEnd}
-                className={`relative p-4 bg-zinc-800/30 rounded-xl mb-3 cursor-grab active:cursor-grabbing transition-all ${compoundDragOverIndex === roleIndex ? "ring-2 ring-sky-500" : ""}`}
+                className={`relative flex flex-col gap-3 p-4 bg-zinc-800/30 rounded-xl mb-3 cursor-grab active:cursor-grabbing transition-all ${compoundDragOverIndex === roleIndex ? "ring-2 ring-sky-500" : ""}`}
               >
                 <div className="flex items-center gap-2 text-zinc-400 mb-2">
                   <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
