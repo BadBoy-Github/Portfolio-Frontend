@@ -178,6 +178,28 @@ const BlogDetail = () => {
               <span>{blog.readTime}</span>
             </div>
 
+            <div className="flex flex-wrap items-center gap-2 mt-4">
+              <button
+                onClick={handleShare}
+                className="flex items-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+                title="Share this blog"
+              >
+                <IoShareSocial className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={handleCopy}
+                className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors ${
+                  copySuccess
+                    ? 'bg-sky-400 text-zinc-900'
+                    : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                }`}
+                title="Copy link"
+              >
+                <IoCopy className="w-4 h-4" />
+              </button>
+            </div>
+
             <div className="flex flex-wrap gap-2 mt-4">
               {(blog.tags || []).map((tag, index) => (
                 <span
@@ -208,6 +230,28 @@ const BlogDetail = () => {
             title={blog.title}
             url={`https://elayabarathimv.vercel.app/blog/${blog.id}`}
           />
+
+          <div className="mt-16 relative">
+            <div className="bg-zinc-800/50 border border-zinc-700/50 rounded-2xl p-6 md:p-8 text-center">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="material-symbols-rounded text-sky-400 text-3xl">mail</span>
+                <span className="material-symbols-rounded text-sky-400 text-3xl">chat</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                Have a project in mind?
+              </h2>
+              <p className="text-zinc-400 max-w-2xl mx-auto mb-6">
+                I'd love to hear about your ideas and collaborate on something amazing. Reach out and let's build great things together.
+              </p>
+              <Link
+                to="/#contactme"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
+              >
+                <span>Get In Touch</span>
+                <IoArrowBack className="size-4 rotate-180" />
+              </Link>
+            </div>
+          </div>
         </article>
 
         {otherBlogs.length != 0 && (
