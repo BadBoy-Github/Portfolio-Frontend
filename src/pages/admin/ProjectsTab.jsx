@@ -38,6 +38,13 @@ const ProjectsTab = ({ addToast }) => {
   const [galleryDragOverIndex, setGalleryDragOverIndex] = useState(null);
   const galleryDragItem = useRef(null);
 
+  const generateId = () => {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  };
+
   const fetchItems = async () => {
     setLoading(true);
     try {
@@ -174,6 +181,7 @@ const ProjectsTab = ({ addToast }) => {
     e.preventDefault();
     setError("");
     const payload = {
+      id: editingItem ? editingItem.id : generateId(),
       ...form,
       type: form.featured ? "featured" : "",
       gallery: form.gallery.filter((url) => url.trim() !== ""),
