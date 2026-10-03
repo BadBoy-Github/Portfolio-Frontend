@@ -517,6 +517,15 @@ select.text-field {
     @apply opacity-100;
 }
 
+/* Touch devices never fire hover, so the row actions would be unreachable.
+   Reveal them permanently wherever hover is not available. */
+@media (hover: none) {
+    .admin-card-grab,
+    .admin-card-actions {
+        @apply opacity-100;
+    }
+}
+
 /* Hover host for the affordances above. */
 .admin-card {
     @apply relative cursor-grab active:cursor-grabbing
