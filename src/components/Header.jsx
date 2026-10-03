@@ -1,20 +1,22 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import { Button } from "./Button";
 
 const Header = () => {
-    const [navOpen, setNavOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
-    return (
-      <>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-sky-500 text-white px-4 py-2 rounded z-50 focus:z-50"
-        >
-          Skip to main content
-        </a>
-        <header className="fixed top-0 left-0 w-full h-20 flex items-center z-40 bg-gradient-to-b from-zinc-900 to-zinc-900/0">
-        <div className="max-w-screen-2xl w-full mx-auto px-4 flex justify-between items-center md:px-6 md:grid md:grid-cols-[1fr,3fr,1fr]">
+  return (
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-marker text-white px-4 py-2 rounded-wobbly-sm border-2 border-ink z-50"
+      >
+        Skip to main content
+      </a>
+
+      <header className="fixed top-0 left-0 w-full z-40 bg-paper border-b-2 border-dashed border-ink/20">
+        <div className="max-w-screen-2xl w-full mx-auto px-6 h-20 flex justify-between items-center md:px-8 md:grid md:grid-cols-[1fr,3fr,1fr]">
           <h1>
             <Link to="/" className="logo">
               <img
@@ -29,8 +31,11 @@ const Header = () => {
 
           <div className="relative md:justify-self-center">
             <button
+              type="button"
               className="menu-btn md:hidden"
               onClick={() => setNavOpen((prev) => !prev)}
+              aria-expanded={navOpen}
+              aria-label={navOpen ? "Close menu" : "Open menu"}
             >
               <span className="material-symbols-rounded">
                 {navOpen ? "close" : "menu"}
@@ -40,12 +45,13 @@ const Header = () => {
             <Navbar navOpen={navOpen} />
           </div>
 
-          <Link
-            to="/contact"
-            className="max-w-max h-10 flex justify-center items-center gap-2 px-4 rounded-xl font-medium text-xs md:text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color] bg-zinc-50 text-zinc-900 active:bg-zinc-50/80 max-lg:hidden lg:justify-self-end"
+          <Button
+            href="/contact"
+            size="sm"
+            classes="max-lg:hidden lg:justify-self-end"
           >
             Contact Me
-          </Link>
+          </Button>
         </div>
       </header>
     </>

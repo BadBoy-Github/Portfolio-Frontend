@@ -1,26 +1,21 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+
+const WOBBLY_SM = "110px 9px 95px 11px / 11px 95px 9px 110px";
 
 const Skeleton = ({
-  className = '',
-  width = '100%',
-  height = '1rem',
-  borderRadius = '0.375rem',
-  animation = true
+  className = "",
+  width = "100%",
+  height = "1rem",
+  borderRadius = WOBBLY_SM,
+  animation = true,
 }) => {
-  const baseClasses = 'bg-zinc-700 relative overflow-hidden';
-  const animationClasses = animation ? 'animate-pulse' : '';
-
   return (
     <div
-      className={`${baseClasses} ${animationClasses} ${className}`}
-      style={{
-        width,
-        height,
-        borderRadius,
-      }}
+      className={`relative overflow-hidden bg-paper-muted ${animation ? "animate-pulse" : ""} ${className}`}
+      style={{ width, height, borderRadius }}
     >
       {animation && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-600 to-transparent animate-shimmer" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-paper-deep to-transparent animate-shimmer" />
       )}
     </div>
   );

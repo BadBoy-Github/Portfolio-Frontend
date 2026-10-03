@@ -1,7 +1,5 @@
-// React
-import { useState, useEffect, useRef } from "react";
-
-// Icons
+import { useState, useEffect, useRef, useCallback } from "react";
+import PropTypes from "prop-types";
 import { RiRobot2Fill } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { LuMessagesSquare } from "react-icons/lu";
@@ -10,29 +8,25 @@ import { IoSend } from "react-icons/io5";
 import { PiExclamationMarkBold } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import Card from "./ui/Card";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-// Read More Component
 const ReadMoreText = ({ text, maxLines = 5 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [needsExpansion, setNeedsExpansion] = useState(false);
   const textRef = useRef(null);
 
   useEffect(() => {
-    // Check if text needs expansion by counting lines
-    const lineHeight = 20; // Approximate line height in pixels
+    const lineHeight = 20;
     const maxHeight = maxLines * lineHeight;
-
     if (textRef.current) {
       const actualHeight = textRef.current.scrollHeight;
       setNeedsExpansion(actualHeight > maxHeight);
     }
   }, [text, maxLines]);
 
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
+  const toggleExpanded = () => setIsExpanded(!isExpanded);
 
   return (
     <div>
@@ -53,8 +47,9 @@ const ReadMoreText = ({ text, maxLines = 5 }) => {
       </div>
       {needsExpansion && (
         <button
+          type="button"
           onClick={toggleExpanded}
-          className="text-sky-400 hover:text-sky-300 text-sm mt-1 font-medium transition-colors duration-200"
+          className="text-marker hover:text-accent-red text-sm mt-1 font-medium transition-colors duration-200"
         >
           {isExpanded ? "Read Less" : "Read More"}
         </button>
@@ -63,32 +58,40 @@ const ReadMoreText = ({ text, maxLines = 5 }) => {
   );
 };
 
+ReadMoreText.propTypes = {
+  text: PropTypes.string.isRequired,
+  maxLines: PropTypes.number,
+};
+
 const Chat = () => {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
       text: "Hi, I am Portfolio-GPT, a friendly Chatbot that lets you interact with Elayabarathi M V's portfolio and CV. How can I help you?",
-      source: "local", // Added source for initial message
+      source: "local",
     },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-
   const chatContainerRef = useRef(null);
   const [isChatHovered, setIsChatHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages, loading]);
 
-  // Handle mouse wheel scroll on chat container
-  const handleWheel = (e) => {
-    if (!isChatHovered) return;
+  const scrollChat = (direction) => {
+    if (chatContainerRef.current) {
+      const amount = 200;
+      chatContainerRef.current.scrollTop += direction === 'up' ? -amount : amount;
+    }
+  };
 
+  const handleWheel = useCallback((e) => {
+    if (!isChatHovered) return;
     if (chatContainerRef.current) {
       const container = chatContainerRef.current;
       const isAtTop = container.scrollTop <= 0;
@@ -98,38 +101,27 @@ const Chat = () => {
       const scrollingUp = e.deltaY < 0;
       const scrollingDown = e.deltaY > 0;
 
-      // If at top and scrolling up, or at bottom and scrolling down, let page scroll
       if ((isAtTop && scrollingUp) || (isAtBottom && scrollingDown)) {
-        // Allow page to scroll - do nothing
         return;
       }
 
-      // Otherwise, scroll only the chat and prevent page scroll
       e.preventDefault();
       e.stopPropagation();
       container.scrollTop += e.deltaY;
     }
-  };
+  }, [isChatHovered]);
 
   useEffect(() => {
     const container = chatContainerRef.current;
     if (!container) return;
-
-    // Add wheel listener with capture to intercept early
-    container.addEventListener("wheel", handleWheel, {
-      passive: false,
-      capture: true,
-    });
-
+    container.addEventListener("wheel", handleWheel, { passive: false, capture: true });
     return () => {
       container.removeEventListener("wheel", handleWheel, { capture: true });
     };
-  }, [isChatHovered]);
+  }, [handleWheel]);
 
-  // Send message to API
   const handleSend = async () => {
     if (!input.trim()) return;
-
     const newUserMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, newUserMessage]);
     setInput("");
@@ -156,8 +148,7 @@ const Chat = () => {
       };
 
       setMessages((prev) => [...prev, botMessage]);
-    } catch (err) {
-      console.error("Chat error:", err);
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
@@ -179,24 +170,23 @@ const Chat = () => {
     }
   };
 
-  // Function to render source indicator
   const renderSourceIndicator = (source) => {
     switch (source) {
       case "ai":
         return (
-          <div className="text-xs text-sky-400/70 mt-1 flex items-center gap-1">
+          <div className="text-xs text-marker/70 mt-1 flex items-center gap-1">
             🤖 AI Powered
           </div>
         );
       case "local":
         return (
-          <div className="text-xs text-amber-400/70 mt-1 flex items-center gap-1">
+          <div className="text-xs text-accent-amber/70 mt-1 flex items-center gap-1">
             ⚡ Local Response
           </div>
         );
       case "error":
         return (
-          <div className="text-xs text-red-400/70 mt-1 flex items-center gap-1">
+          <div className="text-xs text-accent-red/70 mt-1 flex items-center gap-1">
             ⚠️ API Error
           </div>
         );
@@ -205,105 +195,103 @@ const Chat = () => {
     }
   };
 
-  // Response system
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <section id="chatbot" className="section relative">
-        <h2 className="headline-2">Talk With My Portfolio</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-          Explore my portfolio, skills, and resume in a conversational way
-        </p>
+      <h2 className="headline-2">Talk With My Portfolio</h2>
+      <p className="text-ink-soft mt-3 mb-8 max-w-[50ch]">
+        Explore my portfolio, skills, and resume in a conversational way
+      </p>
 
-        <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
+      <Card tone="paper" className="p-6 md:p-10 shadow-hard">
+        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
           {/* Left side */}
           <div className="relative">
-            <h1 className="text-xl font-semibold text-sky-400">
+            <h1 className="text-xl font-semibold text-marker">
               About the Chatbot
             </h1>
-            <p className="mt-3 text-zinc-300 leading-relaxed">
+            <p className="mt-3 text-ink-soft leading-relaxed">
               This chatbot is designed to make exploring my portfolio more
               interactive. You can ask questions about my{" "}
-              <span className="text-sky-400">skills</span>,
-              <span className="text-sky-400"> projects</span>, or even my
-              <span className="text-sky-400"> resume</span>, and it will guide
+              <span className="text-marker">skills</span>,{" "}
+              <span className="text-marker">projects</span>, or even my{" "}
+              <span className="text-marker">resume</span>, and it will guide
               you to the right information.
             </p>
-            <p className="mt-3 text-zinc-300 leading-relaxed">
-              Access my <span className="text-sky-400">resume</span> or{" "}
-              <span className="text-sky-400">contact me</span> for professional
+            <p className="mt-3 text-ink-soft leading-relaxed">
+              Access my <span className="text-marker">resume</span> or{" "}
+              <span className="text-marker">contact me</span> for professional
               inquiries and collaborations.
             </p>
 
             <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1 transition-all duration-300">
-              {/* Toggle Button */}
               <button
+                type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-8 transition-all duration-300"
               >
                 {isOpen ? (
-                  <IoClose className="bg-red-600 hover:bg-red-800 active:bg-red-500 size-6 p-1 rounded-full transition-all duration-300" />
+                  <IoClose className="bg-accent-red hover:bg-accent-red/80 active:bg-accent-red/90 size-6 p-1 rounded-full transition-all duration-300 text-paper" />
                 ) : (
-                  <PiExclamationMarkBold className="bg-sky-600 hover:bg-sky-800 active:bg-sky-500 size-6 p-1 rounded-full transition-all duration-300" />
+                  <PiExclamationMarkBold className="bg-marker hover:bg-marker/80 active:bg-marker/90 size-6 p-1 rounded-full transition-all duration-300 text-ink" />
                 )}
               </button>
 
-              {/* Admin Link */}
               <Link
                 to="/admin-login"
-                className="w-6 h-6 p-1 rounded-full transition-all duration-300 opacity-0 hover:opacity-60 flex items-center justify-center bg-zinc-200"
+                className="w-6 h-6 p-1 rounded-full transition-all duration-300 opacity-0 hover:opacity-60 flex items-center justify-center bg-paper/80 text-ink"
               >
-                <FaUser className="size-3 text-zinc-700" />
+                <FaUser className="size-3" />
               </Link>
 
-              {/* Info Panel */}
               <div
-                className={` text-zinc-300 leading-relaxed text-[10px] px-3 py-2 bg-zinc-800/70 rounded-xl ring-1 ring-zinc-300/10 ring-inset transition-all duration-500 ${
+                className={`text-ink-soft leading-relaxed text-[10px] px-3 py-2 bg-paper/80 rounded-wobbly-sm ring-1 ring-ink/10 ring-inset transition-all duration-500 ${
                   isOpen
                     ? "opacity-100 scale-100 translate-x-0 block"
                     : "opacity-0 scale-95 translate-x-4 hidden"
                 }`}
               >
-                <span className="text-sky-400 font-semibold block mb-1">
+                <span className="text-marker font-semibold block mb-1">
                   Response System
                 </span>
-                <span className="text-sky-400">🤖 AI Powered</span> - Advanced
+                <span className="text-marker">🤖 AI Powered</span> - Advanced
                 responses from AI model
                 <br />
-                <span className="text-amber-400">⚡ Local Response</span> - Fast
+                <span className="text-accent-amber">⚡ Local Response</span> - Fast
                 fallback responses
                 <br />
-                <span className="text-red-400">⚠️ API Error</span> - Using
+                <span className="text-accent-red">⚠️ API Error</span> - Using
                 backup system
               </div>
             </div>
 
-            <div className=" flex items-end justify-start gap-4 mt-4">
+            <div className="flex items-end justify-start gap-4 mt-4">
               <a
                 href="/resume.pdf"
                 target="_blank"
                 className="btn btn-primary"
               >
-                <button className="text-xs md:text-sm">Download Resume</button>
+                <button type="button" className="text-xs md:text-sm">Download Resume</button>
                 <MdOutlineFileDownload className="hidden md:block size-[20px]" />
               </a>
               <Link to="/contact" className="btn btn-outline">
-                <button className="text-xs md:text-sm">Contact Me</button>
+                <button type="button" className="text-xs md:text-sm">Contact Me</button>
                 <LuMessagesSquare className="hidden md:block size-[20px]" />
               </Link>
             </div>
           </div>
 
           {/* Chat window */}
-          <div
-            className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-800/40 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset"
+          <Card
+            tone="paper"
+            decoration="tape"
+            className="w-full h-[450px] flex flex-col justify-between gap-2 shadow-hard hover:shadow-hard transition-all duration-500"
             onMouseEnter={() => setIsChatHovered(true)}
             onMouseLeave={() => setIsChatHovered(false)}
           >
-            <div className="h-full rounded-2xl p-4 w-full  text-sm md:text-base">
+            <div className="h-full rounded-wobbly-sm p-4 w-full text-sm md:text-base relative">
               <div
                 ref={chatContainerRef}
-                className="h-[350px] overflow-y-scroll scrollbar-thin flex flex-col px-2 w-full"
+                className="h-[350px] overflow-hidden flex flex-col px-2 w-full"
               >
                 {messages.map((msg, i) =>
                   msg.sender === "bot" ? (
@@ -311,10 +299,10 @@ const Chat = () => {
                       className="flex items-start gap-3 mr-0 md:mr-24 my-2"
                       key={i}
                     >
-                      <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full mt-1 flex-shrink-0">
+                      <div className="flex items-center justify-center bg-marker p-2 rounded-full mt-1 flex-shrink-0 text-ink">
                         <RiRobot2Fill className="size-5" />
                       </div>
-                      <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200 break-words flex-1 min-w-0">
+                      <div className="bg-paper/80 ring-1 ring-ink/10 px-3 py-2 rounded-wobbly-sm text-ink break-words flex-1 min-w-0">
                         <ReadMoreText text={msg.text} maxLines={5} />
                         {renderSourceIndicator(msg.source)}
                       </div>
@@ -327,7 +315,7 @@ const Chat = () => {
                       <div className="flex items-center justify-center bg-emerald-700 p-2 rounded-full mt-1 flex-shrink-0">
                         <FaUser className="size-5" />
                       </div>
-                      <div className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-3 py-2 rounded-lg text-zinc-200 break-words min-w-0 w-fit">
+                      <div className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-3 py-2 rounded-wobbly-sm text-ink break-words min-w-0 w-fit">
                         {msg.text}
                       </div>
                     </div>
@@ -336,23 +324,23 @@ const Chat = () => {
 
                 {loading && (
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full">
+                    <div className="flex items-center justify-center bg-marker p-2 rounded-full text-ink">
                       <RiRobot2Fill className="size-5" />
                     </div>
-                    <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200">
+                    <div className="bg-paper/80 ring-1 ring-ink/10 px-3 py-2 rounded-wobbly-sm text-ink">
                       <div className="flex items-center gap-2">
-                        <div className="">
-                          <span className="text-white/80 font-light text-sm inline-block mb-2">
+                        <div>
+                          <span className="text-ink/80 font-light text-sm inline-block mb-2">
                             Thinking
                           </span>
                           <div className="flex space-x-1 mb-2 ml-1">
-                            <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
+                            <div className="w-1 h-1 bg-ink rounded-full animate-bounce"></div>
                             <div
-                              className="w-1 h-1 bg-white rounded-full animate-bounce"
+                              className="w-1 h-1 bg-ink rounded-full animate-bounce"
                               style={{ animationDelay: "0.1s" }}
                             ></div>
                             <div
-                              className="w-1 h-1 bg-white rounded-full animate-bounce"
+                              className="w-1 h-1 bg-ink rounded-full animate-bounce"
                               style={{ animationDelay: "0.2s" }}
                             ></div>
                           </div>
@@ -362,30 +350,55 @@ const Chat = () => {
                   </div>
                 )}
               </div>
+
+              {/* Scroll Buttons */}
+              <div className="absolute right-2 top-2 flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => scrollChat('up')}
+                  className="bg-paper/80 hover:bg-paper text-ink p-2 rounded-wobbly-sm shadow-hard transition-colors"
+                  aria-label="Scroll up"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-4">
+                    <path fillRule="evenodd" d="M10 14l-5-5h10l-5 5z" clipRule="evenodd" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollChat('down')}
+                  className="bg-paper/80 hover:bg-paper text-ink p-2 rounded-wobbly-sm shadow-hard transition-colors"
+                  aria-label="Scroll down"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-4">
+                    <path fillRule="evenodd" d="M10 6l5 5H5l5-5z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* Input box */}
-            <form className="px-4 pt-1 pb-4 gap-3 rounded-2xl flex">
+            <form className="px-4 pt-1 pb-4 gap-3 rounded-wobbly-sm flex" onSubmit={(e) => { e.preventDefault(); handleSend(); }}>
               <input
                 type="text"
                 required
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="bg-zinc-800 text-sky-100 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 rounded-lg px-3 py-2 transition-all duration-500 placeholder:text-sm text-sm flex-1"
+                className="bg-paper/80 text-ink outline-none outline-ink/20 hover:outline-marker active:outline-marker rounded-wobbly-sm px-3 py-2 transition-all duration-300 placeholder:text-ink-soft/60 text-sm flex-1"
                 placeholder="Hey there, what skills are you best at?"
               />
               <button
                 type="submit"
                 onClick={handleSend}
                 disabled={loading}
-                className="bg-zinc-800 text-zinc-200 hover:text-zinc-800 hover:bg-sky-600 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed "
+                className="bg-paper/80 text-ink hover:text-paper hover:bg-marker outline-none outline-ink/20 hover:outline-marker active:outline-marker px-2 py-1 rounded-wobbly-sm text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <IoSend className="size-4" />
               </button>
             </form>
-          </div>
+          </Card>
         </div>
+      </Card>
     </section>
   );
 };

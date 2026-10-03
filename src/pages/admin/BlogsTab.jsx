@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from "./AdminDashboard";
+import AdminShell from "./AdminShell";
 import BlogCard from "../../components/BlogCard";
 
 const BlogsTab = ({ addToast }) => {
@@ -381,18 +382,20 @@ const BlogsTab = ({ addToast }) => {
               addItem(field, input);
               setInput("");
             }}
-            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+            className="btn btn-icon btn-add"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
+            <span className="sr-only">Add {label}</span>
           </button>
           <button
             type="button"
             onClick={() => setForm({ ...form, [field]: [] })}
-            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+            className="btn btn-icon btn-clear"
           >
             <span className="material-symbols-rounded text-[16px]">
               refresh
             </span>
+            <span className="sr-only">Clear all {label}</span>
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -404,18 +407,19 @@ const BlogsTab = ({ addToast }) => {
               onDragOver={(e) => handleTagDragOver(e, field, index)}
               onDrop={() => handleTagDrop(field, index)}
               onDragEnd={handleTagDragEnd}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+              className={`tag-chip ${dragOverIndex === index ? "tag-chip-over" : ""}`}
             >
-              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+              <span className="material-symbols-rounded text-[16px] text-ink-faint cursor-grab active:cursor-grabbing">
                 drag_indicator
               </span>
               {item}
               <button
                 type="button"
                 onClick={() => removeItem(field, index)}
-                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+                className="material-symbols-rounded text-[16px] text-ink-faint hover:text-marker transition-colors"
               >
                 close
+                <span className="sr-only">Remove {item}</span>
               </button>
             </span>
           ))}
@@ -425,17 +429,12 @@ const BlogsTab = ({ addToast }) => {
   };
 
   return (
-    <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50 pt-8 pb-4">
-        <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
-            Blogs <span className="text-sky-400">({items.length})</span>
-          </h2>
-          <p className="text-zinc-400 text-sm mt-1">
-            Manage blog posts and articles
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+    <AdminShell
+      title="Blogs"
+      count={items.length}
+      subtitle="Manage blog posts and articles"
+      actions={
+        <>
           <button onClick={saveOrder} className="btn btn-outline">
             <span className="material-symbols-rounded text-[16px]">save</span>
             Save Order
@@ -443,16 +442,14 @@ const BlogsTab = ({ addToast }) => {
           <button onClick={openAdd} className="btn btn-primary">
             <IoAdd className="text-[18px]" /> Add Blog
           </button>
-        </div>
-      </div>
+        </>
+      }
+    >
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-40 animate-pulse"
-            />
+            <div key={i} className="admin-skeleton h-40" />
           ))}
         </div>
       ) : (
@@ -465,32 +462,32 @@ const BlogsTab = ({ addToast }) => {
               onDragOver={(e) => handleDragOver(e, index)}
               onDrop={() => handleDrop(index)}
               onDragEnd={handleDragEnd}
-              className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+              className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="admin-card-grab">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
               </div>
-              <div className="flex items-center justify-end mb-2">
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button
-                    onClick={() => openEdit(item)}
-                    className="btn btn-outline text-xs py-1 px-2"
-                  >
-                    <span className="material-symbols-rounded text-[16px]">
-                      edit
-                    </span>
-                  </button>
-                  <button
-                    onClick={() => setDeleteTarget(item)}
-                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                  >
+              <div className="admin-card-actions">
+                <button
+                  onClick={() => openEdit(item)}
+                  className="btn btn-outline btn-icon"
+                >
+                  <span className="material-symbols-rounded text-[16px]">
+                    edit
+                  </span>
+                  <span className="sr-only">Edit {item.title}</span>
+                </button>
+                <button
+                  onClick={() => setDeleteTarget(item)}
+                  className="btn btn-outline btn-icon btn-danger"
+                >
                     <span className="material-symbols-rounded text-[16px]">
                       delete
                     </span>
+                    <span className="sr-only">Delete {item.title}</span>
                   </button>
-                </div>
               </div>
               <BlogCard
                 blog={{
@@ -607,9 +604,9 @@ const BlogsTab = ({ addToast }) => {
                   onDragOver={(e) => handleBlockDragOver(e, index)}
                   onDrop={() => handleBlockDrop(index)}
                   onDragEnd={handleBlockDragEnd}
-                  className={`flex items-center gap-2 p-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 cursor-grab active:cursor-grabbing ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+                  className={`flex items-start gap-2 p-2 bg-paper-deep/50 border-2 border-dashed border-ink rounded-wobbly-sm cursor-grab active:cursor-grabbing ${dragOverIndex === index ? "admin-drop" : ""}`}
                 >
-                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing shrink-0">
+                  <span className="material-symbols-rounded text-ink-faint cursor-grab active:cursor-grabbing shrink-0 mt-2">
                     drag_indicator
                   </span>
                   {block.type === "img" ? (
@@ -621,8 +618,10 @@ const BlogsTab = ({ addToast }) => {
                     />
                   ) : (
                     <textarea
-                      className="text-field flex-1"
-                      rows={block.type === "h2" ? 1 : 2}
+                      className={`text-field flex-1 resize-y ${
+                        block.type === "h2" ? "" : "min-h-28"
+                      }`}
+                      rows={block.type === "h2" ? 1 : 4}
                       value={block.value}
                       onChange={(e) => updateBlock(index, e.target.value)}
                       placeholder={
@@ -630,22 +629,23 @@ const BlogsTab = ({ addToast }) => {
                       }
                     />
                   )}
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 border border-zinc-700 rounded px-1.5 py-0.5">
+                  <span className="badge shrink-0 mt-2">
                     {block.type}
                   </span>
                   <button
                     type="button"
                     onClick={() => removeBlock(index)}
-                    className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+                    className="btn btn-icon btn-clear"
                   >
                     <span className="material-symbols-rounded text-[16px]">
                       close
                     </span>
+                    <span className="sr-only">Remove {block.type} block</span>
                   </button>
                 </div>
               ))}
               {form.content.length === 0 && (
-                <p className="text-xs text-zinc-500">
+                <p className="font-hand text-base text-ink-faint">
                   No content blocks yet. Add a heading, paragraph, or image
                   above.
                 </p>
@@ -674,7 +674,7 @@ const BlogsTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
+import AdminShell from './AdminShell';
 import EducationCard from '../../components/EducationCard';
 
 const EducationTab = ({ addToast }) => {
@@ -248,18 +249,20 @@ const EducationTab = ({ addToast }) => {
               addItem(field, input);
               setInput("");
             }}
-            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+            className="btn btn-icon btn-add"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
+            <span className="sr-only">Add {label}</span>
           </button>
           <button
             type="button"
             onClick={() => setForm({ ...form, [field]: [] })}
-            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+            className="btn btn-icon btn-clear"
           >
             <span className="material-symbols-rounded text-[16px]">
               refresh
             </span>
+            <span className="sr-only">Clear all {label}</span>
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -271,18 +274,19 @@ const EducationTab = ({ addToast }) => {
               onDragOver={(e) => tagHandleDragOver(e, field, index)}
               onDrop={() => tagHandleDrop(field, index)}
               onDragEnd={tagHandleDragEnd}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+              className={`tag-chip ${dragOverIndex === index ? "tag-chip-over" : ""}`}
             >
-              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+              <span className="material-symbols-rounded text-[16px] text-ink-faint cursor-grab active:cursor-grabbing">
                 drag_indicator
               </span>
               {item}
               <button
                 type="button"
                 onClick={() => removeItem(field, index)}
-                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+                className="material-symbols-rounded text-[16px] text-ink-faint hover:text-marker transition-colors"
               >
                 close
+                <span className="sr-only">Remove {item}</span>
               </button>
             </span>
           ))}
@@ -292,23 +296,25 @@ const EducationTab = ({ addToast }) => {
   };
 
   return (
-     <div className="px-4 md:px-8 pb-4 md:pb-8">
-       <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl pt-8 pb-4 border-b border-zinc-700">
-         <div>
-           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Education <span className="text-sky-400">({items.length})</span></h2>
-           <p className="text-zinc-400 text-sm mt-1">Manage educational qualifications</p>
-         </div>
-         <div className="flex items-center gap-2">
-           <button onClick={saveOrder} className="btn btn-outline">
-             <span className="material-symbols-rounded text-[16px]">save</span>
-             Save Order
-           </button>
-           <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Education</button>
-         </div>
-      </div>
+     <AdminShell
+      title="Education"
+      count={items.length}
+      subtitle="Manage educational qualifications"
+      actions={
+        <>
+          <button onClick={saveOrder} className="btn btn-outline">
+            <span className="material-symbols-rounded text-[16px]">save</span>
+            Save Order
+          </button>
+          <button onClick={openAdd} className="btn btn-primary">
+            <IoAdd className="text-[18px]" /> Add Education
+          </button>
+        </>
+      }
+    >
 
       {loading ? (
-        <p className="text-zinc-400">Loading...</p>
+        <p className="admin-empty">Loading...</p>
       ) : (
           <ul className="space-y-0 pr-6">
             {items.map((item, index) => (
@@ -319,20 +325,23 @@ const EducationTab = ({ addToast }) => {
                 onDragOver={(e) => handleDragOver(e, index)}
                 onDrop={() => handleDrop(index)}
                 onDragEnd={handleDragEnd}
-                className={`relative group/item cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+                className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
               >
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xs text-zinc-500">{item.year}</p>
-                <div className="flex gap-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <p className="font-hand text-base text-ink-soft">{item.year}</p>
+                <div className="admin-card-actions !mb-0">
+                  <button onClick={() => openEdit(item)} className="btn btn-outline btn-icon">
                     <span className="material-symbols-rounded text-[16px]">edit</span>
+                    <span className="sr-only">Edit {item.name}</span>
                   </button>
-                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
+                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline btn-icon btn-danger">
                     <span className="material-symbols-rounded text-[16px]">delete</span>
+                    <span className="sr-only">Delete {item.name}</span>
                   </button>
                 </div>
               </div>
               <EducationCard
+                as="div"
                 year={item.year}
                 name={item.name}
                 perc={item.perc || ''}
@@ -344,7 +353,7 @@ const EducationTab = ({ addToast }) => {
               />
             </li>
           ))}
-          {items.length === 0 && <p className="text-zinc-400">No items found.</p>}
+          {items.length === 0 && <p className="admin-empty">No items found.</p>}
         </ul>
       )}
 
@@ -397,7 +406,7 @@ const EducationTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 

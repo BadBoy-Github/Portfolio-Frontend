@@ -1,6 +1,9 @@
+// Node modules
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-import PropTypes from "prop-types"
-
+// Components
+import Badge from "./ui/Badge";
 
 const CertificationsCard = ({
   imgSrc,
@@ -8,37 +11,50 @@ const CertificationsCard = ({
   company,
   logo,
   certNumber,
+  certId,
 }) => {
-
   return (
-    <div className="bg-zinc-800 hover:bg-zinc-500/10 p-5 rounded-xl shadow-xl flex flex-col  group">
-      <div className="flex items-center justify-between gap-2 mt-auto">
-        <div>
-          <p className="flex items-center gap-2">
-            {title}
-            <span className="text-xs text-zinc-400">#{certNumber}</span>
-          </p>
-          <p className="text-xs text-zinc-400 tracking-wider">{company}</p>
-        </div>
-        <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-zinc-700 group-hover:scale-125 group-hover:rotate-[45deg] transition-all duration-700">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-6 h-6 object-cover p-0.5 transition-all duration-700 group-hover:rotate-[-45deg]"
-          />
-        </div>
-      </div>
-      <figure className="rounded-lg bg-zinc-700 relative cursor-pointer m-2 overflow-hidden">
+    <article className="card card-paper group relative flex flex-col transition-transform duration-100 hover:-rotate-1 hover:shadow-hard h-full">
+      <figure className="relative border-b-2 border-ink">
         <img
           src={imgSrc}
-          width={44}
-          height={44}
-          alt={title}
+          alt=""
           loading="lazy"
-          className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg group-hover:scale-[101%] transition-transform duration-300"
+          className="w-full h-56 object-cover"
         />
+
+        {certNumber && (
+          <Badge tone="postit" className="absolute left-3 top-3 z-10">
+            #{certNumber}
+          </Badge>
+        )}
       </figure>
-    </div>
+
+      <div className="p-5 flex items-start justify-between gap-3 flex-grow">
+        <div>
+          <h3 className="title-1">
+            {certId ? (
+              <Link
+                to={`/certificate/${certId}`}
+                className="after:absolute after:inset-0 after:content-['']"
+              >
+                {title}
+              </Link>
+            ) : (
+              title
+            )}
+          </h3>
+
+          <p className="text-ink-soft text-lg">{company}</p>
+        </div>
+
+        {logo && (
+          <span className="w-11 h-11 grid place-items-center rounded-wobbly-sm bg-paper-deep border-2 border-ink overflow-hidden shrink-0 group-hover:rotate-12 transition-transform duration-100">
+            <img src={logo} alt="" className="w-6 h-6 object-contain" />
+          </span>
+        )}
+      </div>
+    </article>
   );
 };
 
@@ -48,6 +64,7 @@ CertificationsCard.propTypes = {
   company: PropTypes.string,
   logo: PropTypes.string,
   certNumber: PropTypes.number,
+  certId: PropTypes.string,
 };
 
 export default CertificationsCard;

@@ -1,58 +1,52 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
-  IoHome,
-  IoTerminal,
-  IoCodeSlash,
-  IoRibbon,
-  IoTrophy,
-  IoMail,
-  IoPerson,
-  IoChatbubble,
-  IoBriefcase,
-  IoSchool,
-  IoStar,
-} from "react-icons/io5";
-import { MdReviews } from "react-icons/md";
+  Award,
+  Briefcase,
+  Code2,
+  GraduationCap,
+  Home,
+  Mail,
+  MessageCircle,
+  MessageSquareQuote,
+  Star,
+  Terminal,
+  Trophy,
+  User,
+} from "lucide-react";
+
+const SECTION_ICONS = {
+  home: Home,
+  "qa-terminal": Terminal,
+  skills: Code2,
+  projects: Star,
+  certificates: Award,
+  achievements: Trophy,
+  reviews: MessageSquareQuote,
+  contactme: Mail,
+  welcome: User,
+  "about-terminal": Terminal,
+  chatbot: MessageCircle,
+  experience: Briefcase,
+  education: GraduationCap,
+};
+
+const getIcon = (id) => SECTION_ICONS[id] ?? Home;
 
 const RightSideNav = ({ sections }) => {
   const [activeSection, setActiveSection] = useState("");
   const [visibleIcons, setVisibleIcons] = useState(new Set());
 
-  // Wave animation effect - icons appear one by one
+  // Icons appear one by one
   useEffect(() => {
-    const timers = [];
-    sections.forEach((section, index) => {
-      const timer = setTimeout(() => {
-        setVisibleIcons(prev => new Set([...prev, section.id]));
-      }, 200 + index * 100); // 300ms initial delay, 150ms between each icon
-      timers.push(timer);
-    });
+    const timers = sections.map((section, index) =>
+      setTimeout(() => {
+        setVisibleIcons((prev) => new Set([...prev, section.id]));
+      }, 200 + index * 100),
+    );
 
-    return () => {
-      timers.forEach(clearTimeout);
-    };
+    return () => timers.forEach(clearTimeout);
   }, [sections]);
-
-  // Icon mapping for sections
-  const getIcon = (id) => {
-    const iconMap = {
-      home: IoHome,
-      "qa-terminal": IoTerminal,
-      skills: IoCodeSlash,
-      projects: IoStar,
-      certificates: IoRibbon,
-      achievements: IoTrophy,
-      reviews: MdReviews,
-      contactme: IoMail,
-      welcome: IoPerson,
-      "about-terminal": IoTerminal,
-      chatbot: IoChatbubble,
-      experience: IoBriefcase,
-      education: IoSchool,
-    };
-    return iconMap[id] || IoHome; // Default to IoHome if not found
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +56,10 @@ const RightSideNav = ({ sections }) => {
         const element = document.getElementById(section.id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section.id);
           }
         }
@@ -70,7 +67,7 @@ const RightSideNav = ({ sections }) => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
@@ -83,26 +80,38 @@ const RightSideNav = ({ sections }) => {
   };
 
   return (
-    <nav className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40 hidden md:flex flex-col gap-3">
+    <nav
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1"
+      aria-label="Page sections"
+    >
       {sections.map((section) => {
-        const IconComponent = getIcon(section.id);
-        const isIconVisible = visibleIcons.has(section.id);
+        const Icon = getIcon(section.id);
+        const isVisible = visibleIcons.has(section.id);
+        const isActive = activeSection === section.id;
+
         return (
           <button
             key={section.id}
+            type="button"
             onClick={() => scrollToSection(section.id)}
-            className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-500 ease-out ${
-              isIconVisible
-                ? 'opacity-100 scale-100 translate-x-0'
-                : 'opacity-0 scale-75 translate-x-8'
-            } ${
-              activeSection === section.id
-                ? "bg-sky-400 text-zinc-900 scale-110 shadow-lg"
-                : "bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700/80 hover:text-zinc-300"
-            }`}
+            aria-label={`Go to ${section.label}`}
+            aria-current={isActive ? "location" : undefined}
             title={section.label}
+            className={`w-11 h-11 grid place-items-center transition-[opacity,transform] duration-300 ease-out ${
+              isVisible
+                ? "opacity-100 scale-100 translate-x-0"
+                : "opacity-0 scale-75 translate-x-8"
+            }`}
           >
-            <IconComponent className="w-2.5 h-2.5" />
+            <span
+              className={`w-8 h-8 grid place-items-center border-2 border-ink rounded-wobbly-sm transition-transform duration-100 ${
+                isActive
+                  ? "bg-marker text-white shadow-hard-sm scale-110 -rotate-6"
+                  : "bg-paper-card text-ink-soft hover:bg-postit hover:text-ink hover:rotate-6"
+              }`}
+            >
+              <Icon size={16} strokeWidth={2.5} aria-hidden="true" />
+            </span>
           </button>
         );
       })}
@@ -115,7 +124,7 @@ RightSideNav.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };
 

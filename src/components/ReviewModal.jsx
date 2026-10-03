@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
+import PropTypes from "prop-types";
+import Card from "./ui/Card";
+
+const GOLD = "#b45309";
 
 const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
@@ -34,11 +38,11 @@ const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-lg shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/20 backdrop-blur-sm p-4">
+      <Card tone="paper" decoration="tape" className="p-6 w-full max-w-lg shadow-hard">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold text-white">Leave a Review</h3>
-          <button type="button" onClick={onClose} className="text-zinc-400 hover:text-white transition-colors">
+          <h3 className="text-xl font-semibold text-ink">Leave a Review</h3>
+          <button type="button" onClick={onClose} className="text-ink-soft hover:text-marker transition-colors">
             <span className="material-symbols-rounded">close</span>
           </button>
         </div>
@@ -64,10 +68,10 @@ const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button key={star} type="button" onClick={() => setForm({ ...form, rating: star })} className="transition-all duration-200">
-                  <Star size={28} className={`cursor-pointer ${star <= form.rating ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-600'}`} />
+                  <Star size={28} className={`cursor-pointer ${star <= form.rating ? '' : 'text-ink-soft'}`} style={{ color: star <= form.rating ? GOLD : undefined, fill: star <= form.rating ? GOLD : undefined }} />
                 </button>
               ))}
-              <span className="text-sm text-zinc-400 ml-2">{form.rating}/5</span>
+              <span className="text-sm text-ink-soft ml-2">{form.rating}/5</span>
             </div>
           </div>
           <div>
@@ -78,9 +82,15 @@ const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
             {loading ? 'Sending...' : 'Send Review'}
           </button>
         </form>
-      </div>
+      </Card>
     </div>
   );
+};
+
+ReviewModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func,
 };
 
 export default ReviewModal;

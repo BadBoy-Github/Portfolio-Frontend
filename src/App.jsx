@@ -9,6 +9,7 @@
  */
 import { ReactLenis } from "lenis/react";
 import { lazy, Suspense } from "react";
+import PropTypes from "prop-types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -49,8 +50,27 @@ const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 // Loading component for Suspense fallback
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-zinc-900"></div>
+  <div className="min-h-screen bg-paper grid place-items-center">
+    <div className="loader">
+      <span></span>
+    </div>
+  </div>
 );
+
+const PAGE_TRANSITION = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+  transition: { duration: 0.4, ease: "easeInOut" },
+};
+
+const PageTransition = ({ children }) => (
+  <motion.div {...PAGE_TRANSITION}>{children}</motion.div>
+);
+
+PageTransition.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const ProtectedRoute = ({ children }) => {
   const session = getSession();
@@ -61,9 +81,13 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const AppInner = () => {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdminRoute = location.pathname.startsWith("/admin");
   const showScrollToTopButton = location.pathname !== "/" && location.pathname !== "/about";
 
   const content = (
@@ -75,140 +99,128 @@ const AppInner = () => {
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               {/* Admin Routes */}
-              <Route path="/admin-login" element={<AdminLogin />} />
-              <Route path="/admin-dashboard" element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              } />
+              <Route
+                path="/admin-login"
+                element={
+                  <PageTransition>
+                    <AdminLogin />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/admin-dashboard"
+                element={
+                  <ProtectedRoute>
+                    <PageTransition>
+                      <AdminDashboard />
+                    </PageTransition>
+                  </ProtectedRoute>
+                }
+              />
 
               {/* Homepage */}
-              <Route path="/" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <LandingPage />
-                </motion.div>
-              } />
+              <Route
+                path="/"
+                element={
+                  <PageTransition>
+                    <LandingPage />
+                  </PageTransition>
+                }
+              />
 
               {/* Individual Pages */}
-              <Route path="/about" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <AboutPage />
-                </motion.div>
-              } />
-              <Route path="/project/:id" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <ProjectDetail />
-                </motion.div>
-              } />
-              <Route path="/certificate/:id" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <CertificateDetail />
-                </motion.div>
-              } />
-              <Route path="/achievement/:id" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <AchievementDetail />
-                </motion.div>
-              } />
-              <Route path="/blog/:id" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <BlogDetail />
-                </motion.div>
-              } />
-              <Route path="/contact" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <ContactPage />
-                </motion.div>
-              } />
+              <Route
+                path="/about"
+                element={
+                  <PageTransition>
+                    <AboutPage />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/project/:id"
+                element={
+                  <PageTransition>
+                    <ProjectDetail />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/certificate/:id"
+                element={
+                  <PageTransition>
+                    <CertificateDetail />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/achievement/:id"
+                element={
+                  <PageTransition>
+                    <AchievementDetail />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/blog/:id"
+                element={
+                  <PageTransition>
+                    <BlogDetail />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <PageTransition>
+                    <ContactPage />
+                  </PageTransition>
+                }
+              />
 
               {/* Library Pages */}
-              <Route path="/projects" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <ProjectsLibrary />
-                </motion.div>
-              } />
-              <Route path="/certificates" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <CertificatesLibrary />
-                </motion.div>
-              } />
-              <Route path="/achievements" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <AchievementsLibrary />
-                </motion.div>
-              } />
-              <Route path="/blogs" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <BlogsLibrary />
-                </motion.div>
-              } />
+              <Route
+                path="/projects"
+                element={
+                  <PageTransition>
+                    <ProjectsLibrary />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/certificates"
+                element={
+                  <PageTransition>
+                    <CertificatesLibrary />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/achievements"
+                element={
+                  <PageTransition>
+                    <AchievementsLibrary />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/blogs"
+                element={
+                  <PageTransition>
+                    <BlogsLibrary />
+                  </PageTransition>
+                }
+              />
 
               {/* 404 - Page Not Found */}
-              <Route path="*" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  <PageNotFound />
-                </motion.div>
-              } />
+              <Route
+                path="*"
+                element={
+                  <PageTransition>
+                    <PageNotFound />
+                  </PageTransition>
+                }
+              />
             </Routes>
           </AnimatePresence>
         </Suspense>

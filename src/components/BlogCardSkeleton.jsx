@@ -1,22 +1,25 @@
-import Skeleton from './Skeleton';
+import Skeleton from "./Skeleton";
 
 const BlogCardSkeleton = () => {
   return (
-    <article className="bg-zinc-800 rounded-xl overflow-hidden flex flex-col">
-      <div className="m-4 rounded-lg overflow-hidden">
-        <Skeleton className="w-full h-full aspect-video rounded-lg" />
-      </div>
-      <div className="p-4 flex flex-col flex-grow">
-        <div className="flex flex-wrap gap-2 mb-2">
-          <Skeleton className="h-5 w-16 rounded-full" />
-          <Skeleton className="h-5 w-20 rounded-full" />
+    <article className="card card-flush flex flex-col">
+      <figure className="border-b-2 border-ink">
+        <Skeleton width="100%" className="aspect-video w-full" />
+      </figure>
+
+      <div className="p-5 flex flex-col gap-3">
+        <div className="flex flex-wrap gap-2">
+          <Skeleton width="4rem" height="1.75rem" />
+          <Skeleton width="5rem" height="1.75rem" />
         </div>
-        <Skeleton className="h-6 w-full mb-2" />
-        <Skeleton className="h-4 w-full mb-1" />
-        <Skeleton className="h-4 w-3/4 mb-3" />
-        <div className="mt-auto flex items-center justify-between text-xs">
-          <Skeleton className="h-4 w-16" />
-          <Skeleton className="h-4 w-12" />
+
+        <Skeleton width="100%" height="1.5rem" />
+        <Skeleton width="100%" height="1.25rem" />
+        <Skeleton width="75%" height="1.25rem" />
+
+        <div className="mt-auto pt-2 flex items-center justify-between">
+          <Skeleton width="4rem" height="1rem" />
+          <Skeleton width="3rem" height="1rem" />
         </div>
       </div>
     </article>

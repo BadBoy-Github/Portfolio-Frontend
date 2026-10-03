@@ -1,130 +1,86 @@
 // Node modules
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
-// Icons
-import { FaGithub } from "react-icons/fa";
-import { IoArrowForwardOutline } from "react-icons/io5";
+// Components
+import Badge from "./ui/Badge";
+import ExpandLink from "./ui/ExpandLink";
 
 const ProjectFeaturedCard = ({
   imgSrc,
   title,
-  techUsed,
   projectLink,
-  classes,
-  code,
-  live,
   gitUrl,
   projectId,
   displayTags,
 }) => {
-  const navigate = useNavigate();
-
-  const handleCardClick = (e) => {
-    const target = e.target;
-
-    const isGithubLink = target.closest("a")?.href?.includes("github");
-    const isLiveLink = target.closest(".live-link");
-
-    if (isGithubLink || isLiveLink) {
-      return;
-    }
-
-    // ✅ Navigate only if valid click
-    if (projectId) {
-      e.preventDefault();
-      navigate(`/project/${projectId}`);
-    }
-  };
-
   return (
-    <div
-      className={
-        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] " +
-        classes
-      }
-      onClick={handleCardClick}
-    >
-      {/* Image */}
-      <figure className="aspect-[16/7] rounded-xl mb-4 relative">
-        {gitUrl && (
-          <a
-            href={gitUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${title} source code on GitHub`}
-            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 bg-zinc-700 p-1 flex transition-all duration-300 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
-          >
-            <div className="flex items-center justify-end">
-              <FaGithub className="size-6 absolute p-1 rounded-full right-1 transition-transform duration-[380ms] group-hover/githov:translate-x-[-70px] z-30 bg-zinc-800" />
-              <div className="absolute right-2 text-sm text-zinc-200 opacity-0 translate-x-2 group-hover/githov:opacity-100 group-hover/githov:translate-x-0 transition-all delay-200 flex items-center">
-                <p>GitHub</p>
-                <IoArrowForwardOutline className="size-4 ml-1 text-zinc-300 group-hover/githov:-rotate-45 opacity-75 transition-all duration-500 delay-150" />
-              </div>
-            </div>
-          </a>
-        )}
-
+    <article className="card card-flush group relative flex flex-col transition-transform duration-100 hover:-rotate-1 hover:shadow-hard">
+      <figure className="relative border-b-2 border-ink">
         <img
           src={imgSrc}
-          alt={title}
+          alt=""
           loading="lazy"
-          className={`rounded-xl w-full h-full object-cover cursor-pointer transition-all duration-300 ${
-            projectLink ? "grayscale-[0.4] group-hover:grayscale-0" : "group-hover:grayscale"
-          }`}
+          className="w-full aspect-[16/7] object-cover"
         />
+
+        {gitUrl && (
+          <ExpandLink
+            href={gitUrl}
+            label="GitHub"
+            ariaLabel={`View ${title} source code on GitHub`}
+            className="absolute right-3 top-3"
+          />
+        )}
       </figure>
 
-      {/* Content */}
-      <div className="flex items-center justify-between gap-4">
-        <div>
-          <h3 className="title-1 mb-3">{title}</h3>
-
-          <div className="flex flex-wrap items-center gap-2">
-            {(displayTags || []).map((label, key) => (
-              <span
-                key={key}
-                className="h-8 text-sm text-zinc-400 bg-zinc-50/5 px-3 rounded-lg flex items-center"
+      <div className="p-5 md:p-6 flex flex-col gap-4 flex-grow">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="title-1">
+            {projectId ? (
+              <Link
+                to={`/project/${projectId}`}
+                className="after:absolute after:inset-0 after:content-['']"
               >
-                {label}
-              </span>
-            ))}
-          </div>
+                {title}
+              </Link>
+            ) : (
+              title
+            )}
+          </h3>
+
+          {projectLink && (
+            <ExpandLink
+              href={projectLink}
+              icon={ArrowUpRight}
+              ariaLabel={`View ${title} live demo`}
+              className="shrink-0"
+            />
+          )}
         </div>
 
-        {/* ✅ Live Button (NOT overlay) */}
-        {projectLink ? (
-          <a
-            href={projectLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${title} live demo`}
-            className="live-link w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 hover:scale-110 transition-transform"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="material-symbols-rounded" aria-hidden="true">
-              arrow_outward
-            </span>
-          </a>
-        ) : (
-          <div className=""></div>
+        {(displayTags || []).length > 0 && (
+          <div className="relative z-10 flex flex-wrap gap-2 mt-auto">
+            {displayTags.map((label) => (
+              <Badge key={label} tone="postit">
+                {label}
+              </Badge>
+            ))}
+          </div>
         )}
       </div>
-    </div>
+    </article>
   );
 };
 
 ProjectFeaturedCard.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  techUsed: PropTypes.array.isRequired,
   projectLink: PropTypes.string,
-  classes: PropTypes.string,
-  code: PropTypes.string,
-  live: PropTypes.string,
   gitUrl: PropTypes.string,
   projectId: PropTypes.string,
-  displayTags: PropTypes.array,
+  displayTags: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default ProjectFeaturedCard;

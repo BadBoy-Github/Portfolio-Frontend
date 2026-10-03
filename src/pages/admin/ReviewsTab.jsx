@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
+import AdminShell from './AdminShell';
 import ReviewCard from '../../components/ReviewCard';
 import { Star } from "lucide-react";
 
@@ -178,24 +179,26 @@ const ReviewsTab = ({ addToast }) => {
   };
 
   return (
-     <div className="px-4 md:px-8 pb-4 md:pb-8">
-       <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl pt-8 pb-4 border-b border-zinc-700">
-         <div>
-           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Reviews <span className="text-sky-400">({items.length})</span></h2>
-           <p className="text-zinc-400 text-sm mt-1">Manage testimonials and reviews</p>
-         </div>
-         <div className="flex items-center gap-2">
-           <button onClick={saveOrder} className="btn btn-outline">
-             <span className="material-symbols-rounded text-[16px]">save</span>
-             Save Order
-           </button>
-           <button onClick={openAdd} className="btn btn-primary"><IoAdd className="text-[18px]" /> Add Review</button>
-         </div>
-      </div>
+     <AdminShell
+      title="Reviews"
+      count={items.length}
+      subtitle="Manage testimonials and reviews"
+      actions={
+        <>
+          <button onClick={saveOrder} className="btn btn-outline">
+            <span className="material-symbols-rounded text-[16px]">save</span>
+            Save Order
+          </button>
+          <button onClick={openAdd} className="btn btn-primary">
+            <IoAdd className="text-[18px]" /> Add Review
+          </button>
+        </>
+      }
+    >
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2">
-          {[1, 2, 3].map(i => <div key={i} className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-32 animate-pulse" />)}
+          {[1, 2, 3].map(i => <div key={i} className="admin-skeleton h-32" />)}
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
@@ -207,22 +210,22 @@ const ReviewsTab = ({ addToast }) => {
               onDragOver={(e) => handleDragOver(e, index)}
               onDrop={() => handleDrop(index)}
               onDragEnd={handleDragEnd}
-              className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+              className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="admin-card-grab">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
               </div>
-              <div className="flex items-center justify-end mb-2">
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">edit</span>
-                  </button>
-                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
-                    <span className="material-symbols-rounded text-[16px]">delete</span>
-                  </button>
-                </div>
+              <div className="admin-card-actions">
+                <button onClick={() => openEdit(item)} className="btn btn-outline btn-icon">
+                  <span className="material-symbols-rounded text-[16px]">edit</span>
+                  <span className="sr-only">Edit review by {item.name}</span>
+                </button>
+                <button onClick={() => setDeleteTarget(item)} className="btn btn-outline btn-icon btn-danger">
+                  <span className="material-symbols-rounded text-[16px]">delete</span>
+                  <span className="sr-only">Delete review by {item.name}</span>
+                </button>
               </div>
               <ReviewCard
                 content={item.content || ''}
@@ -233,7 +236,7 @@ const ReviewsTab = ({ addToast }) => {
               />
             </div>
           ))}
-          {items.length === 0 && <p className="text-zinc-400 col-span-full">No items found.</p>}
+          {items.length === 0 && <p className="admin-empty">No items found.</p>}
         </div>
       )}
 
@@ -259,15 +262,15 @@ const ReviewsTab = ({ addToast }) => {
                 >
                   <Star
                     size={28}
-                    className={`cursor-pointer ${
+                    className={`cursor-pointer transition-transform duration-100 hover:scale-110 ${
                       star <= form.rating
-                        ? 'text-yellow-400 fill-yellow-400'
-                        : 'text-zinc-600'
+                        ? 'text-gold fill-gold'
+                        : 'text-ink-faint'
                     }`}
                   />
                 </button>
               ))}
-              <span className="text-sm text-zinc-400 ml-2">{form.rating}/5</span>
+              <span className="font-hand text-lg text-ink-soft ml-2">{form.rating}/5</span>
             </div>
           </div>
           <div className="input-box">
@@ -292,7 +295,7 @@ const ReviewsTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 

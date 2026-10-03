@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Plus } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 import ProjectFeaturedCard from "./ProjectFeaturedCard";
+import SectionHeading from "./ui/SectionHeading";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const HomepageProjects = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -18,8 +19,8 @@ const HomepageProjects = () => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         setProjects(data.data);
-      } catch (err) {
-        setError(err.message);
+      } catch {
+        // projects fetch failed
       } finally {
         setLoading(false);
       }
@@ -29,12 +30,9 @@ const HomepageProjects = () => {
 
   if (loading) {
     return (
-      <section id="project" className="pt-20">
+      <section id="projects" className="pt-20">
         <div className="container">
-          <h2 className="headline-2">My project highlights</h2>
-          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-            Explore the innovative projects I&apos;ve built
-          </p>
+          <SectionHeading title="My project highlights" lead="Explore the innovative projects I've built" />
           <div className="flex items-center justify-center py-10">
             <div className="loader mb-4"><span></span></div>
           </div>
@@ -43,41 +41,15 @@ const HomepageProjects = () => {
     );
   }
 
-  if (error) {
-    return (
-      <section id="project" className="pt-20">
-        <div className="container">
-          <h2 className="headline-2">My project highlights</h2>
-          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-            Explore the innovative projects I&apos;ve built
-          </p>
-          <p className="text-red-400">Failed to load projects.</p>
-        </div>
-      </section>
-    );
-  }
-
-  let featuredProject = [];
-  let normalProject = [];
-
-  projects.map((e) => {
-    if (e.type === "featured") {
-      featuredProject.push(e);
-    } else {
-      normalProject.push(e);
-    }
-  });
-
-  const displayProjects = normalProject.slice(0, 5);
-  const remainingCount = projects.length - 5;
+  const featuredProject = projects.filter((e) => e.type === "featured");
+  const normalProject = projects.filter((e) => e.type !== "featured");
+  const recentProjects = normalProject.slice(0, 2);
+  const remainingCount = projects.length - 2;
 
   return (
-    <section id="project" className="pt-20">
+    <section id="projects" className="pt-20">
       <div className="container">
-        <h2 className="headline-2">My project highlights</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-          Explore the innovative projects I&apos;ve built
-        </p>
+        <SectionHeading title="My project highlights" lead="Explore the innovative projects I've built" />
 
         <div className="w-full mb-8 grid grid-cols-1 lg:grid-cols-2 gap-4">
           {featuredProject.map((project, index) => (
@@ -95,52 +67,40 @@ const HomepageProjects = () => {
           ))}
         </div>
 
-        <div className="bg-zinc-500 w-full h-0.5 mb-8 rounded-lg flex lg:hidden"></div>
+        {recentProjects.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {recentProjects.map((project, index) => (
+              <div key={project.id || index} className="flex">
+                <ProjectCard
+                  imgSrc={project.imgSrc}
+                  title={project.title}
+                  tags={project.tags}
+                  projectLink={project.projectLink}
+                  code={project.code}
+                  live={project.live}
+                  gitUrl={project.gitUrl}
+                  projectId={project.id}
+                  displayTags={project.displayTags}
+                />
+              </div>
+            ))}
 
-        <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
-          {displayProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id || index}
-              imgSrc={project.imgSrc}
-              title={project.title}
-              tags={project.tags}
-              projectLink={project.projectLink}
-              code={project.code}
-              live={project.live}
-              gitUrl={project.gitUrl}
-              projectId={project.id}
-              displayTags={project.displayTags}
-            />
-          ))}
-
-          {remainingCount > 0 && (
             <Link
               to="/projects"
-              className="relative p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] cursor-pointer flex flex-col items-center justify-center min-h-[280px]"
+              className="group flex flex-col items-center justify-center gap-4 bg-paper-card border-2 border-dashed border-ink rounded-wobbly-md p-6 text-center transition-transform duration-100 hover:rotate-1 hover:border-solid hover:shadow-hard"
             >
-              <div className="aspect-square rounded-lg mb-4 bg-zinc-700/30 flex items-center justify-center w-full">
-                <span className="material-symbols-rounded text-6xl text-sky-400">
-                  add_circle
-                </span>
-              </div>
+              <span className="w-16 h-16 grid place-items-center rounded-wobbly-sm bg-marker text-paper border-2 border-ink shadow-hard-sm group-hover:rotate-12 transition-transform duration-100">
+                <Plus size={28} strokeWidth={3} aria-hidden="true" />
+              </span>
 
-              <div className="flex items-center justify-between gap-4 w-full">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    Show More Projects
-                  </h3>
-                  <div className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg w-fit">
-                    View {remainingCount} more projects
-                  </div>
-                </div>
+              <span className="font-display text-xl text-ink">More Projects</span>
 
-                <div className="w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0">
-                  <span className="material-symbols-rounded">expand_more</span>
-                </div>
-              </div>
+              <span className="text-ink-soft text-lg">
+                View {remainingCount} more projects
+              </span>
             </Link>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );

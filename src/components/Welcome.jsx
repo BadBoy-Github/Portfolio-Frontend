@@ -52,8 +52,8 @@ const Welcome = () => {
             const techData = await techRes.json();
             techCount = techData.data?.length || 0;
           }
-        } catch (err) {
-          console.warn("Could not fetch tech stacks for Welcome stats:", err);
+        } catch {
+          // tech stacks fetch is optional
         }
 
         setStats({
@@ -61,8 +61,7 @@ const Welcome = () => {
           liveProjects: liveProjectsCount,
           technologies: techCount,
         });
-      } catch (err) {
-        console.error("Failed to fetch GitHub data:", err);
+      } catch {
         setError("*Could not load GitHub stats");
       } finally {
         setLoading(false);
@@ -89,8 +88,8 @@ const Welcome = () => {
 
   return (
     <section id="welcome" className="section">
-      <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
-        <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
+      <div className="card card-paper p-7 md:p-12 shadow-hard">
+        <p className="text-ink-soft mb-4 md:mb-8 md:text-xl">
           Welcome! I&apos;m Elayabarathi M V, a passionate frontend and software
           developer dedicated to building responsive, scalable, and user-focused
           digital solutions. I specialize in transforming ideas into clean,
@@ -102,15 +101,15 @@ const Welcome = () => {
           experiences.
         </p>
 
-        {error && <div className="mb-4 text-sky-700 text-sm">{error}</div>}
+        {error && <div className="mb-4 text-marker text-sm">{error}</div>}
 
         <div className="flex flex-wrap items-center gap-5 md:gap-8">
           {aboutItems.map(({ label, number }, key) => (
             <div key={key}>
               <div className="flex items-center md:mb-2">
-                <span className="text-2xl font-semibold md:text-4xl">
+                <span className="text-2xl font-semibold md:text-4xl text-ink">
                   {loading ? (
-                    <span className="inline-block w-12 h-8 bg-zinc-700/50 rounded animate-pulse"></span>
+                    <span className="inline-block w-12 h-8 bg-paper/60 rounded-wobbly-sm animate-pulse"></span>
                   ) : (
                     <CountUp
                       from={0}
@@ -122,12 +121,12 @@ const Welcome = () => {
                     />
                   )}
                 </span>
-                <span className="text-sky-400 font-semibold md:text-3xl">
+                <span className="text-marker font-semibold md:text-3xl">
                   +
                 </span>
               </div>
 
-              <p className="text-sm text-zinc-400">{label}</p>
+              <p className="text-sm text-ink-soft">{label}</p>
             </div>
           ))}
 

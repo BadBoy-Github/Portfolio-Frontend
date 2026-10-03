@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { IoArrowBack, IoChevronBack, IoChevronForward, IoShareSocial, IoCopy } from "react-icons/io5";
 import { Helmet } from "react-helmet-async";
 import SocialShare from "../components/SocialShare";
+import Card from "../components/ui/Card";
+import SectionHeading from "../components/ui/SectionHeading";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -38,7 +40,7 @@ const BlogDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-paper pt-24 pb-16 flex items-center justify-center">
         <div className="loader mb-4"><span></span></div>
       </div>
     );
@@ -46,10 +48,10 @@ const BlogDetail = () => {
 
   if (error || !blog) {
     return (
-      <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
+      <div className="min-h-screen bg-paper flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-4">Blog Not Found</h1>
-          <Link to="/blogs" className="text-sky-400 hover:underline">
+          <h1 className="text-3xl font-bold text-ink mb-4">Blog Not Found</h1>
+          <Link to="/blogs" className="text-marker hover:underline">
             Go back to all blogs
           </Link>
         </div>
@@ -64,7 +66,8 @@ const BlogDetail = () => {
     if (navigator.share) {
       try {
         await navigator.share({ title, url });
-      } catch (err) {
+      } catch {
+        // share cancelled or unavailable
       }
     } else {
       handleCopy();
@@ -82,7 +85,7 @@ const BlogDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
+    <div className="min-h-screen bg-paper pt-24 pb-16">
       <Helmet>
         <title>{blog.title} | Elayabarathi M V Blog</title>
         <meta name="description" content={blog.subtitle || ""} />
@@ -126,35 +129,37 @@ const BlogDetail = () => {
       <div className="container mx-auto px-4">
         <Link
           to="/blogs"
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-sky-400 transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-ink-soft hover:text-marker transition-colors mb-8"
         >
           <IoArrowBack className="size-5" />
           <span>Back to All Blogs</span>
         </Link>
 
-        <article className="mx-auto ">
-          <header className="mb-8 ">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 ">
+        <article className="mx-auto max-w-3xl">
+          <header className="mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink mb-4">
               {blog.title}
             </h1>
-            <p className="text-xl text-zinc-400 mb-4">{blog.subtitle}</p>
+            <p className="text-xl text-ink-soft mb-4">{blog.subtitle}</p>
 
             {blog.link && (
-                <div className="flex items-center gap-2 my-4 w-fit">
+                <div className="flex items-center gap-2 my-4 flex-wrap">
                   <button
+                    type="button"
                     onClick={handleShare}
-                    className="flex items-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-3 bg-paper hover:bg-paper/80 text-ink shadow-hard rounded-xl transition-colors"
                     title="Share this blog"
                   >
                     <IoShareSocial className="w-4 h-4" />
                   </button>
 
                   <button
+                    type="button"
                     onClick={handleCopy}
-                    className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors ${
+                    className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-colors ${
                       copySuccess
-                        ? 'bg-sky-400 text-zinc-900'
-                        : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                        ? 'bg-marker text-ink'
+                        : 'bg-paper hover:bg-paper/80 text-ink shadow-hard'
                     }`}
                     title="Copy link"
                   >
@@ -164,7 +169,7 @@ const BlogDetail = () => {
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-marker text-ink rounded-xl hover:brightness-110 transition-colors"
                   >
                     <span>View Project</span>
                     <IoArrowBack className="size-4 rotate-180" />
@@ -172,27 +177,29 @@ const BlogDetail = () => {
                 </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 text-zinc-500">
+            <div className="flex flex-wrap items-center gap-4 text-ink-soft/70">
               <span>{blog.date}</span>
-              <span>•</span>
+              <span aria-hidden="true">•</span>
               <span>{blog.readTime}</span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 mt-4">
               <button
+                type="button"
                 onClick={handleShare}
-                className="flex items-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-3 bg-paper hover:bg-paper/80 text-ink shadow-hard rounded-xl transition-colors"
                 title="Share this blog"
               >
                 <IoShareSocial className="w-4 h-4" />
               </button>
 
               <button
+                type="button"
                 onClick={handleCopy}
-                className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-colors ${
                   copySuccess
-                    ? 'bg-sky-400 text-zinc-900'
-                    : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                    ? 'bg-marker text-ink'
+                    : 'bg-paper hover:bg-paper/80 text-ink shadow-hard'
                 }`}
                 title="Copy link"
               >
@@ -204,7 +211,7 @@ const BlogDetail = () => {
               {(blog.tags || []).map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
+                  className="badge badge-postit"
                 >
                   {tag}
                 </span>
@@ -212,104 +219,110 @@ const BlogDetail = () => {
             </div>
           </header>
 
-          <img
-            src={blog.imageSrc}
-            alt={blog.title}
-            loading="lazy"
-            className="w-full rounded-xl mb-8"
-          />
+          <Card tone="paper" className="mb-8 overflow-hidden">
+            <img
+              src={blog.imageSrc}
+              alt={blog.title}
+              loading="lazy"
+              className="w-full rounded-xl"
+            />
+          </Card>
 
-          <div className="my-8 bg-zinc-700 h-1 w-full"></div>
+          <div className="my-8 bg-ink/10 h-1 w-full rounded-full"></div>
 
           <div
-            className="prose prose-invert prose-lg max-w-none blog-content imgimgimg"
+            className="prose prose-lg max-w-none blog-content"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
+
+          <Card tone="postit" className="p-6 md:p-8 text-center my-10">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-marker text-2xl font-hand">✉</span>
+              <span className="text-marker text-2xl font-hand">💬</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-ink mb-2">
+              Have a project in mind?
+            </h2>
+            <p className="text-ink-soft max-w-2xl mx-auto mb-6">
+              I&apos;d love to hear about your ideas and collaborate on something amazing. Reach out and let&apos;s build great things together.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-marker text-ink rounded-xl hover:brightness-110 transition-colors"
+            >
+              <span>Get In Touch</span>
+              <IoArrowBack className="size-4 rotate-180" />
+            </Link>
+          </Card>
 
           <SocialShare
             title={blog.title}
             url={`https://elayabarathimv.vercel.app/blog/${blog.id}`}
           />
-
-          <div className="mt-16 relative">
-            <div className="bg-zinc-800/50 border border-zinc-700/50 rounded-2xl p-6 md:p-8 text-center">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="material-symbols-rounded text-sky-400 text-3xl">mail</span>
-                <span className="material-symbols-rounded text-sky-400 text-3xl">chat</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                Have a project in mind?
-              </h2>
-              <p className="text-zinc-400 max-w-2xl mx-auto mb-6">
-                I'd love to hear about your ideas and collaborate on something amazing. Reach out and let's build great things together.
-              </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
-              >
-                <span>Get In Touch</span>
-                <IoArrowBack className="size-4 rotate-180" />
-              </Link>
-            </div>
-          </div>
         </article>
 
         {otherBlogs.length != 0 && (
-          <div className="mt-16 relative">
-            <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
-            <button
-              onClick={() =>
-                document
-                  .getElementById("other-blogs-scroll")
-                  .scrollBy({ left: -672, behavior: "smooth" })
-              }
-              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
-              aria-label="Scroll left"
-            >
-              <IoChevronBack className="size-6" />
-            </button>
-            <button
-              onClick={() =>
-                document
-                  .getElementById("other-blogs-scroll")
-                  .scrollBy({ left: 672, behavior: "smooth" })
-              }
-              className="absolute -right-6 top-1/2 -translate-y-1/2 transition-all duration-300 z-10 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
-              aria-label="Scroll right"
-            >
-              <IoChevronForward className="size-6" />
-            </button>
-            <div
-              id="other-blogs-scroll"
-              className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
-            >
-              {otherBlogs.map((otherBlog) => (
-                <Link
-                  key={otherBlog.id}
-                  to={`/blog/${otherBlog.id}`}
-                  className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
-                >
-                  <img
-                    src={otherBlog.imageSrc}
-                    alt={otherBlog.title}
-                    loading="lazy"
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors line-clamp-2">
-                      {otherBlog.title}
-                    </h3>
-                    <p className="text-sm text-zinc-400 mt-2">
-                      {otherBlog.readTime}
-                    </p>
-                  </div>
-                </Link>
-              ))}
+            <div className="mt-16 relative">
+              <SectionHeading
+                title="Other Blogs"
+                tag="More Reads"
+              />
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("other-blogs-scroll")
+                    .scrollBy({ left: -672, behavior: "smooth" })
+                }
+                className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-paper hover:bg-paper/80 text-ink p-3 rounded-full shadow-hard transition-all duration-300 hidden md:flex items-center justify-center"
+                aria-label="Scroll left"
+              >
+                <IoChevronBack className="size-6" />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("other-blogs-scroll")
+                    .scrollBy({ left: 672, behavior: "smooth" })
+                }
+                className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-paper hover:bg-paper/80 text-ink p-3 rounded-full shadow-hard transition-all duration-300 hidden md:flex items-center justify-center"
+                aria-label="Scroll right"
+              >
+                <IoChevronForward className="size-6" />
+              </button>
+              <div
+                id="other-blogs-scroll"
+                className="flex gap-4 overflow-x-hidden pb-4 hide-scrollbar scroll-smooth"
+              >
+                {otherBlogs.map((otherBlog) => (
+                  <Link
+                    key={otherBlog.id}
+                    to={`/blog/${otherBlog.id}`}
+                    className="w-[280px] md:w-[320px] flex-shrink-0 card card-paper group"
+                  >
+                    <img
+                      src={otherBlog.imageSrc}
+                      alt={otherBlog.title}
+                      loading="lazy"
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold text-ink group-hover:text-marker transition-colors line-clamp-2">
+                        {otherBlog.title}
+                      </h3>
+                      <p className="text-sm text-ink-soft mt-2">
+                        {otherBlog.readTime}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
   );
 };
 

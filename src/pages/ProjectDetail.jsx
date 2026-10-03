@@ -9,6 +9,8 @@ import {
   IoChevronBack,
   IoChevronForward,
 } from "react-icons/io5";
+import SectionHeading from "../components/ui/SectionHeading";
+import Card from "../components/ui/Card";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -43,7 +45,7 @@ const ProjectDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-paper pt-24 pb-16 flex items-center justify-center">
         <div className="loader mb-4"><span></span></div>
       </div>
     );
@@ -51,12 +53,12 @@ const ProjectDetail = () => {
 
   if (error || !project) {
     return (
-      <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
+      <div className="min-h-screen bg-paper flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-4">
+          <h1 className="text-3xl font-bold text-ink mb-4">
             Project Not Found
           </h1>
-          <Link to="/projects" className="text-sky-400 hover:underline">
+          <Link to="/projects" className="text-marker hover:underline">
             Go back to all projects
           </Link>
         </div>
@@ -92,11 +94,11 @@ const ProjectDetail = () => {
           href={`https://elayabarathimv.vercel.app/project/${project.id}`}
         />
       </Helmet>
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
+      <div className="min-h-screen bg-paper pt-24 pb-16">
         <div className="container mx-auto px-4">
           <Link
             to="/projects"
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-sky-400 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-ink-soft hover:text-marker transition-colors mb-8"
           >
             <IoArrowBack className="size-5" />
             <span>Back to All Projects</span>
@@ -104,20 +106,20 @@ const ProjectDetail = () => {
 
           <div className="grid lg:grid-cols-3 gap-8 mb-16">
             <div className="lg:col-span-2">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-ink mb-4">
                 {project.title}
               </h1>
-              <p className="text-xl text-zinc-400 mb-6">{project.subheading}</p>
+              <p className="text-xl text-ink-soft mb-6">{project.subheading}</p>
 
               <div className="mb-8">
-                <h2 className="text-lg font-semibold text-white mb-3">
+                <h2 className="text-lg font-semibold text-ink mb-3">
                   Technologies Used
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {(project.techUsed || []).map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
+                      className="badge badge-postit"
                     >
                       {tech}
                     </span>
@@ -126,16 +128,16 @@ const ProjectDetail = () => {
               </div>
 
               <div className="mb-8">
-                <h2 className="text-lg font-semibold text-white mb-3">
+                <h2 className="text-lg font-semibold text-ink mb-3">
                   Description
                 </h2>
-                <p className="text-zinc-300 leading-relaxed indent-16 text-justify first-letter:text-xl">
+                <p className="text-ink-soft leading-relaxed indent-16 text-justify first-letter:text-xl">
                   {project.description}
                 </p>
               </div>
 
               <div className="mb-8">
-                <h2 className="text-lg font-semibold text-white mb-3">
+                <h2 className="text-lg font-semibold text-ink mb-3">
                   Applications & Use Cases
                 </h2>
                 <ul className="space-y-2">
@@ -145,9 +147,9 @@ const ProjectDetail = () => {
                     .map((item, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-2 text-zinc-300 group/lear"
+                        className="flex items-start gap-2 text-ink-soft group/lear"
                       >
-                        <span className="text-sky-400 mt-1">
+                        <span className="text-marker mt-1">
                           <VscDebugBreakpointFunctionUnverified className="size-5 group-hover/lear:rotate-[360deg] transition-all duration-300" />
                         </span>
                         <span className="leading-relaxed text-justify">
@@ -159,7 +161,7 @@ const ProjectDetail = () => {
               </div>
 
               <div className="mb-8">
-                <h2 className="text-lg font-semibold text-white mb-3">
+                <h2 className="text-lg font-semibold text-ink mb-3">
                   Unique Features
                 </h2>
                 <ul className="space-y-2">
@@ -169,9 +171,9 @@ const ProjectDetail = () => {
                     .map((item, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-2 text-zinc-300 group/uniq"
+                        className="flex items-start gap-2 text-ink-soft group/uniq"
                       >
-                        <span className="text-sky-400 mt-1">
+                        <span className="text-marker mt-1">
                           <VscDebugBreakpointFunctionUnverified className="size-5 transition-all duration-300 group-hover/uniq:rotate-[360deg] " />
                         </span>
                         <span className="leading-relaxed text-justify transition-all duration-300 ">
@@ -185,12 +187,18 @@ const ProjectDetail = () => {
 
             <div className="lg:col-span-1">
               <div className="sticky top-24 ">
-                <img
-                  src={project.imgSrc}
-                  alt={project.title}
-                  loading="lazy"
-                  className="w-full rounded-xl mb-6 border border-white/20"
-                />
+                <Card
+                  tone="paper"
+                  decoration="tape"
+                  className="mb-6"
+                >
+                  <img
+                    src={project.imgSrc}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full rounded-xl"
+                  />
+                </Card>
 
                 <div className="flex flex-wrap gap-4">
                   {project.gitUrl && (
@@ -198,7 +206,7 @@ const ProjectDetail = () => {
                       href={project.gitUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-white transition-colors"
+                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-3 bg-paper hover:bg-paper/80 rounded-xl text-ink shadow-hard transition-colors"
                     >
                       <FaGithub className="size-5" />
                       <span>GitHub</span>
@@ -209,7 +217,7 @@ const ProjectDetail = () => {
                       href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-3 bg-sky-600 hover:bg-sky-500 rounded-xl text-white transition-colors"
+                      className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-3 bg-marker text-ink rounded-xl hover:brightness-110 transition-colors"
                     >
                       <span>Live Link</span>
                       <IoArrowForwardOutline className="size-4" />
@@ -222,58 +230,70 @@ const ProjectDetail = () => {
 
           {(project.gallery || []).length > 0 && (
             <div className="mb-16">
-              <h2 className="text-2xl font-bold text-white mb-6">
-                Project Gallery
-              </h2>
+              <SectionHeading
+                title="Project Gallery"
+                tag="Gallery"
+              />
+
               <div className="grid md:grid-cols-2 gap-4">
                 {project.gallery.map((image, index) => (
-                  <img
+                  <Card
                     key={index}
-                    src={image}
-                    alt={`${project.title} screenshot ${index + 1}`}
-                    loading="lazy"
-                    className="w-full rounded-xl hover:scale-[101%] hover:shadow-xl transition-transform border border-white/20"
-                  />
+                    tone="paper"
+                    tilt={index % 2 === 0 ? "1" : "-1"}
+                    className="overflow-hidden"
+                  >
+                    <img
+                      src={image}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      loading="lazy"
+                      className="w-full rounded-xl hover:scale-[101%] hover:shadow-hard transition-transform"
+                    />
+                  </Card>
                 ))}
               </div>
             </div>
           )}
 
           <div className="relative">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Other Projects
-            </h2>
+            <SectionHeading
+              title="Other Projects"
+              tag="More Work"
+            />
+
             <button
+              type="button"
               onClick={() =>
                 document
                   .getElementById("other-projects-scroll")
                   .scrollBy({ left: -672, behavior: "smooth" })
               }
-              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-zinc-800/90 transition-all duration-300 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg  hidden md:flex items-center justify-center"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-paper hover:bg-paper/80 text-ink p-3 rounded-full shadow-hard transition-all duration-300 hidden md:flex items-center justify-center"
               aria-label="Scroll left"
             >
               <IoChevronBack className="size-6" />
             </button>
             <button
+              type="button"
               onClick={() =>
                 document
                   .getElementById("other-projects-scroll")
                   .scrollBy({ left: 672, behavior: "smooth" })
               }
-              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 hidden md:flex items-center justify-center"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-paper hover:bg-paper/80 text-ink p-3 rounded-full shadow-hard transition-all duration-300 hidden md:flex items-center justify-center"
               aria-label="Scroll right"
             >
               <IoChevronForward className="size-6" />
             </button>
             <div
               id="other-projects-scroll"
-              className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
+              className="flex gap-4 overflow-x-hidden pb-4 hide-scrollbar scroll-smooth"
             >
               {otherProjects.map((otherProject) => (
                 <Link
                   key={otherProject.id}
                   to={`/project/${otherProject.id}`}
-                  className="min-w-[280px] md:min-w-[320px] bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
+                  className="min-w-[280px] md:min-w-[320px] card card-paper group"
                 >
                   <img
                     src={otherProject.imgSrc}
@@ -282,10 +302,10 @@ const ProjectDetail = () => {
                     className="w-full aspect-video object-cover"
                   />
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors truncate">
+                    <h3 className="text-lg font-semibold text-ink group-hover:text-marker transition-colors truncate">
                       {otherProject.title}
                     </h3>
-                    <p className="text-sm text-zinc-400 mt-1 truncate">
+                    <p className="text-sm text-ink-soft mt-1 truncate">
                       {otherProject.subheading}
                     </p>
                     <div className="flex flex-wrap gap-1 mt-2">
@@ -294,7 +314,7 @@ const ProjectDetail = () => {
                         .map((tag, index) => (
                           <span
                             key={index}
-                            className="text-xs text-zinc-500 bg-zinc-700/50 px-2 py-1 rounded"
+                            className="text-xs text-ink-soft bg-paper/80 px-2 py-1 rounded-lg"
                           >
                             {tag}
                           </span>

@@ -17,20 +17,21 @@ const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/60" onClick={onCancel} />
-      <div className="relative bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-sm max-h-[85vh] flex flex-col">
-        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
-          <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
-          <button onClick={onCancel} className="text-zinc-400 hover:text-zinc-200">
+      <div className="absolute inset-0 bg-ink/20 backdrop-blur-sm" onClick={onCancel} />
+      <div className="relative bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard w-full max-w-sm max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b-2 border-dashed border-ink/20 shrink-0">
+          <h3 className="font-display font-bold text-xl text-ink">{title}</h3>
+          <button onClick={onCancel} className="menu-btn !h-9 !w-9">
             <span className="material-symbols-rounded">close</span>
+            <span className="sr-only">Close</span>
           </button>
         </div>
         <div className="overflow-y-auto flex-1 p-5">
-          <p className="text-zinc-300 text-sm">{message}</p>
+          <p className="font-hand text-lg text-ink-soft">{message}</p>
         </div>
-        <div className="flex gap-3 justify-end p-5 border-t border-zinc-700/50 shrink-0">
+        <div className="flex gap-3 justify-end p-5 border-t-2 border-dashed border-ink/20 shrink-0">
           <button onClick={onCancel} className="btn btn-outline">Cancel</button>
-          <button onClick={onConfirm} className="btn btn-primary !bg-red-500 hover:!bg-red-400">Delete</button>
+          <button onClick={onConfirm} className="btn !bg-marker hover:!bg-marker/85 text-paper">Delete</button>
         </div>
       </div>
     </div>
@@ -40,16 +41,17 @@ const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
 const FormModal = ({ open, onClose, title, error, children }) => {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-      <div className="bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col">
-        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
-          <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
-          <button onClick={onClose} className="text-zinc-400 hover:text-zinc-200">
+    <div className="fixed inset-0 bg-ink/20 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard w-full max-w-3xl max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b-2 border-dashed border-ink/20 shrink-0">
+          <h3 className="font-display font-bold text-xl text-ink">{title}</h3>
+          <button onClick={onClose} className="menu-btn !h-9 !w-9">
             <span className="material-symbols-rounded">close</span>
+            <span className="sr-only">Close</span>
           </button>
         </div>
         <div className="overflow-y-auto flex-1 p-5">
-          {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+          {error && <p className="font-hand text-lg text-marker mb-4">{error}</p>}
           {children}
         </div>
       </div>
@@ -139,23 +141,32 @@ const AdminDashboard = () => {
 
   const handleGoToWebsite = () => {
     navigate("/");
-  }
+  };
 
   if (!authChecked) return null;
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen">
+    <div className="min-h-screen bg-paper flex flex-col md:flex-row md:h-screen">
       {/* Mobile header */}
-      <div className="md:hidden flex items-center justify-between bg-zinc-800 p-4 ring-1 ring-zinc-50/5">
-        <div className="flex items-center gap-3">
-          <h1 className="text-lg font-semibold text-zinc-50">
+      <div className="md:hidden flex items-center justify-between gap-3 bg-paper-card border-b-2 border-dashed border-ink/20 p-4">
+        <div className="flex items-center gap-3 min-w-0">
+          <h1 className="font-display font-bold text-lg text-ink">
             Admin Dashboard
           </h1>
-          <a href="/" className="text-xs text-sky-400 hover:text-sky-300">
-            Go to Website
-          </a>
+          <button
+            onClick={handleGoToWebsite}
+            className="btn btn-sm btn-outline !px-3 shrink-0"
+          >
+            <IoArrowBackCircleOutline className="size-4 shrink-0" />
+            Website
+          </button>
         </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="menu-btn">
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="menu-btn shrink-0"
+          aria-expanded={mobileOpen}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        >
           <span className="material-symbols-rounded">
             {mobileOpen ? "close" : "menu"}
           </span>
@@ -164,19 +175,19 @@ const AdminDashboard = () => {
 
       {/* Sidebar */}
       <aside
-        className={`${mobileOpen ? "block" : "hidden"} md:flex md:w-64 md:h-screen md:overflow-hidden bg-zinc-800 ring-1 ring-zinc-50/5`}
+        className={`${mobileOpen ? "block" : "hidden"} md:flex md:w-64 md:h-screen md:overflow-hidden bg-paper-card border-r-2 border-dashed border-ink/20`}
       >
         <div className="p-4 w-64">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-xl font-semibold text-zinc-50">
+              <h1 className="font-display font-bold text-2xl text-ink leading-tight">
                 Admin Dashboard
               </h1>
-              <p className="text-xs text-zinc-400 mt-1">
+              <p className="font-hand text-base text-ink-soft mt-1">
                 Portfolio Content Manager
               </p>
             </div>
-            
+
           </div>
 
           <nav className="space-y-1">
@@ -246,19 +257,19 @@ const AdminDashboard = () => {
             />
           </nav>
 
-          <div className="mt-8 pt-6 border-t border-zinc-700/50">
+          <div className="mt-8 pt-6 border-t-2 border-dashed border-ink/20 space-y-3">
             <button
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-sky-400 hover:text-sky-300 hover:bg-zinc-700/50 transition-colors"
+              className="btn btn-outline w-full !min-h-12 !px-4 !text-lg justify-start"
               onClick={handleGoToWebsite}
             >
-              <IoArrowBackCircleOutline className="size-5" />
-              <p>Go to Website</p>
+              <IoArrowBackCircleOutline className="size-5 shrink-0" />
+              Go to Website
             </button>
             <button
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-zinc-700/50 transition-colors"
+              className="btn btn-outline !min-h-12 !px-4 !text-lg justify-start !text-marker hover:!bg-marker-soft hover:!text-ink"
             >
-              <span className="material-symbols-rounded text-[20px]">
+              <span className="material-symbols-rounded text-[20px] shrink-0">
                 logout
               </span>
               Logout
@@ -268,7 +279,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 md:h-screen md:overflow-y-auto">
+      <main className="flex-1 md:h-screen md:overflow-y-auto bg-paper">
         {activeTab === "tech-stacks" && <TechStacksTab addToast={addToast} />}
         {activeTab === "projects" && <ProjectsTab addToast={addToast} />}
         {activeTab === "certificates" && (
@@ -288,14 +299,14 @@ const AdminDashboard = () => {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 ${
+className={`px-4 py-3 rounded-wobbly-sm shadow-hard font-hand text-lg flex items-center gap-2 ${
               toast.type === "success"
-                ? "bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30"
-                : "bg-red-500/20 text-red-400 ring-1 ring-red-500/30"
+                ? 'bg-marker text-ink'
+                : 'bg-ink-night text-paper'
             }`}
           >
             <span className="material-symbols-rounded text-[18px]">
-              {toast.type === "success" ? "check_circle" : "error"}
+              {toast.type === 'success' ? 'check_circle' : 'error'}
             </span>
             {toast.message}
           </div>
@@ -311,13 +322,14 @@ const TabButton = ({ id, label, icon, activeTab, setActiveTab, setMobileOpen }) 
       setActiveTab(id);
       setMobileOpen && setMobileOpen(false);
     }}
-    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+    aria-current={activeTab === id ? 'page' : undefined}
+    className={`w-full flex items-center gap-3 px-4 py-3 rounded-wobbly-sm font-hand text-lg transition-colors duration-100 ${
       activeTab === id
-        ? 'bg-sky-400 text-zinc-950'
-        : 'text-zinc-400 hover:text-zinc-50 hover:bg-zinc-700/50'
+        ? 'bg-postit text-ink border-2 border-ink shadow-hard-sm -rotate-1'
+        : 'text-ink-soft border-2 border-transparent hover:text-ink hover:bg-paper hover:border-dashed hover:border-ink/30'
     }`}
   >
-    <span className="material-symbols-rounded text-[20px]">{icon}</span>
+    <span className="material-symbols-rounded text-[22px]">{icon}</span>
     {label}
   </button>
 );

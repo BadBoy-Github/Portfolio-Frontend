@@ -68,18 +68,20 @@ const DraggableTagInput = ({ label, placeholder, value, onChange }) => {
             addItem(input);
             setInput("");
           }}
-          className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+          className="btn btn-icon btn-add"
         >
           <span className="material-symbols-rounded text-[16px]">add</span>
+          <span className="sr-only">Add {label}</span>
         </button>
         <button
           type="button"
           onClick={() => onChange([])}
-          className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+          className="btn btn-icon btn-clear"
         >
           <span className="material-symbols-rounded text-[16px]">
             refresh
           </span>
+          <span className="sr-only">Clear all {label}</span>
         </button>
       </div>
       <div className="flex flex-wrap gap-2">
@@ -91,18 +93,19 @@ const DraggableTagInput = ({ label, placeholder, value, onChange }) => {
             onDragOver={(e) => handleDragOver(e, index)}
             onDrop={(e) => handleDrop(e, index)}
             onDragEnd={(e) => handleDragEnd(e)}
-            className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+            className={`tag-chip ${dragOverIndex === index ? "tag-chip-over" : ""}`}
           >
-            <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+            <span className="material-symbols-rounded text-[16px] text-ink-faint cursor-grab active:cursor-grabbing">
               drag_indicator
             </span>
             {item}
             <button
               type="button"
               onClick={() => removeItem(index)}
-              className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+              className="material-symbols-rounded text-[16px] text-ink-faint hover:text-marker transition-colors"
             >
               close
+              <span className="sr-only">Remove {item}</span>
             </button>
           </span>
         ))}

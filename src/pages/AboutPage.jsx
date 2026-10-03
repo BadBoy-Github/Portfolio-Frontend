@@ -49,7 +49,7 @@ const AboutPage = () => {
         />
         <link rel="canonical" href="https://elayabarathimv.vercel.app/about" />
       </Helmet>
-      <div className="container">
+      <div className="container bg-paper pt-24 pb-16">
         <Chat />
         <Welcome />
         <AboutTerminal />

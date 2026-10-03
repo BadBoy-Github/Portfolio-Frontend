@@ -1,7 +1,8 @@
-
 import { TbBulb } from "react-icons/tb";
 import PropTypes from "prop-types";
 import { TbCertificate } from "react-icons/tb";
+import Card from "./ui/Card";
+import Badge from "./ui/Badge";
 
 const ExperienceCompoundCard = ({
   year,
@@ -12,7 +13,6 @@ const ExperienceCompoundCard = ({
   certifi,
   skills,
 }) => {
-
   const openImage = () => {
     if (certifi) {
       window.open(imgSrc, "_blank");
@@ -22,65 +22,63 @@ const ExperienceCompoundCard = ({
   return (
     <>
       <div className="mb-4 last:mb-0">
-        <div className="items-center justify-between p-6 rounded-2xl sm:flex transition-all group hover:scale-[101%]  bg-zinc-900/50 shadow-xl">
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center">
-            {year}
-          </time>
-          <div className="text-sm font-medium text-zinc-300 w-[90%]">
-            <div className="flex gap-1 items-center">
-              <p className="group-hover:text-sky-400 transition-colors duration-300">
-                {name}
-                {"  "}
-              </p>
-              <span className="bg-zinc-600 text-zinc-300 text-xs font-normal ml-1 me-2 px-2.5 py-0.5 rounded-md group-hover:text-white transition-all duration-300">
-                {role}
-              </span>
-            </div>
+        <Card tone="paper" className="p-6 shadow-hard hover:shadow-hard transition-all hover:rotate-1">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="w-[90%]">
+              <div className="flex gap-2 items-center flex-wrap">
+                <p className="font-display font-bold text-ink transition-colors duration-300">
+                  {name}
+                  {"  "}
+                </p>
+                <Badge tone="postit">{role}</Badge>
+              </div>
 
-            <div className=" mt-2 w-[90%] ">
-              <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex items-center mt-4 gap-4">
-                <div
-                  onClick={openImage}
-                  className={`hidden  bg-zinc-700 size-8 lg:flex items-center justify-center rounded-lg cursor-pointer hover:scale-110 transition-all relative group/certhov ${
-                    certifi ? "text-sky-600" : "text-orange-600"
-                  }`}
-                >
-                  <TbCertificate
-                    className={`size-4  ${
-                      certifi ? "opacity-100" : "opacity-50"
+              <div className="mt-2 w-full">
+                <p className="font-hand text-lg text-ink-soft">{desc}</p>
+                <div className="flex items-center mt-4 gap-4 flex-wrap">
+                  <div
+                    onClick={openImage}
+                    className={`hidden bg-paper/80 size-8 lg:flex items-center justify-center rounded-wobbly-sm cursor-pointer hover:scale-110 transition-all relative group/certhov border-2 border-ink ${
+                      certifi ? "text-marker" : "text-ink-faint"
                     }`}
-                  />
-                  {certifi ? (
-                    <span className="absolute w-[110px] -top-12 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-sky-600 text-zinc-800 py-2 text-xs shadow-md transition-all duration-300 ease-in-out group-hover/certhov:scale-90 text-center">
-                      View Certificate
-                    </span>
-                  ) : (
-                    <span className="absolute w-[110px] -top-16 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-lg bg-orange-600 text-zinc-800 py-2 text-xs shadow-md transition-all duration-300 ease-in-out group-hover/certhov:scale-90 text-center">
-                      No Certificate Available
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-center justify-start text-zinc-400 w-full gap-2">
-                  <TbBulb
-                    size={20}
-                    className="hidden md:flex items-center justify-center group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
-                  />
-                  <div className="flex items-center flex-wrap gap-2">
-                    {skills.map((skill, index) => (
-                      <span
-                        key={index}
-                        className="text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium"
-                      >
-                        {skill}
+                  >
+                    <TbCertificate
+                      className={`size-4 ${certifi ? "opacity-100" : "opacity-50"}`}
+                    />
+                    {certifi ? (
+                      <span className="absolute w-[110px] -top-12 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-wobbly-sm bg-marker text-ink py-2 text-xs shadow-hard transition-all duration-300 ease-in-out group-hover/certhov:scale-90 text-center">
+                        View Certificate
                       </span>
-                    ))}
+                    ) : (
+                      <span className="absolute w-[110px] -top-16 left-[50%] -translate-x-[50%] z-20 origin-bottom scale-0 px-2 rounded-wobbly-sm bg-ink-night text-paper py-2 text-xs shadow-hard transition-all duration-300 ease-in-out group-hover/certhov:scale-90 text-center">
+                        No Certificate Available
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-start text-ink-soft w-full gap-2">
+                    <TbBulb
+                      size={20}
+                      className="hidden md:flex items-center justify-center text-gold group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                    />
+                    <div className="flex items-center flex-wrap gap-2">
+                      {skills.map((skill, index) => (
+                        <span
+                          key={index}
+                          className="badge badge-postit"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <time className="font-hand text-lg text-ink-soft sm:w-fit sm:text-center w-full">
+              {year}
+            </time>
           </div>
-        </div>
+        </Card>
       </div>
     </>
   );

@@ -1,60 +1,63 @@
+// Node modules
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+// Components
+import Badge from "./ui/Badge";
 
 const AchievementsCard = ({ imgSrc, title, date, tags, desc, achiId }) => {
-  const navigate = useNavigate();
-
-  const handleCardClick = () => {
-    if (achiId) {
-      navigate(`/achievement/${achiId}`);
-    }
-  };
+  const sentences = (desc || "")
+    .split(". ")
+    .filter((sentence) => sentence.trim() !== "");
 
   return (
-    <div
-      className="bg-zinc-800 h-[460px] hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl cursor-pointer transition-colors relative group"
-      onClick={handleCardClick}
-    >
-      <div className="flex items-center justify-between gap-2">
-        <div className="w-full">
-          <div className="flex items-center gap-2 h-6 justify-between flex-row lg:flex-row-reverse">
-            <p className="text-zinc-400 text-xs">{date}</p>
-            <p className="w-[80%] text-white font-semibold">{title}</p>
-          </div>
-        </div>
-      </div>
-      <figure className="rounded-lg bg-zinc-700 mt-4 group-hover:scale-[101%] transition-all duration-300">
+    <article className="card card-flush group relative flex flex-col transition-transform duration-100 hover:-rotate-1 hover:shadow-hard">
+      <figure className="relative border-b-2 border-ink">
         <img
           src={imgSrc}
-          width={44}
-          height={44}
-          alt={title}
+          alt=""
           loading="lazy"
-          className="w-full h-60 object-cover bg-zinc-400/20 rounded-lg"
+          className="w-full h-52 object-cover"
         />
-      </figure>
-      <div className="text-sm text-zinc-400 mt-3 tracking-wider">
-        {desc
-          .split(". ")
-          .filter((sentence) => sentence.trim() !== "")
-          .map((sentence, idx) => (
-            <p key={idx} className="">
-              {sentence.trim().replace(/\.$/, "")}
-            </p>
-          ))}
-      </div>
 
-      <div className="absolute w-[90%] bottom-0 gap-3 flex flex-wrap mb-5">
-        {tags.slice(0,2).map((label, key) => (
-          <span
-            key={key}
-            className="text-sm text-sky-600 group-hover:text-sky-400 transition-all duration-300 flex w-fit bg-zinc-700/40 px-2 py-1 rounded-lg"
-          >
-            {label}
-          </span>
-        ))}
+        {date && (
+          <Badge tone="postit" className="absolute left-3 top-3 z-10">
+            {date}
+          </Badge>
+        )}
+      </figure>
+
+      <div className="p-5 flex flex-col gap-3 flex-grow">
+        <h3 className="title-1">
+          {achiId ? (
+            <Link
+              to={`/achievement/${achiId}`}
+              className="after:absolute after:inset-0 after:content-['']"
+            >
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
+        </h3>
+
+        {sentences.length > 0 && (
+          <div className="text-ink-soft text-lg space-y-1">
+            {sentences.map((sentence) => (
+              <p key={sentence}>{sentence.trim().replace(/\.$/, "")}</p>
+            ))}
+          </div>
+        )}
+
+        {(tags || []).length > 0 && (
+          <div className="relative z-10 flex flex-wrap gap-2 mt-auto pt-2">
+            {tags.slice(0, 2).map((label) => (
+              <Badge key={label}>{label}</Badge>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </article>
   );
 };
 

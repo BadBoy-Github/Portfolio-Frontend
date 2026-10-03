@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { IoShareSocial, IoCopy } from "react-icons/io5";
 
@@ -11,11 +12,10 @@ const SocialShare = ({ title, url }) => {
           title,
           url,
         });
-      } catch (err) {
-        // User cancelled or error
+      } catch {
+        // share cancelled or unavailable
       }
     } else {
-      // Fallback: copy to clipboard
       handleCopy();
     }
   };
@@ -25,16 +25,17 @@ const SocialShare = ({ title, url }) => {
       await navigator.clipboard.writeText(url);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 5000);
-    } catch (err) {
-      console.error("Failed to copy: ", err);
+    } catch {
+      // clipboard unavailable
     }
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-6 pt-6 border-t border-zinc-700">
+    <div className="flex items-center justify-center gap-2 mt-6 pt-6 border-t border-ink/10">
       <button
+        type="button"
         onClick={handleShare}
-        className="flex items-center gap-2 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+        className="flex items-center gap-2 px-3 py-2 bg-paper hover:bg-paper/80 text-ink shadow-hard rounded-xl transition-colors"
         title="Share this blog"
       >
         <IoShareSocial className="w-4 h-4" />
@@ -42,8 +43,13 @@ const SocialShare = ({ title, url }) => {
       </button>
 
       <button
+        type="button"
         onClick={handleCopy}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
+        className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-colors ${
+          copySuccess
+            ? "bg-marker text-ink"
+            : "bg-paper hover:bg-paper/80 text-ink shadow-hard"
+        }`}
         title="Copy link"
       >
         <IoCopy className="w-4 h-4" />
@@ -51,6 +57,11 @@ const SocialShare = ({ title, url }) => {
       </button>
     </div>
   );
+};
+
+SocialShare.propTypes = {
+  title: PropTypes.string,
+  url: PropTypes.string,
 };
 
 export default SocialShare;

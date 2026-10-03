@@ -148,12 +148,12 @@ const AdminLogin = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-zinc-800 rounded-2xl p-8 ring-1 ring-zinc-50/5">
+    <div className="min-h-screen bg-paper flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard p-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-semibold text-zinc-50">Admin Login</h1>
-            <p className="text-zinc-400 text-sm mt-1">Sign in to manage portfolio content</p>
+            <h1 className="text-2xl font-semibold text-ink">Admin Login</h1>
+            <p className="text-ink-soft text-sm mt-1">Sign in to manage portfolio content</p>
           </div>
           <a
             href="/"
@@ -177,7 +177,7 @@ const AdminLogin = () => {
               autoComplete="email"
             />
             {emailError && (
-              <p className="text-red-400 text-xs mt-2">{emailError}</p>
+              <p className="text-accent-red text-xs mt-2">{emailError}</p>
             )}
           </div>
 
@@ -199,7 +199,7 @@ const AdminLogin = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-200"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-soft hover:text-ink"
                 >
                   <span className="material-symbols-rounded text-[20px]">
                     {showPassword ? 'visibility_off' : 'visibility'}
@@ -207,7 +207,7 @@ const AdminLogin = () => {
                 </button>
               </div>
               {passwordError && (
-                <p className="text-red-400 text-xs mt-2">{passwordError}</p>
+                <p className="text-accent-red text-xs mt-2">{passwordError}</p>
               )}
               <button
                 type="submit"
@@ -224,10 +224,10 @@ const AdminLogin = () => {
       {toast && (
         <div className="fixed bottom-4 right-4 z-50">
           <div
-            className={`px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 ${
+            className={`px-4 py-3 rounded-wobbly-sm shadow-hard text-sm font-medium flex items-center gap-2 ${
               toast.type === 'success'
-                ? 'bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30'
-                : 'bg-red-500/20 text-red-400 ring-1 ring-red-500/30'
+                ? 'bg-marker text-ink'
+                : 'bg-accent-red text-paper'
             }`}
           >
             <span className="material-symbols-rounded text-[18px]">

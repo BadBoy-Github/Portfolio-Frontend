@@ -4,7 +4,7 @@ import Home from "../components/Home";
 import Review from "../components/Review";
 import HomepageCertificates from "../components/HomepageCertificates";
 import HomepageAchievements from "../components/HomepageAchievements";
-import HomepageFeaturedProjectGrid from "../components/HomepageFeaturedProjectGrid";
+import HomepageProjects from "../components/HomepageProjects";
 import QATerminal from "../components/QATerminal";
 import RightSideNav from "../components/RightSideNav";
 
@@ -73,7 +73,7 @@ const LandingPage = () => {
         <Home />
         <QATerminal />
         <Skills />
-        <HomepageFeaturedProjectGrid />
+        <HomepageProjects />
         <HomepageCertificates />
         <HomepageAchievements />
         <Review />

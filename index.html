@@ -1,8 +1,5 @@
 <!doctype html>
-<html
-  lang="en"
-  class="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-600"
->
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,11 +69,11 @@
     />
 
     <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#0891b2" />
+    <meta name="theme-color" content="#fdfbf7" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
+      content="default"
     />
     <meta name="format-detection" content="telephone=no" />
 
@@ -117,7 +114,7 @@
     <link rel="preconnect" href="https://res.cloudinary.com" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&display=swap"
       rel="stylesheet"
     />
     <link
@@ -239,48 +236,8 @@
     </script>
   </head>
 
-  <body style="background-color: #18181b; scrollbar-width: none; -ms-overflow-style: none;">
+  <body>
     <div id="root"></div>
-    <style>
-      /* Additional scrollbar hiding for body */
-      body::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-      }
-      html::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-      }
-      *::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-      }
-    </style>
-    <script>
-      // Aggressive scrollbar hiding
-      document.addEventListener('DOMContentLoaded', function() {
-        // Hide scrollbars immediately
-        document.documentElement.style.scrollbarWidth = 'none';
-        document.documentElement.style.msOverflowStyle = 'none';
-        document.body.style.scrollbarWidth = 'none';
-        document.body.style.msOverflowStyle = 'none';
-
-        // Force hide webkit scrollbars
-        const style = document.createElement('style');
-        style.textContent = `
-          html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
-            display: none !important;
-            width: 0 !important;
-            height: 0 !important;
-            background: transparent !important;
-          }
-        `;
-        document.head.appendChild(style);
-      });
-    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

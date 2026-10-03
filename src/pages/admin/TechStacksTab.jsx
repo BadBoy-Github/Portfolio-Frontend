@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from "./AdminDashboard";
+import AdminShell from "./AdminShell";
 import SkillCard from "../../components/SkillCard";
 
 const TechStacksTab = ({ addToast }) => {
@@ -196,15 +197,12 @@ const TechStacksTab = ({ addToast }) => {
   };
 
   return (
-     <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900 pt-8 pb-4 border-b border-zinc-700">
-        <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Tech Stacks <span className="text-sky-400">({skills.length})</span></h2>
-          <p className="text-zinc-400 text-sm mt-1">
-            Manage your technical skills
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+     <AdminShell
+      title="Tech Stacks"
+      count={skills.length}
+      subtitle="Manage your technical skills"
+      actions={
+        <>
           <button onClick={saveOrder} className="btn btn-outline">
             <span className="material-symbols-rounded text-[16px]">save</span>
             Save Order
@@ -213,16 +211,14 @@ const TechStacksTab = ({ addToast }) => {
             <IoAdd className="text-[18px]" />
             Add Tech Stack
           </button>
-        </div>
-      </div>
+        </>
+      }
+    >
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-24 animate-pulse"
-            />
+            <div key={i} className="admin-skeleton h-24" />
           ))}
         </div>
       ) : (
@@ -236,30 +232,30 @@ const TechStacksTab = ({ addToast }) => {
                 onDragOver={(e) => handleDragOver(e, index)}
                 onDrop={() => handleDrop(index)}
                 onDragEnd={handleDragEnd}
-                className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+                className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
               >
-                <div className="flex items-center justify-end mb-2">
-                  <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button
-                      onClick={() => openEdit(item)}
-                      className="btn btn-outline text-xs py-1 px-2"
-                    >
-                      <span className="material-symbols-rounded text-[16px]">
-                        edit
-                      </span>
-                    </button>
-                    <button
-                      onClick={() => setDeleteTarget(item)}
-                      className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                    >
-                      <span className="material-symbols-rounded text-[16px]">
-                        delete
-                      </span>
-                    </button>
-                  </div>
+                <div className="admin-card-actions">
+                  <button
+                    onClick={() => openEdit(item)}
+                    className="btn btn-outline btn-icon"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      edit
+                    </span>
+                    <span className="sr-only">Edit {item.label}</span>
+                  </button>
+                  <button
+                    onClick={() => setDeleteTarget(item)}
+                    className="btn btn-outline btn-icon btn-danger"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      delete
+                    </span>
+                    <span className="sr-only">Delete {item.label}</span>
+                  </button>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing">
+                  <span className="material-symbols-rounded text-ink-faint cursor-grab active:cursor-grabbing">
                     drag_indicator
                   </span>
                   <div className="flex-1">
@@ -276,7 +272,7 @@ const TechStacksTab = ({ addToast }) => {
               </div>
             ))}
             {skills.length === 0 && (
-              <p className="text-zinc-400 col-span-full">No items found.</p>
+              <p className="admin-empty">No items found.</p>
             )}
           </div>
         </>
@@ -336,7 +332,7 @@ const TechStacksTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 
