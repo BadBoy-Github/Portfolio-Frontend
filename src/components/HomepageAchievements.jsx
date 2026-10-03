@@ -1,100 +1,66 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import AchievementsCard from "./AchievementsCard";
+// Node modules
+import { Link } from "react-router-dom";
+import { Plus } from "lucide-react";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+// Components
+import AchievementsCard from "./AchievementsCard";
+import SectionHeading from "./ui/SectionHeading";
+import SectionState from "./ui/SectionState";
+import useCollection from "../hooks/useCollection";
+
+const HOMEPAGE_ACHIEVEMENTS = 5;
 
 const HomepageAchievements = () => {
-  const navigate = useNavigate();
-  const [achievements, setAchievements] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { items, loading, error, reload } = useCollection("/api/achievements");
 
-  useEffect(() => {
-    const fetchAchievements = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`${BACKEND_URL}/api/achievements`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        setAchievements(data.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchAchievements();
-  }, []);
-
-  if (loading) {
-    return (
-      <section id="achievements" className="section">
-        <h2 className="headline-2">My Achievements</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-          A collection of milestones that showcase my passion and impact
-        </p>
-        <div className="flex items-center justify-center py-10">
-          <div className="loader mb-4"><span></span></div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="achievements" className="section">
-        <h2 className="headline-2">My Achievements</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-          A collection of milestones that showcase my passion and impact
-        </p>
-        <p className="text-red-400">Failed to load achievements.</p>
-      </section>
-    );
-  }
-
-  const displayAchievements = achievements.slice(0, 5);
-  const remainingCount = achievements.length - 5;
+  const displayAchievements = items.slice(0, HOMEPAGE_ACHIEVEMENTS);
+  const remainingCount = items.length - HOMEPAGE_ACHIEVEMENTS;
 
   return (
     <section id="achievements" className="section">
-      <h2 className="headline-2">My Achievements</h2>
-      <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-        A collection of milestones that showcase my passion and impact
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {displayAchievements.map((achi) => (
-          <Link key={achi.id} to={`/achievement/${achi.id}`}>
-            <AchievementsCard
-              achiId={achi.id}
-              title={achi.title}
-              imgSrc={achi.imgSrc}
-              desc={achi.subtitle}
-              tags={achi.tags}
-              date={achi.date}
-            />
-          </Link>
-        ))}
+      <SectionHeading
+        title="My Achievements"
+        lead="A collection of milestones that showcase my passion and impact"
+      />
 
-        {remainingCount > 0 && (
-          <div
-            onClick={() => navigate("/achievements")}
-            className=" bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl flex flex-col items-center justify-center cursor-pointer group"
-          >
-            <div className="w-16 h-16 rounded-full bg-sky-600/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span className="material-symbols-rounded text-4xl text-sky-400">
-                add_circle
-              </span>
+      <SectionState
+        loading={loading}
+        error={error}
+        label="achievements"
+        onRetry={reload}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayAchievements.map((achi) => (
+            <div key={achi.id} className="flex">
+              <AchievementsCard
+                achiId={achi.id}
+                title={achi.title}
+                imgSrc={achi.imgSrc}
+                desc={achi.subtitle}
+                tags={achi.tags}
+                date={achi.date}
+              />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              More Achievements
-            </h3>
-            <p className="text-zinc-400 text-sm">
-              View {remainingCount} more achievements
-            </p>
-          </div>
-        )}
-      </div>
+          ))}
+
+          {remainingCount > 0 && (
+            <Link
+              to="/achievements"
+              className="group flex flex-col items-center justify-center gap-4 bg-paper-card border-2 border-dashed border-ink rounded-wobbly-md p-6 text-center transition-transform duration-100 hover:rotate-1 hover:border-solid hover:shadow-hard"
+            >
+              <span className="w-16 h-16 grid place-items-center rounded-wobbly-sm bg-marker text-paper border-2 border-ink shadow-hard-sm group-hover:rotate-12 transition-transform duration-100">
+                <Plus size={28} strokeWidth={3} aria-hidden="true" />
+              </span>
+
+              <span className="font-display text-xl text-ink">More Achievements</span>
+
+              <span className="text-ink-soft text-lg">
+                View {remainingCount} more achievements
+              </span>
+            </Link>
+          )}
+        </div>
+      </SectionState>
     </section>
   );
 };

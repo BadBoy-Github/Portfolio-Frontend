@@ -322,6 +322,13 @@ const AboutTerminal = () => {
     }
   }, [lines]);
 
+  const scrollTerminal = (direction) => {
+    if (terminalBodyRef.current) {
+      const amount = 200;
+      terminalBodyRef.current.scrollTop += direction === 'up' ? -amount : amount;
+    }
+  };
+
   return (
     <section id="about-terminal" className="w-full mx-auto section h-[90vh] flex flex-col">
       {/* Terminal Window */}
@@ -359,29 +366,55 @@ const AboutTerminal = () => {
         </div>
 
         {/* Terminal Body */}
-        <div ref={terminalBodyRef} className="p-6 font-mono text-sm overflow-y-auto flex-1 min-h-0 scroll-smooth" style={{ scrollbarWidth: 'thin', scrollbarColor: '#3f3f46 #18181b' }}>
-          {/* Terminal Output */}
-          <div className="space-y-1">
-            {lines.map((line) => (
-              <div
-                key={line.id}
-                className={`${line.color} break-words whitespace-pre-wrap`}
-              >
-                {line.isCommand ? (
-                  <>
-                    <span className="text-sky-400">{terminalPath}</span>
-                    <span>{line.text}</span>
-                  </>
-                ) : (
-                  line.text
-                )}
-                {line.id === lines.length &&
-                  showCursor &&
-                  !animationComplete && (
-                    <span className="inline-block w-2 h-4 bg-zinc-400 ml-1 animate-pulse"></span>
+        <div className="relative flex-1 min-h-0">
+          <div ref={terminalBodyRef} className="h-full p-6 font-mono text-sm overflow-hidden flex flex-col scroll-smooth">
+            {/* Terminal Output */}
+            <div className="space-y-1">
+              {lines.map((line) => (
+                <div
+                  key={line.id}
+                  className={`${line.color} break-words whitespace-pre-wrap`}
+                >
+                  {line.isCommand ? (
+                    <>
+                      <span className="text-sky-400">{terminalPath}</span>
+                      <span>{line.text}</span>
+                    </>
+                  ) : (
+                    line.text
                   )}
-              </div>
-            ))}
+                  {line.id === lines.length &&
+                    showCursor &&
+                    !animationComplete && (
+                      <span className="inline-block w-2 h-4 bg-zinc-400 ml-1 animate-pulse"></span>
+                    )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Scroll Buttons */}
+          <div className="absolute right-4 top-4 flex flex-col gap-2">
+            <button
+              type="button"
+              onClick={() => scrollTerminal('up')}
+              className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 p-2 rounded-wobbly-sm shadow-hard transition-colors"
+              aria-label="Scroll up"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-4">
+                <path fillRule="evenodd" d="M10 14l-5-5h10l-5 5z" clipRule="evenodd" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollTerminal('down')}
+              className="bg-zinc-800 hover:bg-zinc-700 text-zinc-300 p-2 rounded-wobbly-sm shadow-hard transition-colors"
+              aria-label="Scroll down"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-4">
+                <path fillRule="evenodd" d="M10 6l5 5H5l5-5z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

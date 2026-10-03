@@ -1,58 +1,62 @@
+// Node modules
 import PropTypes from "prop-types";
+import { Star } from "lucide-react";
 
-const ReviewCard = ({
-    content,
-    imgSrc,
-    name,
-    company,
-    rating = 5
-}) => {
-    const stars = Array.from({ length: 5 }, (_, i) => i < Number(rating));
+const ReviewCard = ({ content, imgSrc, name, company, rating = 5 }) => {
+  const stars = Array.from({ length: 5 }, (_, i) => i < Number(rating));
 
-    return (
-      <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group transition-all duration-300">
-        <div className="flex items-center gap-1 mb-3">
-          {stars.map((filled, key) => (
-            <span
-              key={key}
-              className={`material-symbols-rounded text-[18px] cursor-pointer group-hover:scale-110 transition-all duration-300 ${filled ? 'text-yellow-600 group-hover:text-yellow-400' : 'text-zinc-600'}`}
-              style={filled ? { fontVariationSettings: '"FILL" 1' } : undefined}
-            >
-              star
-            </span>
-          ))}
-        </div>
+  return (
+    <figure className="relative flex flex-col bg-paper-card border-2 border-ink rounded-wobbly-md shadow-paper p-6 md:p-8 transition-transform duration-100 hover:-rotate-1 hover:shadow-hard">
+      <span
+        className="absolute -bottom-3 left-12 w-6 h-6 rotate-45 bg-paper-card border-r-2 border-b-2 border-ink"
+        aria-hidden="true"
+      />
 
-        <p className="text-zinc-400 mb-8 group-hover:text-zinc-200 transition-all duration-300">{content}</p>
-
-        <div className="flex items-center gap-2 mt-auto">
-          <figure className="img-box rounded-lg">
-            <img
-              src={imgSrc}
-              width={44}
-              height={44}
-              alt={name}
-              loading="lazy"
-              className="img-cover rounded-xl"
-            />
-          </figure>
-
-          <div>
-            <p>{name}</p>
-
-            <p className="text-xs text-zinc-400 tracking-wider">{company}</p>
-          </div>
-        </div>
+      <div className="flex items-center gap-1 mb-4">
+        {stars.map((filled, index) => (
+          <Star
+            key={index}
+            size={22}
+            strokeWidth={2.5}
+            aria-hidden="true"
+            className={
+              filled ? "fill-postit text-ink" : "fill-transparent text-ink-faint"
+            }
+          />
+        ))}
       </div>
-    );
-}
+
+      <blockquote className="text-lg md:text-xl text-ink leading-relaxed mb-8">
+        {content}
+      </blockquote>
+
+      <figcaption className="flex items-center gap-3 mt-auto">
+        <figure className="img-box w-12 h-12 shrink-0 rounded-wobbly-sm">
+          <img
+            src={imgSrc}
+            width={44}
+            height={44}
+            alt={name}
+            loading="lazy"
+            className="img-cover"
+          />
+        </figure>
+
+        <div>
+          <p className="font-display text-lg text-ink">{name}</p>
+          <p className="text-ink-soft text-base">{company}</p>
+        </div>
+      </figcaption>
+    </figure>
+  );
+};
 
 ReviewCard.propTypes = {
-    content: PropTypes.string,
-    imgSrc: PropTypes.string,
-    name: PropTypes.string,
-    company: PropTypes.string,
-    rating: PropTypes.number
-}
+  content: PropTypes.string,
+  imgSrc: PropTypes.string,
+  name: PropTypes.string,
+  company: PropTypes.string,
+  rating: PropTypes.number,
+};
 
-export default ReviewCard
+export default ReviewCard;

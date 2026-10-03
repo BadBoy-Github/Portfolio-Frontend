@@ -1,116 +1,85 @@
-import { useState, useEffect } from "react";
+// Node modules
+import { useEffect, useState } from "react";
+import { PenLine } from "lucide-react";
+
+// Components
 import ReviewCard from "./ReviewCard";
 import ReviewModal from "./ReviewModal";
+import SectionHeading from "./ui/SectionHeading";
+import SectionState from "./ui/SectionState";
+import useCollection from "../hooks/useCollection";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const TOAST_TIMEOUT = 4000;
 
 const Review = () => {
-  const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { items, loading, error, reload } = useCollection("/api/reviews");
   const [reviewOpen, setReviewOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
-  const showToast = (message, type = "success") => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 4000);
-  };
-
   useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`${BACKEND_URL}/api/reviews`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        setReviews(data.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchReviews();
-  }, []);
+    if (!toast) return undefined;
 
-  if (loading) {
-    return (
-      <section id="reviews" className="section overflow-hidden ">
-        <h2 className="headline-2 ">What my colleagues say</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-          Hear directly from those who've collaborated with me
-        </p>
-        <div className="flex items-center justify-center py-10">
-          <div className="loader mb-4"><span></span></div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="reviews" className="section overflow-hidden ">
-        <h2 className="headline-2 ">What my colleagues say</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-          Hear directly from those who've collaborated with me
-        </p>
-        <p className="text-red-400">Failed to load reviews.</p>
-      </section>
-    );
-  }
+    const timeoutId = setTimeout(() => setToast(null), TOAST_TIMEOUT);
+    return () => clearTimeout(timeoutId);
+  }, [toast]);
 
   return (
-    <section id="reviews" className="section overflow-hidden ">
-      <h2 className="headline-2 ">What my colleagues say</h2>
-      <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-        Hear directly from those who've collaborated with me
-      </p>
+    <section id="reviews" className="section">
+      <SectionHeading
+        title="What my colleagues say"
+        lead="Hear directly from those who've collaborated with me"
+      />
 
-      <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 pb-10">
-        {reviews.map(({ content, name, imgSrc, company, rating }, key) => (
-          <ReviewCard
-            key={key}
-            name={name}
-            imgSrc={imgSrc}
-            company={company}
-            content={content}
-            rating={rating ?? 5}
-          />
-        ))}
-      </div>
+      <SectionState loading={loading} error={error} label="reviews" onRetry={reload}>
+        <div className="grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-6 lg:gap-8 pb-12">
+          {items.map(({ content, name, imgSrc, company, rating }) => (
+            <ReviewCard
+              key={name}
+              name={name}
+              imgSrc={imgSrc}
+              company={company}
+              content={content}
+              rating={rating ?? 5}
+            />
+          ))}
+        </div>
+
+        <div className="flex items-start gap-4">
+          <div className="flex-1">
+            <p className="text-ink-soft text-lg md:text-xl max-w-[60ch]">
+              <span className="text-ink font-bold">Want to write a review?</span>{" "}
+              I would love to hear about your experience working with me. It only
+              takes a minute and helps others learn more about me.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setReviewOpen(true)}
+              className="mt-4 inline-flex items-center gap-2 font-display text-xl text-ballpoint underline decoration-dashed decoration-2 underline-offset-4 transition-transform duration-100 hover:-rotate-1"
+            >
+              <PenLine size={20} strokeWidth={2.5} aria-hidden="true" />
+              Click here to write a review.
+            </button>
+          </div>
+        </div>
+      </SectionState>
 
       {reviewOpen && (
         <ReviewModal
           isOpen={reviewOpen}
           onClose={() => setReviewOpen(false)}
           onSuccess={() =>
-            showToast("Your review sent successfully", "success")
+            setToast({ message: "Your review sent successfully", type: "success" })
           }
         />
       )}
 
-      <div className="">
-        <div className="flex items-start gap-4">
-          <div className="flex-1">
-            <p className="text-zinc-400 text-sm mb-4">
-              <span className="text-zinc-300">Want to write a review?</span> I would love to hear about
-              your experience working with me. It only takes a minute and helps
-              others learn more about me.{" "}
-              <span onClick={() => setReviewOpen(true)} className="text-sky-500 cursor-pointer">
-                Click here to write a review.
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
       {toast && (
-        <div className="fixed bottom-4 right-4 z-50">
+        <div className="fixed bottom-6 right-6 z-50">
           <div
-            className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
-              toast.type === "success"
-                ? "bg-sky-500 text-white"
-                : "bg-red-500 text-white"
+            role="status"
+            className={`px-5 py-3 border-2 border-ink rounded-wobbly-sm shadow-hard text-lg ${
+              toast.type === "success" ? "bg-postit text-ink" : "bg-marker text-paper"
             }`}
           >
             {toast.type === "success" ? "✓ " : "✗ "}

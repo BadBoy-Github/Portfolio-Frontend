@@ -11,7 +11,7 @@ const ContactPage = () => {
           content="Get in touch with Elayabarathi M V for collaborations, projects, and opportunities."
         />
       </Helmet>
-      <div className="container">
+      <div className="container bg-paper pt-24 pb-16">
         <Contact />
       </div>
     </>

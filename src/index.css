@@ -2,137 +2,217 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ============================================================
+   HAND-DRAWN DESIGN SYSTEM
+   Sketchbook layer. Everything visible is built from these
+   primitives so no component invents its own one-off style.
+   ============================================================ */
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(45 45 45) rgb(242 237 227);
+    }
+
+    body {
+        @apply bg-paper text-ink;
+        background-image: radial-gradient(rgb(229 224 216 / 0.9) 1px, transparent 1px);
+        background-size: 24px 24px;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        @apply bg-marker text-paper;
+    }
+
+    :focus-visible {
+        @apply outline-none ring-2 ring-ballpoint ring-offset-2 ring-offset-paper;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-display text-ink;
+    }
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+/* Scrollbar - pencil on paper */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
 }
 
-.animate-shimmer {
-  animation: shimmer 1.5s infinite;
+::-webkit-scrollbar-track {
+    background: rgb(242 237 227);
 }
 
-/* Selection Pseudo Element Class */
-body::selection {
-    @apply text-zinc-800 bg-sky-600;
+::-webkit-scrollbar-thumb {
+    background: rgb(45 45 45);
+    border: 3px solid rgb(242 237 227);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
-/* BASE */
-html {
-    scroll-behavior: smooth;
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(255 77 77);
 }
 
-body {
-    @apply bg-zinc-900 text-zinc-50
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
 }
 
-
-
-
-
-/* TYPOGRAPHY */
-
-.headline-1,
-.headline-2 {
-    @apply max-w-max;
-    background: -webkit-linear-gradient(0deg, #fafafa, #a1a1a1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    border-width: 1px;
 }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
 
 .headline-1 {
-    @apply text-4xl sm:text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
+    @apply max-w-max font-display font-bold text-ink text-4xl sm:text-5xl leading-tight lg:text-[55px] lg:leading-[1.15]
 }
 
 .headline-2 {
-    @apply text-3xl lg:text-4xl lg:leading-tight font-semibold
+    @apply max-w-max font-display font-bold text-ink text-3xl lg:text-4xl lg:leading-tight
 }
 
 .title-1 {
-    @apply text-[22px] font-normal
+    @apply font-display text-ink text-[22px] font-bold
 }
 
 .headline-transition {
-    @apply text-sky-400 font-semibold text-4xl leading-tight max-w-[17ch]
+    @apply font-display font-bold text-ballpoint text-4xl leading-tight max-w-[17ch]
         /* Base for small screens, fits "Biotechnologist" (16ch) */
         sm:text-5xl sm:max-w-[17ch]
         /* sm screens */
         lg:text-[55px] lg:leading-[1.15] lg:max-w-[17ch];
         /* lg screens */
-    
 }
 
+.count-up-text {
+    @apply font-display font-bold text-ink
+}
 
+/* Wavy marker underline */
+.scribble-underline {
+    @apply relative inline-block;
+}
 
+.scribble-underline::after {
+    content: "";
+    @apply absolute left-0 right-0 -bottom-1 h-[6px] opacity-40;
+    background-image: radial-gradient(circle at 50% 60%, currentColor 55%, transparent 58%);
+    background-size: 12px 6px;
+    background-repeat: repeat-x;
+    pointer-events: none;
+}
 
+/* ============================================================
+   LAYOUT
+   ============================================================ */
 
-/* UTILITIES */
+.container {
+    @apply px-6 mx-auto w-full lg:px-8 xl:max-w-6xl
+}
+
+.section {
+    @apply py-20
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+
 .material-symbols-rounded {
     @apply w-[1em] h-[1em] overflow-hidden;
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
 }
 
-.container {
-    @apply px-4 mx-auto lg:px-8 xl:max-w-6xl
+.img-box {
+    @apply overflow-hidden bg-paper-deep border-2 border-ink
 }
 
-
-.section {
-    @apply pt-20 lg:pt-28
+.img-cover {
+    @apply w-full h-full object-cover
 }
 
+.logo {
+    @apply inline-grid place-items-center w-11 h-11 p-1 bg-ink border-2 border-ink rounded-wobbly-sm shadow-hard-sm transition-transform duration-100;
+}
 
+.logo:hover {
+    @apply -rotate-6 shadow-hard;
+}
 
+.logo img {
+    @apply w-full h-full;
+}
 
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 1.5s infinite;
+}
 
 /* Typing Animation */
-.animated-text{
+.animated-text {
     min-width: 280px;
 }
 
 
-.animated-text span{
+.animated-text span {
     position: relative;
-    
+
 }
 
-.animated-text span::before{
+.animated-text span::before {
     content: "Website Dev";
-    color: #38bdf8;
+    color: #2d5da1;
     animation: words 8s infinite;
 }
 
-.animated-text span::after{
+.animated-text span::after {
     content: "";
     position: absolute;
     width: calc(100% + 10px);
     height: 100%;
-    background-color: #18181b;
-    border-left: 4px solid #38bdf8;
+    background-color: #fdfbf7;
+    border-left: 4px solid #ff4d4d;
     right: -10px;
     animation: cursor .5s infinite, typing 4s steps(30) infinite;
 }
 
 @keyframes cursor {
-    to{
-        border-left: 4px solid #38bdf800;
+    to {
+        border-left: 4px solid #ff4d4d00;
     }
 }
 
@@ -159,240 +239,292 @@ body {
     }
 }
 
-
-
-
-
-
-
-/* COMPONENTS */
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
 
 /* MENU */
 .menu-btn {
-    @apply w-10 h-10 grid place-items-center bg-zinc-50/10 rounded-xl ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl 
-    hover:bg-zinc-50/15 transition-[transform,background-color] active:scale-95 
+    @apply w-11 h-11 grid place-items-center bg-paper-card text-ink border-2 border-ink rounded-wobbly-sm shadow-hard-sm transition-transform duration-100
 }
 
+.menu-btn:hover {
+    @apply bg-postit
+}
 
-
+.menu-btn:active {
+    @apply translate-x-[2px] translate-y-[2px] shadow-none
+}
 
 
 /* Navbar */
 .navbar {
-    @apply absolute top-full mt-2 right-0 min-w-40 p-2 bg-zinc-50/10 rounded-2xl ring-inset ring-1 ring-zinc-50/5 scale-90 isolate blur-sm 
-    opacity-0 invisible transition-[opacity,transform,filter] md:static md:flex md:items-center md:mt-0 md:opacity-100 md:blur-0 md:visible 
-    md:scale-100 backdrop-blur-2xl
+    @apply absolute top-full mt-3 right-0 min-w-44 p-2 bg-paper-card border-2 border-ink rounded-wobbly-md shadow-hard scale-90 isolate
+    opacity-0 invisible transition-[opacity,transform] md:static md:flex md:items-center md:mt-0 md:opacity-100
+    md:scale-100 md:visible
 }
 
 .navbar.active {
-    @apply opacity-100 scale-100 blur-0 visible
+    @apply opacity-100 scale-100 visible
 }
 
 .nav-link {
-    @apply grid items-center h-9 px-4 text-sm font-medium tracking-wide text-zinc-50/50 hover:text-zinc-50 transition-colors
+    @apply relative grid items-center h-10 px-4 font-hand text-lg text-ink-soft rounded-wobbly-sm transition-colors duration-100
+}
+
+.nav-link:hover {
+    @apply text-ink
+}
+
+.nav-link:hover::after {
+    content: "";
+    @apply absolute left-4 right-3 -bottom-0.5 h-[3px] opacity-60;
+    background-image: radial-gradient(circle at 50% 60%, currentColor 55%, transparent 58%);
+    background-size: 10px 3px;
+    background-repeat: repeat-x;
 }
 
 .nav-link.active {
-    @apply text-zinc-900 font-medium
+    @apply text-ink
 }
 
 .navbar .active-box {
-    @apply absolute bg-zinc-50 rounded-lg -z-10 transition-[top,left]
+    @apply absolute bg-postit border-2 border-ink rounded-wobbly-sm -rotate-1 -z-10 transition-[top,left,opacity]
 }
-
-
 
 
 
 /* Button */
 .btn {
-    @apply max-w-max h-9 flex justify-center items-center gap-2 px-4 rounded-xl font-medium text-xs md:text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color]
+    @apply max-w-max min-h-12 inline-flex justify-center items-center gap-2 px-5 font-hand text-lg md:text-xl whitespace-nowrap
+    bg-paper-card text-ink border-[3px] border-ink rounded-wobbly shadow-hard
+    transition-transform duration-100 select-none;
 }
 
-.btn-secondary {
-    @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80
+.btn:hover {
+    @apply bg-marker text-paper translate-x-[2px] translate-y-[2px] shadow-hard-sm
+}
+
+.btn:active {
+    @apply translate-x-[4px] translate-y-[4px] shadow-none
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    @apply opacity-60 cursor-not-allowed translate-x-0 translate-y-0 shadow-hard bg-paper-card text-ink
 }
 
 .btn .material-symbols-rounded {
-    @apply text-[18px]
+    @apply text-[1.1em]
 }
 
-.btn:has( .material-symbols-rounded) {
-    @apply pr-3
+.btn:has(.material-symbols-rounded) {
+    @apply pr-4
 }
 
 .btn-primary {
-    @apply h-11 bg-sky-400 text-zinc-950 hover:bg-sky-300 active:bg-sky-400
+    @apply bg-paper-card
+}
+
+.btn-secondary {
+    @apply bg-paper-muted
+}
+
+.btn-secondary:hover {
+    @apply bg-ballpoint text-paper
 }
 
 .btn-outline {
-    @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800
+    @apply border-dashed
 }
 
+.btn-ghost {
+    @apply border-transparent shadow-none bg-transparent
+}
 
+.btn-ghost:hover {
+    @apply bg-postit text-ink translate-x-0 translate-y-0 shadow-none
+}
+
+.btn-sm {
+    @apply min-h-10 px-3 text-lg border-2 shadow-hard-sm
+}
+
+.btn-lg {
+    @apply min-h-14 px-7 text-2xl md:text-3xl shadow-hard-lg
+}
 
 
 
 /* Text field */
 
 .label {
-    @apply block text-zinc-200 text-sm font-normal mb-2
+    @apply block font-hand text-lg text-ink mb-2
 }
 
 .text-field {
-    @apply block outline-none w-full px-3 py-3 text-sm bg-zinc-800 rounded-xl ring-1 ring-inset ring-transparent transition-shadow hover:ring-zinc-50/5
-    focus:ring-sky-400 focus:ring-2
+    @apply block outline-none w-full px-4 py-3 font-hand text-lg bg-paper-card text-ink
+    border-2 border-ink rounded-wobbly-sm transition-shadow
 }
 
 .text-field::placeholder {
-    @apply text-zinc-400
+    @apply text-ink-faint
+}
+
+.text-field:focus {
+    @apply border-ballpoint ring-2 ring-ballpoint/20
+}
+
+.text-field.is-error {
+    @apply border-marker ring-2 ring-marker/20
+}
+
+select.text-field {
+    @apply appearance-none cursor-pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232d2d2d' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.25rem;
+    padding-right: 2.75rem;
 }
 
 .input-box {
-    @apply bg-zinc-900/50 rounded-xl p-3 ring-1 ring-zinc-50/5
+    @apply bg-paper-card border-2 border-dashed border-ink rounded-wobbly-md p-4
 }
 
-/* Custom scrollbar for chat */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+/* CARD */
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    } 
+.card {
+    @apply relative bg-paper-card text-ink border-2 border-ink rounded-wobbly-md shadow-paper p-6 md:p-8
 }
 
-/* Project Empty Loader */
+.card-postit {
+    @apply bg-postit
+}
+
+.card-ink {
+    @apply bg-ink-night text-paper
+}
+
+.card-flush {
+    @apply p-0 overflow-hidden
+}
+
+.tape {
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 -rotate-2
+    bg-white/50 border border-ink/15;
+}
+
+.tack {
+    @apply absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-marker border-2 border-ink shadow-hard-sm
+}
+
+/* BADGE - sticky note tag */
+
+.badge {
+    @apply inline-flex items-center gap-1.5 h-8 px-3 font-hand text-base text-ink
+    bg-paper-deep border border-ink rounded-wobbly-sm whitespace-nowrap
+}
+
+.badge-postit {
+    @apply bg-postit -rotate-1
+}
+
+.badge-marker {
+    @apply bg-marker-soft
+}
+
+/* LOADING - sketched spinner */
+
 .loader {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    background: transparent;
-    border-radius: 50%;
-    box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.55);
-    border: 1px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.loader::before {
-    content: '';
-    position: absolute;
-    inset: 20px;
-    background: transparent;
-    border: 1px dashed#444;
-    border-radius: 50%;
-    box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25),
-        inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+    @apply relative w-28 h-28 grid place-items-center border-2 border-dashed border-ink rounded-wobbly bg-paper-card;
 }
 
 .loader::after {
     content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px dashed#444;
-    box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25),
-        inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+    @apply absolute inset-3 rounded-wobbly border-2 border-dashed border-ink/60;
+    animation: spin 2.4s linear infinite;
 }
 
 .loader span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    background: transparent;
-    transform-origin: top left;
-    animation: radar81 2s linear infinite;
-    border-top: 1px dashed #fff;
+    @apply absolute w-3 h-3 rounded-full bg-marker border-2 border-ink;
 }
 
-.loader span::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0284c7;
-    transform-origin: top left;
-    transform: rotate(-55deg);
-    filter: blur(30px) drop-shadow(20px 20px 20px seagreen);
-}
-
-@keyframes radar81 {
-    0% {
-        transform: rotate(0deg);
-    }
-
+@keyframes spin {
     100% {
         transform: rotate(360deg);
     }
 }
 
-/* Smooth transitions for read more */
-.transition-all {
-    transition: all 0.3s ease-in-out;
-}
-
-/* Custom scrollbar for chat */
-.scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-
-
 /* Blog Content Styles */
 .blog-content {
-    font-size: 1.125rem;
-    line-height: 1.8;
+    @apply font-hand text-lg md:text-xl leading-[1.9] text-ink
 }
 
 .blog-content h2 {
-    @apply text-2xl md:text-3xl font-bold text-white mt-12 mb-6;
+    @apply font-display text-ink text-2xl md:text-3xl mt-12 mb-6
+}
+
+.blog-content h3 {
+    @apply font-display text-ink text-xl md:text-2xl mt-10 mb-4
 }
 
 .blog-content p {
-    @apply text-zinc-300 mb-6;
+    @apply text-ink-soft mb-6
+}
+
+.blog-content a {
+    @apply text-ballpoint underline decoration-dashed underline-offset-4
+}
+
+.blog-content ul {
+    @apply list-disc pl-7 mb-6 text-ink-soft
+}
+
+.blog-content ol {
+    @apply list-decimal pl-7 mb-6 text-ink-soft
+}
+
+.blog-content blockquote {
+    @apply border-l-4 border-marker pl-5 my-6 italic text-ink-soft
 }
 
 .blog-content img.blog-image {
-    @apply w-full rounded-xl my-8;
+    @apply w-full border-2 border-ink rounded-wobbly-md my-8
 }
 
 .blog-content pre {
-    @apply bg-zinc-800 rounded-xl p-4 my-6 overflow-x-auto;
+    @apply bg-ink-night text-paper border-2 border-ink rounded-wobbly-sm p-4 my-6 overflow-x-auto
 }
 
 .blog-content code {
-    @apply text-sky-400 font-mono text-sm;
+    @apply font-mono text-[0.85em] text-marker
 }
 
 .blog-content pre code {
-    @apply text-zinc-300;
+    @apply text-paper
 }
 
 .imgimgimg>img {
-    @apply border-2 border-zinc-700 rounded-xl my-8;
+    @apply border-2 border-ink rounded-wobbly-md my-8
+}
+
+/* ============================================================
+   LEGACY BRIDGE
+   The canvas flipped from zinc-900 to paper, so inherited dark-theme
+   `text-white` would vanish. Text inside the few deliberately dark
+   surfaces is opted back to paper by the rules below.
+   Delete this block once no component renders text-white.
+   ============================================================ */
+
+.text-white {
+    color: rgb(45 45 45);
+}
+
+.bg-ink .text-white,
+.bg-ink-night .text-white,
+.bg-marker .text-white,
+.card-ink .text-white,
+.btn:hover .text-white {
+    color: rgb(253 251 247);
 }

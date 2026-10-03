@@ -1,24 +1,22 @@
-import Skeleton from './Skeleton';
+import Skeleton from "./Skeleton";
 
 const ProjectCardSkeleton = () => {
   return (
-    <div className="relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 ring-1 ring-inset ring-zinc-50/5">
-      <figure className="img-box aspect-square rounded-xl mb-4">
-        <Skeleton className="w-full h-full rounded-xl" />
+    <article className="card card-flush flex flex-col">
+      <figure className="border-b-2 border-ink">
+        <Skeleton width="100%" height="100%" className="aspect-square w-full" />
       </figure>
 
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex-1">
-          <Skeleton className="h-6 w-3/4 mb-3" />
-          <div className="flex flex-wrap items-center gap-2">
-            <Skeleton className="h-8 w-16 rounded-lg" />
-            <Skeleton className="h-8 w-20 rounded-lg" />
-            <Skeleton className="h-8 w-14 rounded-lg" />
-          </div>
+      <div className="p-5 flex flex-col gap-4">
+        <Skeleton width="75%" height="1.5rem" />
+
+        <div className="flex flex-wrap gap-2">
+          <Skeleton width="4rem" height="2rem" />
+          <Skeleton width="5rem" height="2rem" />
+          <Skeleton width="3.5rem" height="2rem" />
         </div>
-        <Skeleton className="w-11 h-11 rounded-lg" />
       </div>
-    </div>
+    </article>
   );
 };
 
