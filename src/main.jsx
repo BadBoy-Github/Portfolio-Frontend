@@ -9,9 +9,12 @@ import 'lenis/dist/lenis.css'
 
 // Components
 import App from './App.jsx'
+import ThemeProvider from './contexts/ThemeProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </StrictMode>,
 )

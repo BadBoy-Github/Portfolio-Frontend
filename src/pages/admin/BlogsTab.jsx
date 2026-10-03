@@ -381,14 +381,14 @@ const BlogsTab = ({ addToast }) => {
               addItem(field, input);
               setInput("");
             }}
-            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+            className="btn text-accent-secondary border-sky-400 hover:bg-accent-secondary hover:text-zinc-900"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
           </button>
           <button
             type="button"
             onClick={() => setForm({ ...form, [field]: [] })}
-            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+            className="btn text-error border-red-400 hover:bg-error hover:text-zinc-900"
           >
             <span className="material-symbols-rounded text-[16px]">
               refresh
@@ -404,16 +404,16 @@ const BlogsTab = ({ addToast }) => {
               onDragOver={(e) => handleTagDragOver(e, field, index)}
               onDrop={() => handleTagDrop(field, index)}
               onDragEnd={handleTagDragEnd}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-muted text-foreground font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-muted" : "hover:bg-muted"}`}
             >
-              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+              <span className="material-symbols-rounded text-[14px] text-muted-foreground cursor-grab active:cursor-grabbing">
                 drag_indicator
               </span>
               {item}
               <button
                 type="button"
                 onClick={() => removeItem(field, index)}
-                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+                className="material-symbols-rounded text-[14px] text-muted-foreground hover:text-error transition-colors"
               >
                 close
               </button>
@@ -426,12 +426,12 @@ const BlogsTab = ({ addToast }) => {
 
   return (
     <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-700/50 pt-8 pb-4">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-background/80 backdrop-blur-xl border-b border-border/50 pt-8 pb-4">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
-            Blogs <span className="text-sky-400">({items.length})</span>
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">
+            Blogs <span className="text-accent-secondary">({items.length})</span>
           </h2>
-          <p className="text-zinc-400 text-sm mt-1">
+          <p className="text-muted-foreground text-sm mt-1">
             Manage blog posts and articles
           </p>
         </div>
@@ -451,7 +451,7 @@ const BlogsTab = ({ addToast }) => {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-40 animate-pulse"
+              className="bg-card rounded-xl p-5 ring-1 ring-border/5 h-40 animate-pulse"
             />
           ))}
         </div>
@@ -467,7 +467,7 @@ const BlogsTab = ({ addToast }) => {
               onDragEnd={handleDragEnd}
               className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 text-muted-foreground mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
@@ -484,7 +484,7 @@ const BlogsTab = ({ addToast }) => {
                   </button>
                   <button
                     onClick={() => setDeleteTarget(item)}
-                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                    className="btn btn-outline !text-error hover:!bg-error/10 text-xs py-1 px-2"
                   >
                     <span className="material-symbols-rounded text-[16px]">
                       delete
@@ -607,9 +607,9 @@ const BlogsTab = ({ addToast }) => {
                   onDragOver={(e) => handleBlockDragOver(e, index)}
                   onDrop={() => handleBlockDrop(index)}
                   onDragEnd={handleBlockDragEnd}
-                  className={`flex items-center gap-2 p-2 rounded-lg bg-zinc-800/50 border border-zinc-700/50 cursor-grab active:cursor-grabbing ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+                  className={`flex items-center gap-2 p-2 rounded-lg bg-card/50 border border-border/50 cursor-grab active:cursor-grabbing ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
                 >
-                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing shrink-0">
+                  <span className="material-symbols-rounded text-muted-foreground cursor-grab active:cursor-grabbing shrink-0">
                     drag_indicator
                   </span>
                   {block.type === "img" ? (
@@ -630,13 +630,13 @@ const BlogsTab = ({ addToast }) => {
                       }
                     />
                   )}
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 border border-zinc-700 rounded px-1.5 py-0.5">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground border border-border rounded px-1.5 py-0.5">
                     {block.type}
                   </span>
                   <button
                     type="button"
                     onClick={() => removeBlock(index)}
-                    className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+                    className="btn text-error border-red-400 hover:bg-error hover:text-zinc-900"
                   >
                     <span className="material-symbols-rounded text-[16px]">
                       close
@@ -645,7 +645,7 @@ const BlogsTab = ({ addToast }) => {
                 </div>
               ))}
               {form.content.length === 0 && (
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-muted">
                   No content blocks yet. Add a heading, paragraph, or image
                   above.
                 </p>
@@ -679,3 +679,4 @@ const BlogsTab = ({ addToast }) => {
 };
 
 export default BlogsTab;
+

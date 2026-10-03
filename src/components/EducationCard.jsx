@@ -17,39 +17,41 @@ const EducationCard = ({
         <a
           href={instLink}
           target="_blank"
-          className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -end-5 ring-8 ring-zinc-900 cursor-pointer hover:ring-zinc-600/50 transition-all duration-300"
+          className="absolute flex items-center justify-center w-10 h-10 bg-muted rounded-full -end-5 ring-8 ring-background cursor-pointer hover:ring-terminal-green/50 transition-all duration-300"
         >
           <img
-            className="rounded-full shadow-lg bg-red-500/0"
+            className="rounded-full shadow-lg bg-error/0"
             src={instLogo}
             alt={instName}
             loading="lazy"
           />
         </a>
-        <div className="items-center justify-between p-4 sm:p-5 bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 rounded-2xl sm:flex ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] shadow-xl">
-          <div className="text-sm font-medium text-zinc-300 w-full">
+        <div className="items-center justify-between card p-4 sm:p-5 shadow-xl sm:flex">
+          <div className="text-sm font-medium text-muted-foreground w-full">
             <div className="flex gap-1 items-center">
-              <p className="group-hover:text-sky-400 transition-colors duration-300">
+              <p className="group-hover:text-accent-secondary transition-colors duration-300">
                 {name}
                 {"  "}
               </p>
-              <span className="bg-zinc-600 text-zinc-300 text-xs font-normal ml-1 me-2 px-2.5 py-0.5 rounded-md group-hover:text-white transition-all duration-300">
+              <span className="bg-muted text-muted-foreground text-xs font-normal ml-1 me-2 px-2.5 py-0.5 rounded-md group-hover:text-foreground transition-all duration-300 font-mono">
                 {perc}
               </span>
             </div>
-            <p className="font-semibold text-zinc-200 mt-2">{instName}</p>
-            <div className=" mt-2 w-[90%]">
-              <p className=" text-sm font-normal text-zinc-300">{desc}</p>
-              <div className="flex items-center justify-start text-zinc-400 w-full gap-2 mt-4">
+            <p className="font-semibold text-foreground mt-2 font-display">
+              {instName}
+            </p>
+            <div className="mt-2 w-[90%]">
+              <p className="text-sm font-normal text-muted-foreground">{desc}</p>
+              <div className="flex items-center justify-start text-muted-foreground w-full gap-2 mt-4">
                 <TbBulb
                   size={20}
-                  className="hidden md:flex items-center justify-center group-hover:text-yellow-500 group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                  className="hidden md:flex items-center justify-center group-hover:text-gold group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
                 />
                 <div className="flex items-center flex-wrap gap-2">
                   {skills.map((skill, index) => (
                     <span
                       key={index}
-                      className="text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium"
+                      className="text-xs px-2 py-1 rounded-md bg-muted text-foreground font-mono"
                     >
                       {skill}
                     </span>
@@ -58,7 +60,7 @@ const EducationCard = ({
               </div>
             </div>
           </div>
-          <time className="mb-1 text-xs font-normal text-zinc-400  sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
+          <time className="mb-1 text-xs font-normal text-muted-foreground sm:order-last sm:mb-0 sm:w-fit sm:text-center w-full">
             {year}
           </time>
         </div>

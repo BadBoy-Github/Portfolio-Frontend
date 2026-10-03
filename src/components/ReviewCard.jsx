@@ -10,12 +10,18 @@ const ReviewCard = ({
     const stars = Array.from({ length: 5 }, (_, i) => i < Number(rating));
 
     return (
-      <div className="bg-zinc-800 p-5 rounded-xl shadow-xl min-w-[320px] flex flex-col lg:min-w-[420px] group transition-all duration-300">
-        <div className="flex items-center gap-1 mb-3">
+      <div className="card border-t-2 border-accent-tertiary/50 hover:translate-y-[-4px] hover:shadow-glow-gold transition-all duration-300 p-5 min-w-[320px] flex flex-col lg:min-w-[420px] group">
+        <div className="mb-6 relative">
+          <span className="quote-mark absolute -top-8 -left-2 opacity-20">
+            &ldquo;
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1 mb-3 mt-2">
           {stars.map((filled, key) => (
             <span
               key={key}
-              className={`material-symbols-rounded text-[18px] cursor-pointer group-hover:scale-110 transition-all duration-300 ${filled ? 'text-yellow-600 group-hover:text-yellow-400' : 'text-zinc-600'}`}
+              className={`material-symbols-rounded text-[18px] cursor-pointer group-hover:scale-110 transition-all duration-300 ${filled ? 'text-accent-tertiary group-hover:text-gold-light' : 'text-muted-foreground/50'}`}
               style={filled ? { fontVariationSettings: '"FILL" 1' } : undefined}
             >
               star
@@ -23,7 +29,9 @@ const ReviewCard = ({
           ))}
         </div>
 
-        <p className="text-zinc-400 mb-8 group-hover:text-zinc-200 transition-all duration-300">{content}</p>
+        <p className="text-muted-foreground mb-8 group-hover:text-foreground transition-colors duration-300 body-text">
+          {content}
+        </p>
 
         <div className="flex items-center gap-2 mt-auto">
           <figure className="img-box rounded-lg">
@@ -38,9 +46,13 @@ const ReviewCard = ({
           </figure>
 
           <div>
-            <p>{name}</p>
+            <p className="font-display font-semibold text-foreground">
+              {name}
+            </p>
 
-            <p className="text-xs text-zinc-400 tracking-wider">{company}</p>
+            <p className="text-xs text-muted-foreground tracking-wider font-mono">
+              {company}
+            </p>
           </div>
         </div>
       </div>

@@ -31,8 +31,8 @@ const HomepageProjects = () => {
     return (
       <section id="project" className="pt-20">
         <div className="container">
-          <h2 className="headline-2">My project highlights</h2>
-          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+          <h2 className="headline-2">My project <span className="gold-text">highlights</span></h2>
+          <p className="body-text mt-3 mb-8 max-w-[50ch]">
             Explore the innovative projects I&apos;ve built
           </p>
           <div className="flex items-center justify-center py-10">
@@ -47,11 +47,11 @@ const HomepageProjects = () => {
     return (
       <section id="project" className="pt-20">
         <div className="container">
-          <h2 className="headline-2">My project highlights</h2>
-          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+          <h2 className="headline-2">My project <span className="gold-text">highlights</span></h2>
+          <p className="body-text mt-3 mb-8 max-w-[50ch]">
             Explore the innovative projects I&apos;ve built
           </p>
-          <p className="text-red-400">Failed to load projects.</p>
+          <p className="text-error">Failed to load projects.</p>
         </div>
       </section>
     );
@@ -74,8 +74,8 @@ const HomepageProjects = () => {
   return (
     <section id="project" className="pt-20">
       <div className="container">
-        <h2 className="headline-2">My project highlights</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+        <h2 className="headline-2">My project <span className="gold-text">highlights</span></h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
           Explore the innovative projects I&apos;ve built
         </p>
 
@@ -95,7 +95,7 @@ const HomepageProjects = () => {
           ))}
         </div>
 
-        <div className="bg-zinc-500 w-full h-0.5 mb-8 rounded-lg flex lg:hidden"></div>
+        <div className="bg-border w-full h-0.5 mb-8 rounded-lg flex lg:hidden"></div>
 
         <div className="grid gap-x-4 gap-y-5 grid-cols-[repeat(auto-fill,_minmax(280px,_1fr))]">
           {displayProjects.map((project, index) => (
@@ -116,25 +116,25 @@ const HomepageProjects = () => {
           {remainingCount > 0 && (
             <Link
               to="/projects"
-              className="relative p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] cursor-pointer flex flex-col items-center justify-center min-h-[280px]"
+              className="relative p-4 rounded-2xl shadow-xl bg-card hover:bg-card/80 active:bg-card/70 ring-1 ring-inset ring-border/50 transition-all group hover:scale-[101%] cursor-pointer flex flex-col items-center justify-center min-h-[280px] card"
             >
-              <div className="aspect-square rounded-lg mb-4 bg-zinc-700/30 flex items-center justify-center w-full">
-                <span className="material-symbols-rounded text-6xl text-sky-400">
+              <div className="aspect-square rounded-lg mb-4 bg-muted flex items-center justify-center w-full">
+                <span className="material-symbols-rounded text-6xl text-accent-secondary">
                   add_circle
                 </span>
               </div>
 
               <div className="flex items-center justify-between gap-4 w-full">
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-accent-secondary transition-colors">
                     Show More Projects
                   </h3>
-                  <div className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg w-fit">
+                  <div className="h-8 text-sm text-muted-foreground bg-muted/50 grid items-center px-3 rounded-lg w-fit font-mono">
                     View {remainingCount} more projects
                   </div>
                 </div>
 
-                <div className="w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0">
+                <div className="w-11 h-11 rounded-lg grid place-items-center bg-accent-secondary text-accent-foreground shrink-0">
                   <span className="material-symbols-rounded">expand_more</span>
                 </div>
               </div>

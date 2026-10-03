@@ -35,10 +35,10 @@ const ScrollToTopButton = () => {
           isVisible
             ? "opacity-100 scale-100 translate-x-0"
             : "opacity-0 scale-75 translate-x-8"
-        } bg-sky-400 text-zinc-900 hover:bg-sky-300 shadow-lg`}
+        } bg-gradient-electric text-accent-foreground hover:brightness-110 shadow-glow-blue ring-1 ring-gold/30`}
         title="Scroll to top"
       >
-        <IoArrowUp className="w-2.5 h-2.5" />
+        <IoArrowUp className="w-3 h-3" />
       </button>
     </>
   );

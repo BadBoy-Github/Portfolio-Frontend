@@ -89,8 +89,8 @@ const Welcome = () => {
 
   return (
     <section id="welcome" className="section">
-      <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl">
-        <p className="text-zinc-300 mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
+      <div className="bg-card/50 p-7 rounded-2xl md:p-12 shadow-xl">
+        <p className="text-muted-foreground mb-4 md:mb-8 md:text-xl bd:max-w-[60ch]">
           Welcome! I&apos;m Elayabarathi M V, a passionate frontend and software
           developer dedicated to building responsive, scalable, and user-focused
           digital solutions. I specialize in transforming ideas into clean,
@@ -110,7 +110,7 @@ const Welcome = () => {
               <div className="flex items-center md:mb-2">
                 <span className="text-2xl font-semibold md:text-4xl">
                   {loading ? (
-                    <span className="inline-block w-12 h-8 bg-zinc-700/50 rounded animate-pulse"></span>
+                    <span className="inline-block w-12 h-8 bg-muted/50 rounded animate-pulse"></span>
                   ) : (
                     <CountUp
                       from={0}

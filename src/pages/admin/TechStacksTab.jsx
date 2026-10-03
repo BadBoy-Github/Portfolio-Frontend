@@ -197,10 +197,10 @@ const TechStacksTab = ({ addToast }) => {
 
   return (
      <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900 pt-8 pb-4 border-b border-zinc-700">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-background pt-8 pb-4 border-b border-border">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Tech Stacks <span className="text-sky-400">({skills.length})</span></h2>
-          <p className="text-zinc-400 text-sm mt-1">
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">Tech Stacks <span className="text-accent-secondary">({skills.length})</span></h2>
+          <p className="text-muted-foreground text-sm mt-1">
             Manage your technical skills
           </p>
         </div>
@@ -221,7 +221,7 @@ const TechStacksTab = ({ addToast }) => {
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-24 animate-pulse"
+              className="bg-card rounded-xl p-5 ring-1 ring-border/5 h-24 animate-pulse"
             />
           ))}
         </div>
@@ -250,7 +250,7 @@ const TechStacksTab = ({ addToast }) => {
                     </button>
                     <button
                       onClick={() => setDeleteTarget(item)}
-                      className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                      className="btn btn-outline !text-error hover:!bg-error/10 text-xs py-1 px-2"
                     >
                       <span className="material-symbols-rounded text-[16px]">
                         delete
@@ -259,7 +259,7 @@ const TechStacksTab = ({ addToast }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-rounded text-zinc-400 cursor-grab active:cursor-grabbing">
+                  <span className="material-symbols-rounded text-muted-foreground cursor-grab active:cursor-grabbing">
                     drag_indicator
                   </span>
                   <div className="flex-1">
@@ -276,7 +276,7 @@ const TechStacksTab = ({ addToast }) => {
               </div>
             ))}
             {skills.length === 0 && (
-              <p className="text-zinc-400 col-span-full">No items found.</p>
+              <p className="text-muted-foreground col-span-full">No items found.</p>
             )}
           </div>
         </>
@@ -341,3 +341,4 @@ const TechStacksTab = ({ addToast }) => {
 };
 
 export default TechStacksTab;
+

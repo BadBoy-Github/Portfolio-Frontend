@@ -28,8 +28,12 @@ const Skills = () => {
   if (loading) {
     return (
       <section className="section mb-20" id="skills">
-        <h2 className="headline-2 ">Essential Tech Stacks I use</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
+        <span className="section-label mb-4">
+          <span className="dot"></span>
+          <span>Tech Stacks</span>
+        </span>
+        <h2 className="headline-2">Essential <span className="gold-text">Tech Stacks</span> I use</h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
           Discover the powerful tools and technologies I use
         </p>
         <div className="flex items-center justify-center py-10">
@@ -42,37 +46,45 @@ const Skills = () => {
   if (error) {
     return (
       <section className="section mb-20" id="skills">
-        <h2 className="headline-2 ">Essential Tech Stacks I use</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
+        <span className="section-label mb-4">
+          <span className="dot"></span>
+          <span>Tech Stacks</span>
+        </span>
+        <h2 className="headline-2">Essential <span className="gold-text">Tech Stacks</span> I use</h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
           Discover the powerful tools and technologies I use
         </p>
-        <p className="text-red-400">Failed to load skills data.</p>
+        <p className="text-error">Failed to load skills data.</p>
       </section>
     );
   }
 
   return (
     <section className="section mb-20" id="skills">
-        <h2 className="headline-2 ">Essential Tech Stacks I use</h2>
+      <span className="section-label mb-4">
+        <span className="dot"></span>
+        <span>Tech Stacks</span>
+      </span>
+      <h2 className="headline-2">Essential <span className="gold-text">Tech Stacks</span> I use</h2>
 
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-          Discover the powerful tools and technologies I use
-        </p>
+      <p className="body-text mt-3 mb-8 max-w-[50ch]">
+        Discover the powerful tools and technologies I use
+      </p>
 
-        <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
-          {skillItem
-            .slice()
-            .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-            .map(({ imgSrc, label, desc }, key) => (
-              <SkillCard
-                imgSrc={imgSrc}
-                label={label}
-                desc={desc}
-                key={key}
-                classes=""
-              />
-            ))}
-        </div>
+      <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
+        {skillItem
+          .slice()
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+          .map(({ imgSrc, label, desc }, key) => (
+            <SkillCard
+              imgSrc={imgSrc}
+              label={label}
+              desc={desc}
+              key={key}
+              classes=""
+            />
+          ))}
+      </div>
     </section>
   );
 };

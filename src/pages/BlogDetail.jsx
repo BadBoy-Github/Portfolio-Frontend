@@ -38,7 +38,7 @@ const BlogDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-background pt-24 pb-16 flex items-center justify-center">
         <div className="loader mb-4"><span></span></div>
       </div>
     );
@@ -46,10 +46,10 @@ const BlogDetail = () => {
 
   if (error || !blog) {
     return (
-      <div className="min-h-screen bg-zinc-900 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-4">Blog Not Found</h1>
-          <Link to="/blogs" className="text-sky-400 hover:underline">
+          <h1 className="text-3xl font-bold text-foreground mb-4">Blog Not Found</h1>
+          <Link to="/blogs" className="text-accent-secondary hover:underline">
             Go back to all blogs
           </Link>
         </div>
@@ -82,7 +82,7 @@ const BlogDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
+    <div className="min-h-screen bg-background pt-24 pb-16">
       <Helmet>
         <title>{blog.title} | Elayabarathi M V Blog</title>
         <meta name="description" content={blog.subtitle || ""} />
@@ -126,24 +126,26 @@ const BlogDetail = () => {
       <div className="container mx-auto px-4">
         <Link
           to="/blogs"
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-sky-400 transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent-secondary transition-colors mb-8"
         >
           <IoArrowBack className="size-5" />
           <span>Back to All Blogs</span>
         </Link>
 
-        <article className="mx-auto ">
-          <header className="mb-8 ">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 ">
+        <article className="mx-auto">
+          <header className="mb-8">
+            <h1 className="headline-1 text-foreground">
               {blog.title}
             </h1>
-            <p className="text-xl text-zinc-400 mb-4">{blog.subtitle}</p>
+            <p className="body-text text-muted-foreground mt-3 mb-4 max-w-[50ch]">
+              {blog.subtitle}
+            </p>
 
             {blog.link && (
                 <div className="flex items-center gap-2 my-4 w-fit">
                   <button
                     onClick={handleShare}
-                    className="flex items-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+                    className="flex items-center gap-2 px-4 py-3 bg-muted hover:bg-border text-muted-foreground hover:text-foreground rounded-lg transition-colors font-mono"
                     title="Share this blog"
                   >
                     <IoShareSocial className="w-4 h-4" />
@@ -151,10 +153,10 @@ const BlogDetail = () => {
 
                   <button
                     onClick={handleCopy}
-                    className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors ${
+                    className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors border border-border font-mono ${
                       copySuccess
-                        ? 'bg-sky-400 text-zinc-900'
-                        : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                        ? 'bg-accent-secondary text-background'
+                        : 'bg-muted hover:bg-accent-secondary text-muted-foreground hover:text-background'
                     }`}
                     title="Copy link"
                   >
@@ -164,7 +166,7 @@ const BlogDetail = () => {
                     href={blog.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-electric text-accent-foreground rounded-lg hover:brightness-110 transition-all shadow-glow-blue"
                   >
                     <span>View Project</span>
                     <IoArrowBack className="size-4 rotate-180" />
@@ -172,16 +174,16 @@ const BlogDetail = () => {
                 </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 text-zinc-500">
-              <span>{blog.date}</span>
+            <div className="flex flex-wrap items-center gap-4 text-muted-foreground font-mono">
+              <span className="text-sm">{blog.date}</span>
               <span>•</span>
-              <span>{blog.readTime}</span>
+              <span className="text-sm">{blog.readTime}</span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 mt-4">
               <button
                 onClick={handleShare}
-                className="flex items-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-3 bg-muted hover:bg-border text-muted-foreground hover:text-foreground rounded-lg transition-colors font-mono"
                 title="Share this blog"
               >
                 <IoShareSocial className="w-4 h-4" />
@@ -189,10 +191,10 @@ const BlogDetail = () => {
 
               <button
                 onClick={handleCopy}
-                className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors border border-border font-mono ${
                   copySuccess
-                    ? 'bg-sky-400 text-zinc-900'
-                    : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white'
+                    ? 'bg-accent-secondary text-background'
+                    : 'bg-muted hover:bg-accent-secondary text-muted-foreground hover:text-background'
                 }`}
                 title="Copy link"
               >
@@ -204,7 +206,7 @@ const BlogDetail = () => {
               {(blog.tags || []).map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-sky-600/20 text-sky-400 rounded-full text-sm"
+                  className="px-3 py-1 bg-terminal-green/20 text-terminal-green rounded-full text-sm font-mono"
                 >
                   {tag}
                 </span>
@@ -219,10 +221,10 @@ const BlogDetail = () => {
             className="w-full rounded-xl mb-8"
           />
 
-          <div className="my-8 bg-zinc-700 h-1 w-full"></div>
+          <div className="rule-line my-8"></div>
 
           <div
-            className="prose prose-invert prose-lg max-w-none blog-content imgimgimg"
+            className="prose prose-invert prose-lg max-w-none blog-content"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
 
@@ -231,39 +233,39 @@ const BlogDetail = () => {
             url={`https://elayabarathimv.vercel.app/blog/${blog.id}`}
           />
 
-          <div className="mt-16 relative">
-            <div className="bg-zinc-800/50 border border-zinc-700/50 rounded-2xl p-6 md:p-8 text-center">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="material-symbols-rounded text-sky-400 text-3xl">mail</span>
-                <span className="material-symbols-rounded text-sky-400 text-3xl">chat</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                Have a project in mind?
-              </h2>
-              <p className="text-zinc-400 max-w-2xl mx-auto mb-6">
-                I'd love to hear about your ideas and collaborate on something amazing. Reach out and let's build great things together.
-              </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sky-400 text-zinc-900 rounded-lg hover:bg-sky-300 transition-colors"
-              >
-                <span>Get In Touch</span>
-                <IoArrowBack className="size-4 rotate-180" />
-              </Link>
+          <div className="mt-16 relative card p-6 md:p-8 text-center border border-border">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="material-symbols-rounded text-accent-secondary text-3xl">mail</span>
+              <span className="material-symbols-rounded text-accent-secondary text-3xl">chat</span>
             </div>
+            <h2 className="headline-2 text-foreground">
+              Have a <span className="gold-text">project</span> in mind?
+            </h2>
+            <p className="body-text text-muted-foreground max-w-2xl mx-auto mb-6">
+              I'd love to hear about your ideas and collaborate on something amazing. Reach out and let's build great things together.
+            </p>
+            <Link
+              to="/contact"
+              className="btn btn-primary"
+            >
+              <span>Get In Touch</span>
+              <IoArrowBack className="size-4 rotate-180" />
+            </Link>
           </div>
         </article>
 
         {otherBlogs.length != 0 && (
           <div className="mt-16 relative">
-            <h2 className="text-2xl font-bold text-white mb-6">Other Blogs</h2>
+            <h2 className="headline-2 text-foreground">
+              Other <span className="gold-text">Blogs</span>
+            </h2>
             <button
               onClick={() =>
                 document
                   .getElementById("other-blogs-scroll")
                   .scrollBy({ left: -672, behavior: "smooth" })
               }
-              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 bg-muted/90 hover:bg-border text-foreground p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
               aria-label="Scroll left"
             >
               <IoChevronBack className="size-6" />
@@ -274,7 +276,7 @@ const BlogDetail = () => {
                   .getElementById("other-blogs-scroll")
                   .scrollBy({ left: 672, behavior: "smooth" })
               }
-              className="absolute -right-6 top-1/2 -translate-y-1/2 transition-all duration-300 z-10 bg-zinc-800/90 hover:bg-zinc-800 text-white p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 bg-muted/90 hover:bg-border text-foreground p-3 rounded-full shadow-lg hidden md:flex items-center justify-center"
               aria-label="Scroll right"
             >
               <IoChevronForward className="size-6" />
@@ -287,7 +289,7 @@ const BlogDetail = () => {
                 <Link
                   key={otherBlog.id}
                   to={`/blog/${otherBlog.id}`}
-                  className="w-[280px] md:w-[320px] flex-shrink-0 bg-zinc-800 rounded-xl overflow-hidden hover:bg-zinc-700 transition-colors group"
+                  className="w-[280px] md:w-[320px] flex-shrink-0 card rounded-xl overflow-hidden hover:shadow-glow-gold transition-all group"
                 >
                   <img
                     src={otherBlog.imageSrc}
@@ -296,10 +298,10 @@ const BlogDetail = () => {
                     className="w-full h-40 object-cover"
                   />
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold text-white group-hover:text-sky-400 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-display font-semibold text-foreground group-hover:text-accent-secondary transition-colors line-clamp-2">
                       {otherBlog.title}
                     </h3>
-                    <p className="text-sm text-zinc-400 mt-2">
+                    <p className="text-sm text-muted-foreground mt-2">
                       {otherBlog.readTime}
                     </p>
                   </div>

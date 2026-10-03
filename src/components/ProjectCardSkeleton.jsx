@@ -2,7 +2,7 @@ import Skeleton from './Skeleton';
 
 const ProjectCardSkeleton = () => {
   return (
-    <div className="relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 ring-1 ring-inset ring-zinc-50/5">
+    <div className="relative cursor-pointer p-4 rounded-2xl shadow-xl bg-card ring-1 ring-inset ring-border/50 card">
       <figure className="img-box aspect-square rounded-xl mb-4">
         <Skeleton className="w-full h-full rounded-xl" />
       </figure>

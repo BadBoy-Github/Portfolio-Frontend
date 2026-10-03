@@ -91,18 +91,21 @@ const RightSideNav = ({ sections }) => {
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-500 ease-out ${
+            className={`relative w-8 h-8 flex items-center justify-center rounded-full transition-all duration-500 ease-out ${
               isIconVisible
                 ? 'opacity-100 scale-100 translate-x-0'
                 : 'opacity-0 scale-75 translate-x-8'
             } ${
               activeSection === section.id
-                ? "bg-sky-400 text-zinc-900 scale-110 shadow-lg"
-                : "bg-zinc-800/80 text-zinc-400 hover:bg-zinc-700/80 hover:text-zinc-300"
+                ? "bg-gradient-electric text-accent-foreground scale-110 shadow-glow-blue"
+                : "bg-muted text-muted-foreground hover:bg-terminal-green hover:text-background"
             }`}
             title={section.label}
           >
             <IconComponent className="w-2.5 h-2.5" />
+            {activeSection === section.id && (
+              <span className="absolute -bottom-1 w-1.5 h-1.5 rounded-full bg-gold shadow-glow-gold"></span>
+            )}
           </button>
         );
       })}

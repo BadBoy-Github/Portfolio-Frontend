@@ -31,7 +31,7 @@ const FeaturedProjectGrid = () => {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {[1, 2].map((i) => (
-          <div key={i} className="bg-zinc-800 rounded-xl animate-pulse h-64"></div>
+          <div key={i} className="bg-muted rounded-xl animate-pulse h-64"></div>
         ))}
       </div>
     );
@@ -39,7 +39,7 @@ const FeaturedProjectGrid = () => {
 
   if (error) {
     return (
-      <div className="text-red-400 text-center py-6">Failed to load featured projects.</div>
+      <div className="text-error text-center py-6">Failed to load featured projects.</div>
     );
   }
 

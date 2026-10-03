@@ -7,7 +7,7 @@ const Skeleton = ({
   borderRadius = '0.375rem',
   animation = true
 }) => {
-  const baseClasses = 'bg-zinc-700 relative overflow-hidden';
+  const baseClasses = 'bg-muted relative overflow-hidden';
   const animationClasses = animation ? 'animate-pulse' : '';
 
   return (
@@ -20,7 +20,7 @@ const Skeleton = ({
       }}
     >
       {animation && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-600 to-transparent animate-shimmer" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-muted-foreground/30 to-transparent animate-shimmer" />
       )}
     </div>
   );

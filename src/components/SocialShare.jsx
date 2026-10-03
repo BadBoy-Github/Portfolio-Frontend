@@ -31,10 +31,10 @@ const SocialShare = ({ title, url }) => {
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-6 pt-6 border-t border-zinc-700">
+    <div className="flex items-center justify-center gap-2 mt-6 pt-6 border-t border-border">
       <button
         onClick={handleShare}
-        className="flex items-center gap-2 px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white rounded-lg transition-colors"
+        className="flex items-center gap-2 px-3 py-2 bg-accent-secondary hover:bg-accent-secondary/90 text-accent-foreground rounded-lg transition-colors"
         title="Share this blog"
       >
         <IoShareSocial className="w-4 h-4" />
@@ -43,7 +43,11 @@ const SocialShare = ({ title, url }) => {
 
       <button
         onClick={handleCopy}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white"
+        className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors border border-border ${
+          copySuccess
+            ? 'bg-accent-secondary text-accent-foreground'
+            : 'bg-muted hover:bg-accent-secondary text-muted-foreground hover:text-accent-foreground'
+        }`}
         title="Copy link"
       >
         <IoCopy className="w-4 h-4" />

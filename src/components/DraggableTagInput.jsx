@@ -68,14 +68,14 @@ const DraggableTagInput = ({ label, placeholder, value, onChange }) => {
             addItem(input);
             setInput("");
           }}
-          className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+          className="btn text-accent-secondary border-accent-secondary hover:bg-accent-secondary hover:text-accent-foreground"
         >
           <span className="material-symbols-rounded text-[16px]">add</span>
         </button>
         <button
           type="button"
           onClick={() => onChange([])}
-          className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+                     className="btn text-error border-error hover:bg-error hover:text-accent-foreground"
         >
           <span className="material-symbols-rounded text-[16px]">
             refresh
@@ -91,16 +91,16 @@ const DraggableTagInput = ({ label, placeholder, value, onChange }) => {
             onDragOver={(e) => handleDragOver(e, index)}
             onDrop={(e) => handleDrop(e, index)}
             onDragEnd={(e) => handleDragEnd(e)}
-            className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+            className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-muted text-foreground font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-accent-secondary bg-muted/80" : "hover:bg-border"}`}
           >
-            <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+            <span className="material-symbols-rounded text-[14px] text-muted-foreground cursor-grab active:cursor-grabbing">
               drag_indicator
             </span>
             {item}
             <button
               type="button"
               onClick={() => removeItem(index)}
-              className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+               className="material-symbols-rounded text-[14px] text-muted-foreground hover:text-error transition-colors"
             >
               close
             </button>

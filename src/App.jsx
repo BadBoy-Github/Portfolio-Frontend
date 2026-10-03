@@ -49,7 +49,9 @@ const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 // Loading component for Suspense fallback
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-zinc-900"></div>
+  <div className="min-h-screen bg-background flex items-center justify-center">
+    <div className="loader"><span></span></div>
+  </div>
 );
 
 const ProtectedRoute = ({ children }) => {
@@ -234,7 +236,13 @@ const App = () => {
     <ErrorBoundary>
       <HelmetProvider>
         <Router>
-          <AppInner />
+          <div className="min-h-screen bg-background text-foreground relative">
+            <div className="fixed inset-0 dot-pattern opacity-[0.015] pointer-events-none z-0"></div>
+            <div className="crt-overlay fixed inset-0 pointer-events-none z-0"></div>
+            <div className="relative z-10 min-h-screen">
+              <AppInner />
+            </div>
+          </div>
         </Router>
       </HelmetProvider>
     </ErrorBoundary>

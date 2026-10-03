@@ -245,10 +245,10 @@ const Contact = () => {
       <div className=" lg:grid lg:grid-cols-2 lg:items-stretch">
         <div className="mb-12 lg:mb-0 lg:flex lg:flex-col">
           <h2 className="headline-2 lg:max-w-[12ch]">
-            Contact me for collaboration
+            Contact me for <span className="gold-text">collaboration</span>
           </h2>
 
-          <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] lg:max-w-[30ch]">
+          <p className="text-muted-foreground mt-3 mb-8 max-w-[50ch] lg:max-w-[30ch]">
             Reach out today to discuss your project needs or learning plans &
             start collaborating on something amazing!
           </p>
@@ -260,8 +260,8 @@ const Contact = () => {
                 href={href}
                 target="_blank"
                 aria-label={`Visit my ${alt} profile`}
-                className="w-12 h-12 grid place-items-center ring-inset ring-2 ring-zinc-50/5 rounded-lg transition-[background-color,color]
-                                hover:bg-zinc-50 hover:text-zinc-950 active:bg-zinc-50/80 duration-500 text-2xl"
+                className="w-12 h-12 grid place-items-center ring-inset ring-2 ring-border/20 rounded-lg transition-[background-color,color]
+                                hover:bg-terminal-green hover:text-background active:bg-terminal-green/80 duration-500 text-2xl text-terminal-green"
               >
                 {icon}
               </a>
@@ -285,10 +285,10 @@ const Contact = () => {
                 onBlur={handleBlur}
                 autoComplete="name"
                 placeholder="Enter your name"
-                className={`text-field ${errors.name ? "ring-2 ring-red-500" : ""}`}
+                className={`input-field ${errors.name ? "error" : ""}`}
               />
               {errors.name && (
-                <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+                <p className="text-error text-xs mt-1">{errors.name}</p>
               )}
             </div>
 
@@ -306,10 +306,10 @@ const Contact = () => {
                 onBlur={handleBlur}
                 autoComplete="email"
                 placeholder="Enter your email"
-                className={`text-field ${errors.email ? "ring-2 ring-red-500" : ""}`}
+                className={`input-field ${errors.email ? "error" : ""}`}
               />
               {errors.email && (
-                <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+                <p className="text-error text-xs mt-1">{errors.email}</p>
               )}
             </div>
           </div>
@@ -328,10 +328,10 @@ const Contact = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Enter subject"
-                className={`text-field ${errors.subject ? "ring-2 ring-red-500" : ""}`}
+                className={`input-field ${errors.subject ? "error" : ""}`}
               />
               {errors.subject && (
-                <p className="text-red-400 text-xs mt-1">{errors.subject}</p>
+                <p className="text-error text-xs mt-1">{errors.subject}</p>
               )}
             </div>
 
@@ -345,7 +345,7 @@ const Contact = () => {
                 id="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="text-field"
+                className="input-field"
               >
                 {categories.map((cat) => (
                   <option key={cat.value} value={cat.value}>
@@ -368,16 +368,16 @@ const Contact = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder="Enter your message"
-              className={`text-field resize-y min-h-32 max-h-80 ${errors.message ? "ring-2 ring-red-500" : ""}`}
+              className={`input-field resize-y min-h-32 max-h-80 ${errors.message ? "error" : ""}`}
             ></textarea>
             {errors.message && (
-              <p className="text-red-400 text-xs mt-1">{errors.message}</p>
+              <p className="text-error text-xs mt-1">{errors.message}</p>
             )}
           </div>
 
           {/* Status Messages */}
           {status.error && (
-            <div className="mb-4 p-3 bg-red-500/20 text-red-400 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-error/20 text-error rounded-lg text-sm border border-error/30">
               ✗ {status.error}
             </div>
           )}
@@ -393,18 +393,18 @@ const Contact = () => {
       </div>
 
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 md:p-8">
+        <div className="bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-gold/30 transition-all duration-200">
           <div className="flex items-start gap-4">
-            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/15 text-sky-400 shrink-0">
+            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-gold/15 text-gold shrink-0">
               <span className="material-symbols-rounded text-3xl">
                 rate_review
               </span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 Enjoyed working with me?
               </h3>
-              <p className="text-zinc-400 text-sm mb-4">
+              <p className="text-muted-foreground text-sm mb-4">
                 Your review helps others understand what it is like to
                 collaborate with me. It only takes a minute and means a lot.
               </p>
@@ -419,21 +419,21 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-6 md:p-8">
+        <div className="bg-card border border-border rounded-2xl p-6 md:p-8 hover:border-gold/30 transition-all duration-200">
           <div className="flex items-start gap-4">
-            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-sky-500/15 text-sky-400 shrink-0">
+            <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-xl bg-gold/15 text-gold shrink-0">
               <span className="material-symbols-rounded text-3xl">article</span>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold text-foreground mb-2">
                 From the Blog
               </h3>
-              <p className="text-zinc-400 text-sm mb-4">
+              <p className="text-muted-foreground text-sm mb-4">
                 Explore more about my work, thoughts, and latest updates.
               </p>
 
               <Link
-              to="/blogs"
+                to="/blogs"
                 className="btn btn-primary"
               >
                 View all blogs
@@ -447,10 +447,10 @@ const Contact = () => {
       {toast && (
         <div className="fixed bottom-4 right-4 z-50">
           <div
-            className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
+            className={`${
               toast.type === "success"
-                ? "bg-sky-500 text-white"
-                : "bg-red-500 text-white"
+                ? "toast-success"
+                : "toast-error"
             }`}
           >
             {toast.type === "success" ? "✓ " : "✗ "}

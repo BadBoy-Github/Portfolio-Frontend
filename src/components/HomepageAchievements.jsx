@@ -30,8 +30,14 @@ const HomepageAchievements = () => {
   if (loading) {
     return (
       <section id="achievements" className="section">
-        <h2 className="headline-2">My Achievements</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+        <div className="section-label mb-6">
+          <span className="dot"></span>
+          <span>ACHIEVEMENTS</span>
+        </div>
+        <h2 className="headline-2 text-foreground mb-4">
+          My <span className="gold-text">Achievements</span>
+        </h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
           A collection of milestones that showcase my passion and impact
         </p>
         <div className="flex items-center justify-center py-10">
@@ -44,11 +50,17 @@ const HomepageAchievements = () => {
   if (error) {
     return (
       <section id="achievements" className="section">
-        <h2 className="headline-2">My Achievements</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+        <div className="section-label mb-6">
+          <span className="dot"></span>
+          <span>ACHIEVEMENTS</span>
+        </div>
+        <h2 className="headline-2 text-foreground mb-4">
+          My <span className="gold-text">Achievements</span>
+        </h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
           A collection of milestones that showcase my passion and impact
         </p>
-        <p className="text-red-400">Failed to load achievements.</p>
+        <p className="text-error">Failed to load achievements.</p>
       </section>
     );
   }
@@ -58,10 +70,17 @@ const HomepageAchievements = () => {
 
   return (
     <section id="achievements" className="section">
-      <h2 className="headline-2">My Achievements</h2>
-      <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
+      <div className="section-label mb-6">
+        <span className="dot"></span>
+        <span>ACHIEVEMENTS</span>
+      </div>
+      <h2 className="headline-2 text-foreground mb-4">
+        My <span className="gold-text">Achievements</span>
+      </h2>
+      <p className="body-text mt-3 mb-8 max-w-[50ch]">
         A collection of milestones that showcase my passion and impact
       </p>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {displayAchievements.map((achi) => (
           <Link key={achi.id} to={`/achievement/${achi.id}`}>
@@ -79,19 +98,21 @@ const HomepageAchievements = () => {
         {remainingCount > 0 && (
           <div
             onClick={() => navigate("/achievements")}
-            className=" bg-zinc-800 hover:bg-zinc-700/50 p-5 rounded-xl shadow-xl flex flex-col items-center justify-center cursor-pointer group"
+            className="card-featured cursor-pointer group"
           >
-            <div className="w-16 h-16 rounded-full bg-sky-600/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span className="material-symbols-rounded text-4xl text-sky-400">
-                add_circle
-              </span>
+            <div className="p-5 rounded-xl flex flex-col items-center justify-center transition-all duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-accent-secondary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <span className="material-symbols-rounded text-4xl text-accent-secondary">
+                  add_circle
+                </span>
+              </div>
+              <h3 className="text-xl font-display font-semibold text-foreground mb-2">
+                More Achievements
+              </h3>
+              <p className="body-text text-muted-foreground text-sm">
+                View {remainingCount} more achievements
+              </p>
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              More Achievements
-            </h3>
-            <p className="text-zinc-400 text-sm">
-              View {remainingCount} more achievements
-            </p>
           </div>
         )}
       </div>

@@ -15,22 +15,16 @@ const Navbar = ({ navOpen }) => {
     { label: "Blogs", link: "/blogs", isRoute: true },
   ];
 
-
-
-  // Set active index based on current route
   useEffect(() => {
     const path = location.pathname;
-
-    // Clear active state for non-nav pages
     const nonActivePaths = ['/contact', '/certificates', '/certificate/', '/achievements', '/achievement/'];
     const isNonActivePath = nonActivePaths.some(p => path === p || path.startsWith(p));
-    
+
     if (isNonActivePath) {
       setActiveIndex(-1);
       return;
     }
 
-    // Check if we're on a route page
     const routeIndex = navItems.findIndex(
       (item) => item.isRoute && item.link === path,
     );
@@ -39,9 +33,7 @@ const Navbar = ({ navOpen }) => {
       return;
     }
 
-    // On home page - use scroll spy for section links
     if (path === "/" || path === "") {
-      // Filter only section links
       const sectionItems = navItems.filter((item) => item.link.includes("#"));
       const sectionElements = sectionItems.map((item) =>
         document.querySelector(item.link.split("/").pop()),
@@ -69,11 +61,9 @@ const Navbar = ({ navOpen }) => {
       return () => window.removeEventListener("scroll", handleScroll);
     }
 
-    // Default: no active nav item for unmatched routes
     setActiveIndex(-1);
   }, [location]);
 
-  // Active box animation effect
   useEffect(() => {
     if (activeIndex < 0 || !linkRefs.current[activeIndex] || !activeBox.current) {
       if (activeBox.current) {
@@ -91,10 +81,8 @@ const Navbar = ({ navOpen }) => {
     }
   }, [activeIndex, navOpen]);
 
-  // Keyboard navigation
   const handleKeyDown = (e) => {
     if (!navOpen) return;
-
     switch (e.key) {
       case 'ArrowDown':
       case 'ArrowRight':
@@ -114,7 +102,6 @@ const Navbar = ({ navOpen }) => {
         break;
       }
       case 'Escape':
-        // Close navigation if there's a close function
         break;
       default:
         break;
@@ -128,9 +115,7 @@ const Navbar = ({ navOpen }) => {
     }
   }, [navOpen, activeIndex]);
 
-  // Handle contact click - scroll to contact section
   const handleContactClick = (e) => {
-    // If we're already on home page, just scroll to contact section
     if (location.pathname === "/") {
       e.preventDefault();
       const contactSection = document.getElementById("contactme");
@@ -138,7 +123,6 @@ const Navbar = ({ navOpen }) => {
         contactSection.scrollIntoView({ behavior: "smooth" });
       }
     }
-    // Otherwise, let the Link navigate to home
   };
 
   return (
@@ -147,36 +131,31 @@ const Navbar = ({ navOpen }) => {
       role="navigation"
       aria-label="Main navigation"
     >
-      {navItems.map(
-        ({ label, link, className = "", isRoute, isContact }, index) =>
-          isRoute ? (
-            <Link
-              key={index}
-              to={link}
-              className={`nav-link ${
-                index === activeIndex ? "active" : ""
-              } ${className}`}
-              ref={(el) => (linkRefs.current[index] = el)}
-              onClick={isContact ? handleContactClick : undefined}
-              aria-current={index === activeIndex ? "page" : undefined}
-              tabIndex={navOpen ? 0 : -1}
-            >
-              {label}
-            </Link>
-          ) : (
-            <a
-              key={index}
-              href={link}
-              className={`nav-link ${
-                index === activeIndex ? "active" : ""
-              } ${className}`}
-              ref={(el) => (linkRefs.current[index] = el)}
-              aria-current={index === activeIndex ? "page" : undefined}
-              tabIndex={navOpen ? 0 : -1}
-            >
-              {label}
-            </a>
-          ),
+      {navItems.map(({ label, link, className = "", isRoute, isContact }, index) =>
+        isRoute ? (
+          <Link
+            key={index}
+            to={link}
+            className={`nav-link ${index === activeIndex ? "active" : ""} ${className}`}
+            ref={(el) => (linkRefs.current[index] = el)}
+            onClick={isContact ? handleContactClick : undefined}
+            aria-current={index === activeIndex ? "page" : undefined}
+            tabIndex={navOpen ? 0 : -1}
+          >
+            {label}
+          </Link>
+        ) : (
+          <a
+            key={index}
+            href={link}
+            className={`nav-link ${index === activeIndex ? "active" : ""} ${className}`}
+            ref={(el) => (linkRefs.current[index] = el)}
+            aria-current={index === activeIndex ? "page" : undefined}
+            tabIndex={navOpen ? 0 : -1}
+          >
+            {label}
+          </a>
+        ),
       )}
       <div className="active-box" ref={activeBox} aria-hidden="true"></div>
     </nav>

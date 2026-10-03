@@ -36,7 +36,7 @@ const CustomCursor = () => {
       "width: 24px; height: 24px; left: -100px; top: -100px;";
     mainCursor.innerHTML = `
       <div class="relative w-6 h-6">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.9)]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-terminal-green rounded-full shadow-[0_0_8px_rgba(51,255,0,0.9)]"></div>
       </div>
     `;
     document.body.appendChild(mainCursor);
@@ -48,8 +48,8 @@ const CustomCursor = () => {
       "left: -100px; top: -100px; opacity: 0; transition: opacity 0.2s, transform 0.2s;";
     hoverCursor.innerHTML = `
       <div class="relative w-4 h-4">
-        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 animate-ping opacity-50"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-50 shadow-[0_0_12px_rgba(255,255,255,0.5)]"></div>
+        <div class="absolute inset-0 rounded-full bg-accent-secondary animate-ping opacity-50"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-terminal-green rounded-full opacity-50 shadow-[0_0_12px_rgba(51,255,0,0.5)]"></div>
       </div>
     `;
     document.body.appendChild(hoverCursor);

@@ -179,10 +179,10 @@ const ReviewsTab = ({ addToast }) => {
 
   return (
      <div className="px-4 md:px-8 pb-4 md:pb-8">
-       <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl pt-8 pb-4 border-b border-zinc-700">
+       <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-background/80 backdrop-blur-xl pt-8 pb-4 border-b border-border">
          <div>
-           <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Reviews <span className="text-sky-400">({items.length})</span></h2>
-           <p className="text-zinc-400 text-sm mt-1">Manage testimonials and reviews</p>
+           <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">Reviews <span className="text-accent-secondary">({items.length})</span></h2>
+           <p className="text-muted-foreground text-sm mt-1">Manage testimonials and reviews</p>
          </div>
          <div className="flex items-center gap-2">
            <button onClick={saveOrder} className="btn btn-outline">
@@ -195,7 +195,7 @@ const ReviewsTab = ({ addToast }) => {
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2">
-          {[1, 2, 3].map(i => <div key={i} className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-32 animate-pulse" />)}
+          {[1, 2, 3].map(i => <div key={i} className="bg-card rounded-xl p-5 ring-1 ring-border/5 h-32 animate-pulse" />)}
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
@@ -209,7 +209,7 @@ const ReviewsTab = ({ addToast }) => {
               onDragEnd={handleDragEnd}
               className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 text-muted-foreground mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
@@ -219,7 +219,7 @@ const ReviewsTab = ({ addToast }) => {
                   <button onClick={() => openEdit(item)} className="btn btn-outline text-xs py-1 px-2">
                     <span className="material-symbols-rounded text-[16px]">edit</span>
                   </button>
-                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2">
+                  <button onClick={() => setDeleteTarget(item)} className="btn btn-outline !text-error hover:!bg-error/10 text-xs py-1 px-2">
                     <span className="material-symbols-rounded text-[16px]">delete</span>
                   </button>
                 </div>
@@ -233,7 +233,7 @@ const ReviewsTab = ({ addToast }) => {
               />
             </div>
           ))}
-          {items.length === 0 && <p className="text-zinc-400 col-span-full">No items found.</p>}
+          {items.length === 0 && <p className="text-muted-foreground col-span-full">No items found.</p>}
         </div>
       )}
 
@@ -267,7 +267,7 @@ const ReviewsTab = ({ addToast }) => {
                   />
                 </button>
               ))}
-              <span className="text-sm text-zinc-400 ml-2">{form.rating}/5</span>
+              <span className="text-sm text-muted-foreground ml-2">{form.rating}/5</span>
             </div>
           </div>
           <div className="input-box">
@@ -297,3 +297,4 @@ const ReviewsTab = ({ addToast }) => {
 };
 
 export default ReviewsTab;
+

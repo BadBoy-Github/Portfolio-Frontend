@@ -154,7 +154,7 @@ void main() {
 `;
 
 export default function EvilEye({
-  eyeColor = '#FF6F37',
+  eyeColor = '#33ff00',
   intensity = 1.5,
   pupilSize = 0.6,
   irisWidth = 0.25,
@@ -163,7 +163,7 @@ export default function EvilEye({
   noiseScale = 1.0,
   pupilFollow = 1.0,
   flameSpeed = 1.0,
-  backgroundColor = '#000000'
+  backgroundColor = '#0a0a0a'
 }) {
   const containerRef = useRef(null);
 

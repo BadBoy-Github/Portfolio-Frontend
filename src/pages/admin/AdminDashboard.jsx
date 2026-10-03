@@ -18,19 +18,19 @@ const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60" onClick={onCancel} />
-      <div className="relative bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-sm max-h-[85vh] flex flex-col">
-        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
-          <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
-          <button onClick={onCancel} className="text-zinc-400 hover:text-zinc-200">
+      <div className="relative bg-card rounded-2xl ring-1 ring-border/5 shadow-xl w-full max-w-sm max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-border/50 shrink-0">
+          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+          <button onClick={onCancel} className="text-muted-foreground hover:text-foreground">
             <span className="material-symbols-rounded">close</span>
           </button>
         </div>
         <div className="overflow-y-auto flex-1 p-5">
-          <p className="text-zinc-300 text-sm">{message}</p>
+          <p className="text-muted-foreground text-sm">{message}</p>
         </div>
-        <div className="flex gap-3 justify-end p-5 border-t border-zinc-700/50 shrink-0">
+        <div className="flex gap-3 justify-end p-5 border-t border-border/50 shrink-0">
           <button onClick={onCancel} className="btn btn-outline">Cancel</button>
-          <button onClick={onConfirm} className="btn btn-primary !bg-red-500 hover:!bg-red-400">Delete</button>
+          <button onClick={onConfirm} className="btn btn-primary !bg-error hover:!bg-error">Delete</button>
         </div>
       </div>
     </div>
@@ -41,15 +41,15 @@ const FormModal = ({ open, onClose, title, error, children }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-      <div className="bg-zinc-800 rounded-2xl ring-1 ring-zinc-50/5 shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col">
-        <div className="flex items-center justify-between p-5 border-b border-zinc-700/50 shrink-0">
-          <h3 className="text-lg font-semibold text-zinc-50">{title}</h3>
-          <button onClick={onClose} className="text-zinc-400 hover:text-zinc-200">
+      <div className="bg-card rounded-2xl ring-1 ring-border/5 shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col">
+        <div className="flex items-center justify-between p-5 border-b border-border/50 shrink-0">
+          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+          <button onClick={onClose} className="text-muted-foreground hover:text-foreground">
             <span className="material-symbols-rounded">close</span>
           </button>
         </div>
         <div className="overflow-y-auto flex-1 p-5">
-          {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+          {error && <p className="text-error text-sm mb-4">{error}</p>}
           {children}
         </div>
       </div>
@@ -144,14 +144,14 @@ const AdminDashboard = () => {
   if (!authChecked) return null;
 
   return (
-    <div className="min-h-screen bg-zinc-900 flex flex-col md:flex-row md:h-screen">
+    <div className="min-h-screen bg-background flex flex-col md:flex-row md:h-screen">
       {/* Mobile header */}
-      <div className="md:hidden flex items-center justify-between bg-zinc-800 p-4 ring-1 ring-zinc-50/5">
+      <div className="md:hidden flex items-center justify-between bg-card p-4 ring-1 ring-border/5">
         <div className="flex items-center gap-3">
-          <h1 className="text-lg font-semibold text-zinc-50">
+          <h1 className="text-lg font-semibold text-foreground">
             Admin Dashboard
           </h1>
-          <a href="/" className="text-xs text-sky-400 hover:text-sky-300">
+          <a href="/" className="text-xs text-accent-secondary hover:text-accent-secondary">
             Go to Website
           </a>
         </div>
@@ -164,15 +164,15 @@ const AdminDashboard = () => {
 
       {/* Sidebar */}
       <aside
-        className={`${mobileOpen ? "block" : "hidden"} md:flex md:w-64 md:h-screen md:overflow-hidden bg-zinc-800 ring-1 ring-zinc-50/5`}
+        className={`${mobileOpen ? "block" : "hidden"} md:flex md:w-64 md:h-screen md:overflow-hidden bg-card ring-1 ring-border/5`}
       >
         <div className="p-4 w-64">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-xl font-semibold text-zinc-50">
+              <h1 className="text-xl font-semibold text-foreground">
                 Admin Dashboard
               </h1>
-              <p className="text-xs text-zinc-400 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 Portfolio Content Manager
               </p>
             </div>
@@ -246,9 +246,9 @@ const AdminDashboard = () => {
             />
           </nav>
 
-          <div className="mt-8 pt-6 border-t border-zinc-700/50">
+          <div className="mt-8 pt-6 border-t border-border/50">
             <button
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-sky-400 hover:text-sky-300 hover:bg-zinc-700/50 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-accent-secondary hover:text-accent-secondary hover:bg-muted/50 transition-colors"
               onClick={handleGoToWebsite}
             >
               <IoArrowBackCircleOutline className="size-5" />
@@ -256,7 +256,7 @@ const AdminDashboard = () => {
             </button>
             <button
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-zinc-700/50 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-error hover:text-error hover:bg-muted/50 transition-colors"
             >
               <span className="material-symbols-rounded text-[20px]">
                 logout
@@ -291,7 +291,7 @@ const AdminDashboard = () => {
             className={`px-4 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 ${
               toast.type === "success"
                 ? "bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30"
-                : "bg-red-500/20 text-red-400 ring-1 ring-red-500/30"
+                : "bg-error/20 text-error ring-1 ring-red-500/30"
             }`}
           >
             <span className="material-symbols-rounded text-[18px]">
@@ -313,8 +313,8 @@ const TabButton = ({ id, label, icon, activeTab, setActiveTab, setMobileOpen }) 
     }}
     className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
       activeTab === id
-        ? 'bg-sky-400 text-zinc-950'
-        : 'text-zinc-400 hover:text-zinc-50 hover:bg-zinc-700/50'
+        ? 'bg-accent-secondary text-background'
+        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
     }`}
   >
     <span className="material-symbols-rounded text-[20px]">{icon}</span>
@@ -324,3 +324,4 @@ const TabButton = ({ id, label, icon, activeTab, setActiveTab, setMobileOpen }) 
 
 export { ConfirmModal, FormModal, AdminDashboard };
 export default AdminDashboard;
+

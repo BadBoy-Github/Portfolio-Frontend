@@ -70,7 +70,7 @@ const CertificatesLibrary = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-background pt-24 pb-16 flex items-center justify-center">
         <div className="loader mb-4"><span></span></div>
       </div>
     );
@@ -78,10 +78,10 @@ const CertificatesLibrary = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-background pt-24 pb-16 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-red-400 mb-2">Failed to load certificates</h2>
-          <p className="text-zinc-400">{error}</p>
+          <h2 className="text-xl font-semibold text-error mb-2">Failed to load certificates</h2>
+          <p className="text-muted-foreground">{error}</p>
         </div>
       </div>
     );
@@ -119,25 +119,25 @@ const CertificatesLibrary = () => {
           href="https://elayabarathimv.vercel.app/certificates"
         />
       </Helmet>
-      <div className="min-h-screen bg-zinc-900 pt-24 pb-16">
+      <div className="min-h-screen bg-background pt-24 pb-16">
         <div className="container mx-auto px-4">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-white mb-2">
-              All Certificates
+            <h1 className="headline-1">
+              All <span className="gradient-text">Certificates</span>
             </h1>
-            <p className="text-zinc-400">
+            <p className="body-text text-muted-foreground">
               Browse my certifications and achievements
             </p>
           </div>
 
-          <div className="mb-10 bg-zinc-800 ring-1 ring-inset ring-zinc-50/5 px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          <div className="mb-10 card px-4 py-4 rounded-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             <div className="flex items-center gap-2 flex-wrap">
               <button
                 className={`p-2 rounded-lg text-sm ${
                   selectedTag === "all"
-                    ? "bg-sky-600 text-zinc-800"
-                    : "bg-zinc-50/5 text-zinc-400"
-                } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
+                    ? "bg-accent-secondary text-background"
+                    : "bg-muted text-muted-foreground"
+                } hover:bg-accent-secondary hover:text-background active:bg-accent-secondary/80 transition-all duration-300`}
                 onClick={() => handleTagSelect("all")}
               >
                 <HiOutlineMenu className="size-5" />
@@ -147,11 +147,11 @@ const CertificatesLibrary = () => {
                 {sTags.map((tag, index) => (
                   <button
                     key={index}
-                    className={`px-3 py-2 rounded-lg text-sm ${
+                    className={`px-3 py-2 rounded-lg text-sm font-mono ${
                       selectedTag === tag.toLowerCase()
-                        ? "bg-sky-600 text-zinc-800"
-                        : "text-zinc-400 bg-zinc-50/5"
-                    } hover:bg-sky-600 active:bg-sky-800 hover:text-zinc-800 transition-all duration-300`}
+                        ? "bg-accent-secondary text-background"
+                        : "text-muted-foreground bg-muted"
+                    } hover:bg-accent-secondary hover:text-background active:bg-accent-secondary/80 transition-all duration-300`}
                     onClick={() => handleTagSelect(tag.toLowerCase())}
                   >
                     {tag}
@@ -161,7 +161,7 @@ const CertificatesLibrary = () => {
             </div>
 
             <div className="flex items-center gap-2 w-full lg:w-auto">
-              <div className="text-xs text-zinc-400 mr-3">
+              <div className="text-xs text-muted-foreground mr-3">
                 #{filteredCerts.length} certificates
               </div>
 
@@ -169,14 +169,14 @@ const CertificatesLibrary = () => {
                 type="text"
                 id="cert_search"
                 placeholder="Search certificates..."
-                className="bg-zinc-800 w-full lg:w-60 text-sky-100 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 rounded-lg px-2 py-1 transition-all duration-500"
+                className="input-field w-full lg:w-60"
                 onChange={(e) => handleSearch(e.target.value)}
                 value={searchQuery}
               />
 
               {searchQuery && (
                 <div
-                  className="text-zinc-800 mr-1 bg-sky-600 rounded-lg p-2 ml-2 cursor-pointer hover:bg-red-600 transition-all duration-500 group/close"
+                  className="text-background mr-1 bg-error rounded-lg p-2 ml-2 cursor-pointer hover:bg-error/80 transition-all duration-500 group/close"
                   onClick={clearSearch}
                 >
                   <IoClose className="size-5 group-hover/close:rotate-90 transition-all duration-500" />
@@ -185,7 +185,7 @@ const CertificatesLibrary = () => {
             </div>
           </div>
 
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {filteredCerts.map((cert, index) => (
               <Link key={cert.id} to={`/certificate/${cert.id}`}>
                 <CertificationsCard
@@ -203,10 +203,10 @@ const CertificatesLibrary = () => {
                 <div className="loader mb-4">
                   <span></span>
                 </div>
-                <h3 className="text-xl font-semibold text-zinc-300 mt-2">
+                <h3 className="text-xl font-semibold text-muted-foreground mt-2">
                   No certificates found
                 </h3>
-                <p className="text-zinc-500 mt-2">
+                <p className="text-muted-foreground/70 mt-2">
                   Try a different search term or filter
                 </p>
               </div>

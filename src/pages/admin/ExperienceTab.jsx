@@ -334,12 +334,12 @@ const ExperienceTab = ({ addToast }) => {
 
   return (
     <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl pt-8 pb-4 border-b border-zinc-700">
+      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-background/80 backdrop-blur-xl pt-8 pb-4 border-b border-border">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
-            Experience <span className="text-sky-400">({items.reduce((sum, item) => sum + (item.compound ? (item.content?.length || 0) : 1), 0)})</span>
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">
+            Experience <span className="text-accent-secondary">({items.reduce((sum, item) => sum + (item.compound ? (item.content?.length || 0) : 1), 0)})</span>
           </h2>
-          <p className="text-zinc-400 text-sm mt-1">
+          <p className="text-muted-foreground text-sm mt-1">
             Manage work experience and internships
           </p>
         </div>
@@ -356,7 +356,7 @@ const ExperienceTab = ({ addToast }) => {
       </div>
 
       {loading ? (
-        <p className="text-zinc-400">Loading...</p>
+        <p className="text-muted-foreground">Loading...</p>
       ) : (
         <ul className="space-y-0 pl-6">
           {items.map((item, index) => (
@@ -369,13 +369,13 @@ const ExperienceTab = ({ addToast }) => {
               onDragEnd={handleDragEnd}
               className={`relative group/item cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 text-muted-foreground mb-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
               </div>
               <div className="flex items-center justify-between mb-2">
-                <p className="text-xs text-zinc-500">{item.year}</p>
+                <p className="text-xs text-muted">{item.year}</p>
                 <div className="flex gap-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
                   <button
                     onClick={() => item.compound ? openCompoundEdit(item) : openEdit(item)}
@@ -387,7 +387,7 @@ const ExperienceTab = ({ addToast }) => {
                   </button>
                   <button
                     onClick={() => setDeleteTarget(item)}
-                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                    className="btn btn-outline !text-error hover:!bg-error/10 text-xs py-1 px-2"
                   >
                     <span className="material-symbols-rounded text-[16px]">
                       delete
@@ -400,7 +400,7 @@ const ExperienceTab = ({ addToast }) => {
                   <a
                     href={item.instLink || '#'}
                     target="_blank"
-                    className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-900 cursor-pointer"
+                    className="absolute flex items-center justify-center w-10 h-10 bg-muted rounded-full -start-5 ring-8 ring-background cursor-pointer"
                   >
                     <img
                       className="rounded-full shadow-lg"
@@ -409,10 +409,10 @@ const ExperienceTab = ({ addToast }) => {
                       loading="lazy"
                     />
                   </a>
-                  <div className="bg-zinc-800 rounded-2xl ring-1 ring-inset ring-zinc-50/5 p-4 sm:p-5">
-                    <div className="p-4 bg-zinc-800/50 rounded-xl mb-3">
-                      <p className="font-semibold text-zinc-200">{item.instName}</p>
-                      {item.period && <p className="text-xs text-zinc-400">{item.period}</p>}
+                  <div className="bg-card rounded-2xl ring-1 ring-inset ring-border/5 p-4 sm:p-5">
+                    <div className="p-4 bg-card/50 rounded-xl mb-3">
+                      <p className="font-semibold text-foreground">{item.instName}</p>
+                      {item.period && <p className="text-xs text-muted-foreground">{item.period}</p>}
                     </div>
                     {(item.content || []).map((content, i) => (
                       <div key={i} className="mb-3 last:mb-0">
@@ -449,7 +449,7 @@ const ExperienceTab = ({ addToast }) => {
             </li>
           ))}
           {items.length === 0 && (
-            <p className="text-zinc-400">No items found.</p>
+            <p className="text-muted-foreground">No items found.</p>
           )}
         </ul>
       )}
@@ -619,9 +619,9 @@ const ExperienceTab = ({ addToast }) => {
             />
           </div>
 
-          <div className="border-t border-zinc-700 pt-3">
+          <div className="border-t border-border pt-3">
             <div className="flex items-center justify-between mb-3">
-              <h4 className="text-md font-semibold text-zinc-50">Roles</h4>
+              <h4 className="text-md font-semibold text-foreground">Roles</h4>
               <button
                 type="button"
                 onClick={addRole}
@@ -640,18 +640,18 @@ const ExperienceTab = ({ addToast }) => {
                 onDragOver={(e) => handleCompoundRoleDragOver(e, roleIndex)}
                 onDrop={() => handleCompoundRoleDrop(roleIndex)}
                 onDragEnd={handleCompoundRoleDragEnd}
-                className={`relative flex flex-col gap-3 p-4 bg-zinc-800/30 rounded-xl mb-3 cursor-grab active:cursor-grabbing transition-all ${compoundDragOverIndex === roleIndex ? "ring-2 ring-sky-500" : ""}`}
+                className={`relative flex flex-col gap-3 p-4 bg-card/30 rounded-xl mb-3 cursor-grab active:cursor-grabbing transition-all ${compoundDragOverIndex === roleIndex ? "ring-2 ring-sky-500" : ""}`}
               >
-                <div className="flex items-center gap-2 text-zinc-400 mb-2">
+                <div className="flex items-center gap-2 text-muted-foreground mb-2">
                   <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                     drag_indicator
                   </span>
-                  <span className="text-xs text-zinc-500">Role {roleIndex + 1}</span>
+                  <span className="text-xs text-muted">Role {roleIndex + 1}</span>
                   {compoundForm.roles.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeRole(roleIndex)}
-                      className="ml-auto text-red-400 hover:text-red-300"
+                      className="ml-auto text-error hover:text-error"
                     >
                       <span className="material-symbols-rounded text-[14px]">close</span>
                     </button>
@@ -737,3 +737,4 @@ const ExperienceTab = ({ addToast }) => {
 };
 
 export default ExperienceTab;
+

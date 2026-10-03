@@ -2,7 +2,7 @@ import Skeleton from './Skeleton';
 
 const BlogCardSkeleton = () => {
   return (
-    <article className="bg-zinc-800 rounded-xl overflow-hidden flex flex-col">
+    <article className="card border-t-2 border-accent-tertiary/50 rounded-xl overflow-hidden flex flex-col">
       <div className="m-4 rounded-lg overflow-hidden">
         <Skeleton className="w-full h-full aspect-video rounded-lg" />
       </div>

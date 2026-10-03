@@ -34,45 +34,45 @@ const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-      <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-lg shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4">
+      <div className="bg-card border border-border rounded-2xl p-6 w-full max-w-lg shadow-2xl">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-semibold text-white">Leave a Review</h3>
-          <button type="button" onClick={onClose} className="text-zinc-400 hover:text-white transition-colors">
+          <h3 className="text-xl font-semibold text-foreground">Leave a Review</h3>
+          <button type="button" onClick={onClose} className="text-muted-foreground hover:text-foreground transition-colors">
             <span className="material-symbols-rounded">close</span>
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-3">
           <div>
             <label className="label">Your Name</label>
-            <input className="text-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Enter your name" required />
+            <input className="input-field" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Enter your name" required />
           </div>
           <div>
             <label className="label">Your Email</label>
-            <input className="text-field" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Enter your email" required />
+            <input className="input-field" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Enter your email" required />
           </div>
           <div>
             <label className="label">Your Designation</label>
-            <input className="text-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} placeholder="Enter your job role" />
+            <input className="input-field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} placeholder="Enter your job role" />
           </div>
           <div>
             <label className="label">Your Image URL</label>
-            <input className="text-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} placeholder="https://example.com/your-image.jpg" />
+            <input className="input-field" value={form.imgSrc} onChange={(e) => setForm({ ...form, imgSrc: e.target.value })} placeholder="https://example.com/your-image.jpg" />
           </div>
           <div>
             <label className="label">Rating</label>
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button key={star} type="button" onClick={() => setForm({ ...form, rating: star })} className="transition-all duration-200">
-                  <Star size={28} className={`cursor-pointer ${star <= form.rating ? 'text-yellow-400 fill-yellow-400' : 'text-zinc-600'}`} />
+                  <Star size={28} className={`cursor-pointer ${star <= form.rating ? 'text-gold fill-gold' : 'text-muted'}`} />
                 </button>
               ))}
-              <span className="text-sm text-zinc-400 ml-2">{form.rating}/5</span>
+              <span className="text-sm text-muted-foreground ml-2">{form.rating}/5</span>
             </div>
           </div>
           <div>
             <label className="label">Review Content</label>
-            <textarea className="text-field" rows={3} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} placeholder="Write your review here..." required />
+            <textarea className="input-field" rows={3} value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} placeholder="Write your review here..." required />
           </div>
           <button type="submit" disabled={loading} className="btn btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed">
             {loading ? 'Sending...' : 'Send Review'}

@@ -331,14 +331,14 @@ const ProjectsTab = ({ addToast }) => {
               addItem(field, input);
               setInput("");
             }}
-            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+            className="btn text-accent-secondary border-sky-400 hover:bg-accent-secondary hover:text-zinc-900"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
           </button>
           <button
             type="button"
             onClick={() => setForm({ ...form, [field]: [] })}
-            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+            className="btn text-error border-red-400 hover:bg-error hover:text-zinc-900"
           >
             <span className="material-symbols-rounded text-[16px]">
               refresh
@@ -354,16 +354,16 @@ const ProjectsTab = ({ addToast }) => {
               onDragOver={(e) => handleDragOver(e, field, index)}
               onDrop={() => handleDrop(field, index)}
               onDragEnd={handleDragEnd}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-muted text-foreground font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-muted" : "hover:bg-muted"}`}
             >
-              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+              <span className="material-symbols-rounded text-[14px] text-muted-foreground cursor-grab active:cursor-grabbing">
                 drag_indicator
               </span>
               {item}
               <button
                 type="button"
                 onClick={() => removeItem(field, index)}
-                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+                className="material-symbols-rounded text-[14px] text-muted-foreground hover:text-error transition-colors"
               >
                 close
               </button>
@@ -440,10 +440,10 @@ const ProjectsTab = ({ addToast }) => {
 
   return (
    <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between sticky top-0 z-20 bg-zinc-900 pt-8 pb-4">
+      <div className="flex items-center justify-between sticky top-0 z-20 bg-background pt-8 pb-4">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Projects <span className="text-sky-400">({items.length})</span></h2>
-          <p className="text-zinc-400 text-sm mt-1">
+          <h2 className="text-2xl font-semibold text-foreground flex items-center gap-2">Projects <span className="text-accent-secondary">({items.length})</span></h2>
+          <p className="text-muted-foreground text-sm mt-1">
             Manage your portfolio projects
           </p>
         </div>
@@ -464,7 +464,7 @@ const ProjectsTab = ({ addToast }) => {
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-40 animate-pulse"
+              className="bg-card rounded-xl p-5 ring-1 ring-border/5 h-40 animate-pulse"
             />
           ))}
         </div>
@@ -481,10 +481,10 @@ const ProjectsTab = ({ addToast }) => {
               <>
                 {featuredItems.length > 0 && (
                   <div className="mb-8">
-                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-zinc-900 pb-4 border-b border-zinc-700">
-                      <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
+                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-background pb-4 border-b border-border">
+                      <h3 className="text-lg font-semibold text-foreground mb-0 flex items-center gap-2">
                         Featured Projects{" "}
-                        <span className="text-sky-400">
+                        <span className="text-accent-secondary">
                           ({featuredItems.length})
                         </span>
                       </h3>
@@ -507,7 +507,7 @@ const ProjectsTab = ({ addToast }) => {
                               : ""
                           }`}
                         >
-                          <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-2 text-muted-foreground mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                               drag_indicator
                             </span>
@@ -524,7 +524,7 @@ const ProjectsTab = ({ addToast }) => {
                               </button>
                               <button
                                 onClick={() => setDeleteTarget(item)}
-                                className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                                className="btn btn-outline !text-error hover:!bg-error/10 text-xs py-1 px-2"
                               >
                                 <span className="material-symbols-rounded text-[16px]">
                                   delete
@@ -551,10 +551,10 @@ const ProjectsTab = ({ addToast }) => {
 
                 {nonFeaturedItems.length > 0 && (
                   <div>
-                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-zinc-900 pb-4 border-b border-zinc-700">
-                      <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
+                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-background pb-4 border-b border-border">
+                      <h3 className="text-lg font-semibold text-foreground mb-0 flex items-center gap-2">
                         Projects{" "}
-                        <span className="text-sky-400">
+                        <span className="text-accent-secondary">
                           ({nonFeaturedItems.length})
                         </span>
                       </h3>
@@ -579,7 +579,7 @@ const ProjectsTab = ({ addToast }) => {
                               : ""
                           }`}
                         >
-                          <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="flex items-center gap-2 text-muted-foreground mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                               drag_indicator
                             </span>
@@ -596,7 +596,7 @@ const ProjectsTab = ({ addToast }) => {
                               </button>
                               <button
                                 onClick={() => setDeleteTarget(item)}
-                                className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                                className="btn btn-outline !text-error hover:!bg-error/10 text-xs py-1 px-2"
                               >
                                 <span className="material-symbols-rounded text-[16px]">
                                   delete
@@ -625,7 +625,7 @@ const ProjectsTab = ({ addToast }) => {
           })()}
 
           {items.length === 0 && (
-            <p className="text-zinc-400 col-span-full">No items found.</p>
+            <p className="text-muted-foreground col-span-full">No items found.</p>
           )}
         </>
       )}
@@ -754,7 +754,7 @@ const ProjectsTab = ({ addToast }) => {
                  onDragEnd={handleGalleryDragEnd}
                  className={`flex gap-2 mb-2 items-center cursor-grab active:cursor-grabbing transition-all ${galleryDragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
                >
-                 <span className="material-symbols-rounded text-[16px] text-zinc-400">
+                 <span className="material-symbols-rounded text-[16px] text-muted-foreground">
                    drag_indicator
                  </span>
                  <input
@@ -766,7 +766,7 @@ const ProjectsTab = ({ addToast }) => {
                  <button
                    type="button"
                    onClick={() => removeGalleryField(index)}
-                   className="btn btn-outline !text-red-400 hover:!bg-red-400/10"
+                   className="btn btn-outline !text-error hover:!bg-error/10"
                  >
                    <span className="material-symbols-rounded text-[16px]">
                      delete
@@ -810,3 +810,4 @@ const ProjectsTab = ({ addToast }) => {
 };
 
 export default ProjectsTab;
+

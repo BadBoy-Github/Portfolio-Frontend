@@ -1,8 +1,6 @@
-// Node modules
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-// Icons
 import { FaGithub } from "react-icons/fa";
 import { IoArrowForwardOutline } from "react-icons/io5";
 
@@ -30,7 +28,6 @@ const ProjectFeaturedCard = ({
       return;
     }
 
-    // ✅ Navigate only if valid click
     if (projectId) {
       e.preventDefault();
       navigate(`/project/${projectId}`);
@@ -40,12 +37,11 @@ const ProjectFeaturedCard = ({
   return (
     <div
       className={
-        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-zinc-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-all group hover:scale-[101%] " +
+        "relative cursor-pointer p-4 rounded-2xl shadow-xl bg-card hover:bg-card/80 active:bg-card/70 ring-1 ring-inset ring-border/50 transition-all group hover:scale-[101%] hover:border-accent-secondary card" +
         classes
       }
       onClick={handleCardClick}
     >
-      {/* Image */}
       <figure className="aspect-[16/7] rounded-xl mb-4 relative">
         {gitUrl && (
           <a
@@ -53,13 +49,13 @@ const ProjectFeaturedCard = ({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${title} source code on GitHub`}
-            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 bg-zinc-700 p-1 flex transition-all duration-300 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-zinc-800/5 ring-inset overflow-hidden"
+            className="absolute right-3 z-20 top-3 rounded-full h-8 w-8 bg-muted p-1 flex transition-all duration-300 opacity-50 hover:opacity-75 hover:w-[102px] group/githov scale-110 ring-1 ring-border/10 ring-inset overflow-hidden"
           >
             <div className="flex items-center justify-end">
-              <FaGithub className="size-6 absolute p-1 rounded-full right-1 transition-transform duration-[380ms] group-hover/githov:translate-x-[-70px] z-30 bg-zinc-800" />
-              <div className="absolute right-2 text-sm text-zinc-200 opacity-0 translate-x-2 group-hover/githov:opacity-100 group-hover/githov:translate-x-0 transition-all delay-200 flex items-center">
+              <FaGithub className="size-6 absolute p-1 rounded-full right-1 transition-transform duration-[380ms] group-hover/githov:translate-x-[-70px] z-30 bg-card" />
+              <div className="absolute right-2 text-sm text-foreground opacity-0 translate-x-2 group-hover/githov:opacity-100 group-hover/githov:translate-x-0 transition-all delay-200 flex items-center">
                 <p>GitHub</p>
-                <IoArrowForwardOutline className="size-4 ml-1 text-zinc-300 group-hover/githov:-rotate-45 opacity-75 transition-all duration-500 delay-150" />
+                <IoArrowForwardOutline className="size-4 ml-1 text-muted-foreground group-hover/githov:-rotate-45 opacity-75 transition-all duration-500 delay-150" />
               </div>
             </div>
           </a>
@@ -69,22 +65,21 @@ const ProjectFeaturedCard = ({
           src={imgSrc}
           alt={title}
           loading="lazy"
-          className={`rounded-xl w-full h-full object-cover cursor-pointer transition-all duration-300 ${
-            projectLink ? "grayscale-[0.4] group-hover:grayscale-0" : "group-hover:grayscale"
-          }`}
+          className="rounded-xl w-full h-full object-cover cursor-pointer transition-all duration-300"
         />
       </figure>
 
-      {/* Content */}
       <div className="flex items-center justify-between gap-4">
         <div>
-          <h3 className="title-1 mb-3">{title}</h3>
+          <h3 className="title-1 mb-3 text-foreground group-hover:text-accent-secondary transition-colors">
+            {title}
+          </h3>
 
           <div className="flex flex-wrap items-center gap-2">
             {(displayTags || []).map((label, key) => (
               <span
                 key={key}
-                className="h-8 text-sm text-zinc-400 bg-zinc-50/5 px-3 rounded-lg flex items-center"
+                className="h-8 text-sm text-muted-foreground bg-muted/50 px-3 rounded-lg flex items-center font-mono"
               >
                 {label}
               </span>
@@ -92,14 +87,13 @@ const ProjectFeaturedCard = ({
           </div>
         </div>
 
-        {/* ✅ Live Button (NOT overlay) */}
         {projectLink ? (
           <a
             href={projectLink}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${title} live demo`}
-            className="live-link w-11 h-11 rounded-lg grid place-items-center bg-sky-400 text-zinc-950 shrink-0 hover:scale-110 transition-transform"
+            className="live-link w-11 h-11 rounded-lg grid place-items-center bg-accent-secondary text-accent-foreground shrink-0 hover:scale-110 transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
             <span className="material-symbols-rounded" aria-hidden="true">

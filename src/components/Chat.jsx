@@ -54,7 +54,7 @@ const ReadMoreText = ({ text, maxLines = 5 }) => {
       {needsExpansion && (
         <button
           onClick={toggleExpanded}
-          className="text-sky-400 hover:text-sky-300 text-sm mt-1 font-medium transition-colors duration-200"
+          className="text-terminal-amber hover:text-terminal-green text-sm mt-1 font-medium transition-colors duration-200"
         >
           {isExpanded ? "Read Less" : "Read More"}
         </button>
@@ -184,19 +184,19 @@ const Chat = () => {
     switch (source) {
       case "ai":
         return (
-          <div className="text-xs text-sky-400/70 mt-1 flex items-center gap-1">
+          <div className="text-xs text-accent-secondary/70 mt-1 flex items-center gap-1">
             🤖 AI Powered
           </div>
         );
       case "local":
         return (
-          <div className="text-xs text-amber-400/70 mt-1 flex items-center gap-1">
+          <div className="text-xs text-terminal-amber/70 mt-1 flex items-center gap-1">
             ⚡ Local Response
           </div>
         );
       case "error":
         return (
-          <div className="text-xs text-red-400/70 mt-1 flex items-center gap-1">
+          <div className="text-xs text-error/70 mt-1 flex items-center gap-1">
             ⚠️ API Error
           </div>
         );
@@ -210,182 +210,188 @@ const Chat = () => {
 
   return (
     <section id="chatbot" className="section relative">
-        <h2 className="headline-2">Talk With My Portfolio</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch]">
-          Explore my portfolio, skills, and resume in a conversational way
-        </p>
+      <span className="section-label mb-4">
+        <span className="dot"></span>
+        <span>Chatbot</span>
+      </span>
+      <h2 className="headline-2">
+        Talk With My <span className="gold-text">Portfolio</span>
+      </h2>
+      <p className="text-muted-foreground mt-3 mb-8 max-w-[50ch]">
+        Explore my portfolio, skills, and resume in a conversational way
+      </p>
 
-        <div className="bg-zinc-800/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
-          {/* Left side */}
-          <div className="relative">
-            <h1 className="text-xl font-semibold text-sky-400">
-              About the Chatbot
-            </h1>
-            <p className="mt-3 text-zinc-300 leading-relaxed">
-              This chatbot is designed to make exploring my portfolio more
-              interactive. You can ask questions about my{" "}
-              <span className="text-sky-400">skills</span>,
-              <span className="text-sky-400"> projects</span>, or even my
-              <span className="text-sky-400"> resume</span>, and it will guide
-              you to the right information.
-            </p>
-            <p className="mt-3 text-zinc-300 leading-relaxed">
-              Access my <span className="text-sky-400">resume</span> or{" "}
-              <span className="text-sky-400">contact me</span> for professional
-              inquiries and collaborations.
-            </p>
+      <div className="bg-card/50 p-7 rounded-2xl md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-[40%_60%] gap-6 lg:gap-4">
+        {/* Left side */}
+        <div className="relative">
+          <h1 className="font-display text-xl font-medium text-accent-secondary">
+            About the Chatbot
+          </h1>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            This chatbot is designed to make exploring my portfolio more
+            interactive. You can ask questions about my{" "}
+            <span className="text-accent-secondary">skills</span>,
+            <span className="text-accent-secondary"> projects</span>, or even my
+            <span className="text-accent-secondary"> resume</span>, and it will
+            guide you to the right information.
+          </p>
+          <p className="mt-3 text-muted-foreground leading-relaxed">
+            Access my <span className="text-accent-secondary">resume</span> or{" "}
+            <span className="text-accent-secondary">contact me</span> for
+            professional inquiries and collaborations.
+          </p>
 
-            <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1 transition-all duration-300">
-              {/* Toggle Button */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-8 transition-all duration-300"
-              >
-                {isOpen ? (
-                  <IoClose className="bg-red-600 hover:bg-red-800 active:bg-red-500 size-6 p-1 rounded-full transition-all duration-300" />
-                ) : (
-                  <PiExclamationMarkBold className="bg-sky-600 hover:bg-sky-800 active:bg-sky-500 size-6 p-1 rounded-full transition-all duration-300" />
-                )}
-              </button>
+          <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1 transition-all duration-300">
+            {/* Toggle Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-8 transition-all duration-300"
+            >
+              {isOpen ? (
+                <IoClose className="bg-error hover:bg-error/80 active:bg-error/70 size-6 p-1 rounded-full transition-all duration-300" />
+              ) : (
+                <PiExclamationMarkBold className="bg-accent-secondary hover:bg-accent-secondary/80 active:bg-accent-secondary/70 size-6 p-1 rounded-full transition-all duration-300" />
+              )}
+            </button>
 
-              {/* Admin Link */}
-              <Link
-                to="/admin-login"
-                className="w-6 h-6 p-1 rounded-full transition-all duration-300 opacity-0 hover:opacity-60 flex items-center justify-center bg-zinc-200"
-              >
-                <FaUser className="size-3 text-zinc-700" />
-              </Link>
+            {/* Admin Link */}
+            <Link
+              to="/admin-login"
+              className="w-6 h-6 p-1 rounded-full transition-all duration-300 opacity-0 hover:opacity-60 flex items-center justify-center bg-foreground"
+            >
+              <FaUser className="size-3 text-background" />
+            </Link>
 
-              {/* Info Panel */}
-              <div
-                className={` text-zinc-300 leading-relaxed text-[10px] px-3 py-2 bg-zinc-800/70 rounded-xl ring-1 ring-zinc-300/10 ring-inset transition-all duration-500 ${
-                  isOpen
-                    ? "opacity-100 scale-100 translate-x-0 block"
-                    : "opacity-0 scale-95 translate-x-4 hidden"
-                }`}
-              >
-                <span className="text-sky-400 font-semibold block mb-1">
-                  Response System
-                </span>
-                <span className="text-sky-400">🤖 AI Powered</span> - Advanced
-                responses from AI model
-                <br />
-                <span className="text-amber-400">⚡ Local Response</span> - Fast
-                fallback responses
-                <br />
-                <span className="text-red-400">⚠️ API Error</span> - Using
-                backup system
-              </div>
-            </div>
-
-            <div className=" flex items-end justify-start gap-4 mt-4">
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                className="btn btn-primary"
-              >
-                <button className="text-xs md:text-sm">Download Resume</button>
-                <MdOutlineFileDownload className="hidden md:block size-[20px]" />
-              </a>
-              <Link to="/contact" className="btn btn-outline">
-                <button className="text-xs md:text-sm">Contact Me</button>
-                <LuMessagesSquare className="hidden md:block size-[20px]" />
-              </Link>
+            {/* Info Panel */}
+            <div
+              className={`text-muted-foreground leading-relaxed text-[10px] px-3 py-2 bg-card/70 rounded-xl ring-1 ring-border/10 ring-inset transition-all duration-500 ${
+                isOpen
+                  ? "opacity-100 scale-100 translate-x-0 block"
+                  : "opacity-0 scale-95 translate-x-4 hidden"
+              }`}
+            >
+              <span className="text-accent-secondary font-semibold block mb-1">
+                Response System
+              </span>
+              <span className="text-accent-secondary">🤖 AI Powered</span> -
+              Advanced responses from AI model
+              <br />
+              <span className="text-terminal-amber">⚡ Local Response</span> -
+              Fast fallback responses
+              <br />
+              <span className="text-error">⚠️ API Error</span> - Using backup
+              system
             </div>
           </div>
 
-          {/* Chat window */}
-          <div
-            className="bg-zinc-800/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-zinc-800/40 transition-all duration-500 hover:ring-1 hover:ring-zinc-500/10 hover:ring-inset"
-            onMouseEnter={() => setIsChatHovered(true)}
-            onMouseLeave={() => setIsChatHovered(false)}
-          >
-            <div className="h-full rounded-2xl p-4 w-full  text-sm md:text-base">
-              <div
-                ref={chatContainerRef}
-                className="h-[350px] overflow-y-scroll scrollbar-thin flex flex-col px-2 w-full"
-              >
-                {messages.map((msg, i) =>
-                  msg.sender === "bot" ? (
-                    <div
-                      className="flex items-start gap-3 mr-0 md:mr-24 my-2"
-                      key={i}
-                    >
-                      <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full mt-1 flex-shrink-0">
-                        <RiRobot2Fill className="size-5" />
-                      </div>
-                      <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200 break-words flex-1 min-w-0">
-                        <ReadMoreText text={msg.text} maxLines={5} />
-                        {renderSourceIndicator(msg.source)}
-                      </div>
-                    </div>
-                  ) : (
-                    <div
-                      className="flex flex-row-reverse items-start gap-3 ml-0 md:ml-24 my-2"
-                      key={i}
-                    >
-                      <div className="flex items-center justify-center bg-emerald-700 p-2 rounded-full mt-1 flex-shrink-0">
-                        <FaUser className="size-5" />
-                      </div>
-                      <div className="bg-emerald-600/20 ring-1 ring-emerald-700/40 px-3 py-2 rounded-lg text-zinc-200 break-words min-w-0 w-fit">
-                        {msg.text}
-                      </div>
-                    </div>
-                  ),
-                )}
+          <div className=" flex items-end justify-start gap-4 mt-4">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              className="btn btn-primary"
+            >
+              <button className="text-xs md:text-sm">Download Resume</button>
+              <MdOutlineFileDownload className="hidden md:block size-[20px]" />
+            </a>
+            <Link to="/contact" className="btn btn-outline">
+              <button className="text-xs md:text-sm">Contact Me</button>
+              <LuMessagesSquare className="hidden md:block size-[20px]" />
+            </Link>
+          </div>
+        </div>
 
-                {loading && (
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center bg-sky-700 p-2 rounded-full">
-                      <RiRobot2Fill className="size-5" />
+        {/* Chat window */}
+        <div
+          className="bg-card/70 w-full h-[450px] rounded-2xl flex flex-col justify-between gap-2 hover:bg-card/60 transition-all duration-500 hover:ring-1 hover:ring-border/20 hover:ring-inset"
+          onMouseEnter={() => setIsChatHovered(true)}
+          onMouseLeave={() => setIsChatHovered(false)}
+        >
+          <div className="h-full rounded-2xl p-4 w-full text-sm md:text-base">
+            <div
+              ref={chatContainerRef}
+              className="h-[350px] overflow-y-scroll scrollbar-thin flex flex-col px-2 w-full"
+            >
+              {messages.map((msg, i) =>
+                msg.sender === "bot" ? (
+                  <div
+                    className="flex items-start gap-3 mr-0 md:mr-24 my-2"
+                    key={i}
+                  >
+                    <div className="flex items-center justify-center bg-terminal-green/30 p-2 rounded-full mt-1 flex-shrink-0">
+                      <RiRobot2Fill className="size-5 text-background" />
                     </div>
-                    <div className="bg-sky-600/20 ring-1 ring-sky-700/40 px-3 py-2 rounded-lg text-zinc-200">
-                      <div className="flex items-center gap-2">
-                        <div className="">
-                          <span className="text-white/80 font-light text-sm inline-block mb-2">
-                            Thinking
-                          </span>
-                          <div className="flex space-x-1 mb-2 ml-1">
-                            <div className="w-1 h-1 bg-white rounded-full animate-bounce"></div>
-                            <div
-                              className="w-1 h-1 bg-white rounded-full animate-bounce"
-                              style={{ animationDelay: "0.1s" }}
-                            ></div>
-                            <div
-                              className="w-1 h-1 bg-white rounded-full animate-bounce"
-                              style={{ animationDelay: "0.2s" }}
-                            ></div>
-                          </div>
+                    <div className="bg-terminal-green/15 ring-1 ring-terminal-green/50 px-3 py-2 rounded-lg text-foreground break-words flex-1 min-w-0">
+                      <ReadMoreText text={msg.text} maxLines={5} />
+                      {renderSourceIndicator(msg.source)}
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className="flex flex-row-reverse items-start gap-3 ml-0 md:ml-24 my-2"
+                    key={i}
+                  >
+                    <div className="flex items-center justify-center bg-terminal-amber/30 p-2 rounded-full mt-1 flex-shrink-0">
+                      <FaUser className="size-5 text-background" />
+                    </div>
+                    <div className="bg-terminal-amber/15 ring-1 ring-terminal-amber/50 px-3 py-2 rounded-lg text-foreground break-words min-w-0 w-fit">
+                      {msg.text}
+                    </div>
+                  </div>
+                ),
+              )}
+
+              {loading && (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-center bg-terminal-green/30 p-2 rounded-full">
+                    <RiRobot2Fill className="size-5 text-background" />
+                  </div>
+                  <div className="bg-terminal-green/15 ring-1 ring-terminal-green/50 px-3 py-2 rounded-lg text-foreground">
+                    <div className="flex items-center gap-2">
+                      <div className="">
+                        <span className="text-foreground/80 font-light text-sm inline-block mb-2">
+                          Thinking
+                        </span>
+                        <div className="flex space-x-1 mb-2 ml-1">
+                          <div className="w-1 h-1 bg-terminal-green rounded-full animate-bounce"></div>
+                          <div
+                            className="w-1 h-1 bg-terminal-green rounded-full animate-bounce"
+                            style={{ animationDelay: "0.1s" }}
+                          ></div>
+                          <div
+                            className="w-1 h-1 bg-terminal-green rounded-full animate-bounce"
+                            style={{ animationDelay: "0.2s" }}
+                          ></div>
                         </div>
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
-
-            {/* Input box */}
-            <form className="px-4 pt-1 pb-4 gap-3 rounded-2xl flex">
-              <input
-                type="text"
-                required
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="bg-zinc-800 text-sky-100 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 rounded-lg px-3 py-2 transition-all duration-500 placeholder:text-sm text-sm flex-1"
-                placeholder="Hey there, what skills are you best at?"
-              />
-              <button
-                type="submit"
-                onClick={handleSend}
-                disabled={loading}
-                className="bg-zinc-800 text-zinc-200 hover:text-zinc-800 hover:bg-sky-600 outline-none outline-zinc-500 hover:outline-sky-700 active:outline-sky-700 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed "
-              >
-                <IoSend className="size-4" />
-              </button>
-            </form>
           </div>
+
+          {/* Input box */}
+          <form className="px-4 pt-1 pb-4 gap-3 rounded-2xl flex">
+            <input
+              type="text"
+              required
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="bg-muted text-foreground font-mono outline-none border border-input rounded-lg px-3 py-2 transition-all duration-500 placeholder:text-muted-foreground focus:border-accent-secondary focus:ring-1 focus:ring-accent-secondary/30 text-sm flex-1"
+              placeholder="Hey there, what skills are you best at?"
+            />
+            <button
+              type="submit"
+              onClick={handleSend}
+              disabled={loading}
+              className="bg-gradient-electric text-accent-foreground hover:opacity-90 hover:scale-105 outline-none focus:ring-1 focus:ring-accent-secondary/30 px-2 py-1 rounded-lg text-sm transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-glow-blue"
+            >
+              <IoSend className="size-4" />
+            </button>
+          </form>
         </div>
+      </div>
     </section>
   );
 };

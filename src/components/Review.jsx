@@ -19,7 +19,7 @@ const Review = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        setLoading(true);
+      setLoading(true);
         const res = await fetch(`${BACKEND_URL}/api/reviews`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
@@ -35,10 +35,16 @@ const Review = () => {
 
   if (loading) {
     return (
-      <section id="reviews" className="section overflow-hidden ">
-        <h2 className="headline-2 ">What my colleagues say</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-          Hear directly from those who've collaborated with me
+      <section id="reviews" className="section overflow-hidden">
+        <div className="section-label mb-6">
+          <span className="dot"></span>
+          <span>TESTIMONIALS</span>
+        </div>
+        <h2 className="headline-2 text-foreground mb-4">
+          What my <span className="gold-text">colleagues</span> say
+        </h2>
+          <p className="body-text mt-3 mb-8 max-w-[50ch]">
+          Hear directly from those who&apos;ve collaborated with me
         </p>
         <div className="flex items-center justify-center py-10">
           <div className="loader mb-4"><span></span></div>
@@ -49,24 +55,36 @@ const Review = () => {
 
   if (error) {
     return (
-      <section id="reviews" className="section overflow-hidden ">
-        <h2 className="headline-2 ">What my colleagues say</h2>
-        <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-          Hear directly from those who've collaborated with me
+      <section id="reviews" className="section overflow-hidden">
+        <div className="section-label mb-6">
+          <span className="dot"></span>
+          <span>TESTIMONIALS</span>
+        </div>
+        <h2 className="headline-2 text-foreground mb-4">
+          What my <span className="gold-text">colleagues</span> say
+        </h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
+          Hear directly from those who&apos;ve collaborated with me
         </p>
-        <p className="text-red-400">Failed to load reviews.</p>
+        <p className="text-error">Failed to load reviews.</p>
       </section>
     );
   }
 
   return (
-    <section id="reviews" className="section overflow-hidden ">
-      <h2 className="headline-2 ">What my colleagues say</h2>
-      <p className="text-zinc-400 mt-3 mb-8 max-w-[50ch] ">
-        Hear directly from those who've collaborated with me
-      </p>
+    <section id="reviews" className="section overflow-hidden">
+      <div className="section-label mb-6">
+        <span className="dot"></span>
+        <span>TESTIMONIALS</span>
+      </div>
+      <h2 className="headline-2 text-foreground mb-4">
+        What my <span className="gold-text">colleagues</span> say
+      </h2>
+        <p className="body-text mt-3 mb-8 max-w-[50ch]">
+          Hear directly from those who&apos;ve collaborated with me
+        </p>
 
-      <div className=" grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 pb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-stretch w-full gap-4 lg:gap-6 pb-10">
         {reviews.map(({ content, name, imgSrc, company, rating }, key) => (
           <ReviewCard
             key={key}
@@ -92,11 +110,11 @@ const Review = () => {
       <div className="">
         <div className="flex items-start gap-4">
           <div className="flex-1">
-            <p className="text-zinc-400 text-sm mb-4">
-              <span className="text-zinc-300">Want to write a review?</span> I would love to hear about
+            <p className="body-text text-sm text-muted-foreground mb-4">
+              <span className="text-foreground">Want to write a review?</span> I would love to hear about
               your experience working with me. It only takes a minute and helps
               others learn more about me.{" "}
-              <span onClick={() => setReviewOpen(true)} className="text-sky-500 cursor-pointer">
+              <span onClick={() => setReviewOpen(true)} className="text-accent-secondary cursor-pointer font-medium">
                 Click here to write a review.
               </span>
             </p>
@@ -107,11 +125,7 @@ const Review = () => {
       {toast && (
         <div className="fixed bottom-4 right-4 z-50">
           <div
-            className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium ${
-              toast.type === "success"
-                ? "bg-sky-500 text-white"
-                : "bg-red-500 text-white"
-            }`}
+            className={`toast-${toast.type === "success" ? "success" : "error"}`}
           >
             {toast.type === "success" ? "✓ " : "✗ "}
             {toast.message}
