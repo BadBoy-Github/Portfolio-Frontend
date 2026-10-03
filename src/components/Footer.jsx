@@ -1,6 +1,7 @@
 // Components
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
+import Logo from "./ui/Logo";
 
 const sitemap = [
   {
@@ -110,14 +111,12 @@ const Footer = () => {
         </div>
 
         <div className="flex items-center justify-between pt-10 mt-10 border-t-2 border-dashed border-ink/20">
-          <a href="/" className="logo" aria-label="Elayabarathi M V — home">
-            <img
-              src="/favicon.svg"
-              width={40}
-              height={40}
-              alt="Elayabarathi M V"
-              loading="lazy"
-            />
+          <a
+            href="/"
+            aria-label="Elayabarathi M V — home"
+            className="inline-block shrink-0"
+          >
+            <Logo />
           </a>
 
           <p className="text-ink-soft text-base">

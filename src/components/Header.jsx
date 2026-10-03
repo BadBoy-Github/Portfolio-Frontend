@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Button } from "./Button";
+import Logo from "./ui/Logo";
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -18,14 +19,12 @@ const Header = () => {
       <header className="fixed top-0 left-0 w-full z-40 bg-paper border-b-2 border-dashed border-ink/20">
         <div className="max-w-screen-2xl w-full mx-auto px-6 h-20 flex justify-between items-center md:px-8 md:grid md:grid-cols-[1fr,3fr,1fr]">
           <h1>
-            <Link to="/" className="logo">
-              <img
-                src="/favicon.svg"
-                alt="Elayabarathi"
-                width={40}
-                height={40}
-                loading="lazy"
-              />
+            <Link
+              to="/"
+              aria-label="Elayabarathi M V — home"
+              className="inline-block shrink-0"
+            >
+              <Logo />
             </Link>
           </h1>
 
