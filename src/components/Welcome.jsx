@@ -1,6 +1,7 @@
 import CountUp from "./CountUp";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./ui/Logo";
 
 const GITHUB_USERNAME = "BadBoy-Github";
 const REPOS_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
@@ -130,15 +131,12 @@ const Welcome = () => {
             </div>
           ))}
 
-          <Link to="/" className="ml-auto flex flex-col items-center group">
-            <img
-              src="/favicon.svg"
-              alt="Elayabarathi M V"
-              width={30}
-              height={30}
-              loading="lazy"
-              className="w-[30px] md:w-[40px] md:h-[40px]"
-            />
+          <Link
+            to="/"
+            aria-label="Elayabarathi M V — home"
+            className="ml-auto inline-block shrink-0"
+          >
+            <Logo />
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 // Components
 import { Bot, Download } from "lucide-react";
 import { Button } from "./Button";
+import Logo from "./ui/Logo";
 
 const CornerMarks = () => (
   <>
@@ -41,15 +42,7 @@ const Home = () => {
       <div className="lg:grid lg:grid-cols-[3fr_4fr] items-center lg:gap-10">
         <div>
           <div className="flex items-center gap-3">
-            <span className="logo w-11 h-11 shrink-0">
-              <img
-                src="/icon.webp"
-                width={40}
-                height={40}
-                alt="Elayabarathi M V monogram"
-                loading="lazy"
-              />
-            </span>
+            <Logo className="shrink-0" />
 
             <div className="flex items-center gap-2 text-ink-soft text-lg">
               <span className="relative w-3 h-3 rounded-wobbly-sm bg-marker border border-ink">
