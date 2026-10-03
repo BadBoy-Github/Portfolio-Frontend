@@ -64,7 +64,7 @@ const Home = () => {
 
             <h2
               id="home-heading"
-              className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[14ch] mt-1 mb-10"
+              className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[14ch] mt-6 mb-10"
             >
               Creating Modern User Focused Interfaces
             </h2>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedinIn } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa6";
 import { IoChevronForward } from "react-icons/io5";
 import ReviewModal from "./ReviewModal";
 import Card from "./ui/Card";
@@ -17,6 +18,11 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/elayabarathi/",
     icon: <FaLinkedinIn />,
     alt: "LinkedIn",
+  },
+  {
+    href: "https://wa.me/919842852121",
+    icon: <FaWhatsapp />,
+    alt: "WhatsApp",
   },
   {
     href: "mailto:elayabarathiedison@gmail.com",

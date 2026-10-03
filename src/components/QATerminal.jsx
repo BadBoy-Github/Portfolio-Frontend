@@ -191,6 +191,13 @@ const QATerminal = () => {
     }
   }, [lines]);
 
+  const scrollTerminal = (direction) => {
+    if (terminalBodyRef.current) {
+      const amount = 200;
+      terminalBodyRef.current.scrollTop += direction === 'up' ? -amount : amount;
+    }
+  };
+
   return (
     <section id="qa-terminal" className="section">
       <div className="relative flex flex-col h-[85vh] min-h-[420px] bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard-lg overflow-hidden -rotate-[0.5deg]">
@@ -232,32 +239,56 @@ const QATerminal = () => {
           </div>
         </div>
 
-        <div
-          ref={terminalBodyRef}
-          className="p-5 md:p-6 font-mono text-base md:text-lg leading-relaxed overflow-y-auto flex-1 min-h-0 scroll-smooth scrollbar-thin"
-          style={{ scrollbarColor: "rgb(45 45 45) rgb(242 237 227)" }}
-        >
-          <div className="space-y-1">
-            {lines.map((line) => (
-              <div
-                key={line.id}
-                className={`${line.color} break-words whitespace-pre-wrap`}
-              >
-                {line.isCommand ? (
-                  <>
-                    <span className="text-ink-faint">{TERMINAL_PATH}</span>
-                    <span>{line.text}</span>
-                  </>
-                ) : (
-                  line.text
-                )}
-                {line.id === lines.length &&
-                  showCursor &&
-                  !animationComplete && (
-                    <span className="inline-block w-2 h-4 bg-marker ml-1 align-middle animate-pulse" />
+        <div className="relative flex-1 min-h-0">
+          <div
+            ref={terminalBodyRef}
+            className="h-full p-5 md:p-6 font-mono text-base md:text-lg leading-relaxed overflow-hidden flex flex-col scroll-smooth"
+          >
+            <div className="space-y-1">
+              {lines.map((line) => (
+                <div
+                  key={line.id}
+                  className={`${line.color} break-words whitespace-pre-wrap`}
+                >
+                  {line.isCommand ? (
+                    <>
+                      <span className="text-ink-faint">{TERMINAL_PATH}</span>
+                      <span>{line.text}</span>
+                    </>
+                  ) : (
+                    line.text
                   )}
-              </div>
-            ))}
+                  {line.id === lines.length &&
+                    showCursor &&
+                    !animationComplete && (
+                      <span className="inline-block w-2 h-4 bg-marker ml-1 align-middle animate-pulse" />
+                    )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="absolute right-4 top-4 flex flex-col gap-2">
+            <button
+              type="button"
+              onClick={() => scrollTerminal('up')}
+              className="bg-paper-card hover:bg-paper text-ink p-2 rounded-wobbly-sm shadow-hard transition-colors"
+              aria-label="Scroll up"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-4">
+                <path fillRule="evenodd" d="M10 14l-5-5h10l-5 5z" clipRule="evenodd" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollTerminal('down')}
+              className="bg-paper-card hover:bg-paper text-ink p-2 rounded-wobbly-sm shadow-hard transition-colors"
+              aria-label="Scroll down"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-4">
+                <path fillRule="evenodd" d="M10 6l5 5H5l5-5z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

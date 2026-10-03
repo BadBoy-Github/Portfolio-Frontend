@@ -3,6 +3,8 @@ import { Star } from "lucide-react";
 import PropTypes from "prop-types";
 import Card from "./ui/Card";
 
+const GOLD = "#b45309";
+
 const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', company: '', content: '', rating: 5, imgSrc: '' });
@@ -66,7 +68,7 @@ const ReviewModal = ({ isOpen, onClose, onSuccess }) => {
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button key={star} type="button" onClick={() => setForm({ ...form, rating: star })} className="transition-all duration-200">
-                  <Star size={28} className={`cursor-pointer ${star <= form.rating ? 'text-accent-amber fill-accent-amber' : 'text-ink-soft'}`} />
+                  <Star size={28} className={`cursor-pointer ${star <= form.rating ? '' : 'text-ink-soft'}`} style={{ color: star <= form.rating ? GOLD : undefined, fill: star <= form.rating ? GOLD : undefined }} />
                 </button>
               ))}
               <span className="text-sm text-ink-soft ml-2">{form.rating}/5</span>

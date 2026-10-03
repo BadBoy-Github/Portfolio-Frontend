@@ -44,6 +44,10 @@ export default {
           DEFAULT: 'rgb(45 93 161 / <alpha-value>)',
           soft: 'rgb(227 235 247 / <alpha-value>)',
         },
+        gold: {
+          DEFAULT: 'rgb(180 83 9 / <alpha-value>)',
+          soft: 'rgb(251 191 36 / <alpha-value>)',
+        },
       },
       fontFamily: {
         display: ['Kalam', 'ui-rounded', '"Segoe UI"', 'sans-serif'],

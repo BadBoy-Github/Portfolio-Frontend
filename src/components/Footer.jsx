@@ -35,6 +35,10 @@ const socials = [
     href: "https://www.linkedin.com/in/elayabarathi/",
   },
   {
+    label: "WhatsApp",
+    href: "https://wa.me/919842852121",
+  },
+  {
     label: "Gmail",
     href: "mailto:elayabarathiedison@gmail.com",
   },

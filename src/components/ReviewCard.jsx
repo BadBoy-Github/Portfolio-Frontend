@@ -2,6 +2,8 @@
 import PropTypes from "prop-types";
 import { Star } from "lucide-react";
 
+const GOLD = "#b45309";
+
 const ReviewCard = ({ content, imgSrc, name, company, rating = 5 }) => {
   const stars = Array.from({ length: 5 }, (_, i) => i < Number(rating));
 
@@ -19,9 +21,8 @@ const ReviewCard = ({ content, imgSrc, name, company, rating = 5 }) => {
             size={22}
             strokeWidth={2.5}
             aria-hidden="true"
-            className={
-              filled ? "fill-postit text-ink" : "fill-transparent text-ink-faint"
-            }
+            style={filled ? { color: GOLD, fill: GOLD } : undefined}
+            className={!filled ? "fill-transparent text-ink-faint" : ""}
           />
         ))}
       </div>
