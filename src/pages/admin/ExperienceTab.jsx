@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
+import AdminShell from './AdminShell';
 import ExperienceCard from '../../components/ExperienceCard';
 import ExperienceCompoundCard from '../../components/ExperienceCompoundCard';
 import DraggableTagInput from '../../components/DraggableTagInput';
@@ -333,17 +334,16 @@ const ExperienceTab = ({ addToast }) => {
   const defaultInstLogo = "https://res.cloudinary.com/dz53e3szr/image/upload/v1774435128/skybrisk_logo_aladdz.webp";
 
   return (
-    <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl pt-8 pb-4 border-b border-zinc-700">
-        <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
-            Experience <span className="text-sky-400">({items.reduce((sum, item) => sum + (item.compound ? (item.content?.length || 0) : 1), 0)})</span>
-          </h2>
-          <p className="text-zinc-400 text-sm mt-1">
-            Manage work experience and internships
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+    <AdminShell
+      title="Experience"
+      count={items.reduce(
+        (sum, item) =>
+          sum + (item.compound ? item.content?.length || 0 : 1),
+        0
+      )}
+      subtitle="Manage work experience and internships"
+      actions={
+        <>
           <button onClick={saveOrder} className="btn btn-outline">
             <span className="material-symbols-rounded text-[16px]">save</span>
             Save Order
@@ -352,13 +352,14 @@ const ExperienceTab = ({ addToast }) => {
             <IoAdd className="text-[18px]" />
             Add Experience
           </button>
-        </div>
-      </div>
+        </>
+      }
+    >
 
       {loading ? (
-        <p className="text-zinc-400">Loading...</p>
+        <p className="admin-empty">Loading...</p>
       ) : (
-        <ul className="space-y-0 pl-6">
+        <ul className="space-y-0 pl-8 md:pl-10">
           {items.map((item, index) => (
             <li
               key={item._id}
@@ -367,31 +368,38 @@ const ExperienceTab = ({ addToast }) => {
               onDragOver={(e) => handleDragOver(e, index)}
               onDrop={() => handleDrop(index)}
               onDragEnd={handleDragEnd}
-              className={`relative group/item cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+              className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
+              <div className="admin-card-grab">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
+                <span className="font-hand text-base">Drag to reorder</span>
               </div>
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xs text-zinc-500">{item.year}</p>
-                <div className="flex gap-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
+              <div className="flex items-center justify-between gap-2 mb-2">
+                {/* Single cards render their own year, so only the compound
+                    wrapper needs one for grouping. */}
+                {item.compound && (
+                  <p className="font-hand text-base text-ink-soft">{item.year}</p>
+                )}
+                <div className="admin-card-actions !mb-0">
                   <button
                     onClick={() => item.compound ? openCompoundEdit(item) : openEdit(item)}
-                    className="btn btn-outline text-xs py-1 px-2"
+                    className="btn btn-outline btn-icon"
                   >
                     <span className="material-symbols-rounded text-[16px]">
                       edit
                     </span>
+                    <span className="sr-only">Edit {item.name || item.instName}</span>
                   </button>
                   <button
                     onClick={() => setDeleteTarget(item)}
-                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
+                    className="btn btn-outline btn-icon btn-danger"
                   >
                     <span className="material-symbols-rounded text-[16px]">
                       delete
                     </span>
+                    <span className="sr-only">Delete {item.name || item.instName}</span>
                   </button>
                 </div>
               </div>
@@ -400,19 +408,22 @@ const ExperienceTab = ({ addToast }) => {
                   <a
                     href={item.instLink || '#'}
                     target="_blank"
-                    className="absolute flex items-center justify-center w-10 h-10 bg-zinc-600 rounded-full -start-5 ring-8 ring-zinc-900 cursor-pointer"
+                    rel="noopener noreferrer"
+                    className="admin-rail-node"
+                    aria-label={`Visit ${item.instName}`}
                   >
                     <img
-                      className="rounded-full shadow-lg"
                       src={item.instLogo || defaultInstLogo}
                       alt={item.instName}
                       loading="lazy"
                     />
                   </a>
-                  <div className="bg-zinc-800 rounded-2xl ring-1 ring-inset ring-zinc-50/5 p-4 sm:p-5">
-                    <div className="p-4 bg-zinc-800/50 rounded-xl mb-3">
-                      <p className="font-semibold text-zinc-200">{item.instName}</p>
-                      {item.period && <p className="text-xs text-zinc-400">{item.period}</p>}
+                  <div className="admin-cluster">
+                    <div className="admin-cluster-head">
+                      <p className="admin-cluster-name">{item.instName}</p>
+                      {item.period && (
+                        <p className="admin-cluster-meta">{item.period}</p>
+                      )}
                     </div>
                     {(item.content || []).map((content, i) => (
                       <div key={i} className="mb-3 last:mb-0">
@@ -431,6 +442,7 @@ const ExperienceTab = ({ addToast }) => {
                 </div>
               ) : (
                 <ExperienceCard
+                  as="div"
                   year={item.year}
                   name={item.name}
                   role={item.role || ""}
@@ -449,7 +461,7 @@ const ExperienceTab = ({ addToast }) => {
             </li>
           ))}
           {items.length === 0 && (
-            <p className="text-zinc-400">No items found.</p>
+            <p className="admin-empty">No items found.</p>
           )}
         </ul>
       )}
@@ -619,13 +631,13 @@ const ExperienceTab = ({ addToast }) => {
             />
           </div>
 
-          <div className="border-t border-zinc-700 pt-3">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="text-md font-semibold text-zinc-50">Roles</h4>
+          <div className="border-t-2 border-dashed border-ink/20 pt-4">
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <h4 className="admin-section-title">Roles</h4>
               <button
                 type="button"
                 onClick={addRole}
-                className="btn btn-outline text-xs py-1 px-2"
+                className="btn btn-outline btn-sm"
               >
                 <span className="material-symbols-rounded text-[16px]">add</span>
                 Add Role
@@ -640,20 +652,23 @@ const ExperienceTab = ({ addToast }) => {
                 onDragOver={(e) => handleCompoundRoleDragOver(e, roleIndex)}
                 onDrop={() => handleCompoundRoleDrop(roleIndex)}
                 onDragEnd={handleCompoundRoleDragEnd}
-                className={`relative flex flex-col gap-3 p-4 bg-zinc-800/30 rounded-xl mb-3 cursor-grab active:cursor-grabbing transition-all ${compoundDragOverIndex === roleIndex ? "ring-2 ring-sky-500" : ""}`}
+                className={`flex flex-col gap-3 p-4 bg-paper-deep/40 border-2 border-dashed border-ink rounded-wobbly-md mb-3 cursor-grab active:cursor-grabbing transition-all ${compoundDragOverIndex === roleIndex ? "admin-drop" : ""}`}
               >
-                <div className="flex items-center gap-2 text-zinc-400 mb-2">
+                <div className="admin-card-grab !opacity-100 !relative !z-auto">
                   <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                     drag_indicator
                   </span>
-                  <span className="text-xs text-zinc-500">Role {roleIndex + 1}</span>
+                  <span className="font-hand text-base text-ink-soft">
+                    Role {roleIndex + 1}
+                  </span>
                   {compoundForm.roles.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeRole(roleIndex)}
-                      className="ml-auto text-red-400 hover:text-red-300"
+                      className="material-symbols-rounded text-[16px] text-ink-faint hover:text-marker ml-auto transition-colors"
                     >
-                      <span className="material-symbols-rounded text-[14px]">close</span>
+                      <span className="material-symbols-rounded">close</span>
+                      <span className="sr-only">Remove role {roleIndex + 1}</span>
                     </button>
                   )}
                 </div>
@@ -732,7 +747,7 @@ const ExperienceTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 

@@ -5,6 +5,7 @@ import Card from "./ui/Card";
 import Badge from "./ui/Badge";
 
 const ExperienceCard = ({
+  as: Tag = "li",
   year,
   name,
   role,
@@ -23,30 +24,26 @@ const ExperienceCard = ({
   };
 
   return (
-    <>
-      <li className="mb-10 relative pl-8">
-        <a
-          href={instLink}
-          target="_blank"
-          className="absolute flex items-center justify-center w-10 h-10 bg-marker rounded-full -start-5 ring-8 ring-paper cursor-pointer"
-        >
-          <img
-            className="rounded-full shadow-hard-sm"
-            src={instLogo}
-            alt={instName}
-            loading="lazy"
-          />
-        </a>
+    <Tag className="mb-10 relative pl-8">
+      <a
+        href={instLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="admin-rail-node"
+        aria-label={`Visit ${instName}`}
+      >
+        <img src={instLogo} alt={instName} loading="lazy" />
+      </a>
         <Card tone="paper" className="p-4 sm:p-5 shadow-hard hover:shadow-hard transition-all hover:rotate-1">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <div className="text-sm font-medium text-ink w-full">
-              <div className="flex gap-1 items-center flex-wrap">
-                <p className="font-semibold text-ink">{name}</p>
-                <Badge tone="marker">{role}</Badge>
-              </div>
-              <p className="font-semibold text-ink mt-2">{instName}</p>
-              <div className="mt-2 w-[90%]">
-                <p className="text-sm font-normal text-ink-soft">{desc}</p>
+            <div className="w-full">
+            <div className="flex gap-2 items-center flex-wrap">
+              <p className="font-display font-bold text-ink">{name}</p>
+              <Badge tone="marker">{role}</Badge>
+            </div>
+            <p className="font-hand text-lg text-ink-soft mt-1">{instName}</p>
+            <div className="mt-2 w-full">
+              <p className="font-hand text-lg text-ink-soft">{desc}</p>
                 <div className="flex items-center mt-4 gap-4 flex-wrap">
                   {certifi && (
                     <div
@@ -63,7 +60,7 @@ const ExperienceCard = ({
                   <div className="flex items-center justify-start text-ink-soft w-full gap-2">
                     <TbBulb
                       size={20}
-                      className="hidden md:flex items-center justify-center text-accent-amber group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
+                      className="hidden md:flex items-center justify-center text-gold group-hover:scale-110 group-hover:animate-pulse duration-300 transition-all"
                     />
                     <div className="flex items-center flex-wrap gap-2">
                       {skills.map((skill, index) => (
@@ -79,17 +76,17 @@ const ExperienceCard = ({
                 </div>
               </div>
             </div>
-            <time className="text-xs font-normal text-ink-soft sm:w-fit sm:text-center w-full flex-shrink-0">
+            <time className="font-hand text-lg text-ink-soft sm:w-fit sm:text-center w-full flex-shrink-0">
               {year}
             </time>
           </div>
         </Card>
-      </li>
-    </>
+    </Tag>
   );
 };
 
 ExperienceCard.propTypes = {
+  as: PropTypes.elementType,
   year: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,

@@ -20,17 +20,18 @@ const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
       <div className="absolute inset-0 bg-ink/20 backdrop-blur-sm" onClick={onCancel} />
       <div className="relative bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard w-full max-w-sm max-h-[85vh] flex flex-col">
         <div className="flex items-center justify-between p-5 border-b-2 border-dashed border-ink/20 shrink-0">
-          <h3 className="text-lg font-semibold text-ink">{title}</h3>
-          <button onClick={onCancel} className="text-ink-soft hover:text-marker transition-colors">
+          <h3 className="font-display font-bold text-xl text-ink">{title}</h3>
+          <button onClick={onCancel} className="menu-btn !h-9 !w-9">
             <span className="material-symbols-rounded">close</span>
+            <span className="sr-only">Close</span>
           </button>
         </div>
         <div className="overflow-y-auto flex-1 p-5">
-          <p className="text-ink-soft text-sm">{message}</p>
+          <p className="font-hand text-lg text-ink-soft">{message}</p>
         </div>
         <div className="flex gap-3 justify-end p-5 border-t-2 border-dashed border-ink/20 shrink-0">
           <button onClick={onCancel} className="btn btn-outline">Cancel</button>
-          <button onClick={onConfirm} className="btn btn-primary !bg-accent-red hover:!bg-accent-red/80 text-paper">Delete</button>
+          <button onClick={onConfirm} className="btn !bg-marker hover:!bg-marker/85 text-paper">Delete</button>
         </div>
       </div>
     </div>
@@ -43,13 +44,14 @@ const FormModal = ({ open, onClose, title, error, children }) => {
     <div className="fixed inset-0 bg-ink/20 backdrop-blur-sm flex items-center justify-center p-4 z-50">
       <div className="bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard w-full max-w-3xl max-h-[85vh] flex flex-col">
         <div className="flex items-center justify-between p-5 border-b-2 border-dashed border-ink/20 shrink-0">
-          <h3 className="text-lg font-semibold text-ink">{title}</h3>
-          <button onClick={onClose} className="text-ink-soft hover:text-marker transition-colors">
+          <h3 className="font-display font-bold text-xl text-ink">{title}</h3>
+          <button onClick={onClose} className="menu-btn !h-9 !w-9">
             <span className="material-symbols-rounded">close</span>
+            <span className="sr-only">Close</span>
           </button>
         </div>
         <div className="overflow-y-auto flex-1 p-5">
-          {error && <p className="text-accent-red text-sm mb-4">{error}</p>}
+          {error && <p className="font-hand text-lg text-marker mb-4">{error}</p>}
           {children}
         </div>
       </div>
@@ -146,16 +148,25 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-paper flex flex-col md:flex-row md:h-screen">
       {/* Mobile header */}
-      <div className="md:hidden flex items-center justify-between bg-paper-card border-b-2 border-dashed border-ink/20 p-4">
-        <div className="flex items-center gap-3">
-          <h1 className="text-lg font-semibold text-ink">
+      <div className="md:hidden flex items-center justify-between gap-3 bg-paper-card border-b-2 border-dashed border-ink/20 p-4">
+        <div className="flex items-center gap-3 min-w-0">
+          <h1 className="font-display font-bold text-lg text-ink">
             Admin Dashboard
           </h1>
-          <a href="/" className="text-xs text-ballpoint hover:text-ink transition-colors">
-            Go to Website
-          </a>
+          <button
+            onClick={handleGoToWebsite}
+            className="btn btn-sm btn-outline !px-3 shrink-0"
+          >
+            <IoArrowBackCircleOutline className="size-4 shrink-0" />
+            Website
+          </button>
         </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="menu-btn">
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="menu-btn shrink-0"
+          aria-expanded={mobileOpen}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        >
           <span className="material-symbols-rounded">
             {mobileOpen ? "close" : "menu"}
           </span>
@@ -169,10 +180,10 @@ const AdminDashboard = () => {
         <div className="p-4 w-64">
           <div className="hidden md:flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-xl font-semibold text-ink">
+              <h1 className="font-display font-bold text-2xl text-ink leading-tight">
                 Admin Dashboard
               </h1>
-              <p className="text-xs text-ink-soft mt-1">
+              <p className="font-hand text-base text-ink-soft mt-1">
                 Portfolio Content Manager
               </p>
             </div>
@@ -246,19 +257,19 @@ const AdminDashboard = () => {
             />
           </nav>
 
-          <div className="mt-8 pt-6 border-t-2 border-dashed border-ink/20">
+          <div className="mt-8 pt-6 border-t-2 border-dashed border-ink/20 space-y-3">
             <button
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-wobbly-sm text-sm font-medium text-ballpoint hover:text-ink hover:bg-paper/80 transition-colors"
+              className="btn btn-outline w-full !min-h-12 !px-4 !text-lg justify-start"
               onClick={handleGoToWebsite}
             >
-              <IoArrowBackCircleOutline className="size-5" />
-              <p>Go to Website</p>
+              <IoArrowBackCircleOutline className="size-5 shrink-0" />
+              Go to Website
             </button>
             <button
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-wobbly-sm text-sm font-medium text-accent-red hover:text-ink hover:bg-paper/80 transition-colors"
+              className="btn btn-outline !min-h-12 !px-4 !text-lg justify-start !text-marker hover:!bg-marker-soft hover:!text-ink"
             >
-              <span className="material-symbols-rounded text-[20px]">
+              <span className="material-symbols-rounded text-[20px] shrink-0">
                 logout
               </span>
               Logout
@@ -288,10 +299,10 @@ const AdminDashboard = () => {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`px-4 py-3 rounded-wobbly-sm shadow-hard text-sm font-medium flex items-center gap-2 ${
+className={`px-4 py-3 rounded-wobbly-sm shadow-hard font-hand text-lg flex items-center gap-2 ${
               toast.type === "success"
                 ? 'bg-marker text-ink'
-                : 'bg-accent-red text-paper'
+                : 'bg-ink-night text-paper'
             }`}
           >
             <span className="material-symbols-rounded text-[18px]">
@@ -311,13 +322,14 @@ const TabButton = ({ id, label, icon, activeTab, setActiveTab, setMobileOpen }) 
       setActiveTab(id);
       setMobileOpen && setMobileOpen(false);
     }}
-    className={`w-full flex items-center gap-3 px-4 py-3 rounded-wobbly-sm text-sm font-medium transition-colors ${
+    aria-current={activeTab === id ? 'page' : undefined}
+    className={`w-full flex items-center gap-3 px-4 py-3 rounded-wobbly-sm font-hand text-lg transition-colors duration-100 ${
       activeTab === id
-        ? 'bg-marker text-ink shadow-hard-sm'
-        : 'text-ink-soft hover:text-ink hover:bg-paper/80'
+        ? 'bg-postit text-ink border-2 border-ink shadow-hard-sm -rotate-1'
+        : 'text-ink-soft border-2 border-transparent hover:text-ink hover:bg-paper hover:border-dashed hover:border-ink/30'
     }`}
   >
-    <span className="material-symbols-rounded text-[20px]">{icon}</span>
+    <span className="material-symbols-rounded text-[22px]">{icon}</span>
     {label}
   </button>
 );

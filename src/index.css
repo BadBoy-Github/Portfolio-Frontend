@@ -434,6 +434,186 @@ select.text-field {
     @apply bg-marker-soft
 }
 
+/* ============================================================
+   ADMIN
+   Shared chrome for the content-manager tabs. The tabs used to
+   each inline their own dark header, which is why they drifted.
+   One sticky bar, one section rule, one hover action row.
+   ============================================================ */
+
+.admin-shell {
+    @apply px-4 md:px-8 pb-8 md:pb-12
+}
+
+/* The single sticky layer of a tab. Negative margins let the bar span
+   the full pane while the body keeps its reading gutter. */
+.admin-tab-head {
+    @apply sticky top-0 z-30 -mx-4 md:-mx-8 px-4 md:px-8 pt-8 pb-4
+        bg-paper/95 backdrop-blur-sm border-b-2 border-dashed border-ink/20;
+}
+
+.admin-tab-title {
+    @apply font-display font-bold text-ink text-3xl lg:text-4xl leading-tight
+        flex items-center gap-3 flex-wrap;
+}
+
+/* Sticky-note count chip. Mirrors .badge so it stays on-palette without
+   nesting component classes inside @apply. */
+.admin-tab-count {
+    @apply inline-flex items-center gap-1.5 h-8 px-3 font-hand text-base text-ink
+        bg-postit border border-ink rounded-wobbly-sm whitespace-nowrap -rotate-1;
+}
+
+.admin-tab-sub {
+    @apply font-hand text-lg text-ink-soft mt-1;
+}
+
+/* Group heading inside a tab. Sticks directly beneath the tab bar, so the
+   offset comes from --admin-tab-head-h (measured by AdminShell) rather than
+   a hardcoded pixel value that breaks whenever the header wraps. */
+.admin-section-head {
+    @apply sticky z-20 -mx-4 md:-mx-8 px-4 md:px-8 mt-8
+        flex items-center gap-3 flex-wrap
+        bg-paper/95 backdrop-blur-sm border-b-2 border-dashed border-ink/20;
+    top: var(--admin-tab-head-h, 0px);
+}
+
+.admin-section-title {
+    @apply relative inline-block font-display font-bold text-ink text-xl;
+}
+
+/* Wavy marker underline, same treatment as .scribble-underline */
+.admin-section-title::after {
+    content: "";
+    @apply absolute left-0 right-0 -bottom-1 h-[6px] opacity-40;
+    background-image: radial-gradient(circle at 50% 60%, currentColor 55%, transparent 58%);
+    background-size: 12px 6px;
+    background-repeat: repeat-x;
+    pointer-events: none;
+}
+
+.admin-section-rule {
+    @apply flex-1 min-w-8 border-t-2 border-dashed border-ink/20;
+}
+
+/* Hover affordances for admin cards. z-20 keeps them clickable above a
+   card's stretched title link; focus-within keeps them reachable by keyboard.
+   Driven by a parent selector rather than `group-hover:` so a tab cannot
+   forget to add the `group` marker class. */
+.admin-card-grab {
+    @apply flex items-center gap-2 text-ink-faint mb-1
+        opacity-0 transition-opacity relative z-20;
+}
+
+.admin-card-actions {
+    @apply flex items-center justify-end gap-2 mb-2 relative z-20
+        opacity-0 transition-opacity;
+}
+
+.admin-card:hover .admin-card-grab,
+.admin-card:focus-within .admin-card-grab,
+.admin-card:hover .admin-card-actions,
+.admin-card:focus-within .admin-card-actions {
+    @apply opacity-100;
+}
+
+/* Hover host for the affordances above. */
+.admin-card {
+    @apply relative cursor-grab active:cursor-grabbing
+        transition-transform duration-100;
+}
+
+.admin-drop {
+    @apply ring-2 ring-ballpoint rounded-wobbly-md;
+}
+
+.admin-empty {
+    @apply font-hand text-xl text-ink-faint col-span-full;
+}
+
+.admin-skeleton {
+    @apply bg-paper-card border-2 border-dashed border-ink/20 rounded-wobbly-md animate-pulse;
+}
+
+/* Icon-only button for row affordances */
+.btn-icon {
+    @apply min-h-0 h-10 w-10 px-0;
+}
+
+/* Destructive row action: keeps the marker-red ink, loses the old
+   translucent red wash that never read on paper. */
+.btn-danger {
+    @apply !text-marker;
+}
+
+.btn-danger:hover {
+    @apply !bg-marker-soft !text-ink;
+}
+
+/* Draggable tag chip inside tag inputs */
+.tag-chip {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 font-hand text-base text-ink
+        bg-paper-deep border border-ink rounded-wobbly-sm
+        cursor-grab active:cursor-grabbing transition-transform duration-100;
+}
+
+.tag-chip:hover {
+    @apply bg-postit -rotate-1;
+}
+
+.tag-chip-over {
+    @apply bg-postit -rotate-1 shadow-hard-sm;
+}
+
+/* Small add / clear pair on a tag input */
+.btn-add {
+    @apply !text-ballpoint;
+}
+
+.btn-add:hover {
+    @apply !bg-ballpoint !text-paper;
+}
+
+.btn-clear {
+    @apply !text-marker;
+}
+
+.btn-clear:hover {
+    @apply !bg-marker-soft !text-ink;
+}
+
+/* Timeline node in the experience / education rails */
+.admin-rail-node {
+    @apply absolute flex items-center justify-center w-12 h-12 -start-6 top-1
+        bg-paper-card border-2 border-ink rounded-wobbly-sm shadow-hard-sm
+        cursor-pointer transition-transform duration-100;
+}
+
+.admin-rail-node:hover {
+    @apply -rotate-6 shadow-hard;
+}
+
+.admin-rail-node img {
+    @apply rounded-wobbly-sm;
+}
+
+/* Grouped (compound) entry wrapper - dashed reads as secondary */
+.admin-cluster {
+    @apply bg-paper-deep/50 border-2 border-dashed border-ink rounded-wobbly-md p-4 sm:p-5;
+}
+
+.admin-cluster-head {
+    @apply p-3 mb-4 bg-postit border-2 border-ink rounded-wobbly-sm -rotate-1;
+}
+
+.admin-cluster-name {
+    @apply font-display font-bold text-ink text-lg leading-tight;
+}
+
+.admin-cluster-meta {
+    @apply font-hand text-base text-ink-soft;
+}
+
 /* LOADING - sketched spinner */
 
 .loader {

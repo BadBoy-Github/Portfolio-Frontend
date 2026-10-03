@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from "./AdminDashboard";
+import { AdminShell, SectionHead } from "./AdminShell";
 import ProjectCard from "../../components/ProjectCard";
 import ProjectFeaturedCard from "../../components/ProjectFeaturedCard";
 
@@ -331,18 +332,20 @@ const ProjectsTab = ({ addToast }) => {
               addItem(field, input);
               setInput("");
             }}
-            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+            className="btn btn-icon btn-add"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
+            <span className="sr-only">Add {label}</span>
           </button>
           <button
             type="button"
             onClick={() => setForm({ ...form, [field]: [] })}
-            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+            className="btn btn-icon btn-clear"
           >
             <span className="material-symbols-rounded text-[16px]">
               refresh
             </span>
+            <span className="sr-only">Clear all {label}</span>
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -354,18 +357,19 @@ const ProjectsTab = ({ addToast }) => {
               onDragOver={(e) => handleDragOver(e, field, index)}
               onDrop={() => handleDrop(field, index)}
               onDragEnd={handleDragEnd}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+              className={`tag-chip ${dragOverIndex === index ? "tag-chip-over" : ""}`}
             >
-              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+              <span className="material-symbols-rounded text-[16px] text-ink-faint cursor-grab active:cursor-grabbing">
                 drag_indicator
               </span>
               {item}
               <button
                 type="button"
                 onClick={() => removeItem(field, index)}
-                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+                className="material-symbols-rounded text-[16px] text-ink-faint hover:text-marker transition-colors"
               >
                 close
+                <span className="sr-only">Remove {item}</span>
               </button>
             </span>
           ))}
@@ -439,33 +443,28 @@ const ProjectsTab = ({ addToast }) => {
   };
 
   return (
-   <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between sticky top-0 z-20 bg-zinc-900 pt-8 pb-4">
-        <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">Projects <span className="text-sky-400">({items.length})</span></h2>
-          <p className="text-zinc-400 text-sm mt-1">
-            Manage your portfolio projects
-          </p>
-        </div>
-         <div className="flex items-center gap-2">
-           <button onClick={saveAllOrders} className="btn btn-outline">
-             <span className="material-symbols-rounded text-[16px]">save</span>
-             Save Order
-           </button>
+   <AdminShell
+      title="Projects"
+      count={items.length}
+      subtitle="Manage your portfolio projects"
+      actions={
+        <>
+          <button onClick={saveAllOrders} className="btn btn-outline">
+            <span className="material-symbols-rounded text-[16px]">save</span>
+            Save Order
+          </button>
           <button onClick={openAdd} className="btn btn-primary">
             <IoAdd className="text-[18px]" />
             Add Project
           </button>
-         </div>
-      </div>
+        </>
+      }
+    >
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-40 animate-pulse"
-            />
+            <div key={i} className="admin-skeleton h-40" />
           ))}
         </div>
       ) : (
@@ -481,15 +480,10 @@ const ProjectsTab = ({ addToast }) => {
               <>
                 {featuredItems.length > 0 && (
                   <div className="mb-8">
-                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-zinc-900 pb-4 border-b border-zinc-700">
-                      <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
-                        Featured Projects{" "}
-                        <span className="text-sky-400">
-                          ({featuredItems.length})
-                        </span>
-                      </h3>
-                    </div>
-                    <div className="mb-4" />
+                    <SectionHead
+                      title="Featured Projects"
+                      count={featuredItems.length}
+                    />
                     <div className="grid gap-4 sm:grid-cols-2">
                       {featuredItems.map((item, index) => (
                         <div
@@ -501,36 +495,35 @@ const ProjectsTab = ({ addToast }) => {
                             handleFeaturedDrop(index, featuredItems)
                           }
                           onDragEnd={handleFeaturedDragEnd}
-                          className={`relative group cursor-grab active:cursor-grabbing transition-all ${
-                            featuredDragOverIndex === index
-                              ? "ring-2 ring-sky-500"
-                              : ""
-                          }`}
+                          className={`admin-card ${featuredDragOverIndex === index ? "admin-drop" : ""}`}
                         >
-                          <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="admin-card-grab">
                             <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                               drag_indicator
                             </span>
+                            <span className="font-hand text-base">
+                              Drag to reorder
+                            </span>
                           </div>
-                          <div className="flex items-center justify-end mb-2">
-                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <button
-                                onClick={() => openEdit(item)}
-                                className="btn btn-outline text-xs py-1 px-2"
-                              >
-                                <span className="material-symbols-rounded text-[16px]">
-                                  edit
-                                </span>
-                              </button>
-                              <button
-                                onClick={() => setDeleteTarget(item)}
-                                className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                              >
-                                <span className="material-symbols-rounded text-[16px]">
-                                  delete
-                                </span>
-                              </button>
-                            </div>
+                          <div className="admin-card-actions">
+                            <button
+                              onClick={() => openEdit(item)}
+                              className="btn btn-outline btn-icon"
+                            >
+                              <span className="material-symbols-rounded text-[16px]">
+                                edit
+                              </span>
+                              <span className="sr-only">Edit {item.title}</span>
+                            </button>
+                            <button
+                              onClick={() => setDeleteTarget(item)}
+                              className="btn btn-outline btn-icon btn-danger"
+                            >
+                              <span className="material-symbols-rounded text-[16px]">
+                                delete
+                              </span>
+                              <span className="sr-only">Delete {item.title}</span>
+                            </button>
                           </div>
                            <ProjectFeaturedCard
                              imgSrc={item.imgSrc || ""}
@@ -551,15 +544,7 @@ const ProjectsTab = ({ addToast }) => {
 
                 {nonFeaturedItems.length > 0 && (
                   <div>
-                    <div className="flex items-center justify-between sticky top-[104px] z-10 bg-zinc-900 pb-4 border-b border-zinc-700">
-                      <h3 className="text-lg font-semibold text-zinc-50 mb-0 flex items-center gap-2">
-                        Projects{" "}
-                        <span className="text-sky-400">
-                          ({nonFeaturedItems.length})
-                        </span>
-                      </h3>
-                    </div>
-                    <div className="mb-4" />
+                    <SectionHead title="Projects" count={nonFeaturedItems.length} />
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       {nonFeaturedItems.map((item, index) => (
                         <div
@@ -573,36 +558,35 @@ const ProjectsTab = ({ addToast }) => {
                             handleNonFeaturedDrop(index, nonFeaturedItems)
                           }
                           onDragEnd={handleNonFeaturedDragEnd}
-                          className={`relative group cursor-grab active:cursor-grabbing transition-all ${
-                            nonFeaturedDragOverIndex === index
-                              ? "ring-2 ring-sky-500"
-                              : ""
-                          }`}
+                          className={`admin-card ${nonFeaturedDragOverIndex === index ? "admin-drop" : ""}`}
                         >
-                          <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <div className="admin-card-grab">
                             <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                               drag_indicator
                             </span>
+                            <span className="font-hand text-base">
+                              Drag to reorder
+                            </span>
                           </div>
-                          <div className="flex items-center justify-end mb-2">
-                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <button
-                                onClick={() => openEdit(item)}
-                                className="btn btn-outline text-xs py-1 px-2"
-                              >
-                                <span className="material-symbols-rounded text-[16px]">
-                                  edit
-                                </span>
-                              </button>
-                              <button
-                                onClick={() => setDeleteTarget(item)}
-                                className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                              >
-                                <span className="material-symbols-rounded text-[16px]">
-                                  delete
-                                </span>
-                              </button>
-                            </div>
+                          <div className="admin-card-actions">
+                            <button
+                              onClick={() => openEdit(item)}
+                              className="btn btn-outline btn-icon"
+                            >
+                              <span className="material-symbols-rounded text-[16px]">
+                                edit
+                              </span>
+                              <span className="sr-only">Edit {item.title}</span>
+                            </button>
+                            <button
+                              onClick={() => setDeleteTarget(item)}
+                              className="btn btn-outline btn-icon btn-danger"
+                            >
+                              <span className="material-symbols-rounded text-[16px]">
+                                delete
+                              </span>
+                              <span className="sr-only">Delete {item.title}</span>
+                            </button>
                           </div>
                            <ProjectCard
                              imgSrc={item.imgSrc || ""}
@@ -625,7 +609,7 @@ const ProjectsTab = ({ addToast }) => {
           })()}
 
           {items.length === 0 && (
-            <p className="text-zinc-400 col-span-full">No items found.</p>
+            <p className="admin-empty">No items found.</p>
           )}
         </>
       )}
@@ -752,11 +736,11 @@ const ProjectsTab = ({ addToast }) => {
                  onDragOver={(e) => handleGalleryDragOver(e, index)}
                  onDrop={() => handleGalleryDrop(index)}
                  onDragEnd={handleGalleryDragEnd}
-                 className={`flex gap-2 mb-2 items-center cursor-grab active:cursor-grabbing transition-all ${galleryDragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
-               >
-                 <span className="material-symbols-rounded text-[16px] text-zinc-400">
-                   drag_indicator
-                 </span>
+className={`flex gap-2 mb-2 items-center cursor-grab active:cursor-grabbing transition-all ${galleryDragOverIndex === index ? "admin-drop" : ""}`}
+                >
+                  <span className="material-symbols-rounded text-[16px] text-ink-faint">
+                    drag_indicator
+                  </span>
                  <input
                    className="text-field flex-1"
                    value={url}
@@ -766,12 +750,13 @@ const ProjectsTab = ({ addToast }) => {
                  <button
                    type="button"
                    onClick={() => removeGalleryField(index)}
-                   className="btn btn-outline !text-red-400 hover:!bg-red-400/10"
-                 >
-                   <span className="material-symbols-rounded text-[16px]">
-                     delete
-                   </span>
-                 </button>
+className="btn btn-outline btn-danger"
+                  >
+                    <span className="material-symbols-rounded text-[16px]">
+                      delete
+                    </span>
+                    <span className="sr-only">Remove gallery image</span>
+                  </button>
                </div>
              ))}
             <button
@@ -805,7 +790,7 @@ const ProjectsTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 

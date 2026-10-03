@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
+import AdminShell from './AdminShell';
 import CertificationsCard from '../../components/CertificationsCard';
 
 const CertificatesTab = ({ addToast }) => {
@@ -247,18 +248,20 @@ const CertificatesTab = ({ addToast }) => {
               addItem(field, input);
               setInput("");
             }}
-            className="btn text-sky-400 border-sky-400 hover:bg-sky-400 hover:text-zinc-900"
+            className="btn btn-icon btn-add"
           >
             <span className="material-symbols-rounded text-[16px]">add</span>
+            <span className="sr-only">Add {label}</span>
           </button>
           <button
             type="button"
             onClick={() => setForm({ ...form, [field]: [] })}
-            className="btn text-red-400 border-red-400 hover:bg-red-400 hover:text-zinc-900"
+            className="btn btn-icon btn-clear"
           >
             <span className="material-symbols-rounded text-[16px]">
               refresh
             </span>
+            <span className="sr-only">Clear all {label}</span>
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -270,18 +273,19 @@ const CertificatesTab = ({ addToast }) => {
               onDragOver={(e) => tagHandleDragOver(e, field, index)}
               onDrop={() => tagHandleDrop(field, index)}
               onDragEnd={tagHandleDragEnd}
-              className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-zinc-700 text-zinc-200 font-medium cursor-grab active:cursor-grabbing transition-colors ${dragOverIndex === index ? "ring-2 ring-sky-500 bg-zinc-600" : "hover:bg-zinc-600"}`}
+              className={`tag-chip ${dragOverIndex === index ? "tag-chip-over" : ""}`}
             >
-              <span className="material-symbols-rounded text-[14px] text-zinc-400 cursor-grab active:cursor-grabbing">
+              <span className="material-symbols-rounded text-[16px] text-ink-faint cursor-grab active:cursor-grabbing">
                 drag_indicator
               </span>
               {item}
               <button
                 type="button"
                 onClick={() => removeItem(field, index)}
-                className="material-symbols-rounded text-[14px] text-zinc-400 hover:text-red-400 transition-colors"
+                className="material-symbols-rounded text-[16px] text-ink-faint hover:text-marker transition-colors"
               >
                 close
+                <span className="sr-only">Remove {item}</span>
               </button>
             </span>
           ))}
@@ -291,17 +295,12 @@ const CertificatesTab = ({ addToast }) => {
   };
 
   return (
-    <div className="px-4 md:px-8 pb-4 md:pb-8">
-      <div className="flex items-center justify-between mb-6 sticky top-0 z-20 bg-zinc-900/80 backdrop-blur-xl pt-8 pb-4 border-b border-zinc-700">
-        <div>
-          <h2 className="text-2xl font-semibold text-zinc-50 flex items-center gap-2">
-            Certificates <span className="text-sky-400">({items.length})</span>
-          </h2>
-          <p className="text-zinc-400 text-sm mt-1">
-            Manage your certifications
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+    <AdminShell
+      title="Certificates"
+      count={items.length}
+      subtitle="Manage your certifications"
+      actions={
+        <>
           <button onClick={saveOrder} className="btn btn-outline">
             <span className="material-symbols-rounded text-[16px]">save</span>
             Save Order
@@ -309,16 +308,14 @@ const CertificatesTab = ({ addToast }) => {
           <button onClick={openAdd} className="btn btn-primary">
             <IoAdd className="text-[18px]" /> Add Certificate
           </button>
-        </div>
-      </div>
+        </>
+      }
+    >
 
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="bg-zinc-800 rounded-xl p-5 ring-1 ring-zinc-50/5 h-32 animate-pulse"
-            />
+            <div key={i} className="admin-skeleton h-32" />
           ))}
         </div>
       ) : (
@@ -331,32 +328,32 @@ const CertificatesTab = ({ addToast }) => {
               onDragOver={(e) => handleDragOver(e, index)}
               onDrop={() => handleDrop(index)}
               onDragEnd={handleDragEnd}
-              className={`relative group cursor-grab active:cursor-grabbing transition-all ${dragOverIndex === index ? "ring-2 ring-sky-500" : ""}`}
+              className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
             >
-              <div className="flex items-center gap-2 text-zinc-400 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="admin-card-grab">
                 <span className="material-symbols-rounded text-[16px] cursor-grab active:cursor-grabbing">
                   drag_indicator
                 </span>
               </div>
-              <div className="flex items-center justify-end mb-2">
-                <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button
-                    onClick={() => openEdit(item)}
-                    className="btn btn-outline text-xs py-1 px-2"
-                  >
-                    <span className="material-symbols-rounded text-[16px]">
-                      edit
-                    </span>
-                  </button>
-                  <button
-                    onClick={() => setDeleteTarget(item)}
-                    className="btn btn-outline !text-red-400 hover:!bg-red-400/10 text-xs py-1 px-2"
-                  >
-                    <span className="material-symbols-rounded text-[16px]">
-                      delete
-                    </span>
-                  </button>
-                </div>
+              <div className="admin-card-actions">
+                <button
+                  onClick={() => openEdit(item)}
+                  className="btn btn-outline btn-icon"
+                >
+                  <span className="material-symbols-rounded text-[16px]">
+                    edit
+                  </span>
+                  <span className="sr-only">Edit {item.title}</span>
+                </button>
+                <button
+                  onClick={() => setDeleteTarget(item)}
+                  className="btn btn-outline btn-icon btn-danger"
+                >
+                  <span className="material-symbols-rounded text-[16px]">
+                    delete
+                  </span>
+                  <span className="sr-only">Delete {item.title}</span>
+                </button>
               </div>
               <CertificationsCard
                 imgSrc={item.imgSrc || item.imgSrc || ""}
@@ -371,7 +368,7 @@ const CertificatesTab = ({ addToast }) => {
             </div>
           ))}
           {items.length === 0 && (
-            <p className="text-zinc-400 col-span-full">No items found.</p>
+            <p className="admin-empty">No items found.</p>
           )}
         </div>
       )}
@@ -464,7 +461,7 @@ const CertificatesTab = ({ addToast }) => {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
-    </div>
+    </AdminShell>
   );
 };
 
