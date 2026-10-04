@@ -14,7 +14,7 @@ const CornerMarks = () => (
 
 const ScribbleArrow = () => (
   <svg
-    className="hidden lg:block absolute -top-8 left-0 w-32 h-16 -rotate-6"
+    className="hidden lg:block absolute -top-12 -left-20 w-32 h-16 -rotate-6"
     viewBox="0 0 128 64"
     fill="none"
     aria-hidden="true"
@@ -81,10 +81,18 @@ const Home = () => {
             <div className="relative bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard-lg p-4 rotate-1">
               <CornerMarks />
 
-              <div className="h-[440px] w-full flex items-center justify-center">
-                <p className="text-ink-soft text-center">
-                  Add your video or embed here
-                </p>
+              <div className="h-[440px] w-full flex items-center justify-center overflow-hidden rounded-wobbly-sm">
+                <video
+                  className="h-full w-full object-contain"
+                  src="/landing_video.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  disablePictureInPicture
+                  aria-label="Portfolio showreel"
+                />
               </div>
             </div>
 
