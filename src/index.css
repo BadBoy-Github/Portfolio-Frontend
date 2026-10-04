@@ -68,6 +68,19 @@
     border-width: 1px;
 }
 
+/* Horizontal rails on the detail pages. They stay swipeable but drop the
+   pencil scrollbar: the chevron buttons carry the affordance from md up, and
+   on phones touch is the only affordance there is, so a 12px bar under the
+   cards is pure clutter. */
+.hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 /* ============================================================
    TYPOGRAPHY
    ============================================================ */

@@ -283,7 +283,7 @@ const ProjectDetail = () => {
             </button>
             <div
               id="other-projects-scroll"
-              className="flex gap-4 overflow-x-hidden pb-4 hide-scrollbar scroll-smooth"
+              className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
             >
               {otherProjects.map((otherProject) => (
                 <Link
