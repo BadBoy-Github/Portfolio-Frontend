@@ -93,8 +93,8 @@ const Footer = () => {
   return (
     <footer className="section border-t-2 border-dashed border-ink/20">
       <div className="container">
-        <div className="lg:grid lg:grid-cols-2">
-          <div className="mb-10">
+        <div className="grid grid-cols-2 gap-x-10 gap-y-10 lg:grid-cols-[1fr_auto_auto_auto]">
+          <div className="lg:mb-10 lg:pr-20">
             <h2 className="flex lg:max-w-[12ch] headline-1">Let&apos;s</h2>
             <RotatingText
               texts={["Collab", "Build", "Create", "Break"]}
@@ -111,11 +111,9 @@ const Footer = () => {
             <h2 className="flex mb-8 lg:max-w-[12ch] headline-1">today!</h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:pl-20">
-            <FooterColumn heading="Socials" links={socials} external />
-            <FooterColumn heading="Me" links={meLinks} />
-            <FooterColumn heading="Work" links={workLinks} />
-          </div>
+          <FooterColumn heading="Socials" links={socials} external />
+          <FooterColumn heading="Me" links={meLinks} />
+          <FooterColumn heading="Work" links={workLinks} />
         </div>
 
         <div className="flex items-center justify-between pt-10 mt-10 border-t-2 border-dashed border-ink/20">
