@@ -4,7 +4,7 @@ const ProjectCardSkeleton = () => {
   return (
     <article className="card card-flush flex flex-col">
       <figure className="border-b-2 border-ink">
-        <Skeleton width="100%" height="100%" className="aspect-square w-full" />
+        <Skeleton width="100%" height="100%" className="aspect-video w-full" />
       </figure>
 
       <div className="p-5 flex flex-col gap-4">
