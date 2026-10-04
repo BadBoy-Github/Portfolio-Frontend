@@ -195,12 +195,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex justify-center w-full">
+        <div className="flex justify-center w-full mt-10 lg:mt-0">
           <div className="relative w-full max-w-[520px]">
             <div className="relative bg-paper-card border-2 border-ink rounded-wobbly-lg shadow-hard-lg p-4 rotate-1">
               <CornerMarks />
 
-              <div className="h-[440px] w-full flex items-center justify-center overflow-hidden rounded-wobbly-sm">
+              <div className="h-[260px] sm:h-[340px] md:h-[400px] lg:h-[440px] w-full flex items-center justify-center overflow-hidden rounded-wobbly-sm">
                 <video
                   ref={videoRef}
                   className="h-full w-full object-contain cursor-pointer"
@@ -255,7 +255,7 @@ const Home = () => {
               )}
             </AnimatePresence>
 
-            <div className="absolute -left-[52px] top-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-3">
+            <div className="mt-4 flex flex-row items-center justify-center gap-3 lg:absolute lg:-left-[52px] lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:flex-col z-10">
               <button
                 type="button"
                 className="icon-btn"
