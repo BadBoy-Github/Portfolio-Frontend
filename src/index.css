@@ -273,6 +273,22 @@
     @apply translate-x-[2px] translate-y-[2px] shadow-none;
 }
 
+/* Media toggle beside the landing video. On/off is carried by saturation
+   rather than opacity: this system is drawn entirely in ink, so dimming an
+   icon reads as "faded" instead of "disabled". The wrapper (not the button)
+   carries the filter so .icon-btn keeps its press-flat transform timing. */
+.media-toggle-icon {
+    @apply transition-[filter] duration-200 ease-out;
+}
+
+.media-toggle-off {
+    @apply saturate-0;
+}
+
+.media-toggle-on {
+    @apply saturate-100;
+}
+
 /* Marker-red accent, for the close/dismiss affordance */
 .icon-btn-marker:hover {
     @apply bg-marker text-paper;
