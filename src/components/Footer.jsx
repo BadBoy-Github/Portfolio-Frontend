@@ -1,9 +1,10 @@
 // Components
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import RotatingText from "./RotatingText";
 import Logo from "./ui/Logo";
 
-const sitemap = [
+const meLinks = [
   {
     label: "Home",
     href: "/",
@@ -13,16 +14,27 @@ const sitemap = [
     href: "/about",
   },
   {
+    label: "Contact me",
+    href: "/contact",
+  },
+];
+
+const workLinks = [
+  {
     label: "Projects",
     href: "/projects",
   },
   {
-    label: "Blogs",
-    href: "/blogs",
+    label: "Certificates",
+    href: "/certificates",
   },
   {
-    label: "Contact me",
-    href: "/contact",
+    label: "Achievements",
+    href: "/achievements",
+  },
+  {
+    label: "Blogs",
+    href: "/blogs",
   },
 ];
 
@@ -44,6 +56,38 @@ const socials = [
     href: "mailto:elayabarathiedison@gmail.com",
   },
 ];
+
+const FooterColumn = ({ heading, links, external = false }) => (
+  <div>
+    <p className="mb-3 font-display text-xl scribble-underline w-fit">{heading}</p>
+
+    <ul>
+      {links.map(({ label, href }) => (
+        <li key={href}>
+          <Link
+            to={href}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className="block text-lg text-ink-soft py-1 transition-colors duration-100 w-fit hover:text-marker hover:line-through decoration-2"
+          >
+            {label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+FooterColumn.propTypes = {
+  heading: PropTypes.string,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      href: PropTypes.string,
+    })
+  ),
+  external: PropTypes.bool,
+};
 
 const Footer = () => {
   return (
@@ -67,46 +111,10 @@ const Footer = () => {
             <h2 className="flex mb-8 lg:max-w-[12ch] headline-1">today!</h2>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 lg:pl-20">
-            <div>
-              <p className="mb-3 font-display text-xl scribble-underline w-fit">
-                Socials
-              </p>
-
-              <ul>
-                {socials.map(({ label, href }) => (
-                  <li key={href}>
-                    <Link
-                      to={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-lg text-ink-soft py-1 transition-colors duration-100 w-fit hover:text-marker hover:line-through decoration-2"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="mb-3 font-display text-xl scribble-underline w-fit">
-                Sitemap
-              </p>
-
-              <ul>
-                {sitemap.map(({ label, href }) => (
-                  <li key={href}>
-                    <Link
-                      to={href}
-                      className="block gap-4 text-lg text-ink-soft py-1 transition-colors duration-100 hover:text-marker hover:line-through decoration-2 w-fit"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:pl-20">
+            <FooterColumn heading="Socials" links={socials} external />
+            <FooterColumn heading="Me" links={meLinks} />
+            <FooterColumn heading="Work" links={workLinks} />
           </div>
         </div>
 
