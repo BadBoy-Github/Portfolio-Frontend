@@ -421,7 +421,15 @@
 }
 
 .btn-lg {
-    @apply min-h-14 px-7 text-2xl md:text-3xl shadow-hard-lg
+    @apply min-h-14 px-7 text-2xl md:text-3xl shadow-hard-lg;
+}
+
+/* Marks the button as pointing at the page you are already on. It borrows the
+   marker-red of .btn:hover but deliberately drops that rule's 2px offset and
+   shrink, which is a pointer-down cue and would read as stuck-pressed if it
+   were permanent. Declared after every variant so it always wins. */
+.btn-active {
+    @apply bg-marker text-paper;
 }
 
 

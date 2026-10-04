@@ -85,10 +85,22 @@ const Navbar = ({ navOpen }) => {
     [isDesktop],
   );
 
-  // Keyboard navigation
+  /* This listener sits on document, so it also sees every keystroke made inside
+   a form. Space has to stay a space, Enter has to stay a newline, and the
+   arrows have to keep moving the caret - otherwise typing "i am" produces
+   "iam" and submitting with Enter navigates instead. */
+const isTypingTarget = (target) =>
+  target instanceof HTMLElement &&
+  (target.isContentEditable ||
+    target.tagName === "INPUT" ||
+    target.tagName === "TEXTAREA" ||
+    target.tagName === "SELECT");
+
+// Keyboard navigation
   const handleKeyDown = useCallback(
     (e) => {
       if (!keyboardNavEnabled) return;
+      if (isTypingTarget(e.target)) return;
 
       switch (e.key) {
         case "ArrowDown":
