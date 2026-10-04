@@ -68,6 +68,19 @@
     border-width: 1px;
 }
 
+/* Horizontal rails on the detail pages. They stay swipeable but drop the
+   pencil scrollbar: the chevron buttons carry the affordance from md up, and
+   on phones touch is the only affordance there is, so a 12px bar under the
+   cards is pure clutter. */
+.hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 /* ============================================================
    TYPOGRAPHY
    ============================================================ */
@@ -253,7 +266,64 @@
 }
 
 .menu-btn:active {
-    @apply translate-x-[2px] translate-y-[2px] shadow-none
+    @apply translate-x-[2px] translate-y-[2px] shadow-none;
+}
+
+/* ICON BUTTON
+   Sketchy chip for standalone controls that are only an icon.
+   Same press-flat behaviour as .menu-btn, smaller footprint. */
+.icon-btn {
+    @apply inline-grid place-items-center w-10 h-10 shrink-0
+        bg-paper-card text-ink border-2 border-ink rounded-wobbly-sm
+        shadow-hard-sm transition-transform duration-100;
+}
+
+.icon-btn:hover {
+    @apply bg-postit -rotate-6;
+}
+
+.icon-btn:active {
+    @apply translate-x-[2px] translate-y-[2px] shadow-none;
+}
+
+/* Media toggle beside the landing video. On/off is carried by saturation
+   rather than opacity: this system is drawn entirely in ink, so dimming an
+   icon reads as "faded" instead of "disabled". The wrapper (not the button)
+   carries the filter so .icon-btn keeps its press-flat transform timing. */
+.media-toggle-icon {
+    @apply transition-[filter] duration-200 ease-out;
+}
+
+.media-toggle-off {
+    @apply saturate-0;
+}
+
+.media-toggle-on {
+    @apply saturate-100;
+}
+
+/* Marker-red accent, for the close/dismiss affordance */
+.icon-btn-marker:hover {
+    @apply bg-marker text-paper;
+}
+
+/* Hidden shortcut: fully transparent until deliberately engaged.
+   Keeps its box in layout so nothing shifts on reveal. focus-visible is
+   paired with hover because a keyboard user would otherwise tab onto a
+   control with no visual cue that it is there. */
+.icon-btn-quiet {
+    @apply opacity-0;
+}
+
+.icon-btn-quiet:hover,
+.icon-btn-quiet:focus-visible {
+    @apply opacity-100 bg-ballpoint text-paper border-ballpoint;
+}
+
+/* Popover body anchored to an .icon-btn */
+.icon-note {
+    @apply w-64 p-3 font-hand text-base leading-snug text-ink-soft
+        bg-paper-card border-2 border-ink rounded-wobbly-sm shadow-hard;
 }
 
 

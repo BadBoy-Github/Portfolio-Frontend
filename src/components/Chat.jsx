@@ -49,7 +49,7 @@ const ReadMoreText = ({ text, maxLines = 5 }) => {
         <button
           type="button"
           onClick={toggleExpanded}
-          className="text-marker hover:text-accent-red text-sm mt-1 font-medium transition-colors duration-200"
+          className="font-hand text-lg text-marker hover:text-ink mt-1 transition-colors duration-200"
         >
           {isExpanded ? "Read Less" : "Read More"}
         </button>
@@ -174,19 +174,19 @@ const Chat = () => {
     switch (source) {
       case "ai":
         return (
-          <div className="text-xs text-marker/70 mt-1 flex items-center gap-1">
+          <div className="font-hand text-base text-ballpoint mt-1 flex items-center gap-1">
             🤖 AI Powered
           </div>
         );
       case "local":
         return (
-          <div className="text-xs text-accent-amber/70 mt-1 flex items-center gap-1">
+          <div className="font-hand text-base text-gold mt-1 flex items-center gap-1">
             ⚡ Local Response
           </div>
         );
       case "error":
         return (
-          <div className="text-xs text-accent-red/70 mt-1 flex items-center gap-1">
+          <div className="font-hand text-base text-marker mt-1 flex items-center gap-1">
             ⚠️ API Error
           </div>
         );
@@ -223,43 +223,55 @@ const Chat = () => {
               inquiries and collaborations.
             </p>
 
-            <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-1 transition-all duration-300">
-              <button
-                type="button"
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-8 transition-all duration-300"
-              >
-                {isOpen ? (
-                  <IoClose className="bg-accent-red hover:bg-accent-red/80 active:bg-accent-red/90 size-6 p-1 rounded-full transition-all duration-300 text-paper" />
-                ) : (
-                  <PiExclamationMarkBold className="bg-marker hover:bg-marker/80 active:bg-marker/90 size-6 p-1 rounded-full transition-all duration-300 text-ink" />
-                )}
-              </button>
+            <div className="hidden absolute left-2 bottom-0 lg:flex flex-row items-end justify-center gap-2 transition-all duration-300">
+              <div className="flex flex-col items-center gap-2">
+                <Link
+                  to="/admin-login"
+                  className="icon-btn icon-btn-quiet"
+                  aria-label="Admin sign in"
+                  title="Admin"
+                >
+                  <FaUser className="size-4" aria-hidden="true" />
+                </Link>
 
-              <Link
-                to="/admin-login"
-                className="w-6 h-6 p-1 rounded-full transition-all duration-300 opacity-0 hover:opacity-60 flex items-center justify-center bg-paper/80 text-ink"
-              >
-                <FaUser className="size-3" />
-              </Link>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="icon-btn icon-btn-marker"
+                  aria-expanded={isOpen}
+                  aria-controls="response-system-card"
+                  aria-label={
+                    isOpen
+                      ? "Hide response system details"
+                      : "Show response system details"
+                  }
+                >
+                  {isOpen ? (
+                    <IoClose className="size-4" aria-hidden="true" />
+                  ) : (
+                    <PiExclamationMarkBold className="size-4" aria-hidden="true" />
+                  )}
+                </button>
+              </div>
 
               <div
-                className={`text-ink-soft leading-relaxed text-[10px] px-3 py-2 bg-paper/80 rounded-wobbly-sm ring-1 ring-ink/10 ring-inset transition-all duration-500 ${
+                id="response-system-card"
+                className={`icon-note transition-all duration-300 ${
                   isOpen
                     ? "opacity-100 scale-100 translate-x-0 block"
                     : "opacity-0 scale-95 translate-x-4 hidden"
                 }`}
               >
-                <span className="text-marker font-semibold block mb-1">
+                <span className="text-marker font-display font-bold block mb-1">
                   Response System
                 </span>
-                <span className="text-marker">🤖 AI Powered</span> - Advanced
+                <span className="text-ballpoint">🤖 AI Powered</span> - Advanced
                 responses from AI model
                 <br />
-                <span className="text-accent-amber">⚡ Local Response</span> - Fast
+                <span className="text-gold">⚡ Local Response</span> - Fast
                 fallback responses
                 <br />
-                <span className="text-accent-red">⚠️ API Error</span> - Using
+                <span className="text-marker">⚠️ API Error</span> - Using
                 backup system
               </div>
             </div>

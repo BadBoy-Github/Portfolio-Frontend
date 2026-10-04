@@ -1,4 +1,4 @@
-import { useCallback, useRef, useEffect, useState } from "react";
+import { useCallback, useMemo, useRef, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -7,10 +7,12 @@ const NAV_ITEMS = [
   { label: "About", link: "/about" },
   { label: "Projects", link: "/projects" },
   { label: "Blogs", link: "/blogs" },
+  // Header already shows a Contact Me button from lg up, so this entry only
+  // exists to give the hamburger dropdown a way through on small screens.
+  { label: "Contact", link: "/contact", mobileOnly: true },
 ];
 
 const NON_ACTIVE_PATHS = [
-  "/contact",
   "/certificates",
   "/certificate/",
   "/achievements",
@@ -70,6 +72,19 @@ const Navbar = ({ navOpen }) => {
 
   const keyboardNavEnabled = navOpen || isDesktop;
 
+  /* Arrow keys must skip the mobile-only Contact entry once the desktop bar
+     is showing, otherwise the roving highlight lands on a display:none link
+     and looks like the menu dropped an item. */
+  const visibleIndexes = useMemo(
+    () =>
+      NAV_ITEMS.reduce(
+        (acc, item, index) =>
+          item.mobileOnly && isDesktop ? acc : [...acc, index],
+        [],
+      ),
+    [isDesktop],
+  );
+
   // Keyboard navigation
   const handleKeyDown = useCallback(
     (e) => {
@@ -79,14 +94,20 @@ const Navbar = ({ navOpen }) => {
         case "ArrowDown":
         case "ArrowRight":
           e.preventDefault();
-          setActiveIndex((prev) => (prev + 1) % NAV_ITEMS.length);
+          setActiveIndex((prev) => {
+            const at = visibleIndexes.indexOf(prev);
+            return visibleIndexes[(at + 1) % visibleIndexes.length];
+          });
           break;
         case "ArrowUp":
         case "ArrowLeft":
           e.preventDefault();
-          setActiveIndex(
-            (prev) => (prev - 1 + NAV_ITEMS.length) % NAV_ITEMS.length,
-          );
+          setActiveIndex((prev) => {
+            const at = visibleIndexes.indexOf(prev);
+            return visibleIndexes[
+              (at - 1 + visibleIndexes.length) % visibleIndexes.length
+            ];
+          });
           break;
         case "Enter":
         case " ": {
@@ -99,7 +120,7 @@ const Navbar = ({ navOpen }) => {
           break;
       }
     },
-    [keyboardNavEnabled, activeIndex],
+    [keyboardNavEnabled, activeIndex, visibleIndexes],
   );
 
   useEffect(() => {
@@ -116,11 +137,13 @@ const Navbar = ({ navOpen }) => {
       className={`navbar ${navOpen ? "active" : ""}`}
       aria-label="Main navigation"
     >
-      {NAV_ITEMS.map(({ label, link }, index) => (
+      {NAV_ITEMS.map(({ label, link, mobileOnly }, index) => (
         <Link
           key={link}
           to={link}
-          className={`nav-link ${index === activeIndex ? "active" : ""}`}
+          className={`nav-link ${mobileOnly ? "md:hidden" : ""} ${
+            index === activeIndex ? "active" : ""
+          }`}
           ref={(el) => (linkRefs.current[index] = el)}
           aria-current={index === activeIndex ? "page" : undefined}
           tabIndex={linkTabIndex}

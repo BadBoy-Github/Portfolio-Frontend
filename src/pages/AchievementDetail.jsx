@@ -186,7 +186,7 @@ const AchievementDetail = () => {
             </button>
             <div
               id="other-achievements-scroll"
-              className="flex gap-4 overflow-x-hidden pb-4 hide-scrollbar scroll-smooth"
+              className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
             >
               {otherAchievements.map((other) => (
                 <Link

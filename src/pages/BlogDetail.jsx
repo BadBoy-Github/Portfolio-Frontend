@@ -294,7 +294,7 @@ const BlogDetail = () => {
               </button>
               <div
                 id="other-blogs-scroll"
-                className="flex gap-4 overflow-x-hidden pb-4 hide-scrollbar scroll-smooth"
+                className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
               >
                 {otherBlogs.map((otherBlog) => (
                   <Link

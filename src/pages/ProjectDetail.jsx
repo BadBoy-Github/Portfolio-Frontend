@@ -235,21 +235,17 @@ const ProjectDetail = () => {
                 tag="Gallery"
               />
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
                 {project.gallery.map((image, index) => (
-                  <Card
+                  <img
                     key={index}
-                    tone="paper"
-                    tilt={index % 2 === 0 ? "1" : "-1"}
-                    className="overflow-hidden"
-                  >
-                    <img
-                      src={image}
-                      alt={`${project.title} screenshot ${index + 1}`}
-                      loading="lazy"
-                      className="w-full rounded-xl hover:scale-[101%] hover:shadow-hard transition-transform"
-                    />
-                  </Card>
+                    src={image}
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    loading="lazy"
+                    className={`w-full border-2 border-ink rounded-wobbly-md hover:shadow-hard transition-shadow duration-100 ${
+                      index % 2 === 0 ? "rotate-1" : "-rotate-1"
+                    }`}
+                  />
                 ))}
               </div>
             </div>
@@ -287,7 +283,7 @@ const ProjectDetail = () => {
             </button>
             <div
               id="other-projects-scroll"
-              className="flex gap-4 overflow-x-hidden pb-4 hide-scrollbar scroll-smooth"
+              className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar scroll-smooth"
             >
               {otherProjects.map((otherProject) => (
                 <Link

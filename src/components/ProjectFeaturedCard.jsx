@@ -22,7 +22,7 @@ const ProjectFeaturedCard = ({
           src={imgSrc}
           alt=""
           loading="lazy"
-          className="w-full aspect-[16/7] object-cover"
+          className="w-full aspect-video object-cover"
         />
 
         {gitUrl && (
