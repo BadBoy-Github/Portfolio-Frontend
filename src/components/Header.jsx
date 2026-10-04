@@ -47,7 +47,7 @@ const Header = () => {
           <Button
             href="/contact"
             size="sm"
-            classes="max-lg:hidden lg:justify-self-end"
+            classes="max-md:hidden md:justify-self-end"
           >
             Contact Me
           </Button>
