@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Button } from "./Button";
 import Logo from "./ui/Logo";
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isContactPage = pathname === "/contact";
 
   return (
     <>
@@ -47,7 +49,10 @@ const Header = () => {
           <Button
             href="/contact"
             size="sm"
-            classes="max-md:hidden md:justify-self-end"
+            aria-current={isContactPage ? "page" : undefined}
+            classes={`max-md:hidden md:justify-self-end ${
+              isContactPage ? "btn-active" : ""
+            }`}
           >
             Contact Me
           </Button>
