@@ -2,6 +2,7 @@ import CountUp from "./CountUp";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./ui/Logo";
+import StickyNotes from "./StickyNotes";
 
 const GITHUB_USERNAME = "BadBoy-Github";
 const REPOS_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
@@ -140,6 +141,8 @@ const Welcome = () => {
           </Link>
         </div>
       </div>
+
+      <StickyNotes />
     </section>
   );
 };
