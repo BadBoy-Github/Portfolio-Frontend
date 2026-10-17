@@ -157,7 +157,11 @@ const Home = () => {
   const visibleWords = playing ? revealed : SUBTITLE_WORDS.length;
 
   return (
-    <section className="pt-28 lg:pt-36 mb-20" id="home" aria-labelledby="home-heading">
+    <section
+      className="pt-28 lg:pt-36 mb-20"
+      id="home"
+      aria-labelledby="home-heading"
+    >
       <div className="lg:grid lg:grid-cols-[3fr_4fr] items-center lg:gap-10">
         <div>
           <div className="flex items-center gap-3">
@@ -167,7 +171,10 @@ const Home = () => {
               <span className="relative w-3 h-3 rounded-wobbly-sm bg-marker border border-ink">
                 <span className="absolute inset-0 rounded-wobbly-sm bg-marker animate-ping"></span>
               </span>
-              Working now
+              Working now at{" "}
+              <a href="https://yellowmatics.ai/" target="_blank" rel="noopener noreferrer" className="text-marker">
+                Yellowmatics.ai
+              </a>
             </div>
           </div>
 
@@ -243,7 +250,9 @@ const Home = () => {
                           style={{
                             opacity: index < visibleWords ? 1 : 0,
                             transform:
-                              index < visibleWords ? "translateY(0)" : "translateY(6px)",
+                              index < visibleWords
+                                ? "translateY(0)"
+                                : "translateY(6px)",
                           }}
                         >
                           {word}
