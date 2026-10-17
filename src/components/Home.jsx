@@ -171,7 +171,7 @@ const Home = () => {
               <span className="relative w-3 h-3 rounded-wobbly-sm bg-marker border border-ink">
                 <span className="absolute inset-0 rounded-wobbly-sm bg-marker animate-ping"></span>
               </span>
-              Working now at{" "}
+              Working at{" "}
               <a href="https://yellowmatics.ai/" target="_blank" rel="noopener noreferrer" className="text-marker">
                 Yellowmatics.ai
               </a>
