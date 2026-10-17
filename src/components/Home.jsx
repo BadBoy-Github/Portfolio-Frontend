@@ -167,7 +167,7 @@ const Home = () => {
               <span className="relative w-3 h-3 rounded-wobbly-sm bg-marker border border-ink">
                 <span className="absolute inset-0 rounded-wobbly-sm bg-marker animate-ping"></span>
               </span>
-              Available for work
+              Working now
             </div>
           </div>
 
