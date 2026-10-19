@@ -74,9 +74,11 @@ const ExperienceCompoundCard = ({
                 </div>
               </div>
             </div>
-            <time className="font-hand text-lg text-ink-soft sm:w-fit sm:text-center w-full">
-              {year}
-            </time>
+            {year && (
+              <time className="font-hand text-lg text-ink-soft sm:w-fit sm:text-center w-full">
+                {year}
+              </time>
+            )}
           </div>
         </Card>
       </div>
@@ -85,7 +87,7 @@ const ExperienceCompoundCard = ({
 };
 
 ExperienceCompoundCard.propTypes = {
-  year: PropTypes.string.isRequired,
+  year: PropTypes.string,
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,

@@ -3,6 +3,8 @@ import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import AdminShell from './AdminShell';
 import CertificationsCard from '../../components/CertificationsCard';
+import YearSelect from '../../components/ui/YearSelect';
+import { getYearValue } from '../../utils/dateRange';
 
 const CertificatesTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
@@ -57,7 +59,7 @@ const CertificatesTab = ({ addToast }) => {
     setForm({
       title: item.title,
       company: item.company,
-      year: item.year,
+      year: getYearValue(item.year),
       description: item.description,
       imgSrc: item.imgSrc || '',
       logo: item.logo || '',
@@ -400,8 +402,7 @@ const CertificatesTab = ({ addToast }) => {
           </div>
           <div className="input-box">
             <label className="label">Year</label>
-            <input
-              className="text-field"
+            <YearSelect
               value={form.year}
               onChange={(e) => setForm({ ...form, year: e.target.value })}
               required

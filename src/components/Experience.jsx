@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ExperienceCard from "./ExperienceCard";
 import ExperienceCompoundCard from "./ExperienceCompoundCard";
 import Card from "./ui/Card";
+import { formatDateRange } from "../utils/dateRange";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -67,13 +68,17 @@ const Experience = () => {
                 <Card tone="paper" className="p-6 sm:p-5 shadow-hard hover:shadow-hard transition-all hover:rotate-1">
                   <div className="flex items-center justify-between mb-2">
                     <div className="font-semibold text-ink">{edu.instName}</div>
-                    <p className="text-xs font-normal text-ink-soft">{edu.period}</p>
+                    {formatDateRange(edu.startDate, edu.endDate, edu.period || edu.year) && (
+                      <p className="text-xs font-normal text-ink-soft">
+                        {formatDateRange(edu.startDate, edu.endDate, edu.period || edu.year)}
+                      </p>
+                    )}
                   </div>
 
                   {edu.content.map((content, contentIndex) => (
                     <ExperienceCompoundCard
                       key={contentIndex}
-                      year={content.year}
+                      year={formatDateRange(content.startDate, content.endDate, content.year)}
                       name={content.name}
                       role={content.role}
                       desc={content.desc}
@@ -87,7 +92,7 @@ const Experience = () => {
             ) : (
               <ExperienceCard
                 key={index}
-                year={edu.year}
+                year={formatDateRange(edu.startDate, edu.endDate, edu.year)}
                 name={edu.name}
                 role={edu.role}
                 instName={edu.instName}

@@ -7,6 +7,7 @@ import { Button } from "./Button";
 import Logo from "./ui/Logo";
 
 const MARKER_RED = "rgb(255 77 77)";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const AUTO_PLAY_DELAY = 1000;
 
@@ -86,6 +87,47 @@ const Home = () => {
   const [subsOn, setSubsOn] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [revealed, setRevealed] = useState(0);
+  const [availability, setAvailability] = useState(undefined);
+
+  useEffect(() => {
+    const fetchExperience = async () => {
+      try {
+        const response = await fetch(`${BACKEND_URL}/api/experience`);
+        if (!response.ok) {
+          throw new Error(`Experience request failed: HTTP ${response.status}`);
+        }
+
+        const result = await response.json();
+        if (!result.success || !Array.isArray(result.data)) {
+          throw new Error("Experience response did not contain a data list");
+        }
+
+        const currentExperience = result.data.find(
+          (item) =>
+            String(item.endDate || "").toLowerCase() === "present" ||
+            item.content?.some(
+              (role) => String(role.endDate || "").toLowerCase() === "present",
+            ),
+        );
+        const currentRole = currentExperience?.content?.find(
+          (role) => String(role.endDate || "").toLowerCase() === "present",
+        );
+
+        setAvailability(currentExperience ? {
+          company:
+            currentExperience.instName ||
+            currentRole?.name ||
+            currentExperience.name ||
+            "",
+          link: currentExperience.instLink || "",
+        } : null);
+      } catch (error) {
+        console.error("Failed to load current work status:", error);
+      }
+    };
+
+    fetchExperience();
+  }, []);
 
   /* Autoplay exactly once a beat after the section settles, so the paused
      first frame is what a visitor reads first. */
@@ -167,15 +209,40 @@ const Home = () => {
           <div className="flex items-center gap-3">
             <Logo className="shrink-0" />
 
-            <div className="flex items-center gap-2 text-ink-soft text-lg">
-              <span className="relative w-3 h-3 rounded-wobbly-sm bg-marker border border-ink">
-                <span className="absolute inset-0 rounded-wobbly-sm bg-marker animate-ping"></span>
-              </span>
-              Working at{" "}
-              <a href="https://yellowmatics.ai/" target="_blank" rel="noopener noreferrer" className="text-marker">
-                Yellowmatics.ai
-              </a>
-            </div>
+            {availability !== undefined && (
+              <div className="flex items-center gap-2 text-ink-soft text-lg">
+                <span
+                  className={`relative h-3 w-3 rounded-wobbly-sm border border-ink ${
+                    availability ? "bg-yellow-400" : "bg-green-500"
+                  }`}
+                >
+                  <span
+                    className={`absolute inset-0 animate-ping rounded-wobbly-sm ${
+                      availability ? "bg-yellow-400" : "bg-green-500"
+                    }`}
+                  ></span>
+                </span>
+                {availability ? (
+                  <>
+                    Working in{" "}
+                    {availability.link ? (
+                      <a
+                        href={availability.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-marker"
+                      >
+                        {availability.company}
+                      </a>
+                    ) : (
+                      <span className="text-marker">{availability.company}</span>
+                    )}
+                  </>
+                ) : (
+                  <span>Available to work</span>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="animated-text mt-6">
