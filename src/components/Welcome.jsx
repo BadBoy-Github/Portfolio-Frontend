@@ -6,6 +6,10 @@ import Logo from "./ui/Logo";
 const GITHUB_USERNAME = "BadBoy-Github";
 const REPOS_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 const PER_PAGE = 100;
+const SPOTIFY_PLAYLIST_URL =
+  "https://open.spotify.com/playlist/0J9263uHJ4zvUfEr45PuvD";
+const SPOTIFY_CODE_URL =
+  "https://scannables.scdn.co/uri/plain/jpeg/ffffff/black/640/spotify:playlist:0J9263uHJ4zvUfEr45PuvD";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -139,6 +143,42 @@ const Welcome = () => {
             <Logo />
           </Link>
         </div>
+      </div>
+
+      <div className="card card-paper mt-8 flex flex-col items-center gap-6 p-7 shadow-hard md:flex-row md:justify-between md:p-10">
+        <div>
+          <h2 className="mb-3 font-display text-2xl font-bold text-ink md:text-3xl">
+            Outside of coding
+          </h2>
+          <p className="max-w-xl text-ink-soft md:text-lg">
+            I enjoy drawing and listening to music. They give me a creative
+            break and are a fun way to find inspiration.
+          </p>
+          <a
+            href={SPOTIFY_PLAYLIST_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block font-semibold text-ballpoint underline underline-offset-4"
+          >
+            Listen to my playlist on Spotify
+          </a>
+        </div>
+        <a
+          href={SPOTIFY_PLAYLIST_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open my Spotify playlist"
+          className="w-full shrink-0 rounded-wobbly-sm bg-white p-2 transition-transform hover:scale-[1.02] md:w-1/2"
+        >
+          <img
+            src={SPOTIFY_CODE_URL}
+            alt="Spotify Code for my playlist. Scan with the Spotify app to listen."
+            width="640"
+            height="192"
+            loading="lazy"
+            className="block h-auto w-full"
+          />
+        </a>
       </div>
     </section>
   );

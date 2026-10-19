@@ -3,13 +3,18 @@ import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import AdminShell from './AdminShell';
 import EducationCard from '../../components/EducationCard';
+import {
+  formatDateRange,
+  getMonthOrPresentValue,
+  getMonthValue,
+} from '../../utils/dateRange';
 
 const EducationTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', instName: '', year: '', perc: '', desc: '', instLogo: '', instLink: '', skills: [] });
+  const [form, setForm] = useState({ name: '', instName: '', startDate: '', endDate: '', perc: '', desc: '', instLogo: '', instLink: '', skills: [] });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
@@ -48,7 +53,7 @@ const EducationTab = ({ addToast }) => {
 
   const openAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', instName: '', year: '', perc: '', desc: '', instLogo: '', instLink: '', skills: [] });
+    setForm({ name: '', instName: '', startDate: '', endDate: '', perc: '', desc: '', instLogo: '', instLink: '', skills: [] });
     setModalOpen(true);
   };
 
@@ -57,7 +62,8 @@ const EducationTab = ({ addToast }) => {
     setForm({
       name: item.name,
       instName: item.instName,
-      year: item.year,
+      startDate: getMonthValue(item.startDate),
+      endDate: getMonthOrPresentValue(item.endDate),
       perc: item.perc || '',
       desc: item.desc || '',
       instLogo: item.instLogo || '',
@@ -73,6 +79,7 @@ const EducationTab = ({ addToast }) => {
     const payload = {
       id: editingItem ? editingItem.id : generateId(),
       ...form,
+      year: '',
       order: editingItem ? editingItem.order : items.length,
     };
 
@@ -328,7 +335,11 @@ const EducationTab = ({ addToast }) => {
                 className={`admin-card ${dragOverIndex === index ? "admin-drop" : ""}`}
               >
               <div className="flex items-center justify-between gap-2 mb-2">
-                <p className="font-hand text-base text-ink-soft">{item.year}</p>
+                {formatDateRange(item.startDate, item.endDate, item.year) && (
+                  <p className="font-hand text-base text-ink-soft">
+                    {formatDateRange(item.startDate, item.endDate, item.year)}
+                  </p>
+                )}
                 <div className="admin-card-actions !mb-0">
                   <button onClick={() => openEdit(item)} className="btn btn-outline btn-icon">
                     <span className="material-symbols-rounded text-[16px]">edit</span>
@@ -342,7 +353,7 @@ const EducationTab = ({ addToast }) => {
               </div>
               <EducationCard
                 as="div"
-                year={item.year}
+                year={formatDateRange(item.startDate, item.endDate, item.year)}
                 name={item.name}
                 perc={item.perc || ''}
                 instName={item.instName}
@@ -367,9 +378,40 @@ const EducationTab = ({ addToast }) => {
             <label className="label">Institution</label>
             <input className="text-field" value={form.instName} onChange={(e) => setForm({ ...form, instName: e.target.value })} required />
           </div>
-          <div className="input-box">
-            <label className="label">Year</label>
-            <input className="text-field" value={form.year} onChange={(e) => setForm({ ...form, year: e.target.value })} required />
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="input-box">
+              <label className="label">From (month/year, optional)</label>
+              <input
+                className="text-field"
+                type="month"
+                value={form.startDate}
+                onChange={(e) => setForm({ ...form, startDate: e.target.value })}
+              />
+            </div>
+            <div className="input-box">
+              <label className="label">To (month/year, optional)</label>
+              <input
+                className={`text-field ${form.endDate === 'present' ? 'cursor-not-allowed opacity-50' : ''}`}
+                type="month"
+                min={form.startDate || undefined}
+                value={form.endDate === 'present' ? '' : form.endDate}
+                disabled={form.endDate === 'present'}
+                onChange={(e) => setForm({ ...form, endDate: e.target.value })}
+              />
+              <label className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
+                <input
+                  type="checkbox"
+                  checked={form.endDate === 'present'}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      endDate: e.target.checked ? 'present' : '',
+                    })
+                  }
+                />
+                Current
+              </label>
+            </div>
           </div>
           <div className="input-box">
             <label className="label">Percentage / Grade</label>

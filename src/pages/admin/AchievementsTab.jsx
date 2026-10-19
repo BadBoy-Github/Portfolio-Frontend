@@ -3,6 +3,8 @@ import { IoAdd } from "react-icons/io5";
 import { ConfirmModal, FormModal } from './AdminDashboard';
 import AdminShell from './AdminShell';
 import AchievementsCard from '../../components/AchievementsCard';
+import YearSelect from '../../components/ui/YearSelect';
+import { getYearValue } from '../../utils/dateRange';
 
 const AchievementsTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
@@ -57,7 +59,7 @@ const AchievementsTab = ({ addToast }) => {
     setForm({
       title: item.title,
       subtitle: item.subtitle || '',
-      date: item.date,
+      date: getYearValue(item.date),
       imgSrc: item.imgSrc || '',
       tags: Array.isArray(item.tags) ? item.tags : (typeof item.tags === 'string' ? item.tags.split(',').map(s => s.trim()).filter(Boolean) : []),
       keyPoints: Array.isArray(item.keyPoints) ? item.keyPoints.join('; ') : ''
@@ -397,9 +399,8 @@ const AchievementsTab = ({ addToast }) => {
             />
           </div>
           <div className="input-box">
-            <label className="label">Date</label>
-            <input
-              className="text-field"
+            <label className="label">Year</label>
+            <YearSelect
               value={form.date}
               onChange={(e) => setForm({ ...form, date: e.target.value })}
               required

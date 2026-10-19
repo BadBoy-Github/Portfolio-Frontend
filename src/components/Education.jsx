@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import EducationCard from "./EducationCard";
+import { formatDateRange } from "../utils/dateRange";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -50,7 +51,7 @@ const Education = () => {
           {education.map((edu, index) => (
             <EducationCard
               key={index}
-              year={edu.year}
+              year={formatDateRange(edu.startDate, edu.endDate, edu.year)}
               name={edu.name}
               perc={edu.perc}
               instName={edu.instName}

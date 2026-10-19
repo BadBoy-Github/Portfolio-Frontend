@@ -5,6 +5,11 @@ import AdminShell from './AdminShell';
 import ExperienceCard from '../../components/ExperienceCard';
 import ExperienceCompoundCard from '../../components/ExperienceCompoundCard';
 import DraggableTagInput from '../../components/DraggableTagInput';
+import {
+  formatDateRange,
+  getMonthOrPresentValue,
+  getMonthValue,
+} from '../../utils/dateRange';
 
 const ExperienceTab = ({ addToast }) => {
   const [items, setItems] = useState([]);
@@ -13,8 +18,8 @@ const ExperienceTab = ({ addToast }) => {
   const [typeModalOpen, setTypeModalOpen] = useState(false);
   const [compoundModalOpen, setCompoundModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [form, setForm] = useState({ name: '', instName: '', year: '', desc: '', skills: [], instLink: '', role: '', instLogo: '', imgSrc: '', certifi: false });
-  const [compoundForm, setCompoundForm] = useState({ instName: '', instLogo: '', instLink: '', period: '', roles: [] });
+  const [form, setForm] = useState({ name: '', instName: '', startDate: '', endDate: '', desc: '', skills: [], instLink: '', role: '', instLogo: '', imgSrc: '', certifi: false });
+  const [compoundForm, setCompoundForm] = useState({ instName: '', instLogo: '', instLink: '', startDate: '', endDate: '', period: '', roles: [] });
   const [error, setError] = useState('');
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [dragOverIndex, setDragOverIndex] = useState(null);
@@ -59,14 +64,14 @@ const ExperienceTab = ({ addToast }) => {
 
   const openSingleAdd = () => {
     setEditingItem(null);
-    setForm({ name: '', instName: '', year: '', desc: '', skills: [], instLink: '', role: '', instLogo: '', imgSrc: '', certifi: false });
+    setForm({ name: '', instName: '', startDate: '', endDate: '', desc: '', skills: [], instLink: '', role: '', instLogo: '', imgSrc: '', certifi: false });
     setTypeModalOpen(false);
     setModalOpen(true);
   };
 
   const openCompoundAdd = () => {
     setEditingItem(null);
-    setCompoundForm({ instName: '', instLogo: '', instLink: '', period: '', roles: [{ year: '', name: '', role: '', desc: '', imgSrc: '', certifi: false, skills: [] }] });
+    setCompoundForm({ instName: '', instLogo: '', instLink: '', startDate: '', endDate: '', period: '', roles: [{ year: '', startDate: '', endDate: '', name: '', role: '', desc: '', imgSrc: '', certifi: false, skills: [] }] });
     setTypeModalOpen(false);
     setCompoundModalOpen(true);
   };
@@ -76,7 +81,8 @@ const ExperienceTab = ({ addToast }) => {
     setForm({
       name: item.name,
       instName: item.instName,
-      year: item.year,
+      startDate: getMonthValue(item.startDate),
+      endDate: getMonthOrPresentValue(item.endDate),
       desc: item.desc,
       skills: Array.isArray(item.skills) ? item.skills : (typeof item.skills === 'string' ? item.skills.split(',').map(s => s.trim()).filter(Boolean) : []),
       instLink: item.instLink || '',
@@ -94,10 +100,14 @@ const ExperienceTab = ({ addToast }) => {
       instName: item.instName || '',
       instLogo: item.instLogo || '',
       instLink: item.instLink || '',
+      startDate: getMonthValue(item.startDate),
+      endDate: getMonthOrPresentValue(item.endDate),
       period: item.period || '',
       roles: Array.isArray(item.content) && item.content.length > 0
         ? item.content.map(c => ({
             year: c.year || '',
+            startDate: getMonthValue(c.startDate),
+            endDate: getMonthOrPresentValue(c.endDate),
             name: c.name || '',
             role: c.role || '',
             desc: c.desc || '',
@@ -105,7 +115,7 @@ const ExperienceTab = ({ addToast }) => {
             certifi: !!c.certifi,
             skills: Array.isArray(c.skills) ? c.skills : (typeof c.skills === 'string' ? c.skills.split(',').map(s => s.trim()).filter(Boolean) : []),
           }))
-        : [{ year: '', name: '', role: '', desc: '', imgSrc: '', certifi: false, skills: [] }],
+        : [{ year: '', startDate: '', endDate: '', name: '', role: '', desc: '', imgSrc: '', certifi: false, skills: [] }],
     });
     setCompoundModalOpen(true);
   };
@@ -116,6 +126,7 @@ const ExperienceTab = ({ addToast }) => {
     const payload = {
       id: editingItem ? editingItem.id : generateId(),
       ...form,
+      year: '',
       skills: form.skills,
       order: editingItem ? editingItem.order : items.length,
       compound: false,
@@ -161,14 +172,19 @@ const ExperienceTab = ({ addToast }) => {
     const payload = {
       id: editingItem ? editingItem.id : generateId(),
       name: compoundForm.roles[0]?.name || compoundForm.instName || '',
+      year: '',
       instName: compoundForm.instName,
       instLogo: compoundForm.instLogo,
       instLink: compoundForm.instLink,
-      period: compoundForm.period,
+      startDate: compoundForm.startDate,
+      endDate: compoundForm.endDate,
+      period: '',
       compound: true,
       order: editingItem ? editingItem.order : items.length,
       content: compoundForm.roles.map(role => ({
-        year: role.year,
+        year: '',
+        startDate: role.startDate,
+        endDate: role.endDate,
         name: role.name,
         role: role.role,
         desc: role.desc,
@@ -296,7 +312,7 @@ const ExperienceTab = ({ addToast }) => {
   const addRole = () => {
     setCompoundForm({
       ...compoundForm,
-      roles: [...compoundForm.roles, { year: '', name: '', role: '', desc: '', imgSrc: '', certifi: false, skills: [] }],
+      roles: [...compoundForm.roles, { year: '', startDate: '', endDate: '', name: '', role: '', desc: '', imgSrc: '', certifi: false, skills: [] }],
     });
   };
 
@@ -377,11 +393,6 @@ const ExperienceTab = ({ addToast }) => {
                 <span className="font-hand text-base">Drag to reorder</span>
               </div>
               <div className="flex items-center justify-between gap-2 mb-2">
-                {/* Single cards render their own year, so only the compound
-                    wrapper needs one for grouping. */}
-                {item.compound && (
-                  <p className="font-hand text-base text-ink-soft">{item.year}</p>
-                )}
                 <div className="admin-card-actions !mb-0">
                   <button
                     onClick={() => item.compound ? openCompoundEdit(item) : openEdit(item)}
@@ -421,14 +432,16 @@ const ExperienceTab = ({ addToast }) => {
                   <div className="admin-cluster">
                     <div className="admin-cluster-head">
                       <p className="admin-cluster-name">{item.instName}</p>
-                      {item.period && (
-                        <p className="admin-cluster-meta">{item.period}</p>
+                      {formatDateRange(item.startDate, item.endDate, item.period || item.year) && (
+                        <p className="admin-cluster-meta">
+                          {formatDateRange(item.startDate, item.endDate, item.period || item.year)}
+                        </p>
                       )}
                     </div>
                     {(item.content || []).map((content, i) => (
                       <div key={i} className="mb-3 last:mb-0">
                         <ExperienceCompoundCard
-                          year={content.year}
+                          year={formatDateRange(content.startDate, content.endDate, content.year)}
                           name={content.name}
                           role={content.role}
                           desc={content.desc}
@@ -443,7 +456,7 @@ const ExperienceTab = ({ addToast }) => {
               ) : (
                 <ExperienceCard
                   as="div"
-                  year={item.year}
+                  year={formatDateRange(item.startDate, item.endDate, item.year)}
                   name={item.name}
                   role={item.role || ""}
                   instName={item.instName}
@@ -515,14 +528,40 @@ const ExperienceTab = ({ addToast }) => {
               required
             />
           </div>
-          <div className="input-box">
-            <label className="label">Year</label>
-            <input
-              className="text-field"
-              value={form.year}
-              onChange={(e) => setForm({ ...form, year: e.target.value })}
-              required
-            />
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="input-box">
+              <label className="label">From (month/year, optional)</label>
+              <input
+                className="text-field"
+                type="month"
+                value={form.startDate}
+                onChange={(e) => setForm({ ...form, startDate: e.target.value })}
+              />
+            </div>
+            <div className="input-box">
+              <label className="label">To (month/year, optional)</label>
+              <input
+                className={`text-field ${form.endDate === 'present' ? 'cursor-not-allowed opacity-50' : ''}`}
+                type="month"
+                min={form.startDate || undefined}
+                value={form.endDate === 'present' ? '' : form.endDate}
+                disabled={form.endDate === 'present'}
+                onChange={(e) => setForm({ ...form, endDate: e.target.value })}
+              />
+              <label className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
+                <input
+                  type="checkbox"
+                  checked={form.endDate === 'present'}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      endDate: e.target.checked ? 'present' : '',
+                    })
+                  }
+                />
+                Current
+              </label>
+            </div>
           </div>
           <div className="input-box">
             <label className="label">Description</label>
@@ -621,14 +660,40 @@ const ExperienceTab = ({ addToast }) => {
               onChange={(e) => updateCompoundField('instLink', e.target.value)}
             />
           </div>
-          <div className="input-box">
-            <label className="label">Period</label>
-            <input
-              className="text-field"
-              value={compoundForm.period}
-              onChange={(e) => updateCompoundField('period', e.target.value)}
-              placeholder="e.g., 2022 - Present"
-            />
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="input-box">
+              <label className="label">From (month/year, optional)</label>
+              <input
+                className="text-field"
+                type="month"
+                value={compoundForm.startDate}
+                onChange={(e) => updateCompoundField('startDate', e.target.value)}
+              />
+            </div>
+            <div className="input-box">
+              <label className="label">To (month/year, optional)</label>
+              <input
+                className={`text-field ${compoundForm.endDate === 'present' ? 'cursor-not-allowed opacity-50' : ''}`}
+                type="month"
+                min={compoundForm.startDate || undefined}
+                value={compoundForm.endDate === 'present' ? '' : compoundForm.endDate}
+                disabled={compoundForm.endDate === 'present'}
+                onChange={(e) => updateCompoundField('endDate', e.target.value)}
+              />
+              <label className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
+                <input
+                  type="checkbox"
+                  checked={compoundForm.endDate === 'present'}
+                  onChange={(e) =>
+                    updateCompoundField(
+                      'endDate',
+                      e.target.checked ? 'present' : '',
+                    )
+                  }
+                />
+                Current
+              </label>
+            </div>
           </div>
 
           <div className="border-t-2 border-dashed border-ink/20 pt-4">
@@ -673,13 +738,41 @@ const ExperienceTab = ({ addToast }) => {
                   )}
                 </div>
 
-                <div className="input-box">
-                  <label className="label">Year</label>
-                  <input
-                    className="text-field"
-                    value={role.year}
-                    onChange={(e) => updateRoleField(roleIndex, 'year', e.target.value)}
-                  />
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="input-box">
+                    <label className="label">From (month/year, optional)</label>
+                    <input
+                      className="text-field"
+                      type="month"
+                      value={role.startDate}
+                      onChange={(e) => updateRoleField(roleIndex, 'startDate', e.target.value)}
+                    />
+                  </div>
+                  <div className="input-box">
+                    <label className="label">To (month/year, optional)</label>
+                    <input
+                      className={`text-field ${role.endDate === 'present' ? 'cursor-not-allowed opacity-50' : ''}`}
+                      type="month"
+                      min={role.startDate || undefined}
+                      value={role.endDate === 'present' ? '' : role.endDate}
+                      disabled={role.endDate === 'present'}
+                      onChange={(e) => updateRoleField(roleIndex, 'endDate', e.target.value)}
+                    />
+                    <label className="mt-2 flex items-center gap-2 text-sm text-ink-soft">
+                      <input
+                        type="checkbox"
+                        checked={role.endDate === 'present'}
+                        onChange={(e) =>
+                          updateRoleField(
+                            roleIndex,
+                            'endDate',
+                            e.target.checked ? 'present' : '',
+                          )
+                        }
+                      />
+                      Current
+                    </label>
+                  </div>
                 </div>
                 <div className="input-box">
                   <label className="label">Name / Role Title</label>

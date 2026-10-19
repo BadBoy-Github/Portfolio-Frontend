@@ -76,9 +76,11 @@ const ExperienceCard = ({
                 </div>
               </div>
             </div>
-            <time className="font-hand text-lg text-ink-soft sm:w-fit sm:text-center w-full flex-shrink-0">
-              {year}
-            </time>
+            {year && (
+              <time className="font-hand text-lg text-ink-soft sm:w-fit sm:text-center w-full flex-shrink-0">
+                {year}
+              </time>
+            )}
           </div>
         </Card>
     </Tag>
@@ -87,7 +89,7 @@ const ExperienceCard = ({
 
 ExperienceCard.propTypes = {
   as: PropTypes.elementType,
-  year: PropTypes.string.isRequired,
+  year: PropTypes.string,
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   instName: PropTypes.string.isRequired,
