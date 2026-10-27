@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { Bot, Download, Subtitles } from "lucide-react";
 import { Button } from "./Button";
 import Logo from "./ui/Logo";
+import TextType from "./TextType";
 
 const MARKER_RED = "rgb(255 77 77)";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -246,7 +247,25 @@ const Home = () => {
           </div>
 
           <div className="animated-text mt-6">
-            <span className="headline-transition"></span>
+            <TextType
+              as="span"
+              className="headline-transition"
+              text={["Skill Development Trainer"]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              deletingSpeed={50}
+              deleteMode="backspace"
+              typeEffect="none"
+              mistakes={0}
+              cursorStyle="underscore"
+              cursorGlide
+              showCursor
+              cursorColor="currentColor"
+              prefixColor="currentColor"
+              cursorBlinkDuration={0.5}
+              cursorCharacter=""
+              prefix=""
+            />
 
             <h2
               id="home-heading"
