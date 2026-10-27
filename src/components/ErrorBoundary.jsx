@@ -63,7 +63,9 @@ class ErrorBoundary extends Component {
                 <pre className="mt-4 p-4 bg-ink-night text-marker border-2 border-ink rounded-wobbly-sm font-mono text-sm overflow-auto max-h-64">
                   {this.state.error && this.state.error.toString()}
                   <br />
-                  {this.state.errorInfo.componentStack}
+                  {this.state.errorInfo?.componentStack ??
+                    this.state.error?.stack ??
+                    "No component stack available."}
                 </pre>
               </details>
             )}

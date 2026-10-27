@@ -12,6 +12,7 @@ import ReviewsTab from './ReviewsTab';
 import ExperienceTab from './ExperienceTab';
 import EducationTab from './EducationTab';
 import BlogsTab from './BlogsTab';
+import LearningBasketTab from './LearningBasketTab';
 
 const ConfirmModal = ({ open, title, message, onConfirm, onCancel }) => {
   if (!open) return null;
@@ -255,6 +256,14 @@ const AdminDashboard = () => {
               setActiveTab={setActiveTab}
               setMobileOpen={setMobileOpen}
             />
+            <TabButton
+              id="learning-basket"
+              label="Learning Basket"
+              icon="shopping_basket"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              setMobileOpen={setMobileOpen}
+            />
           </nav>
 
           <div className="mt-8 pt-6 border-t-2 border-dashed border-ink/20 space-y-3">
@@ -292,6 +301,9 @@ const AdminDashboard = () => {
         {activeTab === "experience" && <ExperienceTab addToast={addToast} />}
         {activeTab === "education" && <EducationTab addToast={addToast} />}
         {activeTab === "blogs" && <BlogsTab addToast={addToast} />}
+        {activeTab === "learning-basket" && (
+          <LearningBasketTab addToast={addToast} />
+        )}
       </main>
 
       {/* Toast Container */}
