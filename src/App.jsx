@@ -18,6 +18,7 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
   Link,
 } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
@@ -36,9 +37,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 // Admin pages
-import AdminLogin from "./pages/AdminLogin";
+import AdminLogin, { getSession } from "./pages/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import { getSession } from "./pages/AdminLogin";
 
 // Lazy loaded page components
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -80,10 +80,16 @@ PageTransition.propTypes = {
 };
 
 const ProtectedRoute = ({ children }) => {
+  const location = useLocation();
   const session = getSession();
   if (!session) {
-    window.location.href = "/admin-login";
-    return null;
+    return (
+      <Navigate
+        to="/admin-login"
+        state={{ from: location }}
+        replace
+      />
+    );
   }
   return children;
 };
@@ -223,9 +229,11 @@ const AppInner = () => {
               <Route
                 path="/learning-basket"
                 element={
-                  <PageTransition>
-                    <LearningBasket />
-                  </PageTransition>
+                  <ProtectedRoute>
+                    <PageTransition>
+                      <LearningBasket />
+                    </PageTransition>
+                  </ProtectedRoute>
                 }
               />
 

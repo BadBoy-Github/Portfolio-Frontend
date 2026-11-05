@@ -1,45 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ShoppingBasket } from "lucide-react";
 import SectionHeading from "../components/ui/SectionHeading";
 import FallingCards from "../components/FallingCards";
 import useCollection from "../hooks/useCollection";
+import { getSession } from "./AdminLogin";
 
 const LearningBasket = () => {
+  const session = getSession();
   const { items, loading, error, reload } = useCollection(
     "/api/learning-basket",
+    session?.token,
   );
-  const [dismissedCompletedIds, setDismissedCompletedIds] = useState(
-    () => new Set(),
-  );
-  const completedIds = useMemo(
-    () =>
-      items
-        .filter((item) => item.status === "completed")
-        .map((item) => item._id),
-    [items],
-  );
-
-  useEffect(() => {
-    if (!completedIds.length) return undefined;
-    const timer = window.setTimeout(() => {
-      setDismissedCompletedIds(
-        (current) => new Set([...current, ...completedIds]),
-      );
-    }, 1750);
-    return () => window.clearTimeout(timer);
-  }, [completedIds]);
-
-  const cardItems = useMemo(
-    () =>
-      items.filter(
-        (item) =>
-          item.status !== "completed" ||
-          !dismissedCompletedIds.has(item._id),
-      ),
-    [dismissedCompletedIds, items],
-  );
-
   return (
     <>
       <Helmet>
@@ -82,8 +53,8 @@ const LearningBasket = () => {
                 </button>
               </div>
             </div>
-          ) : cardItems.length ? (
-            <FallingCards items={cardItems} />
+          ) : items.length ? (
+            <FallingCards items={items} />
           ) : (
             <div className="grid min-h-[28rem] place-items-center rounded-wobbly-lg border-2 border-ink bg-paper-card p-8 text-center shadow-hard">
               <div className="max-w-md">

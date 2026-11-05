@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SESSION_KEY = 'adminSession';
 const SESSION_DURATION = 3 * 60 * 60 * 1000;
@@ -71,6 +71,14 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const destination = location.state?.from;
+  const returnTo =
+    destination?.pathname?.startsWith('/') &&
+    !destination.pathname.startsWith('//') &&
+    destination.pathname !== '/admin-login'
+      ? `${destination.pathname}${destination.search || ''}${destination.hash || ''}`
+      : '/admin-dashboard';
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const showPasswordField = isEmailValid && email.length > 0;
@@ -123,7 +131,7 @@ const AdminLogin = () => {
       }
       setSession(data.token, data.email);
       setPersistentToast('Login successful', 'success');
-      navigate('/admin-dashboard');
+      navigate(returnTo, { replace: true });
     } catch (err) {
       setPasswordError('Login failed. Please try again.');
       setToast({ message: 'Login failed', type: 'error' });
@@ -135,9 +143,9 @@ const AdminLogin = () => {
   useEffect(() => {
     const session = getSession();
     if (session) {
-      navigate('/admin-dashboard');
+      navigate(returnTo, { replace: true });
     }
-  }, [navigate]);
+  }, [navigate, returnTo]);
 
   useEffect(() => {
     const pending = getLogoutToast();

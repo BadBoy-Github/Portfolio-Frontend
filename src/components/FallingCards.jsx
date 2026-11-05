@@ -447,11 +447,10 @@ const FallingCards = ({
       <div ref={layoutRef} className="falling-cards__layout">
         {items.map((item, index) => {
           const status = item.status || "learning";
-          const isCompleted = status === "completed";
           return (
             <div
-              className={`falling-cards__card${isCompleted ? " falling-cards__card--completed" : ""}`}
-              data-card-piece={isCompleted ? undefined : ""}
+              className="falling-cards__card"
+              data-card-piece=""
               data-status={status}
               key={item._id || `${item.value}-${index}`}
             >
