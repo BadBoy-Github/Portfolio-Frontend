@@ -67,6 +67,55 @@ const FallingCards = ({
       Matter.Body.setPosition(ceiling, { x: width / 2, y: -WALL_SIZE / 2 });
     };
 
+    const clampPiecePosition = (piece, x, y, angle = piece.body.angle) => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const cosine = Math.abs(Math.cos(angle));
+      const sine = Math.abs(Math.sin(angle));
+      const halfWidth = (piece.width * cosine + piece.height * sine) / 2;
+      const halfHeight = (piece.width * sine + piece.height * cosine) / 2;
+      const minX = Math.min(halfWidth, width / 2);
+      const maxX = Math.max(width - halfWidth, width / 2);
+      const minY = Math.min(halfHeight, height / 2);
+      const maxY = Math.max(height - halfHeight, height / 2);
+      return {
+        x: clamp(x, minX, maxX),
+        y: clamp(y, minY, maxY),
+      };
+    };
+
+    const keepPieceInBounds = (piece) => {
+      const { body } = piece;
+      const currentX = body.position.x;
+      const currentY = body.position.y;
+      const bounded = clampPiecePosition(
+        piece,
+        currentX,
+        currentY,
+      );
+      const changedX = bounded.x !== currentX;
+      const changedY = bounded.y !== currentY;
+      if (changedX || changedY) {
+        Matter.Body.setPosition(body, bounded);
+        Matter.Body.setVelocity(body, {
+          x: changedX
+            ? bounded.x === container.clientWidth / 2
+              ? 0
+              : bounded.x < currentX
+                ? Math.max(0, body.velocity.x)
+                : Math.min(0, body.velocity.x)
+            : body.velocity.x,
+          y: changedY
+            ? bounded.y === container.clientHeight / 2
+              ? 0
+              : bounded.y < currentY
+                ? Math.max(0, body.velocity.y)
+                : Math.min(0, body.velocity.y)
+            : body.velocity.y,
+        });
+      }
+    };
+
     const clearPhysics = () => {
       cancelAnimationFrame(raf);
       raf = 0;
@@ -135,7 +184,8 @@ const FallingCards = ({
         const angle =
           piece.previousAngle +
           (piece.body.angle - piece.previousAngle) * alpha;
-        piece.element.style.transform = `translate3d(${x - piece.width / 2}px, ${y - piece.height / 2}px, 0) rotate(${angle}rad)`;
+        const bounded = clampPiecePosition(piece, x, y, angle);
+        piece.element.style.transform = `translate3d(${bounded.x - piece.width / 2}px, ${bounded.y - piece.height / 2}px, 0) rotate(${angle}rad)`;
       });
     };
 
@@ -170,6 +220,7 @@ const FallingCards = ({
           piece.previousAngle = piece.body.angle;
         });
         Matter.Engine.update(engine, FIXED_STEP);
+        bodies.forEach(keepPieceInBounds);
         accumulator -= FIXED_STEP;
       }
       draw(accumulator / FIXED_STEP);
@@ -334,6 +385,8 @@ const FallingCards = ({
         point,
       )[0];
       if (!hit) return;
+      const draggedPiece = bodies.find((piece) => piece.body === hit);
+      if (!draggedPiece) return;
       event.preventDefault();
       container.setPointerCapture?.(event.pointerId);
       Matter.Sleeping.set(hit, false);
@@ -349,7 +402,7 @@ const FallingCards = ({
         length: 0,
       });
       Matter.Composite.add(engine.world, constraint);
-      drag = { constraint, pointerId: event.pointerId };
+      drag = { constraint, pointerId: event.pointerId, piece: draggedPiece };
       container.dataset.dragging = "";
       wake();
     };
@@ -370,7 +423,24 @@ const FallingCards = ({
       pointer.time = now;
       inside = true;
       if (drag?.pointerId === event.pointerId) {
-        drag.constraint.pointA = point;
+        const { body } = drag.piece;
+        const angle = body.angle;
+        const offsetX =
+          drag.constraint.pointB.x * Math.cos(angle) -
+          drag.constraint.pointB.y * Math.sin(angle);
+        const offsetY =
+          drag.constraint.pointB.x * Math.sin(angle) +
+          drag.constraint.pointB.y * Math.cos(angle);
+        const bounded = clampPiecePosition(
+          drag.piece,
+          point.x - offsetX,
+          point.y - offsetY,
+          angle,
+        );
+        drag.constraint.pointA = {
+          x: bounded.x + offsetX,
+          y: bounded.y + offsetY,
+        };
         return;
       }
       if (phase !== "falling" || !cursorPush) return;
