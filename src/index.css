@@ -104,6 +104,7 @@
         /* sm screens */
         lg:text-[55px] lg:leading-[1.15] lg:max-w-[17ch];
         /* lg screens */
+    min-height: 2.3em;
 }
 
 .count-up-text {
@@ -193,63 +194,6 @@
 
 .animate-shimmer {
     animation: shimmer 1.5s infinite;
-}
-
-/* Typing Animation */
-.animated-text {
-    min-width: 280px;
-}
-
-
-.animated-text span {
-    position: relative;
-
-}
-
-.animated-text span::before {
-    content: "Website Dev";
-    color: #2d5da1;
-    animation: words 8s infinite;
-}
-
-.animated-text span::after {
-    content: "";
-    position: absolute;
-    width: calc(100% + 10px);
-    height: 100%;
-    background-color: #fdfbf7;
-    border-left: 4px solid #ff4d4d;
-    right: -10px;
-    animation: cursor .5s infinite, typing 4s steps(30) infinite;
-}
-
-@keyframes cursor {
-    to {
-        border-left: 4px solid #ff4d4d00;
-    }
-}
-
-
-@keyframes words {
-
-    0%,50% {
-        content: "Website Dev";
-    }
-
-    51%,100% {
-        content: "Software Dev";
-    }
-}
-
-@keyframes typing {
-
-    40%, 45% {
-        width: 0;
-    }
-
-    90%, 95%{
-        width: calc(100% + 10px);
-    }
 }
 
 /* ============================================================

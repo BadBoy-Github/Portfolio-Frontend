@@ -13,7 +13,14 @@ import PropTypes from "prop-types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+  Link,
+} from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -30,9 +37,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
 // Admin pages
-import AdminLogin from "./pages/AdminLogin";
+import AdminLogin, { getSession } from "./pages/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import { getSession } from "./pages/AdminLogin";
 
 // Lazy loaded page components
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -46,6 +52,7 @@ const ProjectsLibrary = lazy(() => import("./pages/ProjectsLibrary"));
 const CertificatesLibrary = lazy(() => import("./pages/CertificatesLibrary"));
 const AchievementsLibrary = lazy(() => import("./pages/AchievementsLibrary"));
 const BlogsLibrary = lazy(() => import("./pages/BlogsLibrary"));
+const LearningBasket = lazy(() => import("./pages/LearningBasket"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 // Loading component for Suspense fallback
@@ -73,10 +80,16 @@ PageTransition.propTypes = {
 };
 
 const ProtectedRoute = ({ children }) => {
+  const location = useLocation();
   const session = getSession();
   if (!session) {
-    window.location.href = "/admin-login";
-    return null;
+    return (
+      <Navigate
+        to="/admin-login"
+        state={{ from: location }}
+        replace
+      />
+    );
   }
   return children;
 };
@@ -89,6 +102,8 @@ const AppInner = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
   const showScrollToTopButton = location.pathname !== "/" && location.pathname !== "/about";
+  const showLearningBasketButton =
+    !isAdminRoute && location.pathname !== "/learning-basket";
 
   const content = (
     <>
@@ -211,6 +226,16 @@ const AppInner = () => {
                   </PageTransition>
                 }
               />
+              <Route
+                path="/learning-basket"
+                element={
+                  <ProtectedRoute>
+                    <PageTransition>
+                      <LearningBasket />
+                    </PageTransition>
+                  </ProtectedRoute>
+                }
+              />
 
               {/* 404 - Page Not Found */}
               <Route
@@ -227,6 +252,18 @@ const AppInner = () => {
       </main>
       {!isAdminRoute && <Footer />}
       {showScrollToTopButton && !isAdminRoute && <ScrollToTopButton />}
+      {showLearningBasketButton && (
+        <Link
+          to="/learning-basket"
+          aria-label="Open Learning Basket"
+          title="Learning Basket"
+          className="fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-wobbly-sm border-2 border-ink bg-postit text-ink shadow-hard-sm transition-transform duration-100 hover:rotate-6 hover:bg-marker hover:text-white focus-visible:outline-none"
+        >
+          <span className="material-symbols-rounded" aria-hidden="true">
+            shopping_basket
+          </span>
+        </Link>
+      )}
     </>
   );
 
