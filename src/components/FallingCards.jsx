@@ -25,6 +25,7 @@ const FallingCards = ({
   const layoutRef = useRef(null);
   const warningTimeoutRef = useRef(null);
   const [goalWarning, setGoalWarning] = useState(false);
+  const [exitedIds, setExitedIds] = useState(() => new Set());
 
   useEffect(() => {
     const container = containerRef.current;
@@ -121,7 +122,10 @@ const FallingCards = ({
           delete container.dataset.dragging;
         }
         Matter.Composite.remove(engine.world, body);
-        if (piece.itemId) onGoal?.(piece.itemId);
+        if (piece.itemId) {
+          setExitedIds((current) => new Set([...current, piece.itemId]));
+          onGoal?.(piece.itemId);
+        }
         return;
       }
       const changedX = bounded.x !== currentX;
@@ -264,7 +268,13 @@ const FallingCards = ({
           piece.released &&
           (piece.body.isSleeping || piece.body.speed < 0.05),
       );
-      if (restoreDelay > 0 && settled && !inside && !drag) {
+      if (
+        restoreDelay > 0 &&
+        settled &&
+        !inside &&
+        !drag &&
+        !bodies.some((piece) => piece.exited)
+      ) {
         quietSince ??= now;
         if (now - quietSince > restoreDelay * 1000) {
           restore();
@@ -273,6 +283,7 @@ const FallingCards = ({
       } else {
         quietSince = null;
       }
+      if (bodies.length && bodies.every((piece) => piece.exited)) return;
       raf = requestAnimationFrame(tick);
     };
 
@@ -565,20 +576,22 @@ const FallingCards = ({
           <span>GOAL</span>
         </div>
         <div ref={layoutRef} className="falling-cards__layout">
-          {items.map((item, index) => {
-            const status = item.status || "learning";
-            return (
-              <div
-                className="falling-cards__card"
-                data-card-piece=""
-                data-item-id={item._id || ""}
-                data-status={status}
-                key={item._id || `${item.value}-${index}`}
-              >
-                {item.value}
-              </div>
-            );
-          })}
+          {items
+            .filter((item) => !exitedIds.has(item._id))
+            .map((item, index) => {
+              const status = item.status || "learning";
+              return (
+                <div
+                  className="falling-cards__card"
+                  data-card-piece=""
+                  data-item-id={item._id || ""}
+                  data-status={status}
+                  key={item._id || `${item.value}-${index}`}
+                >
+                  {item.value}
+                </div>
+              );
+            })}
         </div>
       </div>
       {goalWarning && (

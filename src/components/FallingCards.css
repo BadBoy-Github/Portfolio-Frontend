@@ -81,6 +81,109 @@
   text-align: center;
 }
 
+.learning-basket-celebration {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  overflow: hidden;
+  margin: 1.25rem auto 0;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid rgb(180 83 9);
+  border-radius: 16px;
+  background: rgb(255 249 196);
+  box-shadow: 3px 3px 0 rgb(45 45 45 / 0.85);
+  color: rgb(45 45 45);
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-align: center;
+  animation: learning-basket-celebrate 420ms cubic-bezier(0.2, 0.8, 0.2, 1)
+    both;
+}
+
+.learning-basket-celebration > span {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  animation: learning-basket-trophy 900ms ease-in-out infinite alternate;
+}
+
+.learning-basket-celebration p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.learning-basket-celebration__confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.learning-basket-celebration__confetti span {
+  position: absolute;
+  top: -12px;
+  left: calc((var(--confetti-index) + 1) * 5.2%);
+  width: 7px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--confetti-color);
+  animation: learning-basket-confetti 1.25s ease-out
+    calc(var(--confetti-index) * 35ms) both;
+}
+
+.learning-basket-celebration__confetti span:nth-child(6n + 1) {
+  --confetti-color: rgb(255 77 77);
+}
+
+.learning-basket-celebration__confetti span:nth-child(6n + 2) {
+  --confetti-color: rgb(45 93 161);
+}
+
+.learning-basket-celebration__confetti span:nth-child(6n + 3) {
+  --confetti-color: rgb(251 191 36);
+}
+
+.learning-basket-celebration__confetti span:nth-child(6n + 4) {
+  --confetti-color: rgb(45 45 45);
+}
+
+.learning-basket-celebration__confetti span:nth-child(6n + 5) {
+  --confetti-color: rgb(255 155 66);
+}
+
+.learning-basket-celebration__confetti span:nth-child(6n) {
+  --confetti-color: rgb(105 173 116);
+}
+
+@keyframes learning-basket-celebrate {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes learning-basket-trophy {
+  to {
+    transform: translateY(-4px) rotate(10deg);
+  }
+}
+
+@keyframes learning-basket-confetti {
+  to {
+    opacity: 0;
+    transform: translateY(5rem) rotate(260deg);
+  }
+}
+
 .falling-cards__card {
   position: relative;
   display: grid;
@@ -133,5 +236,9 @@
   .falling-cards__card {
     will-change: auto;
   }
-
+  .learning-basket-celebration,
+  .learning-basket-celebration > span,
+  .learning-basket-celebration__confetti span {
+    animation: none;
+  }
 }

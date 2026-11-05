@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ShoppingBasket } from "lucide-react";
 import SectionHeading from "../components/ui/SectionHeading";
@@ -12,14 +12,16 @@ const LearningBasket = () => {
     "/api/learning-basket",
     session?.token,
   );
-  const [goalExitedIds, setGoalExitedIds] = useState(() => new Set());
-  const handleGoalExit = useCallback((itemId) => {
-    setGoalExitedIds((current) => new Set([...current, itemId]));
+  const [celebration, setCelebration] = useState(0);
+  const handleGoalExit = useCallback(() => {
+    setCelebration((current) => current + 1);
   }, []);
-  const visibleItems = useMemo(
-    () => items.filter((item) => !goalExitedIds.has(item._id)),
-    [goalExitedIds, items],
-  );
+
+  useEffect(() => {
+    if (!celebration) return undefined;
+    const timer = window.setTimeout(() => setCelebration(0), 4200);
+    return () => window.clearTimeout(timer);
+  }, [celebration]);
 
   return (
     <>
@@ -63,8 +65,30 @@ const LearningBasket = () => {
                 </button>
               </div>
             </div>
-          ) : visibleItems.length ? (
-            <FallingCards items={visibleItems} onGoal={handleGoalExit} />
+          ) : items.length ? (
+            <>
+              <FallingCards items={items} onGoal={handleGoalExit} />
+              {celebration > 0 && (
+                <div
+                  key={celebration}
+                  className="learning-basket-celebration"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <div className="learning-basket-celebration__confetti" aria-hidden="true">
+                    {Array.from({ length: 18 }, (_, index) => (
+                      <span
+                        key={index}
+                        style={{ "--confetti-index": index }}
+                      />
+                    ))}
+                  </div>
+                  <span aria-hidden="true">🎉</span>
+                  <p>Goal! Skill completed — what a great shot!</p>
+                  <span aria-hidden="true">🏆</span>
+                </div>
+              )}
+            </>
           ) : (
             <div className="grid min-h-[28rem] place-items-center rounded-wobbly-lg border-2 border-ink bg-paper-card p-8 text-center shadow-hard">
               <div className="max-w-md">
