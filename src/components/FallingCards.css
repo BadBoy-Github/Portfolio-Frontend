@@ -30,6 +30,57 @@
   padding: clamp(1.25rem, 5vw, 3rem);
 }
 
+.falling-cards__goal {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 0;
+  width: 4.5rem;
+  height: min(196px, calc(100% - 2.5rem));
+  border-top: 4px solid rgb(45 93 161);
+  border-bottom: 4px solid rgb(45 93 161);
+  border-left: 4px solid rgb(45 93 161);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 15px,
+    rgb(45 93 161 / 0.12) 16px,
+    transparent 17px
+  );
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.falling-cards__goal span {
+  position: absolute;
+  top: -1.65rem;
+  left: -4px;
+  padding: 0.1rem 0.45rem;
+  border: 2px solid rgb(45 93 161);
+  border-radius: 6px;
+  background: rgb(255 253 247);
+  color: rgb(45 93 161);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.falling-cards__warning {
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.25rem auto 0;
+  padding: 0.65rem 1rem;
+  border: 2px solid rgb(255 77 77);
+  border-radius: 12px;
+  background: rgb(255 227 227);
+  box-shadow: 2px 2px 0 rgb(45 45 45 / 0.8);
+  color: rgb(45 45 45);
+  font-family: inherit;
+  font-weight: 700;
+  text-align: center;
+}
+
 .falling-cards__card {
   position: relative;
   display: grid;

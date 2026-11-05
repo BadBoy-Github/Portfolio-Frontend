@@ -1,3 +1,4 @@
+import { useCallback, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ShoppingBasket } from "lucide-react";
 import SectionHeading from "../components/ui/SectionHeading";
@@ -11,6 +12,15 @@ const LearningBasket = () => {
     "/api/learning-basket",
     session?.token,
   );
+  const [goalExitedIds, setGoalExitedIds] = useState(() => new Set());
+  const handleGoalExit = useCallback((itemId) => {
+    setGoalExitedIds((current) => new Set([...current, itemId]));
+  }, []);
+  const visibleItems = useMemo(
+    () => items.filter((item) => !goalExitedIds.has(item._id)),
+    [goalExitedIds, items],
+  );
+
   return (
     <>
       <Helmet>
@@ -53,8 +63,8 @@ const LearningBasket = () => {
                 </button>
               </div>
             </div>
-          ) : items.length ? (
-            <FallingCards items={items} />
+          ) : visibleItems.length ? (
+            <FallingCards items={visibleItems} onGoal={handleGoalExit} />
           ) : (
             <div className="grid min-h-[28rem] place-items-center rounded-wobbly-lg border-2 border-ink bg-paper-card p-8 text-center shadow-hard">
               <div className="max-w-md">

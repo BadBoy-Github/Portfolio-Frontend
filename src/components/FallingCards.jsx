@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Matter from "matter-js";
 import PropTypes from "prop-types";
 import "./FallingCards.css";
 
 const WALL_SIZE = 320;
 const FIXED_STEP = 1000 / 120;
+const GOAL_HEIGHT = 196;
+const GOAL_WIDTH = 72;
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const FallingCards = ({
@@ -17,9 +19,12 @@ const FallingCards = ({
   cursorPush = 0.5,
   mouseConstraintStiffness = 0.2,
   draggable = true,
+  onGoal,
 }) => {
   const containerRef = useRef(null);
   const layoutRef = useRef(null);
+  const warningTimeoutRef = useRef(null);
+  const [goalWarning, setGoalWarning] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -54,45 +59,71 @@ const FallingCards = ({
       if (!engine) return;
       const width = container.clientWidth;
       const height = container.clientHeight;
-      const [floor, left, right, ceiling] = walls;
+      const [floor, left, ceiling] = walls;
       Matter.Body.setPosition(floor, {
         x: width / 2,
         y: height + WALL_SIZE / 2,
       });
       Matter.Body.setPosition(left, { x: -WALL_SIZE / 2, y: height / 2 });
-      Matter.Body.setPosition(right, {
-        x: width + WALL_SIZE / 2,
-        y: height / 2,
-      });
       Matter.Body.setPosition(ceiling, { x: width / 2, y: -WALL_SIZE / 2 });
     };
 
-    const clampPiecePosition = (piece, x, y, angle = piece.body.angle) => {
+    const clampPiecePosition = (
+      piece,
+      x,
+      y,
+      angle = piece.body.angle,
+      allowGoalExit = false,
+    ) => {
       const width = container.clientWidth;
       const height = container.clientHeight;
       const cosine = Math.abs(Math.cos(angle));
       const sine = Math.abs(Math.sin(angle));
       const halfWidth = (piece.width * cosine + piece.height * sine) / 2;
       const halfHeight = (piece.width * sine + piece.height * cosine) / 2;
+      const goalHeight = Math.min(GOAL_HEIGHT, Math.max(0, height - 40));
+      const goalTop = (height - goalHeight) / 2;
+      const fitsGoal =
+        allowGoalExit &&
+        piece.status === "completed" &&
+        halfHeight * 2 <= goalHeight &&
+        y - halfHeight >= goalTop &&
+        y + halfHeight <= goalTop + goalHeight;
       const minX = Math.min(halfWidth, width / 2);
-      const maxX = Math.max(width - halfWidth, width / 2);
+      const maxX = Math.max(
+        (fitsGoal ? width + halfWidth : width - halfWidth),
+        width / 2,
+      );
       const minY = Math.min(halfHeight, height / 2);
       const maxY = Math.max(height - halfHeight, height / 2);
       return {
         x: clamp(x, minX, maxX),
         y: clamp(y, minY, maxY),
+        fitsGoal,
+        halfWidth,
       };
     };
 
     const keepPieceInBounds = (piece) => {
+      if (piece.exited) return;
       const { body } = piece;
       const currentX = body.position.x;
       const currentY = body.position.y;
-      const bounded = clampPiecePosition(
-        piece,
-        currentX,
-        currentY,
-      );
+      const bounded = clampPiecePosition(piece, currentX, currentY, body.angle, true);
+      if (
+        bounded.fitsGoal &&
+        currentX - bounded.halfWidth > container.clientWidth
+      ) {
+        piece.exited = true;
+        if (drag?.piece === piece) {
+          Matter.Composite.remove(engine.world, drag.constraint);
+          drag = null;
+          delete container.dataset.dragging;
+        }
+        Matter.Composite.remove(engine.world, body);
+        if (piece.itemId) onGoal?.(piece.itemId);
+        return;
+      }
       const changedX = bounded.x !== currentX;
       const changedY = bounded.y !== currentY;
       if (changedX || changedY) {
@@ -137,6 +168,8 @@ const FallingCards = ({
       bodies = [];
       walls = [];
       drag = null;
+      window.clearTimeout(warningTimeoutRef.current);
+      warningTimeoutRef.current = null;
       layout.style.minHeight = "";
       delete container.dataset.phase;
       delete container.dataset.dragging;
@@ -175,6 +208,7 @@ const FallingCards = ({
 
     const draw = (alpha) => {
       bodies.forEach((piece) => {
+        if (piece.exited) return;
         const x =
           piece.previousX +
           (piece.body.position.x - piece.previousX) * alpha;
@@ -184,7 +218,7 @@ const FallingCards = ({
         const angle =
           piece.previousAngle +
           (piece.body.angle - piece.previousAngle) * alpha;
-        const bounded = clampPiecePosition(piece, x, y, angle);
+        const bounded = clampPiecePosition(piece, x, y, angle, true);
         piece.element.style.transform = `translate3d(${bounded.x - piece.width / 2}px, ${bounded.y - piece.height / 2}px, 0) rotate(${angle}rad)`;
       });
     };
@@ -284,10 +318,6 @@ const FallingCards = ({
           isStatic: true,
           friction: 0.3,
         }),
-        Matter.Bodies.rectangle(0, 0, WALL_SIZE, 10000, {
-          isStatic: true,
-          friction: 0.3,
-        }),
         Matter.Bodies.rectangle(0, 0, 10000, WALL_SIZE, {
           isStatic: true,
           friction: 0.3,
@@ -336,6 +366,9 @@ const FallingCards = ({
           releaseAt: ranks.get(index) * Math.max(0, stagger),
           released: false,
           knocked: false,
+          status: element.dataset.status,
+          itemId: element.dataset.itemId,
+          exited: false,
         };
       });
       Matter.Composite.add(engine.world, [
@@ -423,6 +456,17 @@ const FallingCards = ({
       pointer.time = now;
       inside = true;
       if (drag?.pointerId === event.pointerId) {
+        if (
+          drag.piece.status !== "completed" &&
+          point.x >= container.clientWidth - GOAL_WIDTH
+        ) {
+          setGoalWarning(true);
+          window.clearTimeout(warningTimeoutRef.current);
+          warningTimeoutRef.current = window.setTimeout(
+            () => setGoalWarning(false),
+            2600,
+          );
+        }
         const { body } = drag.piece;
         const angle = body.angle;
         const offsetX =
@@ -436,6 +480,7 @@ const FallingCards = ({
           point.x - offsetX,
           point.y - offsetY,
           angle,
+          true,
         );
         drag.constraint.pointA = {
           x: bounded.x + offsetX,
@@ -501,35 +546,47 @@ const FallingCards = ({
     gravity,
     items,
     mouseConstraintStiffness,
+    onGoal,
     restoreDelay,
     scatter,
     stagger,
   ]);
 
   return (
-    <div
-      ref={containerRef}
-      className="falling-cards"
-      role="group"
-      aria-label="Interactive falling learning cards. Move your pointer over the cards to make them fall."
-      data-draggable={draggable ? "" : undefined}
-    >
-      <div ref={layoutRef} className="falling-cards__layout">
-        {items.map((item, index) => {
-          const status = item.status || "learning";
-          return (
-            <div
-              className="falling-cards__card"
-              data-card-piece=""
-              data-status={status}
-              key={item._id || `${item.value}-${index}`}
-            >
-              {item.value}
-            </div>
-          );
-        })}
+    <>
+      <div
+        ref={containerRef}
+        className="falling-cards"
+        role="group"
+        aria-label="Interactive falling learning cards. Move your pointer over the cards to make them fall."
+        data-draggable={draggable ? "" : undefined}
+      >
+        <div className="falling-cards__goal" aria-hidden="true">
+          <span>GOAL</span>
+        </div>
+        <div ref={layoutRef} className="falling-cards__layout">
+          {items.map((item, index) => {
+            const status = item.status || "learning";
+            return (
+              <div
+                className="falling-cards__card"
+                data-card-piece=""
+                data-item-id={item._id || ""}
+                data-status={status}
+                key={item._id || `${item.value}-${index}`}
+              >
+                {item.value}
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+      {goalWarning && (
+        <p className="falling-cards__warning" role="alert">
+          Only completed cards can be shot through the goal post.
+        </p>
+      )}
+    </>
   );
 };
 
@@ -549,6 +606,7 @@ FallingCards.propTypes = {
   cursorPush: PropTypes.number,
   mouseConstraintStiffness: PropTypes.number,
   draggable: PropTypes.bool,
+  onGoal: PropTypes.func,
 };
 
 export default FallingCards;
