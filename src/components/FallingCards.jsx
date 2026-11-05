@@ -445,22 +445,33 @@ const FallingCards = ({
       data-draggable={draggable ? "" : undefined}
     >
       <div ref={layoutRef} className="falling-cards__layout">
-        {items.map((item, index) => (
-          <div
-            className="falling-cards__card"
-            data-card-piece=""
-            key={`${item}-${index}`}
-          >
-            {item}
-          </div>
-        ))}
+        {items.map((item, index) => {
+          const status = item.status || "learning";
+          const isCompleted = status === "completed";
+          return (
+            <div
+              className={`falling-cards__card${isCompleted ? " falling-cards__card--completed" : ""}`}
+              data-card-piece={isCompleted ? undefined : ""}
+              data-status={status}
+              key={item._id || `${item.value}-${index}`}
+            >
+              {item.value}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 FallingCards.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      value: PropTypes.string.isRequired,
+      status: PropTypes.oneOf(["dormant", "learning", "completed"]),
+    }),
+  ).isRequired,
   gravity: PropTypes.number,
   bounciness: PropTypes.number,
   scatter: PropTypes.number,

@@ -49,6 +49,42 @@
   overflow-wrap: anywhere;
 }
 
+.falling-cards__card[data-status="dormant"] {
+  border-color: rgb(255 77 77);
+  background: rgb(255 227 227);
+}
+
+.falling-cards__card[data-status="learning"] {
+  border-color: rgb(45 93 161);
+  background: rgb(227 235 247);
+}
+
+.falling-cards__card[data-status="completed"] {
+  border-color: rgb(180 83 9);
+  background: rgb(251 191 36);
+}
+
+.falling-cards__card--completed {
+  animation: learning-card-burst 750ms cubic-bezier(0.2, 0.8, 0.3, 1) 1s
+    forwards;
+}
+
+@keyframes learning-card-burst {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+  22% {
+    opacity: 1;
+    transform: scale(1.18) rotate(-5deg);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.15) rotate(24deg);
+  }
+}
+
 .falling-cards[data-phase="falling"] .falling-cards__card {
   will-change: transform;
 }
@@ -65,5 +101,9 @@
 @media (prefers-reduced-motion: reduce) {
   .falling-cards__card {
     will-change: auto;
+  }
+
+  .falling-cards__card--completed {
+    animation: none;
   }
 }

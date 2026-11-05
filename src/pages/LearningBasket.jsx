@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { ShoppingBasket } from "lucide-react";
 import SectionHeading from "../components/ui/SectionHeading";
@@ -9,7 +9,36 @@ const LearningBasket = () => {
   const { items, loading, error, reload } = useCollection(
     "/api/learning-basket",
   );
-  const cardTexts = useMemo(() => items.map((item) => item.value), [items]);
+  const [dismissedCompletedIds, setDismissedCompletedIds] = useState(
+    () => new Set(),
+  );
+  const completedIds = useMemo(
+    () =>
+      items
+        .filter((item) => item.status === "completed")
+        .map((item) => item._id),
+    [items],
+  );
+
+  useEffect(() => {
+    if (!completedIds.length) return undefined;
+    const timer = window.setTimeout(() => {
+      setDismissedCompletedIds(
+        (current) => new Set([...current, ...completedIds]),
+      );
+    }, 1750);
+    return () => window.clearTimeout(timer);
+  }, [completedIds]);
+
+  const cardItems = useMemo(
+    () =>
+      items.filter(
+        (item) =>
+          item.status !== "completed" ||
+          !dismissedCompletedIds.has(item._id),
+      ),
+    [dismissedCompletedIds, items],
+  );
 
   return (
     <>
@@ -53,8 +82,8 @@ const LearningBasket = () => {
                 </button>
               </div>
             </div>
-          ) : cardTexts.length ? (
-            <FallingCards items={cardTexts} />
+          ) : cardItems.length ? (
+            <FallingCards items={cardItems} />
           ) : (
             <div className="grid min-h-[28rem] place-items-center rounded-wobbly-lg border-2 border-ink bg-paper-card p-8 text-center shadow-hard">
               <div className="max-w-md">
