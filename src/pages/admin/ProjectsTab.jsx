@@ -414,8 +414,8 @@ const ProjectsTab = ({ addToast }) => {
     const featuredItems = items.filter((item) => item.type === "featured");
     const nonFeaturedItems = items.filter((item) => item.type !== "featured");
     try {
-      await Promise.all(
-        items.map((item, index) => {
+      const responses = await Promise.all(
+        items.map((item) => {
           let order;
           if (item.type === "featured") {
             order = featuredItems.findIndex((f) => f._id === item._id);
@@ -435,6 +435,9 @@ const ProjectsTab = ({ addToast }) => {
           );
         }),
       );
+      if (responses.some((response) => !response.ok)) {
+        throw new Error("One or more project order updates failed");
+      }
       addToast("Project order updated successfully", "success");
       fetchItems();
     } catch (err) {
