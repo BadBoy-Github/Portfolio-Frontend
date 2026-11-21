@@ -414,29 +414,28 @@ const ProjectsTab = ({ addToast }) => {
     const featuredItems = items.filter((item) => item.type === "featured");
     const nonFeaturedItems = items.filter((item) => item.type !== "featured");
     try {
-      const responses = await Promise.all(
-        items.map((item) => {
-          let order;
-          if (item.type === "featured") {
-            order = featuredItems.findIndex((f) => f._id === item._id);
-          } else {
-            order = nonFeaturedItems.findIndex((n) => n._id === item._id);
-          }
-          return fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/${item._id}/order`,
-            {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-              body: JSON.stringify({ order }),
-            },
-          );
-        }),
+      const orderById = new Map();
+      featuredItems.forEach((item, index) => orderById.set(item._id, index));
+      nonFeaturedItems.forEach((item, index) => orderById.set(item._id, index));
+
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/projects/order`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            items: items.map((item) => ({
+              id: item._id,
+              order: orderById.get(item._id),
+            })),
+          }),
+        },
       );
-      if (responses.some((response) => !response.ok)) {
-        throw new Error("One or more project order updates failed");
+      if (!response.ok) {
+        throw new Error("Project order update failed");
       }
       addToast("Project order updated successfully", "success");
       fetchItems();
